@@ -1,0 +1,457 @@
+@charset "utf-8";
+
+.memberjoin-contents {
+  margin-top:140px;
+}
+
+.memberjoin {
+  padding-top:30px;
+  margin-bottom:130px;
+}
+
+.memberjoin-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.memberjoin-title {
+  font-family: 'NanumSquare', gulim;
+  font-size:48px;
+  font-weight:700;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+  text-align:center;
+  margin:0px 0px 45px 0px;
+  padding-top:20px;
+  background:url(/images/title_line.png) no-repeat 50% 0px;
+}
+
+.memberjoin-in > ul {
+  padding:0px;
+  margin:0 auto;
+  height:190px;
+  border-bottom:6px solid #3b3b3b !important;
+}
+
+.memberjoin-in > ul >li {
+  float:left;
+  list-style-type:none;
+  height:160px;
+  padding-top:130px;
+  margin-bottom:30px;
+  font-family: 'NanumSquare', gulim;
+  font-size:22px;
+  font-weight:600;
+  text-align:center;
+  letter-spacing:-1px;
+}
+
+.memberjoin01 {
+  width: 150px;
+  color:#909090;
+  margin-left:122px;
+  background:url(/images/memberjoin01.png) no-repeat 50% 0px;
+}
+
+.memberjoin01.active {
+  color:#0989d9;
+  background:url(/images/memberjoin01a.png) no-repeat 50% 0px;
+}
+
+.memberjoin02 {
+  width: 150px;
+  color:#909090;
+  background:url(/images/memberjoin02.png) no-repeat 50% 0px;
+}
+
+.memberjoin02.active {
+  color:#0989d9;
+  background:url(/images/memberjoin02a.png) no-repeat 50% 0px;
+}
+
+.memberjoin03 {
+  width: 150px;
+  color:#909090;
+  background:url(/images/memberjoin03.png) no-repeat 50% 0px;
+}
+
+.memberjoin03.active {
+  color:#0989d9;
+  background:url(/images/memberjoin03a.png) no-repeat 50% 0px;
+}
+
+.memberjoin04 {
+  width: 150px;
+  color:#909090;
+  background:url(/images/memberjoin04.png) no-repeat 50% 0px;
+}
+.memberjoin04.active {
+  color:#0989d9;
+  background:url(/images/memberjoin04a.png) no-repeat 50% 0px;
+}
+
+.memberjoin .right-arrow {
+  width: 85px;
+  background:url(/images/memberjoin_arrow.png) no-repeat 50% 35px;
+}
+
+.memberjoin .memberkind-in {
+  width:1100px;
+  margin:0 auto;
+  clear:both;
+}
+
+#template-memberjoin .memberkind-ul {
+  height:1050px;
+  padding:0px;
+  border:1px solid #d9d9d9;
+}
+
+#template-memberjoin .memberkind-ul > li {
+  float:left;
+  list-style-type:none;
+  width:366px;
+  height:1027px;
+}
+
+#template-memberjoin .memberkind-ul > li:nth-child(2) {
+  border-left:1px solid #d9d9d9;
+  border-right:1px solid #d9d9d9;
+}
+
+#template-memberjoin .memberkind-title {
+  font-family: 'NanumSquare', gulim;
+  font-size:30px;
+  font-weight:500;
+  color:#3b3b3b;
+  text-align:center;
+  letter-spacing:-1px;
+  padding:55px 0px 15px 0px;
+  margin-bottom:0px;
+}
+
+#template-memberjoin .memberkind-sub-title {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:22px;
+  font-weight:500;
+  color:#0466a3;
+  letter-spacing:-1px;
+}
+
+#template-memberjoin .memberkind-sub-title-bigo {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:15px;
+  font-weight:300;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+}
+
+#template-memberjoin .memberkind-sub {
+  list-style-type:none;
+  padding:0px 20px 0px 20px;
+}
+
+#template-memberjoin .memberkind-sub > li {
+  padding:30px 20px 30px 20px;
+}
+
+#template-memberjoin .bottom-line {
+  border-bottom:1px solid #d9d9d9;
+}
+
+#template-memberjoin .memberkind-sub ul {
+  list-style-type:none;
+  font-family: 'Noto Sans KR', gulim;
+  font-size:15px;
+  font-weight:300;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+  padding:0px;
+  margin-bottom:15px;
+}
+
+#template-memberjoin .join-btn {
+  display:block;
+  width:287px;
+  height:55px;
+  font-family: 'Noto Sans KR', gulim;
+  font-size:22px;
+  font-weight:500;
+  line-height:55px;
+  text-align:center;
+  color:#fff;
+  letter-spacing:-1px;
+  background-color:#3b3b3b;
+}
+
+#template-memberjoin .join-btn:hover {
+  background-color:#0989d9;
+  color:#fff;
+  text-decoration: none;
+}
+
+#template-memberjoin .txt-red {
+  color:#d80000;
+}
+
+#template-memberjoin-step1 .accept-title {
+  font-family: 'NanumSquare', gulim;
+  font-size:25px;
+  font-weight:700;
+  color:#3b3b3b;
+  margin:50px 0px 30px 0px;
+  padding-left:25px;
+}
+
+#template-memberjoin-step1 .accept-txt {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:18px;
+  font-weight:300;
+  color:#3b3b3b;
+}
+
+#template-memberjoin-step1 .dot {
+  padding-left:18px;
+  background:url(/images/dot.png) no-repeat 0px 50%;
+}
+
+#template-memberjoin-step1 .accept-div {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:18px;
+  font-weight:300;
+  color:#3b3b3b;
+  height:190px;
+  line-height:30px;
+  border:1px solid #dfdfdf;
+  backgroud-color:#f6f6f6;
+  border-radius: 5px;
+  padding:20px 0px 20px 30px;
+  overflow:auto;
+}
+
+#template-memberjoin-step1 .accept-checkbox {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:18px;
+  font-weight:300;
+  color:#3b3b3b;
+  padding:20px 0px 20px 0px;
+}
+
+.memberjoin .accept-btn-div {
+  text-align:center;
+  margin-top:50px;
+}
+
+.memberjoin .accept-btn {
+  display:inline-block;
+  width:250px;
+  height:55px;
+  line-height:54px;
+  background-color:#6a6a6a;
+  font-family: 'Noto Sans KR', gulim;
+  font-size:22px;
+  font-weight:600;
+  color:#fff;
+  text-decoration:none;
+  margin:0px 10px;
+  border:solid 0px;
+}
+
+.memberjoin .accept-btn1 {
+  background-color:#0989d9;
+}
+
+.memberjoin .joinkind {
+  font-family: 'NanumSquare', gulim;
+  font-size:35px;
+  font-weight:400;
+  color:#3b3b3b;
+  margin:50px 0px 30px 0px;
+  padding-left:40px;
+  background:url(/images/memberjoin_item.png) no-repeat 0px 50%;
+}
+
+.memberjoin .color-gray {
+  color:#b1b1b1;
+}
+
+#template-memberjoin-step2 .item-title {
+  font-family: 'NanumSquare', gulim;
+  font-size:25px;
+  font-weight:700;
+  color:#3b3b3b;
+  margin:50px 0px 20px 0px;
+  padding-left:25px;
+  background:url(/images/mypage_title.png) no-repeat 0px 50%;
+}
+
+#template-memberjoin-step2 .item-txt {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:18px;
+  font-weight:400;
+  color:#3b3b3b;
+  padding-right:10px;
+  background:url(/images/star.png) no-repeat right center;
+}
+
+#template-memberjoin-step2 .item-div {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:22px;
+  font-weight:300;
+  color:#3b3b3b;
+  border:1px solid #dfdfdf;
+  background-color:#f6f6f6;
+  border-radius: 5px;
+  padding:30px 0px;
+}
+
+#template-memberjoin-step2 .item-div>label {
+  width:185px;
+  text-align:right;
+  font-weight:400;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+  padding:10px;
+  margin:7px 0px;
+  font-size:20px;
+}
+
+#template-memberjoin-step2 .need {
+  background:url(/images/star.png) no-repeat right center;
+}
+
+#template-memberjoin-step2 .inputbox {
+  width:410px;
+  height:45px;
+  line-height:45px;
+  color:#3b3b3b;
+  margin-left:10px;
+  padding-left:10px;
+}
+
+#template-memberjoin-step2 .item-btn {
+  width:140px;
+  height:45px;
+  font-family: 'Noto Sans KR', gulim;
+  font-size:22px;
+  font-weight:300;
+  color:#fff;
+  background-color:#d80000;
+  vertical-align:baseline;
+  border-radius:0px;
+}
+
+#template-memberjoin-step2 .item-btn-black {
+  background-color:#3b3b3b;
+}
+
+#template-memberjoin-step2 .item-btn-gray {
+  background-color:#6a6a6a;
+}
+
+#template-memberjoin-step2 .width-gender {
+  width:190px;
+}
+
+#template-memberjoin-step2 .id-check {
+  margin-left:195px;
+  color:#0989d9;
+}
+
+#template-memberjoin-step2 .id-check-false {
+  margin-left:195px;
+  color:red;
+}
+
+
+#template-memberjoin-step2 .pic-div {
+  display:inline-block;
+  margin-left:10px;
+  margin-top:10px;
+}
+
+#template-memberjoin-step2 .pic-area {
+  float:left;
+  width:500px;
+  height:223px;
+  border:1px solid #888d8f;
+  background-color:#fff;
+  margin-right:5px;
+  position:relative;
+}
+
+/* 2017.12.21 -- Add by Lee Jeong ho */
+.mb10 { margin-bottom:10px; }
+.mb20 { margin-bottom:20px; }
+.mb30 { margin-bottom:30px; }
+
+#template-memberjoin-step2 .item-hidden-file {
+  width: 140px;
+  height:45px;
+  opacity:0;
+  left:0px; top:0px;
+  position:absolute;
+}
+
+
+#template-memberjoin-step2 .pic-area>span {
+  display:block;
+  width:96px;
+  height:96px;
+  background-color:#f6f6f6;
+  margin:7px;
+  text-align:center;
+  padding-top:23px;
+  font-size:18px;
+  border:1px solid #888d8f;
+  cursor:pointer;
+  float:left;
+}
+
+#template-memberjoin-step2 .pic-area>span img {
+  width:96px;
+  height:96px;
+}
+
+
+#template-memberjoin-step2 .width-pic {
+  width:290px;
+}
+
+#template-memberjoin-step2 .pic-subtxt {
+  margin-left:122px;
+  font-size:15px;
+}
+
+#template-memberjoin-step2 .checkbox-subtxt {
+  margin:-15px 0px 20px 200px;
+}
+
+#template-memberjoin-step3 .end-div {
+  text-align:center;
+  height:320px;
+  background-color:#f6f6f6;
+  padding:100px 0px;
+  border-radius: 5px;
+}
+
+#template-memberjoin-step3 .end-txt1 {
+  font-family: 'NanumSquare', gulim;
+  font-size:50px;
+  font-weight:700;
+  color:#3b3b3b;
+}
+
+#template-memberjoin-step3 .end-txt2 {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:28px;
+  font-weight:300;
+  color:#3b3b3b;
+}
+
+.memjoin-note-label {
+  display:block;
+  position:relative;
+  top:30px;
+  float:left;
+}

@@ -11,6 +11,9 @@
   </welcome-file-list>
   
    
+
+  
+   
   <!-- 소스 자체에서 dencoding 하기 -->
   <filter>
   	<filter-name>encodingFilter</filter-name>
@@ -41,7 +44,7 @@
 <!-- 			kr.or.ddit.config.spring.ApplicationDatasource, -->
 <!-- 			kr.or.ddit.config.spring.ApplicationTransaction -->
 	<!--  이 3개는 로직관련 이다 3개가 -->
-		classpath:kr/or/ddit/config/spring/application-transaction.xml 
+		classpath:kr/or/ddit/config/spring/application-transaction.xml
 					  classpath:kr/or/ddit/config/spring/root-context.xml
 					  classpath:kr/or/ddit/config/spring/application-datasource.xml
 		 </param-value>
@@ -86,5 +89,5 @@
 		<url-pattern>/</url-pattern> <!-- default servlet 을 오버라이드 한것이다. 톰캣 web.xml 에  <url-pattern>/</url-pattern> 로지정 
 										따로 지정이 안되있을때 이걸로 처리하겟다. -->
 	</servlet-mapping>
-  
+
 </web-app>

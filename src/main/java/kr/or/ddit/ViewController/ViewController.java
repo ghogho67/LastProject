@@ -21,7 +21,7 @@ public class ViewController {
 	
 	@RequestMapping("/basicSubPage2")
 	public String basicSubPage2() {
-		return "basicSubPage2";
+		return "layout";
 	}
 	
 	
@@ -42,7 +42,7 @@ public class ViewController {
 	
 	@RequestMapping("/main")
 	public String main() {
-		return "main";
+		return "tiles.main";
 	}
 	
 	

@@ -2,9 +2,9 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="mainLayout" template ="/WEB-INF/views/common/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-		<put-attribute name="left" value="/WEB-INF/views/common/left.jsp"/>
+	<definition name="mainLayout" template ="/WEB-INF/view/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"/>
+		<put-attribute name="left" value="/WEB-INF/view/common/sideBar.jsp"/>
 		<put-attribute name="body" value=""/>
 	</definition>
 	
@@ -15,8 +15,8 @@
 	</definition>
 	
 	<!-- main -->
-	<definition name="tiles.main" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
+	<definition name="tiles.main" extends="mainLayout">
+		<put-attribute name="body" value="/WEB-INF/view/tilesTest.jsp"/>
 	</definition>
 	
 	<!-- userpagingList -->
