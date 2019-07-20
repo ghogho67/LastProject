@@ -10,8 +10,8 @@
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 </head>
 
-<%@include file="/WEB-INF/view/common/header.jsp"%>
-<%@include file="/WEB-INF/view/common/sideBar.jsp"%>
+<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 <body>
 
 

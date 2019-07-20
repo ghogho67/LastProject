@@ -4,10 +4,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-@Service
-public class AttendanceService {
+import kr.or.ddit.matching.attendance.dao.IAttendanceDao;
 
-	@Resource(name = "attendanceService")
-	private IAttendanceService attendanceService;
+@Service
+public class AttendanceService implements IAttendanceService {
+
+	@Resource(name = "attendanceDao")
+	private IAttendanceDao attendanceDao;
 	
 }

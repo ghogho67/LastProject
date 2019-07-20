@@ -88,8 +88,8 @@ License Terms
 </head>
 
 <body>
-<%@include file="/WEB-INF/view/common/header.jsp"%>
-<%@include file="/WEB-INF/view/common/sideBar.jsp"%>
+<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
 	<br>
 	<br>
