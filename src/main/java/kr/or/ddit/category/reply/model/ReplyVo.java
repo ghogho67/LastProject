@@ -1,4 +1,4 @@
-package kr.or.ddit.attachment.model;
+package kr.or.ddit.category.reply.model;
 
 import java.util.Date;
 

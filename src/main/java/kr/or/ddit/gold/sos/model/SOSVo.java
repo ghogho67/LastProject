@@ -1,5 +1,5 @@
 package kr.or.ddit.gold.sos.model;
-
+//sos
 public class SOSVo {
 	private int sos_id;
 	private int gps_id;
