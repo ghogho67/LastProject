@@ -3,7 +3,7 @@ package kr.or.ddit.category.post.model;
 import java.util.Date;
 
 public class PostVo {
-	
+
 	//test
 	private int ppost_id;
 	private int post_cnt;
