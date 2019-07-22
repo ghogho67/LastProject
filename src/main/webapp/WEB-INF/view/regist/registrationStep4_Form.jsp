@@ -187,11 +187,8 @@
 
 							<div>
 								<div class="p-subtitle text-right" data-base-class="p-subtitle">
-									<span data-p-role="subtitle" class="p-title-side">추가 입력
-										사항</span>
+									<span data-p-role="subtitle" class="p-title-side">추가 입력사항</span>
 								</div>
-
-
 
 								<div class="col-sm-13">
 									<div class="form-group">
@@ -201,54 +198,20 @@
 
 												<label><input type="checkbox" name="disease"
 													value="cherry"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">중풍</span></label>
+														class="p-check-block"></span></span> <span class="p-label">방문간병</span></label>
 											</div>
 
 											<div class="checkbox">
 												<label><input type="checkbox" name="disease"
 													value="lemon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">심부전증</span></label>
+														class="p-check-block"></span></span> <span class="p-label">병원간병</span></label>
 											</div>
 
 											<div class="checkbox">
 												<label><input type="checkbox" name="disease"
 													value="melon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">당뇨</span></label>
+														class="p-check-block"></span></span> <span class="p-label">운동도움</span></label>
 											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="melon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">고혈압</span></label>
-											</div>
-
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="melon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">치매</span></label>
-											</div>
-
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="melon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">당뇨</span></label>
-											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="melon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">파킨슨</span></label>
-											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="melon"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">부정맥</span></label>
-											</div>
-
-
 										</div>
 									</div>
 								</div>
