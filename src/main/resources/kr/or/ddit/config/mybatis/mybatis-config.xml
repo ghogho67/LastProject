@@ -7,8 +7,13 @@
 	<properties resource="kr/or/ddit/config/mybatis/db.properties"/>
 
 	<typeAliases>
+		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo" />
+		<typeAlias alias="PageVo" type="kr.or.ddit.page.model.PageVo" />
+		
+<!-- 		<typeAlias alias="approvalVo" type="kr.or.ddit.member.member.model.ApprovalVo" /> -->
 	</typeAliases>
 	
 	<mappers>
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
 	</mappers>
 </configuration>
