@@ -15,6 +15,7 @@
 	<!-- partial -->
 	
         <div class="content-wrapper">
+        <h3> &nbsp;&nbsp;&nbsp;My Page</h3>
         <div class="row mb-4">
 			<div class="col-lg-12">
           <div class="row">

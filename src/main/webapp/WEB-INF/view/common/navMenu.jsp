@@ -7,7 +7,7 @@
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="index.html">Home</a></li>
 						<li><a href="departments.html">회사소개</a></li>
-						<li><a href="departments.html">마이페이지</a></li>
+						<li><a href="${cp}member/nmypage_MyInfoModification">마이페이지</a></li>
 						<li><a href="#">요양 정보</a>
 							<ul>
 								<li><a

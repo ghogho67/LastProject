@@ -45,9 +45,9 @@
 						저장</label>
 				</div>
 				<div style="padding-right: 5px;">
-					<a href="/regist/regist">회원가입</a> <br>
+					<a href="/regist/regist1">회원가입</a> <br>
 					<a id="passwordSerch"
-					style="cursor: pointer;" href=""> <span style="color: #4ea5fc;">비밀번호/아이디재설정</span></a>
+					style="cursor: pointer;" href="/find/idpwFind"> <span style="color: #4ea5fc;">비밀번호/아이디재설정</span></a>
 				</div>
 			</div>
 			<div class="info">
