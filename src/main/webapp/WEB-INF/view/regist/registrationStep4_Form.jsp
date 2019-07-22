@@ -29,7 +29,7 @@
 
 	<section class="memberjoin">
 		<div class="memberjoin-in">
-			<h5 class="memberjoin-title ng-binding">회원가입(일반회원)</h5>
+			<h5 class="memberjoin-title ng-binding">회원가입(요양보호사)</h5>
 			<ul>
 				<li class="memberjoin01 ">01.가입종류선택</li>
 				<li class="right-arrow"></li>
@@ -44,7 +44,7 @@
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="p-form-skin" method="post" action="${cp}/regist/regist3 }"
+				<form id="p-form-skin" method="post" action="${cp}/regist/regist4 }"
 					class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
@@ -57,6 +57,30 @@
 							<span data-p-role="subtitle" class="p-title-side">필수입력 사항</span>
 						</div>
 						<div>
+
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="url">프로필 사진</label>
+									<div class="p-file-wrap" style="direction: rtl">
+										<input type="file" id="fileupload1" name="fileupload1"
+											placeholder="select file..."
+											onchange="document.getElementById('fileupload1-fake').value = this.value">
+										<div class="input-group">
+											<span class="input-group-btn"><button type="button"
+													class="btn">browse</button></span> <input type="text"
+												id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
+												readonly="readonly" class="form-control p-ignore-field">
+											<span class="input-group-state"><span
+												class="p-position"><span class="p-text"><span
+														class="p-valid-text"><i class="fa fa-check"></i></span> <span
+														class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
+												class="p-field-cb"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
 							<div class="row">
 
 								<div class="col-sm-6">
@@ -159,6 +183,8 @@
 
 
 
+							<!-- 없어질 것 -->
+
 							<div>
 								<div class="p-subtitle text-right" data-base-class="p-subtitle">
 									<span data-p-role="subtitle" class="p-title-side">추가 입력
@@ -226,30 +252,10 @@
 										</div>
 									</div>
 								</div>
-								
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="url">프로필 사진</label>
-										<div class="p-file-wrap" style="direction: rtl">
-											<input type="file" id="fileupload1" name="fileupload1"
-												placeholder="select file..."
-												onchange="document.getElementById('fileupload1-fake').value = this.value">
-											<div class="input-group">
-												<span class="input-group-btn"><button type="button"
-														class="btn">browse</button></span> <input type="text"
-													id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
-													readonly="readonly" class="form-control p-ignore-field">
-												<span class="input-group-state"><span
-													class="p-position"><span class="p-text"><span
-															class="p-valid-text"><i class="fa fa-check"></i></span> <span
-															class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
-													class="p-field-cb"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								
+
+
+
+
 							</div>
 
 						</div>
@@ -296,7 +302,7 @@
 
 									</div>
 
-							<div class="col-sm-6">
+									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
 												<input type="email" id="pro_rel" name="pro_rel"
@@ -313,31 +319,31 @@
 
 
 
-							</div>
+								</div>
 
 
-							<div class="form-group">
-								<div class="checkbox">
-									<label><input type="checkbox" id="terms" name="terms">
-										<span class="p-check-icon"><span class="p-check-block"></span></span>
-										<span class="p-label">이용약관, 개인정보 수집 및 이용에 모두
-											동의합니다.&nbsp;&nbsp; &nbsp; <a href="#" target="_blank">이용약관
-												& 개인정보 약관 보기</a>
-									</span></label>
+								<div class="form-group">
+									<div class="checkbox">
+										<label><input type="checkbox" id="terms" name="terms">
+											<span class="p-check-icon"><span class="p-check-block"></span></span>
+											<span class="p-label">이용약관, 개인정보 수집 및 이용에 모두
+												동의합니다.&nbsp;&nbsp; &nbsp; <a href="#" target="_blank">이용약관
+													& 개인정보 약관 보기</a>
+										</span></label>
+									</div>
+								</div>
+
+
+
+
+
+
+								<div class="preview-btn text-left p-buttons">
+									<button class="btn" type="submit">submit</button>
+									<button class="btn" type="reset">reset</button>
 								</div>
 							</div>
-
-
-
-
-
-
-							<div class="preview-btn text-left p-buttons">
-								<button class="btn" type="submit">submit</button>
-								<button class="btn" type="reset">reset</button>
-							</div>
 						</div>
-					</div>
 				</form>
 			</div>
 		</div>
