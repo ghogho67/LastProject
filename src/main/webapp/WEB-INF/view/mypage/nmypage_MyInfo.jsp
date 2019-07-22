@@ -12,7 +12,7 @@
 <style>
 input[readonly="readonly"] {
 	color: #000 !important;
-	opacity:2 !important;
+	opacity: 2 !important;
 }
 
 input[type="text"]::-webkit-input-placeholder {
@@ -50,8 +50,9 @@ input[type="text"]::-webkit-input-placeholder {
 											<div class="form-group">
 												<label class="col-md-12">사용자 사진</label>
 												<div class="col-md-12">
-													<img src="${cp }/user/profile?userId=${userVo.userId}"
-														class="form-control form-control-line">
+													<input type="text" placeholder="img.path"
+														class="form-control form-control-line" readonly="readonly">
+
 												</div>
 											</div>
 
@@ -99,13 +100,38 @@ input[type="text"]::-webkit-input-placeholder {
 											<div class="form-group">
 												<label for="birth" class="col-md-12">생년월일</label>
 												<div class="col-md-12">
-													<input type="date" placeholder="1994-09-22"
+													<input type="text" value="2019-09-22"
 														class="form-control form-control-line" name="birth"
 														id="birth" readonly="readonly">
 												</div>
 											</div>
 
 
+
+
+
+
+											<div class="form-group">
+												<label class="col-md-12">연락처</label>
+												<div class="col-md-12">
+													<input type="text" placeholder="010-2114-2539"
+														class="form-control form-control-line" readonly="readonly">
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="col-lg-5 col-xlg-6 col-md-7">
+								<div class="card">
+									<div class="card-body">
+										<div class="form-horizontal form-material">
 
 
 											<div class="form-group">
@@ -142,27 +168,6 @@ input[type="text"]::-webkit-input-placeholder {
 											</div>
 
 
-											<div class="form-group">
-												<label class="col-md-12">연락처</label>
-												<div class="col-md-12">
-													<input type="text" placeholder="010-2114-2539"
-														class="form-control form-control-line" readonly="readonly">
-												</div>
-											</div>
-
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-
-							<div class="col-lg-5 col-xlg-6 col-md-7">
-								<div class="card">
-									<div class="card-body">
-										<div class="form-horizontal form-material">
 
 											<div class="form-group">
 
@@ -200,7 +205,7 @@ input[type="text"]::-webkit-input-placeholder {
 
 
 								<div class="col-sm-12" style="text-align: right;">
-									<a class="btn btn-success" style="color: white;">회원 정보 수정 </a>
+									<a  href="${pageContext.request.contextPath}/member/nmypage_MyInfoModification"  class="btn btn-success" style="color: white;">회원 정보 수정 </a>
 								</div>
 							</div>
 						</div>

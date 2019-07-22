@@ -72,13 +72,13 @@ input[type="text"]::-webkit-input-placeholder {
 
 												<div class="form-group">
 													<label class="col-md-12">프로필사진</label>
-													<div class="col-md-12" >
-													<div style="position: absolute; left: 73%;">
-													
-													<input type="file" class="form-control form-control-line" />
-													
-													</div>
-													<br>
+													<div class="col-md-12">
+														<div style="position: absolute; left: 73%;">
+
+															<input type="file" class="form-control form-control-line" />
+
+														</div>
+														<br>
 													</div>
 												</div>
 
@@ -131,8 +131,35 @@ input[type="text"]::-webkit-input-placeholder {
 															id="birth">
 													</div>
 												</div>
-												
-			
+
+
+
+
+
+
+
+
+												<div class="form-group">
+													<label class="col-md-12">연락처</label>
+													<div class="col-md-12">
+														<input type="text" placeholder="123 456 7890"
+															class="form-control form-control-line">
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+								<div class="col-lg-5 col-xlg-6 col-md-7">
+									<div class="card">
+										<div class="card-body">
+											<div class="form-horizontal form-material">
 
 
 
@@ -144,7 +171,7 @@ input[type="text"]::-webkit-input-placeholder {
 															id="zipcd">
 													</div>
 
-													<button style="position: absolute; left: 85%; top: 525px;"
+													<button style="position: absolute; left: 85%; top: 30px;"
 														type="button" id="addrSearchbtn" class="btn btn-default ">주소
 														검색</button>
 
@@ -174,27 +201,6 @@ input[type="text"]::-webkit-input-placeholder {
 												</div>
 
 
-												<div class="form-group">
-													<label class="col-md-12">연락처</label>
-													<div class="col-md-12">
-														<input type="text" placeholder="123 456 7890"
-															class="form-control form-control-line">
-													</div>
-												</div>
-
-
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-
-
-								<div class="col-lg-5 col-xlg-6 col-md-7">
-									<div class="card">
-										<div class="card-body">
-											<div class="form-horizontal form-material">
 
 												<div class="form-group">
 
