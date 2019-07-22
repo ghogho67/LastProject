@@ -18,14 +18,15 @@ template-header2 {
 }
 
 #template-map .map-right {
-  float:right;
+
   width:390px;
+  height:500px;
   font-family: 'Noto Sans KR', gulim;
-  font-size:16px;
   font-weight:300;
   color:#3b3b3b;
   background-color:#f0f1f3;
 }
+
 
 #template-map .search-cnt {
   color:#fff;
@@ -37,7 +38,7 @@ template-header2 {
 }
 
 #template-map .map-right-scholl {
-  height:750px;
+  height:450px;
   overflow-y:scroll;
 }
 

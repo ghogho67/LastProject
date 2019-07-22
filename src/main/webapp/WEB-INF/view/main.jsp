@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>HowCare</h1>
-                      <a href="${cp}/main">Noincare,YoroCare</a>
-                    <span>|</span> <a href="${cp}/main">Home</a>
+                      <a href="${pageContext.request.contextPath}/main">Noincare,YoroCare</a>
+                    <span>|</span> <a href="${pageContext.request.contextPath}/main">Home</a>
                 </div>
             </div>
         </div>
@@ -29,10 +29,12 @@
     <%@include file="/WEB-INF/view/common/top_Header.jsp"%>
         <div>
             <div class="container" >
-            <div style="position: absolute; left: 40%;">
+            <div style="position: absolute; left: 45%;">
                 <%@include file="/WEB-INF/view/common/navMenu.jsp" %>
            </div>
             </div>
+            <br>
+            <br>
         </div>
     </header>
     
@@ -58,7 +60,7 @@
                     
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${cp}/resource/medino/images/department1.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/department1.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="#"><i class="fa fa-stethoscope"></i></a>
                                 </div>
@@ -74,7 +76,7 @@
                         
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${cp}/resource/medino/images/department2.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/department2.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
                                 </div>
@@ -89,7 +91,7 @@
                         
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${cp}/resource/medino/images/department3.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/department3.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
                                 </div>
@@ -103,7 +105,7 @@
                         
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${cp}/resource/medino/images/department1.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/department1.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
                                 </div>
@@ -124,5 +126,6 @@
 
 
 
+	<%@include file="/WEB-INF/view/common/footer.jsp" %>
 </body>
 </html>
