@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegisterController {
 	
 	
-	@RequestMapping(path = "/regist1", method = RequestMethod.POST)
+	@RequestMapping(path = "/regist1", method = RequestMethod.GET)
 	public String regist() {
 		
 		return "/regist/registrationStep1_TypeSelect";
