@@ -6,39 +6,20 @@
 		<put-attribute name="header" value="/WEB-INF/view/common/subPageheader.jsp"/>
 		<put-attribute name="left" value="/WEB-INF/view/common/subPagesideBar.jsp"/>
 		<put-attribute name="body" value=""/>
-		<put-attribute name="footer" value="/WEB-INF/view/common/footer.jsp"/>
 	</definition>	
 	<definition name="*.tiles" extends="subPageLayout">
-		<put-attribute name="content"   value="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/view/{1}.jsp" />
 	</definition>
-	<definition name="/web/*.tiles" extends="subPageLayout">
-		<put-attribute name="content"   value="/WEB-INF/views/web/{1}.jsp" />
+	<definition name="/*/*.tiles" extends="subPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}.jsp" />
 	</definition>
-	<definition name="/web/*/*.tiles" extends="subPageLayout">
-		<put-attribute name="content"   value="/WEB-INF/views/web/{1}/{2}.jsp" />
+	<definition name="/*/*/*.tiles" extends="subPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/web/{1}/{2}/{3}.jsp" />
 	</definition>
-	<definition name="/web/*/*/*.tiles" extends="subPageLayout">
-		<put-attribute name="content"   value="/WEB-INF/views/web/{1}/{2}/{3}.jsp" />
+	<definition name="/*/*/*/*.tiles" extends="subPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/web/{1}/{2}/{3}/{4}.jsp" />
 	</definition>
 	
-	
-<!-- 	<!-- no tiles --> -->
-<!-- 	<definition name="no-tiles" template="/WEB-INF/views/common/noTemplate.jsp"> -->
-<!-- 		<put-attribute name="noTemplate"   value="" /> -->
-<!-- 	</definition> -->
-	
-<!-- 	<definition name="*.jsp" extends="no-tiles"> -->
-<!-- 		<put-attribute name="noTemplate" value="/WEB-INF/view/{1}.jsp" /> -->
-<!-- 	</definition> -->
-<!-- 	<definition name="/*/*.jsp" extends="no-tiles"> -->
-<!-- 		<put-attribute name="noTemplate" value="/WEB-INF/view/{1}/{2}.jsp" /> -->
-<!-- 	</definition> -->
-<!-- 	<definition name="/*/*/*.jsp" extends="no-tiles"> -->
-<!-- 		<put-attribute name="noTemplate"   value="/WEB-INF/view/{1}/{2}/{3}.jsp" /> -->
-<!-- 	</definition> -->
-<!-- 	<definition name="/*/*/*/*.jsp" extends="no-tiles"> -->
-<!-- 		<put-attribute name="noTemplate"   value="/WEB-INF/view/{1}/{2}/{3}/{4}.jsp" /> -->
-<!-- 	</definition> -->
 	
 </tiles-definitions>
 

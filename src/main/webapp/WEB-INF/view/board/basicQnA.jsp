@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>BasicQnA</title>
-<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/joinCare.jsp"%>
 
 <style>
@@ -88,9 +87,6 @@ License Terms
 </head>
 
 <body>
-<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
-
 	<br>
 	<br>
 	<br>

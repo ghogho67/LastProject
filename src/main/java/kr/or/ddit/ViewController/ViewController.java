@@ -9,83 +9,83 @@ public class ViewController {
 	
 	@RequestMapping("/basicSubPage")
 	public String basicSubPage() {
-		return "basicSubPage";
+		return "basicSubPage.tiles";
 	}
 	
 	@RequestMapping("/basicSubPage2")
 	public String basicSubPage2() {
-		return "layout";
+		return "bestSample.tiles";
 	}
 	
 	@RequestMapping("/basicBoard")
 	public String basicBoard() {
-		return "basicBoard";
+		return "/board/basicBoard.tiles";
 	}
 	
 	@RequestMapping("/basicQnA")
 	public String basicQnA() {
-		return "basicQnA";
+		return "/board/basicQnA.tiles";
 	}
 	
 	@RequestMapping("/main")
 	public String main() {
-		return "test.tiles";
+		return "main.tiles";
 	}
 	
 	
 
 	@RequestMapping("/login")
 	public String login() {
-		return "login";
+		return "login.tiles";
 	}
 	
 	@RequestMapping("/matching")
 	public String matching() {
-		return "matching";
+		return "/matching/matching";
 	}
 	
 	@RequestMapping("/registrationStep1_TypeSelect")
 	public String registrationStep1_TypeSelect() {
-		return "registrationStep1_TypeSelect";
+		return "/regist/registrationStep1_TypeSelect.tiles";
 	}
 	
 	@RequestMapping("/registrationStep2_Regulation")
 	public String registrationStep2_Regulation() {
-		return "registrationStep2_Regulation";
+		return "/regist/registrationStep2_Regulation.tiles";
 	}
 	
 	@RequestMapping("/registrationStep3_Form")
 	public String registrationStep3_Form() {
-		return "registrationStep3_Form";
+		return "/regist/registrationStep3_Form.tiles";
 	}
 	
 	
 	@RequestMapping("/registrationStep4_RecognitionTest")
 	public String registrationStep4_RecognitionTest() {
-		return "registrationStep4_RecognitionTest";
+		return "/regist/registrationStep4_RecognitionTest.tiles";
 	}
 	
 	@RequestMapping("/registrationStep5_Complete")
 	public String registrationStep5_Complete() {
-		return "registrationStep5_Complete";
+		return "/regist/registrationStep5_Complete.tiles";
 	}
 
 	@RequestMapping("/mypage_Patient")
 	public String mypage_Patient() {
-		return "mypage/mypage_Patient";
+		return "/mypage/mypage_Patient.tiles";
 	}
 	
 	
 	@RequestMapping("/mypage_Worker")
 	public String mypage_Worker() {
-		return "mypage/mypage_Worker";
+		return "/mypage/mypage_Worker.tiles";
 	}
 	
 	
 	
 	@RequestMapping("/mypage_Admin")
 	public String mypage_Admin() {
-		return "mypage/mypage_Admin";
+		return "/mypage/mypage_Admin.tiles";
 	}
 	
 	
@@ -124,7 +124,7 @@ public class ViewController {
 	
 	@RequestMapping("loginTest")
 	public String loginTest() {
-		return "loginTest.jsp";
+		return "login.jsp";
 	}
 	
 	

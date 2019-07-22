@@ -275,6 +275,5 @@ body {
 
 
 
-	<%@include file="/WEB-INF/view/common/footer.jsp"%>
 </body>
 </html>
