@@ -132,7 +132,7 @@ h3 {
         </ul>
       </div>
 
-      <form name="agreeform" id="agreeform" role="form" data-toggle="validator"  class="ng-pristine ng-invalid ng-invalid-required">
+      <form name="agreeform" id="agreeform" role="form" data-toggle="validator"  class="ng-pristine ng-invalid ng-invalid-required" method="post">
         <div class="memberkind-in">
           <div>
             
