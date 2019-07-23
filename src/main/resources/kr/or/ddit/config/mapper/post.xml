@@ -52,7 +52,7 @@
                     post_content,
                     post_delete,
                     cate_id,
-                    user_id,
+                    mem_id,
                     REF,
                     re_step,
                     re_level
@@ -114,7 +114,7 @@
 		insert into
 		post(post_id,post_time
 		,post_title
-		,post_content,post_delete,cate_id,user_id,ref,re_step,re_level)
+		,post_content,post_delete,cate_id,mem_id,ref,re_step,re_level)
 		values
 		((select nvl(max(post_id)+1,1) from post),
 		sysdate,#{post_title},#{post_content},'no',#{cate_id},#{mem_id},#{ref},#{re_step},#{re_level})
