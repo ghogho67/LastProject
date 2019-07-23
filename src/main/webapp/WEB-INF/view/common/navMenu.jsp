@@ -2,27 +2,29 @@
     pageEncoding="UTF-8"%>
 
     
+    ${MEM_INFO.userId }
+    
     
     <nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="index.html">Home</a></li>
+						<li class="menu-active"><a href="${cp}/main">Home</a></li>
 						<li><a href="departments.html">회사소개</a></li>
-						<li><a href="${cp}member/nmypage_MyInfoModification">마이페이지</a></li>
+						<li><a href="${cp}mypage/Worker_Info">마이페이지</a></li>
 						<li><a href="#">요양 정보</a>
 							<ul>
 								<li><a
-									href="${cp}/basicU/main">요양보호소
+									href="${cp}/test/matching">요양보호소
 										찾기 </a></li>
-								<li><a href="${cp}/basicU/findingCareWorker">요양원/요양병원
+								<li><a href="${cp}/test/matching">요양원/요양병원
 										찾기</a></li>
-								<li><a href="${cp}/basicU/findingCareWorker">기관 정보 조회</a></li>
+								<li><a href="${cp}/test/matching">기관 정보 조회</a></li>
 							</ul></li>
 
 						<li class="menu-has-children"><a href="">커뮤니티</a>
 							<ul>
-								<li><a href="about.html">공지사항</a></li>
-								<li><a href="about.html">자유게시판</a></li>
-								<li><a href="elements.html">QnA</a></li>
+								<li><a href="${cp}/test/basicBoard">공지사항</a></li>
+								<li><a href="${cp}/test/basicBoard">자유게시판</a></li>
+								<li><a href="${cp}/test/basicQnA">QnA</a></li>
 							</ul></li>
 							
 							

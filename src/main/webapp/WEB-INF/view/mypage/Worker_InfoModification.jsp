@@ -1,61 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 
+
+
 <style>
+input[readonly="readonly"] {
+	color: #000 !important;
+	opacity: 2 !important;
+}
+
 input[type="text"]::-webkit-input-placeholder {
 	font-size: 110%;
 }
 </style>
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
-<script>
-	$(document).ready(function() {
-
-		var msg = '${msg}';
-		if (msg != '')
-			alert(msg);
-
-		$('#addrSearchbtn').on('click', function() {
-			new daum.Postcode({
-				oncomplete : function(data) {
-					$('#zipcd').val(data.zonecode);
-					$('#addr1').val(data.roadAddress);
-				}
-			}).open();
-		});
-
-		$("#modificationComplete").on('click', function() {
-
-			$("#frm").submit();
-
-		});
-
-	});
-</script>
-
 </head>
 <body>
-	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
-	<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
-
-	<form action="${cp }/user/form" method="post"
+	    <%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
+	    <%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
+	    
+	    
+	    
+	    <form action="${cp }/user/form" method="post"
 		enctype="multipart/form-data">
 		<div class="content-wrapper">
 			<h3>&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
@@ -202,32 +174,24 @@ input[type="text"]::-webkit-input-placeholder {
 
 
 
-												<div class="form-group">
+											<div class="form-group">
 
-													<label class="col-md-12">보호자 성함</label>
-													<div class="col-md-12">
-														<input type="text" placeholder="김양배추" value=""
-															class="form-control form-control-line">
-													</div>
+												<label class="col-md-12">운전 면허 </label>
+												<div class="col-md-12">
+													<input type="text" placeholder="2종 보통" value=""
+														class="form-control form-control-line" >
 												</div>
+											</div>
 
-												<div class="form-group">
+											<div class="form-group">
 
-													<label class="col-md-12">보호자와의 관계</label>
-													<div class="col-md-12">
-														<input type="text" placeholder="자녀"
-															class="form-control form-control-line">
-													</div>
+												<label class="col-md-12">요양보호사 자격번호</label>
+												<div class="col-md-12">
+													<input type="text" placeholder="2018-0998206"
+														class="form-control form-control-line" readonly="readonly">
 												</div>
+											</div>
 
-
-												<div class="form-group">
-													<label class="col-md-12">긴급연락처</label>
-													<div class="col-md-12">
-														<input type="text" placeholder="123 456 7890"
-															class="form-control form-control-line">
-													</div>
-												</div>
 
 											</div>
 
@@ -251,8 +215,6 @@ input[type="text"]::-webkit-input-placeholder {
 
 	</form>
 
-
-
-
+	    
 </body>
 </html>

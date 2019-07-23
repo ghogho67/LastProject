@@ -9,19 +9,4 @@ public class MemberController {
 	
 	
 
-	@RequestMapping("/nmypage_MyInfo")
-	public String nmypage_MyInfo() {
-		return "mypage/nmypage_MyInfo";
-	}
-	
-	
-	
-	
-	@RequestMapping("/nmypage_MyInfoModification")
-	public String nmypage_MyInfoModification() {
-		return "mypage/nmypage_MyInfoModification";
-	}
-	
-	
-
 }
