@@ -58,6 +58,8 @@ public class LoginController {
 		if (memVo != null /* && encyptPassword.equals(memVo.getMem_pass()) */ ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
+			session.setAttribute("MEM_ID", memVo.getMem_id());
+			session.setAttribute("MEM_GRADE", memVo.getMem_grade());
 			return "main";
 		}
 		else

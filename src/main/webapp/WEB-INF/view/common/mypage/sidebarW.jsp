@@ -13,13 +13,10 @@
 					<div class="user-info">
 						<img
 							src="${cp}/resource/Admin/images/300.jpg">
-						<p class="name">김요양</p>
+						<p class="name">${MEM_INFO.mem_nm}</p>
 						<p class="designation"></p>
 						<span class="emp"> </span>
 
-
-<!-- li class="nav-item active" -->
-<!-- <li class="nav-item" -->
 
 					</div>
 					<ul class="nav">
