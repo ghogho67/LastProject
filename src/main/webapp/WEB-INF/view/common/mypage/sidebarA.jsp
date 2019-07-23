@@ -13,7 +13,7 @@
 					<div class="user-info">
 						<img
 							src="${cp}/resource/Admin/images/5000.png">
-						<p class="name">김관리자</p>
+						<p class="name">${MEM_INFO.mem_nm}</p>
 						<p class="designation"></p>
 						<span class="admin"> </span>
 
@@ -21,7 +21,7 @@
 					</div>
 					<ul class="nav">
 						<li class="nav-item active"><a class="nav-link"
-							href="../../index.html"> <img
+							href="${cp}Admin_Info"> <img
 								src="${cp}/resource/Admin/images/icons/1.png"
 								alt=""> <span class="menu-title">회원정보</span>
 						</a></li>

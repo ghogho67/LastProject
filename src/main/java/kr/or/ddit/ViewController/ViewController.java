@@ -22,6 +22,13 @@ public class ViewController {
 		return "/board/basicBoard.tiles";
 	}
 	
+	@RequestMapping("/Writing")
+	public String Writing() {
+		return "/board/basicWriting";
+	}
+	
+	
+	
 	@RequestMapping("/basicQnA")
 	public String basicQnA() {
 		return "/board/basicQnA.tiles";
