@@ -58,6 +58,20 @@ public interface IMemberDao {
 	int updateMem(MemberVo memVo);
 	
 	
+	
+	
+	
+	/**
+	 * Method : updateMem
+	 * 작성자 : PC02
+	 * 변경이력 :
+	 * @param userVo
+	 * @return
+	 * Method 설명 :사용자(대상자) 업데이트
+	 */
+	int updatePMem(MemberVo memVo);
+	
+	
 	/**
 	 * Method : memPagingList
 	 * 작성자 : PC21

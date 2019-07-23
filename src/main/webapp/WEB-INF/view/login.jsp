@@ -31,10 +31,10 @@
 			</h2>
 			<ul>
 				<li><input type="text" autofocus="" name="mem_id" id="mem_id"
-					placeholder="아이디" value="" tabindex="1"><a href="#a"><img
+					placeholder="아이디" value="anni" tabindex="1"><a href="#a"><img
 						src="/img/mypage/btn_del.png" alt="삭제"></a></li>
 				<li><input type="password" name="mem_pass" id="mem_pass"
-					placeholder="비밀번호" value="" tabindex="2"></li>
+					placeholder="비밀번호" value="1234" tabindex="2"></li>
 				<li class="log"><button class="btn type1" id="btnLogin"
 					tabindex="3">로그인</button></li>
 			</ul>

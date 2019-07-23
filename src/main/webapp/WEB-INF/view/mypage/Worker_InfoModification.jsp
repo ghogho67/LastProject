@@ -16,7 +16,7 @@ input[] {
 	opacity: 2 !important;
 }
 
-input[type="text"]::-webkit-input-placeholder {
+input[type="text"]::-webkit-input-value {
 	font-size: 110%;
 }
 </style>
@@ -61,6 +61,10 @@ input[type="text"]::-webkit-input-placeholder {
 
 	<form action="${cp}/mypage/Worker_InfoModification" method="post"
 		enctype="multipart/form-data">
+		<input type="hidden" id="grade" name="grade" value="${MEM_INFO.mem_grade}">
+		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
+		
+		
 		<div class="content-wrapper">
 			<h3>&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
 			<div class="row mb-4">
@@ -79,8 +83,7 @@ input[type="text"]::-webkit-input-placeholder {
 													<label class="col-md-12">프로필사진</label>
 													<div class="col-md-12">
 														<div style="position: absolute; left: 73%;">
-
-															<input type="file" class="form-control form-control-line" />
+															<input type="file" class="form-control form-control-line"  id="profile" name="profile" />
 
 														</div>
 														<br>
@@ -93,7 +96,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">아이디</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.mem_id}"
+														<input type="text" value="${MEM_INFO.mem_id}"
 															class="form-control form-control-line"
 															readonly="readonly">
 													</div>
@@ -102,7 +105,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">성함</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.mem_nm}"
+														<input type="text" value="${MEM_INFO.mem_nm}"
 															class="form-control form-control-line"
 															readonly="readonly">
 													</div>
@@ -122,7 +125,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="email" class="col-md-12">이메일</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.mem_mail}"
+														<input type="text" value="${MEM_INFO.mem_mail}"
 															class="form-control form-control-line" name="email"
 															id="email">
 													</div>
@@ -146,7 +149,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">연락처</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.mem_phone}"
+														<input type="text" value="${MEM_INFO.mem_phone}"
 															class="form-control form-control-line"  name="phone"
 															name="phone"> 
 													</div>
@@ -170,7 +173,7 @@ input[type="text"]::-webkit-input-placeholder {
 			<div class="form-group">
 													<label for="birth" class="col-md-12">우편번호</label>
 													<div class="col-md-10">
-														<input type="text" placeholder="${MEM_INFO.mem_zipcd}"
+														<input type="text" value="${MEM_INFO.mem_zipcd}"
 															class="form-control form-control-line" name="zipcd"
 															id="zipcd">
 													</div>
@@ -187,7 +190,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="birth" class="col-md-12">주소</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.mem_add1}"
+														<input type="text" value="${MEM_INFO.mem_add1}"
 															class="form-control form-control-line" name="addr1"
 															id="addr1">
 													</div>
@@ -198,28 +201,28 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="birth" class="col-md-12">상세주소</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.mem_add2}"
+														<input type="text" value="${MEM_INFO.mem_add2}"
 															class="form-control form-control-line" name="addr2"
 															id="addr2">
 													</div>
 												</div>
 
 
-												<div class="form-group">
-													<label class="col-md-12">운전면허</label>
-													<div class="col-md-12">
-														<input type="text"
-															placeholder="<c:choose><c:when test="${MEM_INFO.cw_driver==Y}">2종 보통 소지</c:when><c:otherwise>미자격</c:otherwise></c:choose>"
-															class="form-control form-control-line" name="driver"
-															name="driver">
-													</div>
-												</div>
+<!-- 												<div class="form-group"> -->
+<!-- 													<label class="col-md-12">운전면허</label> -->
+<!-- 													<div class="col-md-12"> -->
+<!-- 														<input type="text" -->
+<%-- 															placeholder="<c:choose><c:when test="${MEM_INFO.cw_driver==Y}">2종 보통 소지</c:when><c:otherwise>미자격</c:otherwise></c:choose>" --%>
+<!-- 															class="form-control form-control-line" name="driver" -->
+<!-- 															name="driver"> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
 
 												<div class="form-group">
 
 													<label class="col-md-12">요양보호사 자격번호</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="${MEM_INFO.cw_lic}"
+														<input type="text" value="${MEM_INFO.cw_lic}"
 															class="form-control form-control-line"
 															readonly="readonly">
 													</div>
