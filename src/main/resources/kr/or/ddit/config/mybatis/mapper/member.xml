@@ -44,12 +44,116 @@
    </select>
    
    
-   <!-- 사용자 등록 -->
- <!--   <insert id="insertMem" parameterType="userVo">
-      INSERT INTO MEMBER
-      VALUES (#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, 
-            #{birth}, #{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR})
-   </insert> -->
+   <!-- 일반회원 등록 -->
+   <insert id="insertMember" parameterType="memberVo">
+      INSERT INTO MEMBER(mem_id
+      					,mem_nm
+      					,mem_birth
+      					,mem_gender
+      					,mem_pass
+      					,mem_phone
+      					,mem_add1
+      					,mem_add2
+      					,mem_zipcd
+      					,mem_mail
+      					,mem_grade
+      					,mem_del
+      					,mem_photo_path
+      					,mem_photo_nm
+      					,pro_relation
+      					,pro_nm
+      					,pro_phone)
+     			 VALUES (#{mem_id}
+     			 		,#{mem_nm}
+     			 		,#{mem_birth}
+     			 		,#{mem_gender}
+     			 		,#{mem_pass}
+     			 		,#{mem_phone}
+     			 		,#{mem_add1}
+     			 		,#{mem_add2}
+     			 		,#{mem_zipcd}
+     			 		,#{mem_mail}
+     			 		,'1'
+     			 		,'N'
+     			 		,#{path, jdbcType=VARCHAR}
+     			 		,#{filename, jdbcType=VARCHAR}
+     			 		,#{pro_relation}
+     			 		,#{pro_nm}
+     			 		,#{pro_phone})
+   </insert>
+   <!-- 일반회원 등록 - 질병명 -->
+   <insert id="insertMemberDisease" parameterType="memberDiseaseVo">
+   		INSERT INTO MEMBERDISEASE(dis_id)
+   					VALUES(#{dis_id})
+   </insert>
+   
+   
+   <!-- 요양보호사 등록 -->
+   <insert id="insertCWMember" parameterType="memberVo">
+      INSERT INTO MEMBER(mem_id
+      					,mem_nm
+      					,mem_birth
+      					,mem_gender
+      					,mem_pass
+      					,mem_phone
+      					,mem_mail
+      					,mem_grade
+      					,mem_del
+      					,mem_photo_path
+      					,mem_photo_nm
+      					,cw_driver
+      					,cw_lic)
+     			 VALUES (#{mem_id}
+     			 		,#{mem_nm}
+     			 		,#{mem_birth}
+     			 		,#{mem_gender}
+     			 		,#{mem_pass}
+     			 		,#{mem_phone}
+     			 		,#{mem_mail}
+     			 		,'3'
+     			 		,'N'
+     			 		,#{path, jdbcType=VARCHAR}
+     			 		,#{filename, jdbcType=VARCHAR}
+     			 		,#{cw_driver}
+     			 		,#{cw_lic})
+   </insert>
+   
+   <!-- 요양보호사 등록 - 서비스 지역-->
+   <insert id="insertLocation" parameterType="locationVo">
+   		INSERT INTO LOCATION(loc_dong)
+   					VALUES(#{loc_dong})
+   </insert>
+   
+   <!-- 요양보호사 등록 - 가능요일-->
+   <insert id="insertDay" parameterMap="dayVo">
+   		INSERT INTO DAY(cw_day)
+   					VALUES(#{cw_day})
+   </insert>
+   
+   <!-- 요양보호사 등록 - 경력 -->
+   <insert id="insertCareer" parameterType="careerVo">
+   		INSERT INTO CAREER(career_cont
+   						  ,career_st_dt
+   						  ,career_end_dt)
+   					VALUES(#{career_cont}
+   						  ,#{career_st_dt}
+   						  ,#{career_end_dt})
+   </insert>
+   
+   <!-- 요양보호사 등록 - 경력 - 병원명 -->
+   <insert id="insertHospital" parameterType="hospitalVo">
+   		INSERT INTO HOSPITAL(hos_nm)
+   					VALUES(#{hos_nm})
+   </insert>	
+   
+   <!-- 요양보호사 증록 - 서비스 종류 -->
+   <insert id="insertServiceType" parameterType="serviceTypeVo">
+   		INSERT INTO SERVICETYPE(ser_type)
+   					VALUES(#{ser_type})
+   </insert>
+   
+   
+   
    
    <!-- 사용자 삭제 -->
    <delete id="deleteMem" parameterType="String">
@@ -91,5 +195,9 @@
       SET      PASS = #{pass}
       WHERE  USERID = #{userId}
    </update> -->
+   
+   
+   
+   
    
 </mapper>
