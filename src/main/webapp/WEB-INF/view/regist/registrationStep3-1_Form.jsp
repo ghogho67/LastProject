@@ -29,7 +29,7 @@
 
 	<section class="memberjoin">
 		<div class="memberjoin-in">
-			<h5 class="memberjoin-title ng-binding">회원가입(일반회원)</h5>
+			<h5 class="memberjoin-title ng-binding">회원가입(요양보호사)</h5>
 			<ul>
 				<li class="memberjoin01 ">01.가입종류선택</li>
 				<li class="right-arrow"></li>
@@ -44,7 +44,7 @@
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="p-form-skin" method="post" action="${cp}/regist/regist3 }"
+				<form id="p-form-skin" method="post" action="${cp}/regist/regist3-1 }"
 					class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
@@ -57,6 +57,30 @@
 							<span data-p-role="subtitle" class="p-title-side">필수입력 사항</span>
 						</div>
 						<div>
+
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="url">프로필 사진</label>
+									<div class="p-file-wrap" style="direction: rtl">
+										<input type="file" id="fileupload1" name="fileupload1"
+											placeholder="select file..."
+											onchange="document.getElementById('fileupload1-fake').value = this.value">
+										<div class="input-group">
+											<span class="input-group-btn"><button type="button"
+													class="btn">browse</button></span> <input type="text"
+												id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
+												readonly="readonly" class="form-control p-ignore-field">
+											<span class="input-group-state"><span
+												class="p-position"><span class="p-text"><span
+														class="p-valid-text"><i class="fa fa-check"></i></span> <span
+														class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
+												class="p-field-cb"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
 							<div class="row">
 
 								<div class="col-sm-6">
@@ -153,95 +177,147 @@
 									</div>
 								</div>
 
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">요양보호사 라이센스번호</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="cw_lic" name=""
+												cw_lic""
+												placeholder="라이센스 번호를 입력해 주세요"
+												class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">운전가능 여부</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="diver" name="diver"
+												placeholder="유 or 무" class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">서비스 가능 지역</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="locate" name="locate"
+												placeholder="주소를 입력해 주세요" class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
 							</div>
+							
+							
+							
+							
+							<div>
+								<div class="p-subtitle text-right" data-base-class="p-subtitle">
+									<span data-p-role="subtitle" class="p-title-side">서비스 가능 요일</span>
+								</div>
+								<div class="col-sm-13">
+									<div class="p-form-cg pt-form-inline">
+									
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="sun"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">일</span></label>
+										</div>
+									
+										<div class="checkbox">
 
+											<label><input type="checkbox" name="ser_type"
+												value="mon"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">월</span></label>
+										</div>
 
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="the"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">화</span></label>
+										</div>
 
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="wed"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">수</span></label>
+										</div>
+										
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="thu"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">목</span></label>
+										</div>
+										
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="fri"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">금</span></label>
+										</div>
+										
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="sat"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">토</span></label>
+										</div>
+										
+									</div>
+
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							
 
 
 							<div>
 								<div class="p-subtitle text-right" data-base-class="p-subtitle">
-									<span data-p-role="subtitle" class="p-title-side">추가 입력
-										사항</span>
+									<span data-p-role="subtitle" class="p-title-side">서비스 종류</span>
 								</div>
-
-
-
 								<div class="col-sm-13">
-									<div class="form-group">
-										<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;질병</label>
-										<div class="p-form-cg pt-form-inline">
-											<div class="checkbox">
+									<div class="p-form-cg pt-form-inline">
+										<div class="checkbox">
 
-												<label><input type="checkbox" name="disease"
-													value="palse"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">중풍</span></label>
-											</div>
+											<label><input type="checkbox" name="ser_type"
+												value="visit"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">방문간병</span></label>
+										</div>
 
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="heartFailure"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">심부전증</span></label>
-											</div>
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="hospital"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">병원간병</span></label>
+										</div>
 
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="diabetes"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">당뇨</span></label>
-											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="hypertension"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">고혈압</span></label>
-											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="dementia"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">치매</span></label>
-											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="parkinsonism"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">파킨슨</span></label>
-											</div>
-
-											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="arrhythmia"> <span class="p-check-icon"><span
-														class="p-check-block"></span></span> <span class="p-label">부정맥</span></label>
-											</div>
-
-
+										<div class="checkbox">
+											<label><input type="checkbox" name="ser_type"
+												value="health"> <span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">운동도움</span></label>
 										</div>
 									</div>
+
 								</div>
-								
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="url">프로필 사진</label>
-										<div class="p-file-wrap" style="direction: rtl">
-											<input type="file" id="fileupload1" name="fileupload1"
-												placeholder="select file..."
-												onchange="document.getElementById('fileupload1-fake').value = this.value">
-											<div class="input-group">
-												<span class="input-group-btn"><button type="button"
-														class="btn">browse</button></span> <input type="text"
-													id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
-													readonly="readonly" class="form-control p-ignore-field">
-												<span class="input-group-state"><span
-													class="p-position"><span class="p-text"><span
-															class="p-valid-text"><i class="fa fa-check"></i></span> <span
-															class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
-													class="p-field-cb"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								
 							</div>
 
 						</div>
@@ -249,8 +325,7 @@
 
 						<div class="clearfix">
 							<div class="p-subtitle text-right" data-base-class="p-subtitle">
-								<span data-p-role="subtitle" class="p-title-side">보호자
-									인적사항</span>
+								<span data-p-role="subtitle" class="p-title-side">보호경력</span>
 							</div>
 
 
@@ -260,8 +335,8 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
-												<input type="text" id="pro_name" name="pro_name"
-													placeholder="보호자성함" class="form-control"> <span
+												<input type="text" id="hos_id" name="hos_id"
+													placeholder="기관명" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -269,6 +344,21 @@
 												<span class="input-group-icon"><i class="fa fa-check"></i></span>
 											</div>
 										</div>
+									</div>
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<div class="input-group p-has-icon">
+												<input type="date" id="career_end" name="career_end"
+													placeholder="종료날자" class="form-control"> <span
+													class="input-group-state"><span class="p-position"><span
+														class="p-text"><span class="p-valid-text"><i
+																class="fa fa-check"></i></span> <span class="p-error-text"><i
+																class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+												<span class="input-group-icon"><i class="fa fa-check"></i></span>
+											</div>
+										</div>
+
 									</div>
 
 
@@ -276,8 +366,8 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
-												<input type="email" id="pro_phone" name="pro_phone"
-													placeholder="보호자연락처" class="form-control"> <span
+												<input type="date" id="career_st" name="career_st"
+													placeholder="시작날자" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -288,11 +378,13 @@
 
 									</div>
 
-							<div class="col-sm-6">
+
+
+									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
-												<input type="email" id="pro_rel" name="pro_rel"
-													placeholder="보호자관계" class="form-control"> <span
+												<input type="text" id="career_content" name="career_content"
+													placeholder="내용" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -305,31 +397,20 @@
 
 
 
-							</div>
+								</div>
 
 
-							<div class="form-group">
-								<div class="checkbox">
-									<label><input type="checkbox" id="terms" name="terms">
-										<span class="p-check-icon"><span class="p-check-block"></span></span>
-										<span class="p-label">이용약관, 개인정보 수집 및 이용에 모두
-											동의합니다.&nbsp;&nbsp; &nbsp; <a href="#" target="_blank">이용약관
-												& 개인정보 약관 보기</a>
-									</span></label>
+
+
+
+
+
+								<div class="preview-btn text-left p-buttons">
+									<button class="btn" type="submit">submit</button>
+									<button class="btn" type="reset">reset</button>
 								</div>
 							</div>
-
-
-
-
-
-
-							<div class="preview-btn text-left p-buttons">
-								<button class="btn" type="submit">submit</button>
-								<button class="btn" type="reset">reset</button>
-							</div>
 						</div>
-					</div>
 				</form>
 			</div>
 		</div>

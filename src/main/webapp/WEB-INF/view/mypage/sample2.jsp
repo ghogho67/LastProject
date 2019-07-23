@@ -14,7 +14,7 @@
 
 	<!-- partial -->
 	<div class="content-wrapper">
-		<h3 class="page-heading mb-4">프로핑띄울거임</h3>
+		<h3> &nbsp;&nbsp;&nbsp;My Page</h3>
 		<div class="row mb-4">
 			<div class="col-lg-12">
 				<div class="card">

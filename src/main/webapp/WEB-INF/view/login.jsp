@@ -11,6 +11,13 @@
 	href="${cp}/resource/wrap/css/login/member.css" />
 <link rel="stylesheet" type="text/css"
 	href="${cp}/resource/wrap/css/login/style.css" />
+<style type="text/css">
+
+#img{
+	width: 400px;
+	height: 300px;
+}
+</style>
 
 </head>
 <body>
@@ -20,35 +27,34 @@
 		<input type="hidden" id="status" name="status" value="">
 		<div id="login">
 			<h2>
-				환영합니다
+				환영합니다.
 			</h2>
 			<ul>
 				<li><input type="text" autofocus="" name="mem_id" id="mem_id"
 					placeholder="아이디" value="" tabindex="1"><a href="#a"><img
 						src="/img/mypage/btn_del.png" alt="삭제"></a></li>
-				<li><input type="password" name="userPwd" id="userPwd"
+				<li><input type="password" name="mem_pass" id="mem_pass"
 					placeholder="비밀번호" value="" tabindex="2"></li>
-				<li class="log"><a href="#a" class="btn type1" id="btnLogin"
-					tabindex="3">로그인</a></li>
+				<li class="log"><button class="btn type1" id="btnLogin"
+					tabindex="3">로그인</button></li>
 			</ul>
 			<div class="both">
 				<div>
-					<input type="checkbox" id="chk1" value="remember-me"
-						name="rememberMe" class="type1"><label for="chk1">아이디
+					<input type="checkbox" value="remember"
+						name="remember"><label for="chk1">아이디
 						저장</label>
 				</div>
 				<div style="padding-right: 5px;">
-					<a href="/join/joinView.prn">회원가입</a> <a id="passwordSerch"
-						style="cursor: pointer;">/ <span style="color: #4ea5fc;">비밀번호
-							재설정</span></a>
+					<a href="/regist/regist1">회원가입</a> <br>
+					<a id="passwordSerch"
+					style="cursor: pointer;" href="/find/idpwFind"> <span style="color: #4ea5fc;">비밀번호/아이디재설정</span></a>
 				</div>
 			</div>
 			<div class="info">
 			
-				<p>
-			언제나 내 부모처럼 모시겠습니다<br><br>
+				<p>			언제나 내 부모처럼 모시겠습니다<br>
+			
 	고객센터
-<br>
 					평일 09:00 ~ 18:00<br>(점심시간 12:30 ~ 13:30)
 				</p>
 			</div>

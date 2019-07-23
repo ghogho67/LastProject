@@ -46,46 +46,46 @@ public class ViewController {
 	
 	@RequestMapping("/registrationStep1_TypeSelect")
 	public String registrationStep1_TypeSelect() {
-		return "/regist/registrationStep1_TypeSelect.tiles";
+		return "/regist/registrationStep1_TypeSelect";
 	}
 	
 	@RequestMapping("/registrationStep2_Regulation")
 	public String registrationStep2_Regulation() {
-		return "/regist/registrationStep2_Regulation.tiles";
+		return "/regist/registrationStep2_Regulation";
 	}
 	
 	@RequestMapping("/registrationStep3_Form")
 	public String registrationStep3_Form() {
-		return "/regist/registrationStep3_Form.tiles";
+		return "/regist/registrationStep3_Form";
 	}
 	
 	
 	@RequestMapping("/registrationStep4_RecognitionTest")
 	public String registrationStep4_RecognitionTest() {
-		return "/regist/registrationStep4_RecognitionTest.tiles";
+		return "/regist/registrationStep4_RecognitionTest";
 	}
 	
 	@RequestMapping("/registrationStep5_Complete")
 	public String registrationStep5_Complete() {
-		return "/regist/registrationStep5_Complete.tiles";
+		return "/regist/registrationStep5_Complete";
 	}
 
 	@RequestMapping("/mypage_Patient")
 	public String mypage_Patient() {
-		return "/mypage/mypage_Patient.tiles";
+		return "/mypage/mypage_Patient";
 	}
 	
 	
 	@RequestMapping("/mypage_Worker")
 	public String mypage_Worker() {
-		return "/mypage/mypage_Worker.tiles";
+		return "/mypage/mypage_Worker";
 	}
 	
 	
 	
 	@RequestMapping("/mypage_Admin")
 	public String mypage_Admin() {
-		return "/mypage/mypage_Admin.tiles";
+		return "/mypage/mypage_Admin";
 	}
 	
 	

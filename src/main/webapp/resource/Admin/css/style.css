@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Gudea:400,400i,700|Poppins:300,400,500,600,700|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i");
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb); 
 @-moz-keyframes flash {
   0% {
     opacity: 1; }
@@ -7370,7 +7372,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: sans-serif;
+
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -7383,12 +7385,11 @@ html {
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
-@import url(http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb); 
+
 
 
 body {
   margin: 0;
-  font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -8679,6 +8680,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     .form-inline .has-feedback .form-control-feedback {
       top: 0; } }
 
+
 .btn {
   display: inline-block;
   font-weight: normal;
@@ -8750,7 +8752,7 @@ fieldset[disabled] a.btn {
   border-color: #58d8a3; }
   .btn-success:hover {
     color: #111;
-    background-color: #39d192;
+    background-color: #2ddd97;
     border-color: #30cd8c; }
   .btn-success:focus, .btn-success.focus {
     box-shadow: 0 0 0 3px rgba(88, 216, 163, 0.5); }
@@ -13722,6 +13724,7 @@ input:focus {
   outline: none; }
 
 .content-wrapper {
+  font-family: "Noto Sans KR", sans-serif;
   background: #f2f7f8;
   margin-left: 215px;
   min-height: 100vh;

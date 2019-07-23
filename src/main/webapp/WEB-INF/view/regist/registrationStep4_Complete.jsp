@@ -86,6 +86,7 @@ background:url(../../../resource/howcare/images/mypage_title.png) no-repeat 0px 
         <div class="end-div">
           <p class="end-txt1">회원가입이 완료되었습니다!</p>
           <p class="end-txt2">로그인 후 서비스를 이용하실 수 있습니다.</p>
+          <p class="end-txt3">메뉴 상단의 건강정보에서 인지테스트를 선택하신 후 꼭 테스트를 받아 주세요.</p>
         </div>
         <div class="accept-btn-div">
           <a href="#/" class="accept-btn">메인으로</a>

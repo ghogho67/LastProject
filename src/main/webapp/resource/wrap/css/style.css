@@ -1,12 +1,11 @@
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
-/******************* 
-Global Styles 
-*******************/
 @import url(../scss/icons/font-awesome/css/font-awesome.min.css);
 @import url(../css/spinners.css);
 @import url(../css/animate.css);
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 * {
   outline: none; }
 
@@ -62,7 +61,7 @@ h4,
 h5,
 h6 {
   color: #455a64;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400; }
 
 h1 {
@@ -2648,10 +2647,17 @@ Form Material page
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
 
+.form-group input{
+	text-align: right;
+}
+
 .form-control-line .form-group {
+
   overflow: hidden; }
 
 .form-control-line .form-control {
+
+
   border: 0px;
   border-radius: 0px;
   padding-left: 0px;

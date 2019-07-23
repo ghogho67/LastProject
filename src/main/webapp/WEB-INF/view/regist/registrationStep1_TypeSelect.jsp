@@ -132,7 +132,7 @@ h3 {
         </ul>
       </div>
 
-      <form name="agreeform" id="agreeform" role="form" data-toggle="validator"  class="ng-pristine ng-invalid ng-invalid-required">
+      <form name="agreeform" id="agreeform" role="form" data-toggle="validator"  class="ng-pristine ng-invalid ng-invalid-required" method="post">
         <div class="memberkind-in">
           <div>
             
@@ -143,12 +143,14 @@ h3 {
         <li class="bg1">
         
             <h3>일반<strong>회원가입</strong></h3>
-            <a href="javascript:goMemjoin('1');">바로가기</a>
+<!--             <a href="javascript:goMemjoin('1');">바로가기</a> -->
+            <a href="${cp }/regist/regist2">바로가기</a>
         </li>
         
         <li class="bg3">
             <h3>요양보호사<strong>회원가입</strong></h3>
-            <a href="javascript:goMemjoin('3');">바로가기</a>
+<!--             <a href="javascript:goMemjoin('3');">바로가기</a> -->
+            <a href="${cp }/regist/regist2-1">바로가기</a>
         </li>
         </ul>
         

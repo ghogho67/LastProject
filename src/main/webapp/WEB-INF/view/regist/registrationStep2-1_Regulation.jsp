@@ -43,7 +43,7 @@ height: 200px;
 
 <section class="memberjoin">
       <div class="memberjoin-in">
-        <h4 class="memberjoin-title ng-binding">회원가입(일반회원)</h4>
+        <h4 class="memberjoin-title ng-binding">회원가입(요양보호사)</h4>
         <ul>
           <li class="memberjoin01">01.가입종류선택</li>
           <li class="right-arrow"></li>
@@ -330,7 +330,7 @@ height: 200px;
           </div><!-- end ngIf: group!='member' -->
           <div class="accept-btn-div">
             <a href="${cp}/login" class="accept-btn">처음으로</a>
-            <a href="${cp}/regist/regist3" class="accept-btn">전체 동의합니다</a>
+            <a href="${cp}/regist/regist3-1" class="accept-btn">전체 동의합니다</a>
            
 <!--             <button type="button" class="accept-btn accept-btn1" ng-click="agreeAll()" >전체 동의합니다</button> -->
 <!--             <button type="submit" class="accept-btn accept-btn1">동의합니다</button> -->
