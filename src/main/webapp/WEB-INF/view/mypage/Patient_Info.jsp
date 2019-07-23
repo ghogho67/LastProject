@@ -48,7 +48,7 @@ input[type="text"]::-webkit-input-placeholder {
 
 
 											<div class="form-group">
-												<label class="col-md-12">사용자 사진</label>
+												<label class="col-md-12">프로필 사진</label>
 												<div class="col-md-12">
 													<input type="text" placeholder="img.path"
 														class="form-control form-control-line" readonly="readonly">

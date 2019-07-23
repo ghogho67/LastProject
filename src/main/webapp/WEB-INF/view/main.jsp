@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>HowCare</h1>
-                      <a href="${pageContext.request.contextPath}/main">Noincare,YoroCare</a>
+                      <a href="${pageContext.request.contextPath}/main">Noincare,ThisCare</a>
                     <span>|</span> <a href="${pageContext.request.contextPath}/main">Home</a>
                 </div>
             </div>
