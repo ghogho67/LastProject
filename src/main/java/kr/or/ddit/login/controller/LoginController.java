@@ -71,7 +71,7 @@ public class LoginController {
 	 * Method : rememberMeCookie
 	 * 작성자 : PC21
 	 * 변경이력 :
-	 * @param userId
+	 * @param mem_id
 	 * @param remember
 	 * @param response
 	 * Method 설명 : rememberme 쿠키를 응답으로 생성
@@ -81,13 +81,13 @@ public class LoginController {
 		if(remember != null)
 			cookieMaxAge = 60*60*24*30;
 		
-		Cookie userIdCookie = new Cookie("mem_id",mem_id);
-		userIdCookie.setMaxAge(cookieMaxAge);
+		Cookie mem_idCookie = new Cookie("mem_id",mem_id);
+		mem_idCookie.setMaxAge(cookieMaxAge);
 		
 		Cookie rememberCookie = new Cookie("remember", "true");
 		rememberCookie.setMaxAge(cookieMaxAge);
 		
-		response.addCookie(userIdCookie);
+		response.addCookie(mem_idCookie);
 		response.addCookie(rememberCookie);
 	}
 }
