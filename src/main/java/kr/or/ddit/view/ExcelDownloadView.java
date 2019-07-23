@@ -37,7 +37,7 @@ private static final Logger logger = LoggerFactory.getLogger(ExcelDownloadView.c
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		response.setHeader("Content-Disposition", "attachment; filename="+fileName+".xlsx");
 		
-//		List<String> header = (List<String>) model.get("header"); //데이터 헤더정보(userId,name,alias.....)
+//		List<String> header = (List<String>) model.get("header"); //데이터 헤더정보(mem_id,name,alias.....)
 //		List<UserVo> userList = (List<UserVo>) model.get("data"); 	  //data
 		
 		Workbook workbook = new XSSFWorkbook();

@@ -23,7 +23,7 @@
 				환영합니다
 			</h2>
 			<ul>
-				<li><input type="text" autofocus="" name="userId" id="userId"
+				<li><input type="text" autofocus="" name="mem_id" id="mem_id"
 					placeholder="아이디" value="" tabindex="1"><a href="#a"><img
 						src="/img/mypage/btn_del.png" alt="삭제"></a></li>
 				<li><input type="password" name="userPwd" id="userPwd"

@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class PostVo {
 
-	//test
-	private int ppost_id;
+	// test
+	private int post_id;
 	private int post_cnt;
 	private Date post_time;
 	private String post_nm;
@@ -16,12 +16,12 @@ public class PostVo {
 	private int cate_id;
 	private int post_par;
 
-	public int getPpost_id() {
-		return ppost_id;
+	public int getPost_id() {
+		return post_id;
 	}
 
-	public void setPpost_id(int ppost_id) {
-		this.ppost_id = ppost_id;
+	public void setPost_id(int ppost_id) {
+		this.post_id = ppost_id;
 	}
 
 	public int getPost_cnt() {
@@ -98,7 +98,7 @@ public class PostVo {
 
 	@Override
 	public String toString() {
-		return "PostVo [ppost_id=" + ppost_id + ", post_cnt=" + post_cnt + ", post_time=" + post_time + ", post_nm="
+		return "PostVo [ppost_id=" + post_id + ", post_cnt=" + post_cnt + ", post_time=" + post_time + ", post_nm="
 				+ post_nm + ", post_cont=" + post_cont + ", post_usage=" + post_usage + ", post_group=" + post_group
 				+ ", mem_id=" + mem_id + ", cate_id=" + cate_id + ", post_par=" + post_par + "]";
 	}

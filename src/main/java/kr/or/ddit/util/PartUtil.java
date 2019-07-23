@@ -7,11 +7,11 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PartUtill {
+public class PartUtil {
 
 	private static final String UPLOAD_PATH = "d:\\springUpload\\";
 	private static final Logger logger = LoggerFactory
-			.getLogger(PartUtill.class);
+			.getLogger(PartUtil.class);
 	
 	/**
 	* Method : getExt
@@ -75,7 +75,7 @@ public class PartUtill {
 		String year = ym.substring(0, 4);
 		String month = ym.substring(4);
 		
-		PartUtill.checkUploadFolder(year, month);
+		PartUtil.checkUploadFolder(year, month);
 		return UPLOAD_PATH+ year + File.separator + month;  // File.separator = \\
 	}
 }
