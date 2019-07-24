@@ -10,7 +10,7 @@ public class PostVo {
 	private Date post_time;
 	private String post_nm;
 	private String post_cont;
-	private String post_usage;
+	private String post_del;
 	private int post_group;
 	private String mem_id;
 	private int cate_id;
@@ -20,8 +20,8 @@ public class PostVo {
 		return post_id;
 	}
 
-	public void setPost_id(int ppost_id) {
-		this.post_id = ppost_id;
+	public void setPost_id(int post_id) {
+		this.post_id = post_id;
 	}
 
 	public int getPost_cnt() {
@@ -56,12 +56,12 @@ public class PostVo {
 		this.post_cont = post_cont;
 	}
 
-	public String getPost_usage() {
-		return post_usage;
+	public String getPost_del() {
+		return post_del;
 	}
 
-	public void setPost_usage(String post_usage) {
-		this.post_usage = post_usage;
+	public void setPost_del(String post_del) {
+		this.post_del = post_del;
 	}
 
 	public int getPost_group() {
@@ -98,8 +98,8 @@ public class PostVo {
 
 	@Override
 	public String toString() {
-		return "PostVo [ppost_id=" + post_id + ", post_cnt=" + post_cnt + ", post_time=" + post_time + ", post_nm="
-				+ post_nm + ", post_cont=" + post_cont + ", post_usage=" + post_usage + ", post_group=" + post_group
+		return "PostVo [post_id=" + post_id + ", post_cnt=" + post_cnt + ", post_time=" + post_time + ", post_nm="
+				+ post_nm + ", post_cont=" + post_cont + ", post_usage=" + post_del + ", post_group=" + post_group
 				+ ", mem_id=" + mem_id + ", cate_id=" + cate_id + ", post_par=" + post_par + "]";
 	}
 

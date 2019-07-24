@@ -18,7 +18,6 @@
 	<div class="content-wrapper">
 
 		<div class="row mb-4">
-
 			<div class="col-lg-12">
 				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
 				<div class="card">
@@ -31,14 +30,10 @@
 										<div class="form-horizontal form-material">
 
 
-
-
-
-
 											<div class="form-group">
 												<label class="col-md-12">사용자 사진</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="img.path"
+													<input type="text" placeholder="${MEM_INFO.mem_photo_path}"
 														class="form-control form-control-line" readonly="readonly">
 
 												</div>
@@ -51,7 +46,7 @@
 											<div class="form-group">
 												<label class="col-md-12">아이디</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="dkskqk00"
+													<input type="text" placeholder="${MEM_INFO.mem_id}"
 														class="form-control form-control-line" readonly="readonly">
 												</div>
 											</div>
@@ -59,7 +54,7 @@
 											<div class="form-group">
 												<label class="col-md-12">성함</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="김 노인"
+													<input type="text" placeholder="${MEM_INFO.mem_nm}"
 														class="form-control form-control-line" readonly="readonly">
 												</div>
 											</div>
@@ -68,7 +63,7 @@
 											<div class="form-group">
 												<label class="col-md-12">비밀번호</label>
 												<div class="col-md-12">
-													<input type="password" value="password"
+													<input type="password" value="${MEM_INFO.mem_pass}"
 														class="form-control form-control-line" readonly="readonly">
 												</div>
 											</div>
@@ -78,7 +73,7 @@
 											<div class="form-group">
 												<label for="email" class="col-md-12">이메일</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="HowCare@admin.com"
+													<input type="text" placeholder="${MEM_INFO.mem_mail}"
 														class="form-control form-control-line" name="email"
 														id="email" readonly="readonly">
 												</div>
@@ -88,7 +83,7 @@
 											<div class="form-group">
 												<label for="birth" class="col-md-12">생년월일</label>
 												<div class="col-md-12">
-													<input type="text" value="2019-09-22"
+													<input type="text" value="${MEM_INFO.mem_birth}"
 														class="form-control form-control-line" name="birth"
 														id="birth" readonly="readonly">
 												</div>
@@ -102,7 +97,7 @@
 											<div class="form-group">
 												<label class="col-md-12">연락처</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="010-2114-2539"
+													<input type="text" placeholder="${MEM_INFO.mem_phone}"
 														class="form-control form-control-line" readonly="readonly">
 												</div>
 											</div>
@@ -125,7 +120,7 @@
 											<div class="form-group">
 												<label for="birth" class="col-md-12">우편번호</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="30589"
+													<input type="text" placeholder="${MEM_INFO.mem_zipcd}"
 														class="form-control form-control-line" name="zipcd"
 														id="zipcd" readonly="readonly">
 												</div>
@@ -138,7 +133,7 @@
 											<div class="form-group">
 												<label for="birth" class="col-md-12">주소</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="대전 중구 대흥동"
+													<input type="text" placeholder="${MEM_INFO.mem_add1}"
 														class="form-control form-control-line" name="addr1"
 														id="addr1" readonly="readonly">
 												</div>
@@ -149,7 +144,7 @@
 											<div class="form-group">
 												<label for="birth" class="col-md-12">상세주소</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="영민빌딩 2층"
+													<input type="text" placeholder="${MEM_INFO.mem_add2}"
 														class="form-control form-control-line" name="addr2"
 														id="addr2" readonly="readonly">
 												</div>
@@ -161,7 +156,7 @@
 
 												<label class="col-md-12">보호자 성함</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="김양배추" value=""
+													<input type="text" placeholder="${MEM_INFO.pro_nm}"
 														class="form-control form-control-line" readonly="readonly">
 												</div>
 											</div>
@@ -174,9 +169,6 @@
 								</div>
 
 
-								<div class="col-sm-12" style="text-align: right;">
-									<a  href="${pageContext.request.contextPath}/member/nmypage_MyInfoModification"  class="btn btn-success" style="color: white;">회원 정보 수정 </a>
-								</div>
 							</div>
 						</div>
 					</div>

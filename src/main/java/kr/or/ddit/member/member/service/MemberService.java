@@ -37,9 +37,16 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
-	public int updateMem(MemberVo memVo) {
-		return 0;
+	public int updateMember(MemberVo memVo) {
+		return memberDao.updateMem(memVo);
 	}
+	
+	
+	@Override
+	public int updatePMember(MemberVo memVo) {
+		return memberDao.updatePMem(memVo);
+	}
+	
 
 	@Override
 	public List<MemberVo> memPagingList(PageVo pageVo) {

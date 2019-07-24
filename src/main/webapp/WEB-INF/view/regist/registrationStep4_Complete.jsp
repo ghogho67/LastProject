@@ -89,8 +89,8 @@ background:url(../../../resource/howcare/images/mypage_title.png) no-repeat 0px 
           <p class="end-txt3">메뉴 상단의 건강정보에서 인지테스트를 선택하신 후 꼭 테스트를 받아 주세요.</p>
         </div>
         <div class="accept-btn-div">
-          <a href="#/" class="accept-btn">메인으로</a>
-          <a href="#/login" class="accept-btn accept-btn1">로그인하기</a>
+          <a href="${cp }/main" class="accept-btn">메인으로</a>
+          <a href="${cp }/login" class="accept-btn accept-btn1">로그인하기</a>
         </div>
 
       </div>

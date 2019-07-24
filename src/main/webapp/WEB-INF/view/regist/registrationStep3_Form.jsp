@@ -21,6 +21,53 @@
 	href="${cp}/resource/wrap/Test/font-awesome.min.css" />
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+	$(document).ready(function() {
+
+		var msg = '${msg}'; //메세지이므로 ''로 묶여야된다
+		if (msg != '')
+			alert(msg);
+
+		//주소찾기
+		$("#addrSearchBtn").on("click", function() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					//주소 input value에 설정data.roadAddress
+					$("#mem_addr1").val(data.roadAddress);
+					//우편번호 input value에 설정data.zonecode
+					$("#mem_zipcd").val(data.zonecode);
+
+					console.log(data.roadAddress);
+					console.log(data.zonecode);
+
+				}
+
+			}).open();
+		});
+		
+		//등록
+		$("#submit").on("click", function(){
+			$("#frm").attr("action", "${cp}/regist/regist4");
+			$("#frm").attr("method", "get");
+			$("#frm").submit();
+			
+		});
+		
+		//home
+		$("#home").on("click", function(){
+			$("#frm").attr("action", "${cp}/login");
+			$("#frm").attr("method", "get");
+			$("#frm").submit();
+			
+		});
+		
+		
+
+	});
+</script>
 
 
 </head>
@@ -44,7 +91,7 @@
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="p-form-skin" method="post" action="${cp}/regist/regist3 }"
+				<form id="frm" method="post" action="${cp}/regist/regist3 }"
 					class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
@@ -64,8 +111,9 @@
 										<label for="text">Id</label>
 										<div class="input-group" style="direction: rtl">
 											<span class="input-group-btn"><button type="button"
-													class="btn">중복확인</button></span> <input type="id" id="id"
-												name="id" placeholder="영어, 숫자, 특수기호 사용가능  8글자까지"
+													class="btn">중복확인</button></span> <input type="text" id="mem_id"
+												name="mem_id" value="${mem_id }"
+												placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -79,14 +127,14 @@
 									<div class="form-group">
 										<label for="password">비밀번호</label>
 										<div class="input-group p-has-icon">
-											<input type="password" id="password" name="password"
-												placeholder="영문 숫자 특수문자 조합 8글자이상" class="form-control">
-											<span class="input-group-state"><span
-												class="p-position"><span class="p-text"><span
-														class="p-valid-text"><i class="fa fa-check"></i></span> <span
-														class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
-												class="p-field-cb"></span> <span class="input-group-icon"><i
-												class="fa fa-lock"></i></span>
+											<input type="password" id="password" name="mem_pass"
+												value="${mem_pass }" placeholder="영문 숫자 특수문자 조합 8글자이상"
+												class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-lock"></i></span>
 										</div>
 									</div>
 								</div>
@@ -95,14 +143,14 @@
 									<div class="form-group">
 										<label for="email1">이름</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="email1" name="email1"
-												placeholder="이름을 입력하세요 (2-5글자)" class="form-control">
-											<span class="input-group-state"><span
-												class="p-position"><span class="p-text"><span
-														class="p-valid-text"><i class="fa fa-check"></i></span> <span
-														class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
-												class="p-field-cb"></span> <span class="input-group-icon"><i
-												class="fa fa-check"></i></span>
+											<input type="text" id="mem_nm" name="mem_nm"
+												value="${mem_nm }" placeholder="이름을 입력하세요 (2-5글자)"
+												class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
 										</div>
 									</div>
 								</div>
@@ -111,8 +159,9 @@
 									<div class="form-group">
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
-											<input type="tel" id="phone" name="phone"
-												placeholder="핸드폰 번호를 입력하세요" class="form-control"> <span
+											<input type="tel" id="mem_phone" name="mem_phone"
+												value="${mem_phone }" placeholder="핸드폰 번호를 입력하세요"
+												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -126,8 +175,9 @@
 									<div class="form-group">
 										<label for="email1">이메일</label>
 										<div class="input-group p-has-icon">
-											<input type="email" id="email" name="email"
-												placeholder="이메일을 입력해 주세요" class="form-control"> <span
+											<input type="email" id="mem_mail" name="mem_mail"
+												value="${mem_mail }" placeholder="이메일을 입력해 주세요"
+												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -141,17 +191,93 @@
 									<div class="form-group">
 										<label for="email1">주민번호 앞자리</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="addr" name="addr"
-												placeholder="주민번호 앞자리를 입력해 주세요" class="form-control">
-											<span class="input-group-state"><span
+											<input type="text" id="mem_birth" name="mem_birth"
+												value="${mem_birth }" placeholder="주민번호 앞자리를 입력해 주세요"
+												class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">주소</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="mem_addr1" name="mem_addr1"
+												placeholder="주소" class="form-control" value="${mem_addr1 }"
+												readonly> <span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
 														class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
 												class="p-field-cb"></span> <span class="input-group-icon"><i
 												class="fa fa-check"></i></span>
 										</div>
+										<div>
+											<button id="addrSearchBtn" type="button">주소검색</button>
+										</div>
+
 									</div>
 								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">상세주소</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="mem_addr2" name="mem_addr2"
+												placeholder="상세주소" class="form-control"
+												value="${mem_addr2 }"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">우편번호</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="mem_zipcd" name="mem_zipcd"
+												placeholder="우편번호" class="form-control"
+												value="${mem_zipcd }" readonly> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">성별</label>
+										<div class="checkbox">
+
+											<label><input type="checkbox" name="gender" value="M">
+												<span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">남</span></label>
+
+											<label><input type="checkbox" name="gender" value="F">
+												<span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">여</span></label>
+
+										</div>
+
+									</div>
+								</div>
+
+
+
 
 							</div>
 
@@ -218,7 +344,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="url">프로필 사진</label>
@@ -228,8 +354,8 @@
 												onchange="document.getElementById('fileupload1-fake').value = this.value">
 											<div class="input-group">
 												<span class="input-group-btn"><button type="button"
-														class="btn">browse</button></span> <input type="text"
-													id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
+														class="btn">browse</button></span> <input type="file"
+													id="profile" placeholder="프로필 사진을 등록하세요"
 													readonly="readonly" class="form-control p-ignore-field">
 												<span class="input-group-state"><span
 													class="p-position"><span class="p-text"><span
@@ -240,8 +366,8 @@
 										</div>
 									</div>
 								</div>
-								
-								
+
+
 							</div>
 
 						</div>
@@ -288,7 +414,7 @@
 
 									</div>
 
-							<div class="col-sm-6">
+									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
 												<input type="email" id="pro_rel" name="pro_rel"
@@ -305,31 +431,32 @@
 
 
 
-							</div>
+								</div>
 
 
-							<div class="form-group">
-								<div class="checkbox">
-									<label><input type="checkbox" id="terms" name="terms">
-										<span class="p-check-icon"><span class="p-check-block"></span></span>
-										<span class="p-label">이용약관, 개인정보 수집 및 이용에 모두
-											동의합니다.&nbsp;&nbsp; &nbsp; <a href="#" target="_blank">이용약관
-												& 개인정보 약관 보기</a>
-									</span></label>
+<!-- 								<div class="form-group"> -->
+<!-- 									<div class="checkbox"> -->
+<!-- 										<label><input type="checkbox" id="terms" name="terms"> -->
+<!-- 											<span class="p-check-icon"><span class="p-check-block"></span></span> -->
+<!-- 											<span class="p-label">이용약관, 개인정보 수집 및 이용에 모두 -->
+<!-- 												동의합니다.&nbsp;&nbsp; &nbsp; <a href="#" target="_blank">이용약관 -->
+<!-- 													& 개인정보 약관 보기</a> -->
+<!-- 										</span></label> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+
+
+
+
+
+
+								<div class="preview-btn text-left p-buttons">
+									<button class="btn" id="submit" type="submit">submit</button>
+									<button class="btn" id="reset" type="reset">reset</button>
+									<button class="btn" id="home" type="submit">home</button>
 								</div>
 							</div>
-
-
-
-
-
-
-							<div class="preview-btn text-left p-buttons">
-								<button class="btn" type="submit">submit</button>
-								<button class="btn" type="reset">reset</button>
-							</div>
 						</div>
-					</div>
 				</form>
 			</div>
 		</div>
