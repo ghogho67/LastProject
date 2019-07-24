@@ -1,4 +1,4 @@
-package kr.or.ddit.regist.service;
+package kr.or.ddit.register.service;
 
 import static org.junit.Assert.*;
 

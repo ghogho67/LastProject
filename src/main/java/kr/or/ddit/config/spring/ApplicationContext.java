@@ -199,6 +199,8 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
 	   return mailSender;
    }
    
+
+   
 }
 
 

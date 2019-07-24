@@ -20,16 +20,6 @@ public interface IMemberDao {
 
 	
 	/**
-	 * Method : deleteMem
-	 * 작성자 : PC21
-	 * 변경이력 : 
-	 * @param mem_id
-	 * @return
-	 * Method 설명 :사용자 삭제
-	 */
-	int deleteMem(String mem_id);
-	
-	/**
 	 * Method : getMemVo
 	 * 작성자 : PC21
 	 * 변경이력 :
@@ -65,14 +55,27 @@ public interface IMemberDao {
 	
 	
 	/**
-	 * Method : updateMem
+	 * Method : updatePMember
 	 * 작성자 : PC02
 	 * 변경이력 :
 	 * @param userVo
 	 * @return
 	 * Method 설명 :사용자(대상자) 업데이트
 	 */
-	int updatePMem(MemberVo memVo);
+	int updatePMember(MemberVo memVo);
+	
+	
+	
+	/**
+	 * Method : updateMem
+	 * 작성자 : PC02
+	 * 변경이력 :
+	 * @param userVo
+	 * @return
+	 * Method 설명 :사용자 탈퇴
+	 */
+	int withdrwalMember(MemberVo memVo);
+	
 	
 	
 	/**

@@ -1,5 +1,9 @@
 package kr.or.ddit.mypage;
 
+
+
+
+
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -47,11 +51,10 @@ public class mypageController {
 			@RequestParam(name = "pass") String mem_pass, @RequestParam(name = "email") String mem_mail,
 			@RequestParam(name = "phone") String mem_phone, @RequestParam(name = "zipcd") String mem_zipcd,
 			@RequestParam(name = "addr1") String mem_add1, @RequestParam(name = "addr2") String mem_add2,
-	        @RequestParam(name = "pro_relation") String pro_relation, @RequestParam(name = "pro_nm") String pro_nm,
-            @RequestParam(name = "pro_phone") String pro_phone)
+			@RequestParam(name = "pro_relation") String pro_relation, @RequestParam(name = "pro_nm") String pro_nm,
+			@RequestParam(name = "pro_phone") String pro_phone)
 			throws IllegalStateException, IOException {
 
-		
 		String viewName;
 
 		String mem_nm = "";
@@ -63,7 +66,7 @@ public class mypageController {
 		String cw_lic = "";
 		String mem_photo_path = "";
 		String mem_photo_nm = "";
-	
+
 
 		logger.debug("@@@@grade : {} ", grade);
 		logger.debug("@@@@mem_pass : {} ", mem_pass);
@@ -72,6 +75,9 @@ public class mypageController {
 		logger.debug("mem_zipcd : {} ", mem_zipcd);
 		logger.debug("mem_add1 : {} ", mem_add1);
 		logger.debug("mem_add2 : {} ", mem_add2);
+		logger.debug("@@@@pro_relation : {} ",pro_relation);
+		logger.debug("@@@@pro_nm : {} ", pro_nm);
+		logger.debug("@@@@pro_phone : {} ", pro_phone);
 
 		MemberVo memberVo = null;
 
@@ -96,21 +102,25 @@ public class mypageController {
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
 
-			int updateCnt = memberService.updateMember(memberVo);
+			int updateCnt = memberService.updatePMember(memberVo);
 
+			logger.debug("@@@@updateCnt : {} ", updateCnt);
+			
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
-
+			session.setAttribute("MEM_INFO", memberVo);
+			
 			viewName = "redirect:/mypage/Patient_Info";
+			
 		} else {
-
-			viewName = "redirect:/login";
+			viewName = "redirect:/main";
 		}
 
+		
+		logger.debug("@@@@viewName : {} ", viewName);
 		return viewName;
 	}
-	
 	
 	
 	
@@ -185,7 +195,7 @@ public class mypageController {
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
-
+			session.setAttribute("MEM_INFO", memberVo);
 			viewName = "redirect:/mypage/Worker_Info";
 		} else {
 
@@ -195,9 +205,166 @@ public class mypageController {
 		return viewName;
 	}
 
+	
+	
 	@RequestMapping("/Admin_Info")
 	public String Admin_Info() {
 		return "mypage/Admin_Info";
 	}
 
+	
+	
+	
+	
+	@RequestMapping(path ="/Patient_Wd", method = RequestMethod.GET)
+	public String Patient_Wdl() {
+		return "mypage/Patient_Wd";
+	}
+	
+	
+	
+	@RequestMapping(path ="/Patient_Wd", method = RequestMethod.POST)
+	public String Patient_withdrawal(Model model, HttpSession session,
+			RedirectAttributes redirectAttributes, HttpServletRequest request,
+			@RequestParam(name = "memid") String mem_id,@RequestParam(name = "mempass") String mem_pass,
+			@RequestParam(name = "id") String input_id,@RequestParam(name = "pass") String input_pass) {
+		
+		
+		
+		
+		logger.debug("@@@@mem_id : {} ", mem_id);
+		logger.debug("@@@@input_id : {} ", input_id);
+		logger.debug("@@@@mem_pass : {} ", mem_pass);
+		logger.debug("@@@@input_pass : {} ", input_pass);
+		
+		
+		
+		
+		
+		 String viewName;
+		
+		String mem_nm = "";
+		String mem_birth = "";
+		String mem_gender = "";
+		String mem_del = "";
+		String mem_grade = "";
+		String cw_driver = "";
+		String cw_lic = "";
+		String mem_photo_path = "";
+		String mem_photo_nm = "";
+		String pro_relation = "";
+		String pro_nm = "";
+		String pro_phone = "";
+		String mem_zipcd = "";
+		String mem_mail = "";
+		String mem_phone = "";
+		String mem_add1 = "";
+		String mem_add2 = "";
+		
+		MemberVo memberVo = null;
+		
+		
+		if (mem_id.equals(input_id)&&mem_pass.equals(input_pass)){
+			
+			logger.debug("탈퇴");
+			
+			mem_del ="Y";			
+			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, mem_pass, mem_phone, mem_add1, mem_add2,
+					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
+					pro_phone, cw_driver, cw_lic);
+
+			int updateCnt = memberService.withdrwalMember(memberVo);
+			logger.debug("@@@@updateCnt",updateCnt);
+			
+			if(updateCnt==1) {
+				session.setAttribute("MEM_INFO", memberVo);
+				viewName = "redirect:/login";
+				
+			}else {
+				viewName = "redirect:/main";
+			}
+			
+		}
+		else
+			viewName = "redirect:/main";
+		
+		
+		return viewName;
+	}
+	
+
+	@RequestMapping(path ="/Worker_Wd", method = RequestMethod.GET)
+	public String Worker_Wd() {
+		return "mypage/Worker_Wd";
+	}
+	
+	@RequestMapping(path ="/Worker_Wd" , method = RequestMethod.POST)
+	public String Worker_withdrawal(Model model,  HttpSession session,
+			RedirectAttributes redirectAttributes, HttpServletRequest request,
+			@RequestParam(name = "memid") String mem_id,@RequestParam(name = "mempass") String mem_pass,
+			@RequestParam(name = "id") String input_id,@RequestParam(name = "pass") String input_pass) {
+		
+		
+		
+		
+		logger.debug("@@@@mem_id : {} ", mem_id);
+		logger.debug("@@@@input_id : {} ", input_id);
+		logger.debug("@@@@mem_pass : {} ", mem_pass);
+		logger.debug("@@@@input_pass : {} ", input_pass);
+		
+		
+		
+		
+		
+		String viewName;
+		
+		String mem_nm = "";
+		String mem_birth = "";
+		String mem_gender = "";
+		String mem_del = "";
+		String mem_grade = "";
+		String cw_driver = "";
+		String cw_lic = "";
+		String mem_photo_path = "";
+		String mem_photo_nm = "";
+		String pro_relation = "";
+		String pro_nm = "";
+		String pro_phone = "";
+		String mem_zipcd = "";
+		String mem_mail = "";
+		String mem_phone = "";
+		String mem_add1 = "";
+		String mem_add2 = "";
+		
+		MemberVo memberVo = null;
+		
+		
+		if (mem_id.equals(input_id)&&mem_pass.equals(input_pass)){
+			
+			logger.debug("탈퇴");
+			
+			mem_del ="Y";			
+			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, mem_pass, mem_phone, mem_add1, mem_add2,
+					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
+					pro_phone, cw_driver, cw_lic);
+
+			int updateCnt = memberService.withdrwalMember(memberVo);
+			logger.debug("@@@@updateCnt", updateCnt);
+			
+			if(updateCnt==1) {
+				session.setAttribute("MEM_INFO", memberVo);
+				viewName = "redirect:/login";
+				
+			}else {
+				viewName = "redirect:/main";
+			}
+			
+		}
+		else
+			viewName = "redirect:/main";
+		
+		
+		return viewName;
+	}
+	
 }

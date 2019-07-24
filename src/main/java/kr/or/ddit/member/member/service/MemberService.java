@@ -21,10 +21,7 @@ public class MemberService implements IMemberService {
 		return memberDao.getMemList();
 	}
 
-	@Override
-	public int deleteMem(String mem_id) {
-		return memberDao.deleteMem(mem_id);
-	}
+
 
 	@Override
 	public MemberVo getMemVo(String mem_id) {
@@ -44,14 +41,25 @@ public class MemberService implements IMemberService {
 	
 	@Override
 	public int updatePMember(MemberVo memVo) {
-		return memberDao.updatePMem(memVo);
+		return memberDao.updatePMember(memVo);
 	}
+	
 	
 
 	@Override
 	public List<MemberVo> memPagingList(PageVo pageVo) {
 		return null;
 	}
+	
+	
+	
+	@Override
+	public int withdrwalMember(MemberVo memVo) {
+		return memberDao.withdrwalMember(memVo);
+	}
+	
+
+
 
 	@Override
 	public String getMem_Id(Map<String, String> memInfo) {
@@ -62,4 +70,7 @@ public class MemberService implements IMemberService {
 	public int passUpdate(Map<String, String> memInfo) {
 		return memberDao.passUpdate(memInfo);
 	}
+
+
+
 }

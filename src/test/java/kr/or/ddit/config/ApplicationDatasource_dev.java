@@ -19,7 +19,7 @@ public class ApplicationDatasource_dev {
 
 	@Autowired
 	private Environment env;
-
+//
 	// java config에서는 빈 주입시 제한자를 public으로 주어야함
 	@Bean
 	public DataSource datasource() {

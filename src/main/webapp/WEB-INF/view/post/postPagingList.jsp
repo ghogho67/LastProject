@@ -69,7 +69,7 @@ paginationSize = ${paginationSize }
 									<c:set var="index" value="1"></c:set>
 									<c:forEach items="${postList }" var="post" varStatus="status">
 										<c:choose>
-											<c:when test="${post.post_delete eq 'no'}">
+											<c:when test="${post.post_delete eq 'N'}">
 												<tr class="userTr" data-userid="${post.post_id }">
 													<td class="yaya">${post.post_id }</td>
 													<td align="left"><c:forEach var="i" begin="1"
