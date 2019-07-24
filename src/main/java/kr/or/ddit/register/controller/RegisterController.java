@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.member.diseaseName.model.DiseaseNameVo;
@@ -89,7 +90,7 @@ public class RegisterController {
 	 */
 	@RequestMapping(path = "/regist3", method = RequestMethod.POST)
 	public String insertRegist1(Model model, MemberVo memberVo, BindingResult result, MemberDiseaseVo memberDiseaseVo,
-			MultipartFile profile, String mem_id) {
+			MultipartFile profile, String mem_id, RedirectAttributes redirectAttributes) {
 
 		memberVo = new MemberVo();
 		memberDiseaseVo = new MemberDiseaseVo();
@@ -97,7 +98,9 @@ public class RegisterController {
 		int insertMemberCnt = registerService.insertMember(memberVo);
 		int insertMemberdieseaseCnt = registerService.insertMemberDisease(memberDiseaseVo);
 		
-		
+		if(insertMemberCnt ==1 && insertMemberdieseaseCnt == 1 ) {
+			
+		}
 		
 		return "/regist/registrationStep3_Form";
 	}
