@@ -38,6 +38,7 @@ public class IdpwFinding {
 		return "idpwFinding";
 	}
 	
+	
 	@RequestMapping(path = "/idFind", method = RequestMethod.POST)
 	public String idFind(String mem_mail, String mem_nm, Model model) {
 		
@@ -67,11 +68,19 @@ public class IdpwFinding {
 		String content = "안녕하십니까? How Care?This Care! 입니다. 회원님의 임시비밀번호는"+ mem_pass +"입니다.";
 		
 		
-		memInfo.put("mem_pass", Integer.toString(mem_pass));
-		memInfo.put("mem_id", mem_id);
-		memberService.passUpdate(memInfo);
+		if(mem_mail.equals(memVo.getMem_mail() )) {
+			memInfo.put("mem_pass", Integer.toString(mem_pass));
+			memInfo.put("mem_id", mem_id);
+			memberService.passUpdate(memInfo);
+			
+			gmailSend(mail, title, content);
+			
+		}else {
+			String a = "기입하신 정보가 일치 하지 않습니다.";
+			model.addAttribute("a",a);
+			
+		}
 		
-		gmailSend(mail, title, content);
 		return "jsonView";
 	}
 	
