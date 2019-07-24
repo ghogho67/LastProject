@@ -1,6 +1,7 @@
 package kr.or.ddit.member.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -35,6 +36,16 @@ public class MemberDao implements IMemberDao{
 		return sqlSession.selectOne("member.memberCnt");
 	}
 	
+	@Override
+	public String getMem_Id(Map<String, String> memInfo) {
+		return sqlSession.selectOne("member.getMem_Id", memInfo);
+	}
+	
+	@Override
+	public int passUpdate(Map<String, String> memInfo) {
+		return sqlSession.update("member.passUpdate",memInfo);
+	}
+	
 	
 	//나머지 구현 필요한것들 구현 member.xml 만들어야되고 확인 해봐야한다.
 	@Override
@@ -46,6 +57,10 @@ public class MemberDao implements IMemberDao{
 	public List<MemberVo> memPagingList(PageVo pageVo) {
 		return null;
 	}
+
+	
+
+	
 
 	
 }

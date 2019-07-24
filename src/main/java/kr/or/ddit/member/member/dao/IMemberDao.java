@@ -1,6 +1,7 @@
 package kr.or.ddit.member.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
@@ -38,6 +39,8 @@ public interface IMemberDao {
 	 */
 	MemberVo getMemVo(String mem_id);
 	
+	
+	
 	/**
 	 * Method : memberCnt
 	 * 작성자 : PC21
@@ -67,5 +70,26 @@ public interface IMemberDao {
 	 * Method 설명 : 사용자 페이징 
 	 */
 	List<MemberVo> memPagingList(PageVo pageVo);
+
+
+	/**
+	 * Method : getMemVo
+	 * 작성자 : PC21
+	 * 변경이력 :
+	 * @param userId
+	 * @return
+	 * Method 설명 : 아이디찾기 정보 조회
+	 */
+	String getMem_Id(Map<String, String> memInfo);
+	
+	/**
+	 * Method : getMemVo
+	 * 작성자 : PC21
+	 * 변경이력 :
+	 * @param userId
+	 * @return
+	 * Method 설명 : 비밀번호 찾기 임시비밀번호 업데이트
+	 */
+	int passUpdate(Map<String, String> memInfo);
 
 }
