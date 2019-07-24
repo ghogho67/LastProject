@@ -31,6 +31,7 @@
 		if (msg != '')
 			alert(msg);
 
+
 		//주소찾기
 		$("#addrSearchBtn").on("click", function() {
 			new daum.Postcode({
@@ -160,7 +161,7 @@
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
 											<input type="tel" id="mem_phone" name="mem_phone"
-												value="${mem_phone }" placeholder="핸드폰 번호를 입력하세요"
+												value="${mem_phone }" placeholder="000-0000-0000형식으로 입력하세요"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -192,7 +193,7 @@
 										<label for="email1">주민번호 앞자리</label>
 										<div class="input-group p-has-icon">
 											<input type="text" id="mem_birth" name="mem_birth"
-												value="${mem_birth }" placeholder="주민번호 앞자리를 입력해 주세요"
+												value="${mem_birth }" placeholder="연연/월/일 입력해 주세요"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -352,6 +353,9 @@
 											<input type="file" id="fileupload1" name="fileupload1"
 												placeholder="select file..."
 												onchange="document.getElementById('fileupload1-fake').value = this.value">
+											
+											
+											
 											<div class="input-group">
 												<span class="input-group-btn"><button type="button"
 														class="btn">browse</button></span> <input type="file"
@@ -365,6 +369,17 @@
 											</div>
 										</div>
 									</div>
+
+
+<!-- 										<div class="form-group"> -->
+<!-- 				                        <label for="userNm" class="col-sm-2 control-label">사용자 사진</label> -->
+<!-- 				                        <div class="col-sm-10"> -->
+<!-- 											<input type="file" name="profile"/> -->
+<!-- 				                        </div> -->
+<!-- 				                     </div> -->
+								
+								
+								
 								</div>
 
 

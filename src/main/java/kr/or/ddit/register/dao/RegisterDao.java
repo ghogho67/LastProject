@@ -125,4 +125,32 @@ public class RegisterDao implements IRegisterDao {
 		return sqlSession.insert("member.insertServiceType", serviceTypeVo);
 	}
 
+	//-------------------------------------------------------
+	
+	/**
+	* Method : idCheck
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 : 아이디 중복체크
+	*/
+	@Override
+	public int idCheck(String mem_id) {
+		return sqlSession.selectOne("member.idCheck", mem_id);
+	}
+
+	/**
+	* Method : getMemVo
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 :특정사용자 조회
+	*/
+	@Override
+	public MemberVo getMemVo(String mem_id) {
+		return sqlSession.selectOne("member.getMemVo",mem_id);
+	}
+
 }
