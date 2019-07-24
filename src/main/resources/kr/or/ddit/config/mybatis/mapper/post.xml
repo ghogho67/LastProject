@@ -11,14 +11,8 @@
 		where cate_id = #{cate_id}
 	</select>
 
-	<insert id="postInsert" parameterType="PostVo">
-		insert into post values
-		(post_id.nextval, 0, sysdate,
-		#{post_nm},
-		#{post_cont},
-		'Y',post_id.currval, #{mem_id},#{cate_id},null
-		)
-	</insert>
+
+
 
 	<insert id="postReply" parameterType="PostVo">
 		INSERT INTO POST VALUES
@@ -58,6 +52,8 @@
 		) B
 		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
 		AND 	B.RN <= #{page} * #{pageSize}
+		
+		
 	 	]]>
 
 	</select>
@@ -94,15 +90,6 @@
 		from post order by post_time desc )
 		where rownum = 1
 	</select>
-
-	<insert id="updateStep" parameterType="PostVo">
-	<![CDATA[
-	update post
-	set re_step=re_step+1
-	where ref=#{ref} and re_step >= #{re_step}
-	]]>
-	</insert>
-
 
 
 </mapper>

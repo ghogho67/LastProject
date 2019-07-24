@@ -30,7 +30,97 @@
 		var msg = '${msg}'; //메세지이므로 ''로 묶여야된다
 		if (msg != '')
 			alert(msg);
-
+		
+		
+		//id중복체크
+		$("#idCheckBtn").on("click",function(){
+			var data = $('#mem_id').val();
+			console.log(data);
+			if(data==''||data==null){
+				alert("아이디를 입력해주세요");
+				return;
+			}
+			$.ajax({
+				url: "${cp}/regist/idCheck",
+				data : "mem_id="+data,
+				success :  function(data){
+					console.log(data);
+					if(data.mem_id == "yes"){
+						alert("사용가능한 아이디입니다");
+					}else{
+						alert("사용중인 아이디입니다");
+						$('#mem_id').val("");
+						$('#mem_id').focus();
+					}
+				}
+			});
+			
+		});
+		
+		//정규식체크
+		$("#submit").on("click", function(){
+			var frmData = $("#frm").serialize();
+			condole.log(frmData);
+			if(frmData.mem_id==''||frmData.mem_id==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}
+			if(frmData.mem_pass==''||frmData.mem_pass==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}
+			if(frmData.mem_nm==''||frmData.mem_nm==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}
+			if(frmData.mem_pahone==''||frmData.mem_phone==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}
+			if(frmData.mem_mail==''||frmData.mem_mail==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}
+			$.ajax({
+				url : "/regist/regist3",
+				data : "frmData=" + frmData,
+				type : "post",
+				success : function(data){
+					console.log(data);
+					if(data.mem_id == "false"){
+						alert("정규식에 맞게 입력해 주세요");
+						$("#frm").val("");
+// 						$("#frm").focus();
+					}
+					if(data.mem_pass == "false"){
+						alert("정규식에 맞게 입력해 주세요");
+						$("#frm").val("");
+// 						$("#frm").focus();
+					}
+					if(data.mem_nm == "false"){
+						alert("정규식에 맞게 입력해 주세요");
+						$("#frm").val("");
+// 						$("#frm").focus();
+					}
+					if(data.mem_phone == "false"){
+						alert("정규식에 맞게 입력해 주세요");
+						$("#frm").val("");
+// 						$("#frm").focus();
+					}
+					if(data.mem_mail == "false"){
+						alert("정규식에 맞게 입력해 주세요");
+						$("#frm").val("");
+// 						$("#frm").focus();
+					}
+				}
+				
+			});
+			
+			var data
+			
+		});
+		
+		
 
 		//주소찾기
 		$("#addrSearchBtn").on("click", function() {
@@ -50,12 +140,12 @@
 		});
 		
 		//등록
-		$("#submit").on("click", function(){
-			$("#frm").attr("action", "${cp}/regist/regist4");
-			$("#frm").attr("method", "get");
-			$("#frm").submit();
+// 		$("#submit").on("click", function(){
+// 			$("#frm").attr("action", "${cp}/regist/regist4");
+// 			$("#frm").attr("method", "get");
+// 			$("#frm").submit();
 			
-		});
+// 		});
 		
 		//home
 		$("#home").on("click", function(){
@@ -110,9 +200,10 @@
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="text">Id</label>
-										<div class="input-group" style="direction: rtl">
+										
+										<div class="input-group" >
 											<span class="input-group-btn"><button type="button"
-													class="btn">중복확인</button></span> <input type="text" id="mem_id"
+													class="btn" id="idCheckBtn">중복확인</button></span> <input type="text" id="mem_id"
 												name="mem_id" value="${mem_id }"
 												placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지"
 												class="form-control"> <span
@@ -121,6 +212,7 @@
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
 															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
 										</div>
+										
 									</div>
 								</div>
 
@@ -128,7 +220,7 @@
 									<div class="form-group">
 										<label for="password">비밀번호</label>
 										<div class="input-group p-has-icon">
-											<input type="password" id="password" name="mem_pass"
+											<input type="password" id="mem_pass" name="mem_pass"
 												value="${mem_pass }" placeholder="영문 숫자 특수문자 조합 8글자이상"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
@@ -264,11 +356,11 @@
 										<label for="email1">성별</label>
 										<div class="checkbox">
 
-											<label><input type="checkbox" name="gender" value="M">
+											<label><input type="radio" name="gender" value="M" checked="checked">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">남</span></label>
 
-											<label><input type="checkbox" name="gender" value="F">
+											<label><input type="radio" name="gender" value="F">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">여</span></label>
 

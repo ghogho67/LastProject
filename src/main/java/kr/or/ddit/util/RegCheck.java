@@ -3,7 +3,12 @@ package kr.or.ddit.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+
+
 //정규식 체크 
+@ComponentScan
 public class RegCheck {
 	
 	//정규식이 통과하면 true, 틀리면 false

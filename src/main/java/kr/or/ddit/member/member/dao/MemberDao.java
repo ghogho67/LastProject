@@ -21,10 +21,7 @@ public class MemberDao implements IMemberDao{
 		return sqlSession.selectList("member.getMemList");
 	}
 
-	@Override
-	public int deleteMem(String mem_id) {
-		return sqlSession.update("member.deleteMem",mem_id);
-	}
+	
 
 	@Override
 	public MemberVo getMemVo(String mem_id) {
@@ -55,9 +52,18 @@ public class MemberDao implements IMemberDao{
 
 	
 	@Override
-	public int updatePMem(MemberVo memVo) {
-		return sqlSession.update("member.updatePMem",memVo);
+	public int updatePMember(MemberVo memVo) {
+		return sqlSession.update("member.updatePMember",memVo);
 	}
+	
+	@Override
+	public int withdrwalMember(MemberVo memVo) {
+		return sqlSession.update("member.withdrwalMember",memVo);
+	}
+	
+	
+	
+
 	
 	@Override
 	public List<MemberVo> memPagingList(PageVo pageVo) {

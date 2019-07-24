@@ -17,16 +17,7 @@ public interface IMemberService {
 	List<MemberVo> getMemList();
 	
 
-	
-	/**
-	 * Method : deleteMem
-	 * 작성자 : PC21
-	 * 변경이력 : 
-	 * @param mem_id
-	 * @return
-	 * Method 설명 :사용자 삭제
-	 */
-	int deleteMem(String mem_id);
+
 	
 	/**
 	 * Method : getMemVo
@@ -68,6 +59,19 @@ public interface IMemberService {
 	 * Method 설명 :사용자(대상자) 업데이트
 	 */
 	int updatePMember(MemberVo memVo);
+	
+	
+	
+	/**
+	 * Method : updateMem
+	 * 작성자 : PC02
+	 * 변경이력 :
+	 * @param userVo
+	 * @return
+	 * Method 설명 :사용자 탈퇴
+	 */
+	int withdrwalMember(MemberVo memVo);
+	
 	
 	
 	
