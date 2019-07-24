@@ -23,7 +23,7 @@ public class CardiacDaoTest extends LogicTestEnv{
 	private ICardiacDao cardiacDao;
 	
 	@Test
-	public void insertCardiacTest() {
+	public void insertCardiacDaoTest() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 		
 		CardiacVo cardiacVo =  new CardiacVo();

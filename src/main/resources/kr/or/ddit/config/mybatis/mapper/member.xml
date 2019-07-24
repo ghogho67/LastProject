@@ -111,7 +111,7 @@
    </insert>
    
    <!-- 요양보호사 등록 - 가능요일-->
-   <insert id="insertDay" parameterMap="dayVo">
+   <insert id="insertDay" parameterType="dayVo">
    		INSERT INTO DAY(cw_day)
    					VALUES(#{cw_day})
    </insert>
