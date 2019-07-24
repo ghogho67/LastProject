@@ -13,7 +13,7 @@
 					<div class="user-info">
 						<img
 							src="${cp}/resource/Admin/images/900.jpg">
-						<p class="name">김노인</p>
+						<p class="name">${MEM_INFO.mem_nm}</p>
 						<p class="designation"></p>
 						<span class="gold"> </span>
 

@@ -39,9 +39,15 @@ public class MemberDao implements IMemberDao{
 	//나머지 구현 필요한것들 구현 member.xml 만들어야되고 확인 해봐야한다.
 	@Override
 	public int updateMem(MemberVo memVo) {
-		return 0;
+		return sqlSession.update("member.updateMem",memVo);
 	}
 
+	
+	@Override
+	public int updatePMem(MemberVo memVo) {
+		return sqlSession.update("member.updatePMem",memVo);
+	}
+	
 	@Override
 	public List<MemberVo> memPagingList(PageVo pageVo) {
 		return null;

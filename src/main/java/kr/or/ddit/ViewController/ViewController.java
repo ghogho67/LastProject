@@ -2,7 +2,7 @@ package kr.or.ddit.ViewController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-@RequestMapping("/basicSubPage")
+@RequestMapping("/test")
 @Controller
 public class ViewController {
 //	private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
@@ -20,6 +20,11 @@ public class ViewController {
 	@RequestMapping("/basicBoard")
 	public String basicBoard() {
 		return "/board/basicBoard.tiles";
+	}
+	
+	@RequestMapping("/Writing")
+	public String Writing() {
+		return "/board/basicWriting";
 	}
 	
 	

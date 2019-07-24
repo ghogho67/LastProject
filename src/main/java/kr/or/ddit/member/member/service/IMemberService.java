@@ -54,7 +54,20 @@ public interface IMemberService {
 	 * @return
 	 * Method 설명 :사용자 업데이트
 	 */
-	int updateMem(MemberVo memVo);
+	int updateMember(MemberVo memVo);
+	
+	
+	
+	/**
+	 * Method : updateMem
+	 * 작성자 : PC02
+	 * 변경이력 :
+	 * @param userVo
+	 * @return
+	 * Method 설명 :사용자(대상자) 업데이트
+	 */
+	int updatePMember(MemberVo memVo);
+	
 	
 	
 	/**
@@ -66,5 +79,7 @@ public interface IMemberService {
 	 * Method 설명 : 사용자 페이징 
 	 */
 	List<MemberVo> memPagingList(PageVo pageVo);
+
+
 
 }
