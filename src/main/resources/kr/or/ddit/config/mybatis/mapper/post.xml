@@ -13,80 +13,6 @@
 
 
 
-	<select id="postPagingList" parameterType="map"
-		resultType="PostVo">
-		<![CDATA[
-		select *
-		from
-		(select a.*, rownum rn
-		from
-		(  
-		SELECT
-                    post_id,
-                    post_time,
-                    post_title,
-                    post_content,
-                    post_delete,
-                    cate_id,
-                    mem_id,
-                    REF,
-                    re_step,
-                    re_level
-                FROM
-                    post
-                WHERE
-                    cate_id = #{cate_id}
-                ORDER BY
-                    REF DESC,
-                    re_step ASC
-                    ) a )
-		where rn >= (#{page}-1)*#{pageSize}+1 and rn <= #{page}*#{pageSize}
-	
-		]]>
-	</select>
-
-	<select id="postCnt" parameterType="int" resultType="int">
-
-		select
-		count(*) from post where
-		cate_id=#{cate_id} and post_delete='no'
-
-	</select>
-
-	<select id="getPost" parameterType="int" resultType="PostVo">
-
-		select*from
-		post
-		where post_id = #{post_id}
-
-	</select>
-
-	<select id="postModify" parameterType="PostVo">
-		update post set
-		post_title=#{post_title},post_content=#{post_content} where
-		post_id =
-		#{post_id}
-	</select>
-	<update id="postDelete" parameterType="int">
-		update post set
-		post_delete='yes' where post_id=#{post_id}
-	</update>
-
-	<select id="getLatestPost" resultType="PostVo">
-		select * from (select *
-		from post order by post_time desc )
-		where rownum = 1
-	</select>
-
-	<insert id="updateStep" parameterType="PostVo">
-	<![CDATA[
-	update post
-	set re_step=re_step+1
-	where ref=#{ref} and re_step >= #{re_step}
-	]]>
-	</insert>
-
-
 
 	<insert id="postReply" parameterType="PostVo">
 		INSERT INTO POST VALUES
@@ -126,6 +52,8 @@
 		) B
 		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
 		AND 	B.RN <= #{page} * #{pageSize}
+		
+		
 	 	]]>
 
 	</select>
@@ -162,14 +90,6 @@
 		from post order by post_time desc )
 		where rownum = 1
 	</select>
-
-	<insert id="updateStep" parameterType="PostVo">
-	<![CDATA[
-	update post
-	set re_step=re_step+1
-	where ref=#{ref} and re_step >= #{re_step}
-	]]>
-	</insert>
 
 
 </mapper>

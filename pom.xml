@@ -43,15 +43,19 @@
 
 
 	<dependencies>
+		<!-- Java Mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 
-
- <dependency>
-       <groupId>net.nurigo</groupId>
-       <artifactId>javaSDK</artifactId>
-       <version>2.2</version>
-   </dependency>
-
-
+		<!-- CoolSms Maven -->
+		<dependency>
+			<groupId>net.nurigo</groupId>
+			<artifactId>javaSDK</artifactId>
+			<version>2.2</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet -->
 		<dependency>
@@ -59,9 +63,6 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>3.0.8</version>
 		</dependency>
-
-
-
 
 		<dependency>
 			<groupId>org.apache.tiles</groupId>

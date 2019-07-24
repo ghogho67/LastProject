@@ -30,9 +30,6 @@
 	
 	<mappers>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
-
-
-
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" />
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
