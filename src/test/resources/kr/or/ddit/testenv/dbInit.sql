@@ -1,112 +1,230 @@
-\ufeff
 
 select  *
-from NOT_EXIST_IN_PRD_DB;
-/* \ud68c\uc6d0 */
-delete member;
+from    not_exists_in_prd_db;
 
-/* \ub9e4\uce6d */
-delete matching  ;
 
-/* \uacb0\uc81c */
+
+   drop SEQUENCE  "AD_ID"   ;
+
+   drop SEQUENCE  "APP_ID"  ;
+
+
+   drop SEQUENCE  "ATT_ID"   ;
+
+
+   drop SEQUENCE  "CAR_ID"  ;
+
+
+   drop SEQUENCE  "CATE_ID"  ;
+
+
+   drop SEQUENCE  "CHAT_ID"  ;
+
+
+   drop SEQUENCE  "CHATTEXT_ID"  ;
+
+
+   drop SEQUENCE  "CULTURE_ID"  ;
+
+
+   drop SEQUENCE  "CW_CAREER_ID"   ;
+
+
+   drop SEQUENCE  "DIS_ID" ;
+
+
+   drop SEQUENCE  "GPS_ID" ;
+
+
+   drop SEQUENCE  "HOS_ID" ;
+
+
+   drop SEQUENCE  "MAT_ID" ;
+
+
+   drop SEQUENCE  "MEM_DIS_ID"  ;
+
+
+   drop SEQUENCE  "POST_ID"   ;
+
+
+   drop SEQUENCE  "QUES_ID"   ;
+
+
+   drop SEQUENCE  "REP_ATT_ID"   ;
+
+
+   drop SEQUENCE  "REP_ID"  ;
+
+
+   drop SEQUENCE  "SER_TYPE_ID"  ;
+
+
+   drop SEQUENCE  "SUR_PART_ID"  ;
+
+
+   drop SEQUENCE  "VIDEO_ID"  ;
+   
+   
+   
+   
+
+   CREATE SEQUENCE  "AD_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "APP_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 41 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "ATT_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "CAR_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 186 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "CATE_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "CHAT_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "CHATTEXT_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "CULTURE_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "CW_CAREER_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "DIS_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+   CREATE SEQUENCE  "GPS_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 41 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "HOS_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "MAT_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "MEM_DIS_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "POST_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 13 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "QUES_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "REP_ATT_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "REP_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "SER_TYPE_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "SUR_PART_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+   CREATE SEQUENCE  "VIDEO_ID"  MINVALUE 1 MAXVALUE 10000 INCREMENT BY 1 START WITH 21 NOCACHE  NOORDER  NOCYCLE ;
+
+
+
 delete approval  ;
 
-/* \ubcd1\uc6d0 */
-delete hospital ;
-
-/* \uc2ec\uc7a5\ubc15\ub3d9 */
-delete cardiac ;
-
-/* \ubb34\ub354\uc704\uc27c\ud130 */
-delete shelter ;
-
-/* GPS */
-delete gps ;
-/* \uc124\ubb38 \ucc38\uc5ec */
-delete surveyPart ;
-
-/* \uae34\uae09 \ud638\ucd9c \uc694\uccad */
-delete sos ;
-
-/* \uc124\ubb38 */
-delete survey ;
-
-/* \ubcf4\uace0\uc11c */
-delete report ;
-
-/* \uc9c8\ubb38 */
-delete question ;
-
-/* \uce74\ud14c\uace0\ub9ac */
-delete category ;
-
-/* \ub3d9\uc601\uc0c1 */
-delete video ;
-
-/* \ud68c\uc6d0 \ubcd1 */
-delete memberDisease ;
-/* \uace8\ub4dc \ud68c\uc6d0 */
-delete gold ;
-
-/* \ucc44\ud305\uae00 */
-delete chatText  ;
-
-/* \ucc44\ud305 \ubc29 */
-delete chat  ;
-
-/* \ucd9c\uacb0 */
 delete attendance ;
 
-/* \ubcd1\uba85 \uad00\ub9ac */
-delete diseaseName ;
-
-/* \ubcf4\uace0\uc11c \ucca8\ubd80\ud30c\uc77c */
-delete reportAttach ;
-
-/* \ud3c9\uc810 */
-delete grade ;
-
-/* \ubb38\ud654\uc13c\ud130 */
-delete culture ;
-
-/* \uc694\uc591\ubcf4\ud638\uc0ac \uc11c\ube44\uc2a4 \ud0c0\uc785 */
-delete cwServiceType ;
-
-/* \uc694\uc591\ubcf4\ud638\uc0ac \uc774\ub825 */
-delete career  ;
-
-/* \ucc44\ud305 \ud68c\uc6d0 */
-delete chatMem ;
-
-/* \ubcd1\uc6d0 \ud0c0\uc785 */
-delete hospitalType ;
-
-/* \uac15\uc88c */
-delete lecture ;
-
-/* \uc124\ubb38 \uc9c8\ubb38 \ub2f5\ubcc0 */
-delete surveyAnswer ;
-
-/* \uc694\uc591\ubcf4\ud638\uc0ac \uc11c\ube44\uc2a4 \uac00\ub2a5\uc694\uc77c */
-delete day  ;
-
-/* \ub9e4\uce6d \uc2a4\ucf00\uc974 */
-delete schedule ;
-
-/* \uc694\uc591\ubcf4\ud638\uc0ac \uc11c\ube44\uc2a4 \uac00\ub2a5\uc9c0\uc5ed */
-delete location   ;
-
-/* \uc11c\ube44\uc2a4 \ud0c0\uc785 */
-delete serviceType ;
-
-/* \uac8c\uc2dc\uae00 */
-delete post ;
-
-/* \ucca8\ubd80\ud30c\uc77c */
 delete attachment ;
 
-/* \ub313\uae00 */
+
+
+delete shelter ;
+
+
+
+delete reportAttach ;
+
+delete report ;
+
+delete sos ;
+
+delete gps ;
+
+
+delete video ;
+
+
 delete reply  ;
+
+
+
+
+delete chatText  ;
+
+delete chat  ;
+
+
+delete diseaseName ;
+
+
+delete hospitalType ;
+
+
+delete serviceType ;
+
+
+
+
+delete cardiac ;
+
+
+delete surveyAnswer ;
+
+delete surveyPart ;
+
+delete question ;
+
+
+delete memberDisease ;
+
+delete gold ;
+
+
+delete grade ;
+
+
+delete lecture ;
+
+delete culture ;
+
+delete cwServiceType ;
+
+delete career  ;
+
+delete hospital ;
+
+delete chatMem ;
+
+
+
+delete day  ;
+
+delete schedule ;
+
+delete location   ;
+
+delete survey ;
+
+delete post ;
+
+delete category ;
+
+delete matching  ;
+
+delete member;
+
 
 SET DEFINE OFF;
 Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_ADD1,MEM_ADD2,MEM_ZIPCD,MEM_MAIL,MEM_GRADE,MEM_DEL,MEM_PHOTO_PATH,MEM_PHOTO_NM,PRO_RELATION,PRO_NM,PRO_PHONE,CW_DRIVER,CW_LIC) values ('dkskqk00','\uc624\ub3c4\uc544','94/09/22`','F','dkskqk00','010-2114-2539','\ub300\uc804','\uc911\uad6c','30585','dkskqk00@naver.ver','0','N',null,null,null,null,null,'Y',null);
@@ -149,18 +267,6 @@ Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (7,'\ubcd1\uc6d0\uac04\ubc
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (8,'\ubc29\ubb38\uac04\ud638');
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (9,'\ubc29\ubb38\uac04\ubcd1');
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (10,'\ubcd1\uc6d0\uac04\ubcd1');
-
-SET DEFINE OFF;
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (1,1,'brown','\uc548\ub1551',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (2,1,'brown','\uc548\ub1552',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (3,1,'brown','\uc548\ub1553',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (4,1,'brown','\uc548\ub1554',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (5,1,'brown','\uc548\ub1555',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (6,1,'brown','\uc548\ub1556',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (7,1,'brown','\uc548\ub1557',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (8,1,'brown','\uc548\ub1558',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (9,1,'brown','\uc548\ub1559',to_date('19/07/22','RR/MM/DD'));
-Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (10,1,'brown','\uc548\ub15510',to_date('19/07/22','RR/MM/DD'));
 
 SET DEFINE OFF;
 Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (5,'\uc120\ubcd1\uc6d0','\ub300\uc804','000-000-0000');
@@ -210,17 +316,17 @@ Insert into CATEGORY (CATE_ID,CATE_PAERENT_ID,CATE_TITLE,CATE_USAGE,CATE_SORTNUM
 Insert into CATEGORY (CATE_ID,CATE_PAERENT_ID,CATE_TITLE,CATE_USAGE,CATE_SORTNUM,CATE_DATE,MEM_ID) values (7,null,'\ubb38\ud654\uc13c\ud130','Y',1,to_date('19/07/21','RR/MM/DD'),'brown');
 
 
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (1,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae001','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (2,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae002','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (3,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae003','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (4,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae004','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (5,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae005','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (6,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae006','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (7,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae007','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (8,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae008','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (9,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae009','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (10,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae0010','Y',0,'brown',1,null);
-Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,POST_USAGE,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (11,0,to_date('19/07/23','RR/MM/DD'),'nm','Y',11,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (1,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae001','\uac8c\uc2dc\uae001','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (2,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae002','\uac8c\uc2dc\uae002','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (3,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae003','\uac8c\uc2dc\uae003','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (4,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae004','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (5,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae005','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (6,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae006','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (7,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae007','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (8,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae008','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (9,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae009','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (10,0,to_date('19/07/21','RR/MM/DD'),'\uac8c\uc2dc\uae0010','\uac8c\uc2dc\uae004','N',0,'brown',1,null);
+Insert into POST (POST_ID,POST_CNT,POST_TIME,POST_NM,post_cont,POST_del,POST_GROUP,MEM_ID,CATE_ID,POST_PAR) values (11,0,to_date('19/07/23','RR/MM/DD'),'nm','\uac8c\uc2dc\uae004','N',11,'brown',1,null);
 
 Insert into ATTACHMENT (ATT_ID,ATT_PATH,ATT_NM,POST_ID) values (1,'\ud30c\uc77c1\uacbd\ub85c','\ud30c\uc77c1',1);
 Insert into ATTACHMENT (ATT_ID,ATT_PATH,ATT_NM,POST_ID) values (2,'\ud30c\uc77c2\uacbd\ub85c','\ud30c\uc77c2',1);
@@ -434,16 +540,16 @@ Insert into REPLY (REPLY_ID,REPLY_CONT,REPLY_DEL,REPLY_TIME,MEM_ID,POST_ID) valu
 Insert into REPLY (REPLY_ID,REPLY_CONT,REPLY_DEL,REPLY_TIME,MEM_ID,POST_ID) values (9,'\ub313\uae009','N',to_date('19/07/22','RR/MM/DD'),'brown',9);
 Insert into REPLY (REPLY_ID,REPLY_CONT,REPLY_DEL,REPLY_TIME,MEM_ID,POST_ID) values (10,'\ub313\uae0010','N',to_date('19/07/22','RR/MM/DD'),'brown',10);
 
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (1,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c1',1);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (2,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c2',2);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (3,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c3',3);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (4,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c4',4);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (5,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c5',5);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (6,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c6',6);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (7,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c7',7);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (8,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c8',8);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (9,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c9',9);
-Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,MAT_ID) values (10,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c10',10);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (1,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c1','\ubcf4\uace0\uc11c1',1);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (2,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c2','\ubcf4\uace0\uc11c1',2);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (3,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c3','\ubcf4\uace0\uc11c1',3);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (4,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c4','\ubcf4\uace0\uc11c1',4);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (5,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c5','\ubcf4\uace0\uc11c1',5);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (6,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c6','\ubcf4\uace0\uc11c1',6);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (7,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c7','\ubcf4\uace0\uc11c1',7);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (8,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c8','\ubcf4\uace0\uc11c1',8);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (9,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c9','\ubcf4\uace0\uc11c1',9);
+Insert into REPORT (REP_ID,REP_TIME,REP_TITLE,REP_cont,MAT_ID) values (10,to_date('19/07/22','RR/MM/DD'),'\ubcf4\uace0\uc11c10','\ubcf4\uace0\uc11c1',10);
 
 Insert into REPORTATTACH (REP_ATT_ID,REP_ATT_PATH,REP_ATT_NM,REP_ID) values (1,'apath','a',1);
 Insert into REPORTATTACH (REP_ATT_ID,REP_ATT_PATH,REP_ATT_NM,REP_ID) values (2,'bpath','b',2);
@@ -488,3 +594,16 @@ Insert into SOS (SOS_ID,GPS_ID) values (7,7);
 Insert into SOS (SOS_ID,GPS_ID) values (8,8);
 Insert into SOS (SOS_ID,GPS_ID) values (9,9);
 Insert into SOS (SOS_ID,GPS_ID) values (10,10);
+
+
+SET DEFINE OFF;
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (1,1,'brown','\uc548\ub1551',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (2,1,'brown','\uc548\ub1552',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (3,1,'brown','\uc548\ub1553',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (4,1,'brown','\uc548\ub1554',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (5,1,'brown','\uc548\ub1555',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (6,1,'brown','\uc548\ub1556',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (7,1,'brown','\uc548\ub1557',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (8,1,'brown','\uc548\ub1558',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (9,1,'brown','\uc548\ub1559',to_date('19/07/22','RR/MM/DD'));
+Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (10,1,'brown','\uc548\ub15510',to_date('19/07/22','RR/MM/DD'));

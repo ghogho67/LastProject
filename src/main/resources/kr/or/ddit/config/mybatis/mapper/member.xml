@@ -111,7 +111,7 @@
    </insert>
    
    <!-- 요양보호사 등록 - 가능요일-->
-   <insert id="insertDay" parameterMap="dayVo">
+   <insert id="insertDay" parameterType="dayVo">
    		INSERT INTO DAY(cw_day)
    					VALUES(#{cw_day})
    </insert>
@@ -139,8 +139,8 @@
    </insert>
 
    <!-- 아이디중복체크 -->
-   <select id="idCheck" resultType="memberVo">
-   		SELECT mem_id FROM member
+   <select id="idCheck" resultType="int" parameterType="String">
+   		SELECT count(*) FROM member
    		where mem_id = #{mem_id}
    </select>
    
