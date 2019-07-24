@@ -69,6 +69,9 @@
 									<li class="nav-item"><a class="nav-link" href="#">
 											보고서 작성 </a></li>
 									
+										<li class="nav-item"><a class="nav-link" href="#">
+											보고서 조회 </a></li>
+									
 								</ul>
 							</div>
 							
