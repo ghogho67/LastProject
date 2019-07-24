@@ -5,7 +5,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,6 +18,7 @@ import kr.or.ddit.member.member.service.IMemberService;
 
 @Controller
 public class LoginController {
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Resource(name = "memberService")
 	private IMemberService memberService;
 
@@ -28,6 +32,7 @@ public class LoginController {
 	 */
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String loginView(HttpSession session){
+		
 		if(session.getAttribute("MEM_INFO") != null)
 			return "main"; // /WEB-INF/views/main.jsp
 		else
@@ -51,18 +56,22 @@ public class LoginController {
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	
 	public String loginProcess(String mem_id, String mem_pass, String remember
-								,HttpServletResponse response, HttpSession session) {
-//		String encyptPassword = KISA_SHA256.encrypt(mem_pass);
+								,HttpServletResponse response, HttpSession session, Model model) {
+		String fail = "탈퇴회원이시거나 아이디,비밀번호가 틀렸습니다."; 
+		String encyptPassword = mem_pass;/*KISA_SHA256.encrypt(mem_pass);*/
 		MemberVo memVo = memberService.getMemVo(mem_id);
 		
-		if (memVo != null /* && encyptPassword.equals(memVo.getMem_pass()) */ ){
+		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
 		
 			return "main";
 		}
-		else
+		else {
+		
+			model.addAttribute("fail",fail);
 			return "login";
+		}
 	}
 	
 

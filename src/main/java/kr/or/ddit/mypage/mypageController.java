@@ -29,6 +29,7 @@ public class mypageController {
 
 	@Resource(name = "memberService")
 	private IMemberService memberService;
+	
 
 	@RequestMapping("/Patient_Info")
 	public String Patient_Info() {
@@ -116,7 +117,7 @@ public class mypageController {
 	
 
 	@RequestMapping("/Worker_Info")
-	public String Worker_Info() {
+	public String Worker_Info(HttpSession session) {
 		return "mypage/Worker_Info";
 	}
 

@@ -14,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.config.ApplicationDatasource_dev;
-import kr.or.ddit.config.spring.ApplicationDatasource;
 import kr.or.ddit.config.spring.ApplicationTransaction;
 import kr.or.ddit.config.spring.RootContext;
 
