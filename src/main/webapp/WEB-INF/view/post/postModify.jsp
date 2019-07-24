@@ -109,7 +109,7 @@ postVo : ${postVo}<br>
 						
 							<div class="form-group">
 						
-								<label for="userId" class="col-sm-2 control-label">글내용</label>
+								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
 						
 								<div class="col-sm-10">
 						

@@ -1,12 +1,16 @@
 package kr.or.ddit.config.spring;
 
+import java.util.Properties;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -178,6 +182,22 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
       return new SessionLocaleResolver();
    }
    
+   
+   @Bean
+   public JavaMailSender getJavaMailSender() {
+	   JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	   mailSender.setHost("smtp.yourEmailDomain.co.kr");
+	   mailSender.setPort(25);
+	   
+	   mailSender.setUsername("01051845576@gmail.com");
+	   mailSender.setPassword("dlrhkdgh12");
+	   
+	   Properties props = mailSender.getJavaMailProperties();
+	   props.put("mail.smtp.auth", true);
+	   props.put("mail.smtp.starttls.enable", true);
+	   
+	   return mailSender;
+   }
    
 }
 
