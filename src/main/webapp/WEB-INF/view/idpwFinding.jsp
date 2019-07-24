@@ -20,12 +20,14 @@ $(document).ready(function(){
 			data : data,
 			success : function(data){
 				console.log(data);
-				if(!data.mem_id == null){
-					$("#idresult1").css("color", "blue");
-					$("#idresult1").html("회원님의 아이디는"+ data.mem_id +"입니다.");
-				}else{
+				if(data.mem_id == null){
 					$("#idresult1").css("color", "red");
 					$("#idresult1").html("회원님이 기입하신 정보가 일치하지 않습니다.");
+					
+				}else{
+					$("#idresult1").css("color", "blue");
+					$("#idresult1").html("회원님의 아이디는"+ data.mem_id +"입니다.");
+					
 				}
 								
 			},
@@ -50,8 +52,13 @@ $(document).ready(function(){
 			data : data,
 			success : function(data){
 				console.log(data);
+				if(data.a == null){
 					$("#idresult2").css("color", "blue");
 					$("#idresult2").html("임시비밀번호가 메일로 발송됬습니다.");
+				}else{
+					$("#idresult2").css("color", "red");	
+					$("#idresult2").html(data.a);
+				}
 			},
 		error : function(xhr){
 // 			alert(xhr.status);

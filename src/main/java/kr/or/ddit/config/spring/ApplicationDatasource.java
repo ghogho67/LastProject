@@ -23,7 +23,7 @@ public class ApplicationDatasource {
 	@Bean
 	public DataSource datasource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setUrl(env.getProperty("jdbc.url"));
+		dataSource.setUrl(env.getProperty("jdbc.url")); 
 		dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
 		dataSource.setUsername(env.getProperty("jdbc.username"));
 		dataSource.setPassword(env.getProperty("jdbc.password"));

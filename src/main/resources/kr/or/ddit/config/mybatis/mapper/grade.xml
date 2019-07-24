@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="grade">
+
+
+   
+   <!-- 일반회원 등록 -->
+  
+
+   <!-- 요양보호사 마이페이지의 grade 평균값얻는 쿼리문 -->
+   <select id="cwGradeAvg" resultType="String" parameterType="String">
+   		select TRUNC(avg(g.grade),1) cwavg
+				from grade g, matching m 
+				where g.mat_id = m.mat_id
+				and m.cw_mem_id = #{cw_mem_id}
+
+   </select>
+   
+   
+ 
+</mapper>

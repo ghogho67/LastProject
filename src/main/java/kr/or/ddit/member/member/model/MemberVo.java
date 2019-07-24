@@ -175,6 +175,29 @@ public class MemberVo {
 		this.cw_lic = cw_lic;
 	}
 
+	public MemberVo(String mem_id, String mem_nm, String mem_birth, String mem_gender, String mem_pass,
+			String mem_phone, String mem_add1, String mem_add2, String mem_zipcd, String mem_mail, String mem_grade,
+			String mem_del, String mem_photo_path, String mem_photo_nm, String pro_relation, String pro_nm,
+			String pro_phone) {
+		this.mem_id = mem_id;
+		this.mem_nm = mem_nm;
+		this.mem_birth = mem_birth;
+		this.mem_gender = mem_gender;
+		this.mem_pass = mem_pass;
+		this.mem_phone = mem_phone;
+		this.mem_add1 = mem_add1;
+		this.mem_add2 = mem_add2;
+		this.mem_zipcd = mem_zipcd;
+		this.mem_mail = mem_mail;
+		this.mem_grade = mem_grade;
+		this.mem_del = mem_del;
+		this.mem_photo_path = mem_photo_path;
+		this.mem_photo_nm = mem_photo_nm;
+		this.pro_relation = pro_relation;
+		this.pro_nm = pro_nm;
+		this.pro_phone = pro_phone;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [mem_id=" + mem_id + ", mem_nm=" + mem_nm + ", mem_birth=" + mem_birth + ", mem_gender="
