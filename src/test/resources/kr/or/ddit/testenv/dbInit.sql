@@ -1,6 +1,4 @@
-
-select  *
-from    not_exists_in_prd_db;
+select * from not_exists_in_prd_db;
 
 
 
@@ -174,6 +172,7 @@ delete hospitalType ;
 
 delete serviceType ;
 
+----------------------------------------
 
 
 
@@ -188,7 +187,6 @@ delete question ;
 
 
 delete memberDisease ;
-
 delete gold ;
 
 
@@ -218,15 +216,11 @@ delete location   ;
 delete survey ;
 
 delete post ;
-
 delete category ;
-
 delete matching  ;
-
 delete member;
 
 
-SET DEFINE OFF;
 Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_ADD1,MEM_ADD2,MEM_ZIPCD,MEM_MAIL,MEM_GRADE,MEM_DEL,MEM_PHOTO_PATH,MEM_PHOTO_NM,PRO_RELATION,PRO_NM,PRO_PHONE,CW_DRIVER,CW_LIC) values ('dkskqk00','\uc624\ub3c4\uc544','94/09/22`','F','dkskqk00','010-2114-2539','\ub300\uc804','\uc911\uad6c','30585','dkskqk00@naver.ver','0','N',null,null,null,null,null,'Y',null);
 Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_ADD1,MEM_ADD2,MEM_ZIPCD,MEM_MAIL,MEM_GRADE,MEM_DEL,MEM_PHOTO_PATH,MEM_PHOTO_NM,PRO_RELATION,PRO_NM,PRO_PHONE,CW_DRIVER,CW_LIC) values ('aha','\ub300\uc0c1\uc790','94/09/22','F','1234','010-2222-3333','\ub300\uc804','\uc911\uad6c','30585','aha@naver.com','1','N','o','o',null,null,null,null,null);
 Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_ADD1,MEM_ADD2,MEM_ZIPCD,MEM_MAIL,MEM_GRADE,MEM_DEL,MEM_PHOTO_PATH,MEM_PHOTO_NM,PRO_RELATION,PRO_NM,PRO_PHONE,CW_DRIVER,CW_LIC) values ('brown','\ube0c\ub77c\uc6b4','19/07/21','M','1234','010-1111-1111','\ub300\uc804','\uc911\uad6c','30585','brown@naver.com','1','N','\u3147','\u3147','\uc544\ub4e4','\ub9c8\ubbf8',null,'Y',null);
@@ -244,7 +238,6 @@ Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_AD
 Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_ADD1,MEM_ADD2,MEM_ZIPCD,MEM_MAIL,MEM_GRADE,MEM_DEL,MEM_PHOTO_PATH,MEM_PHOTO_NM,PRO_RELATION,PRO_NM,PRO_PHONE,CW_DRIVER,CW_LIC) values ('ronaldo','\ud638\ub0a0\ub450','19/07/22','M','1234','010-1111-1111','\ub300\uc804','\uc911\uad6c','30585','ronaldo@naver.com','3','N','\u3147','\u3147',null,null,'010-1111-1111','Y','34-3434-34');
 Insert into MEMBER (MEM_ID,MEM_NM,MEM_BIRTH,MEM_GENDER,MEM_PASS,MEM_PHONE,MEM_ADD1,MEM_ADD2,MEM_ZIPCD,MEM_MAIL,MEM_GRADE,MEM_DEL,MEM_PHOTO_PATH,MEM_PHOTO_NM,PRO_RELATION,PRO_NM,PRO_PHONE,CW_DRIVER,CW_LIC) values ('trumph','\ud2b8\ub7fc\ud504','19/07/22','M','1234','010-1111-1111','\ub300\uc804','\uc911\uad6c','30585','trumph@naver.com','3','N','\u3147','\u3147',null,null,'010-1111-1111','Y','34-3434-34');
 
-SET DEFINE OFF;
 Insert into CHAT (CHAT_ID,CHAT_NM,CHAT_DT,CHAT_MEM_ID) values (1,'\ucc44\ud305\ubc291',to_date('19/07/21','RR/MM/DD'),'brown');
 Insert into CHAT (CHAT_ID,CHAT_NM,CHAT_DT,CHAT_MEM_ID) values (2,'\ucc44\ud305\ubc292',to_date('19/07/21','RR/MM/DD'),'brown');
 Insert into CHAT (CHAT_ID,CHAT_NM,CHAT_DT,CHAT_MEM_ID) values (3,'\ucc44\ud305\ubc293',to_date('19/07/21','RR/MM/DD'),'brown');
@@ -256,7 +249,6 @@ Insert into CHAT (CHAT_ID,CHAT_NM,CHAT_DT,CHAT_MEM_ID) values (8,'\ucc44\ud305\u
 Insert into CHAT (CHAT_ID,CHAT_NM,CHAT_DT,CHAT_MEM_ID) values (9,'\ucc44\ud305\ubc299',to_date('19/07/21','RR/MM/DD'),'brown');
 Insert into CHAT (CHAT_ID,CHAT_NM,CHAT_DT,CHAT_MEM_ID) values (10,'\ucc44\ud305\ubc2910',to_date('19/07/21','RR/MM/DD'),'brown');
 
-SET DEFINE OFF;
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (1,'\ubcd1\uc6d0\uac04\ubcd1');
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (2,'\ubc29\ubb38\uac04\ud638');
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (3,'\ubc29\ubb38\uac04\ubcd1');
@@ -268,7 +260,6 @@ Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (8,'\ubc29\ubb38\uac04\ud6
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (9,'\ubc29\ubb38\uac04\ubcd1');
 Insert into SERVICETYPE (SER_TYPE_ID,SER_TYPE) values (10,'\ubcd1\uc6d0\uac04\ubcd1');
 
-SET DEFINE OFF;
 Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (5,'\uc120\ubcd1\uc6d0','\ub300\uc804','000-000-0000');
 Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (6,'\ub300\uc804\ubcd1\uc6d0','\ub300\uc804','000-000-0000');
 Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (7,'\uc0c8\ubbf8\ub798\ubcd1\uc6d0','\ub300\uc804','000-000-0000');
@@ -280,7 +271,6 @@ Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (12,'\uce74\ud1a8\
 Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (13,'\uc131\ubaa8\ubcd1\uc6d0','\ub300\uc804','000-000-0000');
 Insert into HOSPITAL (HOS_ID,HOS_NM,HOS_ADD,HOS_PHONE) values (14,'\uc120\ubcd1\uc6d0','\ub300\uc804','000-000-0000');
 
-SET DEFINE OFF;
 Insert into CAREER (CW_CAREER_ID,CAREER_CONT,CAREER_ST_DT,CAREER_END_DT,MEM_ID,HOS_ID) values (1,'\ud314\uc774 \uc548\uc88b\uc73c\uc2e0 \ud658\uc790\ub97c \uac04\ubcd1\ud588\uc2b5\ub2c8\ub2e4.',to_date('19/07/21','RR/MM/DD'),to_date('19/07/22','RR/MM/DD'),'brown',5);
 Insert into CAREER (CW_CAREER_ID,CAREER_CONT,CAREER_ST_DT,CAREER_END_DT,MEM_ID,HOS_ID) values (2,'\ub2e4\ub9ac\uac00 \uc548\uc88b\uc73c\uc2e0 \uc5b4\ub974\uc2e0 \uac04\ubcd1',to_date('19/07/21','RR/MM/DD'),to_date('19/07/22','RR/MM/DD'),'brown',5);
 Insert into CAREER (CW_CAREER_ID,CAREER_CONT,CAREER_ST_DT,CAREER_END_DT,MEM_ID,HOS_ID) values (3,'\ud5c8\ub9ac\uac00 \uc548\uc88b\uc73c\uc2e0 \ub178\uc778 \uac04\ubcd1',to_date('19/07/21','RR/MM/DD'),to_date('19/07/22','RR/MM/DD'),'brown',5);
@@ -596,7 +586,6 @@ Insert into SOS (SOS_ID,GPS_ID) values (9,9);
 Insert into SOS (SOS_ID,GPS_ID) values (10,10);
 
 
-SET DEFINE OFF;
 Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (1,1,'brown','\uc548\ub1551',to_date('19/07/22','RR/MM/DD'));
 Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (2,1,'brown','\uc548\ub1552',to_date('19/07/22','RR/MM/DD'));
 Insert into CHATTEXT (CHATTEXT_ID,CHAT_ID,MEM_ID,CHATTEXT_CONT,CHATTEXT_TIME) values (3,1,'brown','\uc548\ub1553',to_date('19/07/22','RR/MM/DD'));

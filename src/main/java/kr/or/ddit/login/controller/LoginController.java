@@ -90,4 +90,14 @@ public class LoginController {
 		response.addCookie(mem_idCookie);
 		response.addCookie(rememberCookie);
 	}
+	
+	
+	
+	
+	@RequestMapping("/main")
+	public String main() {
+		return "main";
+	}
+
+	
 }

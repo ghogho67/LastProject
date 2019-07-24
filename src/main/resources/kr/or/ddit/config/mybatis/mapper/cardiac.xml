@@ -6,6 +6,6 @@
 
 	<insert id="insertCardiac" parameterType="cardiacVo">
 		insert into cardiac values(CAR_ID.nextval, #{mem_id}, #{gold_st}, #{car_bpm}, to_date(sysdate,'yy/mm/dd hh24:mi'))
-	</insert>
+</insert>
 
 </mapper>
