@@ -21,6 +21,7 @@
 		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.reply.model.ReplyVo"/>
 		
 		<typeAlias alias="cardiacVo" type="kr.or.ddit.gold.cardiac.model.CardiacVo" />
+		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
 
 <!-- 		<typeAlias alias="approvalVo" type="kr.or.ddit.member.member.model.ApprovalVo" /> -->
 	</typeAliases>
@@ -33,6 +34,7 @@
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
 
 	</mappers>
 </configuration>

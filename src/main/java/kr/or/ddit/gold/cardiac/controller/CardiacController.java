@@ -20,6 +20,7 @@ import kr.or.ddit.gold.cardiac.service.ICardiacService;
 public class CardiacController {
 	private static final Logger logger = LoggerFactory.getLogger(CardiacController.class);
 	
+	
 	@Resource(name = "cardiacService")
 	private ICardiacService cardiacService;
 	
