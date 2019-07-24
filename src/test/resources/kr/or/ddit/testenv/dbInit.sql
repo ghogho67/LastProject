@@ -157,7 +157,7 @@ delete hospitalType ;
 
 delete serviceType ;
 
-----------------------------------------
+
 delete cardiac ;
 
 delete surveyAnswer ;
