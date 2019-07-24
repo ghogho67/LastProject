@@ -41,6 +41,12 @@
 
 
 <dependencies>
+	<!-- Java Mail -->
+	<dependency>
+	   <groupId>com.sun.mail</groupId>
+	   <artifactId>javax.mail</artifactId>
+	   <version>1.5.6</version>
+	 </dependency>
 
 	<!-- CoolSms  Maven -->
 	<dependency>
@@ -170,6 +176,12 @@
     <scope>test</scope>
 </dependency>
 	
+	<!-- spring mail Send -->
+	<dependency> 
+		<groupId>org.springframework</groupId> 
+		<artifactId>spring-context-support</artifactId> 
+		<version>${spring.version}</version> 
+	</dependency>
 	
 	
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->

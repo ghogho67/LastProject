@@ -214,4 +214,8 @@ public class MemberVo {
 		this.cw_lic = cw_lic;
 	}
 	
+	public MemberVo() {
+		
+	}
+	
 }

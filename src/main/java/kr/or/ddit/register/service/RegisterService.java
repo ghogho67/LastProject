@@ -131,6 +131,36 @@ public class RegisterService implements IRegisterService {
 		return registerDao.insertServiceType(serviceTypeVo);
 	}
 
+	
+	//-----------------------------------------------------
+
+	/**
+	* Method : idCheck
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 :아이디 중복체크
+	*/
+	@Override
+	public int idCheck(String mem_id) {
+		return registerDao.idCheck(mem_id);
+	}
+
+
+	/**
+	* Method : getMemVo
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 :특정사용자 조회
+	*/
+	@Override
+	public MemberVo getMemVo(String mem_id) {
+		return registerDao.getMemVo(mem_id);
+	}
+
 
 
 

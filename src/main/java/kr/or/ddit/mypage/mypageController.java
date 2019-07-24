@@ -311,7 +311,7 @@ public class mypageController {
 		
 		
 		
-		 String viewName;
+		String viewName;
 		
 		String mem_nm = "";
 		String mem_birth = "";
