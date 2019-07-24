@@ -4,20 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-	<!-- 전체 사용자 리스트 조회 하기 -->
-	<select id="getMemList" resultType="memberVo">
-		SELECT *
-		FROM MEMBER
-		ORDER BY mem_id
-	</select>
 
-	<!-- 특정 사용자 조회 -->
-	<select id="getMemVo" resultType="memberVo"
-		parameterType="String">
-		SELECT *
-		FROM MEMBER
-		WHERE mem_id = #{mem_id}
-	</select>
+
 
 	<!-- 사용자 페이지 리스트 조회 -->
 	<!-- pageVo : int page, int pageSize -->
@@ -39,11 +27,6 @@
 	<!-- ]]> -->
 	<!-- </select> -->
 
-	<!-- 전체 사용자 수 조회 -->
-	<select id="memberCnt" resultType="int">
-		SELECT /*+ INDEX_FFS(MEMBER PK_MEMBER)*/ COUNT(*)
-		FROM MEMBER
-	</select>
 
 
 	<!-- 사용자 등록 -->
@@ -52,7 +35,8 @@
 		#{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR}) </insert> -->
 	<!-- 일반회원 등록 -->
 	<insert id="insertMember" parameterType="memberVo">
-		INSERT INTO MEMBER(mem_id
+		INSERT INTO
+		MEMBER(mem_id
 		,mem_nm
 		,mem_birth
 		,mem_gender
@@ -81,7 +65,8 @@
 		,#{mem_mail}
 		,'1'
 		,'N'
-		,#{path, jdbcType=VARCHAR}
+		,#{path,
+		jdbcType=VARCHAR}
 		,#{filename, jdbcType=VARCHAR}
 		,#{pro_relation}
 		,#{pro_nm}
@@ -89,14 +74,16 @@
 	</insert>
 	<!-- 일반회원 등록 - 질병명 -->
 	<insert id="insertMemberDisease" parameterType="memberDiseaseVo">
-		INSERT INTO MEMBERDISEASE(dis_id)
+		INSERT INTO
+		MEMBERDISEASE(dis_id)
 		VALUES(#{dis_id})
 	</insert>
 
 
 	<!-- 요양보호사 등록 -->
 	<insert id="insertCWMember" parameterType="memberVo">
-		INSERT INTO MEMBER(mem_id
+		INSERT INTO
+		MEMBER(mem_id
 		,mem_nm
 		,mem_birth
 		,mem_gender
@@ -126,19 +113,21 @@
 
 	<!-- 요양보호사 등록 - 서비스 지역 -->
 	<insert id="insertLocation" parameterType="locationVo">
-		INSERT INTO LOCATION(loc_dong)
+		INSERT INTO
+		LOCATION(loc_dong)
 		VALUES(#{loc_dong})
 	</insert>
 
 	<!-- 요양보호사 등록 - 가능요일 -->
-	<insert id="insertDay" parameterMap="dayVo">
-		INSERT INTO DAY(cw_day)
-		VALUES(#{cw_day})
-	</insert>
+	<!-- <insert id="insertDay" parameterMap="dayVo"> -->
+	<!-- INSERT INTO DAY(cw_day) -->
+	<!-- VALUES(#{cw_day}) -->
+	<!-- </insert> -->
 
 	<!-- 요양보호사 등록 - 경력 -->
 	<insert id="insertCareer" parameterType="careerVo">
-		INSERT INTO CAREER(career_cont
+		INSERT INTO
+		CAREER(career_cont
 		,career_st_dt
 		,career_end_dt)
 		VALUES(#{career_cont}
@@ -148,25 +137,21 @@
 
 	<!-- 요양보호사 등록 - 경력 - 병원명 -->
 	<insert id="insertHospital" parameterType="hospitalVo">
-		INSERT INTO HOSPITAL(hos_nm)
+		INSERT INTO
+		HOSPITAL(hos_nm)
 		VALUES(#{hos_nm})
 	</insert>
 
 	<!-- 요양보호사 증록 - 서비스 종류 -->
 	<insert id="insertServiceType" parameterType="serviceTypeVo">
-		INSERT INTO SERVICETYPE(ser_type)
+		INSERT INTO
+		SERVICETYPE(ser_type)
 		VALUES(#{ser_type})
 	</insert>
 
 
 
 
-	<!-- 사용자 삭제 -->
-	<delete id="deleteMem" parameterType="String">
-		UPDATE MEMBER
-		set mem_del = 'Y'
-		WHERE mem_id=#{mem_id}
-	</delete>
 
 
 
@@ -186,10 +171,6 @@
 		SET PASS = #{pass} WHERE USERID = #{userId} </update> -->
 
 
-
-
-
-
 	<!-- 전체 사용자 리스트 조회 하기 -->
 	<select id="getMemList" resultType="memberVo">
 		SELECT *
@@ -198,6 +179,7 @@
 		mem_id
 	</select>
 
+
 	<!-- 특정 사용자 조회 -->
 	<select id="getMemVo" resultType="memberVo"
 		parameterType="String">
@@ -205,6 +187,7 @@
 		FROM MEMBER
 		WHERE mem_id = #{mem_id}
 	</select>
+
 
 	<!-- 전체 사용자 수 조회 -->
 	<select id="memberCnt" resultType="int">
@@ -226,6 +209,7 @@
 		'Y'
 		WHERE mem_id=#{mem_id}
 	</delete>
+
 
 
 
