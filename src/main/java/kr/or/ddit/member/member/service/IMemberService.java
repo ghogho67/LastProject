@@ -21,7 +21,7 @@ public interface IMemberService {
 	 * Method : deleteMem
 	 * 작성자 : PC21
 	 * 변경이력 : 
-	 * @param userId
+	 * @param mem_id
 	 * @return
 	 * Method 설명 :사용자 삭제
 	 */
@@ -31,7 +31,7 @@ public interface IMemberService {
 	 * Method : getMemVo
 	 * 작성자 : PC21
 	 * 변경이력 :
-	 * @param userId
+	 * @param mem_id
 	 * @return
 	 * Method 설명 : 사용자 정보조회
 	 */

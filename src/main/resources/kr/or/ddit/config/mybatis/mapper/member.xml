@@ -47,7 +47,7 @@
    <!-- 사용자 등록 -->
  <!--   <insert id="insertMem" parameterType="userVo">
       INSERT INTO MEMBER
-      VALUES (#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, 
+      VALUES (#{mem_id}, #{name}, #{alias}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, 
             #{birth}, #{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR})
    </insert> -->
    
