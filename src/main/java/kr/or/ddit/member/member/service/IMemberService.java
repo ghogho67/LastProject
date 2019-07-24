@@ -17,21 +17,8 @@ public interface IMemberService {
 	List<MemberVo> getMemList();
 	
 
-<<<<<<< HEAD
 
-=======
 	
-	/**
-	 * Method : deleteMem
-	 * 작성자 : PC21
-	 * 변경이력 : 
-	 * @param mem_id
-	 * @return
-	 * Method 설명 :사용자 삭제
-	 */
-	int deleteMem(String mem_id);
-	
->>>>>>> branch 'master' of https://github.com/ghogho67/LastProject.git
 	/**
 	 * Method : getMemVo
 	 * 작성자 : PC21

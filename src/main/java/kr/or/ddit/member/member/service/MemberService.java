@@ -50,7 +50,6 @@ public class MemberService implements IMemberService {
 	public List<MemberVo> memPagingList(PageVo pageVo) {
 		return null;
 	}
-<<<<<<< HEAD
 	
 	
 	
@@ -60,8 +59,7 @@ public class MemberService implements IMemberService {
 	}
 	
 
-	
-=======
+
 
 	@Override
 	public String getMem_Id(Map<String, String> memInfo) {
@@ -72,5 +70,7 @@ public class MemberService implements IMemberService {
 	public int passUpdate(Map<String, String> memInfo) {
 		return memberDao.passUpdate(memInfo);
 	}
->>>>>>> branch 'master' of https://github.com/ghogho67/LastProject.git
+
+
+
 }
