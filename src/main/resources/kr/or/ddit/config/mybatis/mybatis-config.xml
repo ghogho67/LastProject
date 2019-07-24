@@ -7,6 +7,7 @@
 	<properties resource="kr/or/ddit/config/mybatis/db.properties"/>
 
 	<typeAliases>
+		<typeAlias alias="CategoryVo" type="
 		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.model.PostVo"/>
 		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
 		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
@@ -28,6 +29,7 @@
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" />
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
 <!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/> -->
 	</mappers>
 </configuration>

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import kr.or.ddit.category.category.dao.ICategoryDao;
 
 @Service
-public class CategoryService implements ICategoryService{
+public class CategoryService implements ICategoryService {
 	@Resource(name = "categoryDao")
 	private ICategoryDao categoryDao;
 }

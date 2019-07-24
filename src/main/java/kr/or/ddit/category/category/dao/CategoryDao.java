@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public class CategoryDao implements ICategoryDao {
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
+
 }

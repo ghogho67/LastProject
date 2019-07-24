@@ -81,7 +81,7 @@ public class PostController {
 		model.addAttribute("post_id", post_id);
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		// 페이지 이동
-		return "post/postDetail";
+		return "/post/postDetail.tiles";
 
 	}
 
@@ -110,9 +110,6 @@ public class PostController {
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
 		postVo.setMem_id(mem_id);
-//		postVo.setRef(postVo.getRef());
-//		postVo.setRe_step(postVo.getRe_step() + 1);
-//		postVo.setRe_level(postVo.getRe_level() + 1);
 
 		postService.postModify(postVo);
 
@@ -160,7 +157,7 @@ public class PostController {
 		model.addAttribute("postVo", postVo);
 		// 페이지
 		// 이동====================================================================
-		return "post/postDetail";
+		return "/post/postDetail.tiles";
 
 	}
 
@@ -196,8 +193,8 @@ public class PostController {
 	@RequestMapping(path = "/register", method = RequestMethod.GET)
 	public String showPostRegister(int cate_id, Model model) {
 		model.addAttribute("cate_id", cate_id);
-		return "post/postRegister";
-
+		return "/SE2/SE2postRegister.tiles";
+//		return "board/basicWriting수정";
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
@@ -247,7 +244,7 @@ public class PostController {
 		model.addAttribute("postVo", postVo);
 		model.addAttribute("replyList", replyService.replyList(post_id));
 
-		return "post/postDetail";
+		return "/post/postDetail.tiles";
 
 	}
 
@@ -271,12 +268,7 @@ public class PostController {
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
 		postVo.setMem_id(mvo.getMem_id());
-//		postVo.setRef(postVo.getRef());
-//		postVo.setRe_step(postVo.getRe_step() + 1);
-//		postVo.setRe_level(postVo.getRe_level() + 1);
 
-		// 답글 순서조정 메서드
-		postService.updateStep(postVo);
 		// 답글 쓰기
 		postService.postReply(postVo);
 
@@ -325,7 +317,7 @@ public class PostController {
 		model.addAttribute("postVo", postVo);
 		// 페이지
 		// 이동====================================================================
-		return "post/postDetail";
+		return "/post/postDetail.tiles";
 
 	}
 
