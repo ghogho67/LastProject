@@ -68,7 +68,7 @@ input[type="text"]::-webkit-input-placeholder {
 
 							<p>
 								<span class="item-txt" style="width: 100%; background: none;">
-									탈퇴 후에는 아이디 <span class="cblue bold ng-binding">dkskqk00</span>
+									탈퇴 후에는 아이디 <span class="cblue bold ng-binding">${MEM_INFO.mem_id}</span>
 									로 다시 가입할 수 없으며, 아이디와 데이터는 복구할 수 없습니다.<br> 게시판 서비스에 남아 있는
 									게시글은 탈퇴 후 삭제할 수 없습니다.
 								</span>
