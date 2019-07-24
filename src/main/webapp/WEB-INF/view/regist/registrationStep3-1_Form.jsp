@@ -24,6 +24,34 @@
 
 
 </head>
+
+<script>
+$(document).ready(function() {
+	var msg = '${msg}'; //메세지이므로 ''로 묶여야된다
+	if (msg != '')
+		alert(msg);
+	
+	//등록
+	$("#submit").on("click", function(){
+		$("#frm").attr("action", "${cp}/regist/regist4");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+		
+	});
+	
+	//home
+	$("#home").on("click", function(){
+		$("#frm").attr("action", "${cp}/login");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+		
+	});
+	
+});
+
+</script>
+
+
 <body>
 
 
@@ -88,8 +116,8 @@
 										<label for="text">Id</label>
 										<div class="input-group" style="direction: rtl">
 											<span class="input-group-btn"><button type="button"
-													class="btn">중복확인</button></span> <input type="id" id="id"
-												name="id" placeholder="영어, 숫자, 특수기호 사용가능  8글자까지"
+													class="btn">중복확인</button></span> <input type="text" id="id"
+												name="id" placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -181,10 +209,8 @@
 									<div class="form-group">
 										<label for="email1">요양보호사 라이센스번호</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="cw_lic" name=""
-												cw_lic""
-												placeholder="라이센스 번호를 입력해 주세요"
-												class="form-control"> <span
+											<input type="text" id="cw_lic" name="cw_lic" 
+											placeholder="라이센스 번호를 입력해 주세요"class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -214,7 +240,7 @@
 										<label for="email1">서비스 가능 지역</label>
 										<div class="input-group p-has-icon">
 											<input type="text" id="locate" name="locate"
-												placeholder="주소를 입력해 주세요" class="form-control"> <span
+												placeholder="동 만 입력해 주세요" class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -224,6 +250,25 @@
 									</div>
 								</div>
 							</div>
+							
+							
+							<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">성별</label>
+										<div class="checkbox">
+
+											<label><input type="checkbox" name="gender" value="M">
+												<span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">남</span></label>
+
+											<label><input type="checkbox" name="gender" value="F">
+												<span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">여</span></label>
+
+										</div>
+
+									</div>
+								</div>
 							
 							
 							
@@ -406,8 +451,9 @@
 
 
 								<div class="preview-btn text-left p-buttons">
-									<button class="btn" type="submit">submit</button>
-									<button class="btn" type="reset">reset</button>
+									<button class="btn" id="submit" type="submit">submit</button>
+									<button class="btn" id="reste" type="reset">reset</button>
+									<button class="btn" id="home" type="submit">home</button>
 								</div>
 							</div>
 						</div>

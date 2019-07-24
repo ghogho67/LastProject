@@ -201,15 +201,19 @@ public class PostController {
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
-	public String postRegister(PostVo postVo, int cate_id, String post_nm, String post_cont, String mem_id, Model model,
-			AttachmentVo attachmentVo, @RequestParam("file") MultipartFile[] files, HttpSession session) {
+	public String postRegister(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
+			@RequestParam("file") MultipartFile[] files, AttachmentVo attachmentVo, HttpSession session,
+			String mem_id) {
 
-		MemberVo mvo = (MemberVo) session.getAttribute("USER_INFO");
+//		MemberVo mvo = (MemberVo) session.getAttribute("USER_INFO");
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
-		postVo.setMem_id(mvo.getMem_id());
+//		postVo.setMem_id(mvo.getMem_id());
+		postVo.setMem_id("brown");
 
+		logger.debug("postVo:{}", postVo);
+		// 게시글등록---------------------------------------------------------------------------------------
 		postService.postInsert(postVo);
 		postVo = postService.getLatestPost();
 		int post_id = postVo.getPost_id();

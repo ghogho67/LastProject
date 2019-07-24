@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post">
+
+	<select id="postList" parameterType="int" resultType="PostVo">
+		select
+		*
+		from post
+		where cate_id = #{cate_id}
+	</select>
+
+	<insert id="postInsert" parameterType="PostVo">
+		insert into post values
+		(post_id.nextval, 0, sysdate,
+		#{post_nm},
+		#{post_cont},
+		'Y',post_id.currval, #{mem_id},#{cate_id},null
+		)
+	</insert>
+
+	<insert id="postReply" parameterType="PostVo">
+		INSERT INTO POST VALUES
+		(
+		post_id.NEXTVAL
+		,0,sysdate,#{post_nm}
+		,#{post_cont}
+		,'N'
+		,#{post_group}
+		,#{mem_id}
+		,#{cate_id}
+		,#{post_par}
+		)
+	</insert>
+
+	<select id="postPagingList" parameterType="map"
+		resultType="PostVo">
+				<![CDATA[
+	 	SELECT  B.*
+		FROM
+		(
+			SELECT	A.*, ROWNUM RN
+			FROM(	SELECT  	P.post_id
+							   ,P.cate_id, P.mem_id
+							   ,NVL(post_par, 0) post_par
+						  	   ,LPAD('└▶', (LEVEL-1)*4) || P.post_nm post_nm
+						  	   ,post_cont
+						  	   ,post_time
+						  	   ,post_del
+						  	   ,post_group
+						  	   ,LEVEL
+					FROM    POST P
+					WHERE   cate_id=#{cate_id}
+					START WITH P.post_par IS NULL
+					CONNECT BY PRIOR P.post_id = P.post_par
+					ORDER SIBLINGS BY P.post_group DESC, P.post_id  ) A
+		) B
+		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	B.RN <= #{page} * #{pageSize}
+	 	]]>
+
+	</select>
+
+	<select id="postCnt" parameterType="int" resultType="int">
+
+		select
+		count(*) from post where
+		cate_id=#{cate_id} and post_del='N'
+
+	</select>
+
+	<select id="getPost" parameterType="int" resultType="PostVo">
+
+		select*from
+		post
+		where post_id = #{post_id}
+
+	</select>
+
+	<select id="postModify" parameterType="PostVo">
+		update post set
+		post_nm=#{post_nm},post_cont=#{post_cont} where
+		post_id =
+		#{post_id}
+	</select>
+	<update id="postDelete" parameterType="int">
+		update post set
+		post_del='Y' where post_id=#{post_id}
+	</update>
+
+	<select id="getLatestPost" resultType="PostVo">
+		select * from (select *
+		from post order by post_time desc )
+		where rownum = 1
+	</select>
+
+	<insert id="updateStep" parameterType="PostVo">
+	<![CDATA[
+	update post
+	set re_step=re_step+1
+	where ref=#{ref} and re_step >= #{re_step}
+	]]>
+	</insert>
+
+
+
+</mapper>

@@ -6,12 +6,16 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.category.post.model.PostVo;
 
 @Repository
 public class PostDao implements IPostDao {
+
+	private static final Logger logger = LoggerFactory.getLogger(PostDao.class);
 
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
@@ -60,6 +64,8 @@ public class PostDao implements IPostDao {
 
 	@Override
 	public List<PostVo> postPagingList(Map<String, Object> map) {
+		logger.debug("whawt");
+		logger.debug("map:{}", map);
 		return sqlSession.selectList("post.postPagingList", map);
 	}
 

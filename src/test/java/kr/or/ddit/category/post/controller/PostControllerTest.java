@@ -1,4 +1,4 @@
-package kr.or.ddit.post.controller;
+package kr.or.ddit.category.post.controller;
 
 import static org.junit.Assert.*;
 

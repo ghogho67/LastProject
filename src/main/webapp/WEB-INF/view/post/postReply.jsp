@@ -57,13 +57,13 @@ post_id : ${post_id }<br><br>
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">제목</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="userId"
+									<input type="text" class="form-control" id="mem_id"
 										name="post_nm">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="userId" class="col-sm-2 control-label">글내용</label>
+								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
 								<div class="col-sm-10">
 									<%@include file="../../../SE2/SE2postReply.jsp"%>
 								</div>

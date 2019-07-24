@@ -1,6 +1,7 @@
 package kr.or.ddit.member.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -36,12 +37,29 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
-	public int updateMem(MemberVo memVo) {
-		return 0;
+	public int updateMember(MemberVo memVo) {
+		return memberDao.updateMem(memVo);
 	}
+	
+	
+	@Override
+	public int updatePMember(MemberVo memVo) {
+		return memberDao.updatePMem(memVo);
+	}
+	
 
 	@Override
 	public List<MemberVo> memPagingList(PageVo pageVo) {
 		return null;
+	}
+
+	@Override
+	public String getMem_Id(Map<String, String> memInfo) {
+		return memberDao.getMem_Id(memInfo);
+	}
+
+	@Override
+	public int passUpdate(Map<String, String> memInfo) {
+		return memberDao.passUpdate(memInfo);
 	}
 }

@@ -113,7 +113,7 @@ postVo : ${postVo }<br>
 
 											${reply.reply_content }<br>
 
-											[작성자 : ${reply.userId } 작성시간 : <fmt:formatDate value="${reply.reply_time }" pattern="yyyy년MM월dd일hh시mm분ss초" />]<br>
+											[작성자 : ${reply.mem_id } 작성시간 : <fmt:formatDate value="${reply.reply_time }" pattern="yyyy년MM월dd일hh시mm분ss초" />]<br>
 
 											${attachment.attachment_id} 
 
@@ -121,7 +121,7 @@ postVo : ${postVo }<br>
 
 									</c:choose>															
 
-									<c:if test="${reply.userId eq userId && reply.reply_delete eq 'no'}">
+									<c:if test="${reply.mem_id eq mem_id && reply.reply_delete eq 'no'}">
 										
 										<a href="${cp}/reply/delete?reply_id=${reply.reply_id }&post_id=${post_id }&cate_id=${cate_id }" class=" btn	btn-default pull-right">X</a><br>
 									
@@ -168,7 +168,7 @@ postVo : ${postVo }<br>
 								<input type="hidden" value="${cate_id }" name="cate_id">
 							</form>
 							
-							<c:if test="${postVo.userId eq userId }">
+							<c:if test="${postVo.mem_id eq mem_id }">
 								
 								<form id="postDeletefrm" method="post" action="${cp}/post/delete?cate_id=${cate_id}">
 									

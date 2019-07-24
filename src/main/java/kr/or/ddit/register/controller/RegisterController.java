@@ -1,8 +1,13 @@
 package kr.or.ddit.register.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.or.ddit.member.diseaseName.model.DiseaseNameVo;
+import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.member.memberDisease.model.MemberDiseaseVo;
 
 @RequestMapping("/regist")
 @Controller
@@ -60,6 +65,9 @@ public class RegisterController {
 	@RequestMapping(path = "/regist2", method = RequestMethod.POST)
 	public String registNotice1() {
 		
+		
+		
+		
 		return "/regist/registrationStep2_Regulation";
 	}
 	
@@ -85,7 +93,11 @@ public class RegisterController {
 	* Method 설명 :일반회원 정보입력
 	*/
 	@RequestMapping(path = "/regist3", method = RequestMethod.POST)
-	public String insertRegist1() {
+	public String insertRegist1(Model model, MemberVo memberVo, MemberDiseaseVo memberDiseaseVo) {
+		
+		model.addAttribute("mem_id", memberVo.getMem_id());
+		
+		
 		
 		return "/regist/registrationStep3_Form";
 	}

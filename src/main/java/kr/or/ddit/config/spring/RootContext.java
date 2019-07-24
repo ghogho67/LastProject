@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 
 //@Service , @Rpository 두 이노테이션을 대상으로 스캔
 @Configuration
-@ComponentScan(basePackages = "kr.or.ddit", useDefaultFilters = false, //이거 꼭하는게 좋음
-			   includeFilters = @Filter(type = FilterType.ANNOTATION,
-					   							classes = {Service.class, Repository.class})																				)
+@ComponentScan(basePackages = "kr.or.ddit", useDefaultFilters = false, // 이거 꼭하는게 좋음
+		includeFilters = @Filter(type = FilterType.ANNOTATION, classes = { Service.class, Repository.class }))
 //@ImportResource({"classpath:kr/or/ddit/config/spring/application-schedules.xml"})
 public class RootContext {
 

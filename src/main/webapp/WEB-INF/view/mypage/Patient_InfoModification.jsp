@@ -19,12 +19,12 @@
 
 
 <style>
-input[readonly="readonly"] {
+input[] {
 	color: #000 !important;
 	opacity: 2 !important;
 }
 
-input[type="text"]::-webkit-input-placeholder {
+input[type="text"]::-webkit-input-value {
 	font-size: 110%;
 }
 </style>
@@ -61,8 +61,12 @@ input[type="text"]::-webkit-input-placeholder {
 	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
 	<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
 
-	<form action="${cp }/user/form" method="post"
+	<form action="${cp}/mypage/Patient_InfoModification" method="post"
 		enctype="multipart/form-data">
+				<input type="hidden" id="grade" name="grade" value="${MEM_INFO.mem_grade}">
+		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
+		
+		
 		<div class="content-wrapper">
 			<h3>&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
 			<div class="row mb-4">
@@ -76,23 +80,22 @@ input[type="text"]::-webkit-input-placeholder {
 										<div class="card-body">
 											<div class="form-horizontal form-material">
 
+												
 												<div class="form-group">
 													<label class="col-md-12">프로필사진</label>
 													<div class="col-md-12">
 														<div style="position: absolute; left: 73%;">
-
-															<input type="file" class="form-control form-control-line" />
+															<input type="file" class="form-control form-control-line"  id="profile" name="profile" />
 
 														</div>
 														<br>
 													</div>
 												</div>
 
-
 												<div class="form-group">
 													<label class="col-md-12">아이디</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="dkskqk00"
+														<input type="text" value="${MEM_INFO.mem_id}"
 															class="form-control form-control-line"
 															readonly="readonly">
 													</div>
@@ -101,7 +104,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">성함</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="김 노인"
+														<input type="text" value="${MEM_INFO.mem_nm}"
 															class="form-control form-control-line"
 															readonly="readonly">
 													</div>
@@ -111,8 +114,8 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">비밀번호</label>
 													<div class="col-md-12">
-														<input type="password" value="password"
-															class="form-control form-control-line">
+														<input type="password" value="${MEM_INFO.mem_pass}"
+															class="form-control form-control-line"  id="pass" name="pass">
 													</div>
 												</div>
 
@@ -122,8 +125,8 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="email" class="col-md-12">이메일</label>
 													<div class="col-md-12">
-														<input type="email" placeholder="johnathan@admin.com"
-															class="form-control form-control-line" name="eemail"
+														<input type="text" value="${MEM_INFO.mem_mail}"
+															class="form-control form-control-line" name="email"
 															id="email">
 													</div>
 												</div>
@@ -132,9 +135,9 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="birth" class="col-md-12">생년월일</label>
 													<div class="col-md-12">
-														<input type="date" placeholder="19940922" value="19940922"
+														<input type="date" value="${MEM_INFO.mem_birth}" 
 															class="form-control form-control-line" name="birth"
-															id="birth">
+															id="birth" readonly="readonly">
 													</div>
 												</div>
 
@@ -148,8 +151,9 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">연락처</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="123 456 7890"
-															class="form-control form-control-line">
+														<input type="text" value="${MEM_INFO.mem_phone}"
+															class="form-control form-control-line"   name="phone"
+															name="phone">
 													</div>
 												</div>
 
@@ -172,7 +176,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="birth" class="col-md-12">우편번호</label>
 													<div class="col-md-10">
-														<input type="text" placeholder="30589"
+														<input type="text" value="${MEM_INFO.mem_zipcd}"
 															class="form-control form-control-line" name="zipcd"
 															id="zipcd">
 													</div>
@@ -189,7 +193,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="birth" class="col-md-12">주소</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="대전 중구 대흥동"
+														<input type="text" value="${MEM_INFO.mem_add1}"
 															class="form-control form-control-line" name="addr1"
 															id="addr1">
 													</div>
@@ -200,7 +204,7 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label for="birth" class="col-md-12">상세주소</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="영민빌딩 2층"
+														<input type="text" value="${MEM_INFO.mem_add2}"
 															class="form-control form-control-line" name="addr2"
 															id="addr2">
 													</div>
@@ -212,8 +216,9 @@ input[type="text"]::-webkit-input-placeholder {
 
 													<label class="col-md-12">보호자 성함</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="김양배추" value=""
-															class="form-control form-control-line">
+														<input type="text" value="${MEM_INFO.pro_nm}" 
+															class="form-control form-control-line"  name="pro_nm"
+															id="pro_nm">
 													</div>
 												</div>
 
@@ -221,8 +226,9 @@ input[type="text"]::-webkit-input-placeholder {
 
 													<label class="col-md-12">보호자와의 관계</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="자녀"
-															class="form-control form-control-line">
+														<input type="text" value="${MEM_INFO.pro_relation}"
+															class="form-control form-control-line"  name="pro_relation"
+															id="pro_relation">
 													</div>
 												</div>
 
@@ -230,8 +236,9 @@ input[type="text"]::-webkit-input-placeholder {
 												<div class="form-group">
 													<label class="col-md-12">긴급연락처</label>
 													<div class="col-md-12">
-														<input type="text" placeholder="123 456 7890"
-															class="form-control form-control-line">
+														<input type="text" value="${MEM_INFO.pro_phone}"
+															class="form-control form-control-line"  name="pro_phone"
+															id="pro_phone">
 													</div>
 												</div>
 
@@ -242,8 +249,8 @@ input[type="text"]::-webkit-input-placeholder {
 									</div>
 
 									<div class="col-sm-12" style="text-align: right;">
-										<a class="btn btn-success" id="modificationComplete"
-											style="color: white;">수정 내용 등록 </a>
+										<button class="btn btn-success" id="modificationComplete"
+											>수정 내용 반영 </button>
 									</div>
 								</div>
 							</div>
