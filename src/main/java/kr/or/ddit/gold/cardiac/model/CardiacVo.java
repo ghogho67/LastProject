@@ -7,7 +7,7 @@ public class CardiacVo {
 	private String mem_id;
 	private Date gold_st;
 	private int car_bpm;
-	private Date car_time;
+	private String car_time;
 
 	public int getCar_id() {
 		return car_id;
@@ -41,11 +41,12 @@ public class CardiacVo {
 		this.car_bpm = car_bpm;
 	}
 
-	public Date getCar_time() {
+
+	public String getCar_time() {
 		return car_time;
 	}
 
-	public void setCar_time(Date car_time) {
+	public void setCar_time(String car_time) {
 		this.car_time = car_time;
 	}
 
