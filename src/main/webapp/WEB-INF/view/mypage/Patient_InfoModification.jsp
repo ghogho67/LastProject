@@ -132,15 +132,16 @@ input[type="text"]::-webkit-input-value {
 												</div>
 
 
+
+
 												<div class="form-group">
 													<label for="birth" class="col-md-12">생년월일</label>
 													<div class="col-md-12">
-														<input type="date" value="${MEM_INFO.mem_birth}" 
+														<input type="text" value="${MEM_INFO.mem_birth}"
 															class="form-control form-control-line" name="birth"
 															id="birth" readonly="readonly">
 													</div>
 												</div>
-
 
 
 

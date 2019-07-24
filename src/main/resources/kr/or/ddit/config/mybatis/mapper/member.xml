@@ -4,12 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-   <!-- 전체  사용자 리스트 조회 하기-->
-   <select id="getMemList" resultType="memberVo">
-      SELECT *
-      FROM MEMBER
-      ORDER BY mem_id
-   </select>
+
 
    <!-- 특정 사용자 조회 -->
    <select id="getMemVo" resultType="memberVo" parameterType="String">
@@ -17,26 +12,6 @@
       FROM MEMBER
       WHERE mem_id = #{mem_id}
    </select>
-   
-   <!-- 사용자 페이지 리스트 조회 -->
-   <!-- pageVo : int page, int pageSize -->
-<!--    <select id="memPagingList" resultType="memberVo" parameterType="pageVo"> -->
-<!--       SELECT * -->
-<!--       FROM(SELECT a.*, rownum rn -->
-<!--            FROM (SELECT a.* -->
-<!--                  FROM   USERS a -->
-<!--                  ORDER BY USERID) a ) -->
-<!--            WHERE rn &gt;= 1 and rn &lt;= 10 -->
-           
-<!--       <![CDATA[ -->
-<!--       SELECT c.* -->
-<!--       FROM(SELECT b.*, ROWNUM rn -->
-<!--            FROM (SELECT a.* -->
-<!--                  FROM   MEMBER a -->
-<!--                  ORDER BY MEM_ID) b ) c -->
-<!--       WHERE rn >= (#{page} - 1) * #{pageSize} + 1 and rn <= #{page} * #{pageSize} -->
-<!--       ]]> -->
-<!--    </select> -->
    
    <!-- 전체 사용자 수 조회 -->
    <select id="memberCnt" resultType="int">
@@ -124,13 +99,7 @@
    		INSERT INTO LOCATION(loc_dong)
    					VALUES(#{loc_dong})
    </insert>
-   
-   <!-- 요양보호사 등록 - 가능요일-->
-   <insert id="insertDay" parameterMap="dayVo">
-   		INSERT INTO DAY(cw_day)
-   					VALUES(#{cw_day})
-   </insert>
-   
+
    <!-- 요양보호사 등록 - 경력 -->
    <insert id="insertCareer" parameterType="careerVo">
    		INSERT INTO CAREER(career_cont
@@ -163,44 +132,7 @@
       WHERE  mem_id=#{mem_id}
    </delete>
    
-   
-   
-   <!-- 사용자 정보 수정 -->
-  <!--  <update id="updateMem" parameterType="userVo">
-      UPDATE USERS
-      SET    NAME = #{name},
-             ALIAS = #{alias},
-             PASS = #{pass},
-             ADDR1 = #{addr1},
-             ADDR2 = #{addr2},
-             ZIPCD = #{zipcd},
-             BIRTH = #{birth},
-             <if test="path != null">
-                ,path=#{path}, filename=#{filename}
-             </if>
-             PATH = #{path, jdbcType=VARCHAR},
-             FILENAME = #{filename, jdbcType=VARCHAR}
-      WHERE  USERID = #{userId}
-   </update> -->
-   
-   <!-- 사용자 비밀번호 암호화 적용 대상 조회 -->
-   <!-- <select id="userListForPassEncrypt" resultType="userVo">
-      SELECT *
-      FROM   USERS
-      WHERE  USERID NOT IN ('BROWN', 'USERTEST')
-   </select> -->
-   
-   <!-- 사용자 비밀번호 업데이트 -->
- <!--   <update id="updateUserEncryptPass" parameterType="userVo">
-      UPDATE USERS
-      SET      PASS = #{pass}
-      WHERE  USERID = #{userId}
-   </update> -->
-   
-   
-   
-   
-   
+ 
 
 	<!-- 전체 사용자 리스트 조회 하기 -->
 	<select id="getMemList" resultType="memberVo">
@@ -208,34 +140,6 @@
 		FROM MEMBER
 		ORDER BY mem_id
 	</select>
-
-	<!-- 특정 사용자 조회 -->
-	<select id="getMemVo" resultType="memberVo"
-		parameterType="String">
-		SELECT *
-		FROM MEMBER
-		WHERE mem_id = #{mem_id}
-	</select>
-
-	<!-- 전체 사용자 수 조회 -->
-	<select id="memberCnt" resultType="int">
-		SELECT /*+ INDEX_FFS(MEMBER PK_MEMBER)*/ COUNT(*)
-		FROM MEMBER
-	</select>
-
-
-	<!-- 사용자 등록 -->
-	<!-- <insert id="insertMem" parameterType="userVo"> INSERT INTO MEMBER VALUES 
-		(#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, #{birth}, 
-		#{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR}) </insert> -->
-
-	<!-- 사용자 삭제 -->
-	<delete id="deleteMem" parameterType="String">
-		UPDATE MEMBER
-		set mem_del = 'Y'
-		WHERE mem_id=#{mem_id}
-	</delete>
-
 
 
 
@@ -254,7 +158,7 @@
 
 
 
-   	<update id="updatePMem" parameterType="memberVo">
+   	<update id="updatePMember" parameterType="memberVo">
 		UPDATE member
 		SET
 		mem_pass = #{mem_pass},
@@ -271,13 +175,13 @@
 	</update>
 
 
-	<!-- 사용자 비밀번호 암호화 적용 대상 조회 -->
-	<!-- <select id="userListForPassEncrypt" resultType="userVo"> SELECT * FROM 
-		USERS WHERE USERID NOT IN ('BROWN', 'USERTEST') </select> -->
 
-	<!-- 사용자 비밀번호 업데이트 -->
-	<!-- <update id="updateUserEncryptPass" parameterType="userVo"> UPDATE USERS 
-		SET PASS = #{pass} WHERE USERID = #{userId} </update> -->
+   	<update id="withdrwalMember" parameterType="memberVo">
+		UPDATE member
+		SET
+		mem_del = #{mem_del}
+		WHERE mem_id = #{mem_id}
+	</update>
 
 
 </mapper>

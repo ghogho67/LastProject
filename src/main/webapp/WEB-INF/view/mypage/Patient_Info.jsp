@@ -202,7 +202,7 @@ input[type="text"]::-webkit-input-placeholder {
 								</div>
 
 								<div class="col-sm-12" style="text-align: right;">
-									<a class="btn btn-success" style="color: white;" href="${cp}/Patient_InfoModification">회원정보수정 </a>
+									<a class="btn btn-success" style="color: white;" href="${cp}/mypage/Patient_InfoModification">회원정보수정 </a>
 								</div>
 							</div>
 						</div>
