@@ -19,6 +19,10 @@
 }
 </style>
 
+<script type="text/javascript">
+
+</script>
+
 </head>
 <body>
 
@@ -35,6 +39,7 @@
 						src="/img/mypage/btn_del.png" alt="삭제"></a></li>
 				<li><input type="password" name="mem_pass" id="mem_pass"
 					placeholder="비밀번호" value="1234" tabindex="2"></li>
+				<li><p style="color:red">${fail}</p></li>
 				<li class="log"><button class="btn type1" id="btnLogin"
 					tabindex="3">로그인</button></li>
 			</ul>

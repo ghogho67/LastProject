@@ -94,5 +94,28 @@ public interface IRegisterService {
 	int insertServiceType(ServiceTypeVo serviceTypeVo);
 	
 	
+	//-------------------------------------------------------
+	
+	/**
+	* Method : idCheck
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 : 아이디중복체크
+	*/
+	int idCheck(String mem_id);
+	
+	
+	/**
+	* Method : getMemVo
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 : 특정사용자 조회
+	*/
+	MemberVo getMemVo(String mem_id);
+	
 
 }

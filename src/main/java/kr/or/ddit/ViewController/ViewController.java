@@ -106,34 +106,39 @@ public class ViewController {
 	
 	@RequestMapping("sample")
 	public String sample() {
-		return "mypage/sample.jsp";
+		return "mypage/sample";
 	}
 	
 	@RequestMapping("sample2")
 	public String sample2() {
-		return "mypage/sample2.jsp";
+		return "mypage/sample2";
 	}
 	
 	@RequestMapping("sample3")
 	public String sample3() {
-		return "mypage/sample3.jsp";
+		return "mypage/sample3";
 	}
 	
 	@RequestMapping("sample9")
 	public String sample9() {
-		return "mypage/sample9.jsp";
+		return "mypage/sample9";
 	}
 	
 	@RequestMapping("sample8")
 	public String sample8() {
-		return "mypage/sample8.jsp";
+		return "mypage/sample8";
 	}
 	
 	@RequestMapping("loginTest")
 	public String loginTest() {
-		return "login.jsp";
+		return "login";
 	}
 	
+	
+	@RequestMapping("idpwFinding")
+	public String idpwFinding() {
+		return "idpwFinding";
+	}
 	
 	
 }

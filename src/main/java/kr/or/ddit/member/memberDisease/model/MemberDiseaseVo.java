@@ -33,5 +33,9 @@ public class MemberDiseaseVo {
 	public String toString() {
 		return "MemberDiseaseVo [mem_dis_id=" + mem_dis_id + ", mem_id=" + mem_id + ", dis_id=" + dis_id + "]";
 	}
+	
+	public MemberDiseaseVo() {
+		
+	}
 
 }

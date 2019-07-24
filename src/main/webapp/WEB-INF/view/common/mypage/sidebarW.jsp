@@ -44,6 +44,9 @@
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"><a class="nav-link" href="#l">
 										  회원목록  </a></li>
+										  
+										  <li class="nav-item"><a class="nav-link" href="#">
+											보고서 확인 </a></li>
 									<li class="nav-item"><a class="nav-link" href="#">
 											보고서 작성 </a></li>
 									
@@ -75,9 +78,8 @@
 						
 						
 						<li class="nav-item"><a class="nav-link"
-							href="${cp}/resource/Admin/pages/forms/index.html">
-								<img
-									src="${cp}/resource/Admin//images/icons/10.png"
+							href="${cp}/mypage/Worker_Wd">
+								<img src="${cp}/resource/Admin//images/icons/10.png"
 								alt=""> <span class="menu-title">회원탈퇴</span>
 						</a></li>
 						

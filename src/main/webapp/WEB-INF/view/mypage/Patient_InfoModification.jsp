@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -132,15 +133,16 @@ input[type="text"]::-webkit-input-value {
 												</div>
 
 
+
+
 												<div class="form-group">
 													<label for="birth" class="col-md-12">생년월일</label>
 													<div class="col-md-12">
-														<input type="date" value="${MEM_INFO.mem_birth}" 
+														<input type="text" value="${MEM_INFO.mem_birth}"
 															class="form-control form-control-line" name="birth"
 															id="birth" readonly="readonly">
 													</div>
 												</div>
-
 
 
 
@@ -268,4 +270,5 @@ input[type="text"]::-webkit-input-value {
 
 
 </body>
+
 </html>

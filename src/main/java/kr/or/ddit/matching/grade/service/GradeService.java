@@ -10,4 +10,9 @@ import kr.or.ddit.matching.grade.dao.IGradeDao;
 public class GradeService implements IGradeService {
 	@Resource(name = "gradeDao")
 	private IGradeDao gradeDao;
+
+	@Override
+	public String cwGradeAvg(String mem_id) {
+		return gradeDao.cwGradeAvg(mem_id);
+	}
 }
