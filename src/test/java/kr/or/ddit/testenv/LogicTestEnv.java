@@ -24,6 +24,7 @@ import kr.or.ddit.config.spring.RootContext;
 @ContextConfiguration(classes = { RootContext.class, ApplicationDatasource_dev.class })
 //ApplicationTransaction.class,
 public class LogicTestEnv {
+	
 
 	@Resource(name = "datasource")
 	private DataSource datasource;
