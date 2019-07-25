@@ -6,10 +6,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.member.careWorker.career.model.CareerVo;
+import kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo;
 import kr.or.ddit.member.careWorker.day.model.DayVo;
 import kr.or.ddit.member.careWorker.hospital.model.HospitalVo;
 import kr.or.ddit.member.careWorker.location.model.LocationVo;
-import kr.or.ddit.member.careWorker.serviceType.model.ServiceTypeVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.memberDisease.model.MemberDiseaseVo;
 
@@ -113,16 +113,16 @@ public class RegisterDao implements IRegisterDao {
 	}
 
 	/**
-	* Method : insertServiceType
+	* Method : insertCWServiceType
 	* 작성자 : ADMIN
 	* 변경이력 :
-	* @param serviceTypeVo
+	* @param cwServiceTypeVo
 	* @return
 	* Method 설명 :요양보호사 증록 - 서비스 종류
 	*/
 	@Override
-	public int insertServiceType(ServiceTypeVo serviceTypeVo) {
-		return sqlSession.insert("member.insertServiceType", serviceTypeVo);
+	public int insertCWServiceType(CwServiceTypeVo cwServiceTypeVo) {
+		return sqlSession.insert("member.insertCWServiceType", cwServiceTypeVo);
 	}
 
 	//-------------------------------------------------------

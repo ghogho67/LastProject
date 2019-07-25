@@ -67,7 +67,7 @@ background:url(../../../resource/howcare/images/mypage_title.png) no-repeat 0px 
 
 <section class="memberjoin">
       <div class="memberjoin-in">
-        <h4 class="memberjoin-title ng-binding">회원가입(일반회원)</h4>
+        <h4 class="memberjoin-title ng-binding">회원가입</h4>
         <ul>
           <li class="memberjoin01">01.가입종류선택</li>
           <li class="right-arrow"></li>

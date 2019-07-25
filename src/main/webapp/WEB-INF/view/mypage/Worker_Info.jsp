@@ -33,7 +33,7 @@ input[type="text"]::-webkit-input-placeholder {
 
 			<div class="col-lg-12">
 				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수()</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수(${grade})</p>
 				<div class="card">
 					<div class="card-body">
 						<div class="row">

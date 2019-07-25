@@ -7,11 +7,12 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.member.memberDisease.model.MemberDiseaseVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class RegisterDaoTest extends LogicTestEnv{
 
-	@Resource(name="registerDao")
+	@Resource(name = "registerDao")
 	private IRegisterDao registerDao;
 	
 	
@@ -31,11 +32,15 @@ public class RegisterDaoTest extends LogicTestEnv{
 	@Test
 	public void insertMemberDiseaseTest() {
 		/***Given***/
-
+		MemberDiseaseVo memberDiseaseVo = null;
+		memberDiseaseVo = new MemberDiseaseVo(12,"asd12@", 1);
 		/***When***/
-
+		int insertCnt = registerDao.insertMemberDisease(memberDiseaseVo);
 		/***Then***/
+		assertEquals(1, insertCnt);
 
 	}
+	
+
 
 }

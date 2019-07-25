@@ -36,10 +36,11 @@ public class RegCheck {
 	* 변경이력 :
 	* @param mem_pass
 	* @return
-	* Method 설명 : 영어, 숫자  4~6자리
+	* Method 설명 : 영어, 숫자, 특수문자  8자리 이상
 	*/
 	public boolean regPass(String mem_pass) {
-		Pattern p = Pattern.compile("^[a-zA-Z0-9]{4,6}$");
+//		Pattern p = Pattern.compile("^[a-zA-Z0-9]{4,6}$");
+		Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$");
 		Matcher m = p.matcher(mem_pass);
 		result = m.matches();
 		return result;
@@ -69,7 +70,8 @@ public class RegCheck {
 	* Method 설명 :핸드폰 정규식
 	*/
 	public boolean regPhone(String mem_phone) {
-		Pattern p = Pattern.compile("/^\\\\d{3}-\\\\d{3,4}-\\\\d{4}$/");
+//		Pattern p = Pattern.compile("/^\\\\d{3}-\\\\d{3,4}-\\\\d{4}$/");
+		Pattern p = Pattern.compile("^\\d{3}-\\d{3,4}-\\d{4}$");
 		Matcher m = p.matcher(mem_phone);
 		result = m.matches();
 		return result;
@@ -84,7 +86,8 @@ public class RegCheck {
 	* Method 설명 :이메일 정규식
 	*/
 	public boolean regMail(String mem_mail) {
-		Pattern p = Pattern.compile("^[_a-zA-Z0-9-\\\\.]+@[\\\\.a-zA-Z0-9-]+\\\\.[a-zA-Z]+$");
+//		Pattern p = Pattern.compile("^[_a-zA-Z0-9-\\\\.]+@[\\\\.a-zA-Z0-9-]+\\\\.[a-zA-Z]+$");
+		Pattern p = Pattern.compile("^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$");
 		Matcher m = p.matcher(mem_mail);
 		result = m.matches();
 		return result;
