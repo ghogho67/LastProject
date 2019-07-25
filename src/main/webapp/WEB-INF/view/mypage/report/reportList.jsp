@@ -230,6 +230,7 @@ style>.pagination-outer {
 							<section class="board-list">
 
 								<div class="board-top">
+		
 
 									<p class="board-count" style="margin-left: 200px;">
 										총 <span class="education-board-cnt ng-binding">24</span>개의 보고서
