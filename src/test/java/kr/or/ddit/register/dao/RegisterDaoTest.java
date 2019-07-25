@@ -12,7 +12,7 @@ import kr.or.ddit.testenv.LogicTestEnv;
 
 public class RegisterDaoTest extends LogicTestEnv{
 
-	@Resource(name="registerDao")
+	@Resource(name = "registerDao")
 	private IRegisterDao registerDao;
 	
 	
