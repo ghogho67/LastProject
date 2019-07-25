@@ -8,7 +8,7 @@ public class ReportController {
 
 	
 	
-	@RequestMapping("/report")
+	@RequestMapping("/reportList")
 	public String report() {
 		return "mypage/report/reportList";
 	}
