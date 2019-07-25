@@ -12,6 +12,6 @@ public interface IAttachmentService {
 
 	int attchmentDelete(int attchment_id);
 
-	AttachmentVo getAttachment(int attachment_id);
+	AttachmentVo getAttachment(int att_id);
 
 }

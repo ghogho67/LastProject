@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.member.member.model.MemberVo;
-import kr.or.ddit.register.dao.IRegisterDao;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class RegisterDaoTest extends LogicTestEnv{

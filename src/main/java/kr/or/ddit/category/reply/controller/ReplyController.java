@@ -31,7 +31,7 @@ public class ReplyController {
 	private IReplyService replyService;
 
 	@RequestMapping(path = "/delete")
-	public String replyDelete(int reply_id, int cate_id, int post_id, Model model) {
+	public String replyDelete(int reply_id, int cate_id, int post_id, Model model, HttpSession session) {
 
 		replyService.replyDelete(reply_id);
 
@@ -40,24 +40,21 @@ public class ReplyController {
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("replyList", replyService.replyList(post_id));
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
 
 		return "/post/postDetail.tiles";
 
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
-	public String replyRegister(String reply_cont, int post_id, ReplyVo replyVo, Model model, int cate_id) {
-//		HttpSession session, 
-		logger.debug("post_id:{}", post_id);
-		logger.debug("reply_cont:{}", reply_cont);
-		logger.debug("cate_id:{}", cate_id);
-
+	public String replyRegister(String reply_cont, int post_id, ReplyVo replyVo, Model model, int cate_id,
+			HttpSession session) {
 		replyVo.setPost_id(post_id);
 		replyVo.setReply_cont(reply_cont);
-//		MemberVo mvo = (MemberVo) session.getAttribute("USER_INFO");
-		replyVo.setMem_id("brown");
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		replyVo.setMem_id(mvo.getMem_id());
 
-		logger.debug("replyVO:{}", replyVo);
 		replyService.replyInsert(replyVo);
 
 		model.addAttribute("post_id", post_id);
@@ -65,6 +62,22 @@ public class ReplyController {
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		model.addAttribute("postVo", postService.getPost(post_id));
 		model.addAttribute("replyList", replyService.replyList(post_id));
+		model.addAttribute("mem_id", mvo.getMem_id());
+
+		return "/post/postDetail.tiles";
+	}
+
+	@RequestMapping(path = "/modify", method = RequestMethod.GET)
+	public String replyModify(int reply_id, HttpSession session, Model model, int cate_id) {
+
+		ReplyVo rvo = replyService.getReply(reply_id);
+
+		model.addAttribute("post_id", rvo.getPost_id());
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("attachmentList", attachmentService.getAttachmentList(rvo.getPost_id()));
+		model.addAttribute("postVo", postService.getPost(rvo.getPost_id()));
+		model.addAttribute("replyList", replyService.replyList(rvo.getPost_id()));
+		model.addAttribute("mem_id", rvo.getMem_id());
 
 		return "/post/postDetail.tiles";
 	}

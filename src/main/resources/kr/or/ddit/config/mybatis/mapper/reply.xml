@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reply">
 
-	<insert id="replyInsert" parameterType="ReplyVo">
+	<insert id="insert" parameterType="ReplyVo">
 		insert into reply
 		values(reply_id.nextval,#{reply_cont},'N',
 		sysdate,#{mem_id},#{post_id})
@@ -16,11 +16,24 @@
 		by reply_time asc
 	</select>
 
-	<update id="replyDelete" parameterType="int">
+	<update id="delete" parameterType="int">
 		UPDATE reply SET
 		reply_del= 'Y'
 		WHERE
 		reply_id = #{reply_id}
 	</update>
+
+	<update id="modify" parameterType="ReplyVo">
+		UPDATE reply SET
+		reply_cont =
+		#{reply_cont},
+		reply_time = sysdate
+		WHERE
+		reply_id = #{reply_id}
+	</update>
+
+	<select id="getReply" parameterType="int" resultType="ReplyVo">
+		select*from reply where reply_id = #{reply_id}
+	</select>
 
 </mapper>

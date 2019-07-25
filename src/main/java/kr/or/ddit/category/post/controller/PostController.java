@@ -9,13 +9,11 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,12 +62,15 @@ public class PostController {
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-		return "post/postPagingList";
+		return "/post/postPagingList.tiles";
 
 	}
 
 	@RequestMapping("detail")
-	public String postDetail(int cate_id, int post_id, Model model) {
+	public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
+
+		logger.debug("cate_id:{}", cate_id);
+		logger.debug("post_id:{}", post_id);
 
 		// cate_id
 		model.addAttribute("cate_id", cate_id);
@@ -80,6 +81,8 @@ public class PostController {
 		// post_id
 		model.addAttribute("post_id", post_id);
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
 		// 페이지 이동
 		return "/post/postDetail.tiles";
 
@@ -95,12 +98,13 @@ public class PostController {
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		model.addAttribute("postVo", postVo);
 
-		return "post/postModify";
+		return "/post/postModify.tiles";
 	}
 
 	@RequestMapping(path = "/modify", method = RequestMethod.POST)
 	public String postModify(Model model, int post_id, @RequestParam("file") MultipartFile[] files, PostVo postVo,
-			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo) {
+			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
+			HttpSession session) {
 		// multipartRequest 사용할 준비
 		postVo = postService.getPost(post_id);
 		// reply 답글 등록 파라미터 설정==============================================
@@ -125,7 +129,7 @@ public class PostController {
 
 		for (MultipartFile file : files) {
 			if (!file.getOriginalFilename().isEmpty()) {
-				String attachment_name = file.getOriginalFilename();
+				String a = file.getOriginalFilename();
 				String ext = PartUtil.getExt(file.getOriginalFilename());
 				String fileName = UUID.randomUUID().toString();
 				File uploadfile = new File(savePath + File.separator + fileName + ext);
@@ -155,6 +159,9 @@ public class PostController {
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		// postVo
 		model.addAttribute("postVo", postVo);
+		// mem_id
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
 		// 페이지
 		// 이동====================================================================
 		return "/post/postDetail.tiles";
@@ -162,8 +169,9 @@ public class PostController {
 	}
 
 	@RequestMapping("/pagingList")
-	public String postPagingList(@Valid MemberVo mvo, BindingResult result, int cate_id, PageVo pageVo, Model model) {
-
+	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
+//		@Valid MemberVo mvo, BindingResult result, 
+		logger.debug("☞delete:{}");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
@@ -171,6 +179,7 @@ public class PostController {
 			map.put("cate_id", cate_id);
 
 		Map<String, Object> resultMap = postService.postPagingList(map);
+		logger.debug("resultMap:{}", resultMap);
 
 		pageVo.setPage((int) map.get("page"));
 		pageVo.setPageSize((int) map.get("pageSize"));
@@ -185,9 +194,10 @@ public class PostController {
 		model.addAttribute("pageVo", pageVo);
 		// paginationSize
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
 		// 화면 출력을 담당하는 jsp에게 역할 위임
-		return "post/postPagingList";
-
+		return "/post/postPagingList.tiles";
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.GET)
@@ -199,15 +209,13 @@ public class PostController {
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String postRegister(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
-			@RequestParam("file") MultipartFile[] files, AttachmentVo attachmentVo, HttpSession session,
-			String mem_id) {
+			@RequestParam("file") MultipartFile[] files, AttachmentVo attachmentVo, HttpSession session) {
 
-//		MemberVo mvo = (MemberVo) session.getAttribute("USER_INFO");
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
-//		postVo.setMem_id(mvo.getMem_id());
-		postVo.setMem_id("brown");
+		postVo.setMem_id(mvo.getMem_id());
 
 		logger.debug("postVo:{}", postVo);
 		// 게시글등록---------------------------------------------------------------------------------------
@@ -220,7 +228,7 @@ public class PostController {
 		String savePath = PartUtil.getUploadPath();
 		for (MultipartFile file : files) {
 			if (!file.getOriginalFilename().isEmpty()) {
-				String attachment_name = file.getOriginalFilename();
+				String att_nm = file.getOriginalFilename();
 				String ext = PartUtil.getExt(file.getOriginalFilename());
 				String fileName = UUID.randomUUID().toString();
 				File uploadfile = new File(savePath + File.separator + fileName + ext);
@@ -243,6 +251,9 @@ public class PostController {
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("postVo", postVo);
 		model.addAttribute("replyList", replyService.replyList(post_id));
+		mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		logger.debug("☞mvo.getMem_id():{}",mvo.getMem_id());
+		model.addAttribute("mem_id",mvo.getMem_id());
 
 		return "/post/postDetail.tiles";
 
@@ -253,21 +264,27 @@ public class PostController {
 
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("post_id", post_id);
-		return "post/postReply";
+		return "/post/postReply.tiles";
 
 	}
 
 	@RequestMapping(path = "/reply", method = RequestMethod.POST)
-	public String postReply(PostVo postVo, int cate_id, String post_nm, String post_cont, String mem_id, Model model,
+	public String postReply(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
 			AttachmentVo attachmentVo, int post_id, @RequestParam("file") MultipartFile[] files, HttpSession session) {
+
 		postVo = postService.getPost(post_id);
 
-		MemberVo mvo = (MemberVo) session.getAttribute("USER_INFO");
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 
+		logger.debug("☞postVo:{}", postVo);
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
+		postVo.setPost_group(postVo.getPost_group());
+		postVo.setPost_nm(post_nm);
 		postVo.setMem_id(mvo.getMem_id());
+		postVo.setPost_par(post_id);
+		logger.debug("☞postVo:{}", postVo);
 
 		// 답글 쓰기
 		postService.postReply(postVo);
@@ -286,7 +303,7 @@ public class PostController {
 		String savePath = PartUtil.getUploadPath();
 		for (MultipartFile file : files) {
 			if (!file.getOriginalFilename().isEmpty()) {
-				String attachment_name = file.getOriginalFilename();
+				String att_nm = file.getOriginalFilename();
 				String ext = PartUtil.getExt(file.getOriginalFilename());
 				String fileName = UUID.randomUUID().toString();
 				File uploadfile = new File(savePath + File.separator + fileName + ext);
@@ -315,6 +332,8 @@ public class PostController {
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		// postVo
 		model.addAttribute("postVo", postVo);
+		mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id",mvo.getMem_id());
 		// 페이지
 		// 이동====================================================================
 		return "/post/postDetail.tiles";
@@ -344,7 +363,7 @@ public class PostController {
 
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("fileName", fileName);
-		return "post/postRegister";
+		return "/post/postRegister.tiles";
 
 	}
 

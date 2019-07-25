@@ -12,4 +12,8 @@ public interface IReplyService {
 
 	int replyDelete(int reply_id);
 
+	int replyModify(ReplyVo rvo);
+
+	ReplyVo getReply(int reply_id);
+
 }

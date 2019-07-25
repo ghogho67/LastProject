@@ -8,9 +8,5 @@ import kr.or.ddit.testenv.LogicTestEnv;
 
 public class AttachmentServiceTest extends LogicTestEnv{
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }
