@@ -141,15 +141,5 @@ public class ViewController {
 	}
 	
 	
-<<<<<<< HEAD
-=======
-	
-	
-	@RequestMapping("TTest")
-	public String TTest() {
-		return "TTest";
-	}
-	
-	
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
+
 }
