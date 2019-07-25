@@ -171,14 +171,7 @@
 
 
 
-	<!-- 사용자 삭제 -->
-	<delete id="deleteMem" parameterType="String">
-		UPDATE MEMBER
-		set mem_del =
-		'Y'
-		WHERE mem_id=#{mem_id}
-	</delete>
-	
+
 
 
 	<update id="updateMem" parameterType="memberVo">

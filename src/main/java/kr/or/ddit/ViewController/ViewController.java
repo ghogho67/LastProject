@@ -141,4 +141,12 @@ public class ViewController {
 	}
 	
 	
+	
+	
+	@RequestMapping("TTest")
+	public String TTest() {
+		return "TTest";
+	}
+	
+	
 }

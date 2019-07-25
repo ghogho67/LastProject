@@ -20,10 +20,11 @@
 		<typeAlias alias="AttachmentVo" type = "kr.or.ddit.category.attachment.model.AttachmentVo"/>
 		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.reply.model.ReplyVo"/>
 		<typeAlias alias="matchingGradeVo" type = "kr.or.ddit.joinVo.MatchingGradeVo"/>
-
+		<typeAlias alias="matchingReportVo" type = "kr.or.ddit.joinVo.MatchingReportVo"/>
 		<typeAlias alias="cardiacVo" type="kr.or.ddit.gold.cardiac.model.CardiacVo" />
 		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
-
+		<typeAlias alias="ReportVo" type="kr.or.ddit.matching.report.model.ReportVo" />
+		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
 
 		
 
@@ -34,10 +35,9 @@
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" />
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/> -->
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/> -->
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
 
 	</mappers>
 </configuration>

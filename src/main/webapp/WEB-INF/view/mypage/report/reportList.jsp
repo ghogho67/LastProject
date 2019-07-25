@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,31 +9,7 @@
 
 <meta charset="UTF-8">
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
-<link rel="stylesheet"
-	href="${cp}/resource/joinCare/css/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/popup.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/layout.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/company.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/idpw-find.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/mypage.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/education.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/useguide.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/policy.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/board.css">
+<%@include file="/WEB-INF/view/common/LibForWebpage2.jsp"%>
 
 
 <style>
@@ -129,17 +106,15 @@ style>.pagination-outer {
 	}
 }
 
-* {
-	box-sizing: border-box;
-}
-
 .for {
 	position: relative;
 	width: 250px;
+	height: 30px;
 	margin: 0 auto;
 }
 
 .d1 {
+	height: 30px;
 	background: white;
 	position: absolute;
 	right: 21%;
@@ -147,8 +122,8 @@ style>.pagination-outer {
 
 .d1 input {
 	width: 100%;
-	height: 32px;
-	padding-left: 10px;
+	height: 20px;
+	padding-left: 90px;
 	border: 2px solid #7BA7AB;
 	border-radius: 5px;
 	outline: none;
@@ -162,7 +137,7 @@ style>.pagination-outer {
 	top: 0;
 	right: 0px;
 	width: 32px;
-	height: 32px;
+	height: 38px;
 	border: none;
 	background: #7BA7AB;
 	border-radius: 0 5px 5px 0;
@@ -175,14 +150,69 @@ style>.pagination-outer {
 	font-size: 16px;
 	color: #F9F0DA;
 }
+
+#searchType {
+	height: 40px;
+	width: 70px;
+	font-size: 15px;
+	border-radius: 5px 0px 0px 5px;
+	border-top: 2px solid #7BA7AB;
+	border-bottom: 2px solid #7BA7AB;
+	border-left: 2px solid #7BA7AB;
+	border-right: 2px solid #7BA7AB;
+}
 </style>
 
 
+
+<script>
+	$(document).ready(function() {
+
+		//사용자 테그 이벤트 등록
+		$(".reportTr").on("click", function() {
+			var reportId = $(this).find(".reportId").text();
+			$("#reportId").val(reportId);
+			$("#frm").submit();
+		});
+
+		
+		//보고서 작성용ㄴ
+// 		$("#post").on("click", function() {
+// 			$("#frm2").submit();
+// 		})
+
+		$("#searchBtn").on("click", function() {
+			if ($('#keyword').val().length == 0) {
+				alert("검색어를 입력해주세요");
+				return;
+			} else {
+				$("#frm3").submit();
+			}
+		});
+
+	});
+</script>
 
 </head>
 <body>
 	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
 	<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
+
+
+
+
+
+
+	<form id="frm" action="${cp}/report/report" method="get">
+		<input type="hidden" id="reportId" name="reportId">
+		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
+	</form>
+
+
+<!-- 글쓰기용 -->
+<%-- 	<form id="frm2" action="${cp}/report/reportForm" method="get"> --%>
+<%-- 		<input type="hidden" id="boardid" name="boardid" value="${boardid}"> --%>
+<!-- 	</form> -->
 
 
 
@@ -199,185 +229,87 @@ style>.pagination-outer {
 
 							<section class="board-list">
 
-									<div class="board-top">
+								<div class="board-top">
 
-										<p class="board-count" style="margin-left: 200px;">
-											총 <span class="education-board-cnt ng-binding" >24</span>개의
-
-											보고서
-										</p>
+									<p class="board-count" style="margin-left: 200px;">
+										총 <span class="education-board-cnt ng-binding">24</span>개의 보고서
+									</p>
 
 
 
+									<div class="d1">
+										<form class="for">
 
-										<div class="d1">
-											<form class="for">
-												<input type="text" placeholder="검색어 입력">
-												<button type="submit"></button>
-											</form>
-										</div>
-
-
-
+											<select id="searchType" name="searchType"
+												style="position: absolute; z-index: 999;">
+												<option value="all">전체</option>
+												<option value="title">제목</option>
+												<option value="content">내용</option>
+												<option value="writer">작성자</option>
+												<option value="tc">제목+내용</option>
+											</select> <input type="text" placeholder="검색어 입력"
+												style="position: absolute; top: 0px; right: 0px;">
+											<button type="submit"></button>
+										</form>
 									</div>
+
+								</div>
 
 								<!-- 게시글리스트 시작 -->
 								<div class="board-list-in">
 									<table class="education-table" style="margin-left: 200px;">
 
-										<caption class="sr-only ng-binding">치매커뮤니케이션</caption>
 
 										<colgroup>
 											<col style="width: 10%">
-											<col style="width: 50%" class="ng-scope">
-											<col style="width: 10%">
+											<col style="width: 40%" class="ng-scope">
+											<col style="width: 20%">
 											<col style="width: 20%">
 											<col style="width: 10%">
 										</colgroup>
 
 										<thead>
 											<tr>
-												<th scope="col">번호</th>
+												<th scope="col">보고서 아이디</th>
 												<th scope="col">제목</th>
-												<th scope="col" class="hidden-xs">작성자</th>
-												<th scope="col">등록일</th>
-												<th scope="col" class="border-no1 hidden-xs">조회수</th>
+												<th scope="col" class="hidden-xs">담당요양보호사</th>
+												<th scope="col">매칭시작일</th>
+												<th scope="col" class="border-no1 hidden-xs">등록일</th>
 											</tr>
 										</thead>
 
 										<tbody>
 
 
-											<!-- 반복 -->
-											<tr>
-												<td class="ng-binding">글번호</td>
-
-												<td class="left pl20"><a href="태그주소" class="ng-binding">
-														제목 </a></td>
-
-												<td class="hidden-xs"><a href="#" class="ng-binding">
-														작성자 </a></td>
-
-												<td><a href="#" class="ng-binding"> 작성일 </a></td>
-
-												<td class="border-no hidden-xs"><a href="#"
-													class="ng-binding"> 조회수</a></td>
-											</tr>
-
-											<!-- 반복 -->
-
-											<!-- 샘플 /삭제 -->
-
-											<tr class="ng-scope">
-												<td class="ng-binding">2</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 이런 행동도 치매인가요?(전두측두형 치매 이해하기) </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-04-25 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 13 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">3</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 유튜브로 보는 치매만화 </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-04-21 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 8 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">4</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 치매환자, 이해하기 </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-02-23 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 171 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">5</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 조인케어 치매만화_어르신들의 음식 욕심, 어떻게 대처하면
-														좋을까요? </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-02-16 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 225 </a></td>
-											</tr>
-											<tr ng-if="boardList.filterData.length > 0" class="ng-scope">
-												<td class="ng-binding">6</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 치매만화_집 같은 요양원이란? </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-02-11 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 62 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">7</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 치매만화_ 엄마의 중국집 추억 </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-02-02 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 177 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">8</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 조인케어 치매만화_시계보기 </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-01-26 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 155 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">9</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 조인케어 치매만화_사장님, 회의하러 가시죠! </a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 김동선 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-01-18 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 256 </a></td>
-											</tr>
-											<tr class="ng-scope">
-												<td class="ng-binding">10</td>
-												<td class="left pl20"><a href="javascript:;"
-													class="ng-binding"> 치매만화_약 먹는 것을 거부하는 치매환자, 이렇게 해 보세요.
-												</a></td>
-												<td class="hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 최고관리자 </a></td>
-												<td><a href="javascript:;" class="ng-binding">
-														2019-01-10 </a></td>
-												<td class="border-no hidden-xs"><a href="javascript:;"
-													class="ng-binding"> 196 </a></td>
-											</tr>
 
 
-											<!-- 샘플 /삭제 -->
+
+
+
+											<c:forEach items="${reportlist}" var="report">
+
+												<tr class="reportTr" data-userid="${report.rep_id}">
+													<td class="reportId">${report.rep_id}</td>
+													<td>${report.rep_title}</td>
+													<td>${report.cw_mem_id}</td>
+													<td>${report.mat_st}</td>
+													<td>${report.rep_time}</td>
+												</tr>
+											</c:forEach>
+
+
+
+
+
+
+
+
 										</tbody>
 									</table>
 								</div>
 
 								<br> <a href="#" class="genric-btn success medium"
-									style="float: right; margin-left: 200px;">글쓰기</a> <br> <br>
+									style="position: absolute; left: 74%;">글쓰기</a> <br> <br>
 
 
 								<div class="demo" style="position: absolute; right: 40%;">
@@ -386,10 +318,10 @@ style>.pagination-outer {
 											<li class="page-item"><a href="#" class="page-link"
 												aria-label="Previous"> <span aria-hidden="true">«</span>
 											</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item  active"><a class="page-link"
+												href="#">1</a></li>
 											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item active"><a class="page-link"
-												href="#">3</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
 											<li class="page-item"><a class="page-link" href="#">4</a></li>
 											<li class="page-item"><a class="page-link" href="#">5</a></li>
 											<li class="page-item"><a href="#" class="page-link"
@@ -399,9 +331,7 @@ style>.pagination-outer {
 									</nav>
 								</div>
 
-<br>
-<br>
-<br>
+								<br> <br> <br>
 
 
 							</section>

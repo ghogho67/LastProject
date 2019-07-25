@@ -21,7 +21,7 @@
 					</div>
 					<ul class="nav">
 						<li class="nav-item active"><a class="nav-link"
-							href="../../index.html"> <img
+							href="${cp}/mypage/Patient_Info"> <img
 								src="${cp}/resource/Admin/images/icons/1.png"
 								alt=""> <span class="menu-title">회원정보</span>
 						</a></li>
@@ -45,7 +45,7 @@
 									<li class="nav-item"><a class="nav-link" href="#l">
 										  회원목록  </a></li>
 										  
-										  <li class="nav-item"><a class="nav-link" href="#">
+									<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}">
 											보고서 확인 </a></li>
 									<li class="nav-item"><a class="nav-link" href="#">
 											보고서 작성 </a></li>
