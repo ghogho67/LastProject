@@ -43,4 +43,3 @@
 <script
 	src="${pageContext.request.contextPath}/resource/medino/js/main.js"></script>
 
-<

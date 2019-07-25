@@ -29,14 +29,6 @@ public class RegisterDaoTest extends LogicTestEnv{
 
 	}
 	
-	@Test
-	public void insertMemberDiseaseTest() {
-		/***Given***/
 
-		/***When***/
-
-		/***Then***/
-
-	}
 
 }
