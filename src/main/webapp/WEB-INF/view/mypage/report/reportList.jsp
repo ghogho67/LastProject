@@ -200,8 +200,9 @@ style>.pagination-outer {
 							<section class="board-list">
 
 									<div class="board-top">
-										<p class="board-count">
-											총 <span class="education-board-cnt ng-binding">24</span>개의
+
+										<p class="board-count" style="margin-left: 200px;">
+											총 <span class="education-board-cnt ng-binding" >24</span>개의
 											보고서
 										</p>
 
@@ -221,7 +222,8 @@ style>.pagination-outer {
 
 								<!-- 게시글리스트 시작 -->
 								<div class="board-list-in">
-									<table class="education-table">
+									<table class="education-table" style="margin-left: 200px;">
+
 										<caption class="sr-only ng-binding">치매커뮤니케이션</caption>
 
 										<colgroup>
@@ -374,7 +376,8 @@ style>.pagination-outer {
 								</div>
 
 								<br> <a href="#" class="genric-btn success medium"
-									style="float: right">글쓰기</a> <br> <br>
+									style="float: right; margin-left: 200px;">글쓰기</a> <br> <br>
+
 
 								<div class="demo" style="position: absolute; right: 40%;">
 									<nav class="pagination-outer" aria-label="Page navigation">
@@ -395,6 +398,9 @@ style>.pagination-outer {
 									</nav>
 								</div>
 
+<br>
+<br>
+<br>
 
 
 							</section>
