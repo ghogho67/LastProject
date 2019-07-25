@@ -16,4 +16,9 @@ public class GpsService implements IGpsService {
 	public int insertGps(GpsVo gpsVo) {
 		return gpsDao.insertGps(gpsVo);
 	}
+
+	@Override
+	public GpsVo getGoldMember(String mem_id) {
+		return gpsDao.getGoldMember(mem_id);
+	}
 }

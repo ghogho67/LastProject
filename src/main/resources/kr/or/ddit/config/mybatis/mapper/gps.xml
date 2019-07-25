@@ -4,8 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gps">
 
-	<insert id="insertGps" parameterType="cardiacVo">
-		insert into gps values(GPS_ID.nextval, #{mem_id}, #{gold_st},to_date(sysdate,'yy/mm/dd hh24:mi',#{gps_lo},#{gps_la} #{car_bpm}))
+	<insert id="insertGps" parameterType="gpsVo">
+		insert into gps values(GPS_ID.nextval
+							   , #{mem_id}
+							   , #{gold_st}
+							   , to_date(sysdate,'yy/mm/dd hh24:mi:ss')
+							   , #{gps_lo}
+							   , #{gps_la}
+							   ,#{car_bpm}
+							   )
 	</insert>
+	<select id="getGoldMember" parameterType="String" resultType="gpsVo">
+		SELECT * FROM GOLD WHERE MEM_ID = #{mem_id}
+	</select>
+	
+
 
 </mapper>

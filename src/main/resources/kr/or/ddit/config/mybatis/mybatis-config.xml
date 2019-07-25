@@ -23,6 +23,7 @@
 
 		<typeAlias alias="cardiacVo" type="kr.or.ddit.gold.cardiac.model.CardiacVo" />
 		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
+		<typeAlias alias="sosVo" type="kr.or.ddit.gold.sos.model.SOSVo" />
 
 
 		
@@ -37,7 +38,8 @@
 <!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/> -->
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/> -->
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
 
 	</mappers>
 </configuration>

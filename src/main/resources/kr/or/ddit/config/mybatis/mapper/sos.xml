@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sos">
+	<select id="recentData" parameterType="String" resultType="int">
+		SELECT * FROM (SELECT GPS_ID FROM  GPS WHERE MEM_ID=#{mem_id} ORDER BY ROWNUM DESC) WHERE ROWNUM = 1
+	</select>
+
+	<insert id="insertSOS" parameterType="int">
+		insert into sos values (sos_Id.nextval, #{gps_id})
+	</insert>
+	
+
+</mapper>
+

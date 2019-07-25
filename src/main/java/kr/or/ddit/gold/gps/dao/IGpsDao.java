@@ -4,5 +4,7 @@ import kr.or.ddit.gold.gps.model.GpsVo;
 
 public interface IGpsDao {
 	int insertGps(GpsVo gpsVo);
+	
+	GpsVo getGoldMember(String mem_id);
 
 }
