@@ -26,7 +26,7 @@ public class MemberDaoTest extends LogicTestEnv{
 		 int a = memList.size();
 
 		/***Then***/
-		assertEquals(17, a);
+		assertEquals(16, a);
 	}
 
 }

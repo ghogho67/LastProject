@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 
 <br>
-<a href="" style="font-size: 25px; color: black; font-weight: 800;" >&nbsp;&nbsp; &nbsp;HOME</a>
+<a href="${cp }/login" style="font-size: 25px; color: black; font-weight: 800;" >&nbsp;&nbsp; &nbsp;HOME</a>
 
 <div id="template-idpw-find" class="ng-scope">
   <section id="contents" class="login-idpwfind-contents">

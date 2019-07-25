@@ -1,10 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-=======
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +8,6 @@
 
 <meta charset="UTF-8">
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-<<<<<<< HEAD
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <link rel="stylesheet"
 	href="${cp}/resource/joinCare/css/jquery-ui.min.css" />
@@ -38,9 +33,6 @@
 	href="${cp}/resource/joinCare/css/policy.css">
 <link rel="stylesheet" type="text/css"
 	href="${cp}/resource/joinCare/css/board.css">
-=======
-<%@include file="/WEB-INF/view/common/LibForWebpage2.jsp"%>
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 
 
 <style>
@@ -137,28 +129,14 @@ style>.pagination-outer {
 	}
 }
 
-<<<<<<< HEAD
-* {
-	box-sizing: border-box;
-}
 
 .for {
 	position: relative;
 	width: 250px;
-=======
-.for {
-	position: relative;
-	width: 250px;
-	height: 30px;
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 	margin: 0 auto;
 }
 
 .d1 {
-<<<<<<< HEAD
-=======
-	height: 30px;
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 	background: white;
 	position: absolute;
 	right: 21%;
@@ -166,13 +144,8 @@ style>.pagination-outer {
 
 .d1 input {
 	width: 100%;
-<<<<<<< HEAD
-	height: 32px;
+	height: 28px;
 	padding-left: 10px;
-=======
-	height: 20px;
-	padding-left: 90px;
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 	border: 2px solid #7BA7AB;
 	border-radius: 5px;
 	outline: none;
@@ -186,11 +159,7 @@ style>.pagination-outer {
 	top: 0;
 	right: 0px;
 	width: 32px;
-<<<<<<< HEAD
-	height: 32px;
-=======
 	height: 38px;
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 	border: none;
 	background: #7BA7AB;
 	border-radius: 0 5px 5px 0;
@@ -203,55 +172,10 @@ style>.pagination-outer {
 	font-size: 16px;
 	color: #F9F0DA;
 }
-<<<<<<< HEAD
-=======
-
-#searchType {
-	height: 40px;
-	width: 70px;
-	font-size: 15px;
-	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #7BA7AB;
-	border-bottom: 2px solid #7BA7AB;
-	border-left: 2px solid #7BA7AB;
-	border-right: 2px solid #7BA7AB;
-}
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 </style>
 
 
 
-<<<<<<< HEAD
-=======
-<script>
-	$(document).ready(function() {
-
-		//사용자 테그 이벤트 등록
-		$(".reportTr").on("click", function() {
-			var reportId = $(this).find(".reportId").text();
-			$("#reportId").val(reportId);
-			$("#frm").submit();
-		});
-
-		
-		//보고서 작성용ㄴ
-// 		$("#post").on("click", function() {
-// 			$("#frm2").submit();
-// 		})
-
-		$("#searchBtn").on("click", function() {
-			if ($('#keyword').val().length == 0) {
-				alert("검색어를 입력해주세요");
-				return;
-			} else {
-				$("#frm3").submit();
-			}
-		});
-
-	});
-</script>
-
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 </head>
 <body>
 	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
@@ -259,25 +183,6 @@ style>.pagination-outer {
 
 
 
-<<<<<<< HEAD
-=======
-
-
-
-	<form id="frm" action="${cp}/report/report" method="get">
-		<input type="hidden" id="reportId" name="reportId">
-		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
-	</form>
-
-
-<!-- 글쓰기용 -->
-<%-- 	<form id="frm2" action="${cp}/report/reportForm" method="get"> --%>
-<%-- 		<input type="hidden" id="boardid" name="boardid" value="${boardid}"> --%>
-<!-- 	</form> -->
-
-
-
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 	<div class="content-wrapper">
 
 		<div class="row mb-4">
@@ -291,10 +196,11 @@ style>.pagination-outer {
 
 							<section class="board-list">
 
-<<<<<<< HEAD
 									<div class="board-top">
-										<p class="board-count">
-											총 <span class="education-board-cnt ng-binding">24</span>개의
+
+										<p class="board-count" style="margin-left: 200px;">
+											총 <span class="education-board-cnt ng-binding" >24</span>개의
+
 											보고서
 										</p>
 
@@ -314,77 +220,31 @@ style>.pagination-outer {
 
 								<!-- 게시글리스트 시작 -->
 								<div class="board-list-in">
-									<table class="education-table">
+									<table class="education-table" style="margin-left: 200px;">
+
 										<caption class="sr-only ng-binding">치매커뮤니케이션</caption>
 
 										<colgroup>
 											<col style="width: 10%">
 											<col style="width: 50%" class="ng-scope">
 											<col style="width: 10%">
-=======
-								<div class="board-top">
-		
-
-									<p class="board-count" style="margin-left: 200px;">
-										총 <span class="education-board-cnt ng-binding">24</span>개의 보고서
-									</p>
-
-
-
-									<div class="d1">
-										<form class="for">
-
-											<select id="searchType" name="searchType"
-												style="position: absolute; z-index: 999;">
-												<option value="all">전체</option>
-												<option value="title">제목</option>
-												<option value="content">내용</option>
-												<option value="writer">작성자</option>
-												<option value="tc">제목+내용</option>
-											</select> <input type="text" placeholder="검색어 입력"
-												style="position: absolute; top: 0px; right: 0px;">
-											<button type="submit"></button>
-										</form>
-									</div>
-
-								</div>
-
-								<!-- 게시글리스트 시작 -->
-								<div class="board-list-in">
-									<table class="education-table" style="margin-left: 200px;">
-
-
-										<colgroup>
-											<col style="width: 10%">
-											<col style="width: 40%" class="ng-scope">
-											<col style="width: 20%">
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 											<col style="width: 20%">
 											<col style="width: 10%">
 										</colgroup>
 
 										<thead>
 											<tr>
-<<<<<<< HEAD
 												<th scope="col">번호</th>
 												<th scope="col">제목</th>
 												<th scope="col" class="hidden-xs">작성자</th>
 												<th scope="col">등록일</th>
 												<th scope="col" class="border-no1 hidden-xs">조회수</th>
-=======
-												<th scope="col">보고서 아이디</th>
-												<th scope="col">제목</th>
-												<th scope="col" class="hidden-xs">담당요양보호사</th>
-												<th scope="col">매칭시작일</th>
-												<th scope="col" class="border-no1 hidden-xs">등록일</th>
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 											</tr>
 										</thead>
 
 										<tbody>
 
 
-<<<<<<< HEAD
 											<!-- 반복 -->
 											<tr>
 												<td class="ng-binding">글번호</td>
@@ -509,60 +369,24 @@ style>.pagination-outer {
 
 
 											<!-- 샘플 /삭제 -->
-=======
-
-
-
-
-
-											<c:forEach items="${reportlist}" var="report">
-
-												<tr class="reportTr" data-userid="${report.rep_id}">
-													<td class="reportId">${report.rep_id}</td>
-													<td>${report.rep_title}</td>
-													<td>${report.cw_mem_id}</td>
-													<td>${report.mat_st}</td>
-													<td>${report.rep_time}</td>
-												</tr>
-											</c:forEach>
-
-
-
-
-
-
-
-
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 										</tbody>
 									</table>
 								</div>
 
 								<br> <a href="#" class="genric-btn success medium"
-<<<<<<< HEAD
-									style="float: right">글쓰기</a> <br> <br>
-=======
-									style="position: absolute; left: 74%;">글쓰기</a> <br> <br>
-
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
-
+									style="position:absolute; left: 74%;">글쓰기</a> <br> <br>
+									
+									
 								<div class="demo" style="position: absolute; right: 40%;">
 									<nav class="pagination-outer" aria-label="Page navigation">
 										<ul class="pagination">
 											<li class="page-item"><a href="#" class="page-link"
 												aria-label="Previous"> <span aria-hidden="true">«</span>
 											</a></li>
-<<<<<<< HEAD
 											<li class="page-item"><a class="page-link" href="#">1</a></li>
 											<li class="page-item"><a class="page-link" href="#">2</a></li>
 											<li class="page-item active"><a class="page-link"
 												href="#">3</a></li>
-=======
-											<li class="page-item  active"><a class="page-link"
-												href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
 											<li class="page-item"><a class="page-link" href="#">4</a></li>
 											<li class="page-item"><a class="page-link" href="#">5</a></li>
 											<li class="page-item"><a href="#" class="page-link"
@@ -572,10 +396,9 @@ style>.pagination-outer {
 									</nav>
 								</div>
 
-<<<<<<< HEAD
-=======
-								<br> <br> <br>
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
+<br>
+<br>
+<br>
 
 
 							</section>
