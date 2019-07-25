@@ -37,7 +37,7 @@
 <!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/> -->
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
+<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/> -->
 
 	</mappers>
 </configuration>
