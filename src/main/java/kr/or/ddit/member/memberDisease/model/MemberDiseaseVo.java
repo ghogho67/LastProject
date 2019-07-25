@@ -5,6 +5,19 @@ public class MemberDiseaseVo {
 	private String mem_id;
 	private int dis_id;
 
+
+
+	public MemberDiseaseVo(int mem_dis_id, String mem_id, int dis_id) {
+		this.mem_dis_id = mem_dis_id;
+		this.mem_id = mem_id;
+		this.dis_id = dis_id;
+	}
+
+	public MemberDiseaseVo(int mem_dis_id, int dis_id) {
+		this.mem_dis_id = mem_dis_id;
+		this.dis_id = dis_id;
+	}
+
 	public int getMem_dis_id() {
 		return mem_dis_id;
 	}

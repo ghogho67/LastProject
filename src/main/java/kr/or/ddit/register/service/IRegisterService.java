@@ -1,6 +1,7 @@
 package kr.or.ddit.register.service;
 
 import kr.or.ddit.member.careWorker.career.model.CareerVo;
+import kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo;
 import kr.or.ddit.member.careWorker.day.model.DayVo;
 import kr.or.ddit.member.careWorker.hospital.model.HospitalVo;
 import kr.or.ddit.member.careWorker.location.model.LocationVo;
@@ -84,14 +85,14 @@ public interface IRegisterService {
 	int insertHospital(HospitalVo hospitalVo);
 	
 	/**
-	* Method : insertServiceType
+	* Method : insertCWServiceType
 	* 작성자 : ADMIN
 	* 변경이력 :
-	* @param serviceTypeVo
+	* @param cwServiceTypeVo
 	* @return
 	* Method 설명 :요양보호사 증록 - 서비스 종류
 	*/
-	int insertServiceType(ServiceTypeVo serviceTypeVo);
+	int insertCWServiceType(CwServiceTypeVo cwServiceTypeVo);
 	
 	
 	//-------------------------------------------------------

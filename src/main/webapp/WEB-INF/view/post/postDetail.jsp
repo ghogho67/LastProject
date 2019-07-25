@@ -18,6 +18,15 @@
 <title>사용자 상세조회</title>
 <script>
 	$(document).ready(function() {
+		
+		$('#sitenameDisabled').click(function() {
+			  $('input').prop('disabled', true);
+			});
+		
+		$('#sitenameEnabled').click(function() {
+			  $('input').prop('disabled', false);
+			});
+
 
 		$("#postModifyBtn").on("click", function() {
 			$("#postModifyfrm").submit();
@@ -31,8 +40,43 @@
 		$("#replyBtn").on("click", function() {
 			$("#replyfrm").submit();
 		})
+	
 	});
 </script>
+
+<SCRIPT>
+var count = 1; 
+var num = 1; 
+
+function addBox (x) {
+  if (document.all) {  // 인터넷 익스플로러 4.0 이상이면,
+    var Commentext = '<p><textarea NAME="Comment' + count++ + '" rows="5" cols="50" style="background-color:#F5F5F5">textarea '+num++ +'<\/textarea>';
+    x.insertAdjacentHTML('beforeEnd', Commentext)
+  }
+  else if (document.getElementById) {  // 넷스케이프 6.0 이상이면,
+    var newArea = document.createElement('textarea');
+    newArea.name = 'Comment' + count++;
+    newArea.rows = 5;
+    newArea.cols = 50;
+    x.appendChild(document.createElement('p'));
+    x.appendChild(newArea);
+  }
+  else if (document.layers) {  // 넷스케이프 4.0 이상이면,
+    var newLayer = new Layer (window.innerWidth);
+    var Commentext = '';
+    Commentext += '<html><body><form name="myForm">';
+    Commentext += '<textarea name="Comment" rows="5" cols="50" style="background-color:#F5F5F5">textarea '+num++ +'<\/textarea>';
+    Commentext += '<\/form><\/body><\/html>';
+    newLayer.document.write(Commentext);
+    newLayer.document.close();
+    newLayer.top = document.height;
+    document.height += newLayer.document.height;
+    newLayer.visibility = 'show';
+  }
+ else {alert('네츠케이프와 익스플로러 4.0 이상에서만 사용할 수 있습니다')};
+}
+
+</SCRIPT>
 </head>
 <body>
 
@@ -56,7 +100,7 @@ post_id : ${post_id }<br>
 replyList : ${replyList }<br>
 attachmentList : ${attachmentList }<br>
 postVo : ${postVo }<br>
-mem_id : $
+mem_id : ${mem_id }
 </pre>
 						<div class="form-group col-sm-8">
 
@@ -90,8 +134,8 @@ mem_id : $
 									<label for="attachmentName" class="col-sm-5 control-label">
 
 										<a
-										href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&attachment_id=${attachment.attachment_id }"
-										class=" btn btn-default pull-right">다운로드</a>${attachment.attachment_name }
+										href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&att_id=${attachment.att_id }"
+										class=" btn btn-default pull-right">다운로드</a>${attachment.att_nm }
 									</label>
 									<br>
 								</c:forEach>
@@ -109,7 +153,6 @@ mem_id : $
 
 									<label for="replyName" class="col-sm-10 control-label">
 										<c:choose>
-
 											<c:when test="${reply.reply_del eq 'Y'}">
 											삭제된 댓글입니다
 										</c:when>
@@ -121,26 +164,26 @@ mem_id : $
 											[작성자 : ${reply.mem_id } 작성시간 : <fmt:formatDate
 													value="${reply.reply_time }" pattern="yyyy년MM월dd일hh시mm분ss초" />]<br>
 
-											${attachment.attachment_id} 
+											${attachment.att_id} 
 
 										</c:otherwise>
 
-										</c:choose> <c:if
-											test="${reply.mem_id eq mem_id && reply.reply_del eq 'N'}">
-
-											<a
-												href="${cp}/reply/delete?reply_id=${reply.reply_id }&post_id=${post_id }&cate_id=${cate_id }"
-												class=" btn	btn-default pull-right">X</a>
-											<br>
-
+										</c:choose> 
+										<c:if test="${reply.mem_id eq mem_id && reply.reply_del eq 'N'}">
+<!-- 											<INPUT TYPE="button" VALUE="Textarea 추가" onclick="addBox(this.form)"> -->
+<!-- 											<a href="#" class="filter-70 m-tcol-c _btnEdit">수정</a> -->
+<%-- 											<a href="${cp}/reply/modify?reply_id=${reply.reply_id }&post_id=${post_id }&cate_id=${cate_id }" class=" btn btn-default pull-right">수정</a> --%>
+<!-- 											<textarea id="comment_text" cols="50" rows="2" class="textarea m-tcol-c" maxlength="6000" style="overflow: hidden; line-height: 14px; height: 41px;" title="댓글수정">a</textarea> -->
+<%-- 											<a href="${cp}/reply/delete?reply_id=${reply.reply_id }&post_id=${post_id }&cate_id=${cate_id }" class=" btn btn-default pull-right">삭제</a> --%>
+<!-- 											<br> -->
+										<input type="text" placeholder="site name" />
+										<button id="sitenameDisabled">Disable</button>
+										<input type="text" placeholder="site name" />
+										<button id="sitenameEnabled">Enabled</button>
 										</c:if>
-
 									</label>
-
 								</c:forEach>
-
 							</div>
-
 						</div>
 
 						<div class="form-group col-sm-8">
@@ -158,9 +201,7 @@ mem_id : $
 										<input type="hidden" name="post_id" value="${post_id}">
 
 										<input type="hidden" name="cate_id" value="${cate_id }">
-
-										<button id="replyBtn" type="submit" class="btn btn-default"
-											name="button">댓글저장</button>
+										<button id="replyBtn" type="submit" class="btn btn-default"	name="button">댓글저장</button>
 									</div>
 								</form>
 							</div>
@@ -168,14 +209,9 @@ mem_id : $
 
 						<div class="form-group col-sm-8 text-right">
 
-							<form id="postModifyfrm" method="post"
-								action="${cp}/post/modifyView">
-
-								<button id="postModifyBtn" type="button" class="btn btn-default"
-									name="button">수정</button>
-
+							<form id="postModifyfrm" method="post" action="${cp}/post/modifyView">
+								<button id="postModifyBtn" type="button" class="btn btn-default" name="button">수정</button>
 								<input type="hidden" value="${post_id }" name="post_id">
-
 								<input type="hidden" value="${cate_id }" name="cate_id">
 							</form>
 
@@ -184,11 +220,9 @@ mem_id : $
 								<form id="postDeletefrm" method="post"
 									action="${cp}/post/delete?cate_id=${cate_id}">
 
-									<button id="postDeleteBtn" type="button"
-										class="btn btn-default" name="button">삭제</button>
+									<button id="postDeleteBtn" type="button" class="btn btn-default" name="button">삭제</button>
 
 									<input type="hidden" value="${post_id }" name="post_id">
-
 									<input type="hidden" value="${cate_id }" name="cate_id">
 								</form>
 							</c:if>

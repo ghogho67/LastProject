@@ -11,14 +11,30 @@
 		where cate_id = #{cate_id}
 	</select>
 
-
-
+	<!-- 게시글 등록 -->
+	<insert id="postInsert" parameterType="postVO">
+		INSERT INTO POST VALUES
+		(
+		post_id.nextval
+		,0
+		,sysdate
+		,#{post_nm}
+		,#{post_cont}
+		,'N'
+		,post_id.currval
+		,#{mem_id}
+		,#{cate_id}
+		,null
+		)
+	</insert>
 
 	<insert id="postReply" parameterType="PostVo">
 		INSERT INTO POST VALUES
 		(
 		post_id.NEXTVAL
-		,0,sysdate,#{post_nm}
+		,0
+		,sysdate
+		,#{post_nm}
 		,#{post_cont}
 		,'N'
 		,#{post_group}
@@ -51,11 +67,8 @@
 					ORDER SIBLINGS BY P.post_group DESC, P.post_id  ) A
 		) B
 		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
-		AND 	B.RN <= #{page} * #{pageSize}
-		
-		
+		AND 	B.RN <= #{page} * #{pageSize}		
 	 	]]>
-
 	</select>
 
 	<select id="postCnt" parameterType="int" resultType="int">
@@ -80,6 +93,7 @@
 		post_id =
 		#{post_id}
 	</select>
+
 	<update id="postDelete" parameterType="int">
 		update post set
 		post_del='Y' where post_id=#{post_id}

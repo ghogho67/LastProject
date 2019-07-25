@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.matching.grade.service.IGradeService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 import kr.or.ddit.util.PartUtil;
@@ -33,6 +34,9 @@ public class mypageController {
 
 	@Resource(name = "memberService")
 	private IMemberService memberService;
+	
+	@Resource(name = "gradeService")
+	private IGradeService gradeService;
 
 	@RequestMapping("/Patient_Info")
 	public String Patient_Info() {
@@ -124,9 +128,29 @@ public class mypageController {
 	
 	
 	
+	
 
+	/**
+	* Method : Worker_Info
+	* 작성자 : 이광호
+	* 변경이력 : 2019.07.25
+	* @param session
+	* @param model
+	* @return
+	* Method 설명 : 요양보호사 회원정보 화면에서 평가점수 출력 추가
+	*/
 	@RequestMapping("/Worker_Info")
-	public String Worker_Info() {
+	public String Worker_Info(HttpSession session, Model model) {
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memvo.getMem_id();
+		String grade = gradeService.cwGradeAvg(mem_id);
+		if(grade == null) {
+			grade = "0";
+			model.addAttribute("grade", grade);
+		}else{
+			model.addAttribute("grade", grade);
+		}
+		
 		return "mypage/Worker_Info";
 	}
 

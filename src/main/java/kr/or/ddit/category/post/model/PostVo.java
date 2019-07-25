@@ -15,6 +15,15 @@ public class PostVo {
 	private String mem_id;
 	private int cate_id;
 	private int post_par;
+	private int level;
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
 
 	public int getPost_id() {
 		return post_id;
