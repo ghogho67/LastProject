@@ -167,9 +167,27 @@ public class MatchingReportAttachmentVo {
 		this.rep_att_path = rep_att_path;
 		this.rep_att_nm = rep_att_nm;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public MatchingReportAttachmentVo(String mem_id, int rep_id) {
+		this.mem_id = mem_id;
+		this.rep_id = rep_id;
+		
+	}
+	
+	
+	
 	public MatchingReportAttachmentVo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	

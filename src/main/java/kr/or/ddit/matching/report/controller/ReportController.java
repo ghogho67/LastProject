@@ -54,21 +54,30 @@ public class ReportController {
 	@RequestMapping(path = "/report" , method = RequestMethod.GET)
 	public String report(Model model, HttpSession session,
 			RedirectAttributes redirectAttributes, HttpServletRequest request,
-			@RequestParam(name = "reportId") String reportId,
+			@RequestParam(name = "reportId") int reportId,
 			@RequestParam(name = "memid") String mem_id) {
 		
 		logger.debug("@@@@reportId : {} ", reportId);
 		logger.debug("@@@@memid : {} ", mem_id);
 		
-		MatchingReportAttachmentVo matchingReportAttachmentVo = null;
+		MatchingReportAttachmentVo matchingReportAttachmentVo = matchingReportAttachmentVo(mem_id,reportId);
 		
 		MatchingReportAttachmentVo report = reportService.getCertainReport(matchingReportAttachmentVo); 
 
-		logger.debug("@@@@reportlist : {} ", report);
+		logger.debug("@@@@report : {} ", report);
 		
 		model.addAttribute("report", report);
 		
 		return "mypage/report/report";
+	}
+
+
+
+
+
+	private MatchingReportAttachmentVo matchingReportAttachmentVo(String mem_id, int reportId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
