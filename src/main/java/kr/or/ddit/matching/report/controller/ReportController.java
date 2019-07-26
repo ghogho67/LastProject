@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
 import kr.or.ddit.matching.report.service.IReportService;
@@ -59,13 +60,13 @@ public class ReportController {
 		logger.debug("@@@@reportId : {} ", reportId);
 		logger.debug("@@@@memid : {} ", mem_id);
 		
-		MatchingReportVo matchingReportVo;
+		MatchingReportAttachmentVo matchingReportAttachmentVo = null;
 		
-		//MatchingReportVo report = reportService.getCertainReport(matchingReportVo); 
+		MatchingReportAttachmentVo report = reportService.getCertainReport(matchingReportAttachmentVo); 
 
-		//logger.debug("@@@@reportlist : {} ", report);
+		logger.debug("@@@@reportlist : {} ", report);
 		
-		//model.addAttribute("report", report);
+		model.addAttribute("report", report);
 		
 		return "mypage/report/report";
 	}

@@ -21,6 +21,7 @@
 		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.reply.model.ReplyVo"/>
 		<typeAlias alias="matchingGradeVo" type = "kr.or.ddit.joinVo.MatchingGradeVo"/>
 		<typeAlias alias="matchingReportVo" type = "kr.or.ddit.joinVo.MatchingReportVo"/>
+		<typeAlias alias="MatchingReportAttachmentVo" type = "kr.or.ddit.joinVo.MatchingReportAttachmentVo"/>
 		<typeAlias alias="cardiacVo" type="kr.or.ddit.gold.cardiac.model.CardiacVo" />
 		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
 		<typeAlias alias="ReportVo" type="kr.or.ddit.matching.report.model.ReportVo" />

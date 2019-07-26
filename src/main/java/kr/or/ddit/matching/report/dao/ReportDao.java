@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
 
@@ -40,8 +41,8 @@ public class ReportDao implements IReportDao {
 
 
 	@Override
-	public MatchingReportVo getCertainReport(MatchingReportVo matchingReportVo) {
-		return sqlSession.selectOne("matchingReport.getCertainReport",matchingReportVo);
+	public MatchingReportAttachmentVo getCertainReport(MatchingReportAttachmentVo matchingReportAttachmentVo) {
+		return sqlSession.selectOne("matchingReport.getCertainReport",matchingReportAttachmentVo);
 	}
 
 
