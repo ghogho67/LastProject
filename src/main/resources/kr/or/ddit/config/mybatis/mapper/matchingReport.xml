@@ -83,7 +83,7 @@ AND M.MEM_ID = #{MEM_ID}
 <!--     //해당회원의 모든 보고서중 특정 보고서 아이디의 내용과 첨부파일을 가져온다  -->
     <select id="getCertainReport" resultType="MatchingReportAttachmentVo" parameterType="MatchingReportAttachmentVo">
     
-    	SELECT  M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_ST, M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MEM_ID,M.CW_MEM_ID, R.REP_ID ,R.REP_TIME
+SELECT  M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_ST, M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MEM_ID,M.CW_MEM_ID, R.REP_ID ,R.REP_TIME
 ,R.REP_TITLE,R.REP_CONT,A.REP_ATT_ID,A.REP_ATT_PATH,A.REP_ATT_NM
 FROM REPORT R , MATCHING M   ,REPORTATTACH A
 WHERE R.MAT_ID(+) = M.MAT_ID 
