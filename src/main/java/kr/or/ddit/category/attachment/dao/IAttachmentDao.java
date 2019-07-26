@@ -8,10 +8,10 @@ public interface IAttachmentDao {
 
 	int attachmentInsert(AttachmentVo attachmentVo);
 
-	int attachmentDelete(int attachment_id);
+	int attachmentDelete(int att_id);
 
 	List<AttachmentVo> getAttachmentList(int post_id);
 
-	AttachmentVo getAttachment(int attachment_id);
+	AttachmentVo getAttachment(int att_id);
 
 }

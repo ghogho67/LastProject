@@ -25,12 +25,12 @@ public class AttachmentService implements IAttachmentService {
 	}
 
 	@Override
-	public int attchmentDelete(int attachment_id) {
-		return attachmentDao.attachmentDelete(attachment_id);
+	public int attchmentDelete(int att_id) {
+		return attachmentDao.attachmentDelete(att_id);
 	}
 
 	@Override
-	public AttachmentVo getAttachment(int attachment_id) {
-		return attachmentDao.getAttachment(attachment_id);
+	public AttachmentVo getAttachment(int att_id) {
+		return attachmentDao.getAttachment(att_id);
 	}
 }

@@ -100,24 +100,6 @@ public class PostDaoTest extends LogicTestEnv {
 		assertEquals(12, pvo.getPost_id());
 	}
 
-//	@Test
-//	public void updateStepDaoTest() {
-//		PostVo postVo = postDao.getPost(150);
-//		postVo.setPost_nm("post_title");
-//		postVo.setPost_cont("post_content");
-//		postVo.setCate_id(1);
-//		postVo.setMem_id("brown");
-//		postVo.setRef(postVo.getRef());
-//		postVo.setRe_step(postVo.getRe_step() + 1);
-//		postVo.setRe_level(postVo.getRe_level() + 1);
-//
-//		// 답글 순서조정 메서드
-//		logger.debug("re_steP:{}", postVo.getRe_step());
-//		postDao.updateStep(postVo);
-//		postVo = postDao.getPost(150);
-//		assertEquals(2, postVo.getRe_step());
-//	}
-
 	@Test
 	public void postReplyDaoTest() {
 		/*** Given ***/

@@ -1,6 +1,7 @@
 package kr.or.ddit.reply.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -20,8 +21,6 @@ public class ReplyDaoTest extends LogicTestEnv {
 	@Test
 	public void replyInsertDaoTest() {
 		/*** Given ***/
-		// 테이블 컬럼은 댓글 아이디, 게시글 아이디, 댓글 내용, 댓글 작성시간, 댓글 작성자로 구성되어 있다.
-		// 댓글 작성시간은 xml에서 sysdate로 댓글 아이디는 sequence로 들어갈 수 있도록 설정한다.
 		ReplyVo rvo = new ReplyVo();
 		rvo.setPost_id(1);
 		rvo.setReply_cont("a");
@@ -36,19 +35,18 @@ public class ReplyDaoTest extends LogicTestEnv {
 	}
 
 	@Test
-	public void replyListTest() {
+	public void replyListDaoTest() {
 
 		/*** Given ***/
 		int post_id = 8;
 		/*** When ***/
 		List<ReplyVo> replyList = replyDao.replyList(post_id);
 		/*** Then ***/
-		assertEquals(3, replyList.size());
+		assertEquals(1, replyList.size());
 	}
 
 	@Test
-	public void replyDeleteTest() {
-
+	public void replyDeleteDaoTest() {
 		/*** Given ***/
 		int reply_id = 1;
 		/*** When ***/
@@ -57,4 +55,30 @@ public class ReplyDaoTest extends LogicTestEnv {
 		assertEquals(1, deleteCnt);
 
 	}
+
+	@Test
+	public void replyModifyDaoTest() {
+		/*** Given ***/
+		ReplyVo rvo = new ReplyVo();
+		rvo.setReply_id(1);
+		rvo.setReply_cont("a");
+
+		/*** When ***/
+		int updateCnt = replyDao.replyModify(rvo);
+		/*** Then ***/
+		assertEquals(1, updateCnt);
+	}
+
+	@Test
+	public void getReplyDaoTest() {
+		/*** Given ***/
+		int reply_id = 1;
+		/*** When ***/
+		ReplyVo rvo = replyDao.getReply(reply_id);
+
+		/*** Then ***/
+		assertNotNull(rvo);
+		assertEquals(1, rvo.getPost_id());
+	}
+
 }

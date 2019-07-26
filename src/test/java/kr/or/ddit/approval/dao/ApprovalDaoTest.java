@@ -12,5 +12,4 @@ public class ApprovalDaoTest extends LogicTestEnv{
 	public void test() {
 		fail("Not yet implemented");
 	}
-
 }

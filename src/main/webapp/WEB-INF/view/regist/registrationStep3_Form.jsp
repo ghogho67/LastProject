@@ -20,10 +20,11 @@
 <link rel="stylesheet"
 	href="${cp}/resource/wrap/Test/font-awesome.min.css" />
 <link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+	
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery-3.2.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 
@@ -45,6 +46,12 @@
 				data : "mem_id="+data,
 				success :  function(data){
 					console.log(data);
+					if(data.mem_id == "mem_id"){
+						alert("아이디를 정규식에 맞게 입력해 주세요");
+						$("#mem_id").val("");
+						$("#mem_id").focus();
+						return;
+					}
 					if(data.mem_id == "yes"){
 						alert("사용가능한 아이디입니다");
 					}else{
@@ -60,63 +67,70 @@
 		//정규식체크
 		$("#submit").on("click", function(){
 			var frmData = $("#frm").serialize();
-			condole.log(frmData);
-			if(frmData.mem_id==''||frmData.mem_id==null){
+
+			if($("#mem_id").val()==''||$("#mem_id").val()==null){
+				alert("아이디를 입력해주세요");
+				return;
+			} else if($("#mem_pass").val()==''||$("#mem_pass").val()==null){
+				alert("패스워드를 넣어주세요");
+				return;
+			} else if($("#mem_nm").val()==''||$("#mem_nm").val()==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}else if($("#mem_phone").val()==''||$("#mem_phone").val()==null){
+				alert("입력값을 넣어주세요");
+				return;
+			}else if($("#mem_mail").val()==''||$("#mem_mail").val()==null){
 				alert("입력값을 넣어주세요");
 				return;
 			}
-			if(frmData.mem_pass==''||frmData.mem_pass==null){
-				alert("입력값을 넣어주세요");
-				return;
-			}
-			if(frmData.mem_nm==''||frmData.mem_nm==null){
-				alert("입력값을 넣어주세요");
-				return;
-			}
-			if(frmData.mem_pahone==''||frmData.mem_phone==null){
-				alert("입력값을 넣어주세요");
-				return;
-			}
-			if(frmData.mem_mail==''||frmData.mem_mail==null){
-				alert("입력값을 넣어주세요");
-				return;
-			}
+			console.log(frmData);
 			$.ajax({
-				url : "/regist/regist3",
-				data : "frmData=" + frmData,
+				url : "${cp}/regist/regist3",
+				data : frmData,
 				type : "post",
 				success : function(data){
 					console.log(data);
-					if(data.mem_id == "false"){
-						alert("정규식에 맞게 입력해 주세요");
-						$("#frm").val("");
-// 						$("#frm").focus();
+	
+					if(data == "mem_pass"){
+						alert("패스워드를 정규식에 맞게 입력해 주세요");
+						$("#mem_pass").val("");
+						$("#mem_pass").focus();
+						return;
 					}
-					if(data.mem_pass == "false"){
-						alert("정규식에 맞게 입력해 주세요");
-						$("#frm").val("");
-// 						$("#frm").focus();
+					if(data == "mem_nm"){
+						alert("이름을 정규식에 맞게 입력해 주세요");
+						$("#mem_nm").val("");
+						$("#mem_nm").focus();
+						return;
 					}
-					if(data.mem_nm == "false"){
-						alert("정규식에 맞게 입력해 주세요");
-						$("#frm").val("");
-// 						$("#frm").focus();
+					if(data == "mem_phone"){
+						alert("휴대폰 번호를 정규식에 맞게 입력해 주세요");
+						$("#mem_phone").val("");
+						$("#mem_phone").focus();
+						return;
 					}
-					if(data.mem_phone == "false"){
-						alert("정규식에 맞게 입력해 주세요");
-						$("#frm").val("");
-// 						$("#frm").focus();
+					if(data == "mem_mail"){
+						alert("이메일을 정규식에 맞게 입력해 주세요");
+						$("#mem_mail").val("");
+						$("#mem_mail").focus();
+						return;
 					}
-					if(data.mem_mail == "false"){
-						alert("정규식에 맞게 입력해 주세요");
-						$("#frm").val("");
-// 						$("#frm").focus();
+					if(data == 'success'){
+						console.log("suc")
+// 						location.href = "${cp}/regist/regist4"
+// 						$("#frm").attr("action", "${cp}/regist/regist4");
+// 						$("#frm").attr("method", "post");
+						$("#frm2").submit();
 					}
+				},error : function(xhr){
+					alert(xhr.status);
 				}
 				
 			});
 			
-			var data
+			
+			
 			
 		});
 		
@@ -163,6 +177,8 @@
 
 </head>
 <body>
+	<form id="frm2" method="post" action="${cp}/regist/regist4">
+	</form>
 
 
 	<section class="memberjoin">
@@ -203,8 +219,8 @@
 										
 										<div class="input-group" >
 											<span class="input-group-btn"><button type="button"
-													class="btn" id="idCheckBtn">중복확인</button></span> <input type="text" id="mem_id"
-												name="mem_id" value="${mem_id }"
+													class="btn" id="idCheckBtn">중복확인</button></span> 
+													<input type="text" id="mem_id" name="mem_id" value="${mem_id}"
 												placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
@@ -301,7 +317,7 @@
 									<div class="form-group">
 										<label for="email1">주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr1" name="mem_addr1"
+											<input type="text" id="mem_addr1" name="mem_add1"
 												placeholder="주소" class="form-control" value="${mem_addr1 }"
 												readonly> <span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
@@ -321,7 +337,7 @@
 									<div class="form-group">
 										<label for="email1">상세주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr2" name="mem_addr2"
+											<input type="text" id="mem_addr2" name="mem_add2"
 												placeholder="상세주소" class="form-control"
 												value="${mem_addr2 }"> <span
 												class="input-group-state"><span class="p-position"><span
@@ -356,11 +372,11 @@
 										<label for="email1">성별</label>
 										<div class="checkbox">
 
-											<label><input type="radio" name="gender" value="M" checked="checked">
+											<label><input type="radio" name="mem_gender" value="M" checked="checked">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">남</span></label>
 
-											<label><input type="radio" name="gender" value="F">
+											<label><input type="radio" name="mem_gender" value="F">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">여</span></label>
 
@@ -392,44 +408,44 @@
 										<div class="p-form-cg pt-form-inline">
 											<div class="checkbox">
 
-												<label><input type="checkbox" name="disease"
-													value="palse"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="1"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">중풍</span></label>
 											</div>
 
 											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="heartFailure"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="2"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">심부전증</span></label>
 											</div>
 
 											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="diabetes"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="3"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">당뇨</span></label>
 											</div>
 
 											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="hypertension"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="4"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">고혈압</span></label>
 											</div>
 
 											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="dementia"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="5"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">치매</span></label>
 											</div>
 
 											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="parkinsonism"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="6"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">파킨슨</span></label>
 											</div>
 
 											<div class="checkbox">
-												<label><input type="checkbox" name="disease"
-													value="arrhythmia"> <span class="p-check-icon"><span
+												<label><input type="checkbox" name="dis_id"
+													value="7"> <span class="p-check-icon"><span
 														class="p-check-block"></span></span> <span class="p-label">부정맥</span></label>
 											</div>
 
@@ -493,7 +509,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
-												<input type="text" id="pro_name" name="pro_name"
+												<input type="text" id="pro_nm" name="pro_nm"
 													placeholder="보호자성함" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
@@ -524,7 +540,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="input-group p-has-icon">
-												<input type="email" id="pro_rel" name="pro_rel"
+												<input type="email" id="pro_relation" name="pro_relation"
 													placeholder="보호자관계" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
@@ -552,19 +568,22 @@
 <!-- 									</div> -->
 <!-- 								</div> -->
 
-
+									
 
 
 
 
 								<div class="preview-btn text-left p-buttons">
-									<button class="btn" id="submit" type="submit">submit</button>
+									<button class="btn" id="submit" type="button">submit</button>
 									<button class="btn" id="reset" type="reset">reset</button>
 									<button class="btn" id="home" type="submit">home</button>
 								</div>
 							</div>
 						</div>
 				</form>
+				
+				
+				
 			</div>
 		</div>
 

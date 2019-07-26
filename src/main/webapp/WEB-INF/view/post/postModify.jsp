@@ -28,40 +28,6 @@
 			$("#frm").submit();
 		});
 
-		var form = document.forms[0];
-		var addFileBtn = document.getElementById("addFileBtn");
-		var delFileBtn = document.getElementById("delFileBtn");
-		var fileArea = document.getElementById("fileArea");
-		var cnt = 2;
-
-		form.onsubmit = function() {
-			event.preventDefault();
-		};
-
-		addFileBtn.onclick = function() {
-			var a = $('.attachment').length;
-
-			if (a + cnt <= 5) {
-				var element = document.createElement("input");
-				element.type = "file";
-				element.name = "file"
-				cnt++;
-				fileArea.appendChild(element);
-				fileArea.appendChild(document.createElement("br"));
-			} else {
-				alert("파일은 5개까지만 추가 가능합니다");
-			}
-
-		};
-
-		delFileBtn.onclick = function() {
-			if (cnt > 1) {
-				cnt--;
-				var inputs = fileArea.getElementsByTagName('input');
-				fileArea.removeChild(inputs[cnt].nextElementSibling);
-				fileArea.removeChild(inputs[cnt]);
-			}
-		}
 	});
 </script>
 
@@ -83,72 +49,76 @@
 					<div class="col-sm-8 blog-main">
 
 						<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
-						
-<pre>
+
+						<pre>
 cate_id : ${cate_id }<br> 
 post_id : ${post_id } <br>
 attachmentList : ${attachmentList }<br>
 postVo : ${postVo}<br>
 </pre>
 
-						<form id="frm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
-							
+						<form id="frm" class="form-horizontal" role="form"
+							action="${cp}/post/modify" method="post"
+							enctype="multipart/form-data">
+
 							<input type="hidden" name="post_id" value="${post_id }">
-							
+
 							<input type="hidden" name="cate_id" value="${cate_id }">
-							
+
 							<div class="form-group">
-							
+
 								<label for="filename" class="col-sm-2 control-label">제목</label>
-							
+
 								<div class="col-sm-10">
-							
-									<input type="text" class="form-control" id="post_nm" name="post_nm" value="${postVo.post_nm}">
+
+									<input type="text" class="form-control" id="post_nm"
+										name="post_nm" value="${postVo.post_nm}">
 								</div>
 							</div>
-						
+
 							<div class="form-group">
-						
+
 								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-						
+
 								<div class="col-sm-10">
-						
+
 									<%@include file="../../../SE2/SE2postModify.jsp"%>
-									
+
 								</div>
 							</div>
-						
+
 							<div class="form-group">
-								
+
 								<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-								
+
 								<div class="col-sm-10">
-								
-									<c:forEach items="${attachmentList}" var="attachment"><br>
 
-										<label for="attachmentName" class="col-sm-5 control-label">${attachment.attachment_name }</label><br>
+									<c:forEach items="${attachmentList}" var="attachment">
+										<br>
 
-										${attachment.attachment_id}
+										<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>
+										<br>
 
-										<a id="a" href="${cp}/attachment/delete?attachment_id=${attachment.attachment_id}&post_id=${post_id }&cate_id=${cate_id }" class="attachment	btn-default pull-right">X</a>
+										${attachment.att_id}
+
+										<a id="a"
+											href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }"
+											class="attachment	btn-default pull-right">X</a>
 									</c:forEach>
 								</div>
-								
-								파일추가 
-								
-								<input type="button" value="파일추가" id="addFileBtn">
-								
+
+								파일추가 <input type="button" value="파일추가" id="addFileBtn">
+
 								<div class="col-sm-10" id="fileArea">
-									
-									<input type="file" name="file" multiple><br> 
-									
-									<input type="hidden" name="cate_id" value="${cate_id }">
-									
+
+									<input type="file" name="file" multiple><br> <input
+										type="hidden" name="cate_id" value="${cate_id }">
+
 								</div>
 							</div>
-							
+
 							<button type="submit" id="postModifyBtn">수정완료</button>
-						
+
 						</form>
 					</div>
 				</div>
@@ -156,9 +126,45 @@ postVo : ${postVo}<br>
 		</div>
 	</div>
 </body>
+<script>
+	var form = document.forms[0];
+	var addFileBtn = document.getElementById("addFileBtn");
+	var delFileBtn = document.getElementById("delFileBtn");
+	var fileArea = document.getElementById("fileArea");
+	var cnt = 2;
+
+	form.onsubmit = function() {
+		event.preventDefault();
+	};
+
+	addFileBtn.onclick = function() {
+		var a = $('.attachment').length;
+
+		if (a + cnt <= 5) {
+			var element = document.createElement("input");
+			element.type = "file";
+			element.name = "file"
+			cnt++;
+			fileArea.appendChild(element);
+			fileArea.appendChild(document.createElement("br"));
+		} else {
+			alert("파일은 5개까지만 추가 가능합니다");
+		}
+
+	};
+
+	delFileBtn.onclick = function() {
+		if (cnt > 1) {
+			cnt--;
+			var inputs = fileArea.getElementsByTagName('input');
+			fileArea.removeChild(inputs[cnt].nextElementSibling);
+			fileArea.removeChild(inputs[cnt]);
+		}
+	}
+</script>
+
+
+
+
+
 </html>
-
-
-
-
-

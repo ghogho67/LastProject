@@ -21,15 +21,14 @@
 <!-- css, js -->
 
 <style>
-.userTr:hover {
+.postTr:hover {
 	cursor: pointer;
 }
 </style>
 <script>
 	$(document).ready(function() {
-		$(".userTr").on("click", function() {
-			console.log("userTr click");
-			var post_id = $(this).find(".yaya").text();
+		$(".postTr").on("click", function() {
+			var post_id = $(this).find(".postId").text();
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
@@ -46,15 +45,15 @@
 						<h2 class="sub-header">
 							postPagingList.jsp <br> <br>
 						</h2>
-<pre>
+						<pre>
 cate_id :${cate_id} <br><br> 
 postList : ${postList }<br><br>
 pageVo : ${pageVo }<br><br>
 paginationSize = ${paginationSize }
+mem_id:${mem_id }
 </pre>
-						<form id="frm"
-							action="${cp}/post/detail"
-							method="post" enctype="multipart/form-data">
+						<form id="frm" action="${cp}/post/detail" method="post"
+							enctype="multipart/form-data">
 							<input type="hidden" class="post_id" id="post_id" name="post_id">
 
 
@@ -66,39 +65,36 @@ paginationSize = ${paginationSize }
 										<th>작성자 아이디</th>
 										<th>작성일시</th>
 									</tr>
-									<c:set var="index" value="1"></c:set>
-									<c:forEach items="${postList }" var="post" varStatus="status">
+									<c:forEach items="${postList }" var="post">
 										<c:choose>
-											<c:when test="${post.post_delete eq 'N'}">
-												<tr class="userTr" data-userid="${post.post_id }">
-													<td class="yaya">${post.post_id }</td>
-													<td align="left"><c:forEach var="i" begin="1"
-															end="${post.re_level}">
-											&nbsp;&nbsp;
-											
-											</c:forEach> <c:if test="${post.re_level !=0}">ㄴ</c:if>${post.post_nm }</td>
+											<c:when test="${post.post_del eq 'N' }">
+												<tr class="postTr" id="${post.post_id }" data-post_id="${post.post_id }">
+													<td class="postId">${post.post_id }</td>
+													<td><c:if test="${post.level > 1 }">
+														<c:forEach var="i" begin="1" end="${post.level+1 }"	step="1">
+															&nbsp;&nbsp;
+														</c:forEach>
+														</c:if>
+														${post.post_nm }
+														</td>
 													<td>${post.mem_id }</td>
-													<td><fmt:formatDate value="${post.post_time }"
-															pattern="yyyy-MM-dd" /></td>
-
-													<input type="hidden" name="cate_id" value="${cate_id }">
-													<input type="hidden" class="post_id"
-														value="${post.post_id }">
+													<td><fmt:formatDate value="${post.post_time }" pattern="yyyy-MM-dd" /></td>
+												</tr>
+												<input type="hidden" name="cate_id" value="${cate_id }">
+												<input type="hidden" class="post_id" value="${post.post_id }">
 											</c:when>
 											<c:otherwise>
-												<tr class="delete"">
+												<tr>
 													<td>${post.post_id }</td>
-													<td>삭제된 게시글입니다</td>
-													<td></td>
-													<td></td>
+													<td colspan="3">삭제된 게시글입니다.</td>
 												</tr>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 								</table>
 							</div>
-							<a
-								href="${cp}/post/register?cate_id=${cate_id}"	class=" btn	btn-default pull-right">새글등록</a>
+							<a href="${cp}/post/register?cate_id=${cate_id}"
+								class=" btn	btn-default pull-right">새글등록</a>
 							<div class="text-center">
 								<ul class="pagination">
 									<c:choose>
@@ -107,7 +103,7 @@ paginationSize = ${paginationSize }
 										</c:when>
 										<c:otherwise>
 											<li><a
-												href="${cp}/post/pagingList?page=${pageVo.page - 1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}">«</a>
+												href="${cp}/post/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}">«</a>
 											</li>
 										</c:otherwise>
 									</c:choose>

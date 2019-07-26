@@ -1,8 +1,5 @@
 package kr.or.ddit.gold.gps.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -22,13 +19,13 @@ public class GpsController {
 	private IGpsService gpsService;
 	
 	@RequestMapping("/insertGps")
-	public void insertGps(  int car_bpm,
-						    double gps_lo,double gps_la) {
+	public void insertGps(  @RequestParam(value = "car_bpm")int car_bpm, @RequestParam(value = "mem_id") String mem_id,
+							@RequestParam(value = "gps_lo")double gps_lo, @RequestParam(value = "gps_la")double gps_la) {
 		logger.debug("!!!!!!!car_bpm :{}",car_bpm);
 		logger.debug("!!!!!!!gps_lo :{}",gps_lo);
 		logger.debug("!!!!!!!gps_la :{}",gps_la);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		GpsVo getMemberVo  = gpsService.getGoldMember(mem_id); 
 		
 		GpsVo gpsVo =  new GpsVo();
 		gpsVo.setCar_bpm(car_bpm);
@@ -38,13 +35,9 @@ public class GpsController {
 		}
 		gpsVo.setGps_la(gps_la);
 		gpsVo.setGps_lo(gps_lo);
-		gpsVo.setMem_id("brown");
-		try {
-			gpsVo.setGold_st(sdf.parse("19/07/21"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		gpsVo.setMem_id(mem_id);
+		gpsVo.setGold_st(getMemberVo.getGold_st());
+		
 		gpsService.insertGps(gpsVo);
 		
 		

@@ -93,7 +93,7 @@ public interface IMemberDao {
 	 * Method : getMemVo
 	 * 작성자 : PC21
 	 * 변경이력 :
-	 * @param userId
+	 * @param mem_id
 	 * @return
 	 * Method 설명 : 아이디찾기 정보 조회
 	 */
@@ -103,7 +103,7 @@ public interface IMemberDao {
 	 * Method : getMemVo
 	 * 작성자 : PC21
 	 * 변경이력 :
-	 * @param userId
+	 * @param mem_id
 	 * @return
 	 * Method 설명 : 비밀번호 찾기 임시비밀번호 업데이트
 	 */

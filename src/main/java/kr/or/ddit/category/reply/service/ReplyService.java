@@ -31,4 +31,14 @@ public class ReplyService implements IReplyService {
 		return replyDao.replyDelete(reply_id);
 	}
 
+	@Override
+	public int replyModify(ReplyVo rvo) {
+		return replyDao.replyModify(rvo);
+	}
+
+	@Override
+	public ReplyVo getReply(int reply_id) {
+		return replyDao.getReply(reply_id);
+	}
+
 }
