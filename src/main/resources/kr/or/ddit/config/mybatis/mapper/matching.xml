@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="matching">
+
+
+	<insert id="create" parameterType="matchingVo">
+		INSERT INTO matching
+		VALUES
+		(mat_id.nextval,
+		#{mat_title},
+		#{mat_cont},
+		#{mat_st},
+		#{mat_end},
+		#{mat_type},
+		#{mat_bc},
+		#{mat_tc},
+		#{mat_allDay},
+		#{cw_mem_id},
+		#{mem_id})
+	</insert>
+
+	<select id="getMatchingVo" resultType="matchingVo">
+		select * from matching
+		where mat_id = #{mat_id}
+	</select>
+
+	<!-- <update id="updateCalendar" parameterType="matchingVo"> -->
+	<!-- UPDATE CALENDAR SET -->
+	<!-- C_TITLE = #{c_title}, C_DESCRIPTION= #{c_description}, -->
+	<!-- C_START=#{c_start}, C_END=#{c_end}, -->
+	<!-- C_TYPE=#{c_type}, -->
+	<!-- C_MEM_ID=#{c_mem_id}, C_BACKGROUNDCOLOR=#{c_backgroundColor}, -->
+	<!-- C_TEXTCOLOR=#{c_textColor}, C_ALLDAY=#{c_allDay} WHERE c_id=#{c_id} -->
+	<!-- </update> -->
+
+	<update id="delete" parameterType="int">
+		UPDATE matching SET
+		mat_del=
+		'Y' WHERE mat_id = #{mat_id}
+	</update>
+
+</mapper>
