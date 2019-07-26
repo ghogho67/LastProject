@@ -21,6 +21,7 @@ public class SosController {
 	public void sosCall(@RequestParam(value = "mem_id") String mem_id) {
 		sosService.recentData(mem_id);
 		
+		
 	}
 
 }
