@@ -2,6 +2,7 @@ package kr.or.ddit.matching.report.dao;
 
 import java.util.List;
 
+import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
 
@@ -18,6 +19,7 @@ public interface IReportDao {
 	
 	
 	List<MatchingReportVo> getAllReportList (String mem_id);
-	MatchingReportVo getCertainReport (MatchingReportVo matchingReportVo);
+	//MatchingReportVo getCertainReport (MatchingReportVo matchingReportVo);
+	MatchingReportAttachmentVo getCertainReport (MatchingReportAttachmentVo matchingReportAttachmentVo);
 	
 }

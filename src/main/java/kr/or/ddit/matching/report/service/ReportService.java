@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.dao.IReportDao;
 import kr.or.ddit.matching.report.model.ReportVo;
@@ -31,9 +32,18 @@ public class ReportService implements IReportService {
 		return reportDao.getAllReportList(mem_id);
 	}
 
+//	@Override
+//	public MatchingReportVo getCertainReport(MatchingReportVo matchingReportVo) {
+//		return reportDao.getCertainReport(matchingReportVo);
+//	}
+//
+//	
+	
+	
+
 	@Override
-	public MatchingReportVo getCertainReport(MatchingReportVo matchingReportVo) {
-		return reportDao.getCertainReport(matchingReportVo);
+	public MatchingReportAttachmentVo getCertainReport(MatchingReportAttachmentVo MatchingReportAttachmentVo) {
+		return reportDao.getCertainReport(MatchingReportAttachmentVo);
 	}
 
 }
