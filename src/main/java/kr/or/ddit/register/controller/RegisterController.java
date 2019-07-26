@@ -287,7 +287,7 @@ public class RegisterController {
 			return "mem_mail";
 		}
 		
-		//프로필 사진
+		//프로필 사진 넣어야함!!!
 		
 		
 		
@@ -320,7 +320,7 @@ public class RegisterController {
 		cwServiceTypeVo.setSer_type_id(cwServiceTypeVo.getSer_type_id());
 		cwServiceTypeVo.setMem_id(memberVo.getMem_id());
 		
-		int insertCWSErviceCnt = registerService.insertCWServiceType(cwServiceTypeVo);
+		int insertCWServiceCnt = registerService.insertCWServiceType(cwServiceTypeVo);
 		
 		
 		hospitalVo.setHos_nm(hospitalVo.getHos_nm());
@@ -328,7 +328,7 @@ public class RegisterController {
 		hospitalVo.setHos_phone(hospitalVo.getHos_phone());
 		hospitalVo.setHos_add(hospitalVo.getHos_add());
 		
-		int inserthopitalCnt = registerService.insertHospital(hospitalVo);
+		int insertHopitalCnt = registerService.insertHospital(hospitalVo);
 		
 		
 		careerVo.setCareer_st_dt(careerVo.getCareer_st_dt());
@@ -340,15 +340,14 @@ public class RegisterController {
 		
 		int insertCareerCnt = registerService.insertCareer(careerVo);
 		
+		if(insertCWMemberCnt == 1 && insertLocationCnt == 1 && insertDayCnt == 1 && insertCWServiceCnt == 1 
+				&& insertHopitalCnt == 1 && insertCareerCnt == 1) {
+			return "success";
+		}
+		else {
+			return "false";
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		return "/regist/registrationStep3-1_Form";
 	}
 
 	/**
