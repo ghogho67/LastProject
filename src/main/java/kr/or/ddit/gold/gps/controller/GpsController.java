@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,6 +25,7 @@ public class GpsController {
 		logger.debug("!!!!!!!car_bpm :{}",car_bpm);
 		logger.debug("!!!!!!!gps_lo :{}",gps_lo);
 		logger.debug("!!!!!!!gps_la :{}",gps_la);
+		logger.debug("!!!!!!!mem_id :{}",mem_id);
 		
 		GpsVo getMemberVo  = gpsService.getGoldMember(mem_id); 
 		
@@ -42,5 +44,17 @@ public class GpsController {
 		
 		
 	}
+	
+	@RequestMapping("/getCardiac")
+	public String getCardiac(Model model, String mem_id) {
+		
+		logger.debug("!!!!!!!mem_id :{}",mem_id);
+		
+		int bpm = gpsService.getCardiac(mem_id);
+		logger.debug("!!!!!!!bpm :{}",bpm);
+		model.addAttribute("bpm",bpm);
+		return "jsonView";
+	}
+	
 
 }

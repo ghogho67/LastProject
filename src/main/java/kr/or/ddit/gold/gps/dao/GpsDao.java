@@ -27,5 +27,10 @@ public class GpsDao implements IGpsDao {
 	public GpsVo getGoldMember(String mem_id) {
 		return sqlSession.selectOne("gps.getGoldMember",mem_id);
 	}
+
+	@Override
+	public int getCardiac(String mem_id) {
+		return sqlSession.selectOne("gps.getCardiac",mem_id);
+	}
 	
 }

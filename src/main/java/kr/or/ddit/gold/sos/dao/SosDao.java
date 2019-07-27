@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import kr.or.ddit.gold.sos.model.SOSVo;
-
 @Repository
 public class SosDao implements ISosDao {
 	private static final Logger logger = LoggerFactory.getLogger(SosDao.class);

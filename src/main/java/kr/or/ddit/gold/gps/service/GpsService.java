@@ -21,4 +21,10 @@ public class GpsService implements IGpsService {
 	public GpsVo getGoldMember(String mem_id) {
 		return gpsDao.getGoldMember(mem_id);
 	}
+
+	@Override
+	public int getCardiac(String mem_id) {
+		// TODO Auto-generated method stub
+		return gpsDao.getCardiac(mem_id);
+	}
 }
