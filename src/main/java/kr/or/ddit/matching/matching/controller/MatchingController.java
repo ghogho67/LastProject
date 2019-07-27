@@ -88,7 +88,6 @@ public class MatchingController {
 					vo.setMat_end(endDate2);
 
 					System.out.println("start: " + startDate2 + "      end : " + endDate2);
-					boardService.insertCalendar(vo);
 
 				}
 			}

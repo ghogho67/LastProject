@@ -4,8 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-
-
 <nav id="nav-menu-container">
 	<ul class="nav-menu">
 		<li class="menu-active"><a href="${cp}/main">Home</a></li>
@@ -18,12 +16,6 @@
 			</c:choose>
 		<li><a href="#">요양 정보</a> 
 		
-		
-		
-	
-			
-			
-			
 			<ul>
 				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li>
 				<li><a href="${cp}/test/matching">요양원/요양병원 찾기</a></li>
@@ -52,6 +44,38 @@
 				<li><a href="blog-home.html">무더위 쉼터</a></li>
 				<li><a href="blog-home.html">문화시설</a></li>
 
+			</ul>
+			
+			</li>
+			
+			<c:choose>
+ 
+    <c:when test="${MEM_INFO.mem_grade==0}">
+    
+      <li class="menu-has-children"><a href="">관리자 메뉴 </a>
+			<ul>
+				<li><a href="blog-home.html">메뉴관리</a></li>
+			
 			</ul></li>
+			
+
+    </c:when>
+ 
+  
+ 
+    <c:otherwise>
+
+    </c:otherwise>
+ 
+</c:choose>
+			
+			
+			
+			
+			
+			
+			
+			
+			
 	</ul>
 </nav>

@@ -16,15 +16,46 @@ public class MatchingReportVo {
 	private String mat_allDay;
 	private String cw_mem_id;
 	private String mem_id;
+	private String mat_del;
 	
 	
 	private int rep_id;
 	private Date rep_time;
 	private String rep_title;
 	private String rep_cont;
-	
-	
-	
+	public MatchingReportVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public MatchingReportVo(int mat_id, String mat_title, String mat_cont, String mat_st, String mat_end,
+			String mat_type, String mat_bc, String mat_tc, String mat_allDay, String cw_mem_id, String mem_id,
+			String mat_del, int rep_id, Date rep_time, String rep_title, String rep_cont) {
+		super();
+		this.mat_id = mat_id;
+		this.mat_title = mat_title;
+		this.mat_cont = mat_cont;
+		this.mat_st = mat_st;
+		this.mat_end = mat_end;
+		this.mat_type = mat_type;
+		this.mat_bc = mat_bc;
+		this.mat_tc = mat_tc;
+		this.mat_allDay = mat_allDay;
+		this.cw_mem_id = cw_mem_id;
+		this.mem_id = mem_id;
+		this.mat_del = mat_del;
+		this.rep_id = rep_id;
+		this.rep_time = rep_time;
+		this.rep_title = rep_title;
+		this.rep_cont = rep_cont;
+	}
+	@Override
+	public String toString() {
+		return "MatchingReportVo [mat_id=" + mat_id + ", mat_title=" + mat_title + ", mat_cont=" + mat_cont
+				+ ", mat_st=" + mat_st + ", mat_end=" + mat_end + ", mat_type=" + mat_type + ", mat_bc=" + mat_bc
+				+ ", mat_tc=" + mat_tc + ", mat_allDay=" + mat_allDay + ", cw_mem_id=" + cw_mem_id + ", mem_id="
+				+ mem_id + ", mat_del=" + mat_del + ", rep_id=" + rep_id + ", rep_time=" + rep_time + ", rep_title="
+				+ rep_title + ", rep_cont=" + rep_cont + "]";
+	}
 	public int getMat_id() {
 		return mat_id;
 	}
@@ -91,6 +122,12 @@ public class MatchingReportVo {
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
 	}
+	public String getMat_del() {
+		return mat_del;
+	}
+	public void setMat_del(String mat_del) {
+		this.mat_del = mat_del;
+	}
 	public int getRep_id() {
 		return rep_id;
 	}
@@ -115,38 +152,8 @@ public class MatchingReportVo {
 	public void setRep_cont(String rep_cont) {
 		this.rep_cont = rep_cont;
 	}
-	public MatchingReportVo(int mat_id, String mat_title, String mat_cont, String mat_st, String mat_end,
-			String mat_type, String mat_bc, String mat_tc, String mat_allDay, String cw_mem_id, String mem_id,
-			int rep_id, Date rep_time, String rep_title, String rep_cont) {
-		super();
-		this.mat_id = mat_id;
-		this.mat_title = mat_title;
-		this.mat_cont = mat_cont;
-		this.mat_st = mat_st;
-		this.mat_end = mat_end;
-		this.mat_type = mat_type;
-		this.mat_bc = mat_bc;
-		this.mat_tc = mat_tc;
-		this.mat_allDay = mat_allDay;
-		this.cw_mem_id = cw_mem_id;
-		this.mem_id = mem_id;
-		this.rep_id = rep_id;
-		this.rep_time = rep_time;
-		this.rep_title = rep_title;
-		this.rep_cont = rep_cont;
-	}
-	public MatchingReportVo() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "MatchingReportVo [mat_id=" + mat_id + ", mat_title=" + mat_title + ", mat_cont=" + mat_cont
-				+ ", mat_st=" + mat_st + ", mat_end=" + mat_end + ", mat_type=" + mat_type + ", mat_bc=" + mat_bc
-				+ ", mat_tc=" + mat_tc + ", mat_allDay=" + mat_allDay + ", cw_mem_id=" + cw_mem_id + ", mem_id="
-				+ mem_id + ", rep_id=" + rep_id + ", rep_time=" + rep_time + ", rep_title=" + rep_title + ", rep_cont="
-				+ rep_cont + "]";
-	}
-
+	
+	
 
 	
 	
