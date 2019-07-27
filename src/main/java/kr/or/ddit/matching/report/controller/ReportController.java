@@ -1,9 +1,14 @@
 package kr.or.ddit.matching.report.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -19,67 +24,121 @@ import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
 import kr.or.ddit.matching.report.service.IReportService;
+import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
+import kr.or.ddit.matching.reportAttach.service.IReportAttachService;
+
 @RequestMapping("/report")
 @Controller
 public class ReportController {
-  private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
 
-  
-  @Resource(name = "matchingService")
+	@Resource(name = "matchingService")
 	private IMatchingService matchingService;
-  @Resource(name = "reportService")
-  private IReportService reportService;
-  
-	
-	@RequestMapping(path = "/reportList" , method = RequestMethod.GET)
-	public String reportList(Model model, HttpSession session,
-			RedirectAttributes redirectAttributes, HttpServletRequest request,
-			@RequestParam(name = "memid") String mem_id) {
-		
-		logger.debug("@@@@mem_id : {} ", mem_id);
-		
-		List<MatchingReportVo> reportlist = reportService.getAllReportList(mem_id); 
+	@Resource(name = "reportService")
+	private IReportService reportService;
 
-		logger.debug("@@@@reportlist : {} ", reportlist);
-		
-		model.addAttribute("reportlist", reportlist);
-		
+	@Resource(name = "reportAttachService")
+	private IReportAttachService reportAttachService;
+
+	@RequestMapping(path = "/reportList", method = RequestMethod.GET)
+	public String reportList(Model model, HttpSession session, RedirectAttributes redirectAttributes,
+			HttpServletRequest request, @RequestParam(name = "memid") String mem_id,
+			@RequestParam(name = "memgrade") String mem_grade) {
+
+		logger.debug("@@@@mem_id : {} ", mem_id);
+		logger.debug("@@@@mem_grade : {} ", mem_grade);
+
+		if (mem_grade.equals("3")) {
+
+			logger.debug("요양보호사");
+			// 요양보호사 회원이 작성한 보고서
+			String cw_mem_id = mem_id;
+
+			List<MatchingReportVo> reportlist = reportService.getWorkerReportList(cw_mem_id);
+			logger.debug("@@@@reportlist : {} ", reportlist);
+
+			model.addAttribute("reportlist", reportlist);
+
+		} else {
+
+			List<MatchingReportVo> reportlist = reportService.getAllReportList(mem_id);
+			logger.debug("@@@@reportlist : {} ", reportlist);
+
+			model.addAttribute("reportlist", reportlist);
+		}
+
 		return "mypage/report/reportList";
 	}
-	
-	
-	
-	
-	
-	@RequestMapping(path = "/report" , method = RequestMethod.GET)
-	public String report(Model model, HttpSession session,
-			RedirectAttributes redirectAttributes, HttpServletRequest request,
-			@RequestParam(name = "reportId") int reportId,
-			@RequestParam(name = "memid") String mem_id) {
-		
-		logger.debug("@@@@reportId : {} ", reportId);
-		logger.debug("@@@@memid : {} ", mem_id);
-		
-		MatchingReportAttachmentVo matchingReportAttachmentVo = matchingReportAttachmentVo(mem_id,reportId);
-		
-		MatchingReportAttachmentVo report = reportService.getCertainReport(matchingReportAttachmentVo); 
 
-		logger.debug("@@@@report : {} ", report);
-		
-		model.addAttribute("report", report);
-		
+	
+	
+	
+	
+	@RequestMapping(path = "/report", method = RequestMethod.GET)
+	public String report(Model model, HttpSession session, RedirectAttributes redirectAttributes,
+			HttpServletRequest request,
+
+			@RequestParam(name = "reportId") int rep_id, @RequestParam(name = "memid") String mem_id,
+			@RequestParam(name = "memgrade") String mem_grade) {
+
+		logger.debug("@@@@memid : {} ", mem_id);
+		logger.debug("@@@@reportId : {} ", rep_id);
+
+		if (mem_grade.equals("3")) {
+
+			logger.debug("요양보호사");
+
+			String cw_mem_id = mem_id;
+
+			// 요양보호사가 본인이 작성한 보고서를 볼때
+			MatchingReportAttachmentVo matchingReportAttachmentVo = new MatchingReportAttachmentVo(mem_id, cw_mem_id,rep_id);
+			MatchingReportAttachmentVo report = reportService.getWorkerCertainReportWA(matchingReportAttachmentVo);
+
+			logger.debug("@@@@report : {} ", report);
+
+			model.addAttribute("report", report);
+
+		} else {
+
+			MatchingReportAttachmentVo matchingReportAttachmentVo = new MatchingReportAttachmentVo(mem_id, rep_id);
+			MatchingReportAttachmentVo report = reportService.getCertainReportWA(matchingReportAttachmentVo);
+
+			logger.debug("@@@@report : {} ", report);
+
+			model.addAttribute("report", report);
+		}
+
 		return "mypage/report/report";
 	}
 
+	
+	
+	
+	
+	
+	@RequestMapping(path = "/DownGOGO", method = RequestMethod.GET)
+	public void fileDownload(HttpServletResponse response, @RequestParam("repattid") int rep_att_id)
+			throws IOException {
 
+		ReportAttachVo reportAttachVo = reportAttachService.FileDown(rep_att_id);
+		logger.debug("@@@@fileid :{}", rep_att_id);
+		// 파일로 다운로드
+		response.setHeader("Content-Disposition", "attachment; filename=" + reportAttachVo.getRep_att_path());
 
+		response.setContentType("application/octet-stream");
+		response.setContentType("image");
 
+		FileInputStream fis = new FileInputStream(new File(reportAttachVo.getRep_att_path()));
 
-	private MatchingReportAttachmentVo matchingReportAttachmentVo(String mem_id, int reportId) {
-		// TODO Auto-generated method stub
-		return null;
+		ServletOutputStream sos = response.getOutputStream();
+
+		byte[] buff = new byte[512];
+		int len = 0;
+		while ((len = fis.read(buff)) > -1) {
+			sos.write(buff);
+		}
+		sos.close();
+		fis.close();
 	}
-	
-	
-	
+
 }

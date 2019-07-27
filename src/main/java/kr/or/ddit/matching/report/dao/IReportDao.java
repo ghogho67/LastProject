@@ -19,7 +19,15 @@ public interface IReportDao {
 	
 	
 	List<MatchingReportVo> getAllReportList (String mem_id);
-	//MatchingReportVo getCertainReport (MatchingReportVo matchingReportVo);
-	MatchingReportAttachmentVo getCertainReport (MatchingReportAttachmentVo matchingReportAttachmentVo);
+	
+	MatchingReportVo getCertainReport (MatchingReportVo matchingReportVo);
+	
+	MatchingReportAttachmentVo getCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
+	
+	
+	
+	
+	List<MatchingReportVo> getWorkerReportList (String cw_mem_id);
+	MatchingReportAttachmentVo getWorkerCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
 	
 }

@@ -6,6 +6,7 @@
 <configuration>
 	<properties resource="kr/or/ddit/config/mybatis/db.properties"/>
 	<typeAliases>
+
 		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.post.model.PostVo"/>
 		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
 		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
@@ -14,8 +15,6 @@
 		<typeAlias alias="dayVo" type="kr.or.ddit.member.careWorker.day.model.DayVo"/>
 		<typeAlias alias="careerVo" type="kr.or.ddit.member.careWorker.career.model.CareerVo"/>
 		<typeAlias alias="hospitalVo" type="kr.or.ddit.member.careWorker.hospital.model.HospitalVo"/>
-		<typeAlias alias="AttachmentVo" type = "kr.or.ddit.category.post.attachment.model.AttachmentVo"/>
-		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.post.reply.model.ReplyVo"/>
 		<typeAlias alias="matchingGradeVo" type = "kr.or.ddit.joinVo.MatchingGradeVo"/>
 		<typeAlias alias="cwServiceTypeVo" type = "kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo"/>
 		<typeAlias alias="matchingReportVo" type = "kr.or.ddit.joinVo.MatchingReportVo"/>
@@ -24,20 +23,26 @@
 		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
 		<typeAlias alias="sosVo" type="kr.or.ddit.gold.sos.model.SOSVo" />
 		<typeAlias alias="ReportVo" type="kr.or.ddit.matching.report.model.ReportVo" />
+		<typeAlias alias="serviceTypeVo" type="kr.or.ddit.member.careWorker.serviceType.model.ServiceTypeVo"/>
+		<typeAlias alias="AttachmentVo" type = "kr.or.ddit.category.post.attachment.model.AttachmentVo"/>
+		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.post.reply.model.ReplyVo"/>
 		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
+		<typeAlias alias="ReportAttachVo" type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" />
+		
+		
+		
 	</typeAliases>
 	
-	<mappers>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" />
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
 
-	</mappers>
+<mappers>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" />
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
+   </mappers>
 </configuration>
