@@ -62,14 +62,12 @@
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
 									
-<<<<<<< HEAD
+
+										<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">보고서조회</a></li>
+
 										<li class="nav-item"><a class="nav-link" href="#">
 											결제 내역 </a></li>
-										<li class="nav-item"><a class="nav-link" href="#">
-=======
-										<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}">
->>>>>>> b8be8faa8f0ecb303b28fef617f32046ab958725
-											보고서 조회 </a></li>
+
 								
 								</ul>
 							</div>

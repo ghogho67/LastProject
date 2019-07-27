@@ -16,6 +16,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 <title>사용자 상세조회</title>
+
 <script>
 	$(document).ready(function() {
 		
@@ -42,6 +43,8 @@
 		})
 	
 	});
+	
+	
 </script>
 
 <SCRIPT>

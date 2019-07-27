@@ -9,31 +9,6 @@
 
 <meta charset="UTF-8">
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
-<link rel="stylesheet"
-	href="${cp}/resource/joinCare/css/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/popup.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/layout.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/main.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/company.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/idpw-find.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/mypage.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/education.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/useguide.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/policy.css">
-<link rel="stylesheet" type="text/css"
-	href="${cp}/resource/joinCare/css/board.css">
 <%@include file="/WEB-INF/view/common/LibForWebpage2.jsp"%>
 
 
@@ -131,10 +106,6 @@ style>.pagination-outer {
 	}
 }
 
-* {
-	box-sizing: border-box;
-}
-
 .for {
 	position: relative;
 	width: 250px;
@@ -179,6 +150,17 @@ style>.pagination-outer {
 	font-size: 16px;
 	color: #F9F0DA;
 }
+
+#searchType {
+	height: 40px;
+	width: 70px;
+	font-size: 15px;
+	border-radius: 5px 0px 0px 5px;
+	border-top: 2px solid #7BA7AB;
+	border-bottom: 2px solid #7BA7AB;
+	border-left: 2px solid #7BA7AB;
+	border-right: 2px solid #7BA7AB;
+}
 </style>
 
 
@@ -214,8 +196,27 @@ style>.pagination-outer {
 </head>
 <body>
 	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
-	<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
 
+
+
+<c:choose>
+ 
+    <c:when test="${MEM_INFO.mem_grade==0}">
+      <%@include file="/WEB-INF/view/common/mypage/sidebarA.jsp"%>
+
+    </c:when>
+ 
+    <c:when test="${MEM_INFO.mem_grade==3}">
+     <%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
+
+    </c:when>
+ 
+    <c:otherwise>
+       <%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
+
+    </c:otherwise>
+ 
+</c:choose>
 
 
 
@@ -224,6 +225,7 @@ style>.pagination-outer {
 	<form id="frm" action="${cp}/report/report" method="get">
 		<input type="hidden" id="reportId" name="reportId">
 		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
+		<input type="hidden" id="memgrade" name="memgrade" value="${MEM_INFO.mem_grade}">
 	</form>
 
 

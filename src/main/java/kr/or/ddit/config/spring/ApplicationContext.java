@@ -49,8 +49,6 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
       configurer.enable();
    }
-   
-   
    /*
    <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
       <property name="order" value="1"></property>
@@ -69,7 +67,6 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
    /*
    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
       <property name="order" value="2"/>
-      
    </bean>
    */
    @Bean

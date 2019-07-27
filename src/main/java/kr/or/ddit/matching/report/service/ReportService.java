@@ -27,23 +27,35 @@ public class ReportService implements IReportService {
 		return reportDao.getReport(rep_id);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<MatchingReportVo> getAllReportList(String mem_id) {
 		return reportDao.getAllReportList(mem_id);
 	}
 
-//	@Override
-//	public MatchingReportVo getCertainReport(MatchingReportVo matchingReportVo) {
-//		return reportDao.getCertainReport(matchingReportVo);
-//	}
-//
-//	
+	@Override
+	public MatchingReportAttachmentVo getCertainReportWA(MatchingReportAttachmentVo matchingReportAttachmentVo) {
+		return reportDao.getCertainReportWA(matchingReportAttachmentVo);
+	}
+
+
+
 	
-	
+	@Override
+	public List<MatchingReportVo> getWorkerReportList(String cw_mem_id) {
+		return reportDao.getWorkerReportList(cw_mem_id);
+	}
 
 	@Override
-	public MatchingReportAttachmentVo getCertainReport(MatchingReportAttachmentVo MatchingReportAttachmentVo) {
-		return reportDao.getCertainReport(MatchingReportAttachmentVo);
+	public MatchingReportAttachmentVo getWorkerCertainReportWA(MatchingReportAttachmentVo matchingReportAttachmentVo) {
+		return reportDao.getWorkerCertainReportWA(matchingReportAttachmentVo);
 	}
 
 }
