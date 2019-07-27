@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.8.0"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 var chartColors = {
 		red: 'rgb(255, 99, 132)',
@@ -20,37 +21,27 @@ var chartColors = {
 		grey: 'rgb(201, 203, 207)'
 	};
 
-	function randomScalingFactor() {
-		return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-	}
 	function getData(){
+		var bpm=0;
+		var mem_id= "brown";
 		$.ajax({
-			url: "${cp}/regist/idCheck",
-			data : "mem_id="+data,
+			url: "${pageContext.request.contextPath}/gps/getCardiac",
+			data : "mem_id="+mem_id,
+			async:false,
 			success :  function(data){
-				console.log(data);
-				if(data.mem_id == "mem_id"){
-					alert("아이디를 정규식에 맞게 입력해 주세요");
-					$("#mem_id").val("");
-					$("#mem_id").focus();
-					return;
-				}
-				if(data.mem_id == "yes"){
-					alert("사용가능한 아이디입니다");
-				}else{
-					alert("사용중인 아이디입니다");
-					$('#mem_id').val("");
-					$('#mem_id').focus();
-				}
+				bpm =data.bpm;
+				console.log(bpm);
 			}
 		});
+		console.log(bpm);
+		return bpm;
 	}
 
 	function onRefresh(chart) {
 		chart.config.data.datasets.forEach(function(dataset) {
 			dataset.data.push({
 				x: Date.now(),
-				y: randomScalingFactor()
+				y: getData()
 			});
 		});
 	}
@@ -64,8 +55,7 @@ var chartColors = {
 				backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
 				borderColor: chartColors.red,
 				fill: false,
-				lineTension: 0,
-				borderDash: [8, 4],
+				cubicInterpolationMode: 'monotone',
 				data: []
 			}]
 		},
@@ -78,7 +68,7 @@ var chartColors = {
 				xAxes: [{
 					type: 'realtime',
 					realtime: {
-						duration: 20000,
+						duration: 10000,
 						refresh: 1000,
 						delay: 2000,
 						onRefresh: onRefresh
@@ -87,8 +77,13 @@ var chartColors = {
 				yAxes: [{
 					scaleLabel: {
 						display: true,
-						labelString: 'value'
+						labelString: 'bpm'
+					},
+					ticks: {
+						suggestedMax: 130,    // minimum will be 0, unless there is a lower value.
+						beginAtZero: true 
 					}
+
 				}]
 			},
 			tooltips: {
@@ -105,43 +100,12 @@ var chartColors = {
 	window.onload = function() {
 		var ctx = document.getElementById('myChart').getContext('2d');
 		window.myChart = new Chart(ctx, config);
+		
+		
+		
 	};
 
-	document.getElementById('randomizeData').addEventListener('click', function() {
-		config.data.datasets.forEach(function(dataset) {
-			dataset.data.forEach(function(dataObj) {
-				dataObj.y = randomScalingFactor();
-			});
-		});
-		window.myChart.update();
-	});
-
-	var colorNames = Object.keys(chartColors);
-	document.getElementById('addDataset').addEventListener('click', function() {
-		var colorName = colorNames[config.data.datasets.length % colorNames.length];
-		var newColor = chartColors[colorName];
-		var newDataset = {
-			label: 'Dataset ' + (config.data.datasets.length + 1),
-			backgroundColor: color(newColor).alpha(0.5).rgbString(),
-			borderColor: newColor,
-			fill: false,
-			lineTension: 0,
-			data: []
-		};
-
-		config.data.datasets.push(newDataset);
-		window.myChart.update();
-	});
-
-	document.getElementById('removeDataset').addEventListener('click', function() {
-		config.data.datasets.pop();
-		window.myChart.update();
-	});
-
-	document.getElementById('addData').addEventListener('click', function() {
-		onRefresh(window.myChart);
-		window.myChart.update();
-	});
+	
 </script>
 
 </head>
@@ -150,12 +114,7 @@ var chartColors = {
 <div>
 		<canvas id="myChart"></canvas>
 	</div>
-	<p>
-		<button id="randomizeData">Randomize Data</button>
-		<button id="addDataset">Add Dataset</button>
-		<button id="removeDataset">Remove Dataset</button>
-		<button id="addData">Add Data</button>
-	</p>
+
 
 </body>
 </html>
