@@ -2,6 +2,7 @@ package kr.or.ddit.matching.matching.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ public class MatchingController {
 	@Resource(name = "matchingService")
 	IMatchingService matchingService;
 
-	@RequestMapping(path = "calendar")
+	@RequestMapping(path = "/calendar")
 	public String calendarView() {
 		return "FullCalendar-Example-master/calendar";
 	}
@@ -34,8 +35,10 @@ public class MatchingController {
 	@RequestMapping(path = "/insertCalendar")
 	public String insertData(Model model, @RequestBody List<Map<String, Object>> list) {
 
+		logger.debug("☞insertCalendar:{}", "insertCalendar");
 		logger.debug("☞list:{}", list);
-		String[] items = list.get(0).get("dow").toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+		String[] items = list.get(0).get("dow").toString().replaceAll("\\[", "").replaceAll("\\]", "")
+				.replaceAll("\\s", "").split(",");
 
 		int[] dow = new int[items.length];
 
@@ -46,50 +49,51 @@ public class MatchingController {
 			}
 			;
 		}
-
 		SimpleDateFormat dateFormat;
+
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm"); // 년월일 표시
 
 		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, Integer.parseInt(((String) list.get(0).get("endDate")).substring(0, 4))); // 종료날짜셋팅
-		cal.set(Calendar.MONTH, Integer.parseInt(((String) list.get(0).get("endDate")).substring(5, 7)) - 1); // 종료날짜셋팅
-		cal.set(Calendar.DATE, Integer.parseInt(((String) list.get(0).get("endDate")).substring(8))); // 종료날짜셋팅
-		cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(((String) list.get(0).get("endTime")).substring(0, 2))); // 종료날짜셋팅
-		cal.set(Calendar.MINUTE, Integer.parseInt(((String) list.get(0).get("endTime")).substring(3))); // 종료 날짜 셋팅
+		cal.set(Calendar.YEAR, Integer.parseInt(((String) list.get(0).get("endDate")).substring(0, 4))); // 종료년
+		cal.set(Calendar.MONTH, Integer.parseInt(((String) list.get(0).get("endDate")).substring(5, 7)) - 1); // 종료월
+		cal.set(Calendar.DATE, Integer.parseInt(((String) list.get(0).get("endDate")).substring(8))); // 종료일
+		cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(((String) list.get(0).get("endTime")).substring(0, 2))); // 종료시
+		cal.set(Calendar.MINUTE, Integer.parseInt(((String) list.get(0).get("endTime")).substring(3))); // 종료분
 
 		String endDate2 = dateFormat.format(cal.getTime());
 
 		Calendar cal2 = Calendar.getInstance();
-		cal2.set(Calendar.YEAR, Integer.parseInt(((String) list.get(0).get("startDate")).substring(0, 4))); // 시작 날짜 셋팅
-		cal2.set(Calendar.MONTH, Integer.parseInt(((String) list.get(0).get("startDate")).substring(5, 7)) - 1); // 시작날짜셋팅
-		cal2.set(Calendar.DATE, Integer.parseInt(((String) list.get(0).get("startDate")).substring(8))); // 시작 시작 셋팅
-		cal2.set(Calendar.HOUR_OF_DAY, Integer.parseInt(((String) list.get(0).get("startTime")).substring(0, 2))); // 시작날짜셋팅
-		cal2.set(Calendar.MINUTE, Integer.parseInt(((String) list.get(0).get("startTime")).substring(3))); // 시작날짜셋팅
+		cal2.set(Calendar.YEAR, Integer.parseInt(((String) list.get(0).get("startDate")).substring(0, 4))); // 시작년
+		cal2.set(Calendar.MONTH, Integer.parseInt(((String) list.get(0).get("startDate")).substring(5, 7)) - 1); // 시작월
+		cal2.set(Calendar.DATE, Integer.parseInt(((String) list.get(0).get("startDate")).substring(8))); // 시작일
+		cal2.set(Calendar.HOUR_OF_DAY, Integer.parseInt(((String) list.get(0).get("startTime")).substring(0, 2))); // 시작시
+		cal2.set(Calendar.MINUTE, Integer.parseInt(((String) list.get(0).get("startTime")).substring(3))); // 시작분
 		String startDate2 = dateFormat.format(cal2.getTime());
 
 		int compare = cal.compareTo(cal2);
-
+		logger.debug("☞compare:{}", compare);
 		while (true) { // 다르다면 실행, 동일 하다면 빠져나감
 			for (int i = 0; i < dow.length; i++) {
 				if (cal2.get(cal2.DAY_OF_WEEK) == dow[i]) {
 					startDate2 = startDate2.substring(0, 10) + "T" + startDate2.substring(11, startDate2.length());
 					endDate2 = startDate2.substring(0, 10) + "T" + endDate2.substring(11, endDate2.length());
-
+					logger.debug("☞(boolean) list.get(0).get(\"allDay\"):{}", list.get(0).get("mat_allday"));
 					MatchingVo vo = new MatchingVo();
-					vo.setMat_allDay((boolean) list.get(0).get("allDay"));
-					vo.setMat_bc(((String) list.get(0).get("backgroundColor")));
-					vo.setMat_cont(((String) list.get(0).get("description")));
-					vo.setMat_tc(((String) list.get(0).get("textColor")));
-					vo.setMat_title(((String) list.get(0).get("title")));
-					vo.setMat_type(((String) list.get(0).get("type")));
-					vo.setCw_mem_id(((String) list.get(0).get("c_worker")));
-					vo.setMem_id(((String) list.get(0).get("c_mem_id")));
+					logger.debug("☞(boolean) list.get(0).get(\"allDay\"):{}", (boolean) list.get(0).get("mat_allday"));
+					vo.setMat_allDay((boolean) list.get(0).get("mat_allday"));
+					vo.setMat_bc(((String) list.get(0).get("mat_bc")));
+					vo.setMat_cont(((String) list.get(0).get("mat_cont")));
+					vo.setMat_tc(((String) list.get(0).get("mat_tc")));
+					vo.setMat_title(((String) list.get(0).get("mat_title")));
+					vo.setMat_type(((String) list.get(0).get("mat_type")));
+					vo.setCw_mem_id(((String) list.get(0).get("cw_mem_id")));
+					vo.setMem_id(((String) list.get(0).get("mem_id")));
 					vo.setMat_st(startDate2);
 					vo.setMat_end(endDate2);
 
 					System.out.println("start: " + startDate2 + "      end : " + endDate2);
-					boardService.insertCalendar(vo);
-
+					logger.debug("☞vo:{}", vo);
+//					matchingService.insertCalendar(vo);
 				}
 			}
 			cal2.add(Calendar.DATE, 1); // 1일 더해줌
@@ -99,13 +103,10 @@ public class MatchingController {
 			if (compare > 0) {
 				break;
 			}
-
 		}
-
 		return "redirect:/getCalendar";
 	}
 
-//
 //	@RequestMapping(path = "/updateCalendar")
 //	public String updateCalendar(Model model, @RequestBody List<Map<String, Object>> list) {
 //
@@ -153,38 +154,38 @@ public class MatchingController {
 //
 //	@RequestMapping(path = "/deleteCalendar")
 //	public String deleteCalendar(Model model, int c_id) {
-////		logger.debug("!!!! c_id : {}", c_id);
+//		logger.debug("!!!! c_id : {}", c_id);
 //		boardService.deleteCalendar(c_id);
 //		return "redirect:/getCalendar";
 //	}
 //
-//	@RequestMapping(path = "/getCalendar")
-//	public String getCalendar(Model model) {
-//
-//		List<MatchingVo> list = boardService.getCalendar();
-//		for (int i = 0; i < list.size(); i++) {
-//			System.out.println("list : " + list.get(i));
-//
-//		}
-//
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		for (int i = 0; i < list.size(); i++) {
-//			map.put("_id", list.get(i).getMat_id());
-//			map.put("backgroundColor", list.get(i).getMat_bc());
-//			map.put("description", list.get(i).getMat_cont());
-//			map.put("end", list.get(i).getMat_end());
-//			map.put("start", list.get(i).getMat_st());
-//			map.put("textColor", list.get(i).getMat_tc());
-//			map.put("title", list.get(i).getMat_title());
-//			map.put("type", list.get(i).getMat_type());
-//			map.put("c_mem_id", list.get(i).getMem_id());
-//			map.put("c_worker", list.get(i).getCw_mem_id());
-//			map.put("allday", list.get(i).isMat_allDay());
-//		}
-//		model.addAttribute("list", list);
-//
-//		return "jsonView";
-//
-//	}
+	@RequestMapping(path = "/getCalendar")
+	public String getCalendar(Model model) {
+
+		List<MatchingVo> list = matchingService.getCalendar();
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("list : " + list.get(i));
+
+		}
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		for (int i = 0; i < list.size(); i++) {
+			map.put("_id", list.get(i).getMat_id());
+			map.put("mat_bc", list.get(i).getMat_bc());
+			map.put("mat_cont", list.get(i).getMat_cont());
+			map.put("end", list.get(i).getMat_end());
+			map.put("start", list.get(i).getMat_st());
+			map.put("mat_tc", list.get(i).getMat_tc());
+			map.put("mat_title", list.get(i).getMat_title());
+			map.put("mat_type", list.get(i).getMat_type());
+			map.put("mem_id", list.get(i).getMem_id());
+			map.put("cw_mem_id", list.get(i).getCw_mem_id());
+			map.put("mat_allday", list.get(i).isMat_allDay());
+		}
+		model.addAttribute("list", list);
+
+		return "jsonView";
+
+	}
 
 }
