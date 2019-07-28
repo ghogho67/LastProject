@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="matching">
+
+	<insert id="create" parameterType="matchingVo">
+		INSERT INTO matching
+		VALUES
+		(mat_id.nextval,
+		#{mat_title},
+		#{mat_cont},
+		#{mat_st},
+		#{mat_end},
+		#{mat_bc},
+		#{mat_tc},
+		#{mat_allDay},
+		#{mat_type},
+		#{mem_id},
+		#{cw_mem_id},
+		#{mat_del})
+	</insert>
+
+	<select id="getMatchingVo" resultType="matchingVo">
+		select * from matching
+		where mat_id = #{mat_id}
+	</select>
+
+	<update id="modify" parameterType="matchingVo">
+
+		UPDATE matching SET
+		mat_title
+		=#{mat_title},
+		mat_cont= #{mat_cont},
+		mat_st=#{mat_st},
+		mat_end=#{mat_end},
+		mat_bc=#{mat_bc},
+		mat_tc=#{mat_tc},
+		mat_allDay=#{mat_allDay},
+		mat_type=#{mat_type},
+		mem_id=#{mem_id}
+		WHERE
+		mat_id=#{mat_id}
+
+	</update>
+
+	<update id="delete" parameterType="int">
+		UPDATE matching SET
+		mat_del=
+		'Y' WHERE mat_id = #{mat_id}
+	</update>
+
+</mapper>

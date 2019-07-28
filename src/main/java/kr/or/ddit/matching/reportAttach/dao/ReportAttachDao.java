@@ -5,10 +5,22 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
+
 @Repository
 public class ReportAttachDao implements IReportAttachDao {
 
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
+	
+	
+	
+	@Override
+	public ReportAttachVo FileDown (int rep_att_id) {
+		
+		ReportAttachVo reportAttachVo = sqlSession.selectOne("matchingReport.FileDown",rep_att_id);
+		return reportAttachVo;
+	}
+
 	
 }

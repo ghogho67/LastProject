@@ -41,9 +41,36 @@ public class ReportDao implements IReportDao {
 
 
 	@Override
-	public MatchingReportAttachmentVo getCertainReport(MatchingReportAttachmentVo matchingReportAttachmentVo) {
-		return sqlSession.selectOne("matchingReport.getCertainReport",matchingReportAttachmentVo);
+	public MatchingReportAttachmentVo getCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo) {
+		return sqlSession.selectOne("matchingReport.getCertainReportWA",matchingReportAttachmentVo);
 	}
+
+
+
+	@Override
+	public MatchingReportVo getCertainReport(MatchingReportVo matchingReportVo) {
+		return sqlSession.selectOne("matchingReport.getCertainReport",matchingReportVo);
+	}
+
+
+	
+	
+
+	@Override
+	public List<MatchingReportVo> getWorkerReportList(String cw_mem_id) {
+		return sqlSession.selectList("matchingReport.getWorkerReportList",cw_mem_id);
+	}
+
+
+
+	@Override
+	public MatchingReportAttachmentVo getWorkerCertainReportWA(MatchingReportAttachmentVo matchingReportAttachmentVo) {
+		return sqlSession.selectOne("matchingReport.getWorkerCertainReportWA",matchingReportAttachmentVo);
+	}
+
+
+
+
 
 
 

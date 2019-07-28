@@ -43,8 +43,8 @@
      			 		,#{mem_mail}
      			 		,'1'
      			 		,'N'
-     			 		,#{mem_photo_path, jdbcType=VARCHAR}
-     			 		,#{mem_photo_nm, jdbcType=VARCHAR}
+     			 		,#{path, jdbcType=VARCHAR}
+     			 		,#{filename, jdbcType=VARCHAR}
      			 		,#{pro_relation}
      			 		,#{pro_nm}
      			 		,#{pro_phone})
@@ -52,8 +52,8 @@
   
    <!-- 일반회원 등록 - 질병명 -->
    <insert id="insertMemberDisease" parameterType="memberDiseaseVo">
-   		INSERT INTO MEMBERDISEASE(mem_dis_id,mem_id, dis_id)
-   					VALUES(mem_dis_id.nextval, #{mem_id}, #{dis_id})
+   		INSERT INTO MEMBERDISEASE(dis_id)
+   					VALUES(#{dis_id})
    </insert>
    
    
@@ -87,8 +87,8 @@
      			 		,#{mem_mail}
      			 		,'3'
      			 		,'N'
-     			 		,#{mem_photo_path, jdbcType=VARCHAR}
-     			 		,#{mem_photo_nm, jdbcType=VARCHAR}
+     			 		,#{path, jdbcType=VARCHAR}
+     			 		,#{filename, jdbcType=VARCHAR}
      			 		,#{cw_driver}
      			 		,#{cw_lic})
    </insert>
@@ -134,6 +134,7 @@
    						  ,'01028490809')
    </insert>	
    
+
    <!-- 요양보호사 등록 - 서비스 종류 -->
    <insert id="insertCWServiceType" parameterType="cwServiceTypeVo">
    		INSERT INTO CWSERVICETYPE(mem_id
@@ -193,7 +194,14 @@
 
 
 
-
+	<!-- 사용자 삭제 -->
+	<delete id="deleteMem" parameterType="String">
+		UPDATE MEMBER
+		set mem_del =
+		'Y'
+		WHERE mem_id=#{mem_id}
+	</delete>
+	
 
 
 	<update id="updateMem" parameterType="memberVo">

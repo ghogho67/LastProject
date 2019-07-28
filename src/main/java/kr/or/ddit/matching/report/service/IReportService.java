@@ -16,7 +16,12 @@ List<ReportVo> getReportList(String mat_id);
 	
 
 	List<MatchingReportVo> getAllReportList (String mem_id);
+	
 	//MatchingReportVo getCertainReport (MatchingReportVo matchingReportVo);
+	
+	MatchingReportAttachmentVo getCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
 
-	MatchingReportAttachmentVo getCertainReport(MatchingReportAttachmentVo matchingReportAttachmentVo);
+	List<MatchingReportVo> getWorkerReportList (String cw_mem_id);
+	MatchingReportAttachmentVo getWorkerCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
+
 }
