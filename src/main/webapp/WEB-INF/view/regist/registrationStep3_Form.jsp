@@ -296,21 +296,37 @@
 									</div>
 								</div>
 
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="email1">주민번호 앞자리</label>
-										<div class="input-group p-has-icon">
-											<input type="text" id="mem_birth" name="mem_birth"
-												value="${mem_birth }" placeholder="연연/월/일 입력해 주세요"
-												class="form-control"> <span
-												class="input-group-state"><span class="p-position"><span
-													class="p-text"><span class="p-valid-text"><i
-															class="fa fa-check"></i></span> <span class="p-error-text"><i
-															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
-											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+<!-- 								<div class="col-sm-6"> -->
+<!-- 									<div class="form-group"> -->
+<!-- 										<label for="email1">주민번호 앞자리</label> -->
+<!-- 										<div class="input-group p-has-icon"> -->
+<!-- 											<input type="text" id="mem_birth" name="mem_birth" -->
+<%-- 												value="${mem_birth }" placeholder="연연/월/일 입력해 주세요" --%>
+<!-- 												class="form-control"> <span -->
+<!-- 												class="input-group-state"><span class="p-position"><span -->
+<!-- 													class="p-text"><span class="p-valid-text"><i -->
+<!-- 															class="fa fa-check"></i></span> <span class="p-error-text"><i -->
+<!-- 															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span> -->
+<!-- 											<span class="input-group-icon"><i class="fa fa-check"></i></span> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+
+									<div class="col-sm-6">
+										<div class="form-group">
+										<label for="email1">생년월일</label>
+											<div class="input-group p-has-icon">
+												<input type="date" id="mem_birth" name="mem_birth"
+													placeholder="생년월일을 입력해 주세요" class="form-control"> <span
+													class="input-group-state"><span class="p-position"><span
+														class="p-text"><span class="p-valid-text"><i
+																class="fa fa-check"></i></span> <span class="p-error-text"><i
+																class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+												<span class="input-group-icon"><i class="fa fa-check"></i></span>
+											</div>
 										</div>
+
 									</div>
-								</div>
 
 
 								<div class="col-sm-6">

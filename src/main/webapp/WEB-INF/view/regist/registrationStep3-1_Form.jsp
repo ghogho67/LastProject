@@ -21,6 +21,7 @@
 	href="${cp}/resource/wrap/Test/font-awesome.min.css" />
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery-3.2.1.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -53,7 +54,7 @@ $(document).ready(function() {
 				if(data.mem_id == "yes"){
 					alert("사용가능한 아이디입니다");
 				}else{
-					alert("사용중인 아이디입니다");
+					alert("사용 불가능한 아이디 입니다");
 					$('#mem_id').val("");
 					$('#mem_id').focus();
 				}
@@ -65,6 +66,16 @@ $(document).ready(function() {
 	//정규식체크
 	$("#submit").on("click", function(){
 		var frmData = $("#frm").serialize();
+		var cw_days = new Array();
+		var ser_type_ids = new Array();
+		$("input[name=cw_day]:checked").each(function() {
+			cw_days.push($(this).val());
+
+		});
+		
+		$("input[name=ser_type_id]:checked").each(function(){
+			ser_type_ids.push($(this).val());
+		});
 
 		if($("#mem_id").val()==''||$("#mem_id").val()==null){
 			alert("아이디를 입력해주세요");
@@ -82,10 +93,11 @@ $(document).ready(function() {
 			alert("입력값을 넣어주세요");
 			return;
 		}
+		console.log(cw_days);
 		console.log(frmData);
 		$.ajax({
-			url : "${cp}/regist/regist3",
-			data : frmData,
+			url : "${cp}/regist/regist3-1",
+			data : frmData+"&cw_days="+cw_days+"&ser_type_ids="+ser_type_ids,
 			type : "post",
 			success : function(data){
 				console.log(data);
@@ -127,6 +139,23 @@ $(document).ready(function() {
 			
 		});
 		
+	});
+	
+	//주소찾기
+	$("#addrSearchBtn").on("click", function() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				//주소 input value에 설정data.roadAddress
+				$("#mem_addr1").val(data.roadAddress);
+				//우편번호 input value에 설정data.zonecode
+				$("#mem_zipcd").val(data.zonecode);
+
+				console.log(data.roadAddress);
+				console.log(data.zonecode);
+
+			}
+
+		}).open();
 	});
 	
 	
@@ -176,7 +205,7 @@ $(document).ready(function() {
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="p-form-skin" method="post" action="${cp}/regist/regist3-1 }"
+				<form id="frm" method="post" action="${cp}/regist/regist3-1 }"
 					class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
@@ -193,15 +222,13 @@ $(document).ready(function() {
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="url">프로필 사진</label>
-									<div class="p-file-wrap" style="direction: rtl">
-										<input type="file" id="fileupload1" name="fileupload1"
-											placeholder="select file..."
-											onchange="document.getElementById('fileupload1-fake').value = this.value">
+									<div class="p-file-wrap">
+<!-- 										<input type="file" id="profile" name="profile"> -->
 										<div class="input-group">
 											<span class="input-group-btn"><button type="button"
 													class="btn">browse</button></span> <input type="text"
-												id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
-												readonly="readonly" class="form-control p-ignore-field">
+												id="profile" name="profile" placeholder="프로필 사진을 등록하세요"
+												 class="form-control p-ignore-field">
 											<span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
@@ -217,11 +244,11 @@ $(document).ready(function() {
 
 								<div class="col-sm-6">
 									<div class="form-group">
-										<label for="text">Id</label>
-										<div class="input-group" style="direction: rtl">
+										<label for="text">ID</label>
+										<div class="input-group"">
 											<span class="input-group-btn"><button type="button"
-													class="btn">중복확인</button></span> <input type="text" id="mem_id"
-												name="mem_id" placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지"
+													class="btn" id="idCheckBtn">중복확인</button></span> <input type="text" id="mem_id"
+												name="mem_id" placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지" value="${mem_id }"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -235,7 +262,7 @@ $(document).ready(function() {
 									<div class="form-group">
 										<label for="password">비밀번호</label>
 										<div class="input-group p-has-icon">
-											<input type="password" id="mem_pass" name="mem_pass"
+											<input type="password" id="mem_pass" name="mem_pass" value="${mem_pass }"
 												placeholder="영문 숫자 특수문자 조합 8글자이상" class="form-control">
 											<span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
@@ -251,7 +278,7 @@ $(document).ready(function() {
 									<div class="form-group">
 										<label for="email1">이름</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_nm" name="mem_nm"
+											<input type="text" id="mem_nm" name="mem_nm" value="${mem_nm }"
 												placeholder="이름을 입력하세요 (2-5글자)" class="form-control">
 											<span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
@@ -267,7 +294,7 @@ $(document).ready(function() {
 									<div class="form-group">
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
-											<input type="tel" id="mem_phone" name="mem_phone"
+											<input type="tel" id="mem_phone" name="mem_phone" value="${mem_phone }"
 												placeholder="000-0000-0000형식으로 입력하세요" class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -282,7 +309,7 @@ $(document).ready(function() {
 									<div class="form-group">
 										<label for="email1">이메일</label>
 										<div class="input-group p-has-icon">
-											<input type="email" id="mem_mail" name="mem_mail"
+											<input type="email" id="mem_mail" name="mem_mail" value="${mem_mail }"
 												placeholder="이메일을 입력해 주세요" class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -297,7 +324,7 @@ $(document).ready(function() {
 									<div class="form-group">
 										<label for="email1">주민번호 앞자리</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_birth" name="mem_birth"
+											<input type="text" id="mem_birth" name="mem_birth" value="${mem_birth }"
 												placeholder="연연/월/일 입력해 주세요" class="form-control">
 											<span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
@@ -308,12 +335,32 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
+								
+								
+<!-- 								<div class="col-sm-6"> -->
+<!-- 										<div class="form-group"> -->
+<!-- 										<label for="email1">생년월일</label> -->
+<!-- 											<div class="input-group p-has-icon"> -->
+<!-- 												<input type="date" id="mem_birth" name="mem_birth" -->
+<!-- 													placeholder="생년월일을 입력해 주세요" class="form-control"> <span -->
+<!-- 													class="input-group-state"><span class="p-position"><span -->
+<!-- 														class="p-text"><span class="p-valid-text"><i -->
+<!-- 																class="fa fa-check"></i></span> <span class="p-error-text"><i -->
+<!-- 																class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span> -->
+<!-- 												<span class="input-group-icon"><i class="fa fa-check"></i></span> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+
+<!-- 									</div> -->
+								
+								
+								
 
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="email1">요양보호사 라이센스번호</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="cw_lic" name="cw_lic" 
+											<input type="text" id="cw_lic" name="cw_lic" value="${cw_lic }"
 											placeholder="라이센스 번호를 입력해 주세요"class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -324,12 +371,37 @@ $(document).ready(function() {
 									</div>
 								</div>
 
+								
+								
+								
+								
 								<div class="col-sm-6">
 									<div class="form-group">
-										<label for="email1">운전가능 여부</label>
+										<label for="email1">주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="cw_diver" name="cw_diver"
-												placeholder="유 or 무" class="form-control"> <span
+											<input type="text" id="mem_addr1" name="mem_add1"
+												placeholder="주소" class="form-control" value="${mem_addr1 }"
+												readonly> <span class="input-group-state"><span
+												class="p-position"><span class="p-text"><span
+														class="p-valid-text"><i class="fa fa-check"></i></span> <span
+														class="p-error-text"><i class="fa fa-times"></i></span></span></span></span> <span
+												class="p-field-cb"></span> <span class="input-group-icon"><i
+												class="fa fa-check"></i></span>
+										</div>
+										<div>
+											<button id="addrSearchBtn" type="button">주소검색</button>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">상세주소</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="mem_add2" name="mem_add2"
+												placeholder="상세주소" class="form-control"
+												value="${mem_add2 }"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -341,10 +413,11 @@ $(document).ready(function() {
 
 								<div class="col-sm-6">
 									<div class="form-group">
-										<label for="email1">서비스 가능 지역</label>
+										<label for="email1">우편번호</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="loc_dong" name="loc_dong"
-												placeholder="동 만 입력해 주세요" class="form-control"> <span
+											<input type="text" id="mem_zipcd" name="mem_zipcd" 
+												placeholder="우편번호" class="form-control"
+												value="${mem_zipcd }" readonly> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -353,6 +426,27 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
+								
+
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">서비스 가능 지역</label>
+										<div class="input-group p-has-icon">
+											<input type="text" id="loc_dong" name="loc_dong" value="${loc_dong }"
+												placeholder="동 만 입력해 주세요" class="form-control"> <span
+												class="input-group-state"><span class="p-position"><span
+													class="p-text"><span class="p-valid-text"><i
+															class="fa fa-check"></i></span> <span class="p-error-text"><i
+															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+											<span class="input-group-icon"><i class="fa fa-check"></i></span>
+										</div>
+									
+									</div>
+								</div>
+								
+								
+								
 							</div>
 							
 							
@@ -361,21 +455,49 @@ $(document).ready(function() {
 										<label for="email1">성별</label>
 										<div class="checkbox">
 
-											<label><input type="checkbox" name="mem_gender" value="M">
+											<label><input type="radio" name="mem_gender" value="M">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">남</span></label>
 
-											<label><input type="checkbox" name="mem_gender" value="F">
+											<label><input type="radio" name="mem_gender" value="F">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">여</span></label>
-
 										</div>
 
 									</div>
 								</div>
-							
-							
-							
+								
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="email1">운전가능여부</label>
+										<div class="checkbox">
+
+											<label><input type="radio" name="cw_driver" value="유">
+												<span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">유</span></label>
+
+											<label><input type="radio" name="cw_driver" value="무">
+												<span class="p-check-icon"><span
+													class="p-check-block"></span></span> <span class="p-label">무</span></label>
+										</div>
+
+									</div>
+								</div>
+								<!-- 								<div class="col-sm-6"> -->
+<!-- 									<div class="form-group"> -->
+<!-- 										<label for="email1">운전가능 여부</label> -->
+<!-- 										<div class="input-group p-has-icon"> -->
+<%-- 											<input type="text" id="cw_driver" name="cw_driver" value="${cw_driver }" --%>
+<!-- 												placeholder="유 or 무" class="form-control"> <span -->
+<!-- 												class="input-group-state"><span class="p-position"><span -->
+<!-- 													class="p-text"><span class="p-valid-text"><i -->
+<!-- 															class="fa fa-check"></i></span> <span class="p-error-text"><i -->
+<!-- 															class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span> -->
+<!-- 											<span class="input-group-icon"><i class="fa fa-check"></i></span> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+								
 							
 							<div>
 								<div class="p-subtitle text-right" data-base-class="p-subtitle">
@@ -432,14 +554,6 @@ $(document).ready(function() {
 								</div>
 							</div>
 							
-							
-							
-							
-							
-							
-							
-
-
 							<div>
 								<div class="p-subtitle text-right" data-base-class="p-subtitle">
 									<span data-p-role="subtitle" class="p-title-side">서비스 종류</span>
@@ -448,19 +562,19 @@ $(document).ready(function() {
 									<div class="p-form-cg pt-form-inline">
 										<div class="checkbox">
 
-											<label><input type="checkbox" name="ser_type"
+											<label><input type="checkbox" name="ser_type_id"
 												value="1"> <span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">방문간병</span></label>
 										</div>
 
 										<div class="checkbox">
-											<label><input type="checkbox" name="ser_type"
+											<label><input type="checkbox" name="ser_type_id"
 												value="2"> <span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">병원간병</span></label>
 										</div>
 
 										<div class="checkbox">
-											<label><input type="checkbox" name="ser_type"
+											<label><input type="checkbox" name="ser_type_id"
 												value="3"> <span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">운동도움</span></label>
 										</div>
@@ -479,28 +593,13 @@ $(document).ready(function() {
 
 
 							<div>
-
 								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<div class="input-group p-has-icon">
-												<input type="text" id="hos_nm" name="hos_nm"
-													placeholder="기관명" class="form-control"> <span
-													class="input-group-state"><span class="p-position"><span
-														class="p-text"><span class="p-valid-text"><i
-																class="fa fa-check"></i></span> <span class="p-error-text"><i
-																class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
-												<span class="input-group-icon"><i class="fa fa-check"></i></span>
-											</div>
-										</div>
-									</div>
-
-									
 										<div class="col-sm-6">
 										<div class="form-group">
+										<label for="email1">시작날자</label>
 											<div class="input-group p-has-icon">
-												<input type="date" id="career_st_dt" name="career_st_dt"
-													placeholder="시작날자" class="form-control"> <span
+												<input type="text" id="career_st_dt" name="career_st_dt" value="${career_st_dt }"
+													placeholder="YYYY-MM-DD형식으로 입력해 주세요" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -515,9 +614,10 @@ $(document).ready(function() {
 
 									<div class="col-sm-6">
 										<div class="form-group">
+										<label for="email1">종료날자</label>
 											<div class="input-group p-has-icon">
-												<input type="date" id="career_end_dt" name="career_end_d"
-													placeholder="종료날자" class="form-control"> <span
+												<input type="text" id="career_end_dt" name="career_end_dt" value="${career_end_dt }"
+													placeholder="YYYY-MM-DD형식으로 입력해 주세요" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -527,13 +627,31 @@ $(document).ready(function() {
 										</div>
 
 									</div>
+									
+											<div class="col-sm-6">
+										<div class="form-group">
+										<label for="email1">기관명</label>
+											<div class="input-group p-has-icon">
+												<input type="text" id="hos_nm" name="hos_nm" value="${hos_nm }"
+													placeholder="기관명을 입력하세요" class="form-control"> <span
+													class="input-group-state"><span class="p-position"><span
+														class="p-text"><span class="p-valid-text"><i
+																class="fa fa-check"></i></span> <span class="p-error-text"><i
+																class="fa fa-times"></i></span></span></span></span> <span class="p-field-cb"></span>
+												<span class="input-group-icon"><i class="fa fa-check"></i></span>
+											</div>
+										</div>
+									</div>
 
-
+									<br>
 									<div class="col-sm-6">
 										<div class="form-group">
+										<label for="email1">내용</label>
 											<div class="input-group p-has-icon">
-												<input type="text" id="career_cont" name="career_cont"
-													placeholder="내용" class="form-control"> <span
+<%-- 												<input type="text" id="career_cont" name="career_cont" value="${career_cont }" --%>
+<!-- 													placeholder="이력 내용을 간당히 적어주세요" class="form-control"> -->
+													<textarea rows="20" cols="20" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" ></textarea>
+													 <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i

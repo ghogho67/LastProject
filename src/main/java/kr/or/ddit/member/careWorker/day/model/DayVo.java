@@ -3,6 +3,10 @@ package kr.or.ddit.member.careWorker.day.model;
 public class DayVo {
 	private String mem_id;
 	private int cw_day;
+	
+	public DayVo() {
+		
+	}
 
 	public String getMem_id() {
 		return mem_id;
@@ -10,6 +14,11 @@ public class DayVo {
 
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+
+	public DayVo(String mem_id, int cw_day) {
+		this.mem_id = mem_id;
+		this.cw_day = cw_day;
 	}
 
 	public int getCw_day() {
