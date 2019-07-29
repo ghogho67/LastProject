@@ -25,6 +25,7 @@ public class MemberVo {
 
 
 	
+	
 	public String getMem_id() {
 		return mem_id;
 	}
