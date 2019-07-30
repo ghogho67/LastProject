@@ -1,16 +1,20 @@
 package kr.or.ddit.member.careWorker.hospital.model;
 
 public class HospitalVo {
-	private String hos_id;
+	private int hos_id;
 	private String hos_nm;
 	private String hos_add;
 	private String hos_phone;
+	
+	public HospitalVo() {
+		
+	}
 
-	public String getHos_id() {
+	public int getHos_id() {
 		return hos_id;
 	}
 
-	public void setHos_id(String hos_id) {
+	public void setHos_id(int hos_id) {
 		this.hos_id = hos_id;
 	}
 
@@ -43,5 +47,18 @@ public class HospitalVo {
 		return "HospitalVo [hos_id=" + hos_id + ", hos_nm=" + hos_nm + ", hos_add=" + hos_add + ", hos_phone="
 				+ hos_phone + "]";
 	}
+
+	public HospitalVo(int hos_id, String hos_nm, String hos_add, String hos_phone) {
+		super();
+		this.hos_id = hos_id;
+		this.hos_nm = hos_nm;
+		this.hos_add = hos_add;
+		this.hos_phone = hos_phone;
+	}
+
+
+	
+
+
 
 }

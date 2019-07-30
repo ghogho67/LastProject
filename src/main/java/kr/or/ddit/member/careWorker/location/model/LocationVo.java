@@ -5,12 +5,22 @@ public class LocationVo {
 	private String mem_id;
 	private String loc_dong;
 
+	public LocationVo() {
+		
+	}
+	
 	public int getLoc_id() {
 		return loc_id;
 	}
 
 	public void setLoc_id(int loc_id) {
 		this.loc_id = loc_id;
+	}
+
+	public LocationVo(int loc_id, String mem_id, String loc_dong) {
+		this.loc_id = loc_id;
+		this.mem_id = mem_id;
+		this.loc_dong = loc_dong;
 	}
 
 	public String getMem_id() {

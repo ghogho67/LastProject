@@ -2,7 +2,6 @@ package kr.or.ddit.matching.matching.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -164,9 +163,12 @@ public class MatchingController {
 //		return "redirect:/getCalendar";
 //	}
 //
-	@RequestMapping(path = "/getCalendar")
-	public String getCalendar(Model model) {
-		model.addAttribute("list", matchingService.getMatchingList("brown"));
-		return "jsonView";
-	}
+
+	/*
+	 * 
+	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
+	 * { model.addAttribute("list", matchingService.getMatchingList("brown"));
+	 * return "jsonView"; }
+	 */
+
 }

@@ -43,8 +43,8 @@
      			 		,#{mem_mail}
      			 		,'1'
      			 		,'N'
-     			 		,#{path, jdbcType=VARCHAR}
-     			 		,#{filename, jdbcType=VARCHAR}
+     			 		,#{mem_photo_path, jdbcType=VARCHAR}
+     			 		,#{mem_photo_nm, jdbcType=VARCHAR}
      			 		,#{pro_relation}
      			 		,#{pro_nm}
      			 		,#{pro_phone})
@@ -52,8 +52,8 @@
   
    <!-- 일반회원 등록 - 질병명 -->
    <insert id="insertMemberDisease" parameterType="memberDiseaseVo">
-   		INSERT INTO MEMBERDISEASE(dis_id)
-   					VALUES(#{dis_id})
+   		INSERT INTO MEMBERDISEASE(dis_id, mem_dis_id, mem_id)
+   					VALUES(#{dis_id}, mem_dis_id.nextval, #{mem_id})
    </insert>
    
    
@@ -65,6 +65,9 @@
       					,mem_gender
       					,mem_pass
       					,mem_phone
+      					,mem_add1
+      					,mem_add2
+      					,mem_zipcd
       					,mem_mail
       					,mem_grade
       					,mem_del
@@ -78,48 +81,68 @@
      			 		,#{mem_gender}
      			 		,#{mem_pass}
      			 		,#{mem_phone}
+     			 		,#{mem_add1}
+     			 		,#{mem_add2}
+     			 		,#{mem_zipcd}
      			 		,#{mem_mail}
      			 		,'3'
      			 		,'N'
-     			 		,#{path, jdbcType=VARCHAR}
-     			 		,#{filename, jdbcType=VARCHAR}
+     			 		,#{mem_photo_path, jdbcType=VARCHAR}
+     			 		,#{mem_photo_nm, jdbcType=VARCHAR}
      			 		,#{cw_driver}
      			 		,#{cw_lic})
    </insert>
    
    <!-- 요양보호사 등록 - 서비스 지역-->
    <insert id="insertLocation" parameterType="locationVo">
-   		INSERT INTO LOCATION(loc_dong)
-   					VALUES(#{loc_dong})
+   		INSERT INTO LOCATION(loc_id, mem_id, loc_dong)
+   					VALUES(loc_id.nextval, #{mem_id}, #{loc_dong})
    </insert>
 
    
    <!-- 요양보호사 등록 - 가능요일-->
    <insert id="insertDay" parameterType="dayVo">
-   		INSERT INTO DAY(cw_day)
-   					VALUES(#{cw_day})
+   		INSERT INTO DAY(mem_id, cw_day)
+   					VALUES(#{mem_id}, #{cw_day})
    </insert>
    
    <!-- 요양보호사 등록 - 경력 -->
    <insert id="insertCareer" parameterType="careerVo">
-   		INSERT INTO CAREER(career_cont
+   		INSERT INTO CAREER(cw_career_id
+   						  ,career_cont
    						  ,career_st_dt
-   						  ,career_end_dt)
-   					VALUES(#{career_cont}
+   						  ,career_end_dt
+   						  ,mem_id
+   						  ,career_hos)
+   					VALUES(cw_career_id.nextval
+   						  ,#{career_cont}
    						  ,#{career_st_dt}
-   						  ,#{career_end_dt})
+   						  ,#{career_end_dt}
+   						  ,#{mem_id}
+   						  ,#{career_hos})
    </insert>
    
    <!-- 요양보호사 등록 - 경력 - 병원명 -->
    <insert id="insertHospital" parameterType="hospitalVo">
-   		INSERT INTO HOSPITAL(hos_nm)
-   					VALUES(#{hos_nm})
+   		INSERT INTO HOSPITAL(hos_id
+   							,hos_nm
+   							,hos_add
+   							,hos_phone)
+   					VALUES(hos_id.nextval
+   						  ,#{hos_nm}
+   						  ,'대전'
+   						  ,'01028490809')
    </insert>	
    
-   <!-- 요양보호사 증록 - 서비스 종류 -->
-   <insert id="insertServiceType" parameterType="serviceTypeVo">
-   		INSERT INTO SERVICETYPE(ser_type)
-   					VALUES(#{ser_type})
+
+   <!-- 요양보호사 등록 - 서비스 종류 -->
+   <insert id="insertCWServiceType" parameterType="cwServiceTypeVo">
+   		INSERT INTO CWSERVICETYPE(mem_id
+   							   ,ser_type_id
+   							   ,cw_ser_type_id)
+   					VALUES(#{mem_id}
+   					      ,#{ser_type_id}
+   					      ,CW_SER_TYPE_ID.nextval)
    </insert>
 
    <!-- 아이디중복체크 -->
