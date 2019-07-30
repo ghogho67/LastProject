@@ -160,6 +160,9 @@ public class MatchingController {
 //		return "redirect:/getCalendar";
 //	}
 //
+	
+	/*
+	
 	@RequestMapping(path = "/getCalendar")
 	public String getCalendar(Model model) {
 
@@ -188,5 +191,7 @@ public class MatchingController {
 		return "jsonView";
 
 	}
+	
+	*/
 
 }

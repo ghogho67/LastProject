@@ -101,7 +101,7 @@ function initGeocoder() {
 }
 
 
-// naver.maps.onJSContentLoaded = initGeocoder;
+naver.maps.onJSContentLoaded = initGeocoder;
 
 
 
