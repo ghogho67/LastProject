@@ -1,5 +1,7 @@
 package kr.or.ddit.matching.matching.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.member.member.model.MemberVo;
 
 @Repository
 public class MatchingDao implements IMatchingDao {
@@ -36,6 +39,18 @@ public class MatchingDao implements IMatchingDao {
 	@Override
 	public MatchingVo getMatchingVo(int mat_id) {
 		return sqlSession.selectOne("matching.getMatchingVo", mat_id);
+	}
+
+	/**
+	* Method : getCareWorker
+	* 작성자 : PC24
+	* 변경이력 :
+	* @return
+	* Method 설명 : 요양ㅂ
+	*/
+	@Override
+	public List<MemberVo> getCareWorker() {
+		return sqlSession.selectList("matching.getCareWorker");
 	}
 
 }

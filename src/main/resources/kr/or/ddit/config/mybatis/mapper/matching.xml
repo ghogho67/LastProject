@@ -49,5 +49,9 @@
 		mat_del=
 		'Y' WHERE mat_id = #{mat_id}
 	</update>
+	
+	<select id="getCareWorker" resultType="memberVo">
+		select * from member where mem_grade = 3;
+	</select>
 
 </mapper>
