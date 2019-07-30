@@ -22,7 +22,7 @@
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="/js/jquery/jquery-3.2.1.js"></script>
+<%-- <script type="text/javascript" src="${cp}/js/jquery/jquery-3.2.1.js"></script> --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -68,6 +68,12 @@ $(document).ready(function() {
 		var frmData = $("#frm").serialize();
 		var cw_days = new Array();
 		var ser_type_ids = new Array();
+		
+		
+		var formData = new FormData(document.getElementById('frm'));
+		console.log(formData);
+		
+		
 		$("input[name=cw_day]:checked").each(function() {
 			cw_days.push($(this).val());
 
@@ -93,8 +99,7 @@ $(document).ready(function() {
 			alert("입력값을 넣어주세요");
 			return;
 		}
-		console.log(cw_days);
-		console.log(frmData);
+
 		$.ajax({
 			url : "${cp}/regist/regist3-1",
 			data : frmData+"&cw_days="+cw_days+"&ser_type_ids="+ser_type_ids,

@@ -47,6 +47,7 @@ public class GpsController {
 		gpsVo.setGold_st(getMemberVo.getGold_st());
 		
 		gpsService.insertGps(gpsVo);
+		createGpx(gpsVo);
 		
 		
 	}
@@ -63,7 +64,7 @@ public class GpsController {
 	}
 	
 	
-	public void createGpx(String mem_id, GpsVo gpsVo) {
+	public void createGpx(GpsVo gpsVo) {
 		list.add(gpsVo);
 		 Date today = new Date();
 		 SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
@@ -73,16 +74,25 @@ public class GpsController {
 
 		try {
 			
-		    OutputStream output = new FileOutputStream("D:/gpx/"+date.format(today)+"_"+mem_id+".gpx");
-		    String str ="<?xml version=\"1.0\" encoding=\"UTF-8\"?> \\r\\n";
-		    str+="<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" xmlns:xalan=\"http://xml.apache.org/xalan\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" creator=\"MotionX Live\" version=\"1.1\"> \r\n";
+		    OutputStream output = new FileOutputStream("D:/gpx/"+date.format(today)+"_"+gpsVo.getMem_id()+".gpx");
+		    String str ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+"\r\n";
+		    str+="<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" xmlns:xalan=\"http://xml.apache.org/xalan\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" creator=\"MotionX Live\" version=\"1.1\">"+"\r\n";
 		    str+="<trk>";
-		    str+="<name>"+mem_id+"TRACK</name>";
+		    str+="<name>"+gpsVo.getMem_id()+"TRACK</name>";
 		    str+="<desc>"+date.format(today)+"</desc>";
 		    str+="<trkseg>";
 		    for(int i=0; i<list.size(); i++) {
-		    	str+="<trkpt lat="+list.get(i).getGps_la()+" lon=\"126.95788\">";
+		    	str+="<trkpt lat="+"\""+list.get(i).getGps_la()+"\""+" lon="+"\""+list.get(i).getGps_lo()+"\""+">";
+		    	str+="<ele></ele>";
+		    	str+="<time></time>";
+		    	str+="</trkpt>";
 		    }
+		    str+="</trkseg>";
+		    str+="</trk>";
+		    str+="</gpx>";
+		    
+		    
+
 		    
 		    byte[] by=str.getBytes();
 		    output.write(by);
@@ -90,15 +100,13 @@ public class GpsController {
 		} catch (Exception e) {
 	            e.getStackTrace();
 		}
-		
-		
 
-		
-		
-		
-	
 		
 	}
-	
+	@RequestMapping("/map")
+	public  String map() {
+		return "maps";
+	}
 
 }
+
