@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +49,9 @@ function showPosition(position) {
 
 var markers = [],
 infoWindows = [];
-
-
+//요양보호사 아이디
+var listData1 = []
+//요양보호사 주소 
 var listData2 = [
 '대전 유성구 유성대로654번길 130',
 '대전광역시 중구 중앙로76', 
@@ -76,13 +79,14 @@ function drawMarker() {
 		            position: position,
 		            title: "123",
 		            icon: {
-		                url: '${cp}/image/main.png',
+		                url: '/image/main.png',
 		                size: new naver.maps.Size(50, 52),
 		                origin: new naver.maps.Point(0, 0),
 		                anchor: new naver.maps.Point(25, 26)
 		            },
 		            zIndex: 100,
 		            animation: naver.maps.Animation.BOUNCE
+		            //id: 요양보호사 id listData1[i]
 		        });
 		        
 		        console.log("aaa");
@@ -157,7 +161,6 @@ return function(e) {
 window.onload = function() {
 	console.log(markers.length);
 	for (var i=0, ii=markers.length; i<ii; i++) {
-		console.log("click"+ii);
 	    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
 	}	
 }
