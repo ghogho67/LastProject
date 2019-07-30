@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
+import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.member.member.service.IMemberService;
 
 @RequestMapping("/matching")
 @Controller
@@ -25,6 +27,17 @@ public class MatchingController {
 
 	@Resource(name = "matchingService")
 	IMatchingService matchingService;
+
+	@Resource(name = "memberService")
+	IMemberService memberService;
+
+	@RequestMapping(path = "/map")
+	public String showMap(Model model) {
+		List<MemberVo> cwList = memberService.getCwList();
+		model.addAttribute("cwList", cwList);
+		return "matching/matchingMap";
+
+	}
 
 	@RequestMapping(path = "/calendar")
 	public String calendarView() {

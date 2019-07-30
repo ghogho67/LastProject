@@ -109,4 +109,8 @@ public interface IMemberDao {
 	 */
 	int passUpdate(Map<String, String> memInfo);
 
+
+	//요양보호사리스트 조회
+	List<MemberVo> getCwList();
+
 }

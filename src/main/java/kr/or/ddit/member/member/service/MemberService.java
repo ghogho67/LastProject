@@ -73,4 +73,11 @@ public class MemberService implements IMemberService {
 
 
 
+	@Override
+	public List<MemberVo> getCwList() {
+		return memberDao.getCwList();
+	}
+
+
+
 }
