@@ -1,5 +1,7 @@
 package kr.or.ddit.matching.matching.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -61,6 +63,11 @@ public class MatchingService implements IMatchingService {
 	@Override
 	public int matchingCreate(MatchingVo vo) {
 		return matchingDao.matchingCreate(vo);
+	}
+
+	@Override
+	public List<MatchingVo> getMatchingList(String mem_id) {
+		return matchingDao.getMatchingList(mem_id);
 	}
 
 }

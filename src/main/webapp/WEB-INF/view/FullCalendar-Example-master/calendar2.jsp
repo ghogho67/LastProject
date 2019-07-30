@@ -9,23 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FullCalendar Example</title>
     <link rel=" shortcut icon" href="image/favicon.ico">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href='${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/select2.min.css' />
     <link rel="stylesheet" href='${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/bootstrap-datetimepicker.min.css' />
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/FullCalendar-Example-master/css/main.css">
-
 </head>
 
 <body>
     <div class="container">
-   
-    
 
         <!-- 일자 클릭시 메뉴오픈 -->
         <div id="contextMenu" class="dropdown clearfix">
@@ -44,14 +38,13 @@
             <div id="calendar"></div>
         </div>
 
-
         <!-- 일정 추가 MODAL -->
         <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title"></h4>
                     </div>
                     <div class="modal-body">
@@ -70,25 +63,28 @@
                                     required="required" />
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-startDate">시작날짜</label>
                                 <input class="inputModal" type="text" name="edit-startDate" id="edit-startDate" />
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-endDate">종료날짜</label>
                                 <input class="inputModal" type="text" name="edit-endDate" id="edit-endDate" />
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-StartTime">시작시간</label>
                                 <input class="inputModal" type="text" name="edit-startTime" id="edit-startTime" />
                             </div>
-                      
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-endTime">종료시간</label>
@@ -109,7 +105,6 @@
                             </div>
                         </div>
                         
-                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-type">구분</label>
@@ -120,6 +115,7 @@
                                 </select>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-color">색상</label>
@@ -136,31 +132,32 @@
                                 </select>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-desc">설명</label>
-                                <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
-                                    id="edit-desc"></textarea>
+                                <textarea rows="4" cols="50" class="inputModal" name="edit-desc" id="edit-desc"></textarea>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="modal-footer modalBtnContainer-addEvent">
                         <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
                         <button type="button" class="btn btn-primary" id="save-event">저장</button>
                     </div>
+                    
                     <div class="modal-footer modalBtnContainer-modifyEvent">
                         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
                         <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
                         <button type="button" class="btn btn-primary" id="updateEvent">저장</button>
                     </div>
+                    
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-
     </div>
     <!-- /.container -->
-
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/moment.min.js"></script>
@@ -173,5 +170,4 @@
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/editEvent.js"></script>
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/etcSetting.js"></script>
 </body>
-
 </html>

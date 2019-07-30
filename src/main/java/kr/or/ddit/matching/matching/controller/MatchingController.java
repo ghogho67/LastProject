@@ -78,22 +78,25 @@ public class MatchingController {
 					startDate2 = startDate2.substring(0, 10) + "T" + startDate2.substring(11, startDate2.length());
 					endDate2 = startDate2.substring(0, 10) + "T" + endDate2.substring(11, endDate2.length());
 					logger.debug("☞(boolean) list.get(0).get(\"allDay\"):{}", list.get(0).get("mat_allday"));
-					MatchingVo vo = new MatchingVo();
+					MatchingVo mvo = new MatchingVo();
 					logger.debug("☞(boolean) list.get(0).get(\"allDay\"):{}", (boolean) list.get(0).get("mat_allday"));
-					vo.setMat_allDay((boolean) list.get(0).get("mat_allday"));
-					vo.setMat_bc(((String) list.get(0).get("mat_bc")));
-					vo.setMat_cont(((String) list.get(0).get("mat_cont")));
-					vo.setMat_tc(((String) list.get(0).get("mat_tc")));
-					vo.setMat_title(((String) list.get(0).get("mat_title")));
-					vo.setMat_type(((String) list.get(0).get("mat_type")));
-					vo.setCw_mem_id(((String) list.get(0).get("cw_mem_id")));
-					vo.setMem_id(((String) list.get(0).get("mem_id")));
-					vo.setMat_st(startDate2);
-					vo.setMat_end(endDate2);
+					mvo.setMat_allDay((boolean) list.get(0).get("mat_allday"));
+					mvo.setMat_bc(((String) list.get(0).get("mat_bc")));
+					mvo.setMat_cont(((String) list.get(0).get("mat_cont")));
+					mvo.setMat_tc(((String) list.get(0).get("mat_tc")));
+					mvo.setMat_title(((String) list.get(0).get("mat_title")));
+					mvo.setMat_type(((String) list.get(0).get("mat_type")));
+					mvo.setCw_mem_id(((String) list.get(0).get("cw_mem_id")));
+					mvo.setCw_mem_id("sona");
+					mvo.setMem_id(((String) list.get(0).get("mem_id")));
+					mvo.setMem_id("brown");
+					mvo.setMat_del("N");
+					mvo.setMat_st(startDate2);
+					mvo.setMat_end(endDate2);
 
 					System.out.println("start: " + startDate2 + "      end : " + endDate2);
-					logger.debug("☞vo:{}", vo);
-//					matchingService.insertCalendar(vo);
+					logger.debug("☞vo:{}", mvo);
+					matchingService.matchingCreate(mvo);
 
 				}
 			}
@@ -105,7 +108,8 @@ public class MatchingController {
 				break;
 			}
 		}
-		return "redirect:/getCalendar";
+
+		return "redirect:/matching/getCalendar";
 	}
 
 //	@RequestMapping(path = "/updateCalendar")
@@ -162,31 +166,7 @@ public class MatchingController {
 //
 	@RequestMapping(path = "/getCalendar")
 	public String getCalendar(Model model) {
-
-		List<MatchingVo> list = matchingService.getCalendar();
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println("list : " + list.get(i));
-
-		}
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		for (int i = 0; i < list.size(); i++) {
-			map.put("_id", list.get(i).getMat_id());
-			map.put("mat_bc", list.get(i).getMat_bc());
-			map.put("mat_cont", list.get(i).getMat_cont());
-			map.put("end", list.get(i).getMat_end());
-			map.put("start", list.get(i).getMat_st());
-			map.put("mat_tc", list.get(i).getMat_tc());
-			map.put("mat_title", list.get(i).getMat_title());
-			map.put("mat_type", list.get(i).getMat_type());
-			map.put("mem_id", list.get(i).getMem_id());
-			map.put("cw_mem_id", list.get(i).getCw_mem_id());
-			map.put("mat_allday", list.get(i).isMat_allDay());
-		}
-		model.addAttribute("list", list);
-
+		model.addAttribute("list", matchingService.getMatchingList("brown"));
 		return "jsonView";
-
 	}
-
 }

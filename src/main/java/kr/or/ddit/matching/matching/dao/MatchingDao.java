@@ -1,5 +1,7 @@
 package kr.or.ddit.matching.matching.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,6 +21,7 @@ public class MatchingDao implements IMatchingDao {
 
 	@Override
 	public int matchingCreate(MatchingVo mvo) {
+		logger.debug("☞mvo:{}", mvo);
 		return sqlSession.insert("matching.create", mvo);
 	}
 
@@ -36,6 +39,11 @@ public class MatchingDao implements IMatchingDao {
 	@Override
 	public MatchingVo getMatchingVo(int mat_id) {
 		return sqlSession.selectOne("matching.getMatchingVo", mat_id);
+	}
+
+	@Override
+	public List<MatchingVo> getMatchingList(String mem_id) {
+		return sqlSession.selectList("matching.getMatchingList", mem_id);
 	}
 
 }

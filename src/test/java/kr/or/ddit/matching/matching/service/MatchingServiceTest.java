@@ -3,6 +3,8 @@ package kr.or.ddit.matching.matching.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -100,7 +102,7 @@ public class MatchingServiceTest extends LogicTestEnv {
 	}
 
 	@Test
-	public void getgetMatchingVoServiceTest() {
+	public void getMatchingVoServiceTest() {
 
 		/*** Given ***/
 		int mat_id = 1;
@@ -108,6 +110,18 @@ public class MatchingServiceTest extends LogicTestEnv {
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
 		/*** Then ***/
 		assertEquals("매칭1", mvo.getMat_title());
+
+	}
+
+	@Test
+	public void getMatchingListServiceTest() {
+
+		/*** Given ***/
+		String mem_id = "brown";
+		/*** When ***/
+		List<MatchingVo> mList = (List<MatchingVo>) matchingService.getMatchingList(mem_id);
+		/*** Then ***/
+		assertEquals("a", mList.get(0).getMat_title());
 
 	}
 
