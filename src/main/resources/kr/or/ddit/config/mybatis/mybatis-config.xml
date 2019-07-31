@@ -31,7 +31,9 @@
 		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
 		<typeAlias alias="ReportAttachVo" type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" />
 		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
+		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
 	</typeAliases>
+
 
 <mappers>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
@@ -45,5 +47,6 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
    </mappers>
 </configuration>

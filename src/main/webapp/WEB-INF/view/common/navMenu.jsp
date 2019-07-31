@@ -17,7 +17,7 @@
 		<li><a href="#">요양 정보</a> 
 		
 			<ul>
-				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li>
+				<li><a href="${cp}/test/matching">요양보호사 찾기 </a></li>
 				<li><a href="${cp}/test/matching">요양원/요양병원 찾기</a></li>
 				<li><a href="${cp}/test/matching">기관 정보 조회</a></li>
 			</ul></li>
@@ -54,7 +54,7 @@
     
       <li class="menu-has-children"><a href="">관리자 메뉴 </a>
 			<ul>
-				<li><a href="blog-home.html">메뉴관리</a></li>
+				<li><a href="${cp}category/categoryList">메뉴관리</a></li>
 			
 			</ul></li>
 			

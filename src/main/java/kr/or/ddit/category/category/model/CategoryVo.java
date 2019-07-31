@@ -11,6 +11,20 @@ public class CategoryVo {
 	private Date cate_date;
 	private String mem_id;
 
+	
+
+	
+	
+	public CategoryVo(int cate_id, String cate_title) {
+	super();
+	this.cate_id = cate_id;
+	this.cate_title = cate_title;
+}
+
+
+
+
+
 	public int getCate_id() {
 		return cate_id;
 	}
