@@ -1,5 +1,6 @@
 package kr.or.ddit.gold.gps.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +29,7 @@ public class GpsController {
 	
 	@RequestMapping("/insertGps")
 	public void insertGps(  @RequestParam(value = "car_bpm")int car_bpm, @RequestParam(value = "mem_id") String mem_id,
-							@RequestParam(value = "gps_lo")double gps_lo, @RequestParam(value = "gps_la")double gps_la) {
+							@RequestParam(value = "gps_lo")double gps_lo, @RequestParam(value = "gps_la")double gps_la, HttpServletRequest request) {
 		logger.debug("!!!!!!!car_bpm :{}",car_bpm);
 		logger.debug("!!!!!!!gps_lo :{}",gps_lo);
 		logger.debug("!!!!!!!gps_la :{}",gps_la);
@@ -47,7 +49,7 @@ public class GpsController {
 		gpsVo.setGold_st(getMemberVo.getGold_st());
 		
 		gpsService.insertGps(gpsVo);
-		createGpx(gpsVo);
+		createGpx(gpsVo,request);
 		
 		
 	}
@@ -64,17 +66,17 @@ public class GpsController {
 	}
 	
 	
-	public void createGpx(GpsVo gpsVo) {
+	public void createGpx(GpsVo gpsVo,HttpServletRequest request) {
 		list.add(gpsVo);
 		 Date today = new Date();
 		 SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
-		        
-		    date.format(today);
+		 String dirPath = (String) request.getServletContext().getRealPath("/gpx");      
+		 date.format(today);
 
 
 		try {
 			
-		    OutputStream output = new FileOutputStream("D:/gpx/"+date.format(today)+"_"+gpsVo.getMem_id()+".gpx");
+		    OutputStream output = new FileOutputStream(dirPath+File.separator+date.format(today)+"_"+gpsVo.getMem_id()+".gpx");
 		    String str ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+"\r\n";
 		    str+="<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" xmlns:xalan=\"http://xml.apache.org/xalan\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" creator=\"MotionX Live\" version=\"1.1\">"+"\r\n";
 		    str+="<trk>";
@@ -82,14 +84,14 @@ public class GpsController {
 		    str+="<desc>"+date.format(today)+"</desc>";
 		    str+="<trkseg>";
 		    for(int i=0; i<list.size(); i++) {
-		    	str+="<trkpt lat="+"\""+list.get(i).getGps_la()+"\""+" lon="+"\""+list.get(i).getGps_lo()+"\""+">";
-		    	str+="<ele></ele>";
-		    	str+="<time></time>";
-		    	str+="</trkpt>";
+		    	str+="<trkpt lat="+"\""+list.get(i).getGps_la()+"\""+" lon="+"\""+list.get(i).getGps_lo()+"\""+">"+"\r\n";
+		    	str+="<ele></ele>"+"\r\n";
+		    	str+="<time></time>"+"\r\n";
+		    	str+="</trkpt>"+"\r\n";
 		    }
-		    str+="</trkseg>";
-		    str+="</trk>";
-		    str+="</gpx>";
+		    str+="</trkseg>"+"\r\n";
+		    str+="</trk>"+"\r\n";
+		    str+="</gpx>"+"\r\n";
 		    
 		    
 
@@ -101,11 +103,15 @@ public class GpsController {
 	            e.getStackTrace();
 		}
 
-		
 	}
 	@RequestMapping("/map")
 	public  String map() {
 		return "maps";
+	}
+	
+	@RequestMapping("/gpxMap")
+	public  String gpxMap() {
+		return "gpxMaps";
 	}
 
 }
