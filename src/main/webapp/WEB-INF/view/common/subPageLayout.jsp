@@ -8,11 +8,11 @@
 <meta charset="utf-8">
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 </head>
-
-<body>
 	<tiles:insertAttribute name="header"/>
 
 	<tiles:insertAttribute name="left"/>
+<body>
+	
 	
 	
 		<br>

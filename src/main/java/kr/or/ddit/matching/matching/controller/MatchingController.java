@@ -160,6 +160,14 @@ public class MatchingController {
 //		return "redirect:/getCalendar";
 //	}
 //
+	
+	/**
+	 * @author PC21
+	 *  수정중인 사항 
+	 *  2019.07.29 9:35
+	 */
+
+	/*
 	@RequestMapping(path = "/getCalendar")
 	public String getCalendar(Model model) {
 
@@ -189,4 +197,5 @@ public class MatchingController {
 
 	}
 
+*/
 }

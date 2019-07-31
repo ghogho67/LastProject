@@ -28,6 +28,7 @@
 		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.post.reply.model.ReplyVo"/>
 		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
 		<typeAlias alias="ReportAttachVo" type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" />
+		<typeAlias alias="attendanceVo" type="kr.or.ddit.matching.attendance.model.AttendanceVo" />
 		
 		
 		
@@ -44,5 +45,6 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
    </mappers>
 </configuration>

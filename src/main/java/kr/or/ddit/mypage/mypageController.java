@@ -31,7 +31,7 @@ import kr.or.ddit.util.PartUtil;
 @Controller
 public class mypageController {
 	private static final Logger logger = LoggerFactory.getLogger(mypageController.class);
-
+	
 	@Resource(name = "memberService")
 	private IMemberService memberService;
 	
@@ -390,5 +390,4 @@ public class mypageController {
 		
 		return viewName;
 	}
-	
 }
