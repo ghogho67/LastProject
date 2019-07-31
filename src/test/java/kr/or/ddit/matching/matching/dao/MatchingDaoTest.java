@@ -3,6 +3,8 @@ package kr.or.ddit.matching.matching.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -80,7 +82,7 @@ public class MatchingDaoTest extends LogicTestEnv {
 	}
 
 	@Test
-	public void getCalendarDaoTest() {
+	public void getMatchingVoDaoTest() {
 
 		/*** Given ***/
 		int mat_id = 1;
@@ -88,6 +90,18 @@ public class MatchingDaoTest extends LogicTestEnv {
 		MatchingVo mvo = matchingDao.getMatchingVo(mat_id);
 		/*** Then ***/
 		assertEquals("매칭1", mvo.getMat_title());
+
+	}
+
+	@Test
+	public void getMatchingListDaoTest() {
+
+		/*** Given ***/
+		String mem_id = "brown";
+		/*** When ***/
+		List<MatchingVo> mList = (List<MatchingVo>) matchingDao.getMatchingList(mem_id);
+		/*** Then ***/
+		assertEquals("a", mList.get(0).getMat_title());
 
 	}
 

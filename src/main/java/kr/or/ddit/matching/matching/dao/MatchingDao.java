@@ -22,6 +22,7 @@ public class MatchingDao implements IMatchingDao {
 
 	@Override
 	public int matchingCreate(MatchingVo mvo) {
+		logger.debug("☞mvo:{}", mvo);
 		return sqlSession.insert("matching.create", mvo);
 	}
 
@@ -41,13 +42,16 @@ public class MatchingDao implements IMatchingDao {
 		return sqlSession.selectOne("matching.getMatchingVo", mat_id);
 	}
 
+	@Override
+	public List<MatchingVo> getMatchingList(String mem_id) {
+		return sqlSession.selectList("matching.getMatchingList", mem_id);
+	}
+
 	/**
-	* Method : getCareWorker
-	* 작성자 : PC24
-	* 변경이력 :
-	* @return
-	* Method 설명 : 요양ㅂ
-	*/
+	 * Method : getCareWorker 작성자 : PC24 변경이력 :
+	 * 
+	 * @return Method 설명 : 요양ㅂ
+	 */
 	@Override
 	public List<MemberVo> getCareWorker() {
 		return sqlSession.selectList("matching.getCareWorker");

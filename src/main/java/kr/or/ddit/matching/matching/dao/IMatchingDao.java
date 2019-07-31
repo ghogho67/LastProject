@@ -18,4 +18,6 @@ public interface IMatchingDao {
 	List<MemberVo> getCareWorker();
 	
 
+	List<MatchingVo> getMatchingList(String mem_id);
+
 }
