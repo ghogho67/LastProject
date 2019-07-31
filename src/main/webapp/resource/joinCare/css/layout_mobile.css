@@ -10,11 +10,6 @@
     /*position:relative !important;*/
   } 
 
-  .mobileAnimate {
-    display:block !important;
-    animation: leftmenu-slideright .5s ease both;
-  }
-
   .menu-main > li {
     border-left: 0px solid #d9d9d9 !important;
   }
@@ -85,36 +80,7 @@
     overflow-y: auto;
   }
 
-  .mobile_menu {
-    display:block;
-    background:url(/images/mobile_menu.png) no-repeat 10px 50%;
-    width:60px;
-    height:60px !important;
-    float: left;
-    background-size: 32px;
-    cursor:pointer;
-  }
-
-  .mobile_back {
-    float: right;
-    position: fixed;
-    display: block;
-    top: 10px;
-    right: 10px;
-  }
-
-  .mobile_back > a {
-    font-size:200%;
-    color:#000 !important;
-  }
-
-  .carousel {
-    overflow: hidden;
-    background-color: #333;
-    margin: 0 auto;
-    height: 300px !important; 
-  }
-
+  
   .carousel-inner {
     top: 0 !important; 
     height:300px;
@@ -475,46 +441,7 @@
     line-height: 50px;
   }
 
-  .mobile-top > ul {
-    list-style-type:none;
-    padding:0px;
-    margin:0px;
-  }
-  
-  .mobile-member-icon {
-    width: 60px;
-    height: 60px;
-    border: solid 1px #ddd;
-    border-radius: 30px;
-    background-color: #f0f0f0;
-    padding: 13px;
-    font-size: 34px;
-    color: #888;
-  }
 
-  .mobile-top {
-    margin-top:70px;
-  }
-
-  .mobile-bottom {
-    display:block !important;
-    visibility: visible !important;
-    width:90%;
-    margin:0 auto;
-  }
-
-  .mobile-bottom a {
-    color:#555;
-  }
-
-  .mobile-bottom a:first-child {
-    color: #2077b0 !important;
-    font-weight: bold;
-  }
-
-  .mobile-login {
-    color:#555;
-  }
 
   .menu_sub {
     display:none;
@@ -567,17 +494,6 @@
     display:block;
   }
 
-  .mobile-backdrop {
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background-color:#000;
-    opacity:0.5;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 1000;
-  }
 
   #template-login .mbskin {
     position: relative !important;
@@ -1444,9 +1360,7 @@
     margin-bottom:50px !important;
   }
 
-  .mobile-menu {
-    display:block !important;
-  }
+  
 
   .useguide-in {
     width: 100% !Important;
@@ -1549,100 +1463,9 @@
     margin: 20px 0px 45px 0px !important;
   }
 
-  .member-login-mobile {
-    text-indent:0px !important;
-    font-size:100%;
-  }
-
-  .member-login-mobile a {
-    display:inline-block;
-    width: 18px;
-    text-indent: 0px;
-    text-align: right;
-    font-size: 20px;
-    letter-spacing:-1px;
-    margin: 17px 15px 0px 0px;
-    color: #555;
-  }
 
   .alert-msg {
     width: 90.666667% !important;
   }
 
-  .mobile_search {
-    position: relative;
-    display:block !important;
-    /*top: 60px;*/
-    left: 0px;
-    width: 100%;
-    height: 55px;
-    z-index: 999;
-    padding:5px 10px 5px 10px;
-  }
-
-  .mobile_search .input-txt {
-    float:left;
-    font-family: 'Noto Sans KR', gulim;
-    font-size: 0.9em;
-    letter-spacing: -1px;
-    width: 60%;
-    height: 45px;
-    padding: 0px 15px 0px 15px;
-    border: 1px solid #0989d9;
-  }
-
-  .mobile_search .input-btn {
-    float:left;
-    font-family: 'Noto Sans KR', gulim;
-    font-size: 0.9em;
-    letter-spacing: -1px;
-    color: #FFF;
-    width: 40%;
-    height: 45px;
-    border: 0px;
-    margin-left: 0px;
-    background-color: #0989d9;
-  }
-
-  .mobile_search .search-check {
-    display:block;
-    float:right;
-    font-family: 'NanumSquare', gulim;
-    font-size: 16px;
-    font-weight: 300;
-    letter-spacing: -1px;
-    line-height: 46px;
-  }
-
-  .mobile_search .select-address {
-    position: absolute;
-    top: 45px;
-    width: 100%;
-    height: 100px;
-    left: 0px;
-    z-index: 10000000;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .mobile-top {
-    display:none;
-  }
-
-  .main-menu-mypage {
-    display:none;
-  }
-
-  .mobile-backdrop {
-    display:none;
-  }
-  
-  .mobile-bottom {
-    display:none;
-    visibility: hidden!important;
-  }
-
-  .mobile-menu {
-    display:none;
-  }
 }

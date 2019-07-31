@@ -43,11 +43,49 @@ public class mypageController {
 		return "mypage/Patient_Info";
 	}
 
+	
+	
+	
+	
+	
+	
+	/**
+	 * Method : Patient_InfoModification
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @return
+	 * Method 설명 :  마이페이지 대상자 정보 출력 
+	 */
 	@RequestMapping(path = "/Patient_InfoModification", method = RequestMethod.GET)
 	public String Patient_InfoModification() {
 		return "mypage/Patient_InfoModification";
 	}
 
+	/**
+	 * Method : Patient_InfoModification
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @param model
+	 * @param profile
+	 * @param session
+	 * @param redirectAttributes
+	 * @param request
+	 * @param mem_id
+	 * @param grade
+	 * @param mem_pass
+	 * @param mem_mail
+	 * @param mem_phone
+	 * @param mem_zipcd
+	 * @param mem_add1
+	 * @param mem_add2
+	 * @param pro_relation
+	 * @param pro_nm
+	 * @param pro_phone
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 * Method 설명 :마이페이지 대상자 정보 출력 
+	 */
 	@RequestMapping(path = "/Patient_InfoModification", method = RequestMethod.POST)
 	public String Patient_InfoModification(Model model, MultipartFile profile, HttpSession session,
 			RedirectAttributes redirectAttributes, HttpServletRequest request,
@@ -154,6 +192,15 @@ public class mypageController {
 		return "mypage/Worker_Info";
 	}
 
+	
+	
+	/**
+	 * Method : Worker_InfoModification
+	 * 작성자 : PC02
+	 * 변경이력 :
+	 * @return
+	 * Method 설명 : 마이페잊 요양보호사 정보 출력
+	 */
 	@RequestMapping(path = "/Worker_InfoModification", method = RequestMethod.GET)
 	public String Worker_InfoModification() {
 		return "mypage/Worker_InfoModification";
@@ -240,6 +287,15 @@ public class mypageController {
 	
 	
 	
+	
+	
+	/**
+	 * Method : Patient_Wd
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @return
+	 * Method 설명 :  마이페이지 대상자 탈퇴 
+	 */
 	@RequestMapping(path ="/Patient_Wd", method = RequestMethod.GET)
 	public String Patient_Wdl() {
 		return "mypage/Patient_Wd";
@@ -247,6 +303,21 @@ public class mypageController {
 	
 	
 	
+	/**
+	 * Method : Patient_withdrawal
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @param model
+	 * @param session
+	 * @param redirectAttributes
+	 * @param request
+	 * @param mem_id
+	 * @param mem_pass
+	 * @param input_id
+	 * @param input_pass
+	 * @return
+	 * Method 설명 : 마이페이지 대상자 탈퇴 
+	 */
 	@RequestMapping(path ="/Patient_Wd", method = RequestMethod.POST)
 	public String Patient_withdrawal(Model model, HttpSession session,
 			RedirectAttributes redirectAttributes, HttpServletRequest request,
@@ -317,7 +388,14 @@ public class mypageController {
 	}
 	
 
-	@RequestMapping(path ="/Worker_Wd", method = RequestMethod.GET)
+	/**
+	 * Method : Worker_Wd
+	 * 작성자 : 오도아 
+	 * 변경이력 :
+	 * @return
+	 * Method 설명 :  요양보호사 회원탈퇴
+	 */
+	@RequestMapping(path ="/Worker_ Wd", method = RequestMethod.GET)
 	public String Worker_Wd() {
 		return "mypage/Worker_Wd";
 	}
