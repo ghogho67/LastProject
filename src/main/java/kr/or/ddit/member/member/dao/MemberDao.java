@@ -12,7 +12,7 @@ import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
 @Repository
-public class MemberDao implements IMemberDao{
+public class MemberDao implements IMemberDao {
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
 
@@ -21,58 +21,50 @@ public class MemberDao implements IMemberDao{
 		return sqlSession.selectList("member.getMemList");
 	}
 
-	
-
 	@Override
 	public MemberVo getMemVo(String mem_id) {
-		return sqlSession.selectOne("member.getMemVo",mem_id);
+		return sqlSession.selectOne("member.getMemVo", mem_id);
 	}
 
 	@Override
 	public int memberCnt() {
 		return sqlSession.selectOne("member.memberCnt");
 	}
-	
+
 	@Override
 	public String getMem_Id(Map<String, String> memInfo) {
 		return sqlSession.selectOne("member.getMem_Id", memInfo);
 	}
-	
+
 	@Override
 	public int passUpdate(Map<String, String> memInfo) {
-		return sqlSession.update("member.passUpdate",memInfo);
+		return sqlSession.update("member.passUpdate", memInfo);
 	}
-	
-	
-	//나머지 구현 필요한것들 구현 member.xml 만들어야되고 확인 해봐야한다.
+
+	// 나머지 구현 필요한것들 구현 member.xml 만들어야되고 확인 해봐야한다.
 	@Override
 	public int updateMem(MemberVo memVo) {
-		return sqlSession.update("member.updateMem",memVo);
+		return sqlSession.update("member.updateMem", memVo);
 	}
 
-	
 	@Override
 	public int updatePMember(MemberVo memVo) {
-		return sqlSession.update("member.updatePMember",memVo);
+		return sqlSession.update("member.updatePMember", memVo);
 	}
-	
+
 	@Override
 	public int withdrwalMember(MemberVo memVo) {
-		return sqlSession.update("member.withdrwalMember",memVo);
+		return sqlSession.update("member.withdrwalMember", memVo);
 	}
-	
-	
-	
 
-	
 	@Override
 	public List<MemberVo> memPagingList(PageVo pageVo) {
 		return null;
 	}
 
-	
+	@Override
+	public List<MemberVo> getCwList() {
+		return sqlSession.selectList("member.getCwList");
+	}
 
-	
-
-	
 }

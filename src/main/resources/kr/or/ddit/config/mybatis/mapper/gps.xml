@@ -8,7 +8,7 @@
 		insert into gps values(GPS_ID.nextval
 							   , #{mem_id}
 							   , #{gold_st}
-							   , to_date(sysdate,'yy/mm/dd hh24:mi:ss')
+							   , sysdate
 							   , #{gps_lo}
 							   , #{gps_la}
 							   ,#{car_bpm}

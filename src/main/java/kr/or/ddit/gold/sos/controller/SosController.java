@@ -68,9 +68,9 @@ public class SosController {
 	
 	
 	
-	@RequestMapping(value = "/sendSm2")
+	@RequestMapping(value = "/send")
 	public String sendSms2(HttpServletRequest request){
-		return "sms/send";
+		return "sms/send3";
 	}
 
 }

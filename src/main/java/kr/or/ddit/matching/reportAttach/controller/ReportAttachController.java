@@ -6,4 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReportAttachController {
 
+	
+	
+	// 리포트에 첨부된 첨부파일 다운로드  --  Report Controller 에 있음   --오도아 
 }

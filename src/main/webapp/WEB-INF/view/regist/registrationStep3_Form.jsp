@@ -6,21 +6,16 @@
 <meta charset="UTF-8">
 
 <%@include file="/WEB-INF/view/common/joinCare.jsp"%>
-<link rel="stylesheet"
-	href="${cp}/resource/wrap/Test/bootstrap-rtl.min.css" />
+<link rel="stylesheet"	href="${cp}/resource/wrap/Test/bootstrap-rtl.min.css" />
 <link rel="stylesheet" href="${cp}/resource/wrap/Test/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="${cp}/resource/wrap/Test/flat-forms-plus.css" />
+<link rel="stylesheet"	href="${cp}/resource/wrap/Test/flat-forms-plus.css" />
 <link rel="stylesheet" href="${cp}/resource/wrap/Test/style-rtl.css" />
-<link rel="stylesheet"
-	href="${cp}/resource/wrap/Test/modern-forms-plus.css" />
+<link rel="stylesheet"	href="${cp}/resource/wrap/Test/modern-forms-plus.css" />
 <link rel="stylesheet" href="${cp}/resource/wrap/Test/livepreview.css" />
 <link rel="stylesheet" href="${cp}/resource/wrap/Test/orange.css" />
 <link rel="stylesheet" href="${cp}/resource/wrap/Test/cadetBlue.css" />
-<link rel="stylesheet"
-	href="${cp}/resource/wrap/Test/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+<link rel="stylesheet"	href="${cp}/resource/wrap/Test/font-awesome.min.css" />
+<link rel="stylesheet"	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 	
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

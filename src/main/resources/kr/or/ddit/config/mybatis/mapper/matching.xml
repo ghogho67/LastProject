@@ -23,11 +23,15 @@
 
 	<select id="getMatchingVo" resultType="matchingVo">
 		select * from matching
-		where mat_id = #{mat_id}
+		where mat_id = 1
+	</select>
+
+	<select id="getMatchingList" resultType="matchingVo">
+		select * from matching
+		where mem_id = #{mem_id}
 	</select>
 
 	<update id="modify" parameterType="matchingVo">
-
 		UPDATE matching SET
 		mat_title
 		=#{mat_title},
@@ -41,13 +45,15 @@
 		mem_id=#{mem_id}
 		WHERE
 		mat_id=#{mat_id}
-
 	</update>
 
 	<update id="delete" parameterType="int">
 		UPDATE matching SET
-		mat_del=
-		'Y' WHERE mat_id = #{mat_id}
+		mat_del='Y' WHERE mat_id = #{mat_id}
 	</update>
+	
+	<select id="getCareWorker" resultType="memberVo">
+		select * from member where mem_grade = 3;
+	</select>
 
 </mapper>
