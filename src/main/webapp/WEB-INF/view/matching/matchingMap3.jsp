@@ -1,4 +1,3 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -17,11 +17,11 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 <script>
-	var map = new naver.maps.Map('map');
 	$(document)
 			.ready(
 					function() {
 						getLocation();
+
 						var listData1 = [];
 						$("input[name='cw_mem_id']").each(function(i) {
 							listData1.push($(this).val());
@@ -31,6 +31,20 @@
 						$("input[name='add']").each(function(i) {
 							listData2.push($(this).val());
 						});
+
+						var map;
+						function getLocation() {
+							if (navigator.geolocation) {
+								navigator.geolocation
+										.getCurrentPosition(showPosition);
+
+							} else {
+								x.innerHTML = "Geolocation is not supported by this browser.";
+							}
+						}
+
+						var nLat;
+						var nLng;
 
 						function showPosition(position) {
 
@@ -47,6 +61,10 @@
 
 						}
 
+						var markers = [], infoWindows = [];
+						//요양보호사 아이디
+						var listData1 = []
+
 						function drawMarker() {
 							for (var i = 0; i < listData2.length; i++) {
 
@@ -62,6 +80,7 @@
 
 													var result = response.result, // 검색 결과의 컨테이너
 													items = result.items; // 검색 결과의 배열
+													console.log(items);
 
 													var position = new naver.maps.LatLng(
 															items[0].point.y,
@@ -71,7 +90,7 @@
 															{
 																map : map,
 																position : position,
-																title : listData2[i],
+																title : "123",
 																icon : {
 																	url : '/image/main.png',
 																	size : new naver.maps.Size(
@@ -113,22 +132,6 @@
 									});
 
 						}
-
-						var map;
-						function getLocation() {
-							if (navigator.geolocation) {
-								navigator.geolocation
-										.getCurrentPosition(showPosition);
-
-							} else {
-								x.innerHTML = "Geolocation is not supported by this browser.";
-							}
-						}
-
-						var nLat;
-						var nLng;
-
-						var markers = [], infoWindows = [];
 
 						function updateMarkers(map, markers) {
 
@@ -173,13 +176,50 @@
 								}
 							}
 						}
-						console.log(markers.length);
-						for (var i = 0, ii = markers.length; i < ii; i++) {
-							naver.maps.Event.addListener(markers[i], 'click',
-									getClickHandler(i));
+
+						window.onload = function() {
+							console.log(markers.length);
+							for (var i = 0, ii = markers.length; i < ii; i++) {
+								naver.maps.Event.addListener(markers[i],
+										'click', getClickHandler(i));
+							}
 						}
 
 					});
+
+	var HOME_PATH = window.HOME_PATH || '.';
+
+	var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147), map = new naver.maps.Map(
+			'map', {
+				center : cityhall.destinationPoint(0, 500),
+				zoom : 10
+			}), marker = new naver.maps.Marker({
+		map : map,
+		position : cityhall
+	});
+
+	var contentString = [
+			'<div class="iw_inner">',
+			'   <h3>서울특별시청</h3>',
+			'   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+			'       <img src="'+ HOME_PATH +'/img/example/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br />',
+			'       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
+			'       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+			'   </p>', '</div>' ].join('');
+
+	var infowindow = new naver.maps.InfoWindow({
+		content : contentString
+	});
+
+	naver.maps.Event.addListener(marker, "click", function(e) {
+		if (infowindow.getMap()) {
+			infowindow.close();
+		} else {
+			infowindow.open(map, marker);
+		}
+	});
+
+	infowindow.open(map, marker);
 </script>
 </head>
 <body>

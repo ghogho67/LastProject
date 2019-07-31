@@ -31,10 +31,25 @@ public class MatchingController {
 	@Resource(name = "memberService")
 	IMemberService memberService;
 
+	@RequestMapping(path = "/sample")
+	public String sample() {
+		return "bestSample";
+	}
+
 	@RequestMapping(path = "/map")
 	public String showMap(Model model) {
 		List<MemberVo> cwList = memberService.getCwList();
+//
+//		GsonBuilder gsonBuilder = new GsonBuilder();
+//
+//		Gson gson = gsonBuilder.create();
+//		String JSONOBject = gson.toJson(cwList);
+//		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+//		String cwJson = prettyGson.toJson(cwList);
+//
+//		logger.debug("☞cwJson:{}", cwJson);
 		model.addAttribute("cwList", cwList);
+
 		return "matching/matchingMap";
 
 	}

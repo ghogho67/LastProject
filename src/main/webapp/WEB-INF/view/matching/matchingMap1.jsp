@@ -17,7 +17,6 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 <script>
-	var map = new naver.maps.Map('map');
 	$(document)
 			.ready(
 					function() {
