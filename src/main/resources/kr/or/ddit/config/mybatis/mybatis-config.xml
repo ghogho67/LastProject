@@ -44,5 +44,6 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
    </mappers>
 </configuration>

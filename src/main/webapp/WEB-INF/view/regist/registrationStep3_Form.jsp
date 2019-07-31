@@ -153,7 +153,8 @@
 			new daum.Postcode({
 				oncomplete : function(data) {
 					//주소 input value에 설정data.roadAddress
-					$("#mem_addr1").val(data.roadAddress);
+					console.log(data);
+					$("#mem_addr1").val(data.jibunAddress);
 					//우편번호 input value에 설정data.zonecode
 					$("#mem_zipcd").val(data.zonecode);
 
