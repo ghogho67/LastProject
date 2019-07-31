@@ -1,10 +1,13 @@
 package kr.or.ddit.matching.matching.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.matching.matching.dao.IMatchingDao;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 
 @Service
 public class MatchingService implements IMatchingService {
@@ -41,5 +44,30 @@ public class MatchingService implements IMatchingService {
 //	public int deleteCalendar(int c_id) {
 //		return matchingDao.deleteCalendar(c_id);
 //	}
+
+	@Override
+	public int matchingModify(MatchingVo mvo) {
+		return matchingDao.matchingModify(mvo);
+	}
+
+	@Override
+	public int matchingDelete(int mat_id) {
+		return matchingDao.matchingDelete(mat_id);
+	}
+
+	@Override
+	public MatchingVo getMatchingVo(int mat_id) {
+		return matchingDao.getMatchingVo(mat_id);
+	}
+
+	@Override
+	public int matchingCreate(MatchingVo vo) {
+		return matchingDao.matchingCreate(vo);
+	}
+
+	@Override
+	public List<MatchingVo> getMatchingList(String mem_id) {
+		return matchingDao.getMatchingList(mem_id);
+	}
 
 }

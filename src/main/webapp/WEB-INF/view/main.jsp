@@ -129,6 +129,7 @@
 
 
 <a href="${cp}/post/pagingList?cate_id=1">paginglist</a>
+<a href="${cp}/matching/pagingList?cate_id=1">paginglist</a>
 	<%@include file="/WEB-INF/view/common/footer.jsp" %>
 </body>
 </html>

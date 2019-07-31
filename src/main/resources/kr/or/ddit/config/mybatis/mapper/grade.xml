@@ -7,7 +7,6 @@
 
    
    <!-- 일반회원 등록 -->
-  
 
    <!-- 요양보호사 마이페이지의 grade 평균값얻는 쿼리문 -->
    <select id="cwGradeAvg" resultType="String" parameterType="String">
@@ -17,7 +16,5 @@
 				and m.cw_mem_id = #{cw_mem_id}
 
    </select>
-   
-   
  
 </mapper>

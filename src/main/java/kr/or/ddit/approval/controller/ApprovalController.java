@@ -1,7 +1,7 @@
 package kr.or.ddit.approval.controller;
 
-import java.util.Date;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,56 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ApprovalController {
 
-	private int app_id;
-	private int app_pay;
-	private Date app_time;
-	private int app_type;
-	private String mem_id;
+	private static final Logger logger = LoggerFactory.getLogger(ApprovalController.class);
 
-	public int getApp_id() {
-		return app_id;
+	@RequestMapping(path = "/show")
+	public String show() {
+		return "/approval/post.tiles";
 	}
-
-	public void setApp_id(int app_id) {
-		this.app_id = app_id;
-	}
-
-	public int getApp_pay() {
-		return app_pay;
-	}
-
-	public void setApp_pay(int app_pay) {
-		this.app_pay = app_pay;
-	}
-
-	public Date getApp_time() {
-		return app_time;
-	}
-
-	public void setApp_time(Date app_time) {
-		this.app_time = app_time;
-	}
-
-	public int getApp_type() {
-		return app_type;
-	}
-
-	public void setApp_type(int app_type) {
-		this.app_type = app_type;
-	}
-
-	public String getMem_id() {
-		return mem_id;
-	}
-
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
-	}
-
-	@Override
-	public String toString() {
-		return "ApprovalVo [app_id=" + app_id + ", app_pay=" + app_pay + ", app_time=" + app_time + ", app_type="
-				+ app_type + ", mem_id=" + mem_id + "]";
-	}
+//
+//	@RequestMapping(path = "/approval")
+//	public String approval(@RequestBody Search search, HttpServletRequest request, Model model) {
+//		String pName = search.getlName();
+//		String lName = search.getpName();
+//
+//		model.addAttribute("pName", pName);
+//		model.addAttribute("lName", lName);
+//
+//		logger.debug("☞pName	:{}", pName);
+//		logger.debug("☞lName	:{}", lName);
+//
+//		return "jsonView";
+//	}
 
 }

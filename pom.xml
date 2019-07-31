@@ -258,8 +258,26 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.6.0</version>
 		</dependency>
+<<<<<<< HEAD
 
 	
+=======
+		
+		
+		
+		
+		
+		
+		
+		
+				<!-- https://mvnrepository.com/artifact/io.jenetics/jpx -->
+		<dependency>
+		    <groupId>io.jenetics</groupId>
+		    <artifactId>jpx</artifactId>
+		    <version>1.5.0</version>
+		</dependency>
+		
+>>>>>>> 4e98b4e763eca41ad762b51dcc2e850d37bef48c
 
 	</dependencies>
 

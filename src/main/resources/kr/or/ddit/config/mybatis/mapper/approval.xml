@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="approval">
+
+	<insert id="insert" parameterType="ApprovalVo">
+		insert into
+		approval values
+		(app_id.nextval,#{app_pay},sysdate,#{app_type},#{mem_id,
+		jdbcType=VARCHAR},'N')
+	</insert>
+
+	<update id="delete" parameterType="int">
+		update approval set
+		app_del='Y'
+		where app_id=#{app_id}
+	</update>
+
+	<select id="getApproval" parameterType="int"
+		resultType="ApprovalVo">
+		select * from approval
+		where app_id = #{app_id}
+	</select>
+
+	<select id="approvalList" parameterType="String"
+		resultType="ApprovalVo">
+		select*from approval where mem_id = #{mem_id} and app_del =
+		'N'
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

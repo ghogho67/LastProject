@@ -1,21 +1,23 @@
 package kr.or.ddit.matching.matching.dao;
 
+import java.util.List;
+
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.member.member.model.MemberVo;
 
 public interface IMatchingDao {
-//
-//	List<MatchingVo> getMatchingList(String mem_id);
-//
-//	int insertCalendar(MatchingVo vo);
-//
-//	List<MatchingVo> getCalendar();
-//
-//	int updateCalendar(MatchingVo vo);
-//
+
 	int matchingDelete(int mat_id);
 
 	MatchingVo getMatchingVo(int mat_id);
 
-	int matchingCreate(MatchingVo vo);
+	int matchingModify(MatchingVo mvo);
+
+	int matchingCreate(MatchingVo mvo);
+	
+	List<MemberVo> getCareWorker();
+	
+
+	List<MatchingVo> getMatchingList(String mem_id);
 
 }
