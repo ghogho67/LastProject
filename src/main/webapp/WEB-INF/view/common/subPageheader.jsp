@@ -41,9 +41,7 @@
 						<li><a href="">마이페이지</a></li>
 						<li><a href="">요양 정보</a>
 							<ul>
-								<li><a
-									href="${cp}/basicU/main">요양보호소
-										찾기 </a></li>
+<%-- 								<li><a href="${cp}/basicU/main">요양보호소찾기 </a></li> --%>
 								<li><a href="${cp}/basicU/findingCareWorker">요양원/요양병원
 										찾기</a></li>
 								<li><a href="${cp}/basicU/findingCareWorker">기관 정보 조회</a></li>

@@ -1,4 +1,3 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -19,164 +18,126 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 <script>
 	$(document).ready(function() {
-		getLocation();
-
-	});
-
-	var map;
-	function getLocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
-
-		} else {
-			x.innerHTML = "Geolocation is not supported by this browser.";
-		}
-	}
-
-	var nLat;
-	var nLng;
-	function showPosition(position) {
-
-		nLat = position.coords.latitude;
-		nLng = position.coords.longitude;
-
-		var mapOptions = {
-			center : new naver.maps.LatLng(nLat, nLng),
+		var map = new naver.maps.Map('map', {
+			center : new naver.maps.LatLng(37.3595704, 127.105399),
 			zoom : 10
-		};
-
-		map = new naver.maps.Map('map', mapOptions);
-		drawMarker();
-
-	}
-
-	var markers = [], infoWindows = [];
-	//요양보호사 아이디
-
-	var listData1 = [];
-	//요양보호사 주소 
-	var listData2 = [];
-
-	for (var i = 0; i < "${cwList}".size; i++) {
-		con
-		listData2[i] == "${cwList[i].mem_add1}";
-	}
-
-	// 	var listData2 = [
-	// 	'대전 유성구 유성대로654번길 130', '대전광역시 중구 중앙로76', '대전 중구 중앙로 77'
-	// 	];
-
-	function drawMarker() {
-		for (var i = 0; i < listData2.length; i++) {
-
-			naver.maps.Service
-					.geocode(
-							{
-								address : listData2[i]
-							},
-							function(status, response) {
-								if (status !== naver.maps.Service.Status.OK) {
-									return alert('Something wrong!');
-								}
-
-								var result = response.result, // 검색 결과의 컨테이너
-								items = result.items; // 검색 결과의 배열
-								console.log(items);
-
-								var position = new naver.maps.LatLng(
-										items[0].point.y, items[0].point.x);
-
-								var marker = new naver.maps.Marker({
-									map : map,
-									position : position,
-									title : "123",
-									icon : {
-										url : '/image/main.png',
-										size : new naver.maps.Size(50, 52),
-										origin : new naver.maps.Point(0, 0),
-										anchor : new naver.maps.Point(25, 26)
-									},
-									zIndex : 100,
-									animation : naver.maps.Animation.BOUNCE
-								//id: 요양보호사 id listData1[i]
-								});
-
-								console.log("aaa");
-
-								var infoWindow = new naver.maps.InfoWindow(
-										{
-											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
-													+ "1234" + '"</b>.</div>'
-										});
-
-								markers.push(marker);
-								infoWindows.push(infoWindow);
-
-							});
-
-		}
-		;
-
-		naver.maps.Event.addListener(map, 'idle', function() {
-			updateMarkers(map, markers);
 		});
 
-	}
+		var marker = new naver.maps.Marker({
+			position : new naver.maps.LatLng(37.3595704, 127.105399),
+			map : map
+		});
 
-	function updateMarkers(map, markers) {
+		// 				//지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
+		// 				var mapDiv = document.getElementById('map'); // 'map'으로 선언해도 동일
 
-		var mapBounds = map.getBounds();
-		var marker, position;
-		for (var i = 0; i < markers.length; i++) {
+		// 				//옵션 없이 지도 객체를 생성하면 서울 시청을 중심으로 하는 11 레벨의 지도가 생성됩니다.
+		// 				var map = new naver.maps.Map(mapDiv);
+		// 				getLocation();
 
-			marker = markers[i]
-			position = marker.getPosition();
+		// 				var listData1 = [];
+		// 				$("input[name='cw_mem_id']").each(function(i) {
+		// 					listData1.push($(this).val());
+		// 				});
 
-			if (mapBounds.hasLatLng(position)) {
-				showMarker(map, marker);
-			} else {
-				hideMarker(map, marker);
-			}
-		}
-	}
+		// 				var listData2 = [];
+		// 				$("input[name='add']").each(function(i) {
+		// 					listData2.push($(this).val());
+		// 				});
 
-	function showMarker(map, marker) {
+		// 				var HOME_PATH = window.HOME_PATH || '.';
+		// 				var map = new naver.maps.Map(document.getElementById('map'), {
+		// 					zoom : 11
+		// 				});
 
-		if (marker.setMap())
-			return;
-		marker.setMap(map);
-	}
+		// 				map.fitBounds(naver.maps.LatLngBounds.bounds(
+		// 						new naver.maps.LatLng(37.3724620, 127.1051714),
+		// 						new naver.maps.LatLng(37.3542795, 127.1174332)));
 
-	function hideMarker(map, marker) {
+		// 				var urlMarker = new naver.maps.Marker({
+		// 					position : new naver.maps.LatLng(37.3542795, 127.1072556),
+		// 					map : map,
+		// 					title : 'urlMarker',
+		// 					icon : {
+		// 						url : '/image/main.png',
+		// 						size : new naver.maps.Size(50, 52),
+		// 						origin : new naver.maps.Point(0, 0),
+		// 						anchor : new naver.maps.Point(25, 26)
+		// 					},
+		// 					animation : naver.maps.Animation.DROP
+		// 				});
 
-		if (!marker.setMap())
-			return;
-		marker.setMap(null);
-	}
+		// 				naver.maps.Event.addListener(urlMarker, 'click', function() {
+		// 					if (urlMarker.getAnimation() !== null) {
+		// 						urlMarker.setAnimation(null);
+		// 					} else {
+		// 						urlMarker.setAnimation(naver.maps.Animation.BOUNCE);
+		// 					}
+		// 				});
 
-	//해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
-	function getClickHandler(seq) {
-		return function(e) {
-			var marker = markers[seq], infoWindow = infoWindows[seq];
+		// 				var imageMarker = new naver.maps.Marker({
+		// 					position : new naver.maps.LatLng(37.3637770, 127.1174332),
+		// 					map : map,
+		// 					title : 'imageMarker',
+		// 					icon : {
+		// 						url : '/image/main.png',
+		// 						size : new naver.maps.Size(50, 52),
+		// 						origin : new naver.maps.Point(0, 0),
+		// 						anchor : new naver.maps.Point(25, 26)
+		// 					},
+		// 					animation : naver.maps.Animation.BOUNCE
+		// 				});
 
-			if (infoWindow.getMap()) {
-				infoWindow.close();
-			} else {
-				infoWindow.open(map, marker);
-			}
-		}
-	}
+		// 				var symbolMarker = new naver.maps.Marker({
+		// 					map : map,
+		// 					position : new naver.maps.LatLng(37.3692417, 127.1134740),
+		// 					title : 'symbolMarker',
+		// 					icon : {
+		// 						url : '/image/main.png',
+		// 						size : new naver.maps.Size(50, 52),
+		// 						origin : new naver.maps.Point(0, 0),
+		// 						anchor : new naver.maps.Point(25, 26)
+		// 					},
+		// 					shape : {
+		// 						coords : [ 0, 70, 20, 100, 40, 70, 30, 70, 70, 0, 10,
+		// 								70 ],
+		// 						type : "poly"
+		// 					},
+		// 					animation : naver.maps.Animation.BOUNCE
+		// 				});
 
-	window.onload = function() {
-		console.log(markers.length);
-		for (var i = 0, ii = markers.length; i < ii; i++) {
-			naver.maps.Event.addListener(markers[i], 'click',
-					getClickHandler(i));
-		}
-	}
+		// 				var htmlMarker = new naver.maps.Marker({
+		// 					position : new naver.maps.LatLng(37.3578575, 127.1063746),
+		// 					map : map,
+		// 					title : 'htmlMarker',
+		// 					icon : {
+		// 						url : '/image/main.png',
+		// 						size : new naver.maps.Size(50, 52),
+		// 						origin : new naver.maps.Point(0, 0),
+		// 						anchor : new naver.maps.Point(25, 26)
+		// 					},
+		// 					animation : naver.maps.Animation.BOUNCE
+		// 				});
+
+		// 				var map = new naver.maps.Map('map', {
+		// 					center : new naver.maps.LatLng(37.3595704, 127.105399),
+		// 					zoom : 10
+		// 				});
+
+		// 				var marker = new naver.maps.Marker({
+		// 					position : new naver.maps.LatLng(37.3595704, 127.105399),
+		// 					map : map
+		// 				});
+	});
 </script>
 </head>
 <body>
 	<div id="map" style="width: 80%; height: 800px;"></div>
+	<ul id="cwUl">
+		<c:forEach items="${cwList }" var="cw">
+			<input type="hidden" name="add" value="${cw.mem_add1 }">
+			<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
+		</c:forEach>
+	</ul>
 </body>
 </html>

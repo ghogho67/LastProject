@@ -17,8 +17,13 @@
 		<li><a href="#">요양 정보</a> 
 		
 			<ul>
+<<<<<<< HEAD
 				<li><a href="${cp}/test/matching">요양보호사 찾기 </a></li>
 				<li><a href="${cp}/test/matching">요양원/요양병원 찾기</a></li>
+=======
+<%-- 				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li> --%>
+				<li><a href="${cp}/hospital/pagingList">요양원/요양병원 찾기</a></li>
+>>>>>>> 0ce11f2aa22a50b773cc25448708d1643a799c33
 				<li><a href="${cp}/test/matching">기관 정보 조회</a></li>
 			</ul></li>
 

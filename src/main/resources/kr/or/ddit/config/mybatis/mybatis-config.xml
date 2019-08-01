@@ -30,6 +30,7 @@
 		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.post.reply.model.ReplyVo"/>
 		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
 		<typeAlias alias="ReportAttachVo" type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" />
+		<typeAlias alias="attendanceVo" type="kr.or.ddit.matching.attendance.model.AttendanceVo" />
 		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
 		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
 	</typeAliases>
@@ -45,8 +46,14 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
+<<<<<<< HEAD
       <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
+=======
+
+>>>>>>> 0ce11f2aa22a50b773cc25448708d1643a799c33
    </mappers>
 </configuration>

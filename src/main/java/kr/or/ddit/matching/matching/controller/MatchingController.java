@@ -31,10 +31,25 @@ public class MatchingController {
 	@Resource(name = "memberService")
 	IMemberService memberService;
 
+	@RequestMapping(path = "/sample")
+	public String sample() {
+		return "bestSample";
+	}
+
 	@RequestMapping(path = "/map")
 	public String showMap(Model model) {
 		List<MemberVo> cwList = memberService.getCwList();
+//
+//		GsonBuilder gsonBuilder = new GsonBuilder();
+//
+//		Gson gson = gsonBuilder.create();
+//		String JSONOBject = gson.toJson(cwList);
+//		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+//		String cwJson = prettyGson.toJson(cwList);
+//
+//		logger.debug("☞cwJson:{}", cwJson);
 		model.addAttribute("cwList", cwList);
+
 		return "matching/matchingMap";
 
 	}
@@ -177,11 +192,29 @@ public class MatchingController {
 //	}
 //
 
+	
+	/**
+	 * @author PC21
+	 *  수정중인 사항 
+	 *  2019.07.29 9:35
+	 */
+
+	/*
+	@RequestMapping(path = "/getCalendar")
+	public String getCalendar(Model model) {
+
+		List<MatchingVo> list = matchingService.getCalendar();
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("list : " + list.get(i));
+
+		}
+
 	/*
 	 * 
 	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
 	 * { model.addAttribute("list", matchingService.getMatchingList("brown"));
 	 * return "jsonView"; }
 	 */
+
 
 }

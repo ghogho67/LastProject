@@ -102,11 +102,8 @@ $(document).ready(function() {
 			alert("입력값을 넣어주세요");
 			return;
 		}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> a39695efb735f665903aee02c99dfa74e8a1ec60
+		
 		$.ajax({
 			url : "${cp}/regist/regist3-1",
 			data : frmData,
@@ -162,7 +159,7 @@ $(document).ready(function() {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				//주소 input value에 설정data.roadAddress
-				$("#mem_addr1").val(data.roadAddress);
+				$("#mem_addr1").val(data.jibunAddress);
 				//우편번호 input value에 설정data.zonecode
 				$("#mem_zipcd").val(data.zonecode);
 

@@ -122,19 +122,7 @@
    						  ,#{career_hos})
    </insert>
    
-   <!-- 요양보호사 등록 - 경력 - 병원명 -->
-   <insert id="insertHospital" parameterType="hospitalVo">
-   		INSERT INTO HOSPITAL(hos_id
-   							,hos_nm
-   							,hos_add
-   							,hos_phone)
-   					VALUES(hos_id.nextval
-   						  ,#{hos_nm}
-   						  ,'대전'
-   						  ,'01028490809')
-   </insert>	
-   
-
+	
    <!-- 요양보호사 등록 - 서비스 종류 -->
    <insert id="insertCWServiceType" parameterType="cwServiceTypeVo">
    		INSERT INTO CWSERVICETYPE(mem_id
