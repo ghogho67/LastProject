@@ -192,11 +192,29 @@ public class MatchingController {
 //	}
 //
 
+	
+	/**
+	 * @author PC21
+	 *  수정중인 사항 
+	 *  2019.07.29 9:35
+	 */
+
+	/*
+	@RequestMapping(path = "/getCalendar")
+	public String getCalendar(Model model) {
+
+		List<MatchingVo> list = matchingService.getCalendar();
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("list : " + list.get(i));
+
+		}
+
 	/*
 	 * 
 	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
 	 * { model.addAttribute("list", matchingService.getMatchingList("brown"));
 	 * return "jsonView"; }
 	 */
+
 
 }

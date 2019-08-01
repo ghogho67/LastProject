@@ -1,11 +1,10 @@
 package kr.or.ddit.matching.attendance.model;
 
-import java.util.Date;
 
 public class AttendanceVo {
 	private int ad_id;
-	private Date ad_st;
-	private Date ad_end;
+	private String ad_st;
+	private String ad_end;
 	private int mat_id;
 
 	public int getAd_id() {
@@ -16,19 +15,19 @@ public class AttendanceVo {
 		this.ad_id = ad_id;
 	}
 
-	public Date getAd_st() {
+	public String getAd_st() {
 		return ad_st;
 	}
 
-	public void setAd_st(Date ad_st) {
+	public void setAd_st(String ad_st) {
 		this.ad_st = ad_st;
 	}
 
-	public Date getAd_end() {
+	public String getAd_end() {
 		return ad_end;
 	}
 
-	public void setAd_end(Date ad_end) {
+	public void setAd_end(String ad_end) {
 		this.ad_end = ad_end;
 	}
 
