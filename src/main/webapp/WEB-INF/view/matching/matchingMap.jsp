@@ -277,7 +277,7 @@
 							return function(e) {
 								var marker = markers[seq], infoWindow = infoWindows[seq];
 
-								location.href = "meet";
+								location.href = "meet?mem_id=ahri";
 
 								if (infoWindow.getMap()) {
 									infoWindow.close();
@@ -294,10 +294,11 @@
 					});
 </script>
 
-<div id="map" style="width: 50%; height: 800px;"></div>
-<ul id="cwUl">
-	<c:forEach items="${cwList }" var="cw">
-		<input type="hidden" name="add" value="${cw.mem_add1 }">
-		<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
-	</c:forEach>
-</ul>
+<div class="container-fluid" id="map" style="width: 50%; height: 800px;">
+	<ul id="cwUl">
+		<c:forEach items="${cwList }" var="cw">
+			<input type="hidden" name="add" value="${cw.mem_add1 }">
+			<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
+		</c:forEach>
+	</ul>
+</div>
