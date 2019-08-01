@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="attendance">
+
+	
+
+	<select id="attendanceList" parameterType="int" resultType="attendanceVo">
+		select AD_ID,
+     	  to_char(AD_ST, 'yyyy/mm/dd hh24:mi:ss') ad_st,
+      	  to_char(AD_END, 'yyyy/mm/dd hh24:mi:ss') ad_end,
+       	  mat_id
+		from attendance 
+		where mat_id = #{mat_id}
+	</select>
+	
+	<select id="checkLogin" parameterType="map" resultType="String">
+	select MAT_ID
+		from matching
+		where mem_id = #{mem_id}
+		and cw_mem_id =#{cw_mem_id}
+	</select>
+	
+	<insert id="checkIn" parameterType="int">
+	Insert Into attendance Values (AD_ID.NEXTVAL, sysdate, null, #{mat_id}) 
+	</insert>
+	
+	<update id="checkOut" parameterType="map">
+	update attendance
+		set AD_END = sysdate
+	    
+		where mat_id = #{mat_id}
+  		and ad_id = #{ad_id}
+	</update>
+	
+	<delete id="attendanceDelete" parameterType="int">
+	delete from attendance
+	</delete>
+	
+	
+	<select id="checkInCheck" parameterType="int" resultType="int">
+	select count(*) from (Select to_date(Ad_St,'yy/mm/dd') ad_st from Attendance where mat_id = #{mat_id} )where ad_st = to_date(sysdate,'yy/mm/dd')
+	</select>
+	
+	
+	<select id="attendanceAdIdCnt" parameterType="int" resultType="int">
+	select max(AD_ID) from Attendance where mat_id = #{mat_id}
+	</select>
+	
+
+</mapper>

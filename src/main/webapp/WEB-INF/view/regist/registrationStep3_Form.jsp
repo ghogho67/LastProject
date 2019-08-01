@@ -148,7 +148,8 @@
 			new daum.Postcode({
 				oncomplete : function(data) {
 					//주소 input value에 설정data.roadAddress
-					$("#mem_addr1").val(data.roadAddress);
+					console.log(data);
+					$("#mem_addr1").val(data.jibunAddress);
 					//우편번호 input value에 설정data.zonecode
 					$("#mem_zipcd").val(data.zonecode);
 
@@ -319,7 +320,7 @@
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
 											<input type="tel" id="mem_phone" name="mem_phone"
-												value="${mem_phone }" placeholder="000-0000-0000형식으로 입력하세요"
+												value="${mem_phone }" placeholder="숫자만 입력하세요"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i

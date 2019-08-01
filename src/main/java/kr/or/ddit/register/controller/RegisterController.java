@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.joinVo.RegisterVo;
 import kr.or.ddit.member.careWorker.career.model.CareerVo;
 import kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo;
@@ -191,6 +192,19 @@ public class RegisterController {
 		return "success";
 	}
 		
+	/**
+	* Method : insertRegist1
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param registerVo
+	* @param profile
+	* @param request
+	* @param dis_ids
+	* @return
+	* @throws ParseException
+	* Method 설명 :일반회원 등록
+	*/
 	@RequestMapping(path = "/regist5")
 	public String insertRegist1(Model model, RegisterVo registerVo, @RequestPart("profile")MultipartFile profile, HttpServletRequest request,
 			int[] dis_ids) throws ParseException {
@@ -221,7 +235,11 @@ public class RegisterController {
 
 		
 		memberVo.setMem_id(registerVo.getMem_id());
-		memberVo.setMem_pass(registerVo.getMem_pass());
+//		memberVo.setMem_pass(registerVo.getMem_pass());
+		
+		//비밀번호 암호화
+		memberVo.setMem_pass(KISA_SHA256.encrypt(registerVo.getMem_pass()));
+		
 		memberVo.setMem_nm(registerVo.getMem_nm());
 		memberVo.setMem_phone(registerVo.getMem_phone());
 		memberVo.setMem_mail(registerVo.getMem_mail());
@@ -377,6 +395,20 @@ public class RegisterController {
 	
 	
 	
+	/**
+	* Method : insertCWRegist1
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param registerVo
+	* @param profile
+	* @param request
+	* @param cw_days
+	* @param ser_type_ids
+	* @return
+	* @throws ParseException
+	* Method 설명 :요양보호사 등록
+	*/
 	@RequestMapping(path = "/regist5-1")
 	public String insertCWRegist1(Model model, RegisterVo registerVo, @RequestPart("profile")MultipartFile profile, HttpServletRequest request,
 			int[] cw_days, int[] ser_type_ids) throws ParseException {
@@ -422,7 +454,11 @@ public class RegisterController {
 		
 
 		memberVo.setMem_id(registerVo.getMem_id());
-		memberVo.setMem_pass(registerVo.getMem_pass());
+//		memberVo.setMem_pass(registerVo.getMem_pass());
+		
+		//비밀번호 암호화
+		memberVo.setMem_pass(KISA_SHA256.encrypt(registerVo.getMem_pass()));
+		
 		memberVo.setMem_nm(registerVo.getMem_nm());
 		memberVo.setMem_phone(registerVo.getMem_phone());
 		memberVo.setMem_mail(registerVo.getMem_mail());
@@ -502,15 +538,15 @@ public class RegisterController {
 
 		logger.debug("insertCWServiceCnt:{}", insertCWServiceCnt);
 
-		hospitalVo.setHos_nm(registerVo.getHos_nm());
-		hospitalVo.setHos_phone(registerVo.getHos_phone());
-		hospitalVo.setHos_add(registerVo.getHos_add());
-
-		logger.debug("hospitalVo :{}", hospitalVo);
-
-		int insertHopitalCnt = registerService.insertHospital(hospitalVo);
-
-		logger.debug("insertHopitalCnt :{}", insertHopitalCnt);
+//		hospitalVo.setHos_nm(registerVo.getHos_nm());
+//		hospitalVo.setHos_phone(registerVo.getHos_phone());
+//		hospitalVo.setHos_add(registerVo.getHos_add());
+//
+//		logger.debug("hospitalVo :{}", hospitalVo);
+//
+//		int insertHopitalCnt = registerService.insertHospital(hospitalVo);
+//
+//		logger.debug("insertHopitalCnt :{}", insertHopitalCnt);
 
 //		careerVo.setCareer_st_dt(registerVo.getCareer_st_dt());
 //		careerVo.setCareer_end_dt(registerVo.getCareer_end_dt());
@@ -528,7 +564,7 @@ public class RegisterController {
 		logger.debug("insertCareerCnt:{}", insertCareerCnt);
 
 		if (insertCWMemberCnt == 1 && insertLocationCnt == 1 && insertDayCnt == cw_days.length
-				&& insertCWServiceCnt == ser_type_ids.length && insertHopitalCnt == 1 && insertCareerCnt == 1) {
+				&& insertCWServiceCnt == ser_type_ids.length && insertCareerCnt == 1) {
 			return "/regist/registrationStep4_Complete";
 		} else {
 			return "/regist/registrationStep3-1_Form";

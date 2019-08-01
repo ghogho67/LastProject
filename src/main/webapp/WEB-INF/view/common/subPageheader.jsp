@@ -14,7 +14,7 @@
 </head>
 	
 
-<header>
+
 	<div id="header"  class="header-scrolled2">
 		<div class="container">
 			<div class="row  justify-content-between ">
@@ -36,14 +36,12 @@
 					</c:if>
 					
 						
-						<li class="" ><a href="">Home</a></li>
+						<li class="" ><a href="${cp}/main">Home</a></li>
 						<li><a href="">회사소개</a></li>
 						<li><a href="">마이페이지</a></li>
 						<li><a href="">요양 정보</a>
 							<ul>
-								<li><a
-									href="${cp}/basicU/main">요양보호소
-										찾기 </a></li>
+<%-- 								<li><a href="${cp}/basicU/main">요양보호소찾기 </a></li> --%>
 								<li><a href="${cp}/basicU/findingCareWorker">요양원/요양병원
 										찾기</a></li>
 								<li><a href="${cp}/basicU/findingCareWorker">기관 정보 조회</a></li>
@@ -94,5 +92,5 @@
 	<br>
 	<br>
 	<hr>
-</header>
+
 

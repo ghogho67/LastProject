@@ -102,11 +102,8 @@ $(document).ready(function() {
 			alert("입력값을 넣어주세요");
 			return;
 		}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> a39695efb735f665903aee02c99dfa74e8a1ec60
+		
 		$.ajax({
 			url : "${cp}/regist/regist3-1",
 			data : frmData,
@@ -162,7 +159,7 @@ $(document).ready(function() {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				//주소 input value에 설정data.roadAddress
-				$("#mem_addr1").val(data.roadAddress);
+				$("#mem_addr1").val(data.jibunAddress);
 				//우편번호 input value에 설정data.zonecode
 				$("#mem_zipcd").val(data.zonecode);
 
@@ -356,7 +353,7 @@ function captcha() {
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
 											<input type="tel" id="mem_phone" name="mem_phone" value="${mem_phone }"
-												placeholder="000-0000-0000형식으로 입력하세요" class="form-control"> <span
+												placeholder="숫자만 입력하세요" class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
