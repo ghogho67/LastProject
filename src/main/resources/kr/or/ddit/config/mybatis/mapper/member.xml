@@ -43,8 +43,8 @@
      			 		,#{mem_mail}
      			 		,'1'
      			 		,'N'
-     			 		,#{path, jdbcType=VARCHAR}
-     			 		,#{filename, jdbcType=VARCHAR}
+     			 		,#{mem_photo_path, jdbcType=VARCHAR}
+     			 		,#{mem_photo_nm, jdbcType=VARCHAR}
      			 		,#{pro_relation}
      			 		,#{pro_nm}
      			 		,#{pro_phone})
@@ -52,8 +52,8 @@
   
    <!-- 일반회원 등록 - 질병명 -->
    <insert id="insertMemberDisease" parameterType="memberDiseaseVo">
-   		INSERT INTO MEMBERDISEASE(dis_id)
-   					VALUES(#{dis_id})
+   		INSERT INTO MEMBERDISEASE(dis_id, mem_dis_id, mem_id)
+   					VALUES(#{dis_id}, mem_dis_id.nextval, #{mem_id})
    </insert>
    
    
@@ -87,8 +87,8 @@
      			 		,#{mem_mail}
      			 		,'3'
      			 		,'N'
-     			 		,#{path, jdbcType=VARCHAR}
-     			 		,#{filename, jdbcType=VARCHAR}
+     			 		,#{mem_photo_path, jdbcType=VARCHAR}
+     			 		,#{mem_photo_nm, jdbcType=VARCHAR}
      			 		,#{cw_driver}
      			 		,#{cw_lic})
    </insert>
@@ -122,19 +122,7 @@
    						  ,#{career_hos})
    </insert>
    
-   <!-- 요양보호사 등록 - 경력 - 병원명 -->
-   <insert id="insertHospital" parameterType="hospitalVo">
-   		INSERT INTO HOSPITAL(hos_id
-   							,hos_nm
-   							,hos_add
-   							,hos_phone)
-   					VALUES(hos_id.nextval
-   						  ,#{hos_nm}
-   						  ,'대전'
-   						  ,'01028490809')
-   </insert>	
-   
-
+	
    <!-- 요양보호사 등록 - 서비스 종류 -->
    <insert id="insertCWServiceType" parameterType="cwServiceTypeVo">
    		INSERT INTO CWSERVICETYPE(mem_id
@@ -248,6 +236,11 @@
 		mem_del = #{mem_del}
 		WHERE mem_id = #{mem_id}
 	</update>
+	
+<!-- 	요양보호사 리스트 조회	 -->
+	<select id = "getCwList" resultType="memberVo">
+		select * from member where mem_grade = '3'
+	</select>
 
 
 </mapper>

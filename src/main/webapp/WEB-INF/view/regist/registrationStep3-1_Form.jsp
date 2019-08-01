@@ -22,7 +22,7 @@
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="/js/jquery/jquery-3.2.1.js"></script>
+<%-- <script type="text/javascript" src="${cp}/js/jquery/jquery-3.2.1.js"></script> --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -63,11 +63,14 @@ $(document).ready(function() {
 		
 	});
 	
-	//정규식체크
-	$("#submit").on("click", function(){
+	//정규식체크 및 회원가입 
+	$("#trans").on("click", function(){
 		var frmData = $("#frm").serialize();
 		var cw_days = new Array();
 		var ser_type_ids = new Array();
+		console.log(frmData);
+	
+
 		$("input[name=cw_day]:checked").each(function() {
 			cw_days.push($(this).val());
 
@@ -76,6 +79,12 @@ $(document).ready(function() {
 		$("input[name=ser_type_id]:checked").each(function(){
 			ser_type_ids.push($(this).val());
 		});
+		
+		$("#cw_days").val(cw_days);
+		$("#ser_type_ids").val(ser_type_ids);
+		
+		console.log($("#cw_days").val());
+		console.log($("#ser_type_ids").val());
 
 		if($("#mem_id").val()==''||$("#mem_id").val()==null){
 			alert("아이디를 입력해주세요");
@@ -93,11 +102,11 @@ $(document).ready(function() {
 			alert("입력값을 넣어주세요");
 			return;
 		}
-		console.log(cw_days);
-		console.log(frmData);
+
+		
 		$.ajax({
 			url : "${cp}/regist/regist3-1",
-			data : frmData+"&cw_days="+cw_days+"&ser_type_ids="+ser_type_ids,
+			data : frmData,
 			type : "post",
 			success : function(data){
 				console.log(data);
@@ -128,16 +137,20 @@ $(document).ready(function() {
 				}
 				if(data == 'success'){
 					console.log("suc")
-//						location.href = "${cp}/regist/regist4"
-//						$("#frm").attr("action", "${cp}/regist/regist4");
-//						$("#frm").attr("method", "post");
-					$("#frm2").submit();
+
+						$('#frm').submit();
+
+						console.log("suc2")
+				}else{
+					console.log("fal")
+					return;
 				}
 			},error : function(xhr){
 				alert(xhr.status);
 			}
 			
 		});
+
 		
 	});
 	
@@ -146,7 +159,7 @@ $(document).ready(function() {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				//주소 input value에 설정data.roadAddress
-				$("#mem_addr1").val(data.roadAddress);
+				$("#mem_addr1").val(data.jibunAddress);
 				//우편번호 input value에 설정data.zonecode
 				$("#mem_zipcd").val(data.zonecode);
 
@@ -159,15 +172,6 @@ $(document).ready(function() {
 	});
 	
 	
-
-	//등록
-//		$("#submit").on("click", function(){
-//			$("#frm").attr("action", "${cp}/regist/regist4");
-//			$("#frm").attr("method", "get");
-//			$("#frm").submit();
-		
-//		});
-	
 	//home
 	$("#home").on("click", function(){
 		$("#frm").attr("action", "${cp}/login");
@@ -177,15 +181,65 @@ $(document).ready(function() {
 	});
 	
 	
-
+	//캡차API
+	captcha();
+	$("#btn01").on("click",function(){
+		var form01Data = $("#form01").serialize();
+		console.log(form01Data);
+		$.ajax({
+			url : "/regist/captchaNkeyResult",
+			data : "key="+$('#key').val()+"&value="+$('#value').val(),
+			dataType:"json",
+			success : function(data) {
+				console.log(data);
+				if(data.result==1){
+					alert("인증성공");
+				}else{
+					alert("실패");
+				}
+			}
+		});
+	});
+	
+	$("#refresh").on("click",function(){
+		captcha();
+	});
 });
+
+function captcha() {
+	$.ajax({
+		method : 'post',
+		url : "/regist/captchaNkey",
+		dataType:"json",
+		success : function(data) {
+			
+			console.log(data.key);
+			$("#key").val(data.key);
+			
+			$.ajax({
+				url : "/regist/captchaImage",
+				method : 'get',
+				data : "key=" + data.key ,
+				success : function(data) {
+					console.log(data);
+					console.log(data.captchaImageName);
+					$("#div01").html("<img src='${cp}/captchaImage/"+data.captchaImageName+"'>");
+				},error : function(xhr) {
+					alert('에러'+xhr.status);
+				}
+			});
+		},error : function(xhr) {
+			alert('에러'+xhr.status);
+		}
+	});
+	
+}
 </script>
 </head>
-
 <body>
 
-	<form id="frm2" method="post" action="${cp}/regist/regist4">
-	</form>
+<%-- 	<form id="frm2" method="post" action="${cp}/regist/regist4"> --%>
+<!-- 	</form> -->
 
 
 	<section class="memberjoin">
@@ -205,8 +259,10 @@ $(document).ready(function() {
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="frm" method="post" action="${cp}/regist/regist3-1 }"
-					class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
+				<form id="frm" method="post" action="${cp}/regist/regist5-1" name="dataform"
+					class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue" enctype="multipart/form-data">
+					
+					
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
 						<div class="p-title" data-base-class="p-title">
@@ -223,12 +279,14 @@ $(document).ready(function() {
 								<div class="form-group">
 									<label for="url">프로필 사진</label>
 									<div class="p-file-wrap">
-<!-- 										<input type="file" id="profile" name="profile"> -->
+										<input type="file" id="profile" name="profile"
+											placeholder="select file..."
+											onchange="document.getElementById('fileupload1-fake').value = this.value">
 										<div class="input-group">
 											<span class="input-group-btn"><button type="button"
 													class="btn">browse</button></span> <input type="text"
-												id="profile" name="profile" placeholder="프로필 사진을 등록하세요"
-												 class="form-control p-ignore-field">
+												id="fileupload1-fake" placeholder="프로필 사진을 등록하세요"
+												readonly="readonly" value="${mem_photo_nm }" class="form-control p-ignore-field">
 											<span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
@@ -245,7 +303,7 @@ $(document).ready(function() {
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="text">ID</label>
-										<div class="input-group"">
+										<div class="input-group">
 											<span class="input-group-btn"><button type="button"
 													class="btn" id="idCheckBtn">중복확인</button></span> <input type="text" id="mem_id"
 												name="mem_id" placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지" value="${mem_id }"
@@ -507,7 +565,7 @@ $(document).ready(function() {
 									<div class="p-form-cg pt-form-inline">
 									
 										<div class="checkbox">
-											<label><input type="checkbox" name="cw_day"
+											<label><input type="checkbox" name="cw_day" 
 												value="1"> <span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">일</span></label>
 										</div>
@@ -650,7 +708,7 @@ $(document).ready(function() {
 											<div class="input-group p-has-icon">
 <%-- 												<input type="text" id="career_cont" name="career_cont" value="${career_cont }" --%>
 <!-- 													placeholder="이력 내용을 간당히 적어주세요" class="form-control"> -->
-													<textarea rows="20" cols="20" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" ></textarea>
+													<textarea rows="1" cols="1" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" ></textarea>
 													 <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
@@ -667,17 +725,25 @@ $(document).ready(function() {
 								</div>
 
 
+							<input type="hidden" name="cw_days" id="cw_days" value="">
+							<input type="hidden" name="ser_type_ids" id="ser_type_ids" value="">
 
 
-
+							<div id="div01">
+							</div>
+							<button type="button" id="refresh">새로고침</button><br>
+								<input type="hidden" id="key" name="key">
+								<input type="text" name="value" id="value">
+								<button type="button" id="btn01">전송</button>
 
 
 								<div class="preview-btn text-left p-buttons">
-									<button class="btn" id="submit" type="button">submit</button>
+									<button class="btn" id="trans" type="button">submit</button>
 									<button class="btn" id="reste" type="reset">reset</button>
 									<button class="btn" id="home" type="submit">home</button>
 								</div>
 							</div>
+						</div>
 						</div>
 				</form>
 			</div>

@@ -9,6 +9,15 @@ public class ApprovalVo {
 	private Date app_time;
 	private int app_type;
 	private String mem_id;
+	private String app_del;
+
+	public String getApp_del() {
+		return app_del;
+	}
+
+	public void setApp_del(String app_del) {
+		this.app_del = app_del;
+	}
 
 	public int getApp_id() {
 		return app_id;

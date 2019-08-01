@@ -4,7 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 	
 <configuration>
+
 	<properties resource="kr/or/ddit/config/mybatis/db.properties"/>
+
 	<typeAliases>
 
 		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.post.model.PostVo"/>
@@ -29,11 +31,8 @@
 		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
 		<typeAlias alias="ReportAttachVo" type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" />
 		<typeAlias alias="attendanceVo" type="kr.or.ddit.matching.attendance.model.AttendanceVo" />
-		
-		
-		
+		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
 	</typeAliases>
-	
 
 <mappers>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
@@ -46,5 +45,9 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
+
    </mappers>
 </configuration>

@@ -19,7 +19,6 @@
 <title>postPagingList</title>
 
 <!-- css, js -->
-
 <style>
 .postTr:hover {
 	cursor: pointer;

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	<%--     pageEncoding="UTF-8"%> --%>
+    pageEncoding="UTF-8"%>
+
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html> --> --%>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -27,7 +28,7 @@
    
     
 
-        일자 클릭시 메뉴오픈
+        <!-- 일자 클릭시 메뉴오픈 -->
         <div id="contextMenu" class="dropdown clearfix">
             <ul class="dropdown-menu dropNewEvent" role="menu" aria-labelledby="dropdownMenu"
                 style="display:block;position:static;margin-bottom:5px;">
@@ -45,7 +46,7 @@
         </div>
 
 
-        일정 추가 MODAL
+        <!-- 일정 추가 MODAL -->
         <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -153,13 +154,13 @@
                         <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
                         <button type="button" class="btn btn-primary" id="updateEvent">저장</button>
                     </div>
-                </div>/.modal-content
-            </div>/.modal-dialog
-        </div>/.modal
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 
     </div>
-    /.container
+    <!-- /.container -->
 
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>

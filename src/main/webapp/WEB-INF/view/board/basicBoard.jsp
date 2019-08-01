@@ -85,24 +85,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * {box-sizing: border-box;}
 .for {
   position: relative;
