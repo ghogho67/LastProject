@@ -19,7 +19,7 @@
 
    <tiles:insertAttribute name="header" />
    <div class="container-fluid">
-      <div class="row">s
+      <div class="row">
          <tiles:insertAttribute name="left" />
       </div>
       
