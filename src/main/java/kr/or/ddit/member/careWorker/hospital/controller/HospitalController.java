@@ -95,6 +95,29 @@ public class HospitalController {
 		
 		logger.debug("☞getSearchHosAdd:{}",getSearchHosAdd);
 		
+		
+		//-------------- 페이지 네이션!!
+		
+
+//		Map<String, Object> resultMap = hospitalService.hosPagingList(pageVo);
+//
+//		logger.debug("☞resultMap:{}", resultMap);
+//		
+//		List<HospitalVo> hosList = (List<HospitalVo>) resultMap.get("hosList");
+
+//		List<HospitalVo> hosList =  (List<HospitalVo>) resultMap.get(hospitalService.getSearchHosAdd(hos_add));
+//	
+//		int paginationSize = (Integer) resultMap.get("paginationSize");
+//		
+//		logger.debug("☞hosList:{}",hosList);
+//		
+//		model.addAttribute("getSearchHosAdd", hosList);
+//		model.addAttribute("paginationSize", paginationSize);
+//		model.addAttribute("pageVo", pageVo);
+//		
+//		logger.debug("☞hosList:{}",hosList);
+//		logger.debug("☞paginationSize:{}",paginationSize);
+//		logger.debug("☞pageVo:{}",pageVo);
 
 		
 		

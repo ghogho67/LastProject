@@ -70,8 +70,8 @@ public class RegCheck {
 	* Method 설명 :핸드폰 정규식
 	*/
 	public boolean regPhone(String mem_phone) {
-//		Pattern p = Pattern.compile("/^\\\\d{3}-\\\\d{3,4}-\\\\d{4}$/");
-		Pattern p = Pattern.compile("^\\d{3}-\\d{3,4}-\\d{4}$");
+//		Pattern p = Pattern.compile("/^\\\\d{3}\\\\d{3,4}\\\\d{4}$/");
+		Pattern p = Pattern.compile("^\\d{3}\\d{3,4}\\d{4}$");
 		Matcher m = p.matcher(mem_phone);
 		result = m.matches();
 		return result;
