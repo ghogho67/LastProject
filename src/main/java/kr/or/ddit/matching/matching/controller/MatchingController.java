@@ -36,6 +36,11 @@ public class MatchingController {
 		return "bestSample";
 	}
 
+	@RequestMapping(path = "/meet")
+	public String meeting() {
+		return "/matching/meeting.tiles";
+	}
+
 	@RequestMapping(path = "/map")
 	public String showMap(Model model) {
 		List<MemberVo> cwList = memberService.getCwList();
