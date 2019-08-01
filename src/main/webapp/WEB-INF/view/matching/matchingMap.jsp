@@ -3,14 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
+
 
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<!-- <meta name="viewport" -->
+<!-- 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> -->
 <title>간단한 지도 표시하기</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -229,8 +227,7 @@
 							var infoWindow = new naver.maps.InfoWindow(
 									{
 										content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
-												+ key
-												+ '"</b>.</div>'
+												+ key + '"</b>.</div>'
 									});
 
 							markers.push(marker);
@@ -279,9 +276,9 @@
 							alert(seq);
 							return function(e) {
 								var marker = markers[seq], infoWindow = infoWindows[seq];
-								
-								location.href="meet";
-								
+
+								location.href = "meet";
+
 								if (infoWindow.getMap()) {
 									infoWindow.close();
 								} else {
@@ -296,14 +293,11 @@
 						}
 					});
 </script>
-</head>
-<body>
-	<div id="map" style="width: 80%; height: 800px;"></div>
-	<ul id="cwUl">
-		<c:forEach items="${cwList }" var="cw">
-			<input type="hidden" name="add" value="${cw.mem_add1 }">
-			<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
-		</c:forEach>
-	</ul>
-</body>
-</html>
+
+<div id="map" style="width: 50%; height: 800px;"></div>
+<ul id="cwUl">
+	<c:forEach items="${cwList }" var="cw">
+		<input type="hidden" name="add" value="${cw.mem_add1 }">
+		<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
+	</c:forEach>
+</ul>

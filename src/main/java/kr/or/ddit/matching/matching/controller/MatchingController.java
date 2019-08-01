@@ -67,7 +67,7 @@ public class MatchingController {
 	@RequestMapping(path = "/insertCalendar")
 	public String insertData(Model model, @RequestBody List<Map<String, Object>> list) {
 
-		logger.debug("☞insertCalendar:{}", "insertCalendar");
+		logger.debug("☞insert`Calendar:{}", "insertCalendar");
 		logger.debug("☞list:{}", list);
 		String[] items = list.get(0).get("dow").toString().replaceAll("\\[", "").replaceAll("\\]", "")
 				.replaceAll("\\s", "").split(",");
@@ -197,29 +197,24 @@ public class MatchingController {
 //	}
 //
 
-	
 	/**
-	 * @author PC21
-	 *  수정중인 사항 
-	 *  2019.07.29 9:35
+	 * @author PC21 수정중인 사항 2019.07.29 9:35
 	 */
 
 	/*
-	@RequestMapping(path = "/getCalendar")
-	public String getCalendar(Model model) {
-
-		List<MatchingVo> list = matchingService.getCalendar();
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println("list : " + list.get(i));
-
-		}
-
-	/*
+	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
+	 * {
+	 * 
+	 * List<MatchingVo> list = matchingService.getCalendar(); for (int i = 0; i <
+	 * list.size(); i++) { System.out.println("list : " + list.get(i));
+	 * 
+	 * }
+	 * 
+	 * /*
 	 * 
 	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
 	 * { model.addAttribute("list", matchingService.getMatchingList("brown"));
 	 * return "jsonView"; }
 	 */
-
 
 }
