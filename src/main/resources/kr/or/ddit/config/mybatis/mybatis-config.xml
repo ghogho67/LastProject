@@ -50,10 +50,7 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
-<<<<<<< HEAD
       <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
-=======
 
->>>>>>> 0ce11f2aa22a50b773cc25448708d1643a799c33
    </mappers>
 </configuration>
