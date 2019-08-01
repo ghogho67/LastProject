@@ -183,12 +183,17 @@ td {
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabel">카테고리 추가</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">Modal 내용</div>
+					<input type="text"  id="cataPId" name="cataPId" value="${MinorCategoryList.cate_paerent_id}" readonly="readonly">
+					<input type="text" id="cataId" name="cateId">
+						<select  name="boarduse_yn" id="boarduse_yn" >
+											<option value="Y">사용</option>
+											<option value="N">사용안함</option>
+						</select>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-outline-danger"
 							data-dismiss="modal">추가</button>
