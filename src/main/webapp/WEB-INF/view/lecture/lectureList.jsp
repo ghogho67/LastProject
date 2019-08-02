@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,7 +235,7 @@ td {
 
 
 
-		<div  style="padding-top: 50px; width: 1250px;">
+		<div  style="padding-top: 50px; width: 1350px;">
 
 
 
@@ -242,7 +244,7 @@ td {
 
 				<div id="titlee">
 						<h2>
-							<span>학습.문화</span> 프로그램
+							<span>학습.문화</span> 프로그램 
 						</h2>
 						</div>
 					
@@ -266,57 +268,43 @@ td {
 						<table class="table center-aligned-table">
 							<thead>
 								<tr class="text-primary">
+									<th>강좌코드</th>
 									<th>강좌 명</th>
-									<th>강사 명</th>
+									<th>강사명</th>
 									<th>수강료</th>
 									<th>학습 시작일</th>
 									<th>학습 종료일</th>
 									<th>학습 시간</th>
+									<th>수강인원</th>
 									<th>&nbsp;&nbsp;상태&nbsp;&nbsp;</th>
 								</tr>
 							</thead>
 
 
 							<tbody>
-
-								<tr class="Category" data-userid="dd">
-									<td class="CategoryId" id="CategoryId" name="CategoryId">dd</td>
-
-										<td>dd</td>
-
-									<td>dd</td>
-									<td>dd</td>
-
-									<td>dd</td>
-
-									<td>dd</td>
-
-										<td><a
-										href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
-										class="btn btn-info btn-sm">&nbsp;&nbsp;접수 중&nbsp;&nbsp;</a></td>
-								</tr>
+	<c:forEach items="${LTList}" var="LTList">
+								<tr class="Lecture" data-userid="lectureId">
 								
-								
-								<tr class="Category" data-userid="dd">
-									<td class="CategoryId" id="CategoryId" name="CategoryId">dd</td>
+									<td class="LectureId" id="LectureId" name="LectureId">${LTList.lec_id}</td>
 
-									<td><input class="inputTitle" id="CateTitle" name="CateTitle"
-										value="${Category.cate_title}"> <input type="hidden"
-										value="${Category.cate_id}" id="cate_id" name="cate_id">
-										<input type="submit" value="수정" class="kkk"></td>
-
-									<td>dd</td>
-									<td>dd</td>
-
-									<td>dd</td>
-
-									<td>dd</td>
-
-									<td><a
-										href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
-										class="btn btn-danger btn-sm">접수종료</a></td>
-
+									<td>${LTList.lec_nm}</td>
+									<td>${LTList.lec_tea}</td>
+									<td>${LTList.lec_fee}</td>
+									<td>
+									<fmt:formatDate value="${LTList.lec_st_dt}" pattern="yyyy-MM-dd"/>
+									</td>
+									<td>
+									<fmt:formatDate value="${LTList.lec_end_dt}"  pattern="yyyy-MM-dd"/>
+									</td>
+									<td><fmt:formatDate value="${LTList.lec_end_dt}" pattern="yyyy-MM-dd"  /></td>
+<%-- 									<td>${LTList.lec_time}</td> --%>
+									<td>${LTList.lec_amount}</td>
+									
+									<td><a class="btn btn-info btn-sm">&nbsp;&nbsp;접수 중&nbsp;&nbsp;</a>
+								    </td>
 								</tr>
+
+</c:forEach>
 								
 							</tbody>
 

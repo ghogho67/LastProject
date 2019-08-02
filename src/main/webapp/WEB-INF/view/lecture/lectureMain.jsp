@@ -178,9 +178,10 @@ ul, li, dl, dd {
 #middle{
 margin-top:50px;
 position:absolute;
-left:20%;
+left:22%;
 width: 70%
 }
+
 </style>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
@@ -193,7 +194,6 @@ width: 70%
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
 
-
 <div id="middle">
 
 					<div id="program">
@@ -202,15 +202,15 @@ width: 70%
 						</h2>
 						
 						<ul>
-							<li><a href="/program/apply_info.asp">순수학문</a></li>
-							<li><a href="/program/academy.asp">외국어</a></li>
-							<li><a href="/program/academy.asp">생활기술</a></li>
-							<li><a href="/program/course_parent.asp">요리</a></li>
-							<li><a href="/program/apply_info.asp">미술/음악</a></li>
-							<li><a href="/program/academy.asp">건강/생활체육</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=601">순수학문</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=602">외국어</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=603">생활기술</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=604">요리</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=605">미술/음악</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=606">건강/생활체육</a></li>
 						</ul>
 			
-	<a href="" style=" position:absolute; left:86%; font-size:2em; font-weight: bold; color: #473fa0; ">전체 강좌 보기 </a>
+	<a href="${cp}/lecture/lectureListALL" style=" position:absolute; left:86%; font-size:2em; font-weight: bold; color: #473fa0; ">전체 강좌 보기 </a>
 						
 						
 					</div>

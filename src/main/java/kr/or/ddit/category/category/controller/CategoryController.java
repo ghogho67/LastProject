@@ -29,10 +29,9 @@ public class CategoryController {
 	
 	
 	
-	
-	
-	
 	private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
+	
+	
 	
 	@RequestMapping(path = "/categoryList", method = RequestMethod.GET)
 	public String categoryList(Model model, HttpSession session) {
@@ -73,6 +72,7 @@ public class CategoryController {
 
 	
 	
+	
 	@RequestMapping(path = "/categoryMinorDelete", method = RequestMethod.GET)
 	public String categoryMinorDelete(Model model, HttpSession session,RedirectAttributes redirectAttributes,
 			@RequestParam(name = "cate_id")int cate_id,
@@ -95,6 +95,9 @@ public class CategoryController {
 	}
 	
 	
+	
+	
+	
 	@RequestMapping(path = "/categoryUse", method = RequestMethod.GET)
 	public String categoryUse(Model model, HttpSession session,RedirectAttributes redirectAttributes,
 			@RequestParam(name = "cate_id")int cate_id) {
@@ -114,6 +117,11 @@ public class CategoryController {
 			return viewName;
 		
 	}
+	
+	
+	
+	
+	
 	@RequestMapping(path = "/categoryMinorUse", method = RequestMethod.GET)
 	public String MinorcategoryUse(Model model, HttpSession session,RedirectAttributes redirectAttributes,
 			@RequestParam(name = "cate_id")int cate_id,
@@ -136,8 +144,6 @@ public class CategoryController {
 	}
 	
 
-	
-	
 	
 	//중분류 카테고리 리스트를 출력한다 
 	@RequestMapping(path = "/categoryManagement", method = RequestMethod.GET)
@@ -162,8 +168,6 @@ public class CategoryController {
 	
 	
 	
-
-	
 	
 	@RequestMapping(path = "/updateCategoryTitle", method = RequestMethod.POST)
 	public String updateCategoryTitle(Model model, HttpSession session,RedirectAttributes redirectAttributes,
@@ -174,7 +178,6 @@ public class CategoryController {
 		logger.debug("@@@@CateTitle{}",cate_title);
 		
 		CategoryVo categoryVo= new CategoryVo(cate_id, cate_title);
-		
 		
 		
 		String viewName =null;

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.category.others.culture.service.ICultureService;
 @RequestMapping("/culture")
@@ -26,18 +27,6 @@ public class CultureController {
 
 	
 	
-	@RequestMapping(path = "/cultureMain", method = RequestMethod.GET)
-	public String categoryList(Model model, HttpSession session) {
-		
-		return "culture/cultureMain";
-	}
-	
-	@RequestMapping(path = "/cultureList", method = RequestMethod.GET)
-	public String cultureList(Model model, HttpSession session) {
-		
-		return "culture/cultureList";
-	}
-
 	
 	
 }

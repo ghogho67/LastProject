@@ -26,13 +26,18 @@
 </head>
 <body>
 
+<br>
+<br>
+<br>
+<br>
+
+
 	<form id="frmSignin" name="frmSignin" role="form" class="form-signin"
 		action="/login" method="post">
 		<input type="hidden" id="status" name="status" value="">
 		<div id="login">
-			<h2>
-				환영합니다.
-			</h2>
+<!-- 			<h2 style="background-image: url('/image/tedsfsdgfs.png');   background-size: 100px; background-repeat: no-repeat;"> -->
+<!-- 			</h2> -->
 			<ul>
 				<li><input type="text" name="mem_id" id="mem_id"
 					placeholder="아이디" value="dkskqk00" tabindex="1"><a href="#a"><img
@@ -40,9 +45,15 @@
 				<li><input type="password" name="mem_pass" id="mem_pass"
 					placeholder="비밀번호" value="dkskqk00" tabindex="2"></li>
 				<li><p style="color:red">${fail}</p></li>
-				<li class="log"><button class="btn type1" id="btnLogin"
+				<li class="log">
+				<button class="btn type1" id="btnLogin"
 					tabindex="3">로그인</button></li>
+				<li class="log">
+				<a class="btn type6" href="/regist/regist1" tabindex="3">회원가입</a></li>
+					
 			</ul>
+			<br>
+			
 			<div class="both">
 				<div>
 					<input type="checkbox" value="remember"
@@ -50,14 +61,12 @@
 						저장</label>
 				</div>
 				<div style="padding-right: 5px;">
-					<a href="/regist/regist1">회원가입</a> <br>
-					<a id="passwordSerch"
-					style="cursor: pointer;" href="/find/idpwFind"> <span style="color: #4ea5fc;">비밀번호/아이디재설정</span></a>
+					<a id="passwordSerch" style="cursor: pointer;" href="/find/idpwFind">
+					<span style="color: #4ea5fc;">비밀번호/아이디재설정</span></a>
 				</div>
 			</div>
 			<div class="info">
-			
-				<p>			언제나 내 부모처럼 모시겠습니다<br>
+				<p>	언제나 내 부모처럼 모시겠습니다<br>
 			
 	고객센터
 					평일 09:00 ~ 18:00<br>(점심시간 12:30 ~ 13:30)

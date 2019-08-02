@@ -39,6 +39,8 @@ public interface ICategoryDao {
 	int deleteMinorCategory(int cate_id);
 	int useMajorCategory(int cate_id);
 	int useMinorCategory(int cate_id);
+	
+
 	int updateCategoryTitle(CategoryVo categoryVo);
 
 	

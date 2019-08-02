@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lecture">
+
+
+
+<!-- 	전체강의를 불러온다 -->
+	<select id="getLectureList" resultType="LectureVo">
+		select * from lecture
+	</select>
+	
+	
+	<!-- 	특정강의를 불러온다 -->
+	<select id="getLecture" resultType="LectureVo" parameterType="int">
+		select * from lecture
+	where lec_id = #{lec_id}
+	</select>
+	
+
+
+<!-- 	분류별 강좌목록을 불러온다  불러온다 -->
+	<select id="getCertainLectureList" resultType="LectureVo">
+			select * from lecture
+		where lec_type=#{lec_type}
+        
+	</select>
+
+
+	<update id="deleteLecture" parameterType="int">
+		update lecture set
+			lec_use = 'N'
+			where lec_id = #{lec_id}
+		</update>
+
+
+
+	<update id="useLecture" parameterType="int">
+	update lecture set
+			lec_use = 'Y'
+			where lec_id = #{lec_id}
+		</update>
+
+
+
+
+
+<insert id="InsertLecture" parameterType="LectureVo">
+	insert into lecture (lec_id, culture_id, lec_nm, lec_tea, lec_st_dt,
+	lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use)
+	values
+	(lec_id.naxtval, #{culture_id},#{lec_nm}, #{lec_tea},#{lec_st_dt},
+	#{lec_end_dt}, #{lec_time}, #{lec_fee},#{lec_day},#{lec_type},#{lec_amount}, 'Y')
+
+</insert>
+
+
+
+
+
+<update id="updateLecture" parameterType="LectureVo">
+	
+update lecture set
+ lec_nm = #{lec_nm},
+  lec_tea = #{lec_tea},
+   lec_st_dt = #{lec_st_dt},
+    lec_end_dt = #{lec_end_dt},
+     lec_time = #{lec_time},
+      lec_fee = #{lec_fee},
+      lec_day = #{lec_day},
+       lec_type = #{lec_type},
+       lec_amount = #{lec_amount}
+        where lec_id=#{lec_id }
+	
+		</update>
+
+
+
+
+
+
+</mapper>
