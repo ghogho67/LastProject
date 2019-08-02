@@ -183,7 +183,6 @@ var calendar = $('#calendar').fullCalendar({
 // },
       success: function (response) {
     	  str = JSON.stringify(response);
-    	  console.log(str);
     	  str = str.replace(/mat_id/g, "_id");
     	  str = str.replace(/mat_allDay/g, "allDay");
     	  str = str.replace(/mat_bc/g, "backgroundColor");
@@ -194,7 +193,6 @@ var calendar = $('#calendar').fullCalendar({
     	  str = str.replace(/mat_title/g, "title");
     	  str = str.replace(/mat_type/g, "type");
     	  str = str.replace(/mem_id/g, "username");
-    	  
     	  
     	  response = JSON.parse(str);
     	  

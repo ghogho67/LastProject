@@ -40,6 +40,24 @@ public class ReportController {
 	@Resource(name = "reportAttachService")
 	private IReportAttachService reportAttachService;
 
+	
+	
+	
+	
+	
+	/**
+	 * Method : reportList
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @param model
+	 * @param session
+	 * @param redirectAttributes
+	 * @param request
+	 * @param mem_id
+	 * @param mem_grade
+	 * @return
+	 * Method 설명 :  리포트 목록 출력
+	 */
 	@RequestMapping(path = "/reportList", method = RequestMethod.GET)
 	public String reportList(Model model, HttpSession session, RedirectAttributes redirectAttributes,
 			HttpServletRequest request, @RequestParam(name = "memid") String mem_id,
@@ -74,6 +92,20 @@ public class ReportController {
 	
 	
 	
+	/**
+	 * Method : report
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @param model
+	 * @param session
+	 * @param redirectAttributes
+	 * @param request
+	 * @param rep_id
+	 * @param mem_id
+	 * @param mem_grade
+	 * @return
+	 * Method 설명 : \리포트 세부 내용출력
+	 */
 	@RequestMapping(path = "/report", method = RequestMethod.GET)
 	public String report(Model model, HttpSession session, RedirectAttributes redirectAttributes,
 			HttpServletRequest request,
@@ -116,6 +148,15 @@ public class ReportController {
 	
 	
 	
+	/**
+	 * Method : fileDownload
+	 * 작성자 : 오도아
+	 * 변경이력 :
+	 * @param response
+	 * @param rep_att_id
+	 * @throws IOException
+	 * Method 설명 :  리포트에 첨부도니 첨부 파일 출력 
+	 */
 	@RequestMapping(path = "/DownGOGO", method = RequestMethod.GET)
 	public void fileDownload(HttpServletResponse response, @RequestParam("repattid") int rep_att_id)
 			throws IOException {

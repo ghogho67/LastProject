@@ -7,7 +7,7 @@
 <title>mypage navigation bar</title>
 </head>
 <body>
-<div class=" container-scroller">
+
 		<!-- 		  상단바 -->
 		<nav
 			class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -75,6 +75,7 @@
 				</button>
 			</div>
 		</nav>
+		</div>
 
 </body>
 </html>

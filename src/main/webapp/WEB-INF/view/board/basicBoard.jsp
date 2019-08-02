@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -85,24 +83,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * {box-sizing: border-box;}
 .for {
   position: relative;
@@ -148,9 +128,8 @@ right: 21%;
 
 </style>
 
-</head>
 
-<body>
+
 
 	<section class="patient-area section-padding3">
 	
@@ -381,5 +360,3 @@ right: 21%;
     </section>
     
 
-</body>
-</html>
