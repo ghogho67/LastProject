@@ -48,9 +48,11 @@ public class ShelterController {
 	}
 	
 	@RequestMapping(path = "/searchShelter", method = RequestMethod.GET)
-	public String searchShelter() {
+	public String searchShelter(Model model, String sh_add) {
 		
-		return "";
+		model.addAttribute("getAddShelterList", shelterService.getAddShelterList(sh_add));
+		
+		return "/shelter/hselter";
 	}
 	
 

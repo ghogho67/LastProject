@@ -353,7 +353,7 @@ function captcha() {
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
 											<input type="tel" id="mem_phone" name="mem_phone" value="${mem_phone }"
-												placeholder="숫자만 입력하세요" class="form-control"> <span
+												placeholder="000-0000-0000형식으로 입력하세요" class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
