@@ -22,7 +22,7 @@
 <!-- css, js -->
 
 <style>
-.hosTr:hover {
+.shTr:hover {
 	cursor: pointer;
 }
 </style>
@@ -36,6 +36,16 @@
 // 			$("#sh_add").val(sh_add);
 			
 			$("#frm2").submit();
+		});
+		
+		$(".shTr").on("click", function(){
+			console.log("shTr click");
+			
+			var sh_id = $(this).find(".sh_id").text();
+			$("#sh_id").val(sh_id);
+			$("#frm").attr("action", "${cp}/shelter/detailShelter");
+			$("#frm").attr("method", "get");
+			$("#frm").submit();
 		});
 
 
@@ -58,15 +68,14 @@
 					      <!-- 검색 -->
 		                  <div class="d1">
 		                  	<form id="frm2" action="${cp}/shelter/searchShelter" method="post" >
-							 		<input type="text" placeholder="구 단위로 검색하세요" name="sh_add" id="sh_add">
+							 		<input type="text" placeholder="동 단위로 검색하세요" name="sh_add" id="sh_add">
 							  	<button type="button" id="searchBtn"></button>
 							  </form>
 						  </div>
 					
 					
 						<form id="frm" action="${cp}/shelter/searchShelter" method="get">
-<!-- 							<input type="hidden" class="sh_id" id="sh_id" name="sh_id"> -->
-<%-- 							<input type="hidden" name="sh_add" id="sh_add" value="${sh_add }"> --%>
+							<input type="hidden" class="sh_id" id="sh_id" name="sh_id">
 
 							<div class="table-responsive">
 								<table class="table table-striped">
@@ -78,8 +87,8 @@
 										<th>운영종료일</th>
 									</tr>
 									<c:forEach items="${shelterList }" var="vo" varStatus="status">
-										<tr class="hosTr" data-hos_id="${vo.sh_id }">
-											<td calss="sh_id">${vo.sh_id }</td>
+										<tr class="shTr" data-sh_id="${vo.sh_id }">
+											<td class="sh_id">${vo.sh_id }</td>
 											<td>${vo.sh_nm }</td>
 											<td>${vo.sh_add }</td>
 											<td>${vo.sh_st_dt }</td>

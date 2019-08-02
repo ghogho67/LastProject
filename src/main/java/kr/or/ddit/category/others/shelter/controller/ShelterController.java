@@ -24,6 +24,15 @@ public class ShelterController {
 	@Resource(name = "shelterService")
 	private IShelterService shelterService;
 	
+	/**
+	* Method : shelter
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param pageVo
+	* @return
+	* Method 설명 : 무더위쉼터 페이징 리스트
+	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
 	public String shelter(Model model, PageVo pageVo) {
 		
@@ -47,13 +56,50 @@ public class ShelterController {
 		return "/shelter/shelterPagingList.tiles";
 	}
 	
-	@RequestMapping(path = "/searchShelter", method = RequestMethod.GET)
-	public String searchShelter(Model model, String sh_add) {
+	
+	/**
+	* Method : searchShelter
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param sh_add
+	* @param pageVo
+	* @return
+	* Method 설명 :무더위 쉼터 지역 검색
+	*/
+	@RequestMapping(path = "/searchShelter", method = RequestMethod.POST)
+	public String searchShelter(Model model, String sh_add, PageVo pageVo) {
 		
-		model.addAttribute("getAddShelterList", shelterService.getAddShelterList(sh_add));
+		List<ShelterVo> getAddShelterList = shelterService.getAddShelterList(sh_add);
 		
-		return "/shelter/hselter";
+		logger.debug("☞getAddShelterList:{}",getAddShelterList);
+		
+		model.addAttribute("getAddShelterList", getAddShelterList);
+		
+		return "/shelter/searchShelter.tiles";
 	}
+	
+	/**
+	* Method : detailShelter
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param sh_id
+	* @return
+	* Method 설명 : 무더위 쉼터 상세보기
+	*/
+	@RequestMapping(path = "/detailShelter", method = RequestMethod.GET)
+	public String detailShelter(Model model, int sh_id) {
+		
+		model.addAttribute("shelterVo", shelterService.getShelter(sh_id));
+		
+		return "/shelter/detailShelter.tiles";
+	}
+	
+
+	
+	
+	
 	
 
 	
