@@ -7,7 +7,6 @@
 <title>mypage navigation bar</title>
 </head>
 <body>
-<div class=" container-scroller">
 		<!-- 		  상단바 -->
 		<nav
 			class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -27,7 +26,7 @@
 										
 						<li class="menu-active"><a href="${cp}/main">Home</a></li>
 						<li><a href="departments.html">회사소개</a></li>
-						<li><a href="departments.html">마이페이지</a></li>
+						<li><a href=" ">마이페이지</a></li>
 						<li><a href="#">요양 정보</a>
 							<ul>
 								<li><a
@@ -62,7 +61,9 @@
 						
 							</ul></li>
 										
-										
+						<li class="menu-has-children"><a href="/logout">로그아웃</a>
+						
+						</li>				
 										
 										
 									</ul>
@@ -75,6 +76,5 @@
 				</button>
 			</div>
 		</nav>
-
 </body>
 </html>

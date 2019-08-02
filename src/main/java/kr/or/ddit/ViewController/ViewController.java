@@ -140,6 +140,11 @@ public class ViewController {
 		return "idpwFinding";
 	}
 	
+	@RequestMapping("/testof")
+	public String test() {
+		return "/mypage/check/cw_check.mytiles";
+	}
+	
 	
 
 }

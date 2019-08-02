@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 
 @Repository
 public class AttendanceDao implements IAttendanceDao {
@@ -100,5 +101,19 @@ public class AttendanceDao implements IAttendanceDao {
 	@Override
 	public int attendanceAdIdCnt(int mat_id) {
 		return sqlSession.selectOne("attendance.attendanceAdIdCnt",mat_id);
+	}
+	
+	
+	/**
+	* Method : cwMatchingList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param cw_mem_id
+	* @return
+	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
+	*/
+	@Override
+	public List<MatchingVo> cwMatchingList(String cw_mem_id) {
+		return sqlSession.selectList("attendance.cwMatchingList",cw_mem_id);
 	}
 }

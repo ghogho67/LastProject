@@ -4,7 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="attendance">
 
+	<select id="cwMatchingList" parameterType="String" resultType="matchingVo">
+	select * from matching where cw_mem_id = #{cw_mem_id}
 	
+	</select>
 
 	<select id="attendanceList" parameterType="int" resultType="attendanceVo">
 		select AD_ID,

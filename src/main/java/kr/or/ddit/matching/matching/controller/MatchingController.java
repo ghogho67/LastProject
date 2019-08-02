@@ -55,7 +55,7 @@ public class MatchingController {
 //		logger.debug("☞cwJson:{}", cwJson);
 		model.addAttribute("cwList", cwList);
 
-		return "matching/matchingMap";
+		return "/matching/matchingMap.tiles";
 
 	}
 

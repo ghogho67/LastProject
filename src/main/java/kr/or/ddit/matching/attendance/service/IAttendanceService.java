@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 
 public interface IAttendanceService {
 	
@@ -77,5 +78,15 @@ public interface IAttendanceService {
 	* Method 설명 : 퇴근QR을 위한 id불러오기
 	*/
 	public int attendanceAdIdCnt(int mat_id);
+	
+	/**
+	* Method : cwMatchingList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param cw_mem_id
+	* @return
+	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
+	*/
+	public List<MatchingVo> cwMatchingList(String cw_mem_id);
 
 }

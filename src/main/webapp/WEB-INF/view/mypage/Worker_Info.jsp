@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
-<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 
 
 <style>
@@ -19,11 +15,14 @@ input[type="text"]::-webkit-input-placeholder {
 	font-size: 110%;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	console.log("${MEM_INFO}");
+});
+</script>
 
 </head>
 <body>
-	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
-	<%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
 
 
 
@@ -33,7 +32,7 @@ input[type="text"]::-webkit-input-placeholder {
 
 			<div class="col-lg-12">
 				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수(${grade})</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수(${grades})</p>
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
@@ -204,4 +203,3 @@ input[type="text"]::-webkit-input-placeholder {
 	</div>
 
 </body>
-</html>
