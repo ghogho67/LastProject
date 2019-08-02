@@ -15,12 +15,28 @@ public class CategoryVo {
 
 	
 	
+	public CategoryVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public CategoryVo(int cate_id, String cate_title) {
 	super();
 	this.cate_id = cate_id;
 	this.cate_title = cate_title;
 }
 
+	
+	//소분류 추가용
+	public CategoryVo( String cate_title ,int cate_paerent_id,String mem_id) {
+		super();
+		this.cate_title = cate_title;
+		this.cate_paerent_id = cate_paerent_id;
+		this.mem_id = mem_id;
+	}
+	
 
 
 

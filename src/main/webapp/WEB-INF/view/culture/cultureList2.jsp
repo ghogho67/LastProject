@@ -1,18 +1,61 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-<%@include file="/WEB-INF/view/common/LibForWebpage2.jsp"%>
+<title>Insert title here</title>
 
 
-<style>
+
+<style type="text/css">
+
+
+
+
+#program h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#program h2 {
+	padding: 25px 35px;
+}
+
+#program h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+
+tr {
+	text-align: center;
+	font-weight: 500;
+}
+
+td {
+	text-align: center;
+}
+
+.inputTitle {
+	    border-radius: 6px;
+    background-color: transparent;
+    width: 180px;
+    height:30px;
+    padding: 3px;
+    font-size: 8pt;
+    text-align: center;
+}
+
+.kkk {
+	background-color: transparent;
+	border-color: transparent;
+	width: 30px;
+	padding: 3px;
+	font-size: 9pt;
+	width: 30px;
+}
 
 .pagination-outer {
 	text-align: center;
@@ -117,12 +160,13 @@
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 21%;
+	right: 1%;
+	top: 75px;
 }
 
 .d1 input {
 	width: 100%;
-	height: 20px;
+	height: 30px;
 	padding-left: 90px;
 	border: 2px solid #7BA7AB;
 	border-radius: 5px;
@@ -137,7 +181,7 @@
 	top: 0;
 	right: 0px;
 	width: 32px;
-	height: 38px;
+	height: 30px;
 	border: none;
 	background: #7BA7AB;
 	border-radius: 0 5px 5px 0;
@@ -152,9 +196,9 @@
 }
 
 #searchType {
-	height: 40px;
+	height: 30px;
 	width: 70px;
-	font-size: 15px;
+	font-size: 11px;
 	border-radius: 5px 0px 0px 5px;
 	border-top: 2px solid #7BA7AB;
 	border-bottom: 2px solid #7BA7AB;
@@ -165,29 +209,13 @@
 
 
 
+
 <script>
 	$(document).ready(function() {
 
-		//사용자 테그 이벤트 등록
-		$(".reportTr").on("click", function() {
-			var reportId = $(this).find(".reportId").text();
-			$("#reportId").val(reportId);
+		$(".kkk").on("click", function() {
+
 			$("#frm").submit();
-		});
-
-		
-		//보고서 작성용ㄴ
-// 		$("#post").on("click", function() {
-// 			$("#frm2").submit();
-// 		})
-
-		$("#searchBtn").on("click", function() {
-			if ($('#keyword').val().length == 0) {
-				alert("검색어를 입력해주세요");
-				return;
-			} else {
-				$("#frm3").submit();
-			}
 		});
 
 	});
@@ -195,69 +223,29 @@
 
 </head>
 <body>
-	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
 
 
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
-<c:choose>
- 
-    <c:when test="${MEM_INFO.mem_grade==0}">
-      <%@include file="/WEB-INF/view/common/mypage/sidebarA.jsp"%>
-
-    </c:when>
- 
-    <c:when test="${MEM_INFO.mem_grade==3}">
-     <%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
-
-    </c:when>
- 
-    <c:otherwise>
-       <%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
-
-    </c:otherwise>
- 
-</c:choose>
+	<div class="container">
 
 
 
 
-
-	<form id="frm" action="${cp}/report/report" method="get">
-		<input type="hidden" id="reportId" name="reportId">
-		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
-		<input type="hidden" id="memgrade" name="memgrade" value="${MEM_INFO.mem_grade}">
-	</form>
-
-
-<!-- 글쓰기용 -->
-<%-- 	<form id="frm2" action="${cp}/report/reportForm" method="get"> --%>
-<%-- 		<input type="hidden" id="boardid" name="boardid" value="${boardid}"> --%>
-<!-- 	</form> -->
+		<div  style="padding-top: 50px; width: 1250px;">
 
 
 
-	<div class="content-wrapper">
+			<div class="card">
+				<div class="card-body">
 
-		<div class="row mb-4">
-
-
-			<div class="col-lg-12">
-				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 보고서조회</h3>
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-
-							<section class="board-list">
-
-								<div class="board-top">
-		
-
-									<p class="board-count" style="margin-left: 200px;">
-										총 <span class="education-board-cnt ng-binding">24</span>개의 보고서
-									</p>
-
-
-
+				<div id="program">
+						<h2>
+							<span>학습.문화</span> 프로그램
+						</h2>
+						</div>
+					
 									<div class="d1">
 										<form class="for">
 
@@ -268,72 +256,91 @@
 												<option value="content">내용</option>
 												<option value="writer">작성자</option>
 												<option value="tc">제목+내용</option>
-											</select> <input type="text" placeholder="검색어 입력"
-												style="position: absolute; top: 0px; right: 0px;">
+											</select> <input type="text" placeholder="검색어 입력">
 											<button type="submit"></button>
 										</form>
 									</div>
-
-								</div>
-
-								<!-- 게시글리스트 시작 -->
-								<div class="board-list-in">
-									<table class="education-table" style="margin-left: 200px;">
-
-
-										<colgroup>
-											<col style="width: 10%">
-											<col style="width: 40%" class="ng-scope">
-											<col style="width: 20%">
-											<col style="width: 20%">
-											<col style="width: 10%">
-										</colgroup>
-
-										<thead>
-											<tr>
-												<th scope="col">보고서 아이디</th>
-												<th scope="col">제목</th>
-												<th scope="col" class="hidden-xs">담당요양보호사</th>
-												<th scope="col">매칭시작일</th>
-												<th scope="col" class="border-no1 hidden-xs">등록일</th>
-											</tr>
-										</thead>
-
-										<tbody>
+					<hr>
+					
+					<div class="table-responsive">
+						<table class="table center-aligned-table">
+							<thead>
+								<tr class="text-primary">
+									<th>카테고리 아이디</th>
+									<th>카테고리명</th>
+									<th>생성일시</th>
+									<th>생성자</th>
+									<th>&nbsp;&nbsp;상태&nbsp;&nbsp;</th>
+									<th>&nbsp;&nbsp;관리&nbsp;&nbsp;</th>
+									<th>&nbsp;&nbsp;사용여부변경&nbsp;&nbsp;</th>
+								</tr>
+							</thead>
 
 
+							<tbody>
+
+								<tr class="Category" data-userid="dd">
+									<td class="CategoryId" id="CategoryId" name="CategoryId">dd</td>
+
+										<td>dd</td>
+
+									<td>dd</td>
+									<td>dd</td>
+
+									<td><label class="badge badge-danger">사용안함</label></td>
+
+									<td><a
+										href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
+										class="btn btn-primary btn-sm">소분류관리</a></td>
+
+									<td><a
+										href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
+										onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
+										class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+
+								</tr>
+								
+								
+								<tr class="Category" data-userid="dd">
+									<td class="CategoryId" id="CategoryId" name="CategoryId">dd</td>
+
+									<td><input class="inputTitle" id="CateTitle" name="CateTitle"
+										value="${Category.cate_title}"> <input type="hidden"
+										value="${Category.cate_id}" id="cate_id" name="cate_id">
+										<input type="submit" value="수정" class="kkk"></td>
+
+									<td>dd</td>
+									<td>dd</td>
+
+									<td><label class="badge badge-danger">사용안함</label></td>
+
+									<td><a
+										href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
+										class="btn btn-primary btn-sm">소분류관리</a></td>
+
+									<td><a
+										href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
+										onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
+										class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+
+								</tr>
+								
+							</tbody>
 
 
+						</table>
+				
+				
+				
+				
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-
-											<c:forEach items="${reportlist}" var="report">
-
-												<tr class="reportTr" data-userid="${report.rep_id}">
-													<td class="reportId">${report.rep_id}</td>
-													<td>${report.rep_title}</td>
-													<td>${report.cw_mem_id}</td>
-													<td>${report.mat_st}</td>
-													<td>${report.rep_time}</td>
-												</tr>
-											</c:forEach>
-
-
-
-
-
-
-
-
-										</tbody>
-									</table>
-								</div>
-
-								<br> <a href="#" class="genric-btn success medium"
-									style="position: absolute; left: 74%;">글쓰기</a> <br> <br>
-
-
-								<div class="demo" style="position: absolute; right: 40%;">
+	<div class="demo" style="position: absolute; right: 40%;">
 									<nav class="pagination-outer" aria-label="Page navigation">
 										<ul class="pagination">
 											<li class="page-item"><a href="#" class="page-link"
@@ -351,33 +358,6 @@
 										</ul>
 									</nav>
 								</div>
-
-								<br> <br> <br>
-
-
-							</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
 
 
 

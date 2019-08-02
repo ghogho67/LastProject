@@ -12,6 +12,22 @@
 
 
 <style type="text/css">
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+
 tr {
 	text-align: center;
 	font-weight: 500;
@@ -61,10 +77,14 @@ td {
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
 	<div class="container">
-		<div class="col-lg-12" style="padding-top: 50px;">
+		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-					<h3 style="font-size: 30px; font-weight: 500;">게시판 대분류 카테고리 관리</h3>
+							<div id="titlee">
+						<h2>
+							<span>카테고리 관리</span> 대분류
+						</h2>
+						</div>
 					<hr>
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
@@ -131,8 +151,6 @@ td {
 		</div>
 	</div>
 
-
-	</form>
 
 </body>
 </html>

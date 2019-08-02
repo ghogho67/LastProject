@@ -40,6 +40,12 @@ public interface ICategoryService {
 	int deleteMinorCategory(int cate_id);
 	int useMajorCategory(int cate_id);
 	int useMinorCategory(int cate_id);
-	
 	int updateCategoryTitle(CategoryVo categoryVo);
+	
+	
+	int  InsertCategory(CategoryVo categoryVo);
+	CategoryVo getCategory(int cate_id);
+	
+
+	
 }
