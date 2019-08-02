@@ -1,4 +1,8 @@
 
+$(document)
+			.ready(
+					function() {
+
 var draggedEventIsAllDay;
 var activeInactiveWeekends = true;
 
@@ -174,15 +178,17 @@ var calendar = $('#calendar').fullCalendar({
 	 * 일정 받아옴 **************
 	 */
   events: function (start, end, timezone, callback) {
-    $.ajax({
+	
+	  $.ajax({
 // type: "post",
 // url: "/boardProject2/FullCalendar-Example-master/data.json",
-      url: "/matching/getCalendar",
-// data: {
-// // 실제 사용시, 날짜를 전달해 일정기간 데이터만 받아오기를 권장
-// },
+      url: "/matching/meetjson",
+ data: {'mem_id': $("input[name='mem_id']").val()
+ // 실제 사용시, 날짜를 전달해 일정기간 데이터만 받아오기를 권장
+ },
       success: function (response) {
     	  str = JSON.stringify(response);
+    	  console.log(str);
     	  str = str.replace(/mat_id/g, "_id");
     	  str = str.replace(/mat_allDay/g, "allDay");
     	  str = str.replace(/mat_bc/g, "backgroundColor");
@@ -366,3 +372,4 @@ var calendar = $('#calendar').fullCalendar({
   eventLongPressDelay: 0,
   selectLongPressDelay: 0
 });
+					});
