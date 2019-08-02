@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
-<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
-
-
-
 <style>
 input[] {
 	color: #000 !important;
@@ -20,12 +13,7 @@ input[type="text"]::-webkit-input-value {
 	font-size: 110%;
 }
 </style>
-
-
-
-
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
 <script>
 	$(document).ready(function() {
 
@@ -50,12 +38,8 @@ input[type="text"]::-webkit-input-value {
 
 	});
 </script>
-
-
 </head>
 <body>
-	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
-	<%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
 
 
 
@@ -250,7 +234,4 @@ input[type="text"]::-webkit-input-value {
 		</div>
 
 	</form>
-
-
 </body>
-</html>

@@ -2,6 +2,8 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <!-- Subpage tiles -->
 <tiles-definitions>
+
+	<!-- 서브 페이지 Tsiles -->
 	<definition name="subPageLayout" template ="/WEB-INF/view/common/subPageLayout.jsp">
 		<put-attribute name="header" value="/WEB-INF/view/common/subPageheader.jsp"/>
 		<put-attribute name="left" value="/WEB-INF/view/common/subPagesideBar.jsp"/>
@@ -14,10 +16,32 @@
 		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}.jsp" />
 	</definition>
 	<definition name="/*/*/*.tiles" extends="subPageLayout">
-		<put-attribute name="body"   value="/WEB-INF/view/web/{1}/{2}/{3}.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}/{3}.jsp" />
 	</definition>
 	<definition name="/*/*/*/*.tiles" extends="subPageLayout">
-		<put-attribute name="body"   value="/WEB-INF/view/web/{1}/{2}/{3}/{4}.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}/{3}/{4}.jsp" />
+	</definition>
+	
+	<!-- MY 페이지 Tsiles -->
+	<definition name="MyPageLayout" template ="/WEB-INF/view/common/mypage/myPageLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/common/mypage/navigationBar.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>	
+	
+	<definition name="*.mytiles" extends="MyPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/{1}.jsp" />
+	</definition>
+	
+	<definition name="/*/*.mytiles" extends="MyPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="/*/*/*.mytiles" extends="MyPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+	<definition name="/*/*/*/*.mytiles" extends="MyPageLayout">
+		<put-attribute name="body"   value="/WEB-INF/view/{1}/{2}/{3}/{4}.jsp" />
 	</definition>
 	
 	

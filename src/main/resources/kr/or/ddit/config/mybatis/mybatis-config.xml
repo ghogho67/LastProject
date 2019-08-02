@@ -33,7 +33,11 @@
 		<typeAlias alias="attendanceVo" type="kr.or.ddit.matching.attendance.model.AttendanceVo" />
 		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
 		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
+<<<<<<< HEAD
 		<typeAlias alias="LectureVo" type="kr.or.ddit.category.others.lecture.model.LectureVo" />
+=======
+		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
+>>>>>>> 8e00e34769bfb201e6c5904edf5efc21d16527bc
 	</typeAliases>
 
 
@@ -52,7 +56,11 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
+<<<<<<< HEAD
       <mapper resource="kr/or/ddit/config/mybatis/mapper/lecture.xml"/>
+=======
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
+>>>>>>> 8e00e34769bfb201e6c5904edf5efc21d16527bc
 
    </mappers>
 </configuration>

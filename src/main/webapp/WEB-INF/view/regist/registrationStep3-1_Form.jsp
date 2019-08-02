@@ -22,7 +22,7 @@
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<%-- <script type="text/javascript" src="${cp}/js/jquery/jquery-3.2.1.js"></script> --%>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -103,7 +103,6 @@ $(document).ready(function() {
 			return;
 		}
 
-		
 		$.ajax({
 			url : "${cp}/regist/regist3-1",
 			data : frmData,
