@@ -18,10 +18,16 @@
 		
 			<ul>
 
+<<<<<<< HEAD
+				<li><a href="${cp}/test/matching">요양보호사 찾기 </a></li>
+				<li><a href="${cp}/test/matching">요양원/요양병원 찾기</a></li>
+
+=======
 <%-- 				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li> --%>
 				<li><a href="${cp}/hospital/pagingList">요양원/요양병원 찾기</a></li>
 
 				<li><a href="${cp}/test/matching">기관 정보 조회</a></li>
+>>>>>>> 8e00e34769bfb201e6c5904edf5efc21d16527bc
 			</ul></li>
 
 		<li class="menu-has-children"><a href="">커뮤니티</a>
@@ -43,8 +49,13 @@
 
 		<li class="menu-has-children"><a href="">기타 문화 정보</a>
 			<ul>
+<<<<<<< HEAD
 				<li><a href="blog-home.html">무더위 쉼터</a></li>
+				<li><a href="${cp}/lecture/lectureMain">문화.강좌 정보</a></li>
+=======
+				<li><a href="${cp }/shelter/pagingList">무더위 쉼터</a></li>
 				<li><a href="blog-home.html">문화시설</a></li>
+>>>>>>> 8e00e34769bfb201e6c5904edf5efc21d16527bc
 
 			</ul>
 			
@@ -56,7 +67,7 @@
     
       <li class="menu-has-children"><a href="">관리자 메뉴 </a>
 			<ul>
-				<li><a href="${cp}category/categoryList">메뉴관리</a></li>
+				<li><a href="${cp}/category/categoryList">메뉴관리</a></li>
 			
 			</ul></li>
 			

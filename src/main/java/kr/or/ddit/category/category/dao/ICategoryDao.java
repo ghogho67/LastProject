@@ -42,5 +42,12 @@ public interface ICategoryDao {
 	
 
 	int updateCategoryTitle(CategoryVo categoryVo);
+
+	
+	
+
+	int  InsertCategory(CategoryVo categoryVo);
+	CategoryVo getCategory(int cate_id);
+	
 	
 }

@@ -56,7 +56,7 @@
 						<li class="menu-has-children"><a href="">기타 문화 정보</a>
 							<ul>
 								<li><a href="blog-home.html">무더위 쉼터</a></li>
-								<li><a href="blog-home.html">문화시설</a></li>
+								<li><a href="${cp}/lecture/lectureMain">문화.강좌 정보</a></li>
 							</ul></li>
 
                            			<c:choose>

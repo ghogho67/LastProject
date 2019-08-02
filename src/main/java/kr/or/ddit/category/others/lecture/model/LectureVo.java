@@ -9,10 +9,42 @@ public class LectureVo {
 	private String lec_tea;
 	private Date lec_st_dt;
 	private Date lec_end_dt;
-	private Date lec_st_time;
-	private Date lec_end_time;
+	private String lec_time;
 	private int lec_fee;
 	private String lec_day;
+	private String lec_type;
+	private String lec_amount;
+	private String lec_use;
+	
+	public LectureVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public LectureVo(int lec_id, int culture_id, String lec_nm, String lec_tea, Date lec_st_dt, Date lec_end_dt,
+			String lec_time, int lec_fee, String lec_day, String lec_type, String lec_amount, String lec_use) {
+		super();
+		this.lec_id = lec_id;
+		this.culture_id = culture_id;
+		this.lec_nm = lec_nm;
+		this.lec_tea = lec_tea;
+		this.lec_st_dt = lec_st_dt;
+		this.lec_end_dt = lec_end_dt;
+		this.lec_time = lec_time;
+		this.lec_fee = lec_fee;
+		this.lec_day = lec_day;
+		this.lec_type = lec_type;
+		this.lec_amount = lec_amount;
+		this.lec_use = lec_use;
+	}
+
+	@Override
+	public String toString() {
+		return "LectureVo [lec_id=" + lec_id + ", culture_id=" + culture_id + ", lec_nm=" + lec_nm + ", lec_tea="
+				+ lec_tea + ", lec_st_dt=" + lec_st_dt + ", lec_end_dt=" + lec_end_dt + ", lec_time=" + lec_time
+				+ ", lec_fee=" + lec_fee + ", lec_day=" + lec_day + ", lec_type=" + lec_type + ", lec_amount="
+				+ lec_amount + ", lec_use=" + lec_use + "]";
+	}
 
 	public int getLec_id() {
 		return lec_id;
@@ -62,20 +94,12 @@ public class LectureVo {
 		this.lec_end_dt = lec_end_dt;
 	}
 
-	public Date getLec_st_time() {
-		return lec_st_time;
+	public String getLec_time() {
+		return lec_time;
 	}
 
-	public void setLec_st_time(Date lec_st_time) {
-		this.lec_st_time = lec_st_time;
-	}
-
-	public Date getLec_end_time() {
-		return lec_end_time;
-	}
-
-	public void setLec_end_time(Date lec_end_time) {
-		this.lec_end_time = lec_end_time;
+	public void setLec_time(String lec_time) {
+		this.lec_time = lec_time;
 	}
 
 	public int getLec_fee() {
@@ -94,11 +118,31 @@ public class LectureVo {
 		this.lec_day = lec_day;
 	}
 
-	@Override
-	public String toString() {
-		return "LectureVo [lec_id=" + lec_id + ", culture_id=" + culture_id + ", lec_nm=" + lec_nm + ", lec_tea="
-				+ lec_tea + ", lec_st_dt=" + lec_st_dt + ", lec_end_dt=" + lec_end_dt + ", lec_st_time=" + lec_st_time
-				+ ", lec_end_time=" + lec_end_time + ", lec_fee=" + lec_fee + ", lec_day=" + lec_day + "]";
+	public String getLec_type() {
+		return lec_type;
 	}
 
+	public void setLec_type(String lec_type) {
+		this.lec_type = lec_type;
+	}
+
+	public String getLec_amount() {
+		return lec_amount;
+	}
+
+	public void setLec_amount(String lec_amount) {
+		this.lec_amount = lec_amount;
+	}
+
+	public String getLec_use() {
+		return lec_use;
+	}
+
+	public void setLec_use(String lec_use) {
+		this.lec_use = lec_use;
+	}
+  
+	
+	
+	
 }

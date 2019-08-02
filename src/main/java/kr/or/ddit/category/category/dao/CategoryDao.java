@@ -65,4 +65,17 @@ public class CategoryDao implements ICategoryDao {
 
 	
 	
+	
+	@Override
+	public int InsertCategory(CategoryVo categoryVo) {
+		return 	sqlSession.update("category.InsertCategory",categoryVo);
+	}
+
+	@Override
+	public CategoryVo getCategory(int cate_id) {
+		return 	sqlSession.selectOne("category.getCategory",cate_id);
+	}
+
+	
+	
 }

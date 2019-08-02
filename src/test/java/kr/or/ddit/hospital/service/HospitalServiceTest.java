@@ -52,7 +52,6 @@ public class HospitalServiceTest extends LogicTestEnv{
 		List<HospitalVo> hosList = (List<HospitalVo>) resultMap.get("hosList");
 		int paginationSize = (Integer) resultMap.get("paginationSize");
 		/***Then***/
-//		assertEquals(10, hosList.size());
 		assertEquals(7, paginationSize);
 
 	}

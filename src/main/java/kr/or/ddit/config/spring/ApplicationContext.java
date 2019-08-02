@@ -2,6 +2,9 @@ package kr.or.ddit.config.spring;
 
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,6 +30,12 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+
+import com.mitchellbosecke.pebble.PebbleEngine;
+import com.mitchellbosecke.pebble.loader.Loader;
+import com.mitchellbosecke.pebble.loader.ServletLoader;
+import com.mitchellbosecke.pebble.spring4.PebbleViewResolver;
+import com.mitchellbosecke.pebble.spring4.extension.SpringExtension;
 
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
@@ -195,9 +204,44 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
 	   
 	   return mailSender;
    }
-   
+   /*
+   @Autowired
+   private ServletContext servletContext;
 
+   @Bean
+   public Loader templateLoader(){
+       return new ServletLoader(servletContext);
+   }
    
+   
+   @Bean
+   public SpringExtension springExtension() {
+       return new SpringExtension();
+   }
+
+   @Bean
+   public PebbleEngine pebbleEngine() {
+       return new PebbleEngine.Builder()
+               .loader(this.templateLoader())
+               .extension(springExtension())
+               .cacheActive(false)   //이 옵션을 안주면 html수정시 refresh해도 안됨,
+               .build();
+   }
+
+   @Bean
+   public ViewResolver viewResolver() {
+       PebbleViewResolver resolver = new PebbleViewResolver();
+       resolver.setCache(true);
+       resolver.setPrefix("/sms/");
+       resolver.setSuffix(".html");
+       resolver.setContentType("text/html; charset=UTF-8");
+       resolver.setPebbleEngine(pebbleEngine());
+       resolver.setOrder(0);
+       return resolver;
+   }
+   
+   */
+
 }
 
 

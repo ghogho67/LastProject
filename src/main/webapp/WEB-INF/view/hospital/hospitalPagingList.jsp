@@ -21,11 +21,6 @@
 
 <!-- css, js -->
 
-<style>
-.hosTr:hover {
-	cursor: pointer;
-}
-</style>
 <script>
 	$(document).ready(function() {
 		$("#searchBtn").on("click", function() {

@@ -40,7 +40,7 @@ public class mypageController {
 
 	@RequestMapping("/Patient_Info")
 	public String Patient_Info() {
-		return "mypage/Patient_Info";
+		return "/mypage/Patient_Info.mytiles";
 	}
 
 	
@@ -151,9 +151,10 @@ public class mypageController {
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
+			memberVo = memberService.getMemVo(mem_id);
 			session.setAttribute("MEM_INFO", memberVo);
 			
-			viewName = "redirect:/mypage/Patient_Info";
+			viewName = "/mypage/Patient_Info.mytiles";
 			
 		} else {
 			viewName = "redirect:/main";
@@ -181,15 +182,15 @@ public class mypageController {
 	public String Worker_Info(HttpSession session, Model model) {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id = memvo.getMem_id();
-		String grade = gradeService.cwGradeAvg(mem_id);
-		if(grade == null) {
-			grade = "0";
-			model.addAttribute("grade", grade);
+		String grades = gradeService.cwGradeAvg(mem_id);
+		if(grades == null) {
+			grades = "0.0";
+			model.addAttribute("grades", grades);
 		}else{
-			model.addAttribute("grade", grade);
+			model.addAttribute("grades", grades);
 		}
 		
-		return "mypage/Worker_Info";
+		return "/mypage/Worker_Info.mytiles";
 	}
 
 	
@@ -203,7 +204,7 @@ public class mypageController {
 	 */
 	@RequestMapping(path = "/Worker_InfoModification", method = RequestMethod.GET)
 	public String Worker_InfoModification() {
-		return "mypage/Worker_InfoModification";
+		return "/mypage/Worker_InfoModification.mytiles";
 	}
 
 	@RequestMapping(path = "/Worker_InfoModification", method = RequestMethod.POST)
@@ -238,7 +239,7 @@ public class mypageController {
 		logger.debug("mem_add1 : {} ", mem_add1);
 		logger.debug("mem_add2 : {} ", mem_add2);
 
-		MemberVo memberVo = null;
+		MemberVo updateMember = null;
 
 		if (profile.getSize() > 0) {
 			String fileName = profile.getOriginalFilename();
@@ -257,21 +258,27 @@ public class mypageController {
 
 		if (grade.equals("3")) {
 
-			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, mem_pass, mem_phone, mem_add1, mem_add2,
+			updateMember = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, mem_pass, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
-
-			int updateCnt = memberService.updateMember(memberVo);
+			
+			
+			int updateCnt = memberService.updateMember(updateMember);
 
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
+			MemberVo memberVo = memberService.getMemVo(mem_id);
+			
 			session.setAttribute("MEM_INFO", memberVo);
-			viewName = "redirect:/mypage/Worker_Info";
+			logger.debug("☞memberVo:{}", memberVo);
+//			model.addAttribute("MEM_INFO", memberVo);
+			viewName = "/mypage/Worker_Info.mytiles";
 		} else {
 
 			viewName = "redirect:/login";
 		}
+		logger.debug("☞viewName:{}", viewName);
 
 		return viewName;
 	}
@@ -280,7 +287,7 @@ public class mypageController {
 	
 	@RequestMapping("/Admin_Info")
 	public String Admin_Info() {
-		return "mypage/Admin_Info";
+		return "/mypage/Admin_Info.mytiles";
 	}
 
 	

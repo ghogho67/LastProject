@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import kr.or.ddit.gold.gps.model.GpsVo;
 import kr.or.ddit.gold.sos.dao.ISosDao;
 import kr.or.ddit.testenv.LogicTestEnv;
 
@@ -27,7 +28,7 @@ public class SosDaoTest extends LogicTestEnv{
 		int getgpsId=sosDao.recentData("brown");
 
 		/***Then***/
-		assertEquals(157, getgpsId);
+		assertEquals(1148, getgpsId);
 	}
 	
 	/**
@@ -44,6 +45,36 @@ public class SosDaoTest extends LogicTestEnv{
 		
 		/***Then***/
 		assertEquals(1, cnt);
+	}
+	
+	
+	/**
+	* Method : getGps
+	* 작성자 : PC24
+	* 변경이력 :
+	* Method 설명 : gpsid로 gps정보 가져오는 테스트
+	*/
+	@Test
+	public void getGps() {
+		/***Given***/
+		GpsVo gpsVo;
+	
+		
+		/***When***/
+		gpsVo = sosDao.getGps(187);
+		
+		/***Then***/
+		assertNotNull(gpsVo);
+	}
+	@Test
+	public void getName() {
+		
+		
+		/***When***/
+		String name = sosDao.getName("brown");
+		
+		/***Then***/
+		assertEquals("브라운", name);
 	}
 
 }

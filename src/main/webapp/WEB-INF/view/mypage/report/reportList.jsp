@@ -13,8 +13,8 @@
 
 
 <style>
-<
-style>.pagination-outer {
+
+.pagination-outer {
 	text-align: center;
 }
 
@@ -176,7 +176,7 @@ style>.pagination-outer {
 		});
 
 		
-		//보고서 작성용ㄴ
+		//보고서 작성용
 // 		$("#post").on("click", function() {
 // 			$("#frm2").submit();
 // 		})

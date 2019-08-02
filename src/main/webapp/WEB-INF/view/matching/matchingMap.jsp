@@ -7,6 +7,11 @@
 <html lang="ko">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>간단한 지도 표시하기</title>
@@ -293,6 +298,7 @@
 						}
 					});
 </script>
+
 
 <div class="container-fluid" id="map" style="width: 50%; height: 800px;">
 	<ul id="cwUl">

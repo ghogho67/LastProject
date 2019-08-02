@@ -19,7 +19,6 @@
             <div class="row">
                <div class="col-sm-8 blog-main">
                   <h2 class="sub-header">주소로 찾기</h2>
-                     <a href="${cp }/hospital/pagingList" class="accept-btn">뒤로가기</a>
                   <form id="frm" class="form-horizontal" role="form" action="${cp }/hospital/searchHospital?hos_add=${hos_add}" method="post">
                      <input type="hidden" class="form-control" id="hos_add" name="hos_add" value="${hos_add}">
                      <input type="hidden" class="form-control" id="hos_id" name="hos_aid" value="${hos_id}">
