@@ -47,7 +47,7 @@ public class HospitalDaoTest extends LogicTestEnv{
 		/***When***/
 		int hosCnt = hospitalDao.hosCnt();
 		/***Then***/
-		assertEquals(64, hospitalDao.hosCnt());
+		assertEquals(64, hosCnt);
 	}
 	
 	
