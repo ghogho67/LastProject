@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.gold.gps.model.GpsVo;
+
 @Repository
 public class SosDao implements ISosDao {
 	private static final Logger logger = LoggerFactory.getLogger(SosDao.class);
@@ -28,6 +30,16 @@ public class SosDao implements ISosDao {
 		logger.debug("!!!!!!!Dao");
 		logger.debug("!!!!!!!mem_id :{}",mem_id);
 		return sqlSession.selectOne("sos.recentData",mem_id);
+	}
+
+	@Override
+	public GpsVo getGps(int gps_id) {
+		return sqlSession.selectOne("sos.getGps",gps_id);
+	}
+
+	@Override
+	public String getName(String mem_id) {
+		return sqlSession.selectOne("sos.getName",mem_id);
 	}
 	
 }

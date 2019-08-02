@@ -38,8 +38,9 @@ function showPosition(position) {
 	nLng = position.coords.longitude;
 	
 	var mapOptions = {
-			center: new naver.maps.LatLng(nLat, nLng),
-			zoom: 10
+			center: new naver.maps.LatLng(37.30675, 126.94426),
+		    zoom: 7,
+		    mapTypeId: 'normal'
 		};
 
 	map = new naver.maps.Map('map', mapOptions);
@@ -47,16 +48,9 @@ function showPosition(position) {
 }
 
 
-var map = new naver.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    mapTypeId: 'normal',
-    center: new naver.maps.LatLng(38.1361378, 128.4021238)
-});
-
-var HOME_PATH = window.HOME_PATH || '.';
 
 $.ajax({
-    url: HOME_PATH +'/data/seorak.gpx',
+    url: '${cp}/data/move_gps.gpx',
     dataType: 'xml',
     success: startDataLayer
 });
