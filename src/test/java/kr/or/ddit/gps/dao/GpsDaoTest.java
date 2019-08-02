@@ -23,5 +23,7 @@ public class GpsDaoTest extends LogicTestEnv{
 		/***Then***/
 		assertEquals(80, bpm);
 	}
+	
+	
 
 }

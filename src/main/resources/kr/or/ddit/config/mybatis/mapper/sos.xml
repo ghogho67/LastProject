@@ -11,6 +11,14 @@
 		insert into sos values (sos_Id.nextval, #{gps_id})
 	</insert>
 	
+	<select id="getGps" parameterType="int" resultType="gpsVo">
+		SELECT * FROM GPS WHERE GPS_ID=#{gps_id}
+	</select>
+	
+	<select id= "getName" parameterType="String" resultType="String">
+		SELECT MEM_NM FROM MEMBER WHERE MEM_ID=#{mem_id}
+	</select>
+	
 
 </mapper>
 
