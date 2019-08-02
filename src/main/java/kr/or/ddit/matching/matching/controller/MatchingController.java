@@ -37,8 +37,23 @@ public class MatchingController {
 	}
 
 	@RequestMapping(path = "/meet")
-	public String meeting() {
-		return "/matching/meeting.tiles";
+	public String meeting(Model model, String mem_id) {
+		logger.debug("☞meet");
+		logger.debug("☞mem_id:{}", mem_id);
+		logger.debug("☞mem_id:{}", mem_id);
+		logger.debug("☞mem_id:{}", mem_id);
+		model.addAttribute("mem_id",mem_id);
+		model.addAttribute("list", matchingService.getMatchingList(mem_id));
+		logger.debug("☞list:{}", matchingService.getMatchingList(mem_id));
+		return "matching/meeting";
+	}
+	@RequestMapping(path = "/meetjson")
+	public String meetjson(Model model, String mem_id) {
+		logger.debug("☞meet");
+		logger.debug("☞mem_id:{}", mem_id);
+		model.addAttribute("list", matchingService.getMatchingList(mem_id));
+		logger.debug("☞list:{}", matchingService.getMatchingList(mem_id));
+		return "jsonView";
 	}
 
 	@RequestMapping(path = "/map")
@@ -201,20 +216,17 @@ public class MatchingController {
 	 * @author PC21 수정중인 사항 2019.07.29 9:35
 	 */
 
-	/*
-	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
-	 * {
-	 * 
-	 * List<MatchingVo> list = matchingService.getCalendar(); for (int i = 0; i <
-	 * list.size(); i++) { System.out.println("list : " + list.get(i));
-	 * 
-	 * }
-	 * 
-	 * /*
-	 * 
-	 * @RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
-	 * { model.addAttribute("list", matchingService.getMatchingList("brown"));
-	 * return "jsonView"; }
-	 */
+//	@RequestMapping(path = "/getCalendar") public String getCalendar(Model model)
+//	  {
+//	  List<MatchingVo> list = matchingService.getCalendar(); for (int i = 0; i <
+//	  list.size(); i++) { System.out.println("list : " + list.get(i));
+//	  }
+
+	@RequestMapping(path = "/getCalendar")
+	public String getCalendar(Model model, String mem_id) {
+		model.addAttribute("list", matchingService.getMatchingList(mem_id));
+		logger.debug("☞list:{}", matchingService.getMatchingList(mem_id));
+		return "jsonView";
+	}
 
 }

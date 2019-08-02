@@ -9,23 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FullCalendar Example</title>
     <link rel=" shortcut icon" href="image/favicon.ico">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href='${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/select2.min.css' />
     <link rel="stylesheet" href='${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/bootstrap-datetimepicker.min.css' />
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/FullCalendar-Example-master/css/main.css">
 
 </head>
 
 <body>
     <div class="container">
-   
-    
 
         <!-- 일자 클릭시 메뉴오픈 -->
         <div id="contextMenu" class="dropdown clearfix">

@@ -12,7 +12,10 @@
 			<name>ORACLE JDBC Repository</name>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
+
 	</repositories>
+
+
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -259,12 +262,21 @@
 			<version>2.6.0</version>
 		</dependency>
 
+
 		<!-- https://mvnrepository.com/artifact/io.jenetics/jpx -->
 		<dependency>
 			<groupId>io.jenetics</groupId>
 			<artifactId>jpx</artifactId>
 			<version>1.5.0</version>
 		</dependency>
+		
+		<dependency>
+	<groupId>io.pebbletemplates</groupId>
+	<artifactId>pebble-spring4</artifactId>
+	<version>3.0.10</version>
+</dependency>
+
+
 
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>

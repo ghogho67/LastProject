@@ -33,6 +33,7 @@
 		<typeAlias alias="attendanceVo" type="kr.or.ddit.matching.attendance.model.AttendanceVo" />
 		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
 		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
+		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
 	</typeAliases>
 
 
@@ -51,6 +52,7 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
 
    </mappers>
 </configuration>

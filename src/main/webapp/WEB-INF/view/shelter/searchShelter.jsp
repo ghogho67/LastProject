@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.member.careWorker.hospital.model.HospitalVo" %>
+<%@page import="kr.or.ddit.category.others.shelter.model.ShelterVo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,7 +7,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>요양시설, 기관 상세보기</title>
+<title>무더위 쉼터</title>
+
+<style>
+.shTr:hover {
+	cursor: pointer;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+	$(".shTr").on("click", function(){
+		console.log("shTr click");
+		
+		var sh_id = $(this).find(".sh_id").text();
+		$("#sh_id").val(sh_id);
+		$("#frm").attr("action", "${cp}/shelter/detailShelter");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+	});
+
+	
+});
+
+</script>
 
 </head>
 <body>
@@ -19,27 +42,29 @@
             <div class="row">
                <div class="col-sm-8 blog-main">
                   <h2 class="sub-header">주소로 찾기</h2>
-                  <form id="frm" class="form-horizontal" role="form" action="${cp }/hospital/searchHospital?hos_add=${hos_add}" method="post">
-                     <input type="hidden" class="form-control" id="hos_add" name="hos_add" value="${hos_add}">
-                     <input type="hidden" class="form-control" id="hos_id" name="hos_aid" value="${hos_id}">
+                  <form id="frm" class="form-horizontal" role="form" action="${cp }/shelter/searchShelter?sh_add=${sh_add}" method="post">
+<%--                      <input type="hidden" class="form-control" id="sh_add" name="sh_add" value="${sh_add}"> --%>
+                     <input type="hidden" class="form-control" id="sh_id" name="sh_id" value="${sh_id}">
 
 
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
-									<th>병원아이디</th>
-									<th>병원이름</th>
-									<th>병원주소</th>
-									<th>병원 전화번호</th>
+									<th>쉼터아이디</th>
+									<th>쉼터이름</th>
+									<th>쉼터주소</th>
+									<th>운영시작일</th>
+									<th>운영종료일</th>
 								</tr>
-								<c:forEach items="${getSearchHosAdd}" var="vo" varStatus="status">
-									<tr class="hosTr" data-hos_add="${vo.hos_add }">
-										<td>${vo.hos_id }</td>
-										<td>${vo.hos_nm }</td>
-										<td>${vo.hos_add }</td>
-										<td>${vo.hos_phone }</td>
-									</tr>
-								</c:forEach>
+								<c:forEach items="${getAddShelterList }" var="vo" varStatus="status">
+										<tr class="shTr" data-sh_id="${vo.sh_id }">
+											<td class="sh_id">${vo.sh_id }</td>
+											<td>${vo.sh_nm }</td>
+											<td>${vo.sh_add }</td>
+											<td>${vo.sh_st_dt }</td>
+											<td>${vo.sh_end_dt }</td>
+										</tr>
+									</c:forEach>
 							</table>
 						</div>
 						
@@ -51,7 +76,7 @@
 											<li class="disabled"><span>«</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="${cp}/hospital/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
+											<li><a href="${cp}/shelter/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
 										</c:otherwise>
 									</c:choose>
 									
@@ -61,7 +86,7 @@
 												<li class="active"><span>${i}</span></li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="${cp}/hospital/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+												<li><a href="${cp}/shelter/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -71,7 +96,7 @@
 											<li class="disabled"><span>»</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="${cp}/hospital/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
+											<li><a href="${cp}/shelter/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
 										</c:otherwise>
 									</c:choose>
 								</ul>
