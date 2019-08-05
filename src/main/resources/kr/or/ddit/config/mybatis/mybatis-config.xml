@@ -8,7 +8,6 @@
 	<properties resource="kr/or/ddit/config/mybatis/db.properties"/>
 
 	<typeAliases>
-
 		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.post.model.PostVo"/>
 		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
 		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
