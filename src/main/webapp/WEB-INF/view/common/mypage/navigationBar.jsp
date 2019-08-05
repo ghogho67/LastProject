@@ -69,6 +69,8 @@
 										</ul>
 										
 									</li>
+									
+									<a class="ko" href="/logout">로그아웃</a>
 
 
 

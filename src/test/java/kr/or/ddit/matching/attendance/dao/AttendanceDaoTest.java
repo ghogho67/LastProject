@@ -129,17 +129,17 @@ public class AttendanceDaoTest extends LogicTestEnv{
 		
 	}
 	
-	@Test
-	public void cwMatchingList() {
-		/***Given***/
-		String cw_mem_id = "yumi";
-		
-		/***When***/
-		List<MatchingVo> test = attendanceDao.cwMatchingList(cw_mem_id);
-		/***Then***/
-		assertEquals(1, test.size());
-		
-	}
+//	@Test
+//	public void cwMatchingList() {
+//		/***Given***/
+//		String cw_mem_id = "yumi";
+//		
+//		/***When***/
+//		List<MatchingVo> test = attendanceDao.cwMatchingList(cw_mem_id);
+//		/***Then***/
+//		assertEquals(1, test.size());
+//		
+//	}
 	
 	
 	

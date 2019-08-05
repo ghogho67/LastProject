@@ -1,5 +1,6 @@
 package kr.or.ddit.matching.attendance.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import kr.or.ddit.matching.attendance.dao.IAttendanceDao;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Service
 public class AttendanceService implements IAttendanceService {
@@ -113,8 +115,18 @@ public class AttendanceService implements IAttendanceService {
 	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
 	*/
 	@Override
-	public List<MatchingVo> cwMatchingList(String cw_mem_id) {
-		return attendanceDao.cwMatchingList(cw_mem_id);
+	public Map<String, Object> cwMatchingList(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("cwMatchingList", attendanceDao.cwMatchingList(map));
+		String cw_mem_id = (String) map.get("cw_mem_id");
+		int pageSize = (int)map.get("pageSize");
+		
+		int cwMatchingCnt = attendanceDao.cwMatchingCnt(cw_mem_id);
+		int paginationSize = (int) Math.ceil((double)cwMatchingCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		
+		return resultMap;
 		
 	}
 
