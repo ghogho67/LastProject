@@ -1,5 +1,7 @@
 package kr.or.ddit.gold.gps.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -31,6 +33,11 @@ public class GpsDao implements IGpsDao {
 	@Override
 	public int getCardiac(String mem_id) {
 		return sqlSession.selectOne("gps.getCardiac",mem_id);
+	}
+
+	@Override
+	public List<GpsVo> oneDayBpm(GpsVo gpsVo) {
+		return sqlSession.selectList("gps.oneDayBpm", gpsVo);
 	}
 	
 }
