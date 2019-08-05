@@ -204,9 +204,9 @@ td {
 
 	<form id="frm2" action="/category/InsertCategory" method="post">
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel">
+			aria-labelledby="myModalLabel" >
 			<div class="modal-dialog" role="document">
-				<div class="modal-content">
+				<div class="modal-content" style="padding: 50px;">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabel">카테고리 추가</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">

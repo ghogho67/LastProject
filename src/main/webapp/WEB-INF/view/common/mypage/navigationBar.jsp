@@ -7,14 +7,13 @@
 <title>mypage navigation bar</title>
 
 <style>
-.ko a {
+.ko {
 	color: white !important;
 }
 </style>
 </head>
 <body>
 
-	<!-- 		  상단바 -->
 	<nav
 		class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		<div class="navbar-menu-wrapper d-flex align-items-center">
@@ -69,11 +68,10 @@
 										</ul>
 										
 									</li>
-									
-									<a class="ko" href="/logout">로그아웃</a>
 
 
 
+									<li> <a class="ko" style="position: absolute; left:80%; " href="/logout">로그아웃</a></li>
 
 								</ul>
 							</nav>

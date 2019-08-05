@@ -26,6 +26,16 @@ public class recognitionController {
 	public String semiRecognitionTest2() {
 		return "recognitionActivites/semiRecognitionTest2";
 	}
+	
+	@RequestMapping("/NewFile")
+	public String semiRecognTestAitionTest2() {
+		return "recognitionActivites/NewFile";
+	}
+	
+	@RequestMapping("/TestA")
+	public String semiReTestAcognitionTest2() {
+		return "recognitionActivites/TestA";
+	}
 
 	
 	

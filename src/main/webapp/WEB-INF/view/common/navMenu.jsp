@@ -43,7 +43,7 @@
 		<li class="menu-has-children"><a href="">기타 문화 정보</a>
 			<ul>
 				<li><a href="${cp }/shelter/pagingList">무더위 쉼터</a></li>
-				<li><a href="blog-home.html">문화시설</a></li>
+			<li><a href="${cp}/lecture/lectureMain">문화.강좌 정보</a></li>
 
 			</ul>
 			
@@ -56,17 +56,20 @@
       <li class="menu-has-children"><a href="">관리자 메뉴 </a>
 			<ul>
 				<li><a href="${cp}/category/categoryList">메뉴관리</a></li>
+				<li><a href="${cp}/lecture/lectureListManagement">메뉴관리</a></li>
+				<li><a href="${cp}/lecture/lectureListManagement">xxxxxxxxxxxxx</a></li>
+				<li><a href="${cp}/recognition/semiTestStart">인지1</a></li>
+				<li><a href="${cp}/recognition/semiTest">인지</a></li>
+				<li><a href="${cp}/recognition/semiTest2">인지</a></li>
+				<li><a href="${cp}/recognition/NewFile">인지</a></li>
+				<li><a href="${cp}/recognition/TestA">인지</a></li>
 			
 			</ul></li>
 			
 
+
     </c:when>
  
-  
- 
-    <c:otherwise>
-
-    </c:otherwise>
  
 </c:choose>
 			

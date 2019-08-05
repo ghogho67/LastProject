@@ -31,9 +31,10 @@ var chartColors = {
 			success :  function(data){
 				bpm =data.bpm;
 				console.log(bpm);
+// 				return bpm;
 			}
 		});
-		console.log(bpm);
+// 		console.log(bpm);
 		return bpm;
 	}
 
@@ -56,7 +57,10 @@ var chartColors = {
 				borderColor: chartColors.red,
 				fill: false,
 				cubicInterpolationMode: 'monotone',
-				data: []
+				data: [],
+				radius	: 0,
+				borderWidth: 0.5
+				
 			}]
 		},
 		options: {

@@ -1,13 +1,17 @@
 package kr.or.ddit.hospital.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.member.careWorker.hospital.model.HospitalVo;
 import kr.or.ddit.member.careWorker.hospital.service.IHospitalService;
@@ -15,6 +19,8 @@ import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class HospitalServiceTest extends LogicTestEnv{
+	
+	private static final Logger logger = LoggerFactory.getLogger(HospitalServiceTest.class);
 
 	@Resource(name="hospitalService")
 	private IHospitalService hospitalService;
@@ -88,7 +94,27 @@ public class HospitalServiceTest extends LogicTestEnv{
 		/***Then***/
 		assertEquals(25, getSearchHosAdd.size());
 
+	}
+	
+	@Test
+	public void searchHosPagingList() {
+		/***Given***/
+		PageVo pageVo = new PageVo(1, 10);
+		HospitalVo hospitalVo = new HospitalVo("서구");
 		
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("hos_add", hospitalVo.getHos_add());
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		logger.debug("☞hos_add:{}",hospitalVo.getHos_add());
+		logger.debug("☞page:{}",pageVo.getPage());
+		logger.debug("☞pageSize:{}",pageVo.getPageSize());
+		
+		/***When***/
+		Map<String, Object> searchHosPagingList = hospitalService.searchHosPagingList(map);
+		/***Then***/
+		assertNotNull(searchHosPagingList);
 	}
 	
 }
