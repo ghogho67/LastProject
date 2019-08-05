@@ -43,4 +43,15 @@ public class MemberDaoTest extends LogicTestEnv {
 		logger.debug("☞mvol:{}", mvol);
 	}
 
+	@Test
+	public void getMemberVoDaoTest() {
+		/*** Given ***/
+		String mem_id = "brown";
+		/*** When ***/
+		MemberVo memVo = memberDao.getMemVo(mem_id);
+		/*** Then ***/
+		logger.debug("☞memVo.getMem:{}",memVo.getMem_nm());
+		assertEquals("브라운", memVo.getMem_nm());
+	}
+
 }

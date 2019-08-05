@@ -18,23 +18,24 @@ import kr.or.ddit.member.member.model.MemberVo;
 
 public class ProfileView implements View {
 	private static final Logger logger = LoggerFactory.getLogger(ProfileView.class);
-	
+
 	@Override
 	public String getContentType() {
 		return "img";
 	}
 
 	@Override
-	public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		logger.debug("☞profileView.render()");
-		
+
 		MemberVo memberVo = (MemberVo) model.get("memberVo");
-		
+
 		ServletOutputStream sos = response.getOutputStream();
 		FileInputStream fis = null;
 		String filePath = null;
 		// 사용자가 업로드한 파일이 존재할 경우 : path
-		if(memberVo.getMem_photo_path() != null){
+		if (memberVo.getMem_photo_path() != null) {
 			filePath = memberVo.getMem_photo_path();
 		} else {
 			filePath = request.getServletContext().getRealPath("/image/no_image.gif");
@@ -53,7 +54,5 @@ public class ProfileView implements View {
 		fis.close();
 		sos.close();
 	}
-	
 
-	
 }
