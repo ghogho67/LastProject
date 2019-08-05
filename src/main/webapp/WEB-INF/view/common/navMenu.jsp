@@ -17,19 +17,10 @@
 		<li><a href="#">요양 정보</a> 
 		
 			<ul>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
 <%-- 				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li> --%>
 				<li><a href="${cp}/hospital/pagingList">요양원/요양병원 찾기</a></li>
 
 				<li><a href="${cp}/test/matching">기관 정보 조회</a></li>
-<<<<<<< HEAD
-=======
-
->>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
 			</ul></li>
 
 		<li class="menu-has-children"><a href="">커뮤니티</a>
@@ -51,10 +42,6 @@
 
 		<li class="menu-has-children"><a href="">기타 문화 정보</a>
 			<ul>
-<<<<<<< HEAD
-=======
-
->>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
 				<li><a href="${cp }/shelter/pagingList">무더위 쉼터</a></li>
 				<li><a href="blog-home.html">문화시설</a></li>
 
