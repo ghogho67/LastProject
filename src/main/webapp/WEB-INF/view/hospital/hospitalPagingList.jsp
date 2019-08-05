@@ -54,14 +54,14 @@
 							
 					      <!-- 검색 -->
 		                  <div class="d1">
-		                  	<form id="frm2" action="${cp}/hospital/searchHospital" method="post" >
+		                  	<form id="frm2" action="${cp}/hospital/searchPagingList" method="post" >
 							 		<input type="text" placeholder="구 단위로 검색하세요" name="hos_add" id="hos_add">
 							  	<button type="button" id="searchBtn"></button>
 							  </form>
 						  </div>
 					
 					
-						<form id="frm" action="${cp}/hospital/searchHospital" method="get">
+						<form id="frm" action="${cp}/hospital/searchPagingList" method="get">
 <!-- 							<input type="hidden" class="hos_id" id="hos_id" name="hos_id"> -->
 <%-- 							<input type="hidden" name="hos_add" id="hos_add" value="${hos_add }"> --%>
 
@@ -75,7 +75,7 @@
 									</tr>
 									<c:forEach items="${hosList }" var="vo" varStatus="status">
 										<tr class="hosTr" data-hos_id="${vo.hos_id }">
-											<td calss="hos_id">${vo.hos_id }</td>
+											<td class="hos_id">${vo.hos_id }</td>
 											<td>${vo.hos_nm }</td>
 											<td>${vo.hos_add }</td>
 											<td>${vo.hos_phone }</td>

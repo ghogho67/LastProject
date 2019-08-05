@@ -209,9 +209,10 @@ public class AttendanceController {
 	public String cwMypageAttendance(Model model, HttpSession session) {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		String cw_mem_id = memvo.getMem_id();
-		logger.debug("☞:cw_mem_id{}",cw_mem_id);
+		logger.debug("☞:cw_mem_id :{}",cw_mem_id);
 		List<MatchingVo> cwMatList = attendanceService.cwMatchingList(cw_mem_id);
 		logger.debug("☞cwMatList:{}",cwMatList);
+		model.addAttribute("cwMatList", cwMatList);
 		
 		return "/mypage/check/cw_check.mytiles";
 	}
