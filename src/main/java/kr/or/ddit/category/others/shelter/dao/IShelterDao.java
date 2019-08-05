@@ -55,4 +55,5 @@ public interface IShelterDao {
 	*/
 	List<ShelterVo> getAddShelterList(String sh_add);
 	
+
 }

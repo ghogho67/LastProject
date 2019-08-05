@@ -96,14 +96,6 @@ public class ShelterController {
 		return "/shelter/detailShelter.tiles";
 	}
 	
-
-	
-	
-	
-	
-
-	
-	
 	
 	
 	

@@ -74,10 +74,41 @@ public class HospitalDao implements IHospitalDao{
 	* 변경이력 :
 	* @param hos_add
 	* @return
-	* Method 설명 : 병원 검색(주소)
+	* Method 설명 : 지역 검색한 병원 리스트 조회
 	*/
 	@Override
 	public List<HospitalVo> getSearchHosAdd(String hos_add) {
 		return sqlSession.selectList("hospital.getSearchHosAdd", hos_add);
 	}
+	
+	
+	/**
+	* Method : searchHosPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 : 지역검색 페이징 리스트
+	*/
+	@Override
+	public List<HospitalVo> searchHosPagingList(Map<String, Object> map) {
+		return sqlSession.selectList("hospital.searchHosPagingList", map);
+	}
+
+
+	/**
+	* Method : searchHosCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :지역검색 병원 수
+	*/
+	@Override
+	public int searchHosCnt(String hos_add) {
+		return sqlSession.selectOne("hospital.searchHosCnt",hos_add);
+	}
+
+	
+	
+	
 }
