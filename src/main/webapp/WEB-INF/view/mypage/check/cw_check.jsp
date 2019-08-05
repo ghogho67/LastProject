@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -188,11 +189,9 @@ style>.pagination-outer {
 
 <script>
    $(document).ready(function() {
+	   
+	   
 
-      $(".kkk").on("click", function() {
-
-         $("#frm").submit();
-      });
 
    });
 </script>
@@ -205,9 +204,9 @@ style>.pagination-outer {
 
                              <select id="searchType" name="searchType"
                                 style="position: absolute; z-index: 999;">
-                                <option value="mem_id">회원명</option>
+                                <option value="mem_id">회원아이디</option>
                                 <option value="day">날짜</option>
-                                <option value="day">매칭번호</option>
+                                <option value="mat_id">매칭번호</option>
                              </select> 
                              <input type="text" placeholder="검색어 입력"
                                 style="position: absolute; top: 0px; right: 0px;">
@@ -215,7 +214,6 @@ style>.pagination-outer {
                           </form>
                        </div>
 
-   <div class="container">
       <div class="col-lg-12" style="padding-top: 50px;">
          <div class="card">
             <div class="card-body">
@@ -229,20 +227,53 @@ style>.pagination-outer {
                            <th>NO.</th>
                            <th>출근시간</th>
                            <th>퇴근시간</th>
-                           <th>회원이름</th>
+                           <th>회원아이디</th>
                            <th>매칭번호</th>
                         </tr>
 
-
-                        <tr>
-                           <td>dd</td>
-						   <td>출석시간</td>
-                           <td>퇴근시간</td>
-                           <td>회원이름</td>	
-                           <td>매칭번호</td>	
-                       </tr>
+						
+						
+                        <c:forEach items="${cwMatList }" var="vo" varStatus="status">
+											<td>${vo.rn }</td>
+											<td>${vo.ad_st }</td>
+											<td>${vo.ad_end }</td>
+											<td>${vo.mem_id }</td>
+											<td>${vo.mat_id }</td>
+										</tr>
+									</c:forEach>
                   </table>
                </div>
+               <!-- 페이지네이션 -->
+							<div class="text-center">
+								<ul class="pagination">
+									<c:choose>
+										<c:when test="${pageVo.page == 1 }">
+											<li class="disabled"><span>«</span></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${cp}/attendance/cwMatList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
+										</c:otherwise>
+									</c:choose>
+									
+									<c:forEach begin="1" end="${paginationSize}" var="i">
+										<c:choose>
+											<c:when test="${pageVo.page == i}">
+												<li class="active"><span>${i}</span></li>
+											</c:when>
+											<c:otherwise>
+												<li><a href="${cp}/attendance/cwMatList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									
+									<c:choose>
+										<c:when test="${pageVo.page == paginationSize}">
+											<li class="disabled"><span>»</span></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${cp}/attendance/cwMatList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
+										</c:otherwise>
+									</c:choose>
             </div>
          </div>
       </div>

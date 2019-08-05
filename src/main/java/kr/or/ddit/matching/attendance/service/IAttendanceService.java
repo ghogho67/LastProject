@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface IAttendanceService {
 	
@@ -87,6 +88,6 @@ public interface IAttendanceService {
 	* @return
 	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
 	*/
-	public List<MatchingVo> cwMatchingList(String cw_mem_id);
+	public Map<String, Object> cwMatchingList(Map<String, Object> map);
 
 }

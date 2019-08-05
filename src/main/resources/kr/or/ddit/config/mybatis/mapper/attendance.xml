@@ -4,10 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="attendance">
 
-	<select id="cwMatchingList" parameterType="String" resultType="matchingVo">
-	select * from matching where cw_mem_id = #{cw_mem_id}
+<!-- 	<select id="cwMatchingList" parameterType="String" resultType="matchingVo"> 
+	select * from matching where cw_mem_id = #{cw_mem_id} 
 	
+ 	</select> -->
+	
+	<select id="cwMatchingList" parameterType="map" resultType="attendanceMatchingVo">
+		<![CDATA[
+		select * 
+			from
+			(select a.*, rownum rn
+			from
+				(select att.mat_id, 
+				to_char(att.ad_st,'YYYY-MM-DD HH24:MI:SS')ad_st, 
+				to_char(att.ad_end,'YYYY-MM-DD HH24:MI:SS')ad_end, 
+				m.mem_id,m.mat_del,
+				M.Mat_Type
+				
+                from MATCHING m, ATTENDANCE att
+                where m.MAT_ID = att.MAT_ID 
+                and m.CW_MEM_ID= #{cw_mem_id})a )b
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
 	</select>
+	
+	<select id="cwMatchingCnt" parameterType="String" resultType="int">
+	 select count(*) from MATCHING m, ATTENDANCE a
+                where m.MAT_ID = a.MAT_ID 
+                and m.CW_MEM_ID = #{cw_mem_id}
+	</select>
+	
 
 	<select id="attendanceList" parameterType="int" resultType="attendanceVo">
 		select AD_ID,

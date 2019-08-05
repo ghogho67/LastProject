@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-  <%@page import="java.util.Date" %>
-    <%@page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -273,6 +271,9 @@ td {
 									<th>학습 종료일</th>
 									<th>학습 시간</th>
 									<th>수강인원</th>
+									<th>&nbsp;&nbsp;사용상태&nbsp;&nbsp;</th>
+									<th>&nbsp;&nbsp;관리&nbsp;&nbsp;</th>
+									<th>&nbsp;&nbsp;사용여부변경&nbsp;&nbsp;</th>
 								</tr>
 							</thead>
 
@@ -292,11 +293,36 @@ td {
 												pattern="yyyy-MM-dd" /></td>
 										<td>${LTList.lec_time}</td>
 										<td>${LTList.lec_amount}</td>
-										
-										
-
-									
-									
+												
+												
+												
+												
+												<c:choose>
+												<c:when test="${LTList.lec_use=='Y'}">
+													<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
+												</c:when>
+												<c:otherwise>
+													<td><label class="badge badge-danger">사용안함</label></td>
+												</c:otherwise>
+											</c:choose>
+											<td><a
+												href="${cp}/category/categoryManagement?cate_id=${LTList.lec_id}"
+												class="btn btn-primary btn-sm">강좌수정</a></td>
+											<c:choose>
+												<c:when test="${LTList.lec_use=='Y'}">
+													<td><a
+														href="${cp}/category/categoryDelete?cate_id=${LTList.lec_id}"
+														onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
+														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+												</c:when>
+												<c:otherwise>
+													<td><a
+														href="${cp}/category/categoryUse?cate_id=${LTList.lec_id}"
+														onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
+														class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
+												</c:otherwise>
+											</c:choose>
+												
 									</tr>
 
 								</c:forEach>
@@ -305,18 +331,6 @@ td {
 
 
 						</table>
-						
-						
-						<c:if test="${memgrade==0}">
-						<div style="text-align: right;">
-							<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">강좌관리
-									</button>
-							
-</div>
-
-						</c:if>
-						
-						
 
 
 

@@ -60,16 +60,18 @@ public class LectureController {
 	
 	
 	@RequestMapping(path = "/lectureListALL", method = RequestMethod.GET)
-	public String lectureListALL(Model model) {
+	public String lectureListALL(Model model,HttpSession session) {
 		
 
 		List<LectureVo> LectureList = lectureService.getLectureList();
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String memgrade=memvo.getMem_grade();
 		
 		logger.debug("@@@@LectureList : {} ", LectureList);
+		logger.debug("@@@@memgrade : {} ", memgrade);
 
 		model.addAttribute("LList", LectureList);
-		
-		
+		model.addAttribute("memgrade", memgrade);
 		
 		return "lecture/lectureListAll";
 	
@@ -81,8 +83,13 @@ public class LectureController {
 	//강의 상세보기 페이지 
 	
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String lecture(Model model) {
+	@RequestMapping(path = "/lecture", method = RequestMethod.GET)
+	public String lecture(Model model,
+			@RequestParam(name = "lec_id")int lec_id) {
+		
+		
+		LectureVo lectureVo = lectureService.getLecture(lec_id);
+		model.addAttribute("lecture",lectureVo);
 		
 		return "lecture/lecture";
 	
@@ -90,22 +97,40 @@ public class LectureController {
 	}
 	
 	
-/*
+
+//강좌 관리	
+	
+	@RequestMapping(path = "/lectureListManagement", method = RequestMethod.GET)
+	public String lectureListManagement(Model model) {
+		
+
+		List<LectureVo> LectureList = lectureService.getLectureList();
+		
+		logger.debug("@@@@LectureList : {} ", LectureList);
+
+		model.addAttribute("LList", LectureList);
+		return "lecture/lectureListManagement";
+	
+	
+	}
+	
+	
 	
 	
 	//강의 삭제
 	
-	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String lectureDelete(Model model) {
+	@RequestMapping(path = "/lectureDelete", method = RequestMethod.GET)
+	public String lectureDelete(Model model,
+			@RequestParam(name = "lec_id")int lec_id) {
 	
 		
-		logger.debug("@@@@cate_id{}",cate_id);
+		logger.debug("@@@@lec_id{}",lec_id);
 		
 		String viewName =null;
-		 int updateCnt = categoryService.deleteMajorCategory(cate_id);
+		 int updateCnt = lectureService.deleteLecture(lec_id);
 		
 		 if(updateCnt>=1) {
-			 viewName="redirect:/category/categoryList";
+			 viewName="redirect:/lecture/lectureListALL";
 		 }else {
 			 viewName="redirect:/login";
 		 }
@@ -121,22 +146,24 @@ public class LectureController {
 	
 	//강의 사용
 	
-	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String lectureUse(Model model) {
+	@RequestMapping(path = "/lectureUse", method = RequestMethod.GET)
+	public String lectureUse(Model model,
+			@RequestParam(name = "lec_id")int lec_id) {
 
-		
-		logger.debug("@@@@cate_id{}",cate_id);
+		logger.debug("@@@@lec_id{}",lec_id);
 		
 		String viewName =null;
-		int updateCnt = categoryService.useMajorCategory(cate_id);
+		 int updateCnt = lectureService.useLecture(lec_id);
 		
-		if(updateCnt==1) {
-			 viewName="redirect:/category/categoryManagement?cate_id="+cate_paerent_id;
-		}else {
-			viewName="redirect:/login";
-		}
-		
-		return viewName;
+		 if(updateCnt>=1) {
+			 viewName="redirect:/lecture/lectureListALL";
+		 }else {
+			 viewName="redirect:/login";
+		 }
+		 
+			return viewName;
+	
+	
 		
 	}
 	
@@ -144,19 +171,30 @@ public class LectureController {
 	//강의 수정
 	
 	
-	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String lectureupdate(Model model) {
-		logger.debug("@@@@CategoryId{}",cate_id);
-		logger.debug("@@@@CateTitle{}",cate_title);
+	@RequestMapping(path = "/modifyLecture", method = RequestMethod.GET)
+	public String lectureupdate(Model model,
+			@RequestParam(name = "lec_id")int lec_id,
+			@RequestParam(name = "culture_id")int culture_id,
+			@RequestParam(name = "lec_nm")String lec_nm,
+			@RequestParam(name = "lec_tea")String lec_tea,
+			@RequestParam(name = "lec_st_dt")Date lec_st_dt,
+			@RequestParam(name = "lec_end_dt")Date lec_end_dt,
+			@RequestParam(name = "lec_time")String lec_time,
+			@RequestParam(name = "lec_fee")int lec_fee,
+			@RequestParam(name = "lec_day")String lec_day,
+			@RequestParam(name = "lec_type")String lec_type,
+			@RequestParam(name = "lec_amount")String lec_amount) {
+
 		
-		CategoryVo categoryVo= new CategoryVo(cate_id, cate_title);
+		String lec_use ="Y";
 		
-		
+		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use);
+
 		String viewName =null;
 		
-		int updateTitle = categoryService.updateCategoryTitle(categoryVo);
+		int updatelecture = lectureService.updateLecture(lectureVo);
 		
-		if(updateTitle==1) {
+		if(updatelecture==1) {
 			 viewName="redirect:/category/categoryManagement";
 		}else {
 			viewName="redirect:/login";
@@ -165,38 +203,35 @@ public class LectureController {
 		return viewName;
 	}
 	
-	
+
 //강의 추가 
 	@RequestMapping(path = "/Insertlecture", method = RequestMethod.POST)
-	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes
+	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes,
+			
+			@RequestParam(name = "culture_id")int culture_id,
+			@RequestParam(name = "lec_nm")String lec_nm,
+			@RequestParam(name = "lec_tea")String lec_tea,
+			@RequestParam(name = "lec_st_dt")Date lec_st_dt,
+			@RequestParam(name = "lec_end_dt")Date lec_end_dt,
+			@RequestParam(name = "lec_time")String lec_time,
+			@RequestParam(name = "lec_fee")int lec_fee,
+			@RequestParam(name = "lec_day")String lec_day,
+			@RequestParam(name = "lec_type")String lec_type,
+			@RequestParam(name = "lec_amount")String lec_amount
 		) {
 
-		
-		
-		
-		 int  lec_id=0;
-		 int  culture_id=0;
-		 String lec_nm="";
-		 String lec_tea="";
-		 Date lec_st_dt='19/09/22';
-		 Date lec_end_dt="";
-		 String lec_time="";
-		 String lec_fee="";
-		 String lec_day="";
-		 String lec_type="";
-		 String lec_amount=""; 
-		 String lec_use="";
-		
-		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use)
-		
-		
+	     int lec_id =0;
+		 String lec_use="Y";
+		 
+		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use);
+
 		
 		String viewName =null;
 		
-		int insertlecture = lectureService.InsertLecture(LectureVo);
+		int insertlecture = lectureService.InsertLecture(lectureVo);
 		
-		if(insertCategory==1) {
-			 viewName=""
+		if(insertlecture==1) {
+			 viewName="redirect:/lecture/lectureListALL";
 		}else {
 			viewName="redirect:/login";
 		}
@@ -205,8 +240,7 @@ public class LectureController {
 		
 	}
 	
-	
-	*/
+
 	
 	
 	

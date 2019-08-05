@@ -34,6 +34,7 @@
 		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
 		<typeAlias alias="LectureVo" type="kr.or.ddit.category.others.lecture.model.LectureVo" />
 		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
+		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
 	</typeAliases>
 
 
