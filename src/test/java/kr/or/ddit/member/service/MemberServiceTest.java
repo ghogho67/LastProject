@@ -41,6 +41,7 @@ public class MemberServiceTest extends LogicTestEnv {
 		List<MemberVo> mvol = memberService.getCwList();
 		/*** Then ***/
 		logger.debug("☞mvol:{}", mvol);
+		assertEquals(7, mvol.size());
 	}
 
 	@Test

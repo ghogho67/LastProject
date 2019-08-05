@@ -80,4 +80,11 @@ public class MemberService implements IMemberService {
 
 
 
+	@Override
+	public List<String> getCwaddr() {
+		return memberDao.getCwaddr();
+	}
+
+
+
 }
