@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.service.IAttendanceService;
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
+import kr.or.ddit.page.model.PageVo;
 
 @RequestMapping("/attendance")
 @Controller
@@ -192,7 +194,7 @@ public class AttendanceController {
 		
 		
 		return "check/checkOut";
-		
+		 
 	}
 	
 	
@@ -203,18 +205,66 @@ public class AttendanceController {
 	* @param model
 	* @param session
 	* @return
-	* Method 설명 : 2019-08-02 
+	* Method 설명 : 2019-08-05 요양보호사 출결전체조회
 	*/
 	@RequestMapping("/cwMatList")
 	public String cwMypageAttendance(Model model, HttpSession session) {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		String cw_mem_id = memvo.getMem_id();
+		
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cw_mem_id", cw_mem_id);
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
 		logger.debug("☞:cw_mem_id :{}",cw_mem_id);
-		List<MatchingVo> cwMatList = attendanceService.cwMatchingList(cw_mem_id);
-		logger.debug("☞cwMatList:{}",cwMatList);
-		model.addAttribute("cwMatList", cwMatList);
+		Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
+		List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("cwMatchingList");
+		logger.debug("☞attendanceList:{}",attendanceList);
+		model.addAttribute("cwMatList", attendanceList);
+		model.addAttribute("pageVo",pageVo);
+		model.addAttribute("paginationSize",resultMap.get("paginationSize"));
 		
 		return "/mypage/check/cw_check.mytiles";
+	}
+	
+	@RequestMapping(path = "/saerch", method = RequestMethod.POST)
+	public String saerchList(Model model, String searchType, String saerchVal,HttpSession session) {
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memvo.getMem_id();
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cw_mem_id", cw_mem_id);
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		if(searchType.equals("memid")) {
+			String mem_id = saerchVal;
+			map.put("mem_id", mem_id);
+			Map<String, Object> resultMap = attendanceService.memidSaerchList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("memidSaerchList");
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/cw_check.mytiles";
+			
+			
+		}else if(searchType.equals("day")) {
+			String day = saerchVal;
+			map.put("day", day);
+			Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("daySaerchList");
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/cw_check.mytiles";
+			
+		}else if(saerchVal.equals(" ")){
+			return "/attendance/cwMatList";
+		}else {
+			return "/attendance/cwMatList";
+		}
 	}
 
 	

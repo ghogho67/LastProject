@@ -86,7 +86,7 @@
 										<th>운영시작일</th>
 										<th>운영종료일</th>
 									</tr>
-									<c:forEach items="${shelterList }" var="vo" varStatus="status">
+									<c:forEach items="${cwMatList }" var="vo" varStatus="status">
 										<tr class="shTr" data-sh_id="${vo.sh_id }">
 											<td class="sh_id">${vo.sh_id }</td>
 											<td>${vo.sh_nm }</td>

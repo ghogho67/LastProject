@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface IAttendanceDao {
 	
@@ -87,7 +88,46 @@ public interface IAttendanceDao {
 	* @return
 	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
 	*/
-	public List<MatchingVo> cwMatchingList(String cw_mem_id);
+	public List<MatchingVo> cwMatchingList(Map<String, Object> resultMap);
 	
 	
+	/**
+	* Method : cwMatchingCnt
+	* 작성자 : PC21
+	* 변경이력 :
+	* @return
+	* Method 설명 : 요양보호사의 매칭 건수를 갖고온다.
+	*/
+	public int cwMatchingCnt(String cw_mem_id);
+	
+	
+	
+	//============================================================================
+	/**
+	* Method : mattchingCnt
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param mat_id
+	* @return
+	* Method 설명 : 요양사아이디 날짜 검색에 따른 갯수를 갖고온다.
+	*/
+	public int daySaerchCnt(Map<String, Object> day);
+	List<MatchingVo> daySaerchList(Map<String, Object> resultMap);
+	
+	/**
+	* Method : memidSaerchCnt
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param memid
+	* @return
+	* Method 설명 : 요양사 아이디 , 회원아이디 검색에 따른 갯수 갖고온다.
+	*/
+	public int memidSaerchCnt(Map<String, Object> memid);
+
+	List<MatchingVo> memidSaerchList(Map<String, Object> resultMap);
+
+	
+
+	
+	//============================================================================
 }

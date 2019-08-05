@@ -129,16 +129,16 @@ public class AttendanceServiceTest extends LogicTestEnv{
 		/***Then***/
 		assertEquals(49, test);
 	}
-	@Test
-	public void cwMatchingList() {
-		/***Given***/
-		String cw_mem_id = "yumi";
-		
-		/***When***/
-		List<MatchingVo> test = attendanceService.cwMatchingList(cw_mem_id);
-		/***Then***/
-		assertEquals(1, test.size());
-		
-	}
+//	@Test
+//	public void cwMatchingList() {
+//		/***Given***/
+//		String cw_mem_id = "yumi";
+//		
+//		/***When***/
+//		List<MatchingVo> test = attendanceService.cwMatchingList(cw_mem_id);
+//		/***Then***/
+//		assertEquals(1, test.size());
+//		
+//	}
 	
 }
