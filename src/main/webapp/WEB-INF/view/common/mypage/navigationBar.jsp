@@ -7,30 +7,26 @@
 <title>mypage navigation bar</title>
 
 <style>
-.ko a {
+.ko {
 	color: white !important;
 }
 </style>
 </head>
 <body>
 
-	<!-- 		  상단바 -->
-	<nav
-		class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-		<div class="navbar-menu-wrapper d-flex align-items-center">
-			<button class=" navbar-toggler   navbar-dark align-self-center mr-5"
-				type="button" data-toggle="minimize">
+		<!-- 		  상단바 -->
+		<nav
+			class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+			<div class="navbar-menu-wrapper d-flex align-items-center">
+				<button class=" navbar-toggler   navbar-dark align-self-center mr-5"
+					type="button" data-toggle="minimize">
 
-				<div id="header" class="header-scrolled2">
-					<div class="container">
-						<div class="row  justify-content-between d-flex">
-							<div id="logo">
-								<a href="index.html"></a>
-<<<<<<< HEAD
-=======
-
->>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
-							</div>
+					<div id="header" class="header-scrolled2">
+						<div class="container">
+							<div class="row  justify-content-between d-flex">
+								<div id="logo">
+									<a href="index.html"></a>
+								</div>
 							<nav id="nav-menu-container">
 								<ul class="nav-menu" style="color: white;">
 
@@ -72,15 +68,12 @@
 										</ul>
 										
 									</li>
-
-
-
+									<li> <a class="ko" style="position: absolute; left:80%; " href="/logout">로그아웃</a></li>
 
 								</ul>
 							</nav>
 						</div>
 					</div>
-<<<<<<< HEAD
 				</div>
 				<hr>
 				<br>
@@ -88,12 +81,5 @@
 		</div>
 	</nav>
 
-=======
-					<hr>
-					<br>
-				</button>
-			</div>
-		</nav>
->>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
 </body>
 </html>
