@@ -129,6 +129,42 @@ public class AttendanceService implements IAttendanceService {
 		return resultMap;
 		
 	}
+	
+	@Override
+	public Map<String, Object> daySaerchList(Map<String, Object> day) {
+		int pageSize = (int)day.get("pageSize");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("daySaerchList", attendanceDao.daySaerchList(day));
+		
+		Map<String, Object> dayCnt = new HashMap<String, Object>();
+		dayCnt.put("cw_mem_id", day.get("cw_mem_id"));
+		dayCnt.put("day", day.get("day"));
+		int dayAllCnt = attendanceDao.daySaerchCnt(dayCnt);
+		
+		int paginationSize = (int) Math.ceil((double)dayAllCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		
+		return resultMap;
+	}
+	
+	
+	@Override
+	public Map<String, Object> memidSaerchList(Map<String, Object> memid) {
+		int pageSize = (int)memid.get("pageSize");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("memidSaerchList", attendanceDao.memidSaerchList(memid));
+		
+		Map<String, Object> memCnt = new HashMap<String, Object>();
+		memCnt.put("cw_mem_id", memid.get("cw_mem_id"));
+		memCnt.put("mem_id", memid.get("mem_id"));
+		int memAllCnt = attendanceDao.memidSaerchCnt(memCnt);
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
+	}
 
 
 }
