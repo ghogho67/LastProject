@@ -2,11 +2,15 @@ package kr.or.ddit.hospital.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.member.careWorker.hospital.dao.IHospitalDao;
 import kr.or.ddit.member.careWorker.hospital.model.HospitalVo;
@@ -14,6 +18,8 @@ import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class HospitalDaoTest extends LogicTestEnv{
+	
+	private static final Logger logger = LoggerFactory.getLogger(HospitalDaoTest.class);
 
 	@Resource(name = "hospitalDao")
 	private IHospitalDao hospitalDao;
@@ -65,7 +71,7 @@ public class HospitalDaoTest extends LogicTestEnv{
 		List<HospitalVo> hosList= hospitalDao.hosPagingList(pageVo);
 
 		/***Then***/
-		assertEquals(64, hosList.size());
+		assertEquals(10, hosList.size());
 		assertNotNull(hosList);
 
 	}
@@ -101,10 +107,46 @@ public class HospitalDaoTest extends LogicTestEnv{
 		List<HospitalVo> getSearchHosAdd = hospitalDao.getSearchHosAdd(hos_add);
 		/***Then***/
 		assertEquals(25, getSearchHosAdd.size());
-
 		
 	}
 	
+	/**
+	* Method : searchHosCntTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :지역검색을 한 병원 수
+	*/
+	@Test
+	public void searchHosCntTest() {
+		/***Given***/
+		String hos_add = "서구";
+		/***When***/
+		int searchHosCnt = hospitalDao.searchHosCnt(hos_add);
+		/***Then***/
+		assertEquals(25, searchHosCnt);
+	}
+	
+	@Test
+	public void searchHosPagingListTest() {
+		/***Given***/
+		PageVo pageVo = new PageVo(1, 10);
+		HospitalVo hospitalVo = new HospitalVo("서구");
+		
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("hos_add", hospitalVo.getHos_add());
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		logger.debug("☞hos_add:{}",hospitalVo.getHos_add());
+		logger.debug("☞page:{}",pageVo.getPage());
+		logger.debug("☞pageSize:{}",pageVo.getPageSize());
+		
+		/***When***/
+		List<HospitalVo> searchHosPagingList = hospitalDao.searchHosPagingList(map);
+		/***Then***/
+		assertNotNull(searchHosPagingList);
+
+	}
 	
 	
 	

@@ -56,5 +56,15 @@ public class CategoryService implements ICategoryService {
 	public int updateCategoryTitle(CategoryVo categoryVo) {
 		return categoryDao.updateCategoryTitle(categoryVo);
 	}
+
+	@Override
+	public int InsertCategory(CategoryVo categoryVo) {
+		return categoryDao.InsertCategory(categoryVo);
+	}
+
+	@Override
+	public CategoryVo getCategory(int cate_id) {
+		return categoryDao.getCategory(cate_id);
+	}
 	
 }

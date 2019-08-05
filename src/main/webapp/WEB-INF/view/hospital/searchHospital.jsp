@@ -19,10 +19,9 @@
             <div class="row">
                <div class="col-sm-8 blog-main">
                   <h2 class="sub-header">주소로 찾기</h2>
-                     <a href="${cp }/hospital/pagingList" class="accept-btn">뒤로가기</a>
-                  <form id="frm" class="form-horizontal" role="form" action="${cp }/hospital/searchHospital?hos_add=${hos_add}" method="post">
+                  <form id="frm" class="form-horizontal" role="form" action="${cp }/hospital/searchPagingList?hos_add=${hos_add}" method="post">
                      <input type="hidden" class="form-control" id="hos_add" name="hos_add" value="${hos_add}">
-                     <input type="hidden" class="form-control" id="hos_id" name="hos_aid" value="${hos_id}">
+<%--                      <input type="hidden" class="form-control" id="hos_id" name="hos_id" value="${hos_id}"> --%>
 
 
 						<div class="table-responsive">
@@ -34,7 +33,7 @@
 									<th>병원 전화번호</th>
 								</tr>
 								<c:forEach items="${getSearchHosAdd}" var="vo" varStatus="status">
-									<tr class="hosTr" data-hos_add="${vo.hos_add }">
+									<tr class="hosTr" data-hos_id="${vo.hos_id }">
 										<td>${vo.hos_id }</td>
 										<td>${vo.hos_nm }</td>
 										<td>${vo.hos_add }</td>
@@ -52,7 +51,7 @@
 											<li class="disabled"><span>«</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="${cp}/hospital/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
+											<li><a href="${cp}/hospital/searchPagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
 										</c:otherwise>
 									</c:choose>
 									
@@ -62,7 +61,7 @@
 												<li class="active"><span>${i}</span></li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="${cp}/hospital/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+												<li><a href="${cp}/hospital/searchPagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -72,7 +71,7 @@
 											<li class="disabled"><span>»</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="${cp}/hospital/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
+											<li><a href="${cp}/hospital/searchPagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
 										</c:otherwise>
 									</c:choose>
 								</ul>

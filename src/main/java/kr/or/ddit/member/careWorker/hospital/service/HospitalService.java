@@ -69,10 +69,33 @@ public class HospitalService implements IHospitalService{
 	* 변경이력 :
 	* @param hos_add
 	* @return
-	* Method 설명 : 병원 검색(주소)
+	* Method 설명 : 지역 검색한 병원 리스트 조회
 	*/
 	@Override
 	public List<HospitalVo> getSearchHosAdd(String hos_add) {
 		return hospitalDao.getSearchHosAdd(hos_add);
 	}
+
+	/**
+	* Method : searchHosPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :지역검색 후 병원 페이징 리스트
+	*/
+	@Override
+	public Map<String, Object> searchHosPagingList(Map<String, Object> map) {
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("getSearchHosAdd", hospitalDao.searchHosPagingList(map));
+		int searchHosCnt = hospitalDao.searchHosCnt((String)map.get("hos_add"));
+		int paginationSize = (int) Math.ceil((double)searchHosCnt/(int)map.get("pageSize"));
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
+	}
+
+	
+	
 }

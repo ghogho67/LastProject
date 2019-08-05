@@ -18,6 +18,11 @@ public class HospitalVo {
 		this.hos_id = hos_id;
 	}
 
+	public HospitalVo(String hos_add) {
+		super();
+		this.hos_add = hos_add;
+	}
+
 	public String getHos_nm() {
 		return hos_nm;
 	}

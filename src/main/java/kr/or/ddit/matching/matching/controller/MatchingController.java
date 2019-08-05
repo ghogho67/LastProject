@@ -1,7 +1,9 @@
 package kr.or.ddit.matching.matching.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
@@ -36,23 +40,25 @@ public class MatchingController {
 		return "bestSample";
 	}
 
+	@RequestMapping(path = "/photo")
+	public String profile(Model model, String mem_id) throws IOException {
+		MemberVo memVo = memberService.getMemVo(mem_id);
+		model.addAttribute("memberVo", memVo);
+		return "profileView";
+	}
+
 	@RequestMapping(path = "/meet")
 	public String meeting(Model model, String mem_id) {
-		logger.debug("☞meet");
-		logger.debug("☞mem_id:{}", mem_id);
-		logger.debug("☞mem_id:{}", mem_id);
-		logger.debug("☞mem_id:{}", mem_id);
-		model.addAttribute("mem_id",mem_id);
+
+		model.addAttribute("memVo", memberService.getMemVo(mem_id));
+		model.addAttribute("mem_id", mem_id);
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-		logger.debug("☞list:{}", matchingService.getMatchingList(mem_id));
 		return "matching/meeting";
 	}
+
 	@RequestMapping(path = "/meetjson")
 	public String meetjson(Model model, String mem_id) {
-		logger.debug("☞meet");
-		logger.debug("☞mem_id:{}", mem_id);
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-		logger.debug("☞list:{}", matchingService.getMatchingList(mem_id));
 		return "jsonView";
 	}
 
@@ -70,20 +76,30 @@ public class MatchingController {
 //		logger.debug("☞cwJson:{}", cwJson);
 		model.addAttribute("cwList", cwList);
 
-		return "matching/matchingMap";
+		return "/matching/matchingMap.tiles";
 
+	}
+
+	@RequestMapping("/profile")
+	public String profile(String mem_id, Model model) throws IOException {
+
+		// 사용자 정보(path)를 조회
+		MemberVo memVo = memberService.getMemVo(mem_id);
+		model.addAttribute("memVo", memVo);
+
+		return "profileView";
 	}
 
 	@RequestMapping(path = "/calendar")
 	public String calendarView() {
-		return "FullCalendar-Example-master/calendar";
+		return "FullCalendar-Example-master1/index";
 	}
 
 	@RequestMapping(path = "/insertCalendar")
-	public String insertData(Model model, @RequestBody List<Map<String, Object>> list) {
+	public String insertData(Model model, @RequestBody List<Map<String, Object>> list, RedirectAttributes redirectAttributes) {
 
-		logger.debug("☞insert`Calendar:{}", "insertCalendar");
-		logger.debug("☞list:{}", list);
+		logger.debug("☞insertCalendarList:{}",list);
+		
 		String[] items = list.get(0).get("dow").toString().replaceAll("\\[", "").replaceAll("\\]", "")
 				.replaceAll("\\s", "").split(",");
 
@@ -117,6 +133,8 @@ public class MatchingController {
 		cal2.set(Calendar.MINUTE, Integer.parseInt(((String) list.get(0).get("startTime")).substring(3))); // 시작분
 		String startDate2 = dateFormat.format(cal2.getTime());
 
+		
+		
 		int compare = cal.compareTo(cal2);
 		logger.debug("☞compare:{}", compare);
 		while (true) { // 다르다면 실행, 동일 하다면 빠져나감
@@ -124,18 +142,14 @@ public class MatchingController {
 				if (cal2.get(cal2.DAY_OF_WEEK) == dow[i]) {
 					startDate2 = startDate2.substring(0, 10) + "T" + startDate2.substring(11, startDate2.length());
 					endDate2 = startDate2.substring(0, 10) + "T" + endDate2.substring(11, endDate2.length());
-					logger.debug("☞(boolean) list.get(0).get(\"allDay\"):{}", list.get(0).get("mat_allday"));
 					MatchingVo mvo = new MatchingVo();
-					logger.debug("☞(boolean) list.get(0).get(\"allDay\"):{}", (boolean) list.get(0).get("mat_allday"));
-					mvo.setMat_allDay((boolean) list.get(0).get("mat_allday"));
-					mvo.setMat_bc(((String) list.get(0).get("mat_bc")));
-					mvo.setMat_cont(((String) list.get(0).get("mat_cont")));
-					mvo.setMat_tc(((String) list.get(0).get("mat_tc")));
-					mvo.setMat_title(((String) list.get(0).get("mat_title")));
-					mvo.setMat_type(((String) list.get(0).get("mat_type")));
-					mvo.setCw_mem_id(((String) list.get(0).get("cw_mem_id")));
+					mvo.setMat_allDay((boolean) list.get(0).get("allDay"));
+					mvo.setMat_bc(((String) list.get(0).get("backgroundColor")));
+					mvo.setMat_cont(((String) list.get(0).get("description")));
+					mvo.setMat_tc(((String) list.get(0).get("textColor")));
+					mvo.setMat_title(((String) list.get(0).get("title")));
+					mvo.setMat_type(((String) list.get(0).get("type")));
 					mvo.setCw_mem_id("sona");
-					mvo.setMem_id(((String) list.get(0).get("mem_id")));
 					mvo.setMem_id("brown");
 					mvo.setMat_del("N");
 					mvo.setMat_st(startDate2);
@@ -155,7 +169,7 @@ public class MatchingController {
 				break;
 			}
 		}
-
+		redirectAttributes.addAttribute("mem_id","brown");
 		return "redirect:/matching/getCalendar";
 	}
 
@@ -224,8 +238,9 @@ public class MatchingController {
 
 	@RequestMapping(path = "/getCalendar")
 	public String getCalendar(Model model, String mem_id) {
+		logger.debug("☞mem_id:{}",mem_id);
+		logger.debug("☞matchingService.getMatchingList(mem_id):{}",matchingService.getMatchingList(mem_id));
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-		logger.debug("☞list:{}", matchingService.getMatchingList(mem_id));
 		return "jsonView";
 	}
 

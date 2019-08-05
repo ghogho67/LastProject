@@ -66,6 +66,27 @@
    		where hos_add like '%'||#{hos_add}||'%'
    </select>
    
+   <!-- 지역별 검색을 한 병원 리스트 수 -->
+   <select id="searchHosCnt" resultType="int" parameterType="string">
+		select count(*) 
+		from hospital
+		where hos_add like '%'||#{hos_add}||'%'   
+   </select>
+   
+   <!-- 지역별 검색을 통한 페이지네이션 -->
+   <select id="searchHosPagingList"  parameterType="Map" resultType="hospitalVo">
+   <![CDATA[
+   		select *
+		from
+		(select a.*, rownum rn
+		from
+		(select a.*
+		from hospital a
+		where  hos_add like '%'||#{hos_add}||'%'
+		order by hos_id) a)
+		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+   ]]>
+   </select>
 
 </mapper>
 

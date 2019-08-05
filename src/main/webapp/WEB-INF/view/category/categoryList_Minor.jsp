@@ -11,6 +11,23 @@
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
 <style type="text/css">
+
+
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
 tr {
 	text-align: center;
 	font-weight: 500;
@@ -47,6 +64,11 @@ td {
 			$("#frm").submit();
 		});
 
+		$("#inserBtn").on("click", function() {
+
+			$("#frm2").submit();
+		});
+		
 	});
 </script>
 
@@ -62,10 +84,14 @@ td {
 
 
 	<div class="container">
-		<div class="col-lg-12" style="padding-top: 50px;">
+		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-					<h3 style="font-size: 30px; font-weight: 500;">게시판 소분류 카테고리 관리</h3>
+			<div id="titlee">
+						<h2>
+							<span>카테고리 관리</span> 소분류
+						</h2>
+						</div>
 					<hr>
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
@@ -176,7 +202,7 @@ td {
 
 	<!-- Modal -->
 
-	<form id="frm" action="/category/categoryInsert" method="post">
+	<form id="frm2" action="/category/InsertCategory" method="post">
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -187,15 +213,15 @@ td {
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">Modal 내용</div>
-					<input type="text"  id="cataPId" name="cataPId" value="${MinorCategoryList.cate_paerent_id}" readonly="readonly">
-					<input type="text" id="cataId" name="cateId">
-						<select  name="boarduse_yn" id="boarduse_yn" >
-											<option value="Y">사용</option>
-											<option value="N">사용안함</option>
-						</select>
+					<span>대분류명</span>
+					<input type="hidden"  id="cataPId" name="cataPId" value="${catePId}" readonly="readonly">
+					<input type="text"  id="catatitle" name="cataPtitle" value="${parentCate.cate_title}" readonly="readonly">
+					
+					<span>카테고리명</span>
+					<input type="text" id="catatitle" name="catetitle">
+					
 					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger"
+						<button type="button" class="btn btn-outline-danger" id="inserBtn"
 							data-dismiss="modal">추가</button>
 					</div>
 				</div>
