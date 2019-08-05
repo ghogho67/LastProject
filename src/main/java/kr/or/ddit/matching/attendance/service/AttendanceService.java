@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.ddit.matching.attendance.dao.IAttendanceDao;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 
 @Service
 public class AttendanceService implements IAttendanceService {
@@ -102,8 +103,20 @@ public class AttendanceService implements IAttendanceService {
 	public int attendanceAdIdCnt(int mat_id) {
 		return attendanceDao.attendanceAdIdCnt(mat_id);
 	}
-
 	
+	/**
+	* Method : cwMatchingList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param cw_mem_id
+	* @return
+	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
+	*/
+	@Override
+	public List<MatchingVo> cwMatchingList(String cw_mem_id) {
+		return attendanceDao.cwMatchingList(cw_mem_id);
+		
+	}
 
 
 }

@@ -13,8 +13,8 @@
 
 
 <style>
-<
-style>.pagination-outer {
+
+.pagination-outer {
 	text-align: center;
 }
 

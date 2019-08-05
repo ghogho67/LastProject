@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class AttendanceServiceTest extends LogicTestEnv{
@@ -115,6 +116,28 @@ public class AttendanceServiceTest extends LogicTestEnv{
 		int test = attendanceService.checkInCheck(mat_id);
 		/***Then***/
 		assertEquals(1, test);
+		
+	}
+	
+	@Test
+	public void attendanceAdIdCntTest() {
+		/***Given***/
+		int mat_id = 1;
+		
+		/***When***/
+		int test = attendanceService.attendanceAdIdCnt(mat_id);
+		/***Then***/
+		assertEquals(49, test);
+	}
+	@Test
+	public void cwMatchingList() {
+		/***Given***/
+		String cw_mem_id = "yumi";
+		
+		/***When***/
+		List<MatchingVo> test = attendanceService.cwMatchingList(cw_mem_id);
+		/***Then***/
+		assertEquals(1, test.size());
 		
 	}
 	

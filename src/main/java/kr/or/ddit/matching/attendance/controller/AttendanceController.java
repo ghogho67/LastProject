@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.matching.attendance.service.IAttendanceService;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 
@@ -195,15 +196,27 @@ public class AttendanceController {
 	}
 	
 	
-//	@RequestMapping(path = "/abcdef", method = RequestMethod.GET)
-//	public String workeasd(HttpServletRequest request) {
-//	
-//		
-//		
-//		
-//		return "check/checkOut";
-//		
-//	}
+	/**
+	* Method : cwMypageAttendance
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param model
+	* @param session
+	* @return
+	* Method 설명 : 2019-08-02 
+	*/
+	@RequestMapping("/cwMatList")
+	public String cwMypageAttendance(Model model, HttpSession session) {
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memvo.getMem_id();
+		logger.debug("☞:cw_mem_id :{}",cw_mem_id);
+		List<MatchingVo> cwMatList = attendanceService.cwMatchingList(cw_mem_id);
+		logger.debug("☞cwMatList:{}",cwMatList);
+		model.addAttribute("cwMatList", cwMatList);
+		
+		return "/mypage/check/cw_check.mytiles";
+	}
+
 	
 	
 

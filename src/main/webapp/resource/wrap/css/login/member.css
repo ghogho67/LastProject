@@ -22,9 +22,9 @@ address { padding:80px 0 30px 0; text-align:center;}
 #login li input::input-webkit-placeholder { text-indent:28px;}
 #login li input:focus { border:1px solid #47c9fa; background:#fff; color:#47c9fa;}
 #login li input + a { display:none; position:absolute; right:31px; top:23px; z-index:10;}
-#login li.log { padding:20px 0 10px;}
+#login li.log { padding:5px 0 5px;}
 #login li.log a { width:100%;}
-#login .both { width:340px; padding:0 0 65px; margin:0 auto;}
+#login .both { width:340px; padding:0 0 30px; margin:0 auto;}
 #login .info { margin:0; border-top:1px solid #eee; padding:30px 0; font-size:16px; color:#919ba0;}
 #login .info strong { display:block; padding:20px 0; font-size:36px;}
 #login .info p { font-size:18px;}

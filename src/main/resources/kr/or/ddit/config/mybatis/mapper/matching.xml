@@ -18,7 +18,7 @@
 		#{mat_type},
 		#{mem_id},
 		#{cw_mem_id},
-		#{mat_del})
+		'N')
 	</insert>
 
 	<select id="getMatchingVo" resultType="matchingVo">

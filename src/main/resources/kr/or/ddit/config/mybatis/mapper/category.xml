@@ -7,13 +7,12 @@
 
 
 <!-- 	모든 카테고리를 불러온다 -->
-	<select id="getCategoryList" resultType="CategoryVo"
-		parameterType="String">
+	<select id="getCategoryList" resultType="CategoryVo">
 		select * from category
-
 	</select>
-
-
+	
+	
+	
 
 
 <!-- 	대분류 카테고리를 불러온다 -->
@@ -74,6 +73,19 @@
 	cate_title = #{cate_title}
 	where cate_id = #{cate_id}
 		</update>
+
+
+<insert id="InsertCategory" parameterType="CategoryVo">
+insert into category (cate_id, cate_paerent_id, cate_title, cate_usage, cate_sortnum, cate_date, mem_id) values (cate_id.nextval, #{cate_paerent_id}, #{cate_title}, 'N', '1', sysdate,#{mem_id})
+</insert>
+
+
+
+	<select id="getCategory" resultType="CategoryVo" parameterType="int">
+		select * from category
+		where cate_id=#{cate_id} 
+	</select>
+
 
 
 
