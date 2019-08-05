@@ -47,10 +47,8 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-top text-center">
-                        <h2>Medical Information</h2>
-                        <p>데이터 god saw day multiply
-                         under fill in the cattle fowl a all, 
-                         living, tree word link available in the service for subdue fruit.</p>
+                        <h2>데일리 건강</h2>
+                        <p>회원가입시 입력하신 질병정보를 바탕으로 당신에게 딱 맞는 건강정보를 선정하여 제공해 드립니다</p>
                     </div>
                 </div>
             </div>
@@ -62,14 +60,16 @@
                     
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${pageContext.request.contextPath}/resource/medino/images/department1.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/dementia.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="#"><i class="fa fa-stethoscope"></i></a>
                                 </div>
                             </div>
                             <div class="single-department item-padding text-center">
-                                <h3>cardiac clinic</h3>
-                                <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
+                                <h3>치매라도 괜찮아</h3>
+                                <p>어르신들은 암이나 뇌경색에 비해 치매를 가장 두려워합니다.
+사고능력의 감퇴로 일상적 활동을 완전히 혼자 수행하기 어려운 정도로 악화된 상태를 치매라고 하는데요.
+</p>
                             </div>
                         </div>
                         
@@ -78,14 +78,14 @@
                         
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${pageContext.request.contextPath}/resource/medino/images/department2.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/aa.gif" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
                                 </div>
                             </div>
                             <div class="single-department item-padding text-center">
-                                <h3>plastic surgery</h3>
-                                <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
+                                <h3>술이 술술? 비만 위험이 술술</h3>
+                                <p>당뇨병은 인슐린의 분비량이 부족하거나 포도당의 대사에 이상이 생겨 일어나는 대사 질환의 일종으로 혈중 포도당, 즉 혈당이 높은 것이 특징이다</p>
                             </div>
                         </div>
                         
@@ -93,28 +93,61 @@
                         
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${pageContext.request.contextPath}/resource/medino/images/department3.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/10.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
                                 </div>
                             </div>
                             <div class="single-department item-padding text-center">
-                                <h3>dental clinic</h3>
-                                <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
+                                <h3>노인비만 예반 10계명</h3>
+                                <p>건강한 노후를 위한  습관</p>
                             </div>
                         </div>
                         
                         
+                        
+                                 
+                        
                         <div class="single-slide">
                             <div class="slide-img">
-                                <img src="${pageContext.request.contextPath}/resource/medino/images/department1.jpg" alt="" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/2.jpg" alt="" class="img-fluid">
                                 <div class="hover-state">
                                     <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
                                 </div>
                             </div>
                             <div class="single-department item-padding text-center">
-                                <h3>cardiac clinic</h3>
-                                <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
+                                <h3>젋을때와 달라 달라~</h3>
+                                <p>백세시대 건강한 노후</p>
+                            </div>
+                        </div>
+                        
+                        
+                               <div class="single-slide">
+                            <div class="slide-img">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/11.jpg" alt="" class="img-fluid">
+                                <div class="hover-state">
+                                    <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
+                                </div>
+                            </div>
+                            <div class="single-department item-padding text-center">
+                                <h3>사상체질별 건강관리 비법</h3>
+                                <p>노인 비만은 지방에 비해 근육량이 현저히 감소하는 근감소성 비만이 많다. 노인 비만, 어떻게 탈출할 수 있을까?</p>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="single-slide">
+                            <div class="slide-img">
+                                <img src="${pageContext.request.contextPath}/resource/medino/images/4.jpg" alt="" class="img-fluid">
+                                <div class="hover-state">
+                                    <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
+                                </div>
+                            </div>
+                            <div class="single-department item-padding text-center">
+                                <h3>유병장수? 무병장수!</h3>
+                                <p>백세시대의 또 다른 이름은 '유병장수시대'라고 한다. 건강백세를 위한 건강법은 무엇이 있을까?</p>
                             </div>
                         </div>
                     </div>

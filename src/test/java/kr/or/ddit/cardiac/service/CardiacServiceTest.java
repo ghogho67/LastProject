@@ -32,4 +32,10 @@ public class CardiacServiceTest extends LogicTestEnv{
 		int cnt=cardiacService.insertCardiac(cardiacVo);
 		assertEquals(1, cnt);
 	}
+	
+	
+	
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package kr.or.ddit.gold.gps.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,5 +28,11 @@ public class GpsService implements IGpsService {
 	public int getCardiac(String mem_id) {
 		// TODO Auto-generated method stub
 		return gpsDao.getCardiac(mem_id);
+	}
+
+	@Override
+	public List<GpsVo> oneDayBpm(GpsVo gpsVo) {
+		// TODO Auto-generated method stub
+		return gpsDao.oneDayBpm(gpsVo);
 	}
 }

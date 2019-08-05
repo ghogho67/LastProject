@@ -21,6 +21,7 @@ public class LectureVo {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public LectureVo(int lec_id, int culture_id, String lec_nm, String lec_tea, Date lec_st_dt, Date lec_end_dt,
 			String lec_time, int lec_fee, String lec_day, String lec_type, String lec_amount, String lec_use) {
 		super();
@@ -37,6 +38,7 @@ public class LectureVo {
 		this.lec_amount = lec_amount;
 		this.lec_use = lec_use;
 	}
+
 
 	@Override
 	public String toString() {

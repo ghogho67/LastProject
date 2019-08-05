@@ -79,4 +79,6 @@ public class ShelterDao implements IShelterDao {
 	public List<ShelterVo> getAddShelterList(String sh_add) {
 		return sqlSession.selectList("shelter.getAddShelterList",sh_add);
 	}
+
+
 }

@@ -21,6 +21,7 @@ public class PageVo {
 		this.pageSize = pageSize;
 	}
 
+	
 	public PageVo() {
 	}
 
