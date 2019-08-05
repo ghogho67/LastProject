@@ -52,15 +52,26 @@ infoWindows = [];
 //요양보호사 아이디
 var listData1 = []
 //요양보호사 주소 
-var listData2 = [
-'대전 유성구 유성대로654번길 130',
-'대전광역시 중구 중앙로76', 
-'대전 중구 중앙로 77' 
-];
+// var listData2 = '${addrList}';
+// 	  var data = [];
+
+
+var str = '${addrList}';
+str = str.replace("[", ""); 
+str = str.replace("]", ""); 
+
+   console.log(str);
+var listData2 = str.split(",");
+
+
+
+//    console.log(listData2);
+   console.log(listData2.length);
+//    console.log(list[i]);
 
 function drawMarker() {
 	for (var i=0; i < listData2.length ; i++) {
-
+		console.log(listData2[i]);
 		naver.maps.Service.geocode({
 		    address: listData2[i]
 		}, function(status, response) {

@@ -1,5 +1,6 @@
 package kr.or.ddit.matching.attendance.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import kr.or.ddit.matching.attendance.dao.IAttendanceDao;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Service
 public class AttendanceService implements IAttendanceService {
@@ -113,9 +115,55 @@ public class AttendanceService implements IAttendanceService {
 	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
 	*/
 	@Override
-	public List<MatchingVo> cwMatchingList(String cw_mem_id) {
-		return attendanceDao.cwMatchingList(cw_mem_id);
+	public Map<String, Object> cwMatchingList(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("cwMatchingList", attendanceDao.cwMatchingList(map));
+		String cw_mem_id = (String) map.get("cw_mem_id");
+		int pageSize = (int)map.get("pageSize");
 		
+		int cwMatchingCnt = attendanceDao.cwMatchingCnt(cw_mem_id);
+		int paginationSize = (int) Math.ceil((double)cwMatchingCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		
+		return resultMap;
+		
+	}
+	
+	@Override
+	public Map<String, Object> daySaerchList(Map<String, Object> day) {
+		int pageSize = (int)day.get("pageSize");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("daySaerchList", attendanceDao.daySaerchList(day));
+		
+		Map<String, Object> dayCnt = new HashMap<String, Object>();
+		dayCnt.put("cw_mem_id", day.get("cw_mem_id"));
+		dayCnt.put("day", day.get("day"));
+		int dayAllCnt = attendanceDao.daySaerchCnt(dayCnt);
+		
+		int paginationSize = (int) Math.ceil((double)dayAllCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		
+		return resultMap;
+	}
+	
+	
+	@Override
+	public Map<String, Object> memidSaerchList(Map<String, Object> memid) {
+		int pageSize = (int)memid.get("pageSize");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("memidSaerchList", attendanceDao.memidSaerchList(memid));
+		
+		Map<String, Object> memCnt = new HashMap<String, Object>();
+		memCnt.put("cw_mem_id", memid.get("cw_mem_id"));
+		memCnt.put("mem_id", memid.get("mem_id"));
+		int memAllCnt = attendanceDao.memidSaerchCnt(memCnt);
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
 	}
 
 

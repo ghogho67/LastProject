@@ -68,6 +68,9 @@
 										</ul>
 										
 									</li>
+
+
+
 									<li> <a class="ko" style="position: absolute; left:80%; " href="/logout">로그아웃</a></li>
 
 								</ul>
