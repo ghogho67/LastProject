@@ -203,7 +203,7 @@ public class AttendanceController {
 	* @param model
 	* @param session
 	* @return
-	* Method 설명 : 2019-08-02 수정중
+	* Method 설명 : 2019-08-02 
 	*/
 	@RequestMapping("/cwMatList")
 	public String cwMypageAttendance(Model model, HttpSession session) {
