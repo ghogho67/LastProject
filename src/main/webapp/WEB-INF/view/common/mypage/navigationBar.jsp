@@ -7,7 +7,7 @@
 <title>mypage navigation bar</title>
 
 <style>
-.ko {
+.ko a {
 	color: white !important;
 }
 </style>
@@ -26,7 +26,10 @@
 						<div class="row  justify-content-between d-flex">
 							<div id="logo">
 								<a href="index.html"></a>
+<<<<<<< HEAD
+=======
 
+>>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
 							</div>
 							<nav id="nav-menu-container">
 								<ul class="nav-menu" style="color: white;">
@@ -77,10 +80,20 @@
 							</nav>
 						</div>
 					</div>
+<<<<<<< HEAD
+				</div>
+				<hr>
+				<br>
+			</button>
+		</div>
+	</nav>
+
+=======
 					<hr>
 					<br>
 				</button>
 			</div>
 		</nav>
+>>>>>>> b1514d394da2bed1d5ecf81dcbb06355dd4c8c2d
 </body>
 </html>
