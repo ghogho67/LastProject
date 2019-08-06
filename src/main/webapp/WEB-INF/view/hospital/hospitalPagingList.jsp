@@ -54,7 +54,7 @@
 							
 					      <!-- 검색 -->
 		                  <div class="d1">
-		                  	<form id="frm2" action="${cp}/hospital/searchPagingList" method="post" >
+		                  	<form class="for" id="frm2" action="${cp}/hospital/searchPagingList" method="post" >
 							 		<input type="text" placeholder="구 단위로 검색하세요" name="hos_add" id="hos_add">
 							  	<button type="button" id="searchBtn"></button>
 							  </form>
