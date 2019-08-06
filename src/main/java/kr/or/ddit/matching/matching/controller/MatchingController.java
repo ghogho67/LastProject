@@ -2,6 +2,7 @@ package kr.or.ddit.matching.matching.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -65,18 +66,28 @@ public class MatchingController {
 	@RequestMapping(path = "/map")
 	public String showMap(Model model) {
 		List<MemberVo> cwList = memberService.getCwList();
-//
+		List<String> addrList = memberService.getCwaddr();
+		List<String> list = new ArrayList<String>();
 //		GsonBuilder gsonBuilder = new GsonBuilder();
+		
 //
 //		Gson gson = gsonBuilder.create();
 //		String JSONOBject = gson.toJson(cwList);
 //		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 //		String cwJson = prettyGson.toJson(cwList);
+		for (int i=0; i< cwList.size(); i++) {
+			list.add(cwList.get(i).getMem_id()+":"+cwList.get(i).getMem_nm()+": "+cwList.get(i).getMem_add1());
+		}
 //
 //		logger.debug("☞cwJson:{}", cwJson);
-		model.addAttribute("cwList", cwList);
+//		logger.debug("☞ cwList:{}",cwList);
+		logger.debug("☞ list:{}",list);
+		logger.debug("☞ addrList:{}",addrList);
+//		model.addAttribute("cwList", cwList);
+		model.addAttribute("addrList", addrList);
+		model.addAttribute("list", list);
 
-		return "matching/matchingMap";
+		return "matching/maps";
 
 	}
 

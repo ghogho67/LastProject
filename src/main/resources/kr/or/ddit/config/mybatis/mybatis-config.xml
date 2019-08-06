@@ -35,6 +35,7 @@
 		<typeAlias alias="LectureVo" type="kr.or.ddit.category.others.lecture.model.LectureVo" />
 		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
 		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
+		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
 	</typeAliases>
 
 
@@ -55,6 +56,7 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/lecture.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
 
    </mappers>
 </configuration>

@@ -109,6 +109,14 @@ public interface IMemberService {
 
 	//요양보호사 리스트 조회
 	List<MemberVo> getCwList();
+	
+	
+	
+	//요양보호사리스트 조회
+	List<String> getCwaddr();
+	
+
+	List<String> getCwList2();
 
 
 

@@ -239,7 +239,13 @@
 	
 <!-- 	요양보호사 리스트 조회	 -->
 	<select id = "getCwList" resultType="memberVo">
-		select * from member where mem_grade = '3'
+		select * from member where mem_grade = '3' order by mem_id 
+	</select>
+	<select id = "getCwaddr" resultType="String">
+		select Mem_add1 from member where mem_grade = '3' order by mem_id
+	</select>
+	<select id = "getCwList2" resultType="String">
+		select MEM_ID, MEM_NM, MEM_ADD1 from member where mem_grade = '3' order by mem_id
 	</select>
 
 

@@ -91,8 +91,10 @@ public class ShelterController {
 	@RequestMapping(path = "/detailShelter", method = RequestMethod.GET)
 	public String detailShelter(Model model, int sh_id) {
 		
-		model.addAttribute("shelterVo", shelterService.getShelter(sh_id));
+		logger.debug("☞sh_id:{}",sh_id);
 		
+		model.addAttribute("shelterVo", shelterService.getShelter(sh_id));
+		logger.debug("☞shelterVo:{}",shelterService.getShelter(sh_id));
 		return "/shelter/detailShelter.tiles";
 	}
 	

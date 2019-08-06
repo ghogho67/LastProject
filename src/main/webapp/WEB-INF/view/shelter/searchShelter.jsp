@@ -1,19 +1,115 @@
-<%@page import="kr.or.ddit.category.others.shelter.model.ShelterVo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>무더위 쉼터</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>BasicSubPage</title>
 
-<style>
-.shTr:hover {
+
+<style type="text/css">
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+
+tr {
+	text-align: center;
+	font-weight: 500;
+}
+
+td {
+	text-align: center;
+}
+
+.title {
+	background-color: transparent;
+	width: 180px;
+	padding: 3px;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.kkk {
+	background-color: transparent;
+	border-color: transparent;
+	width: 30px;
+	padding: 3px;
+	font-size: 9pt;
+	width: 30px;
+}
+.for {
+	position: relative;
+	width: 250px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+.d1 {
+	height: 30px;
+	background: white;
+	position: absolute;
+	right: 1%;
+	top: 75px;
+}
+
+.d1 input {
+	width: 100%;
+	height: 30px;
+	padding-left: 90px;
+	border: 2px solid #7BA7AB;
+	border-radius: 5px;
+	outline: none;
+	background: white;
+	color: #9E9C9C;
+	font-size: 13px;
+}
+
+.d1 button {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	width: 32px;
+	height: 30px;
+	border: none;
+	background: #7BA7AB;
+	border-radius: 0 5px 5px 0;
 	cursor: pointer;
 }
+
+.d1 button:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	font-size: 16px;
+	color: #F9F0DA;
+}
+
+#searchType {
+	height: 30px;
+	width: 70px;
+	font-size: 11px;
+	border-radius: 5px 0px 0px 5px;
+	border-top: 2px solid #7BA7AB;
+	border-bottom: 2px solid #7BA7AB;
+	border-left: 2px solid #7BA7AB;
+	border-right: 2px solid #7BA7AB;
+}
+
 </style>
+
 
 <script>
 $(document).ready(function(){
@@ -29,85 +125,103 @@ $(document).ready(function(){
 
 	
 });
-
 </script>
 
+
+
 </head>
+
 <body>
-   
-   <div class="container-fluid">
-      <div class="row">
 
-         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="row">
-               <div class="col-sm-8 blog-main">
-                  <h2 class="sub-header">주소로 찾기</h2>
-                  <form id="frm" class="form-horizontal" role="form" action="${cp }/shelter/searchShelter?sh_add=${sh_add}" method="post">
-<%--                      <input type="hidden" class="form-control" id="sh_add" name="sh_add" value="${sh_add}"> --%>
-                     <input type="hidden" class="form-control" id="sh_id" name="sh_id" value="${sh_id}">
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
-
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<tr>
-									<th>쉼터아이디</th>
-									<th>쉼터이름</th>
-									<th>쉼터주소</th>
-									<th>운영시작일</th>
-									<th>운영종료일</th>
-								</tr>
-								<c:forEach items="${getAddShelterList }" var="vo" varStatus="status">
-										<tr class="shTr" data-sh_id="${vo.sh_id }">
-											<td class="sh_id">${vo.sh_id }</td>
-											<td>${vo.sh_nm }</td>
-											<td>${vo.sh_add }</td>
-											<td>${vo.sh_st_dt }</td>
-											<td>${vo.sh_end_dt }</td>
-										</tr>
-									</c:forEach>
-							</table>
+	<div class="container">
+		<div style="padding-top: 50px; width: 1250px;">
+			<div class="card">
+				<div class="card-body">
+							<div id="titlee">
+						<h2>
+							<span>무더위 쉼터</span>
+						</h2>
 						</div>
+					
 						
-							<!-- 페이지네이션 -->
-							<div class="text-center">
-								<ul class="pagination">
+					<hr>
+					<form id="frm" action="${cp }/shelter/searchShelter?sh_add=${sh_add}" method="post">
+					<input type="hidden" id="sh_id" name="sh_id" value="${sh_id }">
+					<div class="table-responsive">
+						<table class="table center-aligned-table">
+						<thead>
+							<tr>
+								<th>쉼터아이디</th>
+								<th>쉼터이름</th>
+								<th>쉼터주소</th>
+								<th>운영시작일</th>
+								<th>운영종료일</th>
+							</tr>
+							</thead>
+							<tbody>
+							<c:forEach items="${getAddShelterList }" var="vo" varStatus="status">
+								<tr class="shTr" data-sh_id="${vo.sh_id }">
+									<td class="sh_id">${vo.sh_id }</td>
+									<td>${vo.sh_nm }</td>
+									<td>${vo.sh_add }</td>
+									<td>${vo.sh_st_dt }</td>
+									<td>${vo.sh_end_dt }</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					
+					<!-- 페이지 네이션 -->
+					<div class="text-center">
+							<ul class="pagination">
+								<c:choose>
+									<c:when test="${pageVo.page == 1 }">
+										<li class="disabled"><span>«</span></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${cp}/nursingHome/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
+									</c:otherwise>
+								</c:choose>
+								
+								<c:forEach begin="1" end="${paginationSize}" var="i">
 									<c:choose>
-										<c:when test="${pageVo.page == 1 }">
-											<li class="disabled"><span>«</span></li>
+										<c:when test="${pageVo.page == i}">
+											<li class="active"><span>${i}</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="${cp}/shelter/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
+											<li><a href="${cp}/nursingHome/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
 										</c:otherwise>
 									</c:choose>
-									
-									<c:forEach begin="1" end="${paginationSize}" var="i">
-										<c:choose>
-											<c:when test="${pageVo.page == i}">
-												<li class="active"><span>${i}</span></li>
-											</c:when>
-											<c:otherwise>
-												<li><a href="${cp}/shelter/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-									
-									<c:choose>
-										<c:when test="${pageVo.page == paginationSize}">
-											<li class="disabled"><span>»</span></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="${cp}/shelter/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-							</div>
-                     
-                  </form>   
+								</c:forEach>
+								
+								<c:choose>
+									<c:when test="${pageVo.page == paginationSize}">
+										<li class="disabled"><span>»</span></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${cp}/nursingHome/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+						</div>
+					
+					
+					</form>
+					
+	
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+
 </body>
 </html>

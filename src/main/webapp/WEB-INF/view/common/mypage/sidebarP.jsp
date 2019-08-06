@@ -36,11 +36,11 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="#l">
+									<li class="nav-item"><a class="nav-link" href="${cp}/mypage/stress?mem_id=${MEM_INFO.mem_id}">
 										스트레스 지수  </a></li>
-									<li class="nav-item"><a class="nav-link" href="#">
-									     수면 기록 </a></li>
-									     <li class="nav-item"><a class="nav-link" href="#">
+									<li class="nav-item"><a class="nav-link" href="${cp}/mypage/gpxMap?mem_id=${MEM_INFO.mem_id}">
+									     GPS 정보 </a></li>
+									     <li class="nav-item"><a class="nav-link" href="${cp}/mypage/realBpm?mem_id=${MEM_INFO.mem_id}">
 									     심박 정보 </a></li>
 									      <li class="nav-item"><a class="nav-link" href="#">
 									     인지 활동 내역 </a></li>
