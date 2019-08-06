@@ -72,4 +72,9 @@ public class MemberDao implements IMemberDao {
 		return sqlSession.selectList("member.getCwaddr");
 	}
 
+	@Override
+	public List<String> getCwList2() {
+		return sqlSession.selectList("member.getCwList2");
+	}
+
 }
