@@ -580,6 +580,12 @@ public class mypageController {
 	      model.addAttribute("mem_id",mem_id);
 	      return "mypage/gold/realtime_bpm";
 	   }
+	   
+	   
+	   @RequestMapping("/gpxMap")
+	   public String gpxMap(Model Model, String mem_id) {
+	      return "mypage/gold/gpxMap";
+	   }
 	
 	
 }

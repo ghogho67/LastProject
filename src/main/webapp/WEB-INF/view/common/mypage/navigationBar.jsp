@@ -56,7 +56,7 @@
 											<li><a href="blog-home.html">인지 능력 향상 프로그램</a></li>
 											<li><a href="blog-home.html">인지테스트</a></li>
 											<li><a href="${cp}/mypage/stress?mem_id=${MEM_INFO.mem_id}">스트레스 지수 </a></li>
-											<li><a href="blog-home.html">수면상태</a></li>
+											<li><a href="${cp}/mypage/gpxMap?mem_id=${MEM_INFO.mem_id}">GPS 정보</a></li>
 											<li><a href="blog-home.html">GPS</a></li>
 										</ul></li>
 
