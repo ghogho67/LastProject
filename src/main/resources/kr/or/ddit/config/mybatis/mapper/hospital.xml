@@ -59,7 +59,7 @@
    		where hos_id = #{hos_id}
    </delete>
    
-   <!-- 병원 검색 - 구단위 -->
+   <!-- 병원 검색 - 지역단위 -->
    <select id="getSearchHosAdd" parameterType="string" resultType="hospitalVo">
    		select *
    		from hospital
