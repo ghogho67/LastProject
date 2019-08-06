@@ -6,6 +6,9 @@ package kr.or.ddit.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -22,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.gold.gps.model.GpsVo;
+import kr.or.ddit.gold.gps.service.IGpsService;
 import kr.or.ddit.matching.grade.service.IGradeService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
@@ -37,6 +42,9 @@ public class mypageController {
 	
 	@Resource(name = "gradeService")
 	private IGradeService gradeService;
+	
+	@Resource(name = "gpsService")
+	private IGpsService gpsService;
 
 	@RequestMapping("/Patient_Info")
 	public String Patient_Info() {
@@ -475,4 +483,109 @@ public class mypageController {
 		
 		return viewName;
 	}
+	
+	
+	/**
+	* Method : chart2
+	* 작성자 : PC24
+	* 변경이력 :
+	* @param model
+	* @param mem_id
+	* @param gps_time
+	* @return
+	* Method 설명 : 스트레스 지수 확인 
+	*/
+	@RequestMapping("/stress")
+	   public  String chart2(Model model, String mem_id, @RequestParam(required = false)String gps_time) {
+		   long time = System.currentTimeMillis(); 
+
+		   SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		   GpsVo gpsVo = new GpsVo();
+		   if(gps_time==null) {
+			   gps_time = sdf.format(time);
+		   }
+		   
+		   logger.debug("!!!!! gps_time : {}", gps_time);
+		   gpsVo.setMem_id(mem_id);
+		   gpsVo.setGps_time(gps_time);
+		   
+		   List<GpsVo> list = gpsService.oneDayBpm(gpsVo);
+		   List<Integer> list2 = new ArrayList<Integer>();
+		   for(int i=0; i<list.size(); i++) {
+			   list2.add(list.get(i).getCar_bpm());
+		   }
+		   
+		   model.addAttribute("list", list2);
+		   
+		   logger.debug("!!!!! list2 : {}", list2);
+		   
+		   return "mypage/gold/stress";
+	   }
+	
+	
+	
+	/**
+	* Method : chart2
+	* 작성자 : PC24
+	* 변경이력 :
+	* @param model
+	* @param mem_id
+	* @param gps_time
+	* @return
+	* Method 설명 : 스트레스 지수 ajax
+	*/
+	@RequestMapping("/reChart")
+	   public  String reChart(Model model, String mem_id, @RequestParam(required = false)String gps_time) {
+		   long time = System.currentTimeMillis(); 
+
+		   SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		   GpsVo gpsVo = new GpsVo();
+		   if(gps_time==null) {
+			   gps_time = sdf.format(time);
+		   }
+		   
+		   logger.debug("!!!!! gps_time : {}", gps_time);
+		   gpsVo.setMem_id(mem_id);
+		   gpsVo.setGps_time(gps_time);
+		   
+		   List<GpsVo> list = gpsService.oneDayBpm(gpsVo);
+		   List<Integer> list2 = new ArrayList<Integer>();
+		   for(int i=0; i<list.size(); i++) {
+			   list2.add(list.get(i).getCar_bpm());
+		   }
+		   
+		   model.addAttribute("list", list2);
+		   
+		   logger.debug("!!!!! list2 : {}", list2);
+		   
+		   return "jsonView";
+	   }
+	
+		@RequestMapping("/getCardiac")
+		public String getCardiac(Model model, String mem_id) {
+	      
+	      logger.debug("!!!!!!!mem_id :{}",mem_id);
+	      
+	      int bpm = gpsService.getCardiac(mem_id);
+	      logger.debug("!!!!!!!bpm :{}",bpm);
+	      model.addAttribute("bpm",bpm);
+	      return "jsonView";
+		}
+	
+	
+	
+	   @RequestMapping("/realBpm")
+	   public String realBpm(Model model, String mem_id) {
+
+	      model.addAttribute("mem_id",mem_id);
+	      return "mypage/gold/realtime_bpm";
+	   }
+	   
+	   
+	   @RequestMapping("/gpxMap")
+	   public String gpxMap(Model Model, String mem_id) {
+	      return "mypage/gold/gpxMap";
+	   }
+	
+	
 }

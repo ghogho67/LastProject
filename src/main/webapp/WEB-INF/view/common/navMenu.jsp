@@ -20,7 +20,7 @@
 <%-- 				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li> --%>
 				<li><a href="${cp}/hospital/pagingList">요양원/요양병원 찾기</a></li>
 
-				<li><a href="${cp}/test/matching">기관 정보 조회</a></li>
+				<li><a href="${cp}/nursingHome/pagingList">기관 정보 조회</a></li>
 			</ul></li>
 
 		<li class="menu-has-children"><a href="">커뮤니티</a>
@@ -35,8 +35,8 @@
 			<ul>
 				<li><a href="blog-home.html">인지 능력 향상 프로그램</a></li>
 				<li><a href="blog-home.html">인지테스트</a></li>
-				<li><a href="blog-home.html">스트레스 지수 </a></li>
-				<li><a href="blog-home.html">수면상태</a></li>
+				<li><a href="${cp}/mypage/stress?mem_id=${MEM_INFO.mem_id}">스트레스 지수 </a></li>
+				<li><a href="${cp}/mypage/gpxMap?mem_id=${MEM_INFO.mem_id}">GPS 정보</a></li>
 				<li><a href="blog-home.html">GPS</a></li>
 			</ul></li>
 

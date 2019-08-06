@@ -1,5 +1,6 @@
 package kr.or.ddit.matching.matching.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,10 +15,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.matching.matching.model.CalendarVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
+import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 
 @RequestMapping("/matching")
@@ -32,70 +35,75 @@ public class MatchingController {
 	@Resource(name = "memberService")
 	IMemberService memberService;
 
-//	@RequestMapping(path = "/sample")
-//	public String sample() {
-//		return "bestSample";
-//	}
+	@RequestMapping(path = "/sample")
+	public String sample() {
+		return "bestSample";
+	}
+
+	@RequestMapping(path = "/photo")
+	public String profile(Model model, String mem_id) throws IOException {
+		MemberVo memVo = memberService.getMemVo(mem_id);
+		model.addAttribute("memberVo", memVo);
+		return "profileView";
+	}
+
+	@RequestMapping(path = "/meet")
+	public String meeting(Model model, String mem_id) {
+
+		model.addAttribute("memVo", memberService.getMemVo(mem_id));
+		model.addAttribute("mem_id", mem_id);
+		model.addAttribute("list", matchingService.getMatchingList(mem_id));
+		return "matching/meeting";
+	}
+
+	@RequestMapping(path = "/meetjson")
+	public String meetjson(Model model, String mem_id) {
+		model.addAttribute("list", matchingService.getMatchingList(mem_id));
+		return "jsonView";
+	}
+
+	@RequestMapping(path = "/map")
+	public String showMap(Model model) {
+		List<MemberVo> cwList = memberService.getCwList();
+		List<String> addrList = memberService.getCwaddr();
+		List<String> list = new ArrayList<String>();
+
 //
-//	@RequestMapping(path = "/photo")
-//	public String profile(Model model, String mem_id) throws IOException {
-//		MemberVo memVo = memberService.getMemVo(mem_id);
-//		model.addAttribute("memberVo", memVo);
-//		return "profileView";
-//	}
+//		Gson gson = gsonBuilder.create();
+//		String JSONOBject = gson.toJson(cwList);
+//		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+//		String cwJson = prettyGson.toJson(cwList);
+		for (int i = 0; i < cwList.size(); i++) {
+			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
+		}
 //
-//	@RequestMapping(path = "/meet")
-//	public String meeting(Model model, String mem_id) {
-//
-//		model.addAttribute("memVo", memberService.getMemVo(mem_id));
-//		model.addAttribute("mem_id", mem_id);
-//		model.addAttribute("list", matchingService.getMatchingList(mem_id));
+//		logger.debug("☞cwJson:{}", cwJson);
+//		logger.debug("☞ cwList:{}",cwList);
+		logger.debug("☞ list:{}", list);
+		logger.debug("☞ addrList:{}", addrList);
+//		model.addAttribute("cwList", cwList);
+		model.addAttribute("addrList", addrList);
+		model.addAttribute("list", list);
+
+		return "matching/maps";
+
+	}
+
+	@RequestMapping("/profile")
+	public String profile(String mem_id, Model model) throws IOException {
+
+		// 사용자 정보(path)를 조회
+		MemberVo memVo = memberService.getMemVo(mem_id);
+		model.addAttribute("memVo", memVo);
+
+		return "profileView";
+	}
+
+//	@RequestMapping(path = "/calendar")
+//	public String calendarView() {
 //		return "FullCalendar-Example-master1/index";
 //	}
-//
-//	@RequestMapping(path = "/meetjson")
-//	public String meetjson(Model model, String mem_id) {
-//		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-//		return "jsonView";
-//	}
-//
-//	@RequestMapping(path = "/map")
-//	public String showMap(Model model) {
-//		List<MemberVo> cwList = memberService.getCwList();
-//		List<String> addrList = memberService.getCwaddr();
-////
-////		GsonBuilder gsonBuilder = new GsonBuilder();
-////
-////		Gson gson = gsonBuilder.create();
-////		String JSONOBject = gson.toJson(cwList);
-////		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-////		String cwJson = prettyGson.toJson(cwList);
-////
-////		logger.debug("☞cwJson:{}", cwJson);
-//		logger.debug("☞ cwList:{}", cwList);
-//		logger.debug("☞ addrList:{}", addrList);
-//		model.addAttribute("cwList", cwList);
-//		model.addAttribute("addrList", addrList);
-//
-//		return "matching/maps";
-//
-//	}
-//
-//	@RequestMapping("/profile")
-//	public String profile(String mem_id, Model model) throws IOException {
-//
-//		// 사용자 정보(path)를 조회
-//		MemberVo memVo = memberService.getMemVo(mem_id);
-//		model.addAttribute("memVo", memVo);
-//
-//		return "profileView";
-//	}
-//
-////	@RequestMapping(path = "/calendar")
-////	public String calendarView() {
-////		return "FullCalendar-Example-master1/index";
-////	}
-//
+
 //	@RequestMapping(path = "/insertCalendar")
 //	public String insertData(Model model, @RequestBody List<Map<String, Object>> list,
 //			RedirectAttributes redirectAttributes) {

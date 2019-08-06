@@ -76,4 +76,17 @@ public class ShelterService implements IShelterService {
 	public List<ShelterVo> getAddShelterList(String sh_add) {
 		return shelterDao.getAddShelterList(sh_add);
 	}
+
+	/**
+	* Method : searchMapList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param sh_add
+	* @return
+	* Method 설명 :지역 검색 후 주소 리스트
+	*/
+	@Override
+	public List<String> searchMapList(String sh_add) {
+		return shelterDao.searchMapList(sh_add);
+	}
 }

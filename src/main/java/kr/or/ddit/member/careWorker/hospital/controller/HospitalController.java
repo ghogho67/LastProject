@@ -1,5 +1,6 @@
 package kr.or.ddit.member.careWorker.hospital.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +73,7 @@ public class HospitalController {
 	public String searchHospital(Model model, String hos_add) {
 		
 		model.addAttribute("getSearchHosAdd", hospitalService.getSearchHosAdd(hos_add));
+
 		
 		return "/hospital/searchHospital.tiles";
 	}
@@ -97,6 +99,24 @@ public class HospitalController {
 		
 		logger.debug("☞getSearchHosAdd:{}",getSearchHosAdd);
 		
+		
+
+		List<String> list = new ArrayList<String>();
+		
+		List<HospitalVo> hosList = hospitalService.hosList();
+		model.addAttribute("hosList",hosList);
+		
+		List<String> searchMapList = hospitalService.searchMapList(hos_add);
+		model.addAttribute("searchMapList",searchMapList);
+		logger.debug("☞searchMapList:{}",searchMapList);
+		
+		for(int i = 0; i < hosList.size(); i++) {
+			list.add(hosList.get(i).getHos_nm()+ ":" + hosList.get(i).getHos_phone() + ": " + hosList.get(i).getHos_add());
+		}
+		logger.debug("☞list:{}",list);
+		model.addAttribute("list", list);
+		
+	
 		
 		//-------------- 페이지 네이션!!
 		
@@ -127,7 +147,21 @@ public class HospitalController {
 	}
 	
 	@RequestMapping(path = "/map")
-	public String map() {
+	public String searchMapList(String hos_add, Model model) {
+//		
+//		List<String> list = new ArrayList<String>();
+//		
+////		List<HospitalVo> hosList = hospitalService.hosList();
+////		model.addAttribute("hosList",hosList);
+//		
+//		List<HospitalVo> searchMapList = hospitalService.searchMapList(hos_add);
+//		model.addAttribute("searchMapList",searchMapList);
+//		logger.debug("☞searchMapList:{}",searchMapList);
+//		
+//		for(int i = 0; i < searchMapList.size(); i++) {
+//			list.add(searchMapList.get(i).getHos_nm()+ ":" + searchMapList.get(i).getHos_phone() + ": " + searchMapList.get(i).getHos_add());
+//		}
+//		model.addAttribute("list", list);
 		
 		return "/hospital/maps";
 	}

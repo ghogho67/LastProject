@@ -57,4 +57,14 @@ public interface IHospitalService {
 	*/
 	Map<String, Object> searchHosPagingList(Map<String, Object> map);
 	
+	/**
+	* Method : searchMapList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param hos_add
+	* @return
+	* Method 설명 : 지역 검색 후 주소 리스트 조회
+	*/
+	List<String> searchMapList(String hos_add);
+	
 }
