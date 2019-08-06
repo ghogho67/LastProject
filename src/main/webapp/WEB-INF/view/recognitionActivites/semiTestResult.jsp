@@ -127,7 +127,6 @@ ul, li, dl, dd {
 	color: #3b3b3b;
 }
 
-
 </style>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
@@ -153,20 +152,31 @@ ul, li, dl, dd {
             <div class="row">
                 <div class="col-lg-5 align-self-center">
                     <div class="welcome-img">
+                    
+                    
                        <img src="${pageContext.request.contextPath}/resource/medino/images/620.jpg" alt="">
+                       
+                       
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="welcome-text mt-5 mt-lg-0">
-                        <h2 style="text-align: center;"> 유의사항</h2>
+                    
+                    
+                        <h2 style="text-align: center;">치매 <span style="color: red;">고위험군</span> 입니다  </h2>
+                        <h2 style="text-align: center;">약간 위험한 정도에요! </h2>
+                        <h2 style="text-align: center;">건강한 인지력을 지니셨군요</h2>
+                        
+                        
                         <p class="pt-3">
                         <ul>
-                        <li> 7문항으로 구성된 테스트 입니다</li>
-                        <li> 꼭 본인의 힘으로 테스트를 완료해주세요 </li>
+                        
+                      <li>빠른시일내에 치매상담실에 상담 또는 전문의의 정확한 진단을 받아보시길 권합니다.</li>
+                        
                          </ul>
                         </p>
-                        <p>검사 후 의심자는 치매상담실에 상담 또는 전문의의 정확한 진단을 받아보시길 권합니다.</p>
-                        <a href="${cp}/recognition/semiTestQ1">진행하기</a>
+                    
+                        <a href="#" >처음으로 돌아가기</a>
                     </div>
                 </div>
             </div>
