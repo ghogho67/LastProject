@@ -80,7 +80,7 @@ public class MatchingController {
 		model.addAttribute("cwList", cwList);
 		model.addAttribute("addrList", addrList);
 
-		return "matching/maps";
+		return "matching/maps4";
 
 	}
 
