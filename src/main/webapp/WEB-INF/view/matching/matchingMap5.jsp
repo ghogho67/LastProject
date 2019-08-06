@@ -30,68 +30,15 @@
 		$("input[name='add']").each(function(i) {
 			addressArray.push($(this).val());
 		});
+		
 
-		for (i = 0; i < addressArray.length; i++) {
-			position[i] = address(addressArray[i]);
-		}
-
-		MARKER_SPRITE_POSITION = {
-			"송강동" : 'a',
-			"대흥동" : 'a'
-		};
+					for (i = 0; i < addressArray.length; i++) {
+							position[i] = address(addressArray[i]);
+		// 				}
 
 	});
 
-	for ( var key in addressArray) {
-
-		// 		var position = new naver.maps.LatLng(southWest.lat() + latSpan
-		// 				* Math.random(), southWest.lng() + lngSpan * Math.random());
-
-		naver.maps.Service.geocode({
-			query : key
-		}, function(response) {
-			position = new naver.maps.LatLng(response.v2.addresses[0].x,
-					response.v2.addresses[0].y);
-
-		});
-
-		// 		naver.maps.Service.geocode({
-		// 			query : '불정로 6'
-		// 		}, function(status, response) {
-		// 			if (status !== naver.maps.Service.Status.OK) {
-		// 				return alert('Something wrong!');
-		// 			}
-
-		// 			var result = response.v2, // 검색 결과의 컨테이너
-		// 			items = result.addresses; // 검색 결과의 배열
-
-		// 			// do Something
-		// 		});
-		var marker = new naver.maps.Marker({
-			map : map,
-			position : position,
-			title : key,
-			icon : {
-				url : HOME_PATH + '/img/example/sp_pins_spot_v3.png',
-				size : new naver.maps.Size(24, 37),
-				anchor : new naver.maps.Point(12, 37),
-				origin : new naver.maps.Point(MARKER_SPRITE_POSITION[key][0],
-						MARKER_SPRITE_POSITION[key][1])
-			},
-			zIndex : 100
-		});
-
-		var infoWindow = new naver.maps.InfoWindow(
-				{
-					content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
-							+ key.substr(0, 1) + '"</b>.</div>'
-				});
-
-		markers.push(marker);
-		infoWindows.push(infoWindow);
-	};
-
-// 	function address(address) {
+	function address(address) {
 		// 					// 					var a = [];
 
 		// 					// 				for (i = 0; i < addressArray.length; i++) {
@@ -104,9 +51,15 @@
 
 		// 					});
 		// 	
+		naver.maps.Service.geocode({
+			query : addressArray[i]
+		}, function(response) {
+			position = new naver.maps.LatLng(response.v2.addresses[0].x,
+					response.v2.addresses[0].y);
 
-// 	}
-// 	console.log(position);
+		});
+	}
+	console.log(position);
 </script>
 
 <br>

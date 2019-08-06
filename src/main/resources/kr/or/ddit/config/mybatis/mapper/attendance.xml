@@ -77,5 +77,50 @@
 	select max(AD_ID) from Attendance where mat_id = #{mat_id}
 	</select>
 	
+	<select id="daySaerchList" parameterType="map" resultType="attendanceMatchingVo" > 
+		<![CDATA[
+	      select * 
+			from
+			(select a.*, rownum rn
+			from
+			(select att.mat_id, to_char(att.ad_st,'YYYY-MM-DD HH24:MI:SS')ad_st, to_char(att.ad_end,'YYYY-MM-DD HH24:MI:SS')ad_end, m.mem_id,m.mat_del,M.Mat_Type
+                from MATCHING m, ATTENDANCE att
+                where m.MAT_ID = att.MAT_ID 
+                and m.CW_MEM_ID= #{cw_mem_id}
+                and att.ad_st like #{day}||'%')a )b
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+				]]>
+	</select>
+	
+	<select id="daySaerchCnt" parameterType="map" resultType="int" > 
+			select count(*) from MATCHING m, ATTENDANCE a
+                where m.MAT_ID = a.MAT_ID 
+                and m.CW_MEM_ID=#{cw_mem_id}
+                and a.ad_st like  #{day}||'%'
+	</select>
+	
+	<select id="memidSaerchList" parameterType="map" resultType="attendanceMatchingVo" > 
+		<![CDATA[
+		     select * 
+			from
+			(select a.*, rownum rn
+			from
+			(select att.mat_id, to_char(att.ad_st,'YYYY-MM-DD HH24:MI:SS')ad_st, to_char(att.ad_end,'YYYY-MM-DD HH24:MI:SS')ad_end, 
+                    m.mem_id,m.mat_del,M.Mat_Type, m.cw_mem_id
+                from MATCHING m, ATTENDANCE att
+                where m.MAT_ID = att.MAT_ID 
+                and m.CW_MEM_ID= #{cw_mem_id}
+                and m.mem_id like #{mem_id}')a )b
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+			]]>
+	</select>
+	
+	<select id="memidSaerchCnt" parameterType="map" resultType="int" > 
+		 select count(*) from MATCHING m, ATTENDANCE a
+                where m.MAT_ID = a.MAT_ID 
+                and m.CW_MEM_ID=#{cw_mem_id}
+                and m.mem_id like #{mem_id}
+	</select>
+	
 
 </mapper>

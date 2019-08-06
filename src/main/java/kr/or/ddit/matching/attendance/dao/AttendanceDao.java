@@ -104,7 +104,7 @@ public class AttendanceDao implements IAttendanceDao {
 		return sqlSession.selectOne("attendance.attendanceAdIdCnt",mat_id);
 	}
 	
-	
+	//=========================페이지네이션================================
 	/**
 	* Method : cwMatchingList
 	* 작성자 : PC21
@@ -129,4 +129,27 @@ public class AttendanceDao implements IAttendanceDao {
 	public int cwMatchingCnt(String cw_mem_id) {
 		return sqlSession.selectOne("attendance.cwMatchingCnt",cw_mem_id);
 	}
+	
+	
+	@Override
+	public List<MatchingVo> daySaerchList(Map<String, Object> resultMap) {
+		return sqlSession.selectList("attendance.daySaerchList",resultMap);
+	}
+	
+	@Override
+	public int daySaerchCnt(Map<String, Object> day) {
+		return sqlSession.selectOne("attendance.daySaerchCnt",day);
+	}
+	
+	
+	@Override
+	public List<MatchingVo> memidSaerchList(Map<String, Object> resultMap) {
+		return sqlSession.selectList("attendance.memidSaerchList",resultMap);
+	}
+	@Override
+	public int memidSaerchCnt(Map<String, Object> memid) {
+		return sqlSession.selectOne("attendance.memidSaerchCnt",memid);
+	}
+	
+	
 }
