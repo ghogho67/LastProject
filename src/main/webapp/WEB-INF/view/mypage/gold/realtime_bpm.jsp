@@ -129,8 +129,10 @@
 				<div class="card">
 					<div class="card-body" style="width:75%">
 						<canvas id="myChart"></canvas>
-						<img alt="" src="${cp}/image/bpm.gif">
-						<p id="bpm"></p>
+						<div style="position: absolute; right: 80px; top: 110px;">
+							<img alt="" src="${cp}/image/bpm.gif">
+							<p id="bpm"></p>
+						</div>
 					</div>
 					
 				</div>
@@ -139,6 +141,7 @@
 
 
 	</div>
+
 
 
 

@@ -244,9 +244,9 @@
 	<select id = "getCwaddr" resultType="String">
 		select Mem_add1 from member where mem_grade = '3' order by mem_id
 	</select>
-<!-- 	<select id = "getCwList" resultType="String"> -->
-<!-- 		select * from member where mem_grade = '3' order by mem_id -->
-<!-- 	</select> -->
+	<select id = "getCwList2" resultType="String">
+		select MEM_ID, MEM_NM, MEM_ADD1 from member where mem_grade = '3' order by mem_id
+	</select>
 
 
 </mapper>
