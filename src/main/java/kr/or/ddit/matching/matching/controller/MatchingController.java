@@ -65,6 +65,7 @@ public class MatchingController {
 	@RequestMapping(path = "/map")
 	public String showMap(Model model) {
 		List<MemberVo> cwList = memberService.getCwList();
+		List<String> addrList = memberService.getCwaddr();
 //
 //		GsonBuilder gsonBuilder = new GsonBuilder();
 //
@@ -74,9 +75,12 @@ public class MatchingController {
 //		String cwJson = prettyGson.toJson(cwList);
 //
 //		logger.debug("☞cwJson:{}", cwJson);
+		logger.debug("☞ cwList:{}",cwList);
+		logger.debug("☞ addrList:{}",addrList);
 		model.addAttribute("cwList", cwList);
+		model.addAttribute("addrList", addrList);
 
-		return "matching/matchingMap";
+		return "matching/maps";
 
 	}
 

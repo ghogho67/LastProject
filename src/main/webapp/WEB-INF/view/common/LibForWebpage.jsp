@@ -8,21 +8,21 @@
 
 <!-- CSS Files -->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/animate-3.7.0.css">
+	href="${cp}/resource/medino/css/animate-3.7.0.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/font-awesome-4.7.0.min.css">
+	href="${cp}/resource/medino/css/font-awesome-4.7.0.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/bootstrap-4.1.3.min.css">
+	href="${cp}/resource/medino/css/bootstrap-4.1.3.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/owl-carousel.min.css">
+	href="${cp}/resource/medino/css/owl-carousel.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/jquery.datetimepicker.min.css">
+	href="${cp}/resource/medino/css/jquery.datetimepicker.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/linearicons.css">
+	href="${cp}/resource/medino/css/linearicons.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resource/medino/css/style.css">
+	href="${cp}/resource/medino/css/style.css">
 
-<link href="${pageContext.request.contextPath}/resource/wrap/css/style.css"
+<link href="${cp}/resource/wrap/css/style.css"
 	rel="stylesheet">
 
 <!-- Javascript -->

@@ -67,15 +67,7 @@
 			return data;
 			
 		}
-		
-		
-		
-		
-		function getData(){
-			
-		}
-		
-		
+	
 
 		var scatterChartData = {
 			datasets: [{
@@ -87,14 +79,6 @@
 		};
 		
 		
-		
-		
-		
-		
-
-		
-		
-
 		var ctx = document.getElementById("canvas").getContext("2d");
 		$(document).ready(function() {
 
@@ -115,9 +99,6 @@
 			
 		window.onload = function() {
 			
-			
-
-
 			var myScatter = Chart.Scatter(ctx, {
 				data: scatterChartData,
 				options: {
@@ -151,25 +132,7 @@
 			  
 			  
 			});
-			
-			
-			
-			
-/*
-			var image = new Image(60, 45); // Using optional size for image
-			image.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
-			image.onload = function() {
-				ctx.drawImage(image,200,200);
-	
-			}; // Draw when image has loaded
-			
-			image.onerror = function() {
-			    // It's always good to have some error handling.
-			    console.log('image load error');
-			    // do somthing else....
-			};
 
-			*/
 		};
 
 	</script>

@@ -32,18 +32,14 @@
 						});
 
 						function showPosition(position) {
-
 							nLat = position.coords.latitude;
 							nLng = position.coords.longitude;
-
 							var mapOptions = {
 								center : new naver.maps.LatLng(nLat, nLng),
 								zoom : 10
 							};
-
 							map = new naver.maps.Map('map', mapOptions);
 							drawMarker();
-
 						}
 
 						function drawMarker() {

@@ -112,5 +112,8 @@ public interface IMemberDao {
 
 	//요양보호사리스트 조회
 	List<MemberVo> getCwList();
+	
+	//요양보호사리스트 조회
+	List<String> getCwaddr();
 
 }

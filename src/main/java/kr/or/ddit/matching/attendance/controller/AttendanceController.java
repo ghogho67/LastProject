@@ -228,6 +228,44 @@ public class AttendanceController {
 		
 		return "/mypage/check/cw_check.mytiles";
 	}
+	
+	@RequestMapping(path = "/saerch", method = RequestMethod.POST)
+	public String saerchList(Model model, String searchType, String saerchVal,HttpSession session) {
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memvo.getMem_id();
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cw_mem_id", cw_mem_id);
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		if(searchType.equals("memid")) {
+			String mem_id = saerchVal;
+			map.put("mem_id", mem_id);
+			Map<String, Object> resultMap = attendanceService.memidSaerchList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("memidSaerchList");
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/cw_check.mytiles";
+			
+			
+		}else if(searchType.equals("day")) {
+			String day = saerchVal;
+			map.put("day", day);
+			Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("daySaerchList");
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/cw_check.mytiles";
+			
+		}else if(saerchVal.equals(" ")){
+			return "/attendance/cwMatList";
+		}else {
+			return "/attendance/cwMatList";
+		}
+	}
 
 	
 	
