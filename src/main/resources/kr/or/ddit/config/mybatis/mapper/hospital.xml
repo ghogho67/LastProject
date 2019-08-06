@@ -87,6 +87,13 @@
 		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
    ]]>
    </select>
+   
+   <!-- 지역 검색 후 주소만 검색 -->
+   <select id="searchMapList" parameterType="string" resultType="hospitalVo">
+   		select hos_add
+		from hospital
+		where hos_add like '%'||#{hos_add}||'%'
+   </select>
 
 </mapper>
 

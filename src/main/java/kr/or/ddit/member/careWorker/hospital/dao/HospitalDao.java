@@ -11,6 +11,70 @@ import org.springframework.stereotype.Repository;
 import kr.or.ddit.member.careWorker.hospital.model.HospitalVo;
 import kr.or.ddit.page.model.PageVo;
 
+/**
+* HospitalDao.java
+*
+* @author ADMIN
+* @version 1.0
+* @see
+*
+* <pre>
+* << 개정이력(Modification Information) >>
+*
+* 수정자 수정내용
+* ------ ------------------------
+* ADMIN 최초 생성
+*
+* </pre>
+*/
+/**
+* HospitalDao.java
+*
+* @author ADMIN
+* @version 1.0
+* @see
+*
+* <pre>
+* << 개정이력(Modification Information) >>
+*
+* 수정자 수정내용
+* ------ ------------------------
+* ADMIN 최초 생성
+*
+* </pre>
+*/
+/**
+* HospitalDao.java
+*
+* @author ADMIN
+* @version 1.0
+* @see
+*
+* <pre>
+* << 개정이력(Modification Information) >>
+*
+* 수정자 수정내용
+* ------ ------------------------
+* ADMIN 최초 생성
+*
+* </pre>
+*/
+/**
+* HospitalDao.java
+*
+* @author ADMIN
+* @version 1.0
+* @see
+*
+* <pre>
+* << 개정이력(Modification Information) >>
+*
+* 수정자 수정내용
+* ------ ------------------------
+* ADMIN 최초 생성
+*
+* </pre>
+*/
 @Repository
 public class HospitalDao implements IHospitalDao{
 	@Resource(name = "sqlSession")
@@ -106,6 +170,20 @@ public class HospitalDao implements IHospitalDao{
 	@Override
 	public int searchHosCnt(String hos_add) {
 		return sqlSession.selectOne("hospital.searchHosCnt",hos_add);
+	}
+
+	
+	/**
+	* Method : searchMapList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param hos_add
+	* @return
+	* Method 설명 :지역 검색 후 주소 리스트 조회
+	*/
+	@Override
+	public List<HospitalVo> searchMapList(String hos_add) {
+		return sqlSession.selectList("hospital.searchMapList",hos_add);
 	}
 
 	

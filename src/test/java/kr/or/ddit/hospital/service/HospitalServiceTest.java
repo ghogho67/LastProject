@@ -117,4 +117,21 @@ public class HospitalServiceTest extends LogicTestEnv{
 		assertNotNull(searchHosPagingList);
 	}
 	
+	/**
+	* Method : searchMapList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :지역 검색 후 주소 리스트 조회
+	*/
+	@Test
+	public void searchMapList() {
+		/***Given***/
+		String hos_add = "서구";
+		/***When***/
+		List<HospitalVo> searchMapList = hospitalService.searchMapList(hos_add);
+		/***Then***/
+		assertEquals(25, searchMapList.size());
+	}
+	
+	
 }

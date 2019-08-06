@@ -97,5 +97,19 @@ public class HospitalService implements IHospitalService{
 	}
 
 	
+	/**
+	* Method : searchMapList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param hos_add
+	* @return
+	* Method 설명 :지역 검색 후 주소 리스트 조회
+	*/
+	@Override
+	public List<HospitalVo> searchMapList(String hos_add) {
+		return hospitalDao.searchMapList(hos_add);
+	}
+
+	
 	
 }
