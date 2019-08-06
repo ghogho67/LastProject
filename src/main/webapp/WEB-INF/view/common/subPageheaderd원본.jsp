@@ -46,7 +46,7 @@
 							<ul>
 								<li><a href="blog-home.html">인지 능력 향상 프로그램</a></li>
 								<li><a href="blog-home.html">인지테스트</a></li>
-								<li><a href="blog-home.html">스트레스 지수 </a></li>
+								<li><a href="${cp}/mypage/stress">스트레스 지수 </a></li>
 								<li><a href="blog-home.html">수면상태</a></li>
 								<li><a href="blog-home.html">GPS</a></li>
 							</ul></li>

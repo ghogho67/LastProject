@@ -116,7 +116,7 @@ var chartColors = {
 <body>
 
 <div>
-		<canvas id="myChart"></canvas>
+	<canvas id="myChart"></canvas>
 	</div>
 
 
