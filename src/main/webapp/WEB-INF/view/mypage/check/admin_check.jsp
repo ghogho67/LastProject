@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
 <style>
@@ -135,9 +136,9 @@
 	width: 32px;
 	height: 38px;
 	border: none;
-	background: #7BA7AB;
+ 	background: #7BA7AB;
 	border-radius: 0 5px 5px 0;
-	cursor: pointer;
+ 	cursor: pointer; 
 }
 
 .d1 button:before {
@@ -160,20 +161,14 @@
 </style>
 
 <script>
-   $(document).ready(function() {
-	   $("#searchType").change("on", function(){
-// 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
-			alert("/19/07/30형식으로 기입");
-	   });
-	   
-	   
-	   
+
+$( document ).ready(function() {
 	   $("#saerchBtn").click("on",function(){
 			var data = $("#saerchList").serialize();
 			console.log(data);
 			$.ajax({
 				type: "POST",
-				url : "${cp}/attendance/saerch",
+				url : "${cp}/attendance/adminSaerch",
 				data : data,
 				success : function(data){
 					console.log(data);
@@ -184,8 +179,14 @@
 			}
 		 });
 		});
+	   
+	 
+
 	
-   });
+});
+
+
+
 </script>
 
 </head>
@@ -206,7 +207,7 @@
             <div class="card-body">
             
 					 <div class="d1">
-                          <form id="saerchList" class="for" method="POST" action="${cp}/attendance/saerch">
+                          <form id="saerchList" class="for" method="POST" action="${cp}/attendance/adminSaerch">
 
                              <select id="searchType" name="searchType"
 							style="position: absolute; z-index: 999;">
@@ -227,9 +228,10 @@
 
 										<colgroup>
 											<col style="width: 10%">
-											<col style="width: 30%" class="ng-scope">
-											<col style="width: 30%">
+											<col style="width: 25%" class="ng-scope">
+											<col style="width: 25%">
 											<col style="width: 20%">
+											<col style="width: 10%">
 											<col style="width: 10%">
 										</colgroup>
 
@@ -239,18 +241,20 @@
 												<th scope="col">출근시간</th>
 												<th scope="col">퇴근시간</th>
 												<th scope="col">회원아이디</th>
+												<th scope="col">요양보호사아이디</th>
 												<th scope="col">매칭번호</th>
 											</tr>
 										</thead>
 
 						
 						<tbody>
-                        <c:forEach items="${cwMatList }" var="vo" varStatus="status">
+                        <c:forEach items="${adminCheckList }" var="vo" varStatus="status">
                         				<tr>
 											<td>${vo.rn }</td>
 											<td>${vo.ad_st }</td>
 											<td>${vo.ad_end }</td>
 											<td>${vo.mem_id }</td>
+											<td>${vo.cw_mem_id }</td>
 											<td>${vo.mat_id }</td>
 										</tr>
 									</c:forEach>

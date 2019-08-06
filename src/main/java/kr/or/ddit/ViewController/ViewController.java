@@ -142,7 +142,7 @@ public class ViewController {
 	
 	@RequestMapping("/testof")
 	public String test() {
-		return "/mypage/check/cw_check.mytiles";
+		return "/thisTok/thistok";
 	}
 	
 	

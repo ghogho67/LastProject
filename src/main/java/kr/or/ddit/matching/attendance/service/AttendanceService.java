@@ -6,8 +6,11 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.dao.IAttendanceDao;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
@@ -15,7 +18,8 @@ import kr.or.ddit.page.model.PageVo;
 
 @Service
 public class AttendanceService implements IAttendanceService {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(AttendanceService.class);
 	@Resource(name = "attendanceDao")
 	private IAttendanceDao attendanceDao;
 	
@@ -163,6 +167,52 @@ public class AttendanceService implements IAttendanceService {
 		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
 		resultMap.put("paginationSize", paginationSize);
 		
+		return resultMap;
+	}
+	
+	
+	
+	@Override
+	public Map<String, Object> adminCheckList(PageVo pageVo) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("adminCheckList", attendanceDao.adminCheckList(pageVo));
+		int pageSize = pageVo.getPageSize();
+		
+		int checkCnt = attendanceDao.adminCheckCnt();
+		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
+	}
+	
+	
+	
+	
+	@Override
+	public Map<String, Object> adminMemShearch(Map<String, Object> map) {
+		int pageSize = (int) map.get("pageSize");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("adminMemSaerch", attendanceDao.adminMemShearch(map));
+		
+		String memid = (String) map.get("mem_id");
+		int checkCnt =  attendanceDao.adminMemSearchCnt(memid);
+		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		return resultMap;
+	}
+	
+	
+	
+	
+	@Override
+	public Map<String, Object> adminDaySearch(Map<String, Object> map) {
+		int pageSize = (int) map.get("pageSize");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("adminDaySaerch", attendanceDao.adminDaySearch(map));
+		String day = (String) map.get("day");
+		int checkCnt =  attendanceDao.adminDaySearchCnt(day);
+		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
 		return resultMap;
 	}
 

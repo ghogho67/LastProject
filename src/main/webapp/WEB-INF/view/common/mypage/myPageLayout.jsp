@@ -14,6 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForWebpage2.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
