@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import kr.or.ddit.SMS.SMS;
 import kr.or.ddit.gold.gps.model.GpsVo;
 import kr.or.ddit.gold.sos.service.ISosService;
 
@@ -28,13 +28,8 @@ public class SosController {
 
 	
 	@RequestMapping(path = "/sosCall")
-<<<<<<< HEAD
-	public void sosCall(@RequestParam(value = "mem_id") String mem_id, HttpServletRequest request, HttpServletResponse response,RedirectAttributes ra, Model model) throws Exception {
-		
-=======
 	public void sosCall(@RequestParam(value = "mem_id") String mem_id, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		SMS sms = new SMS();
->>>>>>> 2abfe03c945f11ebb26ed61b75a1faf7d0d20507
 		logger.debug("!!!!!!!!!mem_id : {}", mem_id);
 		int gps_id = sosService.recentData(mem_id);
 		sosService.insertSOS(gps_id);
