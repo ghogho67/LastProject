@@ -45,6 +45,13 @@
 		where sh_add like '%'||#{sh_add}||'%'
 	</select>
 	
+	<!-- 지역검색 후 주소만 검색 -->
+	<select id="searchMapList" parameterType="string" resultType="string">
+		select sh_add
+		from shelter
+		where sh_add like '%'||#{sh_add}||'%'
+	</select>
+	
 	
 	
 	

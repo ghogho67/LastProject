@@ -196,6 +196,7 @@ public class AttendanceController {
 		 
 	}
 	
+<<<<<<< HEAD
 //	
 //	/**
 //	* Method : cwMypageAttendance
@@ -267,6 +268,167 @@ public class AttendanceController {
 //	}
 //
 //	
+=======
+	
+	/**
+	* Method : cwMypageAttendance
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param model
+	* @param session
+	* @return
+	* Method 설명 : 2019-08-05 요양보호사 출결전체조회
+	*/
+	@RequestMapping(path = "/cwMatList", method = RequestMethod.GET)
+	public String cwMypageAttendance(Model model, HttpSession session) {
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memvo.getMem_id();
+		
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cw_mem_id", cw_mem_id);
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		logger.debug("☞:cw_mem_id :{}",cw_mem_id);
+		Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
+		List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("cwMatchingList");
+		logger.debug("☞attendanceList:{}",attendanceList);
+		model.addAttribute("cwMatList", attendanceList);
+		model.addAttribute("pageVo",pageVo);
+		model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+		
+		return "/mypage/check/cw_check.mytiles";
+	}
+	
+	/**
+	* Method : saerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param model
+	* @param searchType
+	* @param saerchVal
+	* @param session
+	* @return
+	* Method 설명 : 요양보호사 검색 날짜, 회원별 검색
+	*/
+	@RequestMapping(path = "/saerch", method = RequestMethod.POST)
+	public String saerchList(Model model, String searchType, String saerchVal,HttpSession session) {
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memvo.getMem_id();
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cw_mem_id", cw_mem_id);
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		if(searchType.equals("memid")&&!saerchVal.equals("")) {
+			String mem_id = saerchVal;
+			map.put("mem_id", mem_id);
+			Map<String, Object> resultMap = attendanceService.memidSaerchList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("memidSaerchList");
+			logger.debug("☞:saerchVal :{}",saerchVal);
+			logger.debug("☞:searchType :{}",searchType);
+			logger.debug("☞:attendanceList:{}",attendanceList);
+			
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/cw_check.mytiles";
+		
+		}else if(searchType.equals("day")&&!saerchVal.equals("")) {
+			String day = saerchVal;
+			map.put("day", day);
+			Map<String, Object> resultMap = attendanceService.daySaerchList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("daySaerchList");
+			logger.debug("☞:saerchVal :{}",saerchVal);
+			logger.debug("☞:day :{}",day);
+			logger.debug("☞:attendanceList :{}",attendanceList);
+			
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/cw_check.mytiles";
+			
+		}else if(searchType.equals("memid") && saerchVal.equals("")){
+			return "redirect:/attendance/cwMatList";
+		}else if((searchType.equals("day")&&saerchVal.equals(""))){
+			return "redirect:/attendance/cwMatList";
+		}else {
+			return "redirect:/attendance/cwMatList";
+			
+		}
+	}
+	
+	
+	@RequestMapping(path = "/adminCheckList", method = RequestMethod.GET)
+	public String adminCheckList(Model model) {
+		
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		Map<String, Object> resultMap = attendanceService.adminCheckList(pageVo);
+		List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminCheckList");
+		model.addAttribute("adminCheckList", attendanceList);
+		model.addAttribute("pageVo",pageVo);
+		model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+		
+		return "/mypage/check/admin_check.mytiles";
+	}
+	
+	
+	/**
+	* Method : saerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param model
+	* @param searchType
+	* @param saerchVal
+	* @param session
+	* @return
+	* Method 설명 : 요양보호사 검색 날짜, 회원별 검색
+	*/
+	@RequestMapping(path = "/adminSaerch", method = RequestMethod.POST)
+	public String adminSaerch(Model model, String searchType, String saerchVal,HttpSession session) {
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		if(searchType.equals("memid")&&!saerchVal.equals("")) {
+			String mem_id = saerchVal;
+			map.put("mem_id", mem_id);
+			Map<String, Object> resultMap = attendanceService.adminMemShearch(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminMemSaerch");
+			
+			model.addAttribute("adminCheckList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/admin_check.mytiles";
+		
+		}else if(searchType.equals("day")&&!saerchVal.equals("")) {
+			String day = saerchVal;
+			map.put("day", day);
+			Map<String, Object> resultMap = attendanceService.adminDaySearch(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminDaySaerch");
+			
+			
+			model.addAttribute("adminCheckList", attendanceList);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			return "/mypage/check/admin_check.mytiles";
+			
+		}else if(searchType.equals("memid") && saerchVal.equals("")){
+			return "redirect:/attendance/adminCheckList";
+		}else if((searchType.equals("day")&&saerchVal.equals(""))){
+			return "redirect:/attendance/adminCheckList";
+		}else {
+			return "redirect:/attendance/adminCheckList";
+			
+		}
+	}
+	
+>>>>>>> 2abfe03c945f11ebb26ed61b75a1faf7d0d20507
 	
 
 }

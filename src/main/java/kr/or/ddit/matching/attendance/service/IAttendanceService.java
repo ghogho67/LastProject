@@ -3,6 +3,7 @@ package kr.or.ddit.matching.attendance.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.page.model.PageVo;
@@ -90,7 +91,7 @@ public interface IAttendanceService {
 	*/
 	public Map<String, Object> cwMatchingList(Map<String, Object> map);
 	
-	//============================================================================
+	//=====================================검색=======================================
 		/**
 		* Method : mattchingCnt
 		* 작성자 : PC21
@@ -112,9 +113,30 @@ public interface IAttendanceService {
 
 	public Map<String, Object> memidSaerchList(Map<String, Object> resultMap);
 
-		
-
-		
 		//============================================================================
 
+	/**
+	* Method : adminCheckList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 : 관리자가 모든 출석을 확인한다.
+	*/
+	public Map<String, Object> adminCheckList(PageVo pageVo);
+	
+	
+	public Map<String, Object> adminMemShearch(Map<String, Object> map);
+	
+	public Map<String, Object> adminDaySearch(Map<String, Object> map);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

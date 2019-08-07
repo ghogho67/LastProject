@@ -305,7 +305,7 @@ function captcha() {
 										<div class="input-group">
 											<span class="input-group-btn"><button type="button"
 													class="btn" id="idCheckBtn">중복확인</button></span> <input type="text" id="mem_id"
-												name="mem_id" placeholder="영어, 숫자, 특수기호 사용가능  4~8글자까지" value="${mem_id }"
+												name="mem_id" placeholder="4~20자리 영문,숫자 /첫글자는 영문" value="${mem_id }"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i

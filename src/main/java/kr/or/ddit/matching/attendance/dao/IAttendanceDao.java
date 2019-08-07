@@ -3,6 +3,7 @@ package kr.or.ddit.matching.attendance.dao;
 import java.util.List;
 import java.util.Map;
 
+import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.page.model.PageVo;
@@ -88,7 +89,7 @@ public interface IAttendanceDao {
 	* @return
 	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
 	*/
-	public List<MatchingVo> cwMatchingList(Map<String, Object> resultMap);
+	public List<AttendanceMatchingVo> cwMatchingList(Map<String, Object> resultMap);
 	
 	
 	/**
@@ -112,7 +113,7 @@ public interface IAttendanceDao {
 	* Method 설명 : 요양사아이디 날짜 검색에 따른 갯수를 갖고온다.
 	*/
 	public int daySaerchCnt(Map<String, Object> day);
-	List<MatchingVo> daySaerchList(Map<String, Object> resultMap);
+	public List<AttendanceMatchingVo> daySaerchList(Map<String, Object> resultMap);
 	
 	/**
 	* Method : memidSaerchCnt
@@ -124,10 +125,31 @@ public interface IAttendanceDao {
 	*/
 	public int memidSaerchCnt(Map<String, Object> memid);
 
-	List<MatchingVo> memidSaerchList(Map<String, Object> resultMap);
+	public List<AttendanceMatchingVo> memidSaerchList(Map<String, Object> resultMap);
 
 	
 
 	
 	//============================================================================
+	
+	
+	public List<AttendanceMatchingVo> adminCheckList(PageVo pageVo);
+	
+	public int adminCheckCnt();
+	
+	public List<AttendanceMatchingVo> adminMemShearch(Map<String, Object> map);
+	public int adminMemSearchCnt(String memid);
+	
+	public List<AttendanceMatchingVo> adminDaySearch(Map<String, Object> map);
+	public int adminDaySearchCnt(String day);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

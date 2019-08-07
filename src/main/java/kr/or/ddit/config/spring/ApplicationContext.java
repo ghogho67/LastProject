@@ -2,9 +2,7 @@ package kr.or.ddit.config.spring;
 
 import java.util.Properties;
 
-import javax.servlet.ServletContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.java_websocket.WebSocket;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,13 +28,12 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
-import com.mitchellbosecke.pebble.PebbleEngine;
-import com.mitchellbosecke.pebble.loader.Loader;
-import com.mitchellbosecke.pebble.loader.ServletLoader;
-import com.mitchellbosecke.pebble.spring4.PebbleViewResolver;
-import com.mitchellbosecke.pebble.spring4.extension.SpringExtension;
-
+import handler.ReplyEchoHandler;
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
 
@@ -51,13 +48,14 @@ import kr.or.ddit.view.ProfileView;
                                  classes = {Controller.class, ControllerAdvice.class})})
 @EnableWebMvc      //<mvc:annotation-driven/>
 @Configuration
-public class ApplicationContext extends WebMvcConfigurerAdapter{
-
+public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
+	
    //<mvc:default-servlet-handler/>
    @Override
    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
       configurer.enable();
    }
+   
    /*
    <bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
       <property name="order" value="1"></property>
@@ -204,6 +202,33 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
 	   
 	   return mailSender;
    }
+   
+   @Override
+   public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+	   registry.addHandler(replyEchoHandler(), "/echo.do")
+       .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
+       .addInterceptors(new HttpSessionHandshakeInterceptor())
+       .withSockJS();
+   	
+   }
+   
+   
+   
+   @Bean
+   public ReplyEchoHandler replyEchoHandler() {
+	return new ReplyEchoHandler();
+   }
+   
+   @Bean
+   public HttpSessionHandshakeInterceptor handshaker() {
+	return new HttpSessionHandshakeInterceptor();
+	   
+   }
+
+
+   
+   
+   
    /*
    @Autowired
    private ServletContext servletContext;

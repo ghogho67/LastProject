@@ -17,7 +17,7 @@
 
 <div id="header" class="header-scrolled2">
 		<div class="row">
-			<nav id="nav-menu-container" style="padding-left: 800px;">
+			<nav id="nav-menu-container" style="padding-left: 900px;">
 				<ul class="nav-menu">
 					<li class=""><a href="${cp}/main">Home</a></li>
 					<li><a href="">회사소개</a></li>

@@ -7,9 +7,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,24 +20,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.ddit.SMS.SMS;
 import kr.or.ddit.gold.gps.model.GpsVo;
 import kr.or.ddit.gold.gps.service.IGpsService;
+import kr.or.ddit.gold.sos.service.ISosService;
 @RequestMapping("/gps")
 @Controller
 public class GpsController {
-   static ArrayList<GpsVo>  list = new ArrayList<GpsVo>();
-   private static final Logger logger = LoggerFactory.getLogger(GpsController.class);
-   @Resource(name = "gpsService")
-   private IGpsService gpsService;
+	
+	
+	static ArrayList<GpsVo>  list = new ArrayList<GpsVo>();
+	private static final Logger logger = LoggerFactory.getLogger(GpsController.class);
+	@Resource(name = "gpsService")
+	private IGpsService gpsService;
+
+	@Resource(name = "sosService")
+	private ISosService sosService;
+	static long insertnum=0;
+	static int i=0;
    
    @RequestMapping("/insertGps")
-   public void insertGps(  @RequestParam(value = "car_bpm")int car_bpm, @RequestParam(value = "mem_id") String mem_id,
-                     @RequestParam(value = "gps_lo")double gps_lo, @RequestParam(value = "gps_la")double gps_la, HttpServletRequest request) {
+   public void insertGps( HttpServletResponse response,@RequestParam(value = "car_bpm")int car_bpm, @RequestParam(value = "mem_id") String mem_id,
+                     @RequestParam(value = "gps_lo")double gps_lo, @RequestParam(value = "gps_la")double gps_la, HttpServletRequest request) throws Exception {
       logger.debug("!!!!!!!car_bpm :{}",car_bpm);
       logger.debug("!!!!!!!gps_lo :{}",gps_lo);
       logger.debug("!!!!!!!gps_la :{}",gps_la);
       logger.debug("!!!!!!!mem_id :{}",mem_id);
-      
+      SMS sms = new SMS();
       GpsVo getMemberVo  = gpsService.getGoldMember(mem_id); 
       
       GpsVo gpsVo =  new GpsVo();
@@ -48,6 +59,29 @@ public class GpsController {
       gpsVo.setGps_lo(gps_lo);
       gpsVo.setMem_id(mem_id);
       gpsVo.setGold_st(getMemberVo.getGold_st());
+      if(car_bpm == 0) {
+    	  insertnum++;
+      }
+      if(insertnum==1||insertnum==(i*300)) {
+    	  
+    	  i++;
+    	  logger.debug("!!!!!!!!!mem_id : {}", mem_id);
+    	  int gps_id = sosService.recentData(mem_id);
+    	  sosService.insertSOS(gps_id);
+    	  Map<String, Object>map = sosService.getGps(gps_id, mem_id);
+    	  GpsVo gpsVo2 =(GpsVo) map.get("gpsVo");
+    	  String mem_name =  (String) map.get("mem_name");
+    	  String lati=Double.toString(gpsVo2.getGps_la());
+    	  String longi=Double.toString(gpsVo2.getGps_lo());
+    	  String address = sms.getAddress_DAUM(lati, longi);
+    	  
+    	  String str = mem_name+"님 응급발신\r\n위치\r\n";
+    	  String msg = str+address;
+			
+    	  logger.debug("!!! msg : {}", msg);
+			
+    	  sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
+      }
       
       gpsService.insertGps(gpsVo);
       createGpx(gpsVo,request);
