@@ -167,12 +167,12 @@
 					
 					
 		<div class="itemcontainer">
-			<div class="item item1"><a class="ac" href="${cp}/recognition/semiTestQ2?sur_ans_cont=2020">2020년</a></div>
-			<div class="item item2"><a class="ac" href="${cp}/recognition/semiTestQ2?sur_ans_cont=2024">2024년</a></div>
-			<div class="item item3"><a class="ac" href="${cp}/recognition/semiTestQ2?sur_ans_cont=2021">2021년</a></div>
-			<div class="item item4"><a class="ac" href="${cp}/recognition/semiTestQ2?sur_ans_cont=2026">2026년</a></div>
-			<div class="item item5"><a class="ac" href="${cp}/recognition/semiTestQ2?sur_ans_cont=2019">2019년</a></div>
-			<div class="item item6"><a class="ac" href="${cp}/recognition/semiTestQ2?sur_ans_cont=2017">2017년</a></div>
+			<div class="item item1"><a class="ac" href="${cp}/recognition/semiTestQ2?ques_id=2001&sur_ans_cont=2020&sur_part_id=${getlatestSurveyPartInfo.sur_part_id}">2020년</a></div>
+			<div class="item item2"><a class="ac" href="${cp}/recognition/semiTestQ2?ques_id=2001&sur_ans_cont=2024&sur_part_id=${getlatestSurveyPartInfo.sur_part_id}">2024년</a></div>
+			<div class="item item3"><a class="ac" href="${cp}/recognition/semiTestQ2?ques_id=2001&sur_ans_cont=2021&sur_part_id=${getlatestSurveyPartInfo.sur_part_id}">2021년</a></div>
+			<div class="item item4"><a class="ac" href="${cp}/recognition/semiTestQ2?ques_id=2001&sur_ans_cont=2026&sur_part_id=${getlatestSurveyPartInfo.sur_part_id}">2026년</a></div>
+			<div class="item item5"><a class="ac" href="${cp}/recognition/semiTestQ2?ques_id=2001&sur_ans_cont=2019&sur_part_id=${getlatestSurveyPartInfo.sur_part_id}">2019년</a></div>
+			<div class="item item6"><a class="ac" href="${cp}/recognition/semiTestQ2?ques_id=2001&sur_ans_cont=2017&sur_part_id=${getlatestSurveyPartInfo.sur_part_id}">2017년</a></div>
 		
 		
 		</div>

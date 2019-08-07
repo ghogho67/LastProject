@@ -17,6 +17,21 @@
 	width: 400px;
 	height: 300px;
 }
+
+/* .lk{ */
+/* margin: 10px 10px 10px 0; */
+/* height: 300px; */
+/* width: 100%; */
+/* } */
+
+
+.lk{
+margin: 30px 10px 10px 0;
+height: 300px;
+width: 100%;
+}
+
+
 </style>
 
 <script type="text/javascript">
@@ -28,16 +43,20 @@
 
 <br>
 <br>
-<br>
-<br>
 
 
+	
 	<form id="frmSignin" name="frmSignin" role="form" class="form-signin"
 		action="/login" method="post">
 		<input type="hidden" id="status" name="status" value="">
 		<div id="login">
-<!-- 			<h2 style="background-image: url('/image/tedsfsdgfs.png');   background-size: 100px; background-repeat: no-repeat;"> -->
-<!-- 			</h2> -->
+		
+		
+<div class="lk" style="background-image: url('/image/logosam.png');  
+background-position:center; background-size: 280px; background-repeat: no-repeat;">
+			</div> 
+
+
 			<ul>
 				<li><input type="text" name="mem_id" id="mem_id"
 					placeholder="아이디" value="dkskqk00" tabindex="1"><a href="#a"><img
@@ -65,16 +84,23 @@
 					<span style="color: #4ea5fc;">비밀번호/아이디재설정</span></a>
 				</div>
 			</div>
-			<div class="info">
-				<p>	언제나 내 부모처럼 모시겠습니다<br>
+		<div class="info"> 
+<!-- 				<p>	언제나 내 부모처럼 모시겠습니다<br> -->
 			
-	고객센터
-					평일 09:00 ~ 18:00<br>(점심시간 12:30 ~ 13:30)
-				</p>
-			</div>
+<!-- 	고객센터 -->
+<!-- 					평일 09:00 ~ 18:00<br>(점심시간 12:30 ~ 13:30) -->
+<!-- 				</p> -->
+<br>
+ 			</div> 
 		</div>
 		
 	</form>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 </body>
 </html>

@@ -3,13 +3,11 @@
 
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css";
 @import "https://fonts.googleapis.com/css?family=Open+Sans:400,600|Raleway";
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
 
 * {
   margin:0px;
   padding:0px;
   box-sizing:border-box;
-  font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
 }
 
 body {

@@ -33,7 +33,7 @@ import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
-import handler.ReplyEchoHandler;
+import kr.or.ddit.handler.ReplyEchoHandler;
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
 
@@ -205,14 +205,12 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    
    @Override
    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-	   registry.addHandler(replyEchoHandler(), "/echo.do")
+	   registry.addHandler(replyEchoHandler(), "/ws/chat")
        .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
        .addInterceptors(new HttpSessionHandshakeInterceptor())
        .withSockJS();
    	
    }
-   
-   
    
    @Bean
    public ReplyEchoHandler replyEchoHandler() {

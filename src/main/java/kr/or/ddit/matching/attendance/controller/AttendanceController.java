@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.service.IAttendanceService;
-import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 import kr.or.ddit.page.model.PageVo;
@@ -197,7 +196,6 @@ public class AttendanceController {
 		 
 	}
 	
-	
 	/**
 	* Method : cwMypageAttendance
 	* 작성자 : PC21
@@ -304,7 +302,6 @@ public class AttendanceController {
 		return "/mypage/check/admin_check.mytiles";
 	}
 	
-	
 	/**
 	* Method : saerchList
 	* 작성자 : PC21
@@ -356,6 +353,4 @@ public class AttendanceController {
 		}
 	}
 	
-	
-
 }
