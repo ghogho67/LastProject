@@ -34,7 +34,12 @@
 		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
 		<typeAlias alias="LectureVo" type="kr.or.ddit.category.others.lecture.model.LectureVo" />
 		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
-		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
+<!-- 		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" /> -->
+		<typeAlias alias="QuestionVo" type="kr.or.ddit.survey.model.QuestionVo" />
+		<typeAlias alias="SurveyAnswerVo" type="kr.or.ddit.survey.model.SurveyAnswerVo" />
+		<typeAlias alias="SurveyPartVo" type="kr.or.ddit.survey.model.SurveyPartVo" />
+		<typeAlias alias="SurveyVo" type="kr.or.ddit.survey.model.SurveyVo" />
+		<typeAlias alias="VideoVo" type="kr.or.ddit.survey.model.VideoVo"/>
 	</typeAliases>
 
 
@@ -48,13 +53,14 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
-      <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
+<!-- <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/> -->
       <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/lecture.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
 
    </mappers>
 </configuration>

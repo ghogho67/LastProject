@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Gudea:400,400i,700|Poppins:300,400,500,600,700|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i");
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url(http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb); 
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
 @-moz-keyframes flash {
   0% {
     opacity: 1; }
@@ -13219,7 +13218,7 @@ input:focus {
       -o-transition-duration: 0s;
       transition-duration: 0s; }
     .sidebar .nav .nav-item a.nav-link {
-    font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
+    font-family: 'Noto Sans KR', sans-serif;
       color: #636c72;
       padding: 1em;
       white-space: nowrap;
@@ -13321,7 +13320,7 @@ input:focus {
   }
   .navbar .navbar-menu-wrapper .navbar-toggler {
     border: none;
-      font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
+      font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px; }
     .navbar .navbar-menu-wrapper .navbar-toggler span {
       font-size: 18px;
@@ -13900,7 +13899,7 @@ table thead tr th {
 
 body,
 html {
-font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
+font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
   font-size: 0.9rem;
   -webkit-font-smoothing: antialiased;
@@ -13916,7 +13915,7 @@ font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'M
   font-weight: 600; }
 
 input {
-  font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 13px;
   color :black;
   font-weight:700;
@@ -14023,7 +14022,7 @@ input {
   color: #4a4949; }
 
 .auth-pages h3 {
-font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
+font-family: 'Noto Sans KR', sans-serif;
   font-size: 23px;
   font-weight: bold;
   line-height: 1.3;

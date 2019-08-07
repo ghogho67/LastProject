@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="survey">
+
+
+
+
+<!-- 테스트 종류를 생성한다  -->
+<insert id="InsertSurvey" parameterType="SurveyVo">
+insert into survey (sur_id, sur_nm) values (sur_id.nextval, #{sur_nm})
+</insert>
+
+
+
+<!-- 테스트시작버튼 클릭 후 회원의 테스트 이용정보를 남긴다  -->
+<insert id="InsertSurveyPartInfo" parameterType="SurveyPartVo">
+insert into surveypart(sur_part_id, sur_id, mem_id) values
+ (sur_part_id.nextval,#{sur_id}, #{mem_id})
+</insert>
+
+
+<!--  가장 최근에 추가된 테스트 이용정보를 가져온다  -->
+<select id="getlatestSurveyPartInfo" resultType="SurveyPartVo">
+select * from SURVEYPART where SUR_PART_ID=(
+select Max(SUR_PART_ID) FROM SURVEYPART)
+
+</select>
+
+<!-- 사용자의 답변내역을 저장한다 -->
+<update id="insertQuestionAns" parameterType="SurveyAnswerVo">
+
+insert into surveyanswer
+ (sur_part_id, ques_id, sur_ans_cont, sur_ans_time) values 
+ (#{sur_part_id}, #{ques_id}, #{sur_ans_cont}, sysdate)
+
+
+</update>
+
+
+
+
+<!-- 문제의 답과 사용자의 답변을 비교하여 정답갯수를 산출한다  -->
+
+<select id="checkScore" resultType="int" parameterType="SurveyPartVo">
+select count(sur_ans_cont) as cnt from(   
+select a.*
+from (select p.sur_id, a.sur_part_id,a.ques_id,a.sur_ans_cont
+		from surveyanswer a , surveypart p
+		where a.sur_part_id(+) =p.sur_part_id
+		and p.sur_id = #{sur_id}
+        and p.sur_part_id =#{sur_part_id}) a left outer join ( select ques_id, ans, sur_id from question) b
+on a.sur_ans_cont=b.ans
+where b.ans is null)
+        
+</select>
+
+</mapper>

@@ -173,10 +173,10 @@
 				
 					
 			<div class="itemcontainer">
-			<div class="item item1"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=1">8시30분</a></div>
-			<div class="item item2"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=2">09:10</a></div>
-			<div class="item item3"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=3">5시</a></div>
-			<div class="item item4"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=4">07:00</a></div>
+			<div class="item item1"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=1&sur_part_id=${sur_part_id}&ques_id=2005">8시30분</a></div>
+			<div class="item item2"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=2&sur_part_id=${sur_part_id}&ques_id=2005">09:10</a></div>
+			<div class="item item3"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=3&sur_part_id=${sur_part_id}&ques_id=2005">5시</a></div>
+			<div class="item item4"><a class="ac" href="${cp}/recognition/semiTestResult?sur_ans_cont=4&sur_part_id=${sur_part_id}&ques_id=2005">07:00</a></div>
 	
 		
 		

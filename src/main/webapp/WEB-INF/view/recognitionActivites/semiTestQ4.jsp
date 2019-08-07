@@ -199,10 +199,10 @@ ul, li, dl, dd {
 		
 		<div id="program">
 						<ul>
-							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=1"></a></li>
-							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=2"></a></li>
-							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=3"></a></li>
-							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=4"></a></li>
+							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=1&sur_part_id=${sur_part_id}&ques_id=2004"></a></li>
+							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=2&sur_part_id=${sur_part_id}&ques_id=2004"></a></li>
+							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=3&sur_part_id=${sur_part_id}&ques_id=2004"></a></li>
+							<li><a href="${cp}/recognition/semiTestQ5?sur_ans_cont=4&sur_part_id=${sur_part_id}&ques_id=2004"></a></li>
 						</ul>
 					</div>
 					

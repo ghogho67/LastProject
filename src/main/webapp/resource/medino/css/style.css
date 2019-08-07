@@ -1,33 +1,33 @@
-@import
-	url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900")
-	;
 
-@import
-	url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
+	@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
 	
-/* @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css); */
-@import url(http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb); 
 
 body {
 	color: #777;
 
-font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum;
+font-family: 'Noto Sans KR', sans-serif;
 	font-size: 15px;
 	font-weight: 400
 }
 
 h1 {
-	color: #222;
+	color: white;
 	font-family: "Ubuntu", sans-serif;
-	font-size: 45px !important;
-	font-weight: 700
+	font-size: 70px !important;
+	font-weight: 700;
+	text-shadow: 1px 1px #c0c0c0;
+
 }
 
 h2 {
-	color: #222;
-	font-family: "Ubuntu", sans-serif;
-	font-size: 36px !important;
-	font-weight: 700
+	color: #455a64;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 30px !important;
+	font-weight: 600;
+ line-height: 36px;
+ margin-left:30px;
+ font-size: 22px;
+	
 }
 
 h3 {
@@ -226,10 +226,10 @@ keyframes sk-scaleout { 0%{
 	display: inline-block;
 	color: #222;
 	font-weight: 500;
-	font-size: 15px;
-	font-weight: 530;
+	font-size: 18px;
 	text-transform: uppercase;
-	outline: none
+	outline: none;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 
@@ -481,7 +481,7 @@ background-color:white;
 }
 
 .welcome-img img {
-	width: 120%;
+	width: 113%;
 	position: relative;
 	z-index: 1
 }
@@ -1019,14 +1019,12 @@ background-color:white;
 
 .banner-area.other-page a {
 	color: #777;
-	-webkit-transition: .3s;
-	-moz-transition: .3s;
-	-o-transition: .3s;
-	transition: .3s
+	font-size: 30px;
 }
 
 .banner-area.other-page a:hover {
-	color: #244cfd
+	color: #ffffff;
+	font-weight: 700;
 }
 
 .blog_categorie_area {
