@@ -242,7 +242,7 @@ function drawMarker() {
 
 							var infoWindow = new naver.maps.InfoWindow(
 									{
-										content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ hos_nm +'"</b>.</div>'
+										content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ sh_nm +'"</b>.</div>'
 									});
 
 							markers.push(marker);
