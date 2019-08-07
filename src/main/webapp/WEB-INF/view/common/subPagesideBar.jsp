@@ -6,7 +6,7 @@
 <aside class="left-sidebar">
 
 	<div class="lk"
-		style="background-image: url('/image/Htes5.png'); height: 130px; width: 100%; background-size: 200px;  background-repeat: no-repeat;">
+		style="background-image: url('/image/logosam2.png'); margin-top:20px; height: 130px; width: 100%; background-size: 230px;  background-repeat: no-repeat;">
 	</div>
 
 
