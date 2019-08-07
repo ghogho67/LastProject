@@ -182,7 +182,7 @@ public class HospitalDao implements IHospitalDao{
 	* Method 설명 :지역 검색 후 주소 리스트 조회
 	*/
 	@Override
-	public List<HospitalVo> searchMapList(String hos_add) {
+	public List<String> searchMapList(String hos_add) {
 		return sqlSession.selectList("hospital.searchMapList",hos_add);
 	}
 

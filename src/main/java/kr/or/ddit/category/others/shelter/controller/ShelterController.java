@@ -1,5 +1,6 @@
 package kr.or.ddit.category.others.shelter.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,7 @@ public class ShelterController {
 		return "/shelter/shelterPagingList.tiles";
 	}
 	
+
 	
 	/**
 	* Method : searchShelter
@@ -75,6 +77,23 @@ public class ShelterController {
 		logger.debug("☞getAddShelterList:{}",getAddShelterList);
 		
 		model.addAttribute("getAddShelterList", getAddShelterList);
+		
+		
+		
+		List<String> list = new ArrayList<String>();
+		
+		List<ShelterVo> shelterList = shelterService.shelterList();
+		model.addAttribute("shelterList", shelterList);
+		
+		List<String> searchMapList = shelterService.searchMapList(sh_add);
+		model.addAttribute("searchMapList",searchMapList);
+		logger.debug("☞searchMapList:{}",searchMapList);
+		
+		for (int i = 0; i < shelterList.size(); i++) {
+			list.add(shelterList.get(i).getSh_nm() + ":" + shelterList.get(i).getSh_day_st() + ":" + shelterList.get(i).getSh_day_end() + ": " + shelterList.get(i).getSh_add());
+		}
+		model.addAttribute("list", list);
+		logger.debug("☞list:{}",list);
 		
 		return "/shelter/searchShelter.tiles";
 	}

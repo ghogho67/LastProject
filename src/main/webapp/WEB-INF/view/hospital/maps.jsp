@@ -49,11 +49,29 @@
 
 	}
 
-	var markers = [], infoWindows = [];
+	var markers = [], 
+	infoWindows = [];
 	//요양보호사 아이디
 	var listData1 = []
+	var str2 ='${list}';
+	
+	str2 = str2.replace("[", "");
+	str2 = str2.replace("]", "");
+	var listData1 = str2.split(",");
+	console.log(str2);
+	
+
+	
+	
+	
 	//요양보호사 주소 
-	var listData2 = [ '대전 유성구 유성대로654번길 130', '대전광역시 중구 중앙로76', '대전 중구 중앙로 77' ];
+	var str = '${searchMapList}';
+	str = str.replace("[", "");
+	str = str.replace("]", "");
+
+	console.log(str);
+	var listData2 = str.split(",");
+
 
 	function drawMarker() {
 		for (var i = 0; i < listData2.length; i++) {
@@ -71,6 +89,7 @@
 								var result = response.result, // 검색 결과의 컨테이너
 								items = result.items; // 검색 결과의 배열
 								console.log(items);
+								console.log(result);
 
 								var position = new naver.maps.LatLng(
 										items[0].point.y, items[0].point.x);
@@ -89,13 +108,28 @@
 									animation : naver.maps.Animation.BOUNCE
 								//id: 요양보호사 id listData1[i]
 								});
+								var hos_nm;
+								var hos_phone;
 
-								console.log("aaa");
+								for(var j=0; j<listData1.length; j++){
+// 									console.log(listData1);
+// 									console.log(listData1[j]);
+// 									console.log(result.userquery);
+// 									console.log(listData1[j].indexOf(result.userquery));
+									if(listData1[j].indexOf(result.userquery)>0){
+// 										console.log();
+										hos_nm=listData1[j].substring(0,listData1[j].indexOf(':'));
+										console.log(mem_id);
+										hos_phone=listData1[j].substring(listData1[j].indexOf(':')+1,listData1[j].lastIndexOf(':'));
+// 										console.log(mem_nm);
+										break;
+									}
+								}
+								console.log(mem_id);
 
 								var infoWindow = new naver.maps.InfoWindow(
 										{
-											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
-													+ "1234" + '"</b>.</div>'
+											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ hos_nm +'"</b>.</div>'
 										});
 
 								markers.push(marker);

@@ -89,7 +89,7 @@
    </select>
    
    <!-- 지역 검색 후 주소만 검색 -->
-   <select id="searchMapList" parameterType="string" resultType="hospitalVo">
+   <select id="searchMapList" parameterType="string" resultType="string">
    		select hos_add
 		from hospital
 		where hos_add like '%'||#{hos_add}||'%'

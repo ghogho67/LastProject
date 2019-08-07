@@ -75,6 +75,8 @@
 	}
 </script>
 <body>
-	<div class="col-sm-8 blog-main">
-		<button onclick="requestPay()">결제하기</button>
+	<div class="container-fluid" id="map"
+		style="width: 50%; height: 800px;">
+		<input type="button" name="add" value="결제하기" onclick="requestPay()">
 	</div>
+	<div class="container-fluid"></div>

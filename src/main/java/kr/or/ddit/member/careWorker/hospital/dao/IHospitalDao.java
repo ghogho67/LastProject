@@ -89,6 +89,6 @@ public interface IHospitalDao {
 	* @return
 	* Method 설명 : 지역 검색 후 주소 리스트 조회
 	*/
-	List<HospitalVo> searchMapList(String hos_add);
+	List<String> searchMapList(String hos_add);
 
 }

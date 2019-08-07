@@ -128,7 +128,7 @@ public class HospitalServiceTest extends LogicTestEnv{
 		/***Given***/
 		String hos_add = "서구";
 		/***When***/
-		List<HospitalVo> searchMapList = hospitalService.searchMapList(hos_add);
+		List<String> searchMapList = hospitalService.searchMapList(hos_add);
 		/***Then***/
 		assertEquals(25, searchMapList.size());
 	}

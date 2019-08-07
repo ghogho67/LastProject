@@ -46,6 +46,16 @@ public interface IShelterService {
 	* Method 설명 :지역으로 검색한 무더위 쉼터
 	*/
 	List<ShelterVo> getAddShelterList(String sh_add);
+	
+	/**
+	* Method : searchMapList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param sh_add
+	* @return
+	* Method 설명 :지역 검색 후 주소 리스트
+	*/
+	List<String> searchMapList(String sh_add);
 
 }
 
