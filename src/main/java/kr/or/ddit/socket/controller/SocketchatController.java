@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import handler.ReplyEchoHandler;
+import kr.or.ddit.handler.ReplyEchoHandler;
 import kr.or.ddit.member.member.model.MemberVo;
 
 @Controller
