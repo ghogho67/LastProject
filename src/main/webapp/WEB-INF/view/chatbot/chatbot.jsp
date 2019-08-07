@@ -74,8 +74,10 @@
 $(document).ready(function(){
 	$("#sendBtn").on("click", function(){
 		var userquestion= $("#user").val();
+		console.log("userquestion");
 		
 		var chatbotSay = $("#chat").append(chatbotSay);
+		console.log("chatbotSay");
 		
 // 		var answer = $("#chat").append(chatbotSay);
 		
