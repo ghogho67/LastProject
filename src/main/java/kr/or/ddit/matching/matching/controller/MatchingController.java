@@ -464,5 +464,13 @@ public class MatchingController {
 		return "jsonView";
 
 	}
+	
+	
+	
+	@RequestMapping(path = "/webRtc")
+	public String webRtc(Model model) {
+//		return "RTCMultiConnection-master/demos/dashboard/webrtc";
+		return "redirect:/RTCMultiConnection-master/demos/dashboard/index.html";
+	}
 
 }
