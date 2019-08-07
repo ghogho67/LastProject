@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.gold.gps.model.GpsVo;
 import kr.or.ddit.gold.gps.service.IGpsService;
+import kr.or.ddit.gold.sos.service.ISosService;
 import kr.or.ddit.matching.grade.service.IGradeService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
@@ -45,6 +47,10 @@ public class mypageController {
 	
 	@Resource(name = "gpsService")
 	private IGpsService gpsService;
+	
+
+	@Resource(name = "sosService")
+	private ISosService sosService;
 
 	@RequestMapping("/Patient_Info")
 	public String Patient_Info() {
@@ -583,7 +589,19 @@ public class mypageController {
 	   
 	   
 	   @RequestMapping("/gpxMap")
-	   public String gpxMap(Model Model, String mem_id) {
+	   public String gpxMap(Model model, String mem_id) {
+			int gps_id = sosService.recentData(mem_id);
+			sosService.insertSOS(gps_id);
+			Map<String, Object>map = sosService.getGps(gps_id, mem_id);
+			GpsVo gpsVo =(GpsVo) map.get("gpsVo");
+			String mem_name =  (String) map.get("mem_name");
+			
+			model.addAttribute("gpsVo", gpsVo);
+//			
+//
+//			
+//			String lati=Double.toString(gpsVo.getGps_la());
+//			String longi=Double.toString(gpsVo.getGps_lo());
 	      return "mypage/gold/gpxMap";
 	   }
 	

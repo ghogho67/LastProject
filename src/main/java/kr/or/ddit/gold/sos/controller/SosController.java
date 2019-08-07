@@ -28,7 +28,7 @@ public class SosController {
 
 	
 	@RequestMapping(path = "/sosCall")
-	public void sosCall(@RequestParam(value = "mem_id") String mem_id, HttpServletRequest request, HttpServletResponse response,RedirectAttributes ra, Model model) throws Exception {
+	public void sosCall(@RequestParam(value = "mem_id") String mem_id, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		SMS sms = new SMS();
 		logger.debug("!!!!!!!!!mem_id : {}", mem_id);
 		int gps_id = sosService.recentData(mem_id);
