@@ -29,6 +29,9 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 import handler.ReplyEchoHandler;
 import kr.or.ddit.view.ExcelDownloadView;
@@ -45,7 +48,7 @@ import kr.or.ddit.view.ProfileView;
                                  classes = {Controller.class, ControllerAdvice.class})})
 @EnableWebMvc      //<mvc:annotation-driven/>
 @Configuration
-public class ApplicationContext extends WebMvcConfigurerAdapter{
+public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
 	
    //<mvc:default-servlet-handler/>
    @Override
@@ -200,25 +203,29 @@ public class ApplicationContext extends WebMvcConfigurerAdapter{
 	   return mailSender;
    }
    
-//   @Override
-//   public void replyEchochoHandlers(WebSocketHandlerRegistry registry) {
-//      registry.addHandler(socketHandler(), "/echo.do")
-//         .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
-//         .addInterceptors(new HandShakeInterceptor())
-//         .withSockJS();
-//   }
-//   
-//   @Bean
-//   public WebSocket socketHandler() {
-//      return new WebSocket();
-//   }
+   @Override
+   public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+	   registry.addHandler(replyEchoHandler(), "/echo.do")
+       .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
+       .addInterceptors(new HttpSessionHandshakeInterceptor())
+       .withSockJS();
+   	
+   }
+   
+   
    
    @Bean
    public ReplyEchoHandler replyEchoHandler() {
 	return new ReplyEchoHandler();
    }
    
-   
+   @Bean
+   public HttpSessionHandshakeInterceptor handshaker() {
+	return new HttpSessionHandshakeInterceptor();
+	   
+   }
+
+
    
    
    

@@ -49,21 +49,16 @@
 
 	}
 
-	var markers = [], 
-	infoWindows = [];
+	var markers = [], infoWindows = [];
 	//요양보호사 아이디
 	var listData1 = []
-	var str2 ='${list}';
-	
+	var str2 = '${list}';
+
 	str2 = str2.replace("[", "");
 	str2 = str2.replace("]", "");
 	var listData1 = str2.split(",");
 	console.log(str2);
-	
 
-	
-	
-	
 	//요양보호사 주소 
 	var str = '${addrList}';
 	str = str.replace("[", "");
@@ -71,7 +66,6 @@
 
 	console.log(str);
 	var listData2 = str.split(",");
-
 
 	function drawMarker() {
 		for (var i = 0; i < listData2.length; i++) {
@@ -94,10 +88,32 @@
 								var position = new naver.maps.LatLng(
 										items[0].point.y, items[0].point.x);
 
+								var mem_id;
+								var mem_nm;
+
+								for (var j = 0; j < listData1.length; j++) {
+									// 									console.log(listData1);
+									// 									console.log(listData1[j]);
+									// 									console.log(result.userquery);
+									// 									console.log(listData1[j].indexOf(result.userquery));
+									if (listData1[j].indexOf(result.userquery) > 0) {
+										// 										console.log();
+										mem_id = listData1[j].substring(0,
+												listData1[j].indexOf(':'));
+										console.log(mem_id);
+										mem_nm = listData1[j].substring(
+												listData1[j].indexOf(':') + 1,
+												listData1[j].lastIndexOf(':'));
+										// 										console.log(mem_nm);
+										break;
+									}
+								}
+								console.log(mem_id);
+
 								var marker = new naver.maps.Marker({
 									map : map,
 									position : position,
-									title : "123",
+									title : mem_id,
 									icon : {
 										url : '/image/main.png',
 										size : new naver.maps.Size(50, 52),
@@ -108,28 +124,11 @@
 									animation : naver.maps.Animation.BOUNCE
 								//id: 요양보호사 id listData1[i]
 								});
-								var mem_id;
-								var mem_nm;
-
-								for(var j=0; j<listData1.length; j++){
-// 									console.log(listData1);
-// 									console.log(listData1[j]);
-// 									console.log(result.userquery);
-// 									console.log(listData1[j].indexOf(result.userquery));
-									if(listData1[j].indexOf(result.userquery)>0){
-// 										console.log();
-										mem_id=listData1[j].substring(0,listData1[j].indexOf(':'));
-										console.log(mem_id);
-										mem_nm=listData1[j].substring(listData1[j].indexOf(':')+1,listData1[j].lastIndexOf(':'));
-// 										console.log(mem_nm);
-										break;
-									}
-								}
-								console.log(mem_id);
 
 								var infoWindow = new naver.maps.InfoWindow(
 										{
-											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ mem_id +'"</b>.</div>'
+											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
+													+ mem_id + '"</b>.</div>'
 										});
 
 								markers.push(marker);
