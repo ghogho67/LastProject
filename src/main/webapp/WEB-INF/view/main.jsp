@@ -24,7 +24,7 @@
     </section>
     
    
-	<form action="/socketview">
+	<form action="/socket/view" method="get">
 		<button type="submit">테스트전송</button>
 	</form>
     <header class="header-area">
