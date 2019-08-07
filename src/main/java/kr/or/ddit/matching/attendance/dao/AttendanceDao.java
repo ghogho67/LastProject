@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
-import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.page.model.PageVo;
 
 @Repository
@@ -114,12 +114,12 @@ public class AttendanceDao implements IAttendanceDao {
 	* Method 설명 : 요양보호사의 매칭 이력 리스트 갖고오기
 	*/
 	@Override
-	public List<MatchingVo> cwMatchingList(Map<String, Object> resultMap) {
+	public List<AttendanceMatchingVo> cwMatchingList(Map<String, Object> resultMap) {
 		return sqlSession.selectList("attendance.cwMatchingList",resultMap);
 	}
 	
 	/**
-	* Method : cwMatchingCnt
+	* Method : 요양보호사 check
 	* 작성자 : PC21
 	* 변경이력 :
 	* @return
@@ -132,7 +132,7 @@ public class AttendanceDao implements IAttendanceDao {
 	
 	
 	@Override
-	public List<MatchingVo> daySaerchList(Map<String, Object> resultMap) {
+	public List<AttendanceMatchingVo> daySaerchList(Map<String, Object> resultMap) {
 		return sqlSession.selectList("attendance.daySaerchList",resultMap);
 	}
 	
@@ -143,12 +143,40 @@ public class AttendanceDao implements IAttendanceDao {
 	
 	
 	@Override
-	public List<MatchingVo> memidSaerchList(Map<String, Object> resultMap) {
+	public List<AttendanceMatchingVo> memidSaerchList(Map<String, Object> resultMap) {
 		return sqlSession.selectList("attendance.memidSaerchList",resultMap);
 	}
 	@Override
 	public int memidSaerchCnt(Map<String, Object> memid) {
 		return sqlSession.selectOne("attendance.memidSaerchCnt",memid);
+	}
+	
+	//==========================admin Check===============================================
+	@Override
+	public List<AttendanceMatchingVo> adminCheckList(PageVo pageVo) {
+		return sqlSession.selectList("attendance.adminCheckList", pageVo);
+	}
+	@Override
+	public int adminCheckCnt() {
+		return sqlSession.selectOne("attendance.adminCheckCnt");
+	}
+	
+	//admin 검색
+	@Override
+	public List<AttendanceMatchingVo> adminMemShearch(Map<String, Object> map) {
+		return sqlSession.selectList("attendance.adminMemShearch", map);
+	}
+	@Override
+	public int adminMemSearchCnt(String memid) {
+		return sqlSession.selectOne("attendance.adminMemSearchCnt", memid);
+	}
+	@Override
+	public List<AttendanceMatchingVo> adminDaySearch(Map<String, Object> map) {
+		return sqlSession.selectList("attendance.adminDaySearch", map);
+	}
+	@Override
+	public int adminDaySearchCnt(String day) {
+		return sqlSession.selectOne("attendance.adminMemSearchCnt", day);
 	}
 	
 	

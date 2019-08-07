@@ -22,7 +22,7 @@ public class ApprovalServiceTest extends LogicTestEnv {
 		/*** Given ***/
 		ApprovalVo avo = new ApprovalVo();
 		avo.setApp_pay(50000);
-		avo.setApp_type(3);
+		avo.setApp_type("방문간병");
 		/*** When ***/
 		int insertCnt = approvalService.approvalInsert(avo);
 		/*** Then ***/

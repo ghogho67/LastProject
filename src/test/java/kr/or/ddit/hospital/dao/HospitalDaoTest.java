@@ -159,7 +159,7 @@ public class HospitalDaoTest extends LogicTestEnv{
 		/***Given***/
 		String hos_add = "서구";
 		/***When***/
-		List<HospitalVo> searchMapList = hospitalDao.searchMapList(hos_add);
+		List<String> searchMapList = hospitalDao.searchMapList(hos_add);
 		/***Then***/
 		assertEquals(25, searchMapList.size());
 	}

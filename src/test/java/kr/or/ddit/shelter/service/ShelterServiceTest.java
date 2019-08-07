@@ -88,5 +88,23 @@ public class ShelterServiceTest extends LogicTestEnv{
 
 	}
 	
+	/**
+	* Method : searchMapListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :지역 검색 후 주소 리스트
+	*/
+	@Test
+	public void searchMapListTest() {
+		/***Given***/
+		String sh_add = "어은동";
+		/***When***/
+		List<String> searchMapList = shelterService.searchMapList(sh_add);
+		/***Then***/
+		assertEquals(3, searchMapList.size());
+
+	}
+	
+	
 
 }

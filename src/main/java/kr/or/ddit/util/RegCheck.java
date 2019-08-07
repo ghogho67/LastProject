@@ -20,16 +20,19 @@ public class RegCheck {
 	* 변경이력 :
 	* @param mem_id
 	* @return
-	* Method 설명 : 아이디 정규식 - 영어대소문자, 숫자, 특수문자 4~8자리
+	* Method 설명 : 4 ~ 20 자리 영(대, 소), 숫자 / 첫글자는 숫자 사용 불가
 	*/
 	public boolean regId(String mem_id) {
-		Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{4,8}$");
+		//아이디 정규식 - 영어대소문자, 숫자, 특수문자 4~8자리
+//		Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{4,8}$");
+		//
+		Pattern p = Pattern.compile("^[A-Za-z]{1}[A-Za-z0-9]{3,19}$");
 		Matcher m = p.matcher(mem_id);
 		result = m.matches();
 		return result;
 	}
 	
-	
+
 	/**
 	* Method : regPass
 	* 작성자 : ADMIN

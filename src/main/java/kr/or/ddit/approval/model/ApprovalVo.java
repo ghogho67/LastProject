@@ -7,7 +7,7 @@ public class ApprovalVo {
 	private int app_id;
 	private int app_pay;
 	private Date app_time;
-	private int app_type;
+	private String app_type;
 	private String mem_id;
 	private String app_del;
 
@@ -43,11 +43,11 @@ public class ApprovalVo {
 		this.app_time = app_time;
 	}
 
-	public int getApp_type() {
+	public String getApp_type() {
 		return app_type;
 	}
 
-	public void setApp_type(int app_type) {
+	public void setApp_type(String app_type) {
 		this.app_type = app_type;
 	}
 
