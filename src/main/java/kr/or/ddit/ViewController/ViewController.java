@@ -1,7 +1,12 @@
 package kr.or.ddit.ViewController;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.ddit.member.member.model.MemberVo;
 @RequestMapping("/test")
 @Controller
 public class ViewController {
@@ -143,6 +148,14 @@ public class ViewController {
 	@RequestMapping("/testof")
 	public String test() {
 		return "/thisTok/thistok";
+	}
+	
+	@RequestMapping("/test")
+	public String test1(HttpSession session,Model model) {
+		MemberVo memVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memVo.getMem_id();
+		model.addAttribute("mem_id",mem_id);
+		return "/thisTok/thisTokChat";
 	}
 	
 	

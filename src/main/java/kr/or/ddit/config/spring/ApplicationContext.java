@@ -205,14 +205,12 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    
    @Override
    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-	   registry.addHandler(replyEchoHandler(), "/echo.do")
+	   registry.addHandler(replyEchoHandler(), "/ws/chat")
        .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
        .addInterceptors(new HttpSessionHandshakeInterceptor())
        .withSockJS();
    	
    }
-   
-   
    
    @Bean
    public ReplyEchoHandler replyEchoHandler() {
