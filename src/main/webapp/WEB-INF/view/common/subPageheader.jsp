@@ -13,8 +13,6 @@
 
 </head>
 
-
-
 <div id="header" class="header-scrolled2">
 		<div class="row">
 			<nav id="nav-menu-container" style="padding-left: 900px;">
