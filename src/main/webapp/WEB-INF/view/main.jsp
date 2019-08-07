@@ -24,9 +24,11 @@
     </section>
     
    
+
 	<form action="/socket/view" method="get">
 		<button type="submit">테스트전송</button>
 	</form>
+
     <header class="header-area">
     <%@include file="/WEB-INF/view/common/top_Header.jsp"%>
         <div>
@@ -159,12 +161,6 @@
     </section>
 
 
-
-
-
-
-<a href="${cp}/post/pagingList?cate_id=1">paginglist</a>
-<a href="${cp}/matching/pagingList?cate_id=1">paginglist</a>
 	<%@include file="/WEB-INF/view/common/footer.jsp" %>
 </body>
 </html>

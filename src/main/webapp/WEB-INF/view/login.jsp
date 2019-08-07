@@ -52,7 +52,7 @@ width: 100%;
 		<div id="login">
 		
 		
-<div class="lk" style="background-image: url('/image/tes6.png');  
+<div class="lk" style="background-image: url('/image/logosam.png');  
 background-position:center; background-size: 280px; background-repeat: no-repeat;">
 			</div> 
 
