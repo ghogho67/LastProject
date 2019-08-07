@@ -10,7 +10,6 @@
 <title>BASIC</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 
-
 </head>
 
 <div id="header" class="header-scrolled2">
