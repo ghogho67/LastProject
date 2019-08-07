@@ -21,12 +21,22 @@ $(document).ready(function() {
 		
 		var mem_id = '${MEM_INFO.mem_id}';
 		
+// 		var position = new naver.maps.LatLng(nLat, nLng);
+// 		showPosition(position)
+		getLocation();
+// 		map = new naver.maps.Map('map', mapOptions);
+		
 		$.ajax({
 		    url: '${cp}/data/'+time+'_'+mem_id+'.gpx',
 		    dataType: 'xml',
 		    success: startDataLayer
 		});
 	});
+	
+	
+	
+	
+	
 		
 });
 
@@ -56,6 +66,31 @@ function showPosition(position) {
 
 	map = new naver.maps.Map('map', mapOptions);
 	
+// 	36.325072, 127.420319
+// '${gpsVo.gps_la}'
+	var position = new naver.maps.LatLng('${gpsVo.gps_la}', '${gpsVo.gps_lo}');
+	
+	console.log(position);
+	var map2 = new naver.maps.Map('map2', {
+	    center: position,
+	    zoom: 10
+	});
+
+	var markerOptions = {
+		map : map2,
+		position : position.destinationPoint(90, 15),
+		title : "123",
+		icon : {
+			url : '/image/main.png',
+			size : new naver.maps.Size(50, 52),
+			origin : new naver.maps.Point(0, 0),
+			anchor : new naver.maps.Point(25, 26)
+		},
+		animation : naver.maps.Animation.BOUNCE
+	};
+
+	var marker = new naver.maps.Marker(markerOptions);
+	
 }
 
 
@@ -71,6 +106,12 @@ function startDataLayer(xmlDoc) {
 }
 
 
+
+
+
+
+
+
 </script>
 
 </head>
@@ -81,12 +122,24 @@ function startDataLayer(xmlDoc) {
 
 	<!-- partial -->
 	<div class="content-wrapper">
-		<h3> &nbsp;&nbsp;&nbsp;My Page</h3>
+		<h3> &nbsp;&nbsp;&nbsp;현재위치</h3>
 		<div class="row mb-4">
 			<div class="col-lg-12">
+			
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
+							
+							<div id="map2" style="width:100%;height:400px;"></div>
+
+						</div>
+					</div>
+				</div>
+					<h3> &nbsp;&nbsp;&nbsp;날짜별 이동 경로</h3>
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							
 							<div id="map" style="width:100%;height:400px;"></div>
 							<form id="frm" action="${cp}/mypage/stress">
 								<input type="hidden" id="mem_id" value="${MEM_INFO.mem_id}" name="mem_id">
@@ -101,6 +154,8 @@ function startDataLayer(xmlDoc) {
 
 
 	</div>
+	
+
 
 
 </body>

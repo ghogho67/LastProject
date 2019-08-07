@@ -145,22 +145,22 @@
 
 					<div class="itemcontainer">
 						<div class="item item1">
-							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=1"></a>
+							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=1&sur_part_id=${sur_part_id}&ques_id=2002"></a>
 						</div>
 						<div class="item item2">
-							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=2"></a>
+							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=2&sur_part_id=${sur_part_id}&ques_id=2002"></a>
 						</div>
 						<div class="item item3">
-							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=3"></a>
+							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=3&sur_part_id=${sur_part_id}&ques_id=2002"></a>
 						</div>
 						<div class="item item4">
-							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=4"></a>
+							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=4&sur_part_id=${sur_part_id}&ques_id=2002"></a>
 						</div>
 						<div class="item item5">
-							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=5"></a>
+							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=5&sur_part_id=${sur_part_id}&ques_id=2002"></a>
 						</div>
 						<div class="item item6">
-							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=6"></a>
+							<a class="ac" href="${cp}/recognition/semiTestQ3?sur_ans_cont=6&sur_part_id=${sur_part_id}&ques_id=2002"></a>
 						</div>
 					</div>
 

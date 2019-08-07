@@ -181,10 +181,10 @@ ul, li, dl, dd {
 					
 		<div id="program">
 						<ul>
-							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=1">책</a></li>
-							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=2">계란후라이</a></li>
-							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=3">가위</a></li>
-							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=4">농구공</a></li>
+							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=1&sur_part_id=${sur_part_id}&ques_id=2003">책</a></li>
+							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=2&sur_part_id=${sur_part_id}&ques_id=2003">계란후라이</a></li>
+							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=3&sur_part_id=${sur_part_id}&ques_id=2003">가위</a></li>
+							<li><a href="${cp}/recognition/semiTestQ4?sur_ans_cont=4&sur_part_id=${sur_part_id}&ques_id=2003">농구공</a></li>
 						</ul>
 					</div>
 					
