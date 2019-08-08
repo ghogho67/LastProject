@@ -66,7 +66,7 @@ public class LoginController {
 			session.setAttribute("MEM_INFO", memVo);
 			model.addAttribute("mem_id",mem_id);
 		
-			return "main";
+			return "redirect:crawling";
 		}
 		else {
 		

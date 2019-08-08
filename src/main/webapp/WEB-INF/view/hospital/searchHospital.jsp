@@ -117,15 +117,15 @@ td {
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 <script>
 $(document).ready(function(){
-// 	$(".hosTr").on("click", function(){
-// 		console.log("hosTr click");
+	$(".hosTr").on("click", function(){
+		console.log("hosTr click");
 		
-// 		var sh_id = $(this).find(".hos_id").text();
-// 		$("#hos_id").val(hos_id);
-// 		$("#frm").attr("action", "${cp}/hospital/searchPagingList");
-// 		$("#frm").attr("method", "post");
-// 		$("#frm").submit();
-// 	});
+		var hos_add = $(this).find(".hos_add").text();
+		$("#hos_add").val(hos_add);
+		$("#frm").attr("action", "${cp}/hospital/searchPagingList");
+		$("#frm").attr("method", "post");
+		$("#frm").submit();
+	});
 	
 	//지도
 	getLocation();
@@ -331,7 +331,7 @@ window.onload = function() {
 					
 						
 					<hr>
-					<form id="frm" action="${cp }/hospital/searchPagingList?hos_add=${hos_add}" method="post">
+					<form id="frm" action="${cp }/hospital/searchPagingList?hos_add=${hos_add}" method="get">
 					 <input type="hidden" class="form-control" id="hos_add" name="hos_add" value="${hos_add}">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
@@ -345,7 +345,7 @@ window.onload = function() {
 							</thead>
 							<tbody>
 							<c:forEach items="${getSearchHosAdd}" var="vo" varStatus="status">
-								<tr class="hosTr" data-hos_id="${vo.hos_id }">
+								<tr class="hosTr" data-hos_add="${vo.hos_add }">
 									<td>${vo.hos_id }</td>
 									<td>${vo.hos_nm }</td>
 									<td>${vo.hos_add }</td>
