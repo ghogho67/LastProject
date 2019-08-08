@@ -2,7 +2,6 @@ package kr.or.ddit.config.spring;
 
 import java.util.Properties;
 
-import org.java_websocket.WebSocket;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,12 +27,11 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
-import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
-import kr.or.ddit.handler.ReplyEchoHandler;
 import kr.or.ddit.handler.SocketChatHandler;
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
@@ -48,6 +46,7 @@ import kr.or.ddit.view.ProfileView;
             includeFilters = {@Filter(type = FilterType.ANNOTATION,
                                  classes = {Controller.class, ControllerAdvice.class})})
 @EnableWebMvc      //<mvc:annotation-driven/>
+@EnableWebSocket
 @Configuration
 public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
 	
@@ -206,17 +205,18 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    
    @Override
    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-	   registry.addHandler(socketChatHandler(), "/ws/chat")
+	   registry.addHandler(socketHandler(), "/socket/chat")
        .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
        .addInterceptors(new HttpSessionHandshakeInterceptor())
        .withSockJS();
-   	
+   	 
    }
    
    @Bean
-   public SocketChatHandler socketChatHandler() {
-	return new SocketChatHandler();
-   }
+	public SocketChatHandler socketHandler(){
+		return new SocketChatHandler();	// socketHandler
+	}
+
    
    @Bean
    public HttpSessionHandshakeInterceptor handshaker() {
