@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp" %>
 
-
+<script type="text/javascript">
+function showPopup() { 
+	window.open("${cp}/thistok/thistok", "a", "width=400, height=700, left=100, top=50"); 
+}
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/view/common/LibForMain.jsp" %>
@@ -33,13 +37,13 @@
    <form action="${cp }/chatbot">
       <button type="submit">챗봇</button>
    </form>
-  
-  
-   <form action="http://192.168.0.32/socket/view">
-      <button type="submit">테스트전송</button>
-      <input name="mem_id"  type="hidden" value="${mem_id }">
+   <form>
+	<input name="mem_id" type="hidden" value="${mem_id}">   
+	<button onclick="showPopup()">ThisTok!</button>
    </form>
-<!-- 	<a href="http://192.168.0.32/socket/view">채팅테스트</a> -->
+  
+  
+	
 
     <header class="header-area">
     <%@include file="/WEB-INF/view/common/top_Header.jsp"%>
