@@ -25,10 +25,6 @@
     
    
 
-   <form action="/socket/view">
-      <button type="submit">테스트전송</button>
-   </form>
-
     <header class="header-area">
     <%@include file="/WEB-INF/view/common/top_Header.jsp"%>
         <div>
@@ -161,6 +157,6 @@
     </section>
 
 
-   <%@include file="/WEB-INF/view/common/footer.jsp" %>
+	<%@include file="/WEB-INF/view/common/footer.jsp" %>
 </body>
 </html>
