@@ -12,13 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.ddit.handler.SocketChatHandler;
-import kr.or.ddit.member.member.model.MemberVo;
 
 @Controller
 public class SocketChatController {
 	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);
 	@Autowired
-	private SocketChatHandler socketHandler;	// SocketChantHandelr
+	private SocketChatHandler socketHandler;	
 	
 	// 채팅 화면 요청(파리미터로 userId를 전송)
 	@RequestMapping("/socket/view")
@@ -32,7 +31,7 @@ public class SocketChatController {
 	}
 
 	// 소켓에 연결된 모든 사용자에게 메세지 전달
-	@RequestMapping("/socket/serverToClient")
+	@RequestMapping("/socketServerToClient")
 	public void serverToClient() throws IOException {
 		socketHandler.serverToClient();	
 	}

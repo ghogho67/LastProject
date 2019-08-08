@@ -50,10 +50,39 @@ from (select p.sur_id, a.sur_part_id,a.ques_id,a.sur_ans_cont
 		from surveyanswer a , surveypart p
 		where a.sur_part_id(+) =p.sur_part_id
 		and p.sur_id = #{sur_id}
-        and p.sur_part_id =#{sur_part_id}) a left outer join ( select ques_id, ans, sur_id from question) b
+        and p.sur_part_id =#{sur_part_id}) a left outer join ( select ques_id, ans, sur_id from question where sur_id = #{sur_id}) b
 on a.sur_ans_cont=b.ans
 where b.ans is null)
         
 </select>
+
+
+
+<!-- 해당 테스트의 문제를 가져온다 -->
+<select id="getQuestions" resultType="QuestionVo" parameterType="int">
+select * from question where sur_id=#{sur_id}
+</select>
+
+
+<!-- 해당 테스트의 문제와 선택지를 가져온다 -->
+<select id="getQuestionsAndChoices" resultType="QuestionChoiceVo" parameterType="int">
+select * from question q, MULTIPLECHOICE m
+where q.QUES_ID(+)=m.QUES_ID and sur_id=#{sur_id}
+</select>
+
+
+
+
+<!-- 해당 테스트의 비디오를 가져온다 -->
+<select id="getVideo" resultType="VideoVo" parameterType="int">
+select * from video where sur_id=#{sur_id}
+</select>
+
+
+
+
+
+
+
 
 </mapper>

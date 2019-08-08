@@ -165,6 +165,6 @@
     </section>
 
 
-   <%@include file="/WEB-INF/view/common/footer.jsp" %>
+	<%@include file="/WEB-INF/view/common/footer.jsp" %>
 </body>
 </html>

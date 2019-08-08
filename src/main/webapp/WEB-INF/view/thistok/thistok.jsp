@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function showPopup() { 
-	window.open("/socket/view", "ThisTok!", "width=400, height=700, left=100, top=50"); 
+	window.open("${cp}/thisTok/thisTokDetail", "a", "width=400, height=700, left=100, top=50"); 
 }
 </script>
 </head>
 <body>
-	
+
 	<input type="button" value="팝업창 호출" onclick="showPopup();" />
 
 </body>
