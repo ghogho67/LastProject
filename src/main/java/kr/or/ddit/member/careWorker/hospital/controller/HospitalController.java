@@ -70,10 +70,18 @@ public class HospitalController {
 	* Method 설명 : 병원 검색 요청
 	*/
 	@RequestMapping(path = "/searchPagingList", method = RequestMethod.GET)
-	public String searchHospital(Model model, String hos_add) {
+	public String searchHospital(Model model, String hos_add, HospitalVo hospitalVo, PageVo pageVo) {
 		
-		model.addAttribute("getSearchHosAdd", hospitalService.getSearchHosAdd(hos_add));
-
+		hospitalVo.setHos_add(hos_add);
+		
+		logger.debug("☞hos_add:{}",hos_add);
+		
+		List<HospitalVo> getSearchHosAdd = hospitalService.getSearchHosAdd(hos_add);
+		
+		model.addAttribute("getSearchHosAdd", getSearchHosAdd);
+		
+		logger.debug("☞getSearchHosAdd:{}",getSearchHosAdd);
+	
 		
 		return "/hospital/searchHospital.tiles";
 	}
@@ -89,42 +97,45 @@ public class HospitalController {
 	@RequestMapping(path = "/searchPagingList", method = RequestMethod.POST)
 	public String searchHospital1(Model model, String hos_add, HospitalVo hospitalVo, PageVo pageVo) {
 		
-		logger.debug("☞searchHospital");
-		logger.debug("☞hos_add:{}",hos_add);
-
-		
-		List<HospitalVo> getSearchHosAdd = hospitalService.getSearchHosAdd(hos_add);
-		
-		model.addAttribute("getSearchHosAdd", getSearchHosAdd);
-		
-		logger.debug("☞getSearchHosAdd:{}",getSearchHosAdd);
+//		logger.debug("☞searchHospital");
+//		logger.debug("☞hos_add:{}",hos_add);
+//
+//		
+//		List<HospitalVo> getSearchHosAdd = hospitalService.getSearchHosAdd(hos_add);
+//		
+//		model.addAttribute("getSearchHosAdd", getSearchHosAdd);
+//		
+//		logger.debug("☞getSearchHosAdd:{}",getSearchHosAdd);
 		
 		
 		
 		//-------------- 페이지 네이션!!
 		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		hospitalVo = new HospitalVo(hos_add);
-//		
-//		map.put("getSearchHosAdd", hospitalService.getSearchHosAdd(hos_add));
-//		map.put("hos_add", hospitalVo.getHos_add());
-//		map.put("page", pageVo.getPage());
-//		map.put("pageSize", pageVo.getPageSize());
-//		
-//		logger.debug("☞hos_add:{}",hospitalService.getSearchHosAdd(hos_add));
-//		logger.debug("☞page:{}",pageVo.getPage());
-//		logger.debug("☞pageSize:{}",pageVo.getPageSize());
-//		
-//		Map<String, Object> resultMap = hospitalService.searchHosPagingList(map);
-//		List<HospitalVo> getSearchHosAdd = (List<HospitalVo>) resultMap.get("getSearchHosAdd");
-//		int paginationSize = (Integer) resultMap.get("paginationSize");
-//		
-//		logger.debug("☞resultMap:{}", resultMap);
-//		
-//		model.addAttribute("getSearchHosAdd", getSearchHosAdd);
-//		model.addAttribute("paginationSize", paginationSize);
-//		model.addAttribute("pageVo", pageVo);
-//		model.addAttribute("hos_add", hos_add);
+		hospitalVo.setHos_add(hos_add);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		hospitalVo = new HospitalVo(hos_add);
+		
+		map.put("getSearchHosAdd", hospitalService.getSearchHosAdd(hos_add));
+		map.put("hos_add", hospitalVo.getHos_add());
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		
+		logger.debug("☞hos_add:{}",hospitalService.getSearchHosAdd(hos_add));
+		logger.debug("☞page:{}",pageVo.getPage());
+		logger.debug("☞pageSize:{}",pageVo.getPageSize());
+
+		Map<String, Object> resultMap = hospitalService.searchHosPagingList(map);
+		List<HospitalVo> getSearchHosAdd = (List<HospitalVo>) resultMap.get("getSearchHosAdd");
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+		
+		logger.debug("☞resultMap:{}", resultMap);
+		logger.debug("☞paginationSize:{}",paginationSize);
+		
+		model.addAttribute("getSearchHosAdd", getSearchHosAdd);
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("pageVo", pageVo);
+		model.addAttribute("hos_add", hos_add);
 		
 		
 		//-- 네이버 map API적용
