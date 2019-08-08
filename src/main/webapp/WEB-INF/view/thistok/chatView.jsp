@@ -10,6 +10,7 @@
 <script>
 var socket;
 function initSocket() {
+
 	socket = new SockJS("/socket/chat");
 	
 	socket.onopen = onOpen;
@@ -130,6 +131,7 @@ $(document).ready(function() {
 </style>
 </head>
 <body>
+   <h1 id="userId"></h1>
 	<table class="container-fluid" style="width: 80%;">
 		<tr>
 			<td>
@@ -158,4 +160,3 @@ $(document).ready(function() {
 	
 </body>
 </html>
-
