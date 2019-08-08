@@ -27,6 +27,14 @@
     
    
 
+
+
+  
+   <form action="${cp }/chatbot">
+      <button type="submit">챗봇</button>
+   </form>
+  
+  
    <form action="http://192.168.0.32/socket/view">
       <button type="submit">테스트전송</button>
       <input name="mem_id"  type="hidden" value="${mem_id }">

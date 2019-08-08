@@ -65,32 +65,32 @@ $(document).ready(function(){
 // 		var answer = $("#chat").append(chatbotSay);
 		
 		if(userquestion == '매칭' || userquestion == '요양보호사' || userquestion == '요양 보호사'  || userquestion == '요양보호사선택' || 
-				userquestion == '요양 보호사 선택' || userquestion == '요양보호사 선택'){
-			$("#chat").append(userquestion+'<br><br>'); 
-			$("#chat").append('매칭<br><br><br>'); 
+				userquestion == '요양 보호사 선택' || userquestion == '요양보호사 선택' || userquestion == '요양사' || userquestion =='보호사'){
+			$("#chat").append('user :'+ userquestion+'<br><br>'); 
+			$("#chat").append('chatbot : 매칭<br><br>'); 
 		}else if(userquestion == '골드회원' || userquestion == '골드 회원'  || userquestion == '등급변경' || userquestion == '등급 변경' ||
 				userquestion == '유료회원' || userquestion == '유료 회원'){
-			$("#chat").append(userquestion+'<br><br>'); 
-			$("#chat").append('골드회원서비스<br><br><br>');
+			$("#chat").append('user :'+ userquestion+'<br><br>'); 
+			$("#chat").append('chatbot : 골드회원서비스<br><br>');
 		}else if(userquestion == '내정보' || userquestion == '내 정보' || userquestion == '회원정보' || userquestion == '회원 정보' || 
 				userquestion =='마이페이지' || userquestion == '마이 페이지'){
-			$("#chat").append(userquestion+'<br><br>'); 
-			$("#chat").append('마이페이지<br><br><br>');
+			$("#chat").append('user :'+ userquestion+'<br><br>'); 
+			$("#chat").append('chatbot : 마이페이지<br><br>');
 		}else if(userquestion == '무더위 쉼터' || userquestion == '무더위쉼터' || userquestion == '더위' || userquestion == '더위대피소' ||
 				userquestion == '더위 대피소' || userquestion == '폭염' || userquestion == '양로원'){
-			$("#chat").append(userquestion+'<br><br>'); 
-			$("#chat").append('무더위쉼터<br><br><br>');
+			$("#chat").append('user :'+ userquestion+'<br><br>'); 
+			$("#chat").append('chatbot : 무더위쉼터<br><br>');
 		}else if(userquestion == '문화센터' || userquestion == '문화 센터' || userquestion == '강좌' || userquestion =='강의' || 
 				userquestion == '교육' || userquestion =='문화' || userquestion =='수업'){
-			$("#chat").append(userquestion+'<br><br>'); 
-			$("#chat").append('문화강좌정보<br><br><br>');
+			$("#chat").append('user :'+ userquestion+'<br><br>'); 
+			$("#chat").append('chatbot : 문화강좌정보<br><br>');
 		}else if(userquestion == '메신저' || userquestion == '메세지' || userquestion == '쪽지'){
-			$("#chat").append(userquestion+'<br><br>'); 
-			$("#chat").append('메신저<br><br><br>');
+			$("#chat").append('user :'+ userquestion+'<br><br>'); 
+			$("#chat").append('chatbot : 메신저<br><br>');
 		}else if(userquestion == ' '){
-			$("#chat").append('다시 입력해 주세요<br><br><br>');
+			$("#chat").append('chatbot : 다시 입력해 주세요<br><br>');
 		}else{
-			$("#chat").append('다시 입력해 주세요<br><br><br>');
+			$("#chat").append('chatbot : 다시 입력해 주세요<br><br>');
 		} 
 		
 		
