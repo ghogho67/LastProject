@@ -25,8 +25,15 @@
     
    
 
-   <form action="/socket/view">
-      <button type="submit">테스트전송</button>
+<!--    <form action="/socket/view"> -->
+<!--       <button type="submit">테스트전송</button> -->
+<!--    </form> -->
+<!--    <br><br> -->
+<a href="http://192.168.0.32/socket/view">채팅테스트</a>
+
+  
+   <form action="${cp }/chatbot">
+      <button type="submit">챗봇</button>
    </form>
 
     <header class="header-area">
