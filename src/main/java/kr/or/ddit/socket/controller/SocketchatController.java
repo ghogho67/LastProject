@@ -15,8 +15,8 @@ import kr.or.ddit.handler.SocketChatHandler;
 import kr.or.ddit.member.member.model.MemberVo;
 
 @Controller
-public class SocketChatController {
-	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);
+public class SocketchatController {
+	private static final Logger logger = LoggerFactory.getLogger(SocketchatController.class);
 	@Autowired
 	private SocketChatHandler socketHandler;	// SocketChantHandelr
 	

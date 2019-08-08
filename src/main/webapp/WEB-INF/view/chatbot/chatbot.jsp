@@ -80,12 +80,17 @@ $(document).ready(function(){
 				userquestion == '더위 대피소' || userquestion == '폭염' || userquestion == '양로원'){
 			$("#chat").append(userquestion+'<br><br>'); 
 			$("#chat").append('무더위쉼터<br><br><br>');
-		}else if(userquestion == '문화센터' || userquestion == '문화 센터' || userquestion == '강좌' || userquestion =='강의' || userquestion == '교육' || 
-				userquestion =='문화'){
+		}else if(userquestion == '문화센터' || userquestion == '문화 센터' || userquestion == '강좌' || userquestion =='강의' || 
+				userquestion == '교육' || userquestion =='문화' || userquestion =='수업'){
 			$("#chat").append(userquestion+'<br><br>'); 
 			$("#chat").append('문화강좌정보<br><br><br>');
+		}else if(userquestion == '메신저' || userquestion == '메세지' || userquestion == '쪽지'){
+			$("#chat").append(userquestion+'<br><br>'); 
+			$("#chat").append('메신저<br><br><br>');
+		}else if(userquestion == ' '){
+			$("#chat").append('다시 입력해 주세요<br><br><br>');
 		}else{
-			chatbotSay == '다시 입력해 주세요';
+			$("#chat").append('다시 입력해 주세요<br><br><br>');
 		} 
 		
 		
