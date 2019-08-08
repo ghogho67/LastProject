@@ -65,7 +65,7 @@ public class LoginController {
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
 		
-			return "main";
+			return "redirect:crawling";
 		}
 		else {
 		
