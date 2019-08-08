@@ -21,7 +21,7 @@
   background-color: #E1F6FA;
   text-align: center;
   width: 500px;
-  height: 800px;
+  height: 700px;
 }
 
 /* 채팅 영역 */
@@ -93,15 +93,18 @@ $(document).ready(function(){
 			$("#chat").append('chatbot : 다시 입력해 주세요<br><br>');
 		} 
 		
-		
+		//스크롤 하단고정
+		$("#chat").scrollTop($("#chat")[0].scrollHeight);
 		
 		$("#user").val("");
-		$("frm").submit();
-
+		$("#user").focus();
+// 		$("#frm").submit();
 		
 	});
-	
 });
+
+
+
 
 </script>
 
@@ -114,7 +117,7 @@ $(document).ready(function(){
 		</div>
 		<div>
 			<!--         <input type="text" id="test" placeholder="메시지를 입력해주세요.."> -->
-			<input type="text" id="user" name="user">
+			<input type="text" id="user" name="user" autofocus="autofocus">
 			<button type="button" id="sendBtn" name="sendBtn">전송</button>
 		</div>
 	</div>
