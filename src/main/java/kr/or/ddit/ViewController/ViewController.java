@@ -150,9 +150,12 @@ public class ViewController {
 		return "/thisTok/thistok";
 	}
 	
-	@RequestMapping("/tests")
+	@RequestMapping("/test")
 	public String test1(HttpSession session,Model model) {
-		return "thistok/thistok";
+		MemberVo memVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memVo.getMem_id();
+		model.addAttribute("mem_id",mem_id);
+		return "/thisTok/thisTokChat";
 	}
 	
 	

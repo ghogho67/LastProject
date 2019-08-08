@@ -24,14 +24,11 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/FullCalendar-Example-master/css/main.css">
-	
+
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
 	type="text/javascript"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f7a976957407edfce0f821ce36e56056&libraries=services,clusterer,drawing"></script>
-
-	
-
 <body>
 	<div class="container">
 		<!-- 일자 클릭시 메뉴오픈 -->
@@ -227,18 +224,62 @@
 		</div>
 		<!-- /.modal -->
 	</div>
+
+	<div>
+		<table border="1">
+			<tr>
+				<td>구분</td>
+				<td>요양보호사</td>
+			</tr>
+			<tr>
+				<td>요양보호사명</td>
+				<td>${memVo.mem_nm }</td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>${memVo.mem_gender }</td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>${memVo.mem_phone }</td>
+			</tr>
+			<tr>
+				<td>운전여부</td>
+				<td>${memVo.cw_driver }</td>
+			</tr>
+			<tr>
+				<td>서비스 가능 지역</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>경력</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
 	<!-- /.container -->
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/moment.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/fullcalendar.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/ko.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/select2.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/main.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/addEvent.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/editEvent.js"></script>
-	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/etcSetting.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/moment.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/fullcalendar.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/ko.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/select2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/main.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/addEvent.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/editEvent.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/FullCalendar-Example-master/js/etcSetting.js"></script>
 </body>
 
 </html>

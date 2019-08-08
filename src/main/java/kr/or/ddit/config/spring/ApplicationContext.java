@@ -205,6 +205,7 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    
    @Override
    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+
 	   registry.addHandler(socketHandler(), "/socket/chat")
        .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
        .addInterceptors(new HttpSessionHandshakeInterceptor())
