@@ -64,6 +64,7 @@ public class LoginController {
 		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
+			model.addAttribute("mem_id",mem_id);
 		
 			return "redirect:crawling";
 		}

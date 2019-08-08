@@ -70,10 +70,15 @@ public class recognitionController {
        	logger.debug("@@@@mem_id {}",mem_id);
        	logger.debug("@@@@sur_id {}",sur_id);
        	
+
+       	//SurveyPart 내역을 생성하여 테스트 참여아이디를 생성한다 
        	SurveyPartVo surveypartVo= new SurveyPartVo(sur_part_id,sur_id,mem_id);
     	int InsertSurveyPartInfo = surveyPartService.InsertSurveyPartInfo(surveypartVo);
     	logger.debug("@@@@InsertSurveyPartInfo",InsertSurveyPartInfo);
        	
+    	
+    	
+    	//가장 최근에 생성된 참여 아이디를 model에 넣어준다
     	SurveyPartVo getlatestSurveyPartInfo= surveyPartService.getlatestSurveyPartInfo();
     	model.addAttribute("getlatestSurveyPartInfo", getlatestSurveyPartInfo);
        	

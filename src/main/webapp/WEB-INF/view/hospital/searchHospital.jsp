@@ -117,13 +117,13 @@ td {
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 <script>
 $(document).ready(function(){
-// 	$(".shTr").on("click", function(){
-// 		console.log("shTr click");
+// 	$(".hosTr").on("click", function(){
+// 		console.log("hosTr click");
 		
-// 		var sh_id = $(this).find(".sh_id").text();
-// 		$("#sh_id").val(sh_id);
-// 		$("#frm").attr("action", "${cp}/shelter/detailShelter");
-// 		$("#frm").attr("method", "get");
+// 		var sh_id = $(this).find(".hos_id").text();
+// 		$("#hos_id").val(hos_id);
+// 		$("#frm").attr("action", "${cp}/hospital/searchPagingList");
+// 		$("#frm").attr("method", "post");
 // 		$("#frm").submit();
 // 	});
 	
