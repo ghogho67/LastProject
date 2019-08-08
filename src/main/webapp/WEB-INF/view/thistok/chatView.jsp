@@ -66,9 +66,9 @@ function initSocket() {
 		}
 		
 		//current session id//
-		var currentuser_session = $('#sessionuserid').val();
+		var currentusersession = $('#sessionuserid').val();
 		var currentuser_name = $('#sessionname').val();
-		console.log('current session id: ' + currentuser_session);
+		console.log('current session id: ' + currentusersession);
 		console.log('current session name: ' + currentuser_name);
 		
 		sessionName = strArray[0]; //현재 메세지를 보낸 사람의 세션 등록//
@@ -77,27 +77,29 @@ function initSocket() {
 		console.log("message : " + message);
 		sessionId = strArray[2];
 		console.log("sessionId : " + sessionId);
-		
+			
 		//나와 상대방이 보낸 메세지를 구분하여 영역을 나눈다.//
-		if(sessionId == currentuser_session){
-			var printHTML = "<div class='well'>";
+		if(currentusersession == sessionName.trim()){
+			var printHTML = "<div class='well' style='text-align:right'>";
 			printHTML += "<div class='alert alert-info'>";
-			printHTML += "<strong>["+sessionName+"] -> "+message+"</strong>";
+			printHTML += "<strong >"+message+" <- ["+sessionName+"]</strong>";
 			printHTML += "</div>";
-			printHTML += "</div>";
+			printHTML += "</div>";  
 			
 			$("#chatdata").append(printHTML);
 			$("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
+			
 		} else{
-			var printHTML = "<div class='well'>";
+			var printHTML = "<div class='well' style='text-align:left>";
 			printHTML += "<div class='alert alert-warning'>";
-			printHTML += "<strong>["+sessionName+"] -> "+message+"</strong>";
+			printHTML += "<strong'>["+sessionName+"] -> "+message+"</strong>";
 			printHTML += "</div>";
 			printHTML += "</div>";
 			
 			$("#chatdata").append(printHTML);
 			$("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
 		}
+	
 		
 		console.log('chatting data: ' + data);
 		
@@ -127,6 +129,14 @@ $(document).ready(function() {
 	border:1px solid black;
 	height: 400px;
 	width: 30%;
+}
+
+.alert alert-warning{
+	text-align : right;
+}
+
+.alert alert-info{
+	text-align: left;
 }
 </style>
 </head>

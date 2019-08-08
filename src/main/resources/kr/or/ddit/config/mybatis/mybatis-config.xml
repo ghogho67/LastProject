@@ -44,6 +44,9 @@
 
 		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
 		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
+		
+		<typeAlias alias="chatCollectionVo" type="kr.or.ddit.joinVo.ChatCollectionVo"/>
+		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/>
 		<typeAlias alias="memberDisease" type="kr.or.ddit.member.memberDisease.model.MemberDiseaseVo"/>
 		<typeAlias alias="diseaseName" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
 
@@ -69,6 +72,9 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chatCollection.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chatMem.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/diseaseName.xml"/>
 

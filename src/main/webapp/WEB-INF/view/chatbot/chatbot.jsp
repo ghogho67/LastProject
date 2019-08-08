@@ -33,7 +33,7 @@
 
 
 /*  input테그 */
- .user { 
+.user { 
    width: 85%; 
    margin: auto; 
    background-color: lemonchiffon; 
@@ -43,34 +43,23 @@
  } 
  
 /*  버튼 */
- #sendBtn{
+#sendBtn{
  	width: 10%;
  	margin: 5px;
  }
 
-/* 챗봇이 대답한 메세지 */
-/* .chatbot { */
-/*   width: 90%; */
-/*   margin: auto; */
-/*   background-color: white; */
-/*   border-radius: 5px; */
-/*   margin-top: 10px; */
-/* } */
 
 #userSay{
-/* 	float: left; */
 	text-align : left;
 	margin-left: 15px;
 }
 
 #chatBotSay{
-/* 	float: right; */
 	text-align : right;
 	margin-left: 15px;
 }
 
 #chatBotSay1{
-/* 	float: right; */
 	text-align : right;
 	margin-right: 15px;
 }
