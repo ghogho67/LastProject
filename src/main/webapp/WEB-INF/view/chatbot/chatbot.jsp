@@ -18,7 +18,7 @@
   margin: auto;
   margin-top: 100px;
   border-radius: 20px;
-  background-color: lightblue;
+  background-color: #E1F6FA;
   text-align: center;
   width: 500px;
   height: 800px;
