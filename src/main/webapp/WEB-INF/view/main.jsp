@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp" %>
+
+
 </head>
 <body>
 <%@include file="/WEB-INF/view/common/LibForMain.jsp" %>
@@ -25,16 +27,19 @@
     
    
 
-<!--    <form action="/socket/view"> -->
-<!--       <button type="submit">테스트전송</button> -->
-<!--    </form> -->
-<!--    <br><br> -->
-<a href="http://192.168.0.32/socket/view">채팅테스트</a>
+
 
   
    <form action="${cp }/chatbot">
       <button type="submit">챗봇</button>
    </form>
+  
+  
+   <form action="http://192.168.0.32/socket/view">
+      <button type="submit">테스트전송</button>
+      <input name="mem_id"  type="hidden" value="${mem_id }">
+   </form>
+<!-- 	<a href="http://192.168.0.32/socket/view">채팅테스트</a> -->
 
     <header class="header-area">
     <%@include file="/WEB-INF/view/common/top_Header.jsp"%>
@@ -168,6 +173,6 @@
     </section>
 
 
-   <%@include file="/WEB-INF/view/common/footer.jsp" %>
+	<%@include file="/WEB-INF/view/common/footer.jsp" %>
 </body>
 </html>

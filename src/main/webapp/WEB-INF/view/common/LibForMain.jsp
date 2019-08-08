@@ -33,8 +33,8 @@
 	src="${cp}/resource/medino/js/vendor/owl-carousel.min.js"></script>
 <script
 	src="${cp}/resource/medino/js/vendor/jquery.datetimepicker.full.min.js"></script>
-<script
-	src="${cp}/resource/medino/js/vendor/jquery.nice-select.min.js"></script>
+<!-- <script -->
+<%-- 	src="${cp}/resource/medino/js/vendor/jquery.nice-select.min.js"></script> --%>
 <script
 	src="${cp}/resource/medino/js/vendor/superfish.min.js"></script>
 <script

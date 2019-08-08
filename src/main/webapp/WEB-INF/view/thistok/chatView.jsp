@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
+<style type="text/css">
+
+#data{
+	overflow-y: auto;
+}
+
+</style>
 <script>
 var socket;
 function initSocket() {
@@ -46,10 +53,11 @@ $(document).ready(function() {
 </head>
 <body>
 	<h1 id="userId"></h1>
-	<div id="data" style=" width:500px; height:500px; border:1px solid black;"></div><br>
-		<input type="text" id="message" name="input-text"/> 
-		<button id="sendBtn" type="submit">전송</button><br>
-	
+	<form>
+			<div id="data" style=" width:500px; height:500px; border:1px solid black;"></div><br>
+			<input type="text" id="message" name="input-text"/> 
+			<button id="sendBtn" type="submit">전송</button><br>
+	</form>
 </body>
 </html>
 

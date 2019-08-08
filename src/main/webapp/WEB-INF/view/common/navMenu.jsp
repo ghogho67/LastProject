@@ -59,10 +59,8 @@
 				<li><a href="${cp}/lecture/lectureListManagement">메뉴관리</a></li>
 				<li><a href="${cp}/lecture/lectureListManagement">xxxxxxxxxxxxx</a></li>
 				<li><a href="${cp}/recognition/semiTestStart">인지1</a></li>
-				<li><a href="${cp}/recognition/semiTest">인지</a></li>
-				<li><a href="${cp}/recognition/semiTest2">인지</a></li>
-				<li><a href="${cp}/recognition/NewFile">인지</a></li>
-				<li><a href="${cp}/recognition/TestA">인지</a></li>
+				<li><a href="${cp}/recognitionImp/impStart">인지향상</a></li>
+		
 			
 			</ul></li>
 			

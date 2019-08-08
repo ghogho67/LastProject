@@ -167,7 +167,7 @@ ul, li, dl, dd {
 
 
 							<c:choose>
-								<c:when test="${  checkScore==1}">
+								<c:when test="${checkScore==5}">
 								
 							<img
 								src="${pageContext.request.contextPath}/resource/medino/images/620.jpg"
@@ -175,7 +175,7 @@ ul, li, dl, dd {
 
 								</c:when>
 
-								<c:when test="${checkScore==2}">
+								<c:when test="${checkScore==4}">
 									
 							<img
 								src="${pageContext.request.contextPath}/resource/medino/images/620.jpg"
@@ -214,13 +214,13 @@ ul, li, dl, dd {
 
 
 							<c:choose>
-								<c:when test="${  checkScore==1}">
+								<c:when test="${  checkScore==5}">
 									<h2 style="text-align: center;">
 										치매 <span style="color: red;">고위험군</span> 입니다
 									</h2>
 								</c:when>
 
-								<c:when test="${checkScore==2}">
+								<c:when test="${checkScore==4}">
 									<h2 style="text-align: center;">
 										치매 <span style="color: red;">고위험군</span> 입니다
 									</h2>
@@ -232,7 +232,7 @@ ul, li, dl, dd {
 									</h2>
 								</c:when>
 
-								<c:when test="${checkScore==4}">
+								<c:when test="${checkScore==2}">
 									<h2 style="text-align: center;">비교적 <span style="color:#ea309f;">건강한</span> 인지력을 지니셨네요</h2>
 								</c:when>
 
@@ -253,14 +253,14 @@ ul, li, dl, dd {
 
 
 <c:choose>
-								<c:when test="${  checkScore==1}">
+								<c:when test="${  checkScore==5}">
 									
 								<li>빠른시일내에 치매상담실에 상담 또는 전문의의 정확한 진단을 받아보시길 권합니다.</li>
 								<li>디스케어는 긴급 호출, 인지능력 향상 프로그램 등의 프리미엄 서비스를 제공하고 있습니다</li>
 								<li> 프리미엄 서비스를 이용해 보시는건 어떨까요? .</li>
 								</c:when>
 
-								<c:when test="${checkScore==2}">
+								<c:when test="${checkScore==4}">
 									
 								<li>빠른시일내에 치매상담실에 상담 또는 전문의의 정확한 진단을 받아보시길 권합니다.</li>
 								<li>디스케어는 긴급 호출ㄷ, 인지능력 향상 프로그램 등의 프리미엄 서비스를 제공하고 있습니다</li>
@@ -273,7 +273,7 @@ ul, li, dl, dd {
 								<li>언제 발생할지 모르는 위급상황을 대비해 디스케어의 프리미엄 서비스를 이용해 보시는건 어떨까요? .</li>
 								</c:when>
 
-								<c:when test="${checkScore==4}">
+								<c:when test="${checkScore==2}">
 									
 								<li>하지만 긴장의 끈을 놓으셔선 안됩니다! 디스케어의 프리미엄 서비스를 이용해 보시는건 어떨까요? .</li>
 								</c:when>
