@@ -8,7 +8,7 @@
 <script src="/js/index.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>챗봇</title>
 
 
 
