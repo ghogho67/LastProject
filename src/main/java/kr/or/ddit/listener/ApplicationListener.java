@@ -1,4 +1,4 @@
-package listener;
+package kr.or.ddit.listener;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;

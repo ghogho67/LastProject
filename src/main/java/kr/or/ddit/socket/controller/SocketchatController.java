@@ -26,7 +26,7 @@ public class SocketChatController {
 		MemberVo memVo = (MemberVo) session.getAttribute("MEM_INFO");
 		logger.debug("☞mem_id:{}",memVo.getMem_id());
 		session.setAttribute("mem_id", memVo.getMem_id());
-		return "thisTok/chatView";
+		return "thistok/chatView";
 	}
 
 	// 소켓에 연결된 모든 사용자에게 메세지 전달
