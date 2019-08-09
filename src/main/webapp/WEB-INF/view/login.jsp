@@ -18,6 +18,11 @@
 	height: 300px;
 }
 
+/* .lk{ */
+/* margin: 10px 10px 10px 0; */
+/* height: 300px; */
+/* width: 100%; */
+/* } */
 
 
 .lk{
