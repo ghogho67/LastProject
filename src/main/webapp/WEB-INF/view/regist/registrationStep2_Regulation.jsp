@@ -21,7 +21,7 @@ height: 200px;
 }
 .accept-title{
   background:url(../../../resource/joinCare/images/mypage_title.png) no-repeat 0px 50%;
-  font-family: 'NanumSquare', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:25px;
   font-weight:700;
   color:#3b3b3b;
