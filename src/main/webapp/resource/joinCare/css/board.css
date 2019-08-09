@@ -1,4 +1,4 @@
-
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
 .contents {
   margin-top:140px;
 }
@@ -13,7 +13,7 @@
 }
 
 .board-title {
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   font-size:48px;
   font-weight:700;
   color:#3b3b3b;
@@ -33,7 +33,7 @@
   clear: both;
   height: 50px;
   margin: 30px 0px 10px 0px;
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   font-size: 18px;
   font-weight: 300;
   letter-spacing: -1px;
@@ -61,7 +61,7 @@
   width:100%;
   text-align:center;
   vertical-align:middle;
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   font-size:14px;
   font-weight:300;
   letter-spacing:-1px;
