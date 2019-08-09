@@ -10,6 +10,7 @@
 <script>
 var socket;
 function initSocket() {
+
 	socket = new SockJS("/socket/chat");
 	
 	socket.onopen = onOpen;
@@ -65,9 +66,9 @@ function initSocket() {
 		}
 		
 		//current session id//
-		var currentuser_session = $('#sessionuserid').val();
+		var currentusersession = $('#sessionuserid').val();
 		var currentuser_name = $('#sessionname').val();
-		console.log('current session id: ' + currentuser_session);
+		console.log('current session id: ' + currentusersession);
 		console.log('current session name: ' + currentuser_name);
 		
 		sessionName = strArray[0]; //현재 메세지를 보낸 사람의 세션 등록//
@@ -76,27 +77,35 @@ function initSocket() {
 		console.log("message : " + message);
 		sessionId = strArray[2];
 		console.log("sessionId : " + sessionId);
-		
+			
 		//나와 상대방이 보낸 메세지를 구분하여 영역을 나눈다.//
-		if(sessionId == currentuser_session){
-			var printHTML = "<div class='well'>";
-			printHTML += "<div class='alert alert-info'>";
-			printHTML += "<strong>["+sessionName+"] -> "+message+"</strong>";
+		if(currentusersession == sessionName.trim()){
+			var printHTML = "<li class='chat' style='text-align:right'>";
+			printHTML += "<li class='self'>";
+			printHTML += "<div class='msg'>";
+			printHTML += "<div class='user'>"+sessionName+"</div>";
+			printHTML += "<p>"+message+"</p>";
 			printHTML += "</div>";
-			printHTML += "</div>";
+			printHTML += "</li>";
+			printHTML += "</li>";  
 			
 			$("#chatdata").append(printHTML);
 			$("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
+			
 		} else{
-			var printHTML = "<div class='well'>";
-			printHTML += "<div class='alert alert-warning'>";
-			printHTML += "<strong>["+sessionName+"] -> "+message+"</strong>";
+			var printHTML = "<div class='chat' style='text-align:left>";
+			printHTML += "<li class='other'>";
+			printHTML += "<div class='msg'>";
+			printHTML += "<div class='user'>"+sessionName+"</div>";
+			printHTML += "<p>"+message+"</p>";
 			printHTML += "</div>";
-			printHTML += "</div>";
+			printHTML += "</li>";
+			printHTML += "</li>"; 
 			
 			$("#chatdata").append(printHTML);
 			$("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
 		}
+	
 		
 		console.log('chatting data: ' + data);
 		
@@ -107,47 +116,44 @@ function initSocket() {
 		$("#chatdata").append("연결 끊김");
 	}    
 
-
-	
-	  
 }
+	
 $(document).ready(function() {
 	var userId = "${mem_id}";	//사용자 아이디를 파라미터로 받는다
 	$("#userId").text(userId);
+	
+
+	$("#sendBtn").on("click", function() {
+		var msg = $("#message").val();
+		socket.send(msg);
+		$("#message").val("");
+	});
 		
 	initSocket();	//websocket 연결
 });
 </script>
-<style type="text/css">
-#chatdata{
-	overflow:scroll;
-	border: solid;
-	overFlow: scroll;
-	border:1px solid black;
-	height: 400px;
-	width: 30%;
-}
-</style>
 </head>
 <body>
+<%@include file="/WEB-INF/view/common/ChatView.jsp"%>
+
+   <img id="logo" alt="" src="/image/logosam2.png">
 	<table class="container-fluid" style="width: 80%;">
 		<tr>
 			<td>
-				<div class="container-fluid">
-					<h2>ThisTok! (id: ${mem_id})</h2>
+				<div class=chat-header style="width: 100%;">
+					<h2 id="chat-header__name">ThisTok! (id: ${mem_id})</h2>
 				</div>
 
 				<div>
 
-					<br>
-					<div class="well" id="chatdata">
+					<div class="chat" id="chatdata">
 						<!-- User Session Info Hidden -->
 						<input type="hidden" value='${mem_id}' id="sessionuserid">
 					</div>
-					<br>
 					<div>
 						<input type="text" id="message" size="50" /> 
-						<input type="button" id="sendBtn" value="전송" />
+						
+						<input class="btn" type="button" id="sendBtn" value="Send" />
 					</div>
 
 				</div>
@@ -155,6 +161,7 @@ $(document).ready(function() {
 		</tr>
 	</table>
 	
+
 	
 </body>
 </html>

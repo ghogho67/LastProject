@@ -58,6 +58,7 @@ h2 {
 
 ul, li, dl, dd {
 	list-style-type: none;
+	font-size: 18px;
 }
 
 ul {
@@ -156,19 +157,26 @@ ul, li, dl, dd {
                        <img src="${pageContext.request.contextPath}/resource/medino/images/620.jpg" alt="">
                     </div>
                 </div>
-                <div class="col-lg-7">
+                
+                
+                
+           
+                
+                   <div class="col-lg-7">
                     <div class="welcome-text mt-5 mt-lg-0">
-                        <h2 style="text-align: center;"> 유의사항</h2>
-                        <p class="pt-3">
+                        <h2 style="text-align: center;"> <span>유의사항</span></h2>
+                        
                         <ul>
-                        <li> 7문항으로 구성된 테스트 입니다</li>
+                   <li> 7문항으로 구성된 테스트 입니다</li>
                         <li> 꼭 본인의 힘으로 테스트를 완료해주세요 </li>
                          </ul>
-                        </p>
-                        <p>검사 후 의심자는 치매상담실에 상담 또는 전문의의 정확한 진단을 받아보시길 권합니다.</p>
-                        <a href="${cp}/recognition/semiTestQ1?sur_id=901">진행하기</a>
+                        <br>
+                        <p style="font-size: 12px;">검사 후 의심자는 치매상담실에 상담 또는 전문의의 정확한 진단을 받아보시길 권합니다.</p>
+                        <a class="btn btn-primary mr-2" style="color: white; letter-spacing: 3px; float: right;" href="${cp}/recognition/semiTestQ1?sur_id=901">진행하기</a>
                     </div>
                 </div>
+                
+                
             </div>
         </div>
 

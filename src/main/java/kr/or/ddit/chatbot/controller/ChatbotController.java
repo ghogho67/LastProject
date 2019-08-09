@@ -21,4 +21,13 @@ public class ChatbotController {
 		return "/chatbot/chatbot";
 	}
 	
+	
+	@RequestMapping("/speechToText")
+	public String speechToText() {
+		
+		
+		
+		return "/chatbot/speechToText";
+	}
+	
 }

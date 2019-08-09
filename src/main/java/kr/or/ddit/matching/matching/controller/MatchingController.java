@@ -76,8 +76,7 @@ public class MatchingController {
 		model.addAttribute("memVo", memberService.getMemVo(mem_id));
 		model.addAttribute("mem_id", mem_id);
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-
-		return "FullCalendar-Example-master/calendar";
+		return "matching/meeting";
 	}
 
 	@RequestMapping(path = "/meetjson")
@@ -97,15 +96,15 @@ public class MatchingController {
 //		String JSONOBject = gson.toJson(cwList);
 //		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 //		String cwJson = prettyGson.toJson(cwList);
-//		for (int i = 0; i < cwList.size(); i++) {
-//			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
-//		}
+		for (int i = 0; i < cwList.size(); i++) {
+			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
+		}
 //
 //		logger.debug("☞cwJson:{}", cwJson);
 		logger.debug("☞ cwList:{}", cwList);
 		logger.debug("☞ list:{}", list);
 		logger.debug("☞ addrList:{}", addrList);
-		model.addAttribute("cwList", cwList);
+//		model.addAttribute("cwList", cwList);
 		model.addAttribute("addrList", addrList);
 		model.addAttribute("list", list);
 

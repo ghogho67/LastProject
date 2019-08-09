@@ -7,7 +7,7 @@ public class QuestionChoiceVo {
 	private int sur_id;
 
 	private String choice_id;
-	private int choice_ct1;
+	private String choice_ct1;
 	private String choice_ct2;
 	private String choice_ct3;
 	private String choice_ct4;
@@ -17,7 +17,7 @@ public class QuestionChoiceVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public QuestionChoiceVo(int ques_id, String ques, String ans, int sur_id, String choice_id, int choice_ct1,
+	public QuestionChoiceVo(int ques_id, String ques, String ans, int sur_id, String choice_id, String choice_ct1,
 			String choice_ct2, String choice_ct3, String choice_ct4) {
 		super();
 		this.ques_id = ques_id;
@@ -66,10 +66,10 @@ public class QuestionChoiceVo {
 	public void setChoice_id(String choice_id) {
 		this.choice_id = choice_id;
 	}
-	public int getChoice_ct1() {
+	public String getChoice_ct1() {
 		return choice_ct1;
 	}
-	public void setChoice_ct1(int choice_ct1) {
+	public void setChoice_ct1(String choice_ct1) {
 		this.choice_ct1 = choice_ct1;
 	}
 	public String getChoice_ct2() {

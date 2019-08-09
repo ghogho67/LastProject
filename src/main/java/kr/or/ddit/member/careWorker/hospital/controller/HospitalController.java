@@ -100,6 +100,23 @@ public class HospitalController {
 		logger.debug("☞getSearchHosAdd:{}",getSearchHosAdd);
 		
 		
+
+		List<String> list = new ArrayList<String>();
+		
+		List<HospitalVo> hosList = hospitalService.hosList();
+		model.addAttribute("hosList",hosList);
+		
+		List<String> searchMapList = hospitalService.searchMapList(hos_add);
+		model.addAttribute("searchMapList",searchMapList);
+		logger.debug("☞searchMapList:{}",searchMapList);
+		
+		for(int i = 0; i < hosList.size(); i++) {
+			list.add(hosList.get(i).getHos_nm()+ ":" + hosList.get(i).getHos_phone() + ": " + hosList.get(i).getHos_add());
+		}
+		logger.debug("☞list:{}",list);
+		model.addAttribute("list", list);
+		
+	
 		
 		//-------------- 페이지 네이션!!
 		
@@ -107,7 +124,7 @@ public class HospitalController {
 //		hospitalVo = new HospitalVo(hos_add);
 //		
 //		map.put("getSearchHosAdd", hospitalService.getSearchHosAdd(hos_add));
-//		map.put("hos_add", hospitalVo.getHos_add());
+////		map.put("hos_add", hospitalVo.getHos_add());
 //		map.put("page", pageVo.getPage());
 //		map.put("pageSize", pageVo.getPageSize());
 //		
@@ -126,31 +143,26 @@ public class HospitalController {
 //		model.addAttribute("pageVo", pageVo);
 //		model.addAttribute("hos_add", hos_add);
 		
-		
-		//-- 네이버 map API적용
-		
-		List<String> list = new ArrayList<String>();
-		
-		List<HospitalVo> hosList = hospitalService.hosList();
-		model.addAttribute("hosList",hosList);
-		
-		List<String> searchMapList = hospitalService.searchMapList(hos_add);
-		model.addAttribute("searchMapList",searchMapList);
-		logger.debug("☞searchMapList:{}",searchMapList);
-		
-		for(int i = 0; i < hosList.size(); i++) {
-			list.add(hosList.get(i).getHos_nm()+ ":" + hosList.get(i).getHos_phone() + ": " + hosList.get(i).getHos_add());
-		}
-		logger.debug("☞list:{}",list);
-		model.addAttribute("list", list);
-				
-		
 		return "/hospital/searchHospital.tiles";
 	}
 	
 	@RequestMapping(path = "/map")
 	public String searchMapList(String hos_add, Model model) {
-
+//		
+//		List<String> list = new ArrayList<String>();
+//		
+////		List<HospitalVo> hosList = hospitalService.hosList();
+////		model.addAttribute("hosList",hosList);
+//		
+//		List<HospitalVo> searchMapList = hospitalService.searchMapList(hos_add);
+//		model.addAttribute("searchMapList",searchMapList);
+//		logger.debug("☞searchMapList:{}",searchMapList);
+//		
+//		for(int i = 0; i < searchMapList.size(); i++) {
+//			list.add(searchMapList.get(i).getHos_nm()+ ":" + searchMapList.get(i).getHos_phone() + ": " + searchMapList.get(i).getHos_add());
+//		}
+//		model.addAttribute("list", list);
+		
 		return "/hospital/maps";
 	}
 
