@@ -255,6 +255,10 @@
 				<td>경력</td>
 				<td></td>
 			</tr>
+			<tr>
+				<td>요양보호사 아이디</td>
+				<td id="mem_id">${memVo.mem_id }</td>
+			</tr>
 		</table>
 	</div>
 	<!-- /.container -->

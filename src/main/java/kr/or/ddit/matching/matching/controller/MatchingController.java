@@ -50,7 +50,8 @@ public class MatchingController {
 	@RequestMapping(path = "/meet")
 	public String meeting(Model model, String mem_id) {
 
-		logger.debug("☞calendar");
+		logger.debug("☞meet");
+		logger.debug("☞mem_id:{}", mem_id);
 		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
 		logger.debug("☞mlist:{}", mlist);
 
@@ -101,7 +102,7 @@ public class MatchingController {
 //		}
 //
 //		logger.debug("☞cwJson:{}", cwJson);
-		logger.debug("☞ cwList:{}",cwList);
+		logger.debug("☞ cwList:{}", cwList);
 		logger.debug("☞ list:{}", list);
 		logger.debug("☞ addrList:{}", addrList);
 		model.addAttribute("cwList", cwList);
@@ -461,9 +462,10 @@ public class MatchingController {
 	}
 
 	@RequestMapping(path = "/getCalendar")
-	public String getCalendar(Model model) {
+	public String getCalendar(Model model, String mem_id) {
 
-		List<MatchingVo> mlist = matchingService.getMatchingList("brown");
+		logger.debug("☞mem_id:{}", mem_id);
+		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
 		logger.debug("☞mlist:{}", mlist);
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
 

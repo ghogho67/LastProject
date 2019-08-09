@@ -28,7 +28,7 @@
 
 	<select id="getMatchingList" resultType="matchingVo">
 		select * from matching
-		where mem_id = #{mem_id}
+		where cw_mem_id = #{cw_mem_id}
 	</select>
 
 	<update id="modify" parameterType="matchingVo">
