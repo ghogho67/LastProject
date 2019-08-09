@@ -1,7 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,32 @@
 
 
 <style>
+
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+
+tr {
+	text-align: center;
+	font-weight: 500;
+}
+
+td {
+	text-align: center;
+}
+
 
 .pagination-outer {
 	text-align: center;
@@ -114,10 +140,11 @@
 }
 
 .d1 {
-	height: 30px;
+	
 	background: white;
 	position: absolute;
-	right: 21%;
+	right: 1%;
+	top: 60px;
 }
 
 .d1 input {
@@ -161,6 +188,12 @@
 	border-left: 2px solid #7BA7AB;
 	border-right: 2px solid #7BA7AB;
 }
+
+
+tbody{
+text-align: center;
+}
+
 </style>
 
 
@@ -175,11 +208,10 @@
 			$("#frm").submit();
 		});
 
-		
 		//보고서 작성용
-// 		$("#post").on("click", function() {
-// 			$("#frm2").submit();
-// 		})
+		// 		$("#post").on("click", function() {
+		// 			$("#frm2").submit();
+		// 		})
 
 		$("#searchBtn").on("click", function() {
 			if ($('#keyword').val().length == 0) {
@@ -195,44 +227,43 @@
 
 </head>
 <body>
+
+	<div class="container-fluid"></div>
+
 	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
 
 
 
-<c:choose>
- 
-    <c:when test="${MEM_INFO.mem_grade==0}">
-      <%@include file="/WEB-INF/view/common/mypage/sidebarA.jsp"%>
+	<c:choose>
 
-    </c:when>
- 
-    <c:when test="${MEM_INFO.mem_grade==3}">
-     <%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
+		<c:when test="${MEM_INFO.mem_grade==0}">
+			<%@include file="/WEB-INF/view/common/mypage/sidebarA.jsp"%>
 
-    </c:when>
- 
-    <c:otherwise>
-       <%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
+		</c:when>
 
-    </c:otherwise>
- 
-</c:choose>
+		<c:when test="${MEM_INFO.mem_grade==3}">
+			<%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
+
+		</c:when>
+
+		<c:otherwise>
+			<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
+
+		</c:otherwise>
+
+	</c:choose>
 
 
 
 
 
 	<form id="frm" action="${cp}/report/report" method="get">
-		<input type="hidden" id="reportId" name="reportId">
-		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
-		<input type="hidden" id="memgrade" name="memgrade" value="${MEM_INFO.mem_grade}">
+		<input type="hidden" id="reportId" name="reportId"> <input
+			type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
+		<input type="hidden" id="memgrade" name="memgrade"
+			value="${MEM_INFO.mem_grade}">
 	</form>
 
-
-<!-- 글쓰기용 -->
-<%-- 	<form id="frm2" action="${cp}/report/reportForm" method="get"> --%>
-<%-- 		<input type="hidden" id="boardid" name="boardid" value="${boardid}"> --%>
-<!-- 	</form> -->
 
 
 
@@ -241,24 +272,11 @@
 		<div class="row mb-4">
 
 
-			<div class="col-lg-12">
-				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 보고서조회</h3>
+			<div class="col-lg-12" style="padding: 0 60px 0 60px ;">
 				<div class="card">
-					<div class="card-body">
-						<div class="row">
-
-							<section class="board-list">
-
-								<div class="board-top">
-		
-
-									<p class="board-count" style="margin-left: 200px;">
-										총 <span class="education-board-cnt ng-binding">24</span>개의 보고서
-									</p>
 
 
-
-									<div class="d1">
+	<div class="d1">
 										<form class="for">
 
 											<select id="searchType" name="searchType"
@@ -268,115 +286,92 @@
 												<option value="content">내용</option>
 												<option value="writer">작성자</option>
 												<option value="tc">제목+내용</option>
-											</select> <input type="text" placeholder="검색어 입력"
-												style="position: absolute; top: 0px; right: 0px;">
+											</select> <input type="text" placeholder="검색어 입력">
 											<button type="submit"></button>
 										</form>
 									</div>
 
-								</div>
-
-								<!-- 게시글리스트 시작 -->
-								<div class="board-list-in">
-									<table class="education-table" style="margin-left: 200px;">
-
-
-										<colgroup>
-											<col style="width: 10%">
-											<col style="width: 40%" class="ng-scope">
-											<col style="width: 20%">
-											<col style="width: 20%">
-											<col style="width: 10%">
-										</colgroup>
-
-										<thead>
-											<tr>
-												<th scope="col">보고서 아이디</th>
-												<th scope="col">제목</th>
-												<th scope="col" class="hidden-xs">담당요양보호사</th>
-												<th scope="col">매칭시작일</th>
-												<th scope="col" class="border-no1 hidden-xs">등록일</th>
-											</tr>
-										</thead>
-
-										<tbody>
+					<div class="card-body">
+						<div id="titlee">
+							<h2>
+								<span>보고서</span> 조회
+							</h2>
+							
+							
+						
+							
+						</div>
+					
+						
+						<hr>
+						<div class="table-responsive">
+							<table class="table center-aligned-table">
 
 
 
 
+								<thead>
+									<tr class="text-primary">
+										<th >보고서 아이디</th>
+										<th >제목</th>
+										<th>담당요양보호사</th>
+										<th>매칭시작일</th>
+										<th>등록일</th>
+									</tr>
+								</thead>
 
 
-
-											<c:forEach items="${reportlist}" var="report">
-
-												<tr class="reportTr" data-userid="${report.rep_id}">
-													<td class="reportId">${report.rep_id}</td>
-													<td>${report.rep_title}</td>
-													<td>${report.cw_mem_id}</td>
-													<td>${report.mat_st}</td>
-													<td>${report.rep_time}</td>
-												</tr>
-											</c:forEach>
+								<tbody>
 
 
+									<c:forEach items="${reportlist}" var="report">
 
+										<tr class="reportTr" data-userid="${report.rep_id}">
+											<td class="reportId">${report.rep_id}</td>
+											<td>${report.rep_title}</td>
+											<td>${report.cw_mem_id}</td>
+											<td><fmt:formatDate value="${report.mat_st}" pattern="yyyy-MM-dd" /></td>
+											<td><fmt:formatDate value="${report.rep_time}" pattern="yyyy-MM-dd" /></td>
+										</tr>
+									</c:forEach>
 
+								</tbody>
 
-
-
-
-										</tbody>
-									</table>
-								</div>
-
-								<br> <a href="#" class="genric-btn success medium"
-									style="position: absolute; left: 74%;">글쓰기</a> <br> <br>
-
-
-								<div class="demo" style="position: absolute; right: 40%;">
-									<nav class="pagination-outer" aria-label="Page navigation">
-										<ul class="pagination">
-											<li class="page-item"><a href="#" class="page-link"
-												aria-label="Previous"> <span aria-hidden="true">«</span>
-											</a></li>
-											<li class="page-item  active"><a class="page-link"
-												href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#">4</a></li>
-											<li class="page-item"><a class="page-link" href="#">5</a></li>
-											<li class="page-item"><a href="#" class="page-link"
-												aria-label="Next"> <span aria-hidden="true">»</span>
-											</a></li>
-										</ul>
-									</nav>
-								</div>
-
-								<br> <br> <br>
-
-
-							</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+							</table>
 						</div>
 					</div>
+
+
+
+
+
+
+
+
 				</div>
 
 			</div>
 		</div>
+									<div class="demo" style="position: absolute; right: 40%;">
+										<nav class="pagination-outer" aria-label="Page navigation">
+											<ul class="pagination">
+												<li class="page-item"><a href="#" class="page-link"
+													aria-label="Previous"> <span aria-hidden="true">«</span>
+												</a></li>
+												<li class="page-item  active"><a class="page-link"
+													href="#">1</a></li>
+												<li class="page-item"><a class="page-link" href="#">2</a></li>
+												<li class="page-item"><a class="page-link" href="#">3</a></li>
+												<li class="page-item"><a class="page-link" href="#">4</a></li>
+												<li class="page-item"><a class="page-link" href="#">5</a></li>
+												<li class="page-item"><a href="#" class="page-link"
+													aria-label="Next"> <span aria-hidden="true">»</span>
+												</a></li>
+											</ul>
+										</nav>
+									</div>
 	</div>
+
 
 
 

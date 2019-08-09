@@ -87,7 +87,7 @@ ul, li, dl, dd {
 
 #program {
 	width: 100%;
-    height :900px;
+    height :750px;
 	margin-right: 3%;
 }
 
@@ -176,10 +176,106 @@ background-image: url('/image/nunmul.PNG');
 
 
 #middle{
-margin-top:50px;
+margin-top:20px;
 position:absolute;
 left:22%;
 width: 70%
+}
+
+
+
+
+
+.pagination-outer {
+	text-align: center;
+}
+
+.pagination {
+	font-family: 'Rubik', sans-serif;
+	padding: 0 30px;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination li a.page-link {
+	color: #909090;
+	background-color: transparent;
+	font-size: 20px;
+	line-height: 35px;
+	height: 45px;
+	width: 40px;
+	margin: 0 3px;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease 0s;
+}
+
+.pagination li.active a.page-link, .pagination li a.page-link:hover,
+	.pagination li.active a.page-link:hover {
+	color: #006266;
+	background-color: transparent;
+}
+
+.pagination li a.page-link span {
+	display: block;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:hover span {
+	transform: rotateY(360deg);
+}
+
+.pagination li a.page-link:before, .pagination li a.page-link:after {
+	content: "";
+	background-color: #006266;
+	height: 3px;
+	width: 0;
+	opacity: 1;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:before {
+	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	height: 15px;
+	width: 15px;
+	transform: translateX(-50%) rotate(45deg);
+	bottom: auto;
+	top: -20px;
+	left: 50%;
+}
+
+.pagination li a.page-link:hover:after {
+	width: 100%;
+}
+
+.pagination li a.page-link:hover:before {
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
+	{
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
+	{
+	width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	.pagination {
+		display: block;
+	}
+	.pagination li {
+		margin-bottom: 10px;
+		display: inline-block;
+	}
 }
 
 </style>
@@ -206,7 +302,7 @@ width: 70%
 						<ul>
 							<li><a href="${cp}/recognitionImp/impVideo?sur_id=902">콩국수에는 슬픈 전설이 하나 있어</a></li>
 							<li><a href="${cp}/recognitionImp/impVideo?sur_id=903">미선이의 ‘미달이 공부시키기’</a></li>
-							<li><a href="${cp}/recognitionImp/impVideo?sur_id=907"> 아홉 살 해리에겐 너무 힘든 이별</a></li>
+							<li><a href="${cp}/recognitionImp/impVideo?sur_id=907">아홉 살 해리에겐 너무 힘든 이별</a></li>
 							<li><a href="${cp}/recognitionImp/impVideo?sur_id=904">화가나는 교감의 반어법</a></li>
 							<li><a href="${cp}/recognitionImp/impVideo?sur_id=905">뛰는 남자들 위해 나는 이순재?!</a></li>
 							<li><a href="${cp}/recognitionImp/impVideo?sur_id=906">동대문 할부지 크레페 근황</a></li>
@@ -214,6 +310,28 @@ width: 70%
 						</ul>
 			
 					</div>
+
+
+
+	<div class="demo" style="position: absolute; right: 40%;">
+									<nav class="pagination-outer" aria-label="Page navigation">
+										<ul class="pagination">
+											<li class="page-item"><a href="#" class="page-link"
+												aria-label="Previous"> <span aria-hidden="true">«</span>
+											</a></li>
+											<li class="page-item  active"><a class="page-link"
+												href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item"><a class="page-link" href="#">4</a></li>
+											<li class="page-item"><a class="page-link" href="#">5</a></li>
+											<li class="page-item"><a href="#" class="page-link"
+												aria-label="Next"> <span aria-hidden="true">»</span>
+											</a></li>
+										</ul>
+									</nav>
+								</div>
+
 
 
 </div>

@@ -5385,7 +5385,8 @@ button.close {
 	display: flex;
 	-ms-flex-direction: column;
 	flex-direction: column;
-	width: 100%;
+    width: 700px;
+    height: 700px;
 	pointer-events: auto;
 	background-color: #fff;
 	background-clip: padding-box;
@@ -5409,7 +5410,7 @@ button.close {
 }
 
 .modal-backdrop.show {
-	opacity: .5
+	opacity: .3
 }
 
 .modal-header {

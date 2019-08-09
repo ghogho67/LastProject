@@ -16,6 +16,21 @@
 <style>
 
 
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 15px 5px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
 .mail-header h4 {
     font-weight: 300;
 }
@@ -38,7 +53,6 @@
 
 .mail-sender .date {
     line-height: 30px;
-    margin-bottom: 0;
     text-align: right;
 }
 
@@ -53,8 +67,6 @@
 .attachment-mail ul li  {
     float: left;
     width: 200px;
-    margin-right: 15px;
-    margin-top: 15px;
     list-style: none;
 }
 
@@ -197,9 +209,16 @@
 
 
 			<div class="col-lg-12">
-				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 보고서조회</h3>
 				<div class="card">
 					<div class="card-body">
+					<div id="titlee">
+							<h2>
+								<span>보고서</span> 상세조회
+							</h2>
+							<hr>
+							
+						</div>
+					
 						<div class="row">
 						
     <!--main content start-->
@@ -248,15 +267,9 @@
                   </p>
                   <ul>
                     <li>
-<!--                       <a class="atch-thumb" href="#"> -->
-<!--                         <img src="img/instagram.jpg"> -->
-<!--                         </a> -->
-
-									<a id="DownGOGO"
+<a id="DownGOGO"
 										href="/report/DownGOGO?repattid=${report.rep_att_id}"
 										class="btn btn-default"> ${report.rep_att_nm}</a>
-					
-
                       <div class="links">
                         <a href="#">View</a> -
                         <a href="#">Download</a>
@@ -266,23 +279,13 @@
                 </div>
                 <div class="compose-btn pull-left">
                   <a href="mail_compose.html" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> Reply</a>
-                  
-                  
-<!--                   <button class="btn btn-sm "><i class="fa fa-arrow-right"></i> Forward</button> -->
-<!--                   <button class="btn  btn-sm tooltips" data-original-title="Print" type="button" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-print"></i> </button> -->
-<!--                   <button class="btn btn-sm tooltips" data-original-title="Trash" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-trash-o"></i></button> -->
-              
-              
                 </div>
               </div>
             </section>
           </div>
         </div>
       </section>
-      <!-- /wrapper -->
     </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
 						
 						
 						</div>

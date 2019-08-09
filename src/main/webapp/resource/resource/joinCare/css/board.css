@@ -1,0 +1,235 @@
+
+.contents {
+  margin-top:140px;
+}
+
+.board-title-section {
+  padding:30px 0px 30px 0px;
+}
+
+.board-title-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.board-title {
+  font-family: 'NanumSquare', gulim;
+  font-size:48px;
+  font-weight:700;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+  text-align:center;
+  margin:0px 0px 45px 0px;
+  padding-top:20px;
+  background:url(../../../resource/joinCare/images/title_line.png) no-repeat 50% 0px;
+}
+
+.board-list-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.board-top {
+  clear: both;
+  height: 50px;
+  margin: 30px 0px 10px 0px;
+  font-family: 'NanumSquare', gulim;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: #3b3b3b;
+}
+
+.board-count {
+  float: left;
+  font-weight: 600;
+}
+
+.board-search {
+  float: right;
+  width: 255px;
+}
+
+/*
+.board-list-in {
+    width: 1100px;
+    margin: 0 auto;
+}
+*/
+
+.board-table {
+  width:100%;
+  text-align:center;
+  vertical-align:middle;
+  font-family: 'NanumSquare', gulim;
+  font-size:14px;
+  font-weight:300;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+  padding:0px 0px 30px 0px;
+}
+
+.board-table tr {
+  height:50px;
+  border-bottom:1px solid #cacaca;
+}
+
+.board-table th, .education-table td  {
+  border-right:1px solid #cacaca;
+}
+
+.board-table tr>th:nth-last-child(1) {
+  border-right:0px solid #cacaca !important;
+}
+
+.board-table tr>td:nth-last-child(1) {
+  border-right:0px solid #cacaca !important;
+}
+
+.board-table>thead>tr {
+  border-top:4px solid #679bbb;
+  background-color:#f0f6fa;
+}
+
+.board-table>thead>tr>th {
+  text-align:center;
+}
+
+.board-table a {
+  color:#3b3b3b;
+}
+
+.board-table .important-no {
+  text-indent:-9999px;
+  background:url(../../../resource/joinCare/images/board_important.png) no-repeat 50% 50%;
+}
+
+.board-table .important-title {
+  font-weight:600;
+}
+
+.board-table .board-new {
+  display:inline-block;
+  height:14px;
+  width:14px;
+  text-indent:-9999px;
+  background:url(../../../resource/joinCare/images/board_new.png) no-repeat 50% 50%;
+}
+
+.mindtouchcare-img {
+  background:url(../../../resource/joinCare/images/mind_touchcare.jpg) no-repeat 50% 50%;
+  width:100%;
+  height:270px;
+}
+
+.dementia-img {
+  background:url(../../../resource/joinCare/images/communication.jpg) no-repeat 50% 50%;
+  width:100%;
+  height:270px;
+}
+
+
+.care-img {
+  background:url(../../../resource/joinCare/images/dailycare.jpg) no-repeat 50% 50%;
+  width:100%;
+  height:270px;
+}
+
+
+.list-ul {
+  height:81px;
+  padding:0px 0px 20px 0px;
+}
+
+.list-ul>li {
+  float:left;
+  list-style-type:none;
+  height:81px;
+  font-family: 'Noto Sans KR', gulim;
+  font-size:19px;
+  font-weight:400;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+  text-align:center;
+  margin-right:1px;
+}
+
+.list-ul > li.board-group-1 {
+  width:100%;
+}
+
+.list-ul > li.board-group-2 {
+  width:49.9%;
+}
+
+.list-ul > li.board-group-3 {
+  width:33.3%;
+}
+
+.list-ul > li.board-group-4 {
+  width:24.9%;
+}
+
+.list-ul > li.board-group-5 {
+  width:19.9%;
+}
+
+.list-ul>li>a {
+  display:block;
+  height:81px;
+  line-height:65px;
+  cursor:pointer;
+}
+
+.list-ul>li>a:hover,
+.list-ul>li>a.active {
+  display:block;
+  color:#fff;
+  background:url(../../../resource/joinCare/images/mind_touchcare_arrow.png) no-repeat 50% 65px;
+  margin-bottom:-16px;
+}
+/*
+#template-mindtouchcare .education-btn-txt {
+    width: 274px;
+}
+*/
+.btn-txt {
+  display:block;
+  height:65px;
+  color:#3b3b3b;
+  background-color:#eaeaea;
+}
+
+.btn-txt.active,
+.btn-txt:hover {
+  color:#fff;
+  text-decoration:underline;
+  background-color:#0989d9;
+}
+
+
+#template-board-list .education-list-div .education-list-ul>li,
+#template-board-list .education-list-div .education-list-ul>li>a,
+#template-board-list .education-list-div .education-btn-txt {
+  width: 274px;
+}
+
+#template-board-list .dailycare-list-div .education-img {
+  background:url(../../../resource/joinCare/images/dailycare.jpg) no-repeat 50% 50%;
+}
+
+#template-board-list .dailycare-list-div .education-list-ul>li,
+#template-board-list .dailycare-list-div .education-list-ul>li>a,
+#template-board-list .dailycare-list-div .education-btn-txt {
+  width: 218px;
+}
+
+#template-board-list .communication-list-div .education-img {
+  background:url(../../../resource/joinCare/images/communication.jpg) no-repeat 50% 50%;
+}
+
+#template-board-list .communication-list-div .education-list-ul>li,
+#template-board-list .communication-list-div .education-list-ul>li>a,
+#template-board-list .communication-list-div .education-btn-txt {
+  width: 274px;
+}
