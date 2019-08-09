@@ -478,18 +478,27 @@ public class PostController {
         JsonElement jsonElement = jsonParser.parse(s);
         logger.debug("!!! jsonElement :{}",jsonElement);
         
-        String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("itmes").getAsJsonObject().get("item").toString();
-        JsonArray memberArray=(JsonArray) jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("itmes").getAsJsonObject().get("item");
+        String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").toString();
         logger.debug("!!! name :{}",name);
-        logger.debug("!!! memberArray :{}",memberArray);
         
-        /*
-        JsonParser Parser = new JsonParser();
-        JsonObject jsonObj = (JsonObject) Parser.parse(s);
-        logger.debug("!!! jsonObj :{}",jsonObj);
-        JsonArray memberArray = (JsonArray) jsonObj.get("response");
-        logger.debug("!!! memberArray :{}",memberArray);
-        */
+        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
+        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
+       
+        logger.debug("!!! memberArray :{}",array);
+        for (int i = 0; i < array.size(); i++) {          
+        	JsonObject object = (JsonObject) array.get(i);
+        	String name2 =object.get("name").toString();
+        	name2= name2.substring(1, name2.lastIndexOf("\""));
+        	logger.debug("!!! name2 : {}", name2);
+        	if(area.equals(name2)) {
+        		logger.debug("!!! object.get(\"code\"); : {}", object.get("code"));
+        		int code = Integer.parseInt(object.get("code").toString());
+        		logger.debug("!!! code : {}", code);
+        	}
+        	     
+     
+        }            
+     
         
         
         
