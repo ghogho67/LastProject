@@ -51,10 +51,15 @@
 	}
 	
 	function popup(){
-		window.open("/chat/thistok", "thisTok!", "width=400, height=700, left=100, top=50"); 
+		window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50"); 
 	}
 
-	
+// 	$(document).ready(function(){
+// 		$("#submitBtn").on(click,function(){
+// 			window.open("", "thisTok!", "width=400, height=700, left=100, top=50"); 
+// 			$("#ft").submit();
+// 		});
+// 	});
 	
 </script>
 </head>
