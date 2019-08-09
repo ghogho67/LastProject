@@ -50,6 +50,29 @@ public class MatchingController {
 	@RequestMapping(path = "/meet")
 	public String meeting(Model model, String mem_id) {
 
+		logger.debug("☞meet");
+		logger.debug("☞mem_id:{}", mem_id);
+		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
+		logger.debug("☞mlist:{}", mlist);
+
+		List<CalendarVo> list = new ArrayList<CalendarVo>();
+
+		for (int i = 0; i < mlist.size(); i++) {
+			CalendarVo vo = new CalendarVo();
+			vo.setC_allDay(mlist.get(i).isMat_allDay());
+			vo.setC_backgroundColor(mlist.get(i).getMat_bc());
+			vo.setC_description(mlist.get(i).getMat_cont());
+			vo.setC_textColor(mlist.get(i).getMat_tc());
+			vo.setC_title(mlist.get(i).getMat_title());
+			vo.setC_type(mlist.get(i).getMat_type());
+			vo.setC_mem_id(mlist.get(i).getMem_id());
+			vo.setC_worker(mlist.get(i).getCw_mem_id());
+			vo.setC_start(mlist.get(i).getMat_st());
+			vo.setC_end(mlist.get(i).getMat_end());
+			list.add(vo);
+		}
+
+		model.addAttribute("list", list);
 		model.addAttribute("memVo", memberService.getMemVo(mem_id));
 		model.addAttribute("mem_id", mem_id);
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
@@ -78,7 +101,7 @@ public class MatchingController {
 		}
 //
 //		logger.debug("☞cwJson:{}", cwJson);
-//		logger.debug("☞ cwList:{}",cwList);
+		logger.debug("☞ cwList:{}", cwList);
 		logger.debug("☞ list:{}", list);
 		logger.debug("☞ addrList:{}", addrList);
 //		model.addAttribute("cwList", cwList);
@@ -438,9 +461,10 @@ public class MatchingController {
 	}
 
 	@RequestMapping(path = "/getCalendar")
-	public String getCalendar(Model model) {
+	public String getCalendar(Model model, String mem_id) {
 
-		List<MatchingVo> mlist = matchingService.getMatchingList("brown");
+		logger.debug("☞mem_id:{}", mem_id);
+		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
 		logger.debug("☞mlist:{}", mlist);
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
 
@@ -464,9 +488,7 @@ public class MatchingController {
 		return "jsonView";
 
 	}
-	
-	
-	
+
 	@RequestMapping(path = "/webRtc")
 	public String webRtc(Model model) {
 //		return "RTCMultiConnection-master/demos/dashboard/webrtc";

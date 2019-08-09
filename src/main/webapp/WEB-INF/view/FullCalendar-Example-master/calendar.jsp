@@ -227,6 +227,43 @@
 		</div>
 		<!-- /.modal -->
 	</div>
+
+	<div>
+		<table border="1">
+			<tr>
+				<td>구분</td>
+				<td>요양보호사</td>
+			</tr>
+			<tr>
+				<td>요양보호사명</td>
+				<td>${memVo.mem_nm }</td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>${memVo.mem_gender }</td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>${memVo.mem_phone }</td>
+			</tr>
+			<tr>
+				<td>운전여부</td>
+				<td>${memVo.cw_driver }</td>
+			</tr>
+			<tr>
+				<td>서비스 가능 지역</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>경력</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>요양보호사 아이디</td>
+				<td id="mem_id">${memVo.mem_id }</td>
+			</tr>
+		</table>
+	</div>
 	<!-- /.container -->
 	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
 	<script	src="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
