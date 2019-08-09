@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-		팝업 성공
+		
+		<table>
+			<tr>
+				<td>채팅방아이디</td>
+				<td>채팅방이름</td>
+				<td>대상자아이디</td>
+				<td></td>
+			</tr>
+			
+		
+		</table>
+		
+		
 </body>
 </html>

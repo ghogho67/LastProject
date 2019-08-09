@@ -2,7 +2,6 @@ package kr.or.ddit.config.spring;
 
 import java.util.Properties;
 
-import org.java_websocket.WebSocket;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,12 +27,12 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
-import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
-import kr.or.ddit.handler.ReplyEchoHandler;
+import kr.or.ddit.handler.SocketChatHandler;
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
 
@@ -47,9 +46,10 @@ import kr.or.ddit.view.ProfileView;
             includeFilters = {@Filter(type = FilterType.ANNOTATION,
                                  classes = {Controller.class, ControllerAdvice.class})})
 @EnableWebMvc      //<mvc:annotation-driven/>
+@EnableWebSocket
 @Configuration
 public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
-	
+   
    //<mvc:default-servlet-handler/>
    @Override
    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -189,38 +189,40 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    
    @Bean
    public JavaMailSender getJavaMailSender() {
-	   JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-	   mailSender.setHost("smtp.yourEmailDomain.co.kr");
-	   mailSender.setPort(25);
-	   
-	   mailSender.setUsername("01051845576@gmail.com");
-	   mailSender.setPassword("dlrhkdgh12");
-	   
-	   Properties props = mailSender.getJavaMailProperties();
-	   props.put("mail.smtp.auth", true);
-	   props.put("mail.smtp.starttls.enable", true);
-	   
-	   return mailSender;
+      JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+      mailSender.setHost("smtp.yourEmailDomain.co.kr");
+      mailSender.setPort(25);
+      
+      mailSender.setUsername("01051845576@gmail.com");
+      mailSender.setPassword("dlrhkdgh12");
+      
+      Properties props = mailSender.getJavaMailProperties();
+      props.put("mail.smtp.auth", true);
+      props.put("mail.smtp.starttls.enable", true);
+      
+      return mailSender;
    }
    
    @Override
    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-	   registry.addHandler(replyEchoHandler(), "/ws/chat")
+
+      registry.addHandler(socketHandler(), "/socket/chat")
        .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
        .addInterceptors(new HttpSessionHandshakeInterceptor())
        .withSockJS();
-   	
+       
    }
    
    @Bean
-   public ReplyEchoHandler replyEchoHandler() {
-	return new ReplyEchoHandler();
+   public SocketChatHandler socketHandler(){
+      return new SocketChatHandler();   // socketHandler
    }
+
    
    @Bean
    public HttpSessionHandshakeInterceptor handshaker() {
-	return new HttpSessionHandshakeInterceptor();
-	   
+   return new HttpSessionHandshakeInterceptor();
+      
    }
 
 
@@ -266,7 +268,6 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    */
 
 }
-
 
 
 
