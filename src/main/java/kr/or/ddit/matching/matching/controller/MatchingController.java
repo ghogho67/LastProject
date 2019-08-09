@@ -37,7 +37,7 @@ public class MatchingController {
 
 	@RequestMapping(path = "/sample")
 	public String sample() {
-		return "bestSample";
+		return "/category/categoryList_Minor";
 	}
 
 	@RequestMapping(path = "/photo")
@@ -104,7 +104,7 @@ public class MatchingController {
 		logger.debug("☞ cwList:{}", cwList);
 		logger.debug("☞ list:{}", list);
 		logger.debug("☞ addrList:{}", addrList);
-//		model.addAttribute("cwList", cwList);
+		model.addAttribute("cwList", cwList);
 		model.addAttribute("addrList", addrList);
 		model.addAttribute("list", list);
 
