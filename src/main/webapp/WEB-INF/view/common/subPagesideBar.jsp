@@ -42,7 +42,14 @@
 	
 		<br>
 		<div >
-		<button class="btn btn-success btn-lg mr-2">프리미엄 서비스 이용</button>
+		<a  class="btn btn-success btn-lg mr-2"  data-toggle="modal" data-target="#myModalGrade">프리미엄 서비스 이용</a>
 		</div>
 	</div>
+	
+	
+	
+
+	
+	
+	
 </aside>

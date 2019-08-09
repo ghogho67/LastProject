@@ -64,9 +64,8 @@ public class LoginController {
 		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
-			model.addAttribute("mem_id",mem_id);
 		
-			return "redirect:crawling";
+			return "main";
 		}
 		else {
 		
@@ -109,5 +108,55 @@ public class LoginController {
 		return "main";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Method : goldmemberJoin
+	 * 작성자 : 오도아 
+	 * 변경이력 :
+	 * @return
+	 * Method 설명 :
+	 */
+	@RequestMapping(path = "/gradeChangeToGold" , method = RequestMethod.POST)
+	public String goldmemberJoin() {
+
+		return "main";
+	}
+	
+	
+	
+	
+	//로그인컨트롤러 부분에  로그인시 골드회원 날짜 여부 체크해서 자동적으로 서비스 동료되게 하고 모달창 띄움
+	/**
+	 * Method : typicalmemberJoin
+	 * 작성자 : PC02
+	 * 변경이력 :
+	 * @return
+	 * Method 설명 :
+	 */
+	@RequestMapping( path = "/gradeChangeToSilver")
+	public String typicalmemberJoin() {
+		
+		return "main";
+	}
+
+	
+	
+	
+	
+	
 	
 }

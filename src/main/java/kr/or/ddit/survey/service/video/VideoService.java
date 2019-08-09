@@ -1,5 +1,7 @@
 package kr.or.ddit.survey.service.video;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -17,5 +19,10 @@ public class VideoService implements IVideoService {
 	@Override
 	public VideoVo getVideo(int sur_id) {
 		return videoDao.getVideo(sur_id);
+	}
+
+	@Override
+	public List<VideoVo> getAllVideos() {
+		return videoDao.getAllVideos();
 	}
 }

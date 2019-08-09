@@ -59,6 +59,7 @@ h2 {
 
 ul, li, dl, dd {
 	list-style-type: none;
+	font-size: 18px;
 }
 
 ul {
@@ -291,7 +292,7 @@ ul, li, dl, dd {
 							
 							</p>
 
-							<a href="#">처음으로 돌아가기</a>
+							<a href="${cp}/main">처음으로 돌아가기</a>
 						</div>
 					</div>
 				</div>

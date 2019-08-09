@@ -66,8 +66,8 @@ select * from question where sur_id=#{sur_id}
 
 <!-- 해당 테스트의 문제와 선택지를 가져온다 -->
 <select id="getQuestionsAndChoices" resultType="QuestionChoiceVo" parameterType="int">
-select * from question q, MULTIPLECHOICE m
-where q.QUES_ID(+)=m.QUES_ID and sur_id=#{sur_id}
+select * from question q, multiplechoice m
+where q.ques_id(+)=m.ques_id and sur_id=#{sur_id}
 </select>
 
 
@@ -79,6 +79,11 @@ select * from video where sur_id=#{sur_id}
 </select>
 
 
+
+<!-- 전체 비디오를 가져온다 -->
+<select id="getAllVideos" resultType="VideoVo" >
+select * from video 
+</select>
 
 
 

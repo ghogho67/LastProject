@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+.popup-opacity {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+  /* Netscape */
+  -moz-opacity: 0.5;
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+  /* Good browsers */
+  opacity: 0.5;
+}
+
+.popup-background {
+  position:fixed;
+  top:0px;
+  left:0px;
+  z-index:999999999;
+  width:100%;
+  height:100%;
+  background-color:#000;
+}
+
+.popup-contents {
+  position: fixed;
+  background-color: #fff;
+  z-index: 9999999999;
+  border:solid 10px #aaa;
+}
+
+.popup-contents-inner {
+  height:100%;
+  overflow:hidden;
+  border:solid 1px #777;
+}
+
+.popup-right-control {
+  right: 0;
+  left: auto;
+  background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+  background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+  background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));
+  background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+
+.popup-left-control {
+  background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+  background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+  background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
+  background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+
+.popup-control {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  z-index: 9999999999;
+  cursor:pointer;
+}
+
+.popup-control:hover {
+  text-decoration:none;
+}
+
+.popup-left-control > span {
+  font-size: 50px;
+  margin-left: 50px;
+  display: block;
+  position: relative;
+  top: 50%;
+  margin-top: -25px;
+}
+
+.popup-right-control > span {
+  font-size: 50px;
+  margin-right: 50px;
+  display: block;
+  position: relative;
+  top: 50%;
+  margin-top: -25px;
+}
+
+.popup-close {
+  position:fixed;
+  top:30px;
+  left:50%;
+  margin-left:-25px;
+  font-size:50px;
+  z-index:99999999999;
+  color:#fff;
+  cursor:pointer;
+}

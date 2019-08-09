@@ -34,7 +34,7 @@
 
 
 #middle {
-	margin-top: 50px;
+	margin-top: 10px;
 	position: absolute;
 	left: 22%;
 	width: 70%
@@ -53,34 +53,11 @@
 <body>
 
 
-<script type='text/javascript'>
-
-
-var x = document.getElementById("vid").ended;
-
- </script>
- 
-<!-- <!-- <script type='text/javascript'> --> -->
-<!-- //     document.getElementById('vid').addEventListener('ended',myHandler,false); -->
-<!-- //     function myHandler(e) { -->
-<!-- //         if(!e) { e = window.event; } -->
-<!-- //         alert("Video Finished"); -->
-<!-- //     } -->
-<!-- <!-- </script> --> -->
-
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
 
-
-
-
-
-var aud = document.getElementById("vid");
-aud.onended = function() {
-    alert("The audio has ended");
-};
 
 
 	<div id="middle">
@@ -94,21 +71,19 @@ aud.onended = function() {
 
         <div class="container">
             <div class="row">
-             
-             
-             
-             <video  id="vid" src="/image/콩국수에는_슬픈_전설이_하나_있어.mp4" controls="controls"
-             poster="/image/kong.PNG"  width="1000px" height="auto;" autoplay="autoplay" ></video>
-             
-             
-             //동영상 종료시 문제 실행 화면으로 이동 
-             
-        
+          
+     
+       <iframe width="1200px" height="600px" src="${video.video_path}" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen >
+            </iframe>
+
+     
+     
             </div>
         </div>
 
 
-
+  <a style="text-align: right;"  href="${cp}/recognitionImp/impTestQ1?sur_id=${sur_id}">문제화면</a>
 
 		</div>
 

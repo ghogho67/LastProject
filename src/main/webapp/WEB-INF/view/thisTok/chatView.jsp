@@ -116,13 +116,18 @@ function initSocket() {
 		$("#chatdata").append("연결 끊김");
 	}    
 
-
-	
-	  
 }
+	
 $(document).ready(function() {
 	var userId = "${mem_id}";	//사용자 아이디를 파라미터로 받는다
 	$("#userId").text(userId);
+	
+
+	$("#sendBtn").on("click", function() {
+		var msg = $("#message").val();
+		socket.send(msg);
+		$("#message").val("");
+	});
 		
 	initSocket();	//websocket 연결
 });
@@ -156,6 +161,8 @@ $(document).ready(function() {
 		</tr>
 	</table>
 	
+
 	
 </body>
 </html>
+
