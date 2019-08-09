@@ -1,5 +1,7 @@
 package kr.or.ddit.member.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,9 @@ public class MemberController {
 	 * Method 설명 :
 	 */
 	@RequestMapping(path = "/gradeChangeToGold" )
-	public String goldmemberJoin() {
+	public String goldmemberJoin(HttpSession session) {
+		
+		//String mem_id= session.getAttribute("MEM_INFO");
 
 		
 		
