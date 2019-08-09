@@ -60,7 +60,7 @@ body {
   font-size:32px;
   font-weight:600;
   color:#375fbb;
-  font-family:"Open Sans","Raleway",sans-serif;  
+  	font-family: 'Noto Sans KR', sans-serif; 
 }
 .form-container .form-element input {
   width:100%;
@@ -98,7 +98,7 @@ body {
   color:#f5f5f5;
   cursor:pointer;
   text-transform:uppercase;
-  font-family:"Open Sans","Raleway",sans-serif;
+ 	font-family: 'Noto Sans KR', sans-serif;
   font-weight:600;  
 }
 
@@ -106,7 +106,7 @@ body {
   color:#004ddc;
   font-weight:600;
   font-size:15px;
-  font-family:"Open Sans","Raleway",sans-serif;
+ 	font-family: 'Noto Sans KR', sans-serif;
   text-decoration:none;
 }
 .form-container .form-element.signup-link {
