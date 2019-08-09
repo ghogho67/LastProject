@@ -50,7 +50,8 @@ public class MatchingController {
 	@RequestMapping(path = "/meet")
 	public String meeting(Model model, String mem_id) {
 
-		logger.debug("☞calendar");
+		logger.debug("☞meet");
+		logger.debug("☞mem_id:{}", mem_id);
 		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
 		logger.debug("☞mlist:{}", mlist);
 
@@ -75,8 +76,7 @@ public class MatchingController {
 		model.addAttribute("memVo", memberService.getMemVo(mem_id));
 		model.addAttribute("mem_id", mem_id);
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-
-		return "FullCalendar-Example-master/calendar";
+		return "matching/meeting";
 	}
 
 	@RequestMapping(path = "/meetjson")
@@ -96,15 +96,15 @@ public class MatchingController {
 //		String JSONOBject = gson.toJson(cwList);
 //		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 //		String cwJson = prettyGson.toJson(cwList);
-//		for (int i = 0; i < cwList.size(); i++) {
-//			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
-//		}
+		for (int i = 0; i < cwList.size(); i++) {
+			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
+		}
 //
 //		logger.debug("☞cwJson:{}", cwJson);
-		logger.debug("☞ cwList:{}",cwList);
+		logger.debug("☞ cwList:{}", cwList);
 		logger.debug("☞ list:{}", list);
 		logger.debug("☞ addrList:{}", addrList);
-		model.addAttribute("cwList", cwList);
+//		model.addAttribute("cwList", cwList);
 		model.addAttribute("addrList", addrList);
 		model.addAttribute("list", list);
 
@@ -461,9 +461,10 @@ public class MatchingController {
 	}
 
 	@RequestMapping(path = "/getCalendar")
-	public String getCalendar(Model model) {
+	public String getCalendar(Model model, String mem_id) {
 
-		List<MatchingVo> mlist = matchingService.getMatchingList("brown");
+		logger.debug("☞mem_id:{}", mem_id);
+		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
 		logger.debug("☞mlist:{}", mlist);
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
 

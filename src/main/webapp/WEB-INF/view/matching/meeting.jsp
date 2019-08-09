@@ -9,13 +9,20 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>FullCalendar Example</title>
-<link rel=" shortcut icon"	href="/FullCalendar-Example-master/image/favicon.ico">
-<link rel="stylesheet"	href="/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
-<link rel="stylesheet"	href="/FullCalendar-Example-master/vendor/css/bootstrap.min.css">
-<link rel="stylesheet"	href="/FullCalendar-Example-master/vendor/css/select2.min.css" />
-<link rel="stylesheet"	href="/FullCalendar-Example-master/vendor/css/bootstrap-datetimepicker.min.css" />
-<link rel="stylesheet"	href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
-<link rel="stylesheet"	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel=" shortcut icon"
+	href="/FullCalendar-Example-master/image/favicon.ico">
+<link rel="stylesheet"
+	href="/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
+<link rel="stylesheet"
+	href="/FullCalendar-Example-master/vendor/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/FullCalendar-Example-master/vendor/css/select2.min.css" />
+<link rel="stylesheet"
+	href="/FullCalendar-Example-master/vendor/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="/FullCalendar-Example-master/css/main.css">
 </head>
 
@@ -23,9 +30,9 @@
 
 
 	<div class="container style="width: 1000px; height: 1000px;">
-		<label for="userNm" class="col-sm-2 control-label">${path }</label> 
-<%-- 		<img id="img" src="${cp }/matching/photo?mem_id=anni" />  --%>
-		<input	type="hidden" name="mem_id" value="${mem_id}">
+		<label for="userNm" class="col-sm-2 control-label">${path }</label>
+		<%-- 		<img id="img" src="${cp }/matching/photo?mem_id=anni" />  --%>
+		<input type="hidden" name="mem_id" value="${mem_id}">
 		<div>
 			<input type="button" width="50px" value="매칭신청">
 
@@ -175,14 +182,17 @@
 		</div>
 	</div>
 	<!-- /.container -->
+	<input id="mem_id" type="hidden" value="${mem_id }">
 
 	<script src="/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/moment.min.js"></script>
-	<script	src="/FullCalendar-Example-master/vendor/js/fullcalendar.min.js"></script>
+	<script
+		src="/FullCalendar-Example-master/vendor/js/fullcalendar.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/ko.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/select2.min.js"></script>
-	<script	src="/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
+	<script
+		src="/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="/FullCalendar-Example-master/js/main.js"></script>
 	<script src="/FullCalendar-Example-master/js/addEvent.js"></script>
 	<script src="/FullCalendar-Example-master/js/editEvent.js"></script>

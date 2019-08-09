@@ -167,7 +167,7 @@
 	function getClickHandler(seq) {
 		return function(e) {
 			var marker = markers[seq], infoWindow = infoWindows[seq];
-			location.href = "meet?mem_id="+marker.title;
+
 			if (infoWindow.getMap()) {
 				infoWindow.close();
 			} else {
