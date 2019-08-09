@@ -13129,6 +13129,7 @@ input:focus {
       margin: auto;
           margin-bottom: 0;
       text-align: center; }
+      
       .sidebar .user-info span.online:after {
         content: "일반회원";
         color: #fff;
