@@ -1,0 +1,421 @@
+.education-contents {
+  margin-top:140px;
+}
+
+.education {
+  padding:30px 0px 30px 0px;
+}
+
+.education-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.education-title {
+  font-family: 'NanumSquare', gulim;
+  font-size:48px;
+  font-weight:700;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+  text-align:center;
+  margin:0px 0px 45px 0px;
+  padding-top:20px;
+  background:url(/images/title_line.png) no-repeat 50% 0px;
+}
+
+.education-img {
+  width:100%;
+  height:270px;
+}
+
+.education-txt {
+  font-family: 'Noto Sans KR', gulim;
+  font-size:18px;
+  font-weight:300;
+  color:#3b3b3b;
+  letter-spacing:-1px;
+  margin-top:35px;
+  line-height:170%;
+}
+
+.education-list-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.education-list-ul {
+  height:81px;
+  padding:0px 0px 20px 0px;
+}
+
+.education-list-ul>li {
+  float:left;
+  list-style-type:none;
+  height:81px;
+  font-family: 'Noto Sans KR', gulim;
+  font-size:21px;
+  font-weight:400;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+  text-align:center;
+  margin-right:1px;
+}
+
+.education-list-ul>li>a {
+  display:block;
+  height:81px;
+  line-height:65px;
+}
+
+.education-btn-txt {
+  display:block;
+  height:65px;
+  color:#3b3b3b;
+  background-color:#eaeaea;
+}
+
+.education-list-ul>li>a:hover,
+.education-list-ul>li>a.active {
+  display:block;
+  color:#fff;
+  background:url(/images/mind_touchcare_arrow.png) no-repeat 50% 65px;
+  margin-bottom:-16px;
+}
+
+.education-btn-txt.active,
+.education-btn-txt:hover {
+  color:#fff;
+  text-decoration:underline;
+  background-color:#0989d9;
+}
+
+.education-board-top {
+  clear:both;
+  height:50px;
+  margin:30px 0px 10px 0px;
+  font-family: 'NanumSquare', gulim;
+  font-size:18px;
+  font-weight:300;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+}
+
+.education-board-count {
+  float:left;
+  font-weight:600;
+}
+
+.education-board-cnt {
+  color:#0989d9;
+}
+
+.education-board-search {
+  float:right;
+  width:255px;
+}
+
+.education-board-search>input {
+  width:190px;
+  background-color:#f5f5f5;
+}
+
+
+.education-board-list-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.education-table {
+  width:100%;
+  text-align:center;
+  vertical-align:middle;
+  font-family: 'NanumSquare', gulim;
+  font-size:14px;
+  font-weight:300;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+  padding:0px 0px 30px 0px;
+}
+
+.education-table tr {
+  height:50px;
+  border-bottom:1px solid #cacaca;
+}
+
+.education-table th, .education-table td  {
+  border-right:1px solid #cacaca;
+}
+
+.education-table tr>th:nth-last-child(1) {
+  border-right:0px solid #cacaca !important;
+}
+
+.education-table tr>td:nth-last-child(1) {
+  border-right:0px solid #cacaca !important;
+}
+
+.education-table>thead>tr {
+  border-top:4px solid #679bbb;
+  background-color:#f0f6fa;
+}
+
+.education-table>thead>tr>th {
+  text-align:center;
+}
+
+.education-table a {
+  color:#3b3b3b;
+}
+
+.education-table .important-no {
+  text-indent:-9999px;
+  background:url(/images/board_important.png) no-repeat 50% 50%;
+}
+
+.education-table .important-title {
+  font-weight:600;
+}
+
+.education-table .board-new {
+  display:inline-block;
+  height:14px;
+  width:14px;
+  text-indent:-9999px;
+  background:url(/images/board_new.png) no-repeat 50% 50%;
+}
+
+.education-row-table {
+  width:100%;
+  vertical-align:middle;
+  font-family: 'NanumSquare', gulim;
+  font-size:14px;
+  font-weight:300;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+  padding:0px 0px 30px 0px;
+}
+
+.education-row-table tr {
+  height:50px;
+  border-top:1px solid #cacaca;
+  border-bottom:1px solid #cacaca;
+}
+
+.education-row-table th  {
+  text-align:right;
+  font-weight:600;
+  padding:10px;
+  border-right:1px solid #cacaca;
+}
+
+.education-row-table td  {
+  text-align:left;
+  padding:10px;
+  border-right:1px solid #cacaca;
+}
+
+.education-row-table tr>th:nth-last-child(1) {
+  border-right:0px solid #cacaca !important;
+}
+
+.education-row-table tr>td:nth-last-child(1) {
+  border-right:0px solid #cacaca !important;
+}
+
+.education-row-table>tbody>tr>th {
+  border-left:4px solid #679bbb;
+  background-color:#f0f6fa;
+}
+
+.education-row-table a {
+  color:#3b3b3b;
+}
+
+.education-row-table .important-no {
+  text-indent:-9999px;
+  background:url(/images/board_important.png) no-repeat 50% 50%;
+}
+
+.education-row-table .important-title {
+  font-weight:600;
+}
+
+.education-row-table .board-new {
+  display:inline-block;
+  height:14px;
+  width:14px;
+  text-indent:-9999px;
+  background:url(/images/board_new.png) no-repeat 50% 50%;
+}
+
+
+.education-pagination-div {
+  text-align:center;
+  margin:40px 0px 100px 0px;
+}
+
+.education-pagination-div .pagination>li>a {
+  width:45px;
+  height:45px;
+  line-height:30px;
+  font-family: 'NanumSquare', gulim;
+  font-size:18px;
+  font-weight:300;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+}
+
+.education-pagination-div .pagination>li>a.active {
+  background-color:#f5f5f5;
+  font-weight:600;
+}
+
+.education-board-detail-in {
+  width:1100px;
+  margin:0 auto;
+}
+
+.education-board-detail-in .board-detail {
+  border-top:4px solid #679bbb;
+  font-family: 'NanumSquare', gulim;
+  font-size:12px;
+  font-weight:300;
+  letter-spacing:-1px;
+  color:#3b3b3b;
+}
+
+.education-board-detail-in .board-detail-title {
+  float:left;
+  width: 843px;
+  height:50px;
+  line-height:50px;
+  background-color:#f0f6fa;
+  border-bottom:1px solid #cacaca;
+  border-right:1px solid #cacaca;
+  font-size:14px;
+  font-weight:600;
+  padding-left:28px;
+}
+
+.education-board-detail-in .board-detail-writer {
+  float:left;
+  width: 130px;
+  height:50px;
+  line-height:50px;
+  background-color:#f0f6fa;
+  border-bottom:1px solid #cacaca;
+  border-right:1px solid #cacaca;
+  font-size:14px;
+  font-weight:600;
+  text-align:center;
+}
+
+.education-board-detail-in .board-detail-date {
+  float:left;
+  width: 125px;
+  height:50px;
+  line-height:50px;
+  background-color:#f0f6fa;
+  border-bottom:1px solid #cacaca;
+  font-size:14px;
+  font-weight:600;
+  text-align:center;
+}
+
+.education-board-detail-in .board-detail-file {
+  clear:both;
+  height:37px;
+  line-height:37px;
+  border-bottom:1px solid #cacaca;
+  padding-left:28px;
+}
+
+.education-board-detail-in .board-detail-file a {
+  color:#3b3b3b;
+}
+
+.education-board-detail-in .board-detail-txt {
+  border-bottom:4px solid #679bbb;
+  padding: 28px 0px 28px 28px;
+}
+
+.education-board-detail-in .board-btn-area {
+  height:50px;
+  padding-top:20px;
+  margin-bottom:100px;
+}
+
+.education-board-detail-in .btn-board {
+  width:135px;
+  height:40px;
+  font-family: 'NanumSquare', gulim;
+  font-size:16px;
+  letter-spacing:-1px;
+  color:#fff;
+  background-color:#3b3b3b;
+  border-radius:0px;
+}
+
+.education-board-detail-in .btn-right {
+  float:right;
+}
+
+.education-board-detail-in .btn-right .btn-board {
+  margin-left:10px;
+}
+
+.education-img {
+  background:url(/images/visual_counsel.jpg) no-repeat 50% 50%;
+}
+
+#template-mindtouchcare .education-list-ul>li,
+#template-mindtouchcare .education-list-ul>li>a,
+#template-mindtouchcare .education-btn-txt {
+  width: 274px;
+}
+
+#template-dailycare .education-img {
+  background:url(/images/dailycare.jpg) no-repeat 50% 50%;
+}
+
+#template-dailycare .education-list-ul>li,
+#template-dailycare .education-list-ul>li>a,
+#template-dailycare .education-btn-txt {
+  width: 218px;
+}
+
+#template-communication .education-img {
+  background:url(/images/communication.jpg) no-repeat 50% 50%;
+}
+
+#template-communication .education-list-ul>li,
+#template-communication .education-list-ul>li>a,
+#template-communication .education-btn-txt {
+  width: 274px;
+}
+
+#template-autobiography .education-img {
+  background:url(/images/autobiography.jpg) no-repeat 50% 50%;
+}
+
+#template-autobiography .text-blue {
+  color:#0989d9;
+  font-weight:400;
+}
+
+#template-joincare-academy .education-img {
+  background:url(/images/joincare_academy.jpg) no-repeat 50% 50%;
+}
+
+.mb200 {
+  margin-bottom:200px;
+}
+
+.dot {
+  padding-left:18px;
+  background:url(/images/dot.png) no-repeat 0px 50%;
+}
+
+/*
+.modal-dialog {margin: 330px auto !important;}
+*/

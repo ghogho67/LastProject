@@ -50,33 +50,10 @@ public class MatchingController {
 	@RequestMapping(path = "/meet")
 	public String meeting(Model model, String mem_id) {
 
-		logger.debug("☞calendar");
-		List<MatchingVo> mlist = matchingService.getMatchingList(mem_id);
-		logger.debug("☞mlist:{}", mlist);
-
-		List<CalendarVo> list = new ArrayList<CalendarVo>();
-
-		for (int i = 0; i < mlist.size(); i++) {
-			CalendarVo vo = new CalendarVo();
-			vo.setC_allDay(mlist.get(i).isMat_allDay());
-			vo.setC_backgroundColor(mlist.get(i).getMat_bc());
-			vo.setC_description(mlist.get(i).getMat_cont());
-			vo.setC_textColor(mlist.get(i).getMat_tc());
-			vo.setC_title(mlist.get(i).getMat_title());
-			vo.setC_type(mlist.get(i).getMat_type());
-			vo.setC_mem_id(mlist.get(i).getMem_id());
-			vo.setC_worker(mlist.get(i).getCw_mem_id());
-			vo.setC_start(mlist.get(i).getMat_st());
-			vo.setC_end(mlist.get(i).getMat_end());
-			list.add(vo);
-		}
-
-		model.addAttribute("list", list);
 		model.addAttribute("memVo", memberService.getMemVo(mem_id));
 		model.addAttribute("mem_id", mem_id);
 		model.addAttribute("list", matchingService.getMatchingList(mem_id));
-
-		return "FullCalendar-Example-master/calendar";
+		return "matching/meeting";
 	}
 
 	@RequestMapping(path = "/meetjson")
@@ -96,15 +73,15 @@ public class MatchingController {
 //		String JSONOBject = gson.toJson(cwList);
 //		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 //		String cwJson = prettyGson.toJson(cwList);
-//		for (int i = 0; i < cwList.size(); i++) {
-//			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
-//		}
+		for (int i = 0; i < cwList.size(); i++) {
+			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
+		}
 //
 //		logger.debug("☞cwJson:{}", cwJson);
-		logger.debug("☞ cwList:{}",cwList);
+//		logger.debug("☞ cwList:{}",cwList);
 		logger.debug("☞ list:{}", list);
 		logger.debug("☞ addrList:{}", addrList);
-		model.addAttribute("cwList", cwList);
+//		model.addAttribute("cwList", cwList);
 		model.addAttribute("addrList", addrList);
 		model.addAttribute("list", list);
 
@@ -487,7 +464,9 @@ public class MatchingController {
 		return "jsonView";
 
 	}
-
+	
+	
+	
 	@RequestMapping(path = "/webRtc")
 	public String webRtc(Model model) {
 //		return "RTCMultiConnection-master/demos/dashboard/webrtc";

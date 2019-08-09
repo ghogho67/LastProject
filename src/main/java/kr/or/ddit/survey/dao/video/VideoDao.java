@@ -1,5 +1,7 @@
 package kr.or.ddit.survey.dao.video;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,6 +17,11 @@ public class VideoDao implements IVideoDao {
 	@Override
 	public VideoVo getVideo(int sur_id) {
 		return sqlSession.selectOne("survey.getVideo",sur_id);
+	}
+
+	@Override
+	public List<VideoVo> getAllVideos() {
+		return sqlSession.selectList("survey.getAllVideos");
 	}
 	
 
