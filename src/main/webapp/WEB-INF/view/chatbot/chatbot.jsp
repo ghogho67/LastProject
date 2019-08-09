@@ -29,6 +29,10 @@
   height: 90%;
   width: 100%;
   overflow-y: auto;
+  -ms-overflow-style: none; 
+}
+::-webkit-scrollbar {
+   display:none;
 }
 
 
