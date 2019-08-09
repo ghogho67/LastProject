@@ -21,6 +21,10 @@
 	$(document).ready(function() {
 		getLocation();
 
+		listData1 = [];
+		$("input[name='cw_mem_id']").each(function(i) {
+			listData1.push($(this).val());
+		});
 	});
 	var map;
 	var nLat;
@@ -107,14 +111,14 @@
 	}
 
 	//요양보호사 아이디
-	var listData1 = []
-	var str2 = '${list}';
+	// 	var listData1 = []
+	// 	var str2 = '${list}';
 
 	// 	var cw_mem_id = [];
 
-	$("input[name='cw_mem_id']").each(function(i) {
-		listData1.push($(this).val());
-	});
+	// 	$("input[name='cw_mem_id']").each(function(i) {
+	// 		listData1.push($(this).val());
+	// 	});
 
 	// 	str2 = str2.replace("[", "");
 	// 	str2 = str2.replace("]", "");
@@ -173,11 +177,11 @@
 		return function(e) {
 			var marker = markers[seq], infoWindow = infoWindows[seq];
 			location.href = "/matching/meet?mem_id=" + marker.title;
-			if (infoWindow.getMap()) {
-				infoWindow.close();
-			} else {
-				infoWindow.open(map, marker);
-			}
+// 			if (infoWindow.getMap()) {
+// 				infoWindow.close();
+// 			} else {
+// 				infoWindow.open(map, marker);
+// 			}
 		}
 	}
 

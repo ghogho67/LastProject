@@ -43,8 +43,8 @@ public class MatchingDao implements IMatchingDao {
 	}
 
 	@Override
-	public List<MatchingVo> getMatchingList(String mem_id) {
-		return sqlSession.selectList("matching.getMatchingList", mem_id);
+	public List<MatchingVo> getMatchingList(String cw_mem_id) {
+		return sqlSession.selectList("matching.getMatchingList", cw_mem_id);
 	}
 
 	/**

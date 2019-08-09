@@ -26,6 +26,6 @@ public interface IMatchingService {
 
 	int matchingModify(MatchingVo mvo);
 
-	List<MatchingVo> getMatchingList(String mem_id);
+	List<MatchingVo> getMatchingList(String cw_mem_id);
 
 }

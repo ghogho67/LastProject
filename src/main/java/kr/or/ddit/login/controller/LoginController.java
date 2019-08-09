@@ -130,7 +130,7 @@ public class LoginController {
 	 * @return
 	 * Method 설명 :
 	 */
-	@RequestMapping(path = "/gradeChangeToGold" , method = RequestMethod.POST)
+	@RequestMapping(path = "/gradeChangeToGold" )
 	public String goldmemberJoin() {
 
 		return "main";
