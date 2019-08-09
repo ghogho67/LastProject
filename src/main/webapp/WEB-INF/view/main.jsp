@@ -9,9 +9,7 @@
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <script>
 
-function showPopup() { 
-	window.open("${cp}/thistok/thistok", "a", "width=400, height=700, left=100, top=50"); 
-}
+
 
 	window.onload = function() {
 		var a_href1 = $('dl:nth-child(1) dt a').attr("href");
@@ -51,6 +49,13 @@ function showPopup() {
 		$(".p5").html(p5);
 		$(".p6").html(p6);
 	}
+	
+	function popup(){
+		window.open("/chat/thistok", "thisTok!", "width=400, height=700, left=100, top=50"); 
+	}
+
+	
+	
 </script>
 </head>
 <body>
@@ -75,11 +80,9 @@ function showPopup() {
 	   <form action="${cp }/chatbot">
       <button type="submit">챗봇</button>
    </form>
-   <form>
-	<input name="mem_id" type="hidden" value="${mem_id}">   
-	<button onclick="showPopup()">ThisTok!</button>
-   </form>
-	
+   
+	<button id="submitBtn" type="button" onclick="popup()">ThisTok!</button>
+	  
 	<header class="header-area">
 		<%@include file="/WEB-INF/view/common/top_Header.jsp"%>
 		<div>
