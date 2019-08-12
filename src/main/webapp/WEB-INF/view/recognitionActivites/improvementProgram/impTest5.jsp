@@ -169,7 +169,7 @@
 		<div class="itemcontainer">
 			<div class="item item1"><a class="ac" href="${cp}/recognitionImp/impTestQ6?ques_id=${ques.ques_id}&sur_ans_cont=1&sur_part_id=${sur_part_id}&sur_id=${sur_id}">${ques.choice_ct1}</a></div>
 		<div class="item item2"><a class="ac" href="${cp}/recognitionImp/impTestQ6?ques_id=${ques.ques_id}&sur_ans_cont=2&sur_part_id=${sur_part_id}&sur_id=${sur_id}">${ques.choice_ct2}</a></div>
-			<div class="item item3"><a class="ac" href="${cp}/recognitionImp/impTestQ6?ques_id=${ques.ques_id}sur_ans_cont=3&sur_part_id=${sur_part_id}&sur_id=${sur_id}">${ques.choice_ct3}</a></div>
+			<div class="item item3"><a class="ac" href="${cp}/recognitionImp/impTestQ6?ques_id=${ques.ques_id}&sur_ans_cont=3&sur_part_id=${sur_part_id}&sur_id=${sur_id}">${ques.choice_ct3}</a></div>
 			<div class="item item4"><a class="ac" href="${cp}/recognitionImp/impTestQ6?ques_id=${ques.ques_id}&sur_ans_cont=4&sur_part_id=${sur_part_id}&sur_id=${sur_id}">${ques.choice_ct4}</a></div>
 		
 		</div>

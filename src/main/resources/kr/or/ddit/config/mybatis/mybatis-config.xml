@@ -11,7 +11,6 @@
 		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.post.model.PostVo"/>
 		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
 		<typeAlias alias="goldVo" type="kr.or.ddit.gold.gold.model.GoldVo"/>
-		
 		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
 		<typeAlias alias="memberDiseaseVo" type="kr.or.ddit.member.memberDisease.model.MemberDiseaseVo"/>
 		<typeAlias alias="locationVo" type="kr.or.ddit.member.careWorker.location.model.LocationVo"/>
@@ -35,6 +34,7 @@
 		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
 		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
 		<typeAlias alias="LectureVo" type="kr.or.ddit.category.others.lecture.model.LectureVo" />
+		<typeAlias alias="cultureVo" type="kr.or.ddit.category.others.culture.model.CultureVo" />
 		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
 
 		<typeAlias alias="QuestionVo" type="kr.or.ddit.survey.model.QuestionVo" />
@@ -47,9 +47,9 @@
 		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
 		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
 		
-		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/>
-		<typeAlias alias="chatMemListVo" type="kr.or.ddit.joinVo.ChatMemListVo" />
-		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/>
+<!-- 		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/> -->
+<!-- 		<typeAlias alias="chatMemListVo" type="kr.or.ddit.joinVo.ChatMemListVo" /> -->
+<!-- 		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/> -->
 
 	</typeAliases>
 
@@ -73,8 +73,8 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
-      <mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/>
-      <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>
+<!--       <mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/> -->
+<!--       <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/> -->
 
 
    </mappers>
