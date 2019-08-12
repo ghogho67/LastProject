@@ -41,7 +41,7 @@ td {
 	background-color: transparent;
 	width: 180px;
 	padding: 3px;
-	font-size: 8pt;
+	font-size: 14px;
 	text-align: center;
 }
 

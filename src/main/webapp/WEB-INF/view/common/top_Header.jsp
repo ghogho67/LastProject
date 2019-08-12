@@ -16,8 +16,6 @@ span.silver {
 	font-size: 10.5px;
 }
 
-
-
 span.gold {
 	border-radius: 3px;
 	background: #ffa242bf;
@@ -26,7 +24,6 @@ span.gold {
 	display: block;
 	font-size: 10.5px;
 }
-
 
 span.emp {
 	border-radius: 3px;
@@ -37,8 +34,6 @@ span.emp {
 	font-size: 10.5px;
 }
 
-
-
 span.admin {
 	border-radius: 3px;
 	background: #02a9f9;
@@ -47,9 +42,8 @@ span.admin {
 	display: block;
 	font-size: 10.5px;
 }
-
-
 </style>
+
 
 </head>
 
@@ -61,30 +55,80 @@ span.admin {
 			<div>
 				<ul>
 
-					<li>${MEM_INFO.mem_nm} 님 환영합니다
-							<c:choose>
-						<c:when test="${MEM_INFO.mem_grade==0}">
-						<span class="admin">관리자 </span>
-						</c:when>
-						<c:when test="${MEM_INFO.mem_grade==1}">
-						<span class="silver">일반 회원 </span>
-						</c:when>
-						<c:when test="${MEM_INFO.mem_grade==2}">
-						<span class="gold">골드회원 </span>
-						</c:when>
-						<c:otherwise>
-					<span class="emp">요양보호사 </span>
-						</c:otherwise>
-					</c:choose>
-					
+					<li>${MEM_INFO.mem_nm}님 환영합니다 <c:choose>
+							<c:when test="${MEM_INFO.mem_grade==0}">
+								<span class="admin">관리자 </span>
+							</c:when>
+							<c:when test="${MEM_INFO.mem_grade==1}">
+								<span class="silver">일반 회원 </span>
+							</c:when>
+							<c:when test="${MEM_INFO.mem_grade==2}">
+								<span class="gold">골드회원 </span>
+							</c:when>
+							<c:otherwise>
+								<span class="emp">요양보호사 </span>
+							</c:otherwise>
+						</c:choose>
+
 					</li>
 				</ul>
 			</div>
-			<a  class="btn-logout" style="position: absolute; left: 90%;" href="/logout">로그아웃</a>
-			<c:if  test="${MEM_INFO.mem_grade==1}">
-		<a  class="btn-pri"  data-toggle="modal" data-target="#myModalGrade" style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
-			
+			<a class="btn-logout" style="position: absolute; left: 90%;"
+				href="/logout">로그아웃</a>
+			<c:if test="${MEM_INFO.mem_grade==1}">
+				<a class="btn-pri" data-toggle="modal" data-target="#myModalGrade"
+					style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
+
 			</c:if>
+
+
+			<c:choose>
+				<c:when test="${goldvo.gold_del eq 'Y'}">
+
+
+             <div class="modal-dialog" role="document" id="modalpp">
+								<div class="modal-content2"  style="background-image: url('/image/Serviceextend.png');  
+ 				background-size: 700px; background-repeat: no-repeat;">
+				<a href="${cp}/gradeChangeToGold" 
+				style="margin-left:151px; height:52px; width:58%; position:absolute;top: 56%;"  ></a>
+				
+				<button style="width: 10px; position: absolute; left: 95%;" type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnClose">
+							<span aria-hidden="true">&times;</span>
+						</button>
+
+<!-- <button id="btnClose">X</button> -->
+						
+				
+				</div>
+							</div>
+					
+			
+			
+			
+
+			
+					
+					
+				</c:when>
+
+				<c:otherwise>
+&nbsp;
+</c:otherwise>
+
+			</c:choose>
+
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+
+		$(".modal-content2").on("click", "#btnClose", function(){
+			//$('#modalpp').modal("hide");
+			$('#modalpp').hide();
+			
+		})
+	
+</script>

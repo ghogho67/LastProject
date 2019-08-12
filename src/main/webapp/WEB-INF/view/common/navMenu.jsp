@@ -33,8 +33,8 @@
 
 		<li class="menu-has-children"><a href="">건강정보</a>
 			<ul>
-				<li><a href="blog-home.html">인지 능력 향상 프로그램</a></li>
-				<li><a href="blog-home.html">인지테스트</a></li>
+				<li><a href="${cp}/recognitionImp/impStart">인지 능력 향상 프로그램</a></li>
+				<li><a href="${cp}/recognition/semiTestStart">인지테스트</a></li>
 				<li><a href="${cp}/mypage/stress?mem_id=${MEM_INFO.mem_id}">스트레스 지수 </a></li>
 				<li><a href="${cp}/mypage/gpxMap?mem_id=${MEM_INFO.mem_id}">GPS 정보</a></li>
 				<li><a href="blog-home.html">GPS</a></li>
@@ -56,9 +56,7 @@
       <li class="menu-has-children"><a href="">관리자 메뉴 </a>
 			<ul>
 				<li><a href="${cp}/category/categoryList">메뉴관리</a></li>
-				<li><a href="${cp}/lecture/lectureListManagement">메뉴관리</a></li>
-				<li><a href="${cp}/lecture/lectureListManagement">xxxxxxxxxxxxx</a></li>
-				<li><a href="${cp}/recognition/semiTestStart">인지1</a></li>
+				<li><a href="${cp}/recognition/semiTestStart">간이인지</a></li>
 				<li><a href="${cp}/recognitionImp/impStart">인지향상</a></li>
 		
 			

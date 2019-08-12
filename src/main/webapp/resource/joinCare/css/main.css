@@ -84,7 +84,7 @@
 
 #template-main .left-search {
   float:left;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   text-align:center;
   letter-spacing:-1px;
@@ -149,7 +149,7 @@
 
 #template-main .right-search1 li a {
   display:block;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:24px;
   font-weight:400;
   letter-spacing:-1px;
@@ -191,7 +191,7 @@
 }
 
 #template-main .right-search2-1 {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:400;
   letter-spacing:-1px;
@@ -204,7 +204,7 @@
 }
 
 #template-main .right-search2-2 .input-txt {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:300;
   letter-spacing:-1px;
@@ -216,7 +216,7 @@
 }
 
 #template-main .right-search2-2 .input-btn {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:24px;
   font-weight:300;
   letter-spacing:-1px;
@@ -229,7 +229,7 @@
 }
 
 #template-main .right-search3 {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:300;
   letter-spacing:-1px;
@@ -252,7 +252,7 @@
 
 #template-main .right-search3 ul li a {
   display:block;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:16px;
   font-weight:400;
   letter-spacing:-1px;
@@ -317,7 +317,7 @@
   margin-top: 20px;
   width: 275px;
   height:90px;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:16px;
   font-weight:400;
   letter-spacing:-1px;
@@ -377,7 +377,7 @@
   height:60px;
   padding:0px 0px 0px 30px;
   margin:0px;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   color:#3b3b3b;
   line-height:60px;
@@ -427,7 +427,7 @@
   height:60px;
   padding:0px;
   margin:0px;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   color:#3b3b3b;
   line-height:60px;
@@ -564,7 +564,7 @@
 	line-height:50px;
 	margin:0px 15px;	
 	background-color:#3b3b3b;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:500;
 	color:#fff;
@@ -663,7 +663,7 @@
 	line-height:50px;
 	margin:0px 15px;	
 	background-color:#3b3b3b;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:500;
 	color:#fff;

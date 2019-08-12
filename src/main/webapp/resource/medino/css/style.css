@@ -12,7 +12,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
 h1 {
 	color: white;
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 70px !important;
 	font-weight: 700;
 	text-shadow: 1px 1px #c0c0c0;
@@ -32,7 +32,7 @@ h2 {
 
 h3 {
 	color: #222;
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 18px !important;
 	font-weight: 700;
 	text-transform: uppercase
@@ -40,7 +40,7 @@ h3 {
 
 h4 {
 	color: #222;
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px !important;
 	font-weight: 400
 }
@@ -1452,7 +1452,7 @@ background-color:white;
 }
 
 .single-post .blog_details {
-	padding-top: 26px
+	padding: 26px
 }
 
 .single-post .blog_details p {

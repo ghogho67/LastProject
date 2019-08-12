@@ -26,4 +26,16 @@ public class ChatMemVo {
 		return "ChatMemVo [mem_id=" + mem_id + ", chat_id=" + chat_id + "]";
 	}
 
+	public ChatMemVo(String mem_id, int chat_id) {
+		super();
+		this.mem_id = mem_id;
+		this.chat_id = chat_id;
+	}
+
+	public ChatMemVo() {
+	}
+	
+	
+	
+
 }

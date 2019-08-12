@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.others.culture.model.CultureVo;
+import kr.or.ddit.category.others.culture.service.ICultureService;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
 import kr.or.ddit.category.others.lecture.service.ILectureService;
 import kr.or.ddit.member.member.model.MemberVo;
@@ -29,6 +30,10 @@ public class LectureController {
 	@Resource(name = "lectureService")
 	private ILectureService lectureService;
 
+	@Resource(name = "cultureService")
+	private ICultureService cultureService;
+	
+	
 	
 	@RequestMapping(path = "/lectureMain", method = RequestMethod.GET)
 	public String categoryList(Model model, HttpSession session) {
@@ -81,25 +86,30 @@ public class LectureController {
 	
 	
 	//강의 상세보기 페이지 
-	
-
 	@RequestMapping(path = "/lecture", method = RequestMethod.GET)
 	public String lecture(Model model,
-			@RequestParam(name = "lec_id")int lec_id) {
+			@RequestParam(name = "lectureId")int lec_id) {
 		
 		
 		LectureVo lectureVo = lectureService.getLecture(lec_id);
+		logger.debug("@@@@lectureVo{}",lectureVo);
 		model.addAttribute("lecture",lectureVo);
 		
+		
+		int culture_id= lectureVo.getCulture_id();
+		CultureVo cultureVo = lectureService.getCulture(culture_id);
+		
+		logger.debug("@@@@cultureVo{}",cultureVo);
+		model.addAttribute("culture",cultureVo);
+		
+		
 		return "lecture/lecture";
-	
 	
 	}
 	
 	
 
 //강좌 관리	
-	
 	@RequestMapping(path = "/lectureListManagement", method = RequestMethod.GET)
 	public String lectureListManagement(Model model) {
 		
@@ -188,7 +198,7 @@ public class LectureController {
 		
 		String lec_use ="Y";
 		
-		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use);
+		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_use);
 
 		String viewName =null;
 		
@@ -223,12 +233,13 @@ public class LectureController {
 	     int lec_id =0;
 		 String lec_use="Y";
 		 
-		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use);
+		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_use);
 
 		
 		String viewName =null;
 		
 		int insertlecture = lectureService.InsertLecture(lectureVo);
+		
 		
 		if(insertlecture==1) {
 			 viewName="redirect:/lecture/lectureListALL";
