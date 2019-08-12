@@ -51,7 +51,7 @@
 }
 
 #template-main .top-txt1 {
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   font-size:23px;
   font-weight:500;
   letter-spacing:-1px;
@@ -460,7 +460,7 @@
 
 #left-btn1-Modal .modal-header > p {
 	float:left;
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   color:#fff;
   letter-spacing:-1px;
 }	
@@ -484,7 +484,7 @@
 }
 
 #left-btn1-Modal .modal-body {
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   font-size:16px;
   color:#3b3b3b;
   letter-spacing:-1px;	
@@ -586,7 +586,7 @@
 }
 
 #left-btn2-Modal .modal-header .title-txt {
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
 	font-size:19px;
   color:#fff;
   letter-spacing:-1px;
@@ -600,7 +600,7 @@
 }
 
 #left-btn2-Modal .modal-body {
-  font-family: 'NanumSquare', gulim;
+  	font-family: 'Noto Sans KR', sans-serif;
   font-size:16px;
   color:#3b3b3b;
   letter-spacing:-1px;	

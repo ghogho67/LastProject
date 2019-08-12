@@ -93,7 +93,7 @@ function initSocket() {
          $("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
          
       } else{
-         var printHTML = "<div class='chat' style='text-align:left>";
+         var printHTML = "<li class='chat' style='text-align:left>";
          printHTML += "<li class='other'>";
          printHTML += "<div class='msg'>";
          printHTML += "<div class='user'>"+sessionName+"</div>";

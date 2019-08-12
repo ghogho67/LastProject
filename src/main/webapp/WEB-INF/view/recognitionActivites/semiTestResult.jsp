@@ -122,7 +122,7 @@ ul, li, dl, dd {
 }
 
 .end-txt1 {
-	font-family: 'NanumSquare', gulim;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 50px;
 	font-weight: 700;
 	color: #3b3b3b;

@@ -117,8 +117,28 @@ public interface IMemberService {
 	
 
 	List<String> getCwList2();
+	
+	
+	
 
+	// 회원테이블의 등급을 골드회원으로 변경
+	int upgradeMemberStep1(String mem_id);
 
+	// 골드테이블에 정보입력
+	int upgradeMemberStep2(String mem_id);
+
+	
+	
+	// <!-- 프리미엄혜택이 끝나는 회원을 조회한다 -->
+	List<String> downGradeMemberStep1();
+
+	// <!-- 프리미엄혜택이 끝나는 회원의 등급을 조정한다 -->
+	int downGradeMemberStep2(String mem_id);
+
+//<!-- 프리미엄혜택이 끝나는 회원의 gold서비스 이력을 조정한다  -->
+	int downGradeMemberStep3(String mem_id);
+	
+	
 
 
 }

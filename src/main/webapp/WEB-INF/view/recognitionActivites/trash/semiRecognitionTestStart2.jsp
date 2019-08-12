@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 
-<%@include file="/WEB-INF/view/common/joinCare.jsp"%>
 
 <style>
 .container {
@@ -58,7 +57,7 @@
 }
 
 .end-txt1 {
-	font-family: 'NanumSquare', gulim;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 50px;
 	font-weight: 700;
 	color: #3b3b3b;

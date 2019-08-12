@@ -9,6 +9,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>FullCalendar Example</title>
+
 <link rel=" shortcut icon"
 	href="/FullCalendar-Example-master/image/favicon.ico">
 <link rel="stylesheet"
@@ -177,6 +178,10 @@
 				<tr>
 					<td>경력</td>
 					<td></td>
+				</tr>
+				<tr>
+					<td>요양보호사 아이디</td>
+					<td id="mem_id">${memVo.mem_id }</td>
 				</tr>
 			</table>
 		</div>
