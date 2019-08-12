@@ -98,7 +98,7 @@ public class MemberService implements IMemberService {
 	public String getProfile(String mem_id) {
 		return memberDao.getProfile(mem_id);
 
-		
+	}	
 	public int upgradeMemberStep1(String mem_id) {
 		return memberDao.upgradeMemberStep1(mem_id);
 	}
