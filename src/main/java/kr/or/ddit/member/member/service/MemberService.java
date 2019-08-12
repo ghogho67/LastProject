@@ -97,6 +97,38 @@ public class MemberService implements IMemberService {
 	@Override
 	public String getProfile(String mem_id) {
 		return memberDao.getProfile(mem_id);
+
+		
+	public int upgradeMemberStep1(String mem_id) {
+		return memberDao.upgradeMemberStep1(mem_id);
+	}
+
+
+
+	@Override
+	public int upgradeMemberStep2(String mem_id) {
+		return memberDao.upgradeMemberStep2(mem_id);
+	}
+
+
+
+	@Override
+	public List<String> downGradeMemberStep1() {
+		return memberDao.downGradeMemberStep1();
+	}
+
+
+
+	@Override
+	public int downGradeMemberStep2(String mem_id) {
+		return memberDao.downGradeMemberStep2(mem_id);
+	}
+
+
+
+	@Override
+	public int downGradeMemberStep3(String mem_id) {
+		return memberDao.downGradeMemberStep3(mem_id);
 	}
 
 

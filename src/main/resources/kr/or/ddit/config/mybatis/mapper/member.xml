@@ -256,4 +256,48 @@
 	</select>
 
 
+
+
+
+<!-- 골드회원으로 변경  -->
+<update id="upgradeMemberStep1" parameterType="String">
+		update member
+		set
+		mem_grade = '2'
+		where mem_id = #{mem_id}
+</update>
+
+<insert id="upgradeMemberStep2" parameterType="String">
+insert into gold
+(mem_id, gold_st, gold_end) values 
+(#{mem_id}, to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate+30, 'yyyy-mm-dd'))
+</insert>
+
+
+
+
+<!-- 일반회원으로 변경  -->
+
+<!-- 프리미엄혜택이 끝나는 회원을 조회한다  -->
+<select id="downGradeMemberStep1" resultType="String">
+select mem_id    
+from gold 
+where  gold_end like sysdate
+</select>
+
+<!-- 프리미엄혜택이 끝나는 회원의 등급을 조정한다   -->
+<update id="downGradeMemberStep2" parameterType="String">
+		update member
+		set mem_grade = '1'
+		where mem_id = #{mem_id}
+	</update>
+
+<!-- 프리미엄혜택이 끝나는 회원의 gold서비스 이력을 조정한다  -->
+<update id="downGradeMemberStep3" parameterType="String">
+		update gold
+		set gold_del = 'Y'
+		where mem_id = #{mem_id}
+</update>
+
+
 </mapper>

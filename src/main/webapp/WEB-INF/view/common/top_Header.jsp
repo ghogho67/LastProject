@@ -81,7 +81,10 @@ span.admin {
 				</ul>
 			</div>
 			<a  class="btn-logout" style="position: absolute; left: 90%;" href="/logout">로그아웃</a>
+			<c:if  test="${MEM_INFO.mem_grade==1}">
 		<a  class="btn-pri"  data-toggle="modal" data-target="#myModalGrade" style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
+			
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -81,5 +81,31 @@ public class MemberDao implements IMemberDao {
 	public String getProfile(String mem_id) {
 		return sqlSession.selectOne("member.getProfile",mem_id);
 	}
+	//<!-- 골드회원으로 변경  -->
+	@Override
+	public int upgradeMemberStep1(String mem_id) {
+		return sqlSession.update("member.updateMem", mem_id);
+	}
+	// 골드테이블에 정보입력
+	@Override
+	public int upgradeMemberStep2(String mem_id) {
+		return sqlSession.insert("member.upgradeMemberStep2",mem_id);
+	}
+
+//<!-- 프리미엄혜택이 끝나는 회원을 조회한다  -->
+	@Override
+	public List<String> downGradeMemberStep1() {
+		return sqlSession.selectList("member.downGradeMemberStep1");
+	}
+//	<!-- 프리미엄혜택이 끝나는 회원의 등급을 조정한다   -->
+	@Override
+	public int downGradeMemberStep2(String mem_id) {
+		return sqlSession.update("member.downGradeMemberStep2", mem_id);
+	}
+//	<!-- 프리미엄혜택이 끝나는 회원의 gold서비스 이력을 조정한다  -->
+	@Override
+	public int downGradeMemberStep3(String mem_id) {
+		return sqlSession.update("member.downGradeMemberStep3", mem_id);
+	}
 
 }

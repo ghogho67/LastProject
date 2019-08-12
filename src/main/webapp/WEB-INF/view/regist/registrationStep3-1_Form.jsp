@@ -706,7 +706,7 @@ function captcha() {
 										<label for="email1">내용</label>
 											<div class="input-group p-has-icon">
 <%-- 												<input type="text" id="career_cont" name="career_cont" value="${career_cont }" --%>
-<!-- 													placeholder="이력 내용을 간당히 적어주세요" class="form-control"> -->
+<!-- 													placeholder="이력 내용을 간단히 적어주세요" class="form-control"> -->
 													<textarea rows="1" cols="1" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" ></textarea>
 													 <span
 													class="input-group-state"><span class="p-position"><span

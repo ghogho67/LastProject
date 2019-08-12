@@ -177,11 +177,11 @@
 		return function(e) {
 			var marker = markers[seq], infoWindow = infoWindows[seq];
 			location.href = "/matching/meet?mem_id=" + marker.title;
-// 			if (infoWindow.getMap()) {
-// 				infoWindow.close();
-// 			} else {
-// 				infoWindow.open(map, marker);
-// 			}
+			// 			if (infoWindow.getMap()) {
+			// 				infoWindow.close();
+			// 			} else {
+			// 				infoWindow.open(map, marker);
+			// 			}
 		}
 	}
 
