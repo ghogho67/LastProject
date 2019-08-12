@@ -32,7 +32,6 @@
 
 
 									<li><a class="ko" href="${cp}/main">Home</a></li>
-									<li><a class="ko" href="departments.html">회사소개</a></li>
 									<li><a class="ko" href="departments.html">마이페이지</a></li>
 									<li><a class="ko" href="#">요양 정보</a>
 										<ul>

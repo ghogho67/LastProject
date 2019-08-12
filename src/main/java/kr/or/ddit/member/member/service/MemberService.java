@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.member.dao.IMemberDao;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
@@ -109,8 +110,8 @@ public class MemberService implements IMemberService {
 
 
 	@Override
-	public List<String> downGradeMemberStep1(String mem_id) {
-		return memberDao.downGradeMemberStep1(mem_id);
+	public List<String> downGradeMemberStep1() {
+		return memberDao.downGradeMemberStep1();
 	}
 
 
@@ -125,6 +126,21 @@ public class MemberService implements IMemberService {
 	@Override
 	public int downGradeMemberStep3(String mem_id) {
 		return memberDao.downGradeMemberStep3(mem_id);
+	}
+
+
+
+	@Override
+	public GoldVo downGradeMember(String mem_id) {
+		return memberDao.downGradeMember(mem_id);
+	}
+
+
+	//골드회원에 가입한적이 있는 경우  업데이트한다
+	@Override
+	public int upgradeMemberStep3(String mem_id) {
+		// TODO Auto-generated method stub
+		return memberDao.upgradeMemberStep3(mem_id);
 	}
 
 

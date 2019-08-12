@@ -10,6 +10,8 @@
 	<typeAliases>
 		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.post.model.PostVo"/>
 		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
+		<typeAlias alias="goldVo" type="kr.or.ddit.gold.gold.model.GoldVo"/>
+		
 		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
 		<typeAlias alias="memberDiseaseVo" type="kr.or.ddit.member.memberDisease.model.MemberDiseaseVo"/>
 		<typeAlias alias="locationVo" type="kr.or.ddit.member.careWorker.location.model.LocationVo"/>
