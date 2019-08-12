@@ -117,6 +117,16 @@ public interface IMemberDao {
 	List<String> getCwaddr();
 	
 	List<String> getCwList2();
+	
+	/**
+	* Method : getProfile
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 : 멤버 프로필 사진 경로 받기
+	*/
+	String getProfile(String mem_id);
 
 	// 회원테이블의 등급을 골드회원으로 변경
 	int upgradeMemberStep1(String mem_id);

@@ -95,7 +95,7 @@ public class MemberService implements IMemberService {
 
 
 
-	@Override
+	
 	public int upgradeMemberStep1(String mem_id) {
 		return memberDao.upgradeMemberStep1(mem_id);
 	}

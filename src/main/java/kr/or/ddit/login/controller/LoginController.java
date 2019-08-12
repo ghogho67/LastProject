@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
@@ -199,12 +198,7 @@ public class LoginController {
 			}
 			
 		}else {
-			//회원테이블의 등급을 골드로 변경
-			int upgradeMemberStep1= memberService.upgradeMemberStep1(mem_id);
-			logger.debug("@@@@upgradeMemberStep1{}",upgradeMemberStep1);
-			
 			//골드테이블에 있다면 
-			int upgradeMemberStep3=memberService.upgradeMemberStep3(mem_id);
 			
 		}
 		

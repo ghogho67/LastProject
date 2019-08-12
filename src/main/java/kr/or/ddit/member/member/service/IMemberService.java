@@ -128,7 +128,6 @@ public interface IMemberService {
 	// 골드테이블에 정보입력
 	int upgradeMemberStep2(String mem_id);
 
-	//골드회원에 가입한적이 있는 경우  업데이트한다
 	int upgradeMemberStep3(String mem_id);
 	
 	// <!-- 프리미엄혜택이 끝나는 회원을 조회한다 -->
