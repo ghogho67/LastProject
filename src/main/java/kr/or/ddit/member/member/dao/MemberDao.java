@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
@@ -77,13 +78,14 @@ public class MemberDao implements IMemberDao {
 		return sqlSession.selectList("member.getCwList2");
 	}
 
-	
-	
-	
+	@Override
+	public String getProfile(String mem_id) {
+		return sqlSession.selectOne("member.getProfile",mem_id);
+	}
 	//<!-- 골드회원으로 변경  -->
 	@Override
 	public int upgradeMemberStep1(String mem_id) {
-		return sqlSession.update("member.updateMem", mem_id);
+		return sqlSession.update("member.upgradeMemberStep1", mem_id);
 	}
 	// 골드테이블에 정보입력
 	@Override
@@ -93,18 +95,27 @@ public class MemberDao implements IMemberDao {
 
 //<!-- 프리미엄혜택이 끝나는 회원을 조회한다  -->
 	@Override
-	public List<String> downGradeMemberStep1(String mem_id) {
-		return sqlSession.selectList("member.downGradeMemberStep1",mem_id);
+	public List<String> downGradeMemberStep1() {
+		return sqlSession.selectList("member.downGradeMemberStep1");
 	}
 //	<!-- 프리미엄혜택이 끝나는 회원의 등급을 조정한다   -->
 	@Override
 	public int downGradeMemberStep2(String mem_id) {
 		return sqlSession.update("member.downGradeMemberStep2", mem_id);
 	}
-//	<!-- 프리미엄혜택이 끝나는 회원의 gold서비스 이력을 조정한다  -->
 	@Override
 	public int downGradeMemberStep3(String mem_id) {
 		return sqlSession.update("member.downGradeMemberStep3", mem_id);
+	}
+
+	@Override
+	public GoldVo downGradeMember(String mem_id) {
+		return sqlSession.selectOne("member.downGradeMember", mem_id);
+	}
+	//골드회원에 가입한적이 있는 경우  업데이트한다
+	@Override
+	public int upgradeMemberStep3(String mem_id) {
+		return sqlSession.update("member.upgradeMemberStep3", mem_id);
 	}
 
 }

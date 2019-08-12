@@ -122,14 +122,6 @@ function initSocket() {
 $(document).ready(function() {
    var userId = "${mem_id}";   //사용자 아이디를 파라미터로 받는다
    $("#userId").text(userId);
-   
-
-   $("#sendBtn").on("click", function() {
-      var msg = $("#message").val();
-      socket.send(msg);
-      $("#message").val("");
-   });
-      
    initSocket();   //websocket 연결
 });
 </script>
@@ -141,7 +133,7 @@ $(document).ready(function() {
    <table class="container-fluid" style="width: 80%;">
       <tr>
          <td>
-            <div class=chat-header style="width: 100%;">
+            <div class=chat-header style="width: 100.5%;">
                <h2 id="chat-header__name">ThisTok! (id: ${mem_id})</h2>
             </div>
 

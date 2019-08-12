@@ -1,5 +1,9 @@
 package kr.or.ddit.chat.chat.dao;
 
-public interface IChatDao {
+import java.util.List;
 
+import kr.or.ddit.joinVo.ChatMemListVo;
+
+public interface IChatDao {
+	public List<ChatMemListVo> chatList(String mem_id);
 }
