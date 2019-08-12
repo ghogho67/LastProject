@@ -303,11 +303,26 @@ public class mypageController {
 	public String Admin_Info() {
 		return "/mypage/Admin_Info.mytiles";
 	}
-
 	
+	@RequestMapping("/scheduleView")
+	public String scheduleView(HttpSession session, Model model) {
+		logger.debug("☞schedule");
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memvo.getMem_id();
+		model.addAttribute("mem_id",mem_id);
+		
+		return "mypage/schedule";
+	}
 	
-	
-	
+	@RequestMapping("/schedule")
+	public String schedule(HttpSession session, Model model) {
+		logger.debug("☞schedule");
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memvo.getMem_id();
+		model.addAttribute("mem_id",mem_id);
+		
+		return "jsonView";
+	}
 	
 	
 	/**
