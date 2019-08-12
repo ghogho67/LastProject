@@ -53,7 +53,7 @@ background:url(../../../resource/howcare/images/mypage_title.png) no-repeat 0px 
 }
 
 .end-txt2 {
-    font-family: 'Noto Sans KR', gulim;
+ font-family: 'Noto Sans KR', sans-serif;
     font-size: 28px;
     font-weight: 300;
     color: #3b3b3b;

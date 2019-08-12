@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 #template-login * {
-	font-family: 'Noto Sans KR', gulim;
+	font-family: 'Noto Sans KR', sans-serif;
   font-size:25px;  
   font-weight:300 !important;
 }
