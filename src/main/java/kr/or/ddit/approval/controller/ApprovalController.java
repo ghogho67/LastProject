@@ -29,10 +29,6 @@ public class ApprovalController {
 	@RequestMapping(path = "/matching")
 	public String approval(String imp_uid, String app_type, int app_pay, HttpSession session, Model model) {
 
-		logger.debug("☞imp_uid:{}", imp_uid);
-		logger.debug("☞app_type:{}", app_type);
-		logger.debug("☞app_pay:{}", app_pay);
-
 		ApprovalVo avo = new ApprovalVo();
 
 		avo.setApp_pay(app_pay);

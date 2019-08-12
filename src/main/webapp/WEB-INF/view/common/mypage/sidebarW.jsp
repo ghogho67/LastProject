@@ -66,7 +66,7 @@
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"><a class="nav-link" href="/attendance/cwMatList">
 										  출퇴근확인  </a></li>
-									<li class="nav-item"><a class="nav-link" href="/mypage/schedule">
+									<li class="nav-item"><a class="nav-link" href="/mypage/scheduleView">
 										  스케쥴 관리  </a></li>
 									<li class="nav-item"><a class="nav-link" href="#">
 											전체 일정 </a></li>
