@@ -77,6 +77,5 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/diseaseName.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
 
-
    </mappers>
 </configuration>
