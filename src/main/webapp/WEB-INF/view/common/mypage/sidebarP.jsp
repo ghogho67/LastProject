@@ -83,7 +83,7 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="#l">
+									<li class="nav-item"><a class="nav-link" href="/mypage/schedule">
 										  스케쥴 관리  </a></li>
 									<li class="nav-item"><a class="nav-link" href="#">
 											전체 일정 </a></li>

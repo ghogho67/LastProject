@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.ddit.approval.model.ApprovalVo;
@@ -26,14 +27,11 @@ public class ApprovalController {
 	}
 
 	@RequestMapping(path = "/matching")
-	public int approval(String imp_uid, String app_type, int app_pay, HttpSession session) {
+	public String approval(String imp_uid, String app_type, int app_pay, HttpSession session, Model model) {
 
 		logger.debug("☞imp_uid:{}", imp_uid);
 		logger.debug("☞app_type:{}", app_type);
 		logger.debug("☞app_pay:{}", app_pay);
-
-//		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
-//		String mem_id = memvo.getMem_id();
 
 		ApprovalVo avo = new ApprovalVo();
 
@@ -42,8 +40,9 @@ public class ApprovalController {
 		avo.setMem_id("brown");
 
 		int insertCnt = approvalService.approvalInsert(avo);
-		logger.debug("☞insertCnt:{}", insertCnt);
 
-		return insertCnt;
+		model.addAttribute("insertCnt", String.valueOf(insertCnt));
+
+		return "jsonView";
 	}
 }
