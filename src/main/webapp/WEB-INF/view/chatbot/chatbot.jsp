@@ -75,23 +75,39 @@
 
 
 $(document).ready(function(){
-	$("#sendBtn").on("click", function(){
-		var userquestion= $("#user").val();
-		console.log("userquestion");
-// 		$("#chat").append("<div id='userSay'> user :"+userquestion+"</div>" )
+// 	$("#sendBtn").on("click", function(){
+// 		var userquestion= $("#user").val();
+// 		console.log("userquestion");
+// 		var userSay = $("#chat").append("<div id='userSay'> user :"+userquestion+"</div>" )
+// 		var str= "";
+// 		var chatBotSay = $("#chat").append("<div id='chatBotSay'>" +str+" : chatbot </div>")
 		
-// 		str = "";
+// 		$("#frm").val(userquestion);
+// 		$("#frm").val(str);
 		
-		
-// 		var chatbotSay = $("#chat").append(chatbotSay);
-// 		console.log("chatbotSay");
-		
-// 		var answer = $("#chat").append(chatbotSay);
+// 		$("#frm").val(userSay);
+// 		$("#frm").val(chatBotSay);
+
+// 	$("#sendBtn").on("click", function(){
+// 		$.ajax({
+// 			url : "${cp}/chatboat",
+// 			data : data,
+// 			type : "post",
+// 			success : function(){
+// 				if(data == )
+// 			}
+			
+// 		})
+// 	});
 
 
 
 
-		
+
+
+
+
+
 
 // 		if(userquestion == '매칭' || userquestion == '요양보호사' || userquestion == '요양보호사선택' || 
 // 				userquestion == '요양사' || userquestion =='보호사'){
@@ -127,13 +143,13 @@ $(document).ready(function(){
 		
 		
 		//스크롤 하단고정
-		$("#chat").scrollTop($("#chat")[0].scrollHeight);
+// 		$("#chat").scrollTop($("#chat")[0].scrollHeight);
 		
-		$("#user").val("");
-		$("#user").focus();
+// 		$("#user").val("");
+// 		$("#user").focus();
 // 		$("#frm").submit();
 		
-	});
+// 	});
 });
 
 
