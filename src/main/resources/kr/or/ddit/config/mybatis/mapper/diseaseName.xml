@@ -5,7 +5,8 @@
 <mapper namespace="diseaseName">
 
 	<select id="getDisName" parameterType="int" resultType="string">
-		select dis_nm from diseaseName where dis_id = #{dis_id}
+		select
+		dis_nm from diseaseName where dis_id = #{dis_id}
 	</select>
 
 </mapper>

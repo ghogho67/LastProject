@@ -117,7 +117,7 @@ public class LoginController {
 				session.setAttribute("MEM_INFO", memberVo);
 				
 				
-			return "main";
+			return "redirect:crawling";
 		}
 		else {
 		
