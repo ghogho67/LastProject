@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
+import kr.or.ddit.joinVo.DonationApprovalVo;
 
 @Controller
 @RequestMapping("/donation")
@@ -31,15 +32,14 @@ public class DonationController {
 	
 	
 	@RequestMapping(path = "/nonmemberDonation", method = RequestMethod.POST)
-	public String nonMemberInsertDonation(Model model) {
+	public String nonMemberInsertDonation(Model model, ApprovalVo approvalVo, DonationVo donationVo, DonationApprovalVo donationApprovalVo) {
 		
-		ApprovalVo approvalVo = null;
-		approvalVo.setApp_id(approvalVo.getApp_id());
-		approvalVo.setApp_pay(approvalVo.getApp_pay());
-		approvalVo.setApp_time(approvalVo.getApp_time());
-		approvalVo.setApp_type(approvalVo.getApp_type());
-		approvalVo.setApp_del(approvalVo.getApp_del());
-//		approvalVo.setMem_id(approvalVo.getMem_id());
+		approvalVo.setApp_id(donationApprovalVo.getApp_id());
+		approvalVo.setApp_pay(donationApprovalVo.getApp_pay());
+		approvalVo.setApp_time(donationApprovalVo.getApp_time());
+		approvalVo.setApp_type("3");
+		approvalVo.setApp_del("N");
+		approvalVo.setMem_id("");
 		
 		logger.debug("☞approvalVo:{}",approvalVo);
 		
@@ -48,13 +48,11 @@ public class DonationController {
 		logger.debug("☞insertDonationApprovalCnt:{}",insertDonationApprovalCnt);
 		
 		
-		DonationVo donationVo = null;
-		
 		donationVo.setApp_id(donationService.currentApproval());
-		donationVo.setDon_id(donationVo.getDon_id());
-		donationVo.setDoner(donationVo.getDoner());
-		donationVo.setDoner_comment(donationVo.getDoner_comment());
-		donationVo.setDoner_phone(donationVo.getDoner_phone());
+		donationVo.setDon_id(donationApprovalVo.getDon_id());
+		donationVo.setDoner(donationApprovalVo.getDoner());
+		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
+		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
@@ -64,12 +62,18 @@ public class DonationController {
 		
 		if(insertDonationApprovalCnt == 1 && insertDonationCnt == 1) {
 			
-			return "/donation/nonmemberDonation";
+			return "/donation/detailDonation";
 		}else {
 			return "/login";
 		}
+	}
+	
+	@RequestMapping(name = "/detailDonation", method = RequestMethod.GET)
+	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo ) {
 		
+		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(donationApprovalVo.getApp_id()));
 		
+		return "/donation/checkDonation";
 	}
 
 }

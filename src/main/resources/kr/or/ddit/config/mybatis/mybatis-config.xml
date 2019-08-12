@@ -45,6 +45,7 @@
 		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
 		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
 		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/>
+		<typeAlias alias="donationApprovalVo" type="kr.or.ddit.joinVo.DonationApprovalVo"/>
 
 	</typeAliases>
 
@@ -69,6 +70,7 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/donationApproval.xml"/>
 
 
    </mappers>

@@ -12,6 +12,7 @@ import org.junit.Test;
 import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.dao.IDonationDao;
 import kr.or.ddit.donation.model.DonationVo;
+import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class DonationDaoTest extends LogicTestEnv{
@@ -49,7 +50,7 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N");
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "", "N");
 		/***When***/
 		int insertDonationApproval = donationDao.insertDonationApproval(approvalVo);
 		/***Then***/
@@ -69,7 +70,26 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***When***/
 		int currentApproval = donationDao.currentApproval();
 		/***Then***/
-		assertEquals(47, currentApproval);
+		assertEquals(60, currentApproval);
+
+	}
+	
+	/**
+	* Method : getDonationApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param app_id
+	* @return
+	* Method 설명 : 특정 기부자 정보 가져오기
+	*/
+	@Test
+	public void getDonationApprovalTest() {
+		/***Given***/
+		int app_id = 59;
+		/***When***/
+		DonationApprovalVo getDonationApproval = donationDao.getDonationApproval(app_id);
+		/***Then***/
+		assertEquals("아무개1", getDonationApproval.getDoner());
 
 	}
 
