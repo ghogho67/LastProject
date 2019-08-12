@@ -23,11 +23,13 @@
 							,app_del) 
 					  values(app_id.nextval
 					        ,#{app_pay}
-					        ,#{app_time}
+					        ,sysdate
 					        ,'3'
 					        ,#{mem_id}
 					        ,'N')
 	</insert>
+	
+	
 	
 	<!-- 가장 마지막 app_id 찾기 -->
 	<select id="currentApproval" resultType="int">

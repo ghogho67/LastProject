@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.model.DonationVo;
+import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class DonationServiceTest extends LogicTestEnv {
@@ -57,6 +58,26 @@ public class DonationServiceTest extends LogicTestEnv {
 		assertEquals(1, insertDonationApproval);
 
 	}
+	
+	/**
+	* Method : getDonationApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param app_id
+	* @return
+	* Method 설명 : 특정 기부자 정보 가져오기
+	*/
+	@Test
+	public void getDonationApprovalTest() {
+		/***Given***/
+		int app_id = 59;
+		/***When***/
+		DonationApprovalVo getDonationApproval = donationService.getDonationApproval(app_id);
+		/***Then***/
+		assertEquals("아무개1", getDonationApproval.getDoner());
+
+	}
+
 	
 	/**
 	* Method : currentApprovalTest

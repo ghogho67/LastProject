@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.dao.IDonationDao;
 import kr.or.ddit.donation.model.DonationVo;
+import kr.or.ddit.joinVo.DonationApprovalVo;
 
 @Service
 public class DonationService implements IDonationService {
@@ -50,6 +51,19 @@ public class DonationService implements IDonationService {
 	@Override
 	public int currentApproval() {
 		return donationDao.currentApproval();
+	}
+
+	/**
+	* Method : getDonationApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param app_id
+	* @return
+	* Method 설명 : 특정 기부자 정보 가져오기
+	*/
+	@Override
+	public DonationApprovalVo getDonationApproval(int app_id) {
+		return donationDao.getDonationApproval(app_id);
 	}
 
 }
