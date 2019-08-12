@@ -30,6 +30,7 @@
 							<li><a href="about.html">공지사항</a></li>
 							<li><a href="about.html">자유게시판</a></li>
 							<li><a href="elements.html">QnA</a></li>
+							<li><a href="post/pagingList?cate_id=1">게시판</a></li>
 						</ul></li>
 
 

@@ -76,7 +76,7 @@ public class PostController {
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-		return "/post/postPagingList.tiles";
+		return "post/postPagingList";
 
 	}
 
@@ -185,7 +185,7 @@ public class PostController {
 	@RequestMapping("/pagingList")
 	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
 //		@Valid MemberVo mvo, BindingResult result, 
-		logger.debug("☞delete:{}");
+		logger.debug("☞pagingList");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
@@ -209,6 +209,7 @@ public class PostController {
 		// paginationSize
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		logger.debug("☞mvo:{}", mvo);
 		model.addAttribute("mem_id", mvo.getMem_id());
 		// 화면 출력을 담당하는 jsp에게 역할 위임
 		return "/post/postPagingList.tiles";
@@ -380,136 +381,120 @@ public class PostController {
 		return "/post/postRegister.tiles";
 
 	}
-	
+
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 	public String ImageBoard() {
 		return "festival";
 	}
-	
-	
+
 	@RequestMapping(path = "ImageBoard")
 	public void callDetail(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
- 
-        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?ServiceKey=";
-        String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
-        String parameter = "";
- 
-        PrintWriter out = response.getWriter();
-        String area ="대전";
-        
-        areaCode(request, response, area);
-        parameter = parameter + "&" + "areaCode=1";
-        parameter = parameter + "&" + "eventStartDate=20190401";
-        parameter = parameter + "&" + "eventEndDate=20191231";
-        parameter = parameter + "&" + "pageNo=1";
-        parameter = parameter + "&" + "numOfRows=9";
-        parameter = parameter + "&" + "MobileOS=ETC";
-        parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "_type=json";
- 
-        addr = addr + serviceKey + parameter;
-        URL url = new URL(addr);
- 
-        System.out.println(addr);
- 
-        InputStream in = url.openStream();                            //URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
- 
-        ByteArrayOutputStream bos1 = new ByteArrayOutputStream();        //InputStream의 데이터들을 바이트 배열로 저장하기 위해
-        IOUtils.copy(in, bos1);            //InputStream의 데이터를 바이트 배열로 복사
-        in.close();
-        bos1.close();
- 
-        String mbos = bos1.toString("UTF-8");
- 
-        byte[] b = mbos.getBytes("UTF-8");
-        String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
-        out.println(s);
-        
-        logger.debug("!!!!! api:{}",s);
- 
-        JSONObject json = new JSONObject();
-        json.put("data", s);
-        
-        logger.debug("!!!!! json:{}",json);
-    }
-	
-	
-	
-	
-	
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?ServiceKey=";
+		String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
+		String parameter = "";
+
+		PrintWriter out = response.getWriter();
+		String area = "대전";
+
+		areaCode(request, response, area);
+		parameter = parameter + "&" + "areaCode=1";
+		parameter = parameter + "&" + "eventStartDate=20190401";
+		parameter = parameter + "&" + "eventEndDate=20191231";
+		parameter = parameter + "&" + "pageNo=1";
+		parameter = parameter + "&" + "numOfRows=9";
+		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "MobileApp=aa";
+		parameter = parameter + "&" + "_type=json";
+
+		addr = addr + serviceKey + parameter;
+		URL url = new URL(addr);
+
+		System.out.println(addr);
+
+		InputStream in = url.openStream(); // URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
+
+		ByteArrayOutputStream bos1 = new ByteArrayOutputStream(); // InputStream의 데이터들을 바이트 배열로 저장하기 위해
+		IOUtils.copy(in, bos1); // InputStream의 데이터를 바이트 배열로 복사
+		in.close();
+		bos1.close();
+
+		String mbos = bos1.toString("UTF-8");
+
+		byte[] b = mbos.getBytes("UTF-8");
+		String s = new String(b, "UTF-8"); // String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
+		out.println(s);
+
+		logger.debug("!!!!! api:{}", s);
+
+		JSONObject json = new JSONObject();
+		json.put("data", s);
+
+		logger.debug("!!!!! json:{}", json);
+	}
+
 	public int areaCode(HttpServletRequest request, HttpServletResponse response, String area) throws Exception {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
- 
-        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=";
-        String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
-        String parameter = "";
- 
-        PrintWriter out = response.getWriter();
-        
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 
-        parameter = parameter + "&" + "MobileOS=ETC";
-        parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "numOfRows=17";
-        parameter = parameter + "&" + "_type=json";
- 
-        addr = addr + serviceKey + parameter;
-        URL url = new URL(addr);
- 
-        System.out.println(addr);
- 
-        InputStream in = url.openStream();                            //URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
- 
-        ByteArrayOutputStream bos1 = new ByteArrayOutputStream();        //InputStream의 데이터들을 바이트 배열로 저장하기 위해
-        IOUtils.copy(in, bos1);            //InputStream의 데이터를 바이트 배열로 복사
-        in.close();
-        bos1.close();
- 
-        String mbos = bos1.toString("UTF-8");
- 
-        byte[] b = mbos.getBytes("UTF-8");
-        String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
-        out.println(s);
-    
-        
-        JsonParser jsonParser = new JsonParser();
-        JsonElement jsonElement = jsonParser.parse(s);
-        logger.debug("!!! jsonElement :{}",jsonElement);
-        
-        String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").toString();
-        logger.debug("!!! name :{}",name);
-        
-        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
-       
-        logger.debug("!!! memberArray :{}",array);
-        for (int i = 0; i < array.size(); i++) {          
-        	JsonObject object = (JsonObject) array.get(i);
-        	String name2 =object.get("name").toString();
-        	name2= name2.substring(1, name2.lastIndexOf("\""));
-        	logger.debug("!!! name2 : {}", name2);
-        	if(area.equals(name2)) {
-        		logger.debug("!!! object.get(\"code\"); : {}", object.get("code"));
-        		int code = Integer.parseInt(object.get("code").toString());
-        		logger.debug("!!! code : {}", code);
-        	}
-        	     
-     
-        }            
-     
-        
-        
-        
-        return 1;
-    }
-	
-	
-	
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=";
+		String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
+		String parameter = "";
 
-	
-	
-	
+		PrintWriter out = response.getWriter();
+
+		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "MobileApp=aa";
+		parameter = parameter + "&" + "numOfRows=17";
+		parameter = parameter + "&" + "_type=json";
+
+		addr = addr + serviceKey + parameter;
+		URL url = new URL(addr);
+
+		System.out.println(addr);
+
+		InputStream in = url.openStream(); // URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
+
+		ByteArrayOutputStream bos1 = new ByteArrayOutputStream(); // InputStream의 데이터들을 바이트 배열로 저장하기 위해
+		IOUtils.copy(in, bos1); // InputStream의 데이터를 바이트 배열로 복사
+		in.close();
+		bos1.close();
+
+		String mbos = bos1.toString("UTF-8");
+
+		byte[] b = mbos.getBytes("UTF-8");
+		String s = new String(b, "UTF-8"); // String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
+		out.println(s);
+
+		JsonParser jsonParser = new JsonParser();
+		JsonElement jsonElement = jsonParser.parse(s);
+		logger.debug("!!! jsonElement :{}", jsonElement);
+
+		String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject()
+				.get("items").getAsJsonObject().get("item").toString();
+		logger.debug("!!! name :{}", name);
+
+		JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
+		JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body")
+				.getAsJsonObject().get("items").getAsJsonObject().get("item");
+
+		logger.debug("!!! memberArray :{}", array);
+		for (int i = 0; i < array.size(); i++) {
+			JsonObject object = (JsonObject) array.get(i);
+			String name2 = object.get("name").toString();
+			name2 = name2.substring(1, name2.lastIndexOf("\""));
+			logger.debug("!!! name2 : {}", name2);
+			if (area.equals(name2)) {
+				logger.debug("!!! object.get(\"code\"); : {}", object.get("code"));
+				int code = Integer.parseInt(object.get("code").toString());
+				logger.debug("!!! code : {}", code);
+			}
+
+		}
+
+		return 1;
+	}
 
 }

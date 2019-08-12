@@ -43,14 +43,13 @@
 		<typeAlias alias="SurveyVo" type="kr.or.ddit.survey.model.SurveyVo" />
 		<typeAlias alias="VideoVo" type="kr.or.ddit.survey.model.VideoVo"/>
 		<typeAlias alias="QuestionChoiceVo" type="kr.or.ddit.survey.model.QuestionChoiceVo"/>
-
 		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
 		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
-		
-<!-- 		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/> -->
-<!-- 		<typeAlias alias="chatMemListVo" type="kr.or.ddit.joinVo.ChatMemListVo" /> -->
-<!-- 		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/> -->
-
+		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/>
+		<typeAlias alias="chatMemListVo" type="kr.or.ddit.joinVo.ChatMemListVo" />
+		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/>
+		<typeAlias alias="donationApprovalVo" type="kr.or.ddit.joinVo.DonationApprovalVo"/>
+		<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
 	</typeAliases>
 
 
@@ -73,9 +72,11 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
-<!--       <mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/> -->
-<!--       <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/> -->
-
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/donationApproval.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/diseaseName.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
 
    </mappers>
 </configuration>

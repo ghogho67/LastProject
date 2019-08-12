@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="frm" method="post" action="${cp}/donation/nonmemberDonation" class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
+				<form id="frm" method="get" action="${cp}/donation/nonmemberDonation" class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
 						<div class="p-title" data-base-class="p-title">
