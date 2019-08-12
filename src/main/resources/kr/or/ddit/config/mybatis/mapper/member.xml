@@ -247,6 +247,13 @@
 	<select id = "getCwList2" resultType="String">
 		select MEM_ID, MEM_NM, MEM_ADD1 from member where mem_grade = '3' order by mem_id
 	</select>
+	
+	
+	
+	<select id="getProfile" parameterType="String" resultType="String">
+	select MEM_PHOTO_PATH from member where mem_id = #{mem_id}
+	
+	</select>
 
 
 </mapper>

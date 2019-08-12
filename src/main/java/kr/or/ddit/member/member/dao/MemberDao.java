@@ -77,4 +77,9 @@ public class MemberDao implements IMemberDao {
 		return sqlSession.selectList("member.getCwList2");
 	}
 
+	@Override
+	public String getProfile(String mem_id) {
+		return sqlSession.selectOne("member.getProfile",mem_id);
+	}
+
 }

@@ -117,5 +117,15 @@ public interface IMemberDao {
 	List<String> getCwaddr();
 	
 	List<String> getCwList2();
+	
+	/**
+	* Method : getProfile
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param mem_id
+	* @return
+	* Method 설명 : 멤버 프로필 사진 경로 받기
+	*/
+	String getProfile(String mem_id);
 
 }

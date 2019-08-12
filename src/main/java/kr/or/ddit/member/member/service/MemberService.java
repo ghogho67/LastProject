@@ -94,4 +94,11 @@ public class MemberService implements IMemberService {
 
 
 
+	@Override
+	public String getProfile(String mem_id) {
+		return memberDao.getProfile(mem_id);
+	}
+
+
+
 }
