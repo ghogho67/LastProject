@@ -55,4 +55,26 @@ public class ChatTextVo {
 				+ ", chattext_cont=" + chattext_cont + ", chattext_time=" + chattext_time + "]";
 	}
 
+	public ChatTextVo() {
+	}
+
+	public ChatTextVo(int chattext_id, int chat_id, String mem_id, String chattext_cont, Date chattext_time) {
+		super();
+		this.chattext_id = chattext_id;
+		this.chat_id = chat_id;
+		this.mem_id = mem_id;
+		this.chattext_cont = chattext_cont;
+		this.chattext_time = chattext_time;
+	}
+
+	public ChatTextVo(int chat_id, String mem_id, String chattext_cont) {
+		super();
+		this.chat_id = chat_id;
+		this.mem_id = mem_id;
+		this.chattext_cont = chattext_cont;
+	}
+	
+	
+	
+
 }
