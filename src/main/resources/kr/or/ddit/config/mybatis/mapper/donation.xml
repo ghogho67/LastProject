@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="donation">
+
+	<!-- 기부 등록 -donation -->
+	<insert id="insertDonation" parameterType="donationVo">
+		insert into donation values(don_id.nextval
+									,#{doner}
+									,#{doner_phone}
+									,#{doner_comment}
+									,#{app_id})
+	</insert>
+	
+	<!-- 기부등록 - approval -->
+	<insert id="insertDonationApproval" parameterType="ApprovalVo">
+		insert into approval(app_id
+							,app_pay
+							,app_time
+							,app_type
+							,mem_id
+							,app_del) 
+					  values(app_id.nextval
+					        ,#{app_pay}
+					        ,sysdate
+					        ,'3'
+					        ,#{mem_id}
+					        ,'N')
+	</insert>
+	
+	
+	
+	<!-- 가장 마지막 app_id 찾기 -->
+	<select id="currentApproval" resultType="int">
+		select max(app_id)
+		from approval
+	</select>
+
+
+</mapper>

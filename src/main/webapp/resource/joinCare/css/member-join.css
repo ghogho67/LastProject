@@ -131,7 +131,7 @@
 }
 
 #template-memberjoin .memberkind-sub-title {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:500;
   color:#0466a3;
@@ -139,7 +139,7 @@
 }
 
 #template-memberjoin .memberkind-sub-title-bigo {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:15px;
   font-weight:300;
   color:#3b3b3b;
@@ -161,7 +161,7 @@
 
 #template-memberjoin .memberkind-sub ul {
   list-style-type:none;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:15px;
   font-weight:300;
   color:#3b3b3b;
@@ -174,7 +174,7 @@
   display:block;
   width:287px;
   height:55px;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:500;
   line-height:55px;
@@ -204,7 +204,7 @@
 }
 
 #template-memberjoin-step1 .accept-txt {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:300;
   color:#3b3b3b;
@@ -216,7 +216,7 @@
 }
 
 #template-memberjoin-step1 .accept-div {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:300;
   color:#3b3b3b;
@@ -230,7 +230,7 @@
 }
 
 #template-memberjoin-step1 .accept-checkbox {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:300;
   color:#3b3b3b;
@@ -248,7 +248,7 @@
   height:55px;
   line-height:54px;
   background-color:#6a6a6a;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:600;
   color:#fff;
@@ -286,7 +286,7 @@
 }
 
 #template-memberjoin-step2 .item-txt {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:400;
   color:#3b3b3b;
@@ -295,7 +295,7 @@
 }
 
 #template-memberjoin-step2 .item-div {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:300;
   color:#3b3b3b;
@@ -332,7 +332,7 @@
 #template-memberjoin-step2 .item-btn {
   width:140px;
   height:45px;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:22px;
   font-weight:300;
   color:#fff;
@@ -443,7 +443,7 @@
 }
 
 #template-memberjoin-step3 .end-txt2 {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:28px;
   font-weight:300;
   color:#3b3b3b;

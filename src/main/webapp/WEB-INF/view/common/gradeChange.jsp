@@ -6,16 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	$(document).ready(function() {
+// 	$(document).ready(function() {
 
 	
 
-		$("#inserBtn").on("click", function() {
+// 		$("#inserBtn").on("click", function() {
 
-			$("#changeBtn").submit();
-		});
+// 			$("#changeBtn").submit();
+// 		});
 		
-	});
+// 	});
 </script>
 
 
@@ -33,7 +33,6 @@
 				</div>
 			</div>
 		</div>
-
 
 
 </body>

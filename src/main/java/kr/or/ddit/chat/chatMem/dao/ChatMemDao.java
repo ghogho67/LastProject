@@ -10,4 +10,6 @@ public class ChatMemDao implements IChatMemDao {
 
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
+
+	
 }

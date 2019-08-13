@@ -79,7 +79,7 @@ public class PostController {
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-		return "/post/postPagingList.tiles";
+		return "post/postPagingList";
 
 	}
 
@@ -188,7 +188,7 @@ public class PostController {
 	@RequestMapping("/pagingList")
 	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
 //		@Valid MemberVo mvo, BindingResult result, 
-		logger.debug("☞delete:{}");
+		logger.debug("☞pagingList");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
@@ -212,6 +212,7 @@ public class PostController {
 		// paginationSize
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		logger.debug("☞mvo:{}", mvo);
 		model.addAttribute("mem_id", mvo.getMem_id());
 		// 화면 출력을 담당하는 jsp에게 역할 위임
 		return "/post/postPagingList.tiles";
@@ -383,13 +384,12 @@ public class PostController {
 		return "/post/postRegister.tiles";
 
 	}
-	
+
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 	public String ImageBoard() {
 		return "festival";
 	}
-	
-	
+
 	@RequestMapping(path = "ImageBoard")
 	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo) throws Exception {
 		 if(pageVo==null) {
@@ -528,12 +528,5 @@ public class PostController {
      
         return code;
     }
-	
-	
-	
-
-	
-	
-	
 
 }

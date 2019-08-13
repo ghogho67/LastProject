@@ -10,6 +10,10 @@ public class ApprovalVo {
 	private String app_type;
 	private String mem_id;
 	private String app_del;
+	
+	public ApprovalVo() {
+		
+	}
 
 	public String getApp_del() {
 		return app_del;
@@ -63,6 +67,27 @@ public class ApprovalVo {
 	public String toString() {
 		return "ApprovalVo [app_id=" + app_id + ", app_pay=" + app_pay + ", app_time=" + app_time + ", app_type="
 				+ app_type + ", mem_id=" + mem_id + "]";
+	}
+
+	public ApprovalVo() {
+
+	}
+
+	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del) {
+		this.app_id = app_id;
+		this.app_pay = app_pay;
+		this.app_time = app_time;
+		this.app_type = app_type;
+		this.mem_id = mem_id;
+		this.app_del = app_del;
+	}
+
+	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String app_del) {
+		this.app_id = app_id;
+		this.app_pay = app_pay;
+		this.app_time = app_time;
+		this.app_type = app_type;
+		this.app_del = app_del;
 	}
 
 }

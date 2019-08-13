@@ -2377,8 +2377,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-pri:hover {
 	color: #fff;
-	background-color: #d3d1da;
-	border-color: #f0f2fb
+	background-color: #8080ff;
+	border-color: #8d9ce0
 }
 
 
@@ -5451,6 +5451,21 @@ button.close {
 	outline: 0
 }
 
+.modal-content2 {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+    width: 700px;
+    height: 500px;
+	pointer-events: auto;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: .3rem;
+	outline: 0
+}
 .modal-backdrop {
 	position: fixed;
 	top: 0;

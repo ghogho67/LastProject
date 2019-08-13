@@ -18,7 +18,7 @@
 }
 
 #titlee h2 {
-	padding: 25px 35px;
+	padding: 5px 5px;
 }
 
 #titlee h2 span {
@@ -225,6 +225,12 @@ td {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
+
+<form id="frm" action="${cp}/lecture/lecture" method="get">
+		<input type="hidden" id="lectureId" name="lectureId">
+	</form>
+
+
 	<div class="container">
 
 
@@ -239,24 +245,16 @@ td {
 
 					<div id="titlee">
 						<h2>
-							<span>학습.문화</span> 프로그램
+							<span>학습.문화</span> 프로그램_관리
 						</h2>
 					</div>
+						<div style="text-align: right;">
+							<a class="btn btn-warning btn-sm" href="${cp}/lecture/lectureListManagement">강좌추가
+									</a>
+							
+    </div>
 
-					<div class="d1">
-						<form class="for">
-
-							<select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
-								<option value="all">전체</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="writer">작성자</option>
-								<option value="tc">제목+내용</option>
-							</select> <input type="text" placeholder="검색어 입력">
-							<button type="submit"></button>
-						</form>
-					</div>
+				
 					<hr>
 
 					<div class="table-responsive">
@@ -283,7 +281,6 @@ td {
 									<tr class="Lecture" data-userid="lectureId">
 
 										<td class="LectureId" id="LectureId" name="LectureId">${LTList.lec_id}</td>
-
 										<td>${LTList.lec_nm}</td>
 										<td>${LTList.lec_tea}</td>
 										<td>${LTList.lec_fee}</td>
@@ -293,10 +290,7 @@ td {
 												pattern="yyyy-MM-dd" /></td>
 										<td>${LTList.lec_time}</td>
 										<td>${LTList.lec_amount}</td>
-												
-												
-												
-												
+										
 												<c:choose>
 												<c:when test="${LTList.lec_use=='Y'}">
 													<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
@@ -306,18 +300,18 @@ td {
 												</c:otherwise>
 											</c:choose>
 											<td><a
-												href="${cp}/category/categoryManagement?cate_id=${LTList.lec_id}"
+												href="${cp}/lecture/modifyLecture?lec_id=${LTList.lec_id}"
 												class="btn btn-primary btn-sm">강좌수정</a></td>
 											<c:choose>
 												<c:when test="${LTList.lec_use=='Y'}">
 													<td><a
-														href="${cp}/category/categoryDelete?cate_id=${LTList.lec_id}"
+														href="${cp}/lecture/lectureDelete?lec_id=${LTList.lec_id}"
 														onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
 														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
 												</c:when>
 												<c:otherwise>
 													<td><a
-														href="${cp}/category/categoryUse?cate_id=${LTList.lec_id}"
+														href="${cp}/lecture/lectureUse?lec_id=${LTList.lec_id}"
 														onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
 														class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
 												</c:otherwise>
@@ -333,7 +327,9 @@ td {
 						</table>
 
 
+				
 
+					
 
 					</div>
 				</div>

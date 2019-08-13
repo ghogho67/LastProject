@@ -42,6 +42,7 @@ public class MatchingDaoTest extends LogicTestEnv {
 
 	@Test
 	public void matchingCreateDaoTest() {
+		
 		/*** Given ***/
 		MatchingVo mvo = new MatchingVo();
 		mvo.setMat_title("a");
@@ -53,7 +54,7 @@ public class MatchingDaoTest extends LogicTestEnv {
 		mvo.setMat_allDay(false);
 		mvo.setMat_type("방문간호");
 		mvo.setMem_id("brown");
-		mvo.setCw_mem_id("sona");
+		mvo.setCw_mem_id("anni");
 		mvo.setMat_del("N");
 		/*** When ***/
 		int createCnt = matchingDao.matchingCreate(mvo);

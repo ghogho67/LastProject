@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="donationApproval">
+
+	<!-- 기부 내역 조회 -->
+	<select id="getDonationApproval" parameterType="int" resultType="donationApprovalVo">
+	select d.doner
+     	  ,a.mem_id
+     	  ,d.doner_phone
+     	  ,a.app_time
+     	  ,a.app_pay
+     	  ,d.doner_comment
+	from donation d, approval a
+	where a.app_id(+) = d.app_id
+	and d.app_id = #{app_id}
+	</select>
+
+</mapper>

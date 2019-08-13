@@ -207,19 +207,6 @@ td {
 </style>
 
 
-
-
-<script>
-	$(document).ready(function() {
-
-		$(".kkk").on("click", function() {
-
-			$("#frm").submit();
-		});
-
-	});
-</script>
-
 </head>
 <body>
 
@@ -227,10 +214,14 @@ td {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
+
+
+<form id="frm" action="${cp}/lecture/lecture" method="get">
+		<input type="hidden" id="lectureId" name="lectureId">
+	</form>
+
+
 	<div class="container">
-
-
-
 
 		<div style="padding-top: 50px; width: 1350px;">
 
@@ -245,20 +236,20 @@ td {
 						</h2>
 					</div>
 
-					<div class="d1">
-						<form class="for">
+<!-- 					<div class="d1"> -->
+<!-- 						<form class="for"> -->
 
-							<select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
-								<option value="all">전체</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="writer">작성자</option>
-								<option value="tc">제목+내용</option>
-							</select> <input type="text" placeholder="검색어 입력">
-							<button type="submit"></button>
-						</form>
-					</div>
+<!-- 							<select id="searchType" name="searchType" -->
+<!-- 								style="position: absolute; z-index: 999;"> -->
+<!-- 								<option value="all">전체</option> -->
+<!-- 								<option value="title">제목</option> -->
+<!-- 								<option value="content">내용</option> -->
+<!-- 								<option value="writer">작성자</option> -->
+<!-- 								<option value="tc">제목+내용</option> -->
+<!-- 							</select> <input type="text" placeholder="검색어 입력"> -->
+<!-- 							<button type="submit"></button> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
 					<hr>
 
 					<div class="table-responsive">
@@ -279,10 +270,8 @@ td {
 
 							<tbody>
 								<c:forEach items="${LList}" var="LTList">
-									<tr class="Lecture" data-userid="lectureId">
-
-										<td class="LectureId" id="LectureId" name="LectureId">${LTList.lec_id}</td>
-
+									<tr class="lectureTr" data-userid="${LTList.lec_id}">
+										<td class="lectureId" id="lectureId" name="lectureId">${LTList.lec_id}</td>
 										<td>${LTList.lec_nm}</td>
 										<td>${LTList.lec_tea}</td>
 										<td>${LTList.lec_fee}</td>
@@ -309,8 +298,8 @@ td {
 						
 						<c:if test="${memgrade==0}">
 						<div style="text-align: right;">
-							<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">강좌관리
-									</button>
+							<a class="btn btn-warning btn-sm" href="${cp}/lecture/lectureListManagement">강좌관리
+									</a>
 							
 </div>
 
@@ -348,36 +337,17 @@ td {
 
 
 
-
+<script>
+	
+		
+		$(".lectureTr").on("click", function() {
+			var lectureId = $(this).find(".lectureId").text();
+			$("#lectureId").val(lectureId);
+			$("#frm").submit();
+		});
 
 	
-	<form id="frm2" action="#" method="post">
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" style="padding: 50px;">
-			<div class="modal-dialog" role="document" style="z-index: 1400">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title" id="myModalLabel">카테고리 추가</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<span>대분류명</span>
-					<input type="hidden"  id="cataPId" name="cataPId" value="${catePId}" readonly="readonly">
-					<input type="text"  id="catatitle" name="cataPtitle" value="${parentCate.cate_title}" readonly="readonly">
-					
-					<span>카테고리명</span>
-					<input type="text" id="catatitle" name="catetitle">
-					
-					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger" id="inserBtn"
-							data-dismiss="modal">추가</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</form>
+</script>
 
 
 

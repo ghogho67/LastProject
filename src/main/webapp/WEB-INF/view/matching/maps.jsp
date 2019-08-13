@@ -6,6 +6,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+a {
+  width:100%;
+  min-height:125px;
+  padding:0px 3px 0px 0px;
+  margin-bottom:10px;
+  border:1px solid #d9d9d9;
+  /*background-color:#fff;*/
+  cursor:pointer;
+}
+
+.list {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.btn {
+	background-color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+</style>
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -145,13 +184,20 @@
 
 			if (mapBounds.hasLatLng(position)) {
 				showMarker(map, marker);
-				var link = $("<a>");
-				link.attr("href", "/matching/meet?mem_id=" + marker.title);
-				link.attr("title", marker.title);
-				link.text(marker.title);
-				link.addClass("link");
-				$("#htmltest").append(link);
-				$("#htmltest").append("<br>");
+				var div = $("<div>");
+					div.attr("class", "list");
+					div.attr("id", "div"+i);
+					div.attr("style", "cursor: pointer;")
+					div.attr("onclick", "location.href='/matching/meet?mem_id="+marker.title+"'")
+				
+				var p = $("<p>");
+				var p2 = $("<p>");				
+				p.text(marker.title);
+				p2.text(marker.title2);
+				
+				$("#htmltest").append(div);
+				$("#div"+i).append(p);
+				$("#div"+i).append(p2);
 			} else {
 				hideMarker(map, marker);
 			}
@@ -176,12 +222,12 @@
 	function getClickHandler(seq) {
 		return function(e) {
 			var marker = markers[seq], infoWindow = infoWindows[seq];
-			location.href = "/matching/meet?mem_id=" + marker.title;
-// 			if (infoWindow.getMap()) {
-// 				infoWindow.close();
-// 			} else {
-// 				infoWindow.open(map, marker);
-// 			}
+			location.href = "/matching/meet?mem_id=" + marker.title
+			// 			if (infoWindow.getMap()) {
+			// 				infoWindow.close();
+			// 			} else {
+			// 				infoWindow.open(map, marker);
+			// 			}
 		}
 	}
 
@@ -195,25 +241,32 @@
 </script>
 </head>
 <body>
-	<div class="container-fluid" id="map"
-		style="width: 50%; height: 800px;"></div>
-	<div>
-		<ul id="cwUl">
-			<c:forEach items="${cwList }" var="cw">
-				<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
-				<input type="hidden" name="add" value="${cw.mem_add1 }">
-			</c:forEach>
-		</ul>
+<div>
+	<div class="container-fluid" style="width: 100%; height: auto; float:left;" >
+		<div id = "map" style="width: 80%; height: 800px; float:left;">
+		</div>
+		<div>
+			<ul id="cwUl">	
+				<c:forEach items="${cwList }" var="cw">
+					<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
+					<input type="hidden" name="add" value="${cw.mem_add1 }">
+					<input type="hidden" name="cw_driver" value="${cw.cw_driver }">
+				</c:forEach>
+			</ul>
+		</div>
+		<div id = "ch" style="width:20%; float:left; background-color : #f0f1f3;">
+		<form id="choose" class="form-horizontal" role="form" action="${cp}/matching/gender" method="post" enctype="multipart/form-data" >
+			<input type="button" class = "btn" value="전체"> 
+			<input type="button" class = "btn" name="gender" value="남자" onclick="cwListChange()"> 
+			<input type="button" class = "btn" value="여자"> <br><br>
+			<input type="button" class = "btn" value="전체"> 
+			<input type="button" value="가능" class = "btn" >
+			<input type="button" value="불가능" class = "btn" >
+		</form>
+		</div>
+		<div  id="htmltest" style ="float:left; width: 20%; height: 700px; background-color : #f0f1f3;">
+		</div><br>
 	</div>
-	<div id="htmltest"></div>
-	<input type="button" id="btn1" value="btn1" onclick="cwListChange()">
-	<input type="button" id="btn2" value="btn2">
-	<br>
-	<input type="button" id="btn3" value="btn3">
-	<br>
-	<input type="button" id="btn4" value="btn4">
-	<br>
-	<input type="button" id="btn5" value="btn5">
-	<br>
+</div>
 </body>
 </html>

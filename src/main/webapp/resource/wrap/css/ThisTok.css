@@ -9,7 +9,7 @@ body {
 	overflow:scroll;
 	border-top: 1px solid #f6f6f6;
 	height: 400px;
-  width: 100%;
+  width: 10%;
   background: #fff;
   border-radius: 5px;
   box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3
@@ -25,7 +25,7 @@ body {
   background: #42a7a1;
   padding: 20px,10px,10px,10px;
   
-  width: 320px;
+  width: 325px;
   height: 40px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -145,29 +145,6 @@ margin-left:10px;
     border: 5px solid #eef8ff;
     border-left-color: transparent;
     border-bottom-color: transparent;
-}
-
-.self {
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-.self .msg {
-    border-bottom-right-radius: 0px;
-    box-shadow: 1px 2px 0px #c1cbcd;
-}
-.self:after {
-    content: "";
-    position: relative;
-    display: inline-block;
-    float: right;
-    bottom: 0px;
-    right: 0px;
-    width: 0px;
-    height: 0px;
-    border: 5px solid #eef8ff;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    box-shadow: 0px 2px 0px #c1cbcd;
 }
 
 .msg {
