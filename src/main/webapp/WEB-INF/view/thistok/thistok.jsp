@@ -58,12 +58,27 @@ body {
 .hidden{
 display:none;
 }
+
+#myBtn{
+  background: #4A8CF6;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;  
+  font-size: 13px;
+  height: 30px;
+  line-height: 20px;
+  min-width: 100px;
+  text-align: center;
+  float:right;
+  margin-top: 40px;
+  margin-right: 5px;
+  border-radius: 20px;
+}
 </style>
 
 
 <script type="text/javascript">
-
-
 $(document).ready(function(){
 	$(".detailTr").on("click",function(){
 		console.log("detailTr");
@@ -75,31 +90,46 @@ $(document).ready(function(){
 		
 		$("#for").submit();
 	});
+	
+	$("#myBtn").on("click",function(){
+		$("#createChat").submit();
+	});
+	
+	
 });
-
 </script>
 
 </head>
 <body>
-   	<form id="for" action="http://192.168.0.32/socket/view" method="post">
+   	
 	 <img id="logo" alt="" src="/image/logosam2.png">
-	 
+	 <button id="myBtn" type="submit" >CreateChat</button>
+	 <form id="for" action="http://192.168.0.32/socket/view" method="post">
 		<div id="chat">
 		   <table>
 				<c:forEach items="${chatList }" var="chat" varStatus="status">
+					<c:if test="${chat.chat_del eq 'N' }">
 					<tr class="detailTr">
 						<th><img id="profileimg" src="${cp }/chat/tokProfileView?mem_id=${chat.mem_id}"></th>
 						<th class="hidden">${chat.chat_id}</th>				
 						<th>${chat.mem_id }<br>${chat.chat_nm }</th>
 						<th><fmt:formatDate value="${chat.chat_dt }" pattern="yyyy-MM-dd HH:mm:ss"/></th>
 					</tr>
+					</c:if>
 				</c:forEach>
 		   </table>
 		</div>
 		<input type="hidden" name="mem_id" value="${mem_id}">
-		<input type="hidden" id="chat_id" name="chat_id" value="">
-  		
+		<input type="hidden" id="chat_id" name="chat_id">
 	</form>
+	
+	
+	
+		
+		
+	<form id="createChat" action="http://192.168.0.32/chat/createChatView" method="get">
+	</form>
+	
 	  
 
 </body>

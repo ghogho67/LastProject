@@ -47,6 +47,7 @@
 		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
 		
 		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/>
+		<typeAlias alias="chatVo" type="kr.or.ddit.chat.chat.model.ChatVo"/>
 		<typeAlias alias="chatTextVo" type="kr.or.ddit.chat.chatText.model.ChatTextVo"/>
 		<typeAlias alias="chatMemListVo" type="kr.or.ddit.joinVo.ChatMemListVo" />
 
@@ -77,6 +78,7 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
       
       <mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chatMem.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/chatText.xml"/>
 
       <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>

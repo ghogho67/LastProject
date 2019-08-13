@@ -46,4 +46,23 @@ public class ChatVo {
 				+ chat_mem_id + "]";
 	}
 
+	public ChatVo(int chat_id, String chat_nm, Date chat_dt, String chat_mem_id) {
+		super();
+		this.chat_id = chat_id;
+		this.chat_nm = chat_nm;
+		this.chat_dt = chat_dt;
+		this.chat_mem_id = chat_mem_id;
+	}
+	
+	public ChatVo(String chat_nm, String chat_mem_id) {
+		super();
+		this.chat_nm = chat_nm;
+		this.chat_mem_id = chat_mem_id;
+	}
+
+	public ChatVo() {
+	}
+	
+	
+
 }
