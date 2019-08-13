@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -388,8 +391,12 @@ public class PostController {
 	
 	
 	@RequestMapping(path = "ImageBoard")
-	public void callDetail(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.setCharacterEncoding("utf-8");
+	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo) throws Exception {
+		 if(pageVo==null) {
+	        	pageVo.setPage(1);
+	        	pageVo.setPageSize(8);
+	        }
+		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
         String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?ServiceKey=";
@@ -399,17 +406,18 @@ public class PostController {
         PrintWriter out = response.getWriter();
         String area ="대전";
         
-        areaCode(request, response, area);
-        parameter = parameter + "&" + "areaCode=1";
-        parameter = parameter + "&" + "eventStartDate=20190401";
+        int areaCode = areaCode(request, response, area);
+        parameter = parameter + "&" + "areaCode="+areaCode;
+        parameter = parameter + "&" + "eventStartDate=201900101";
         parameter = parameter + "&" + "eventEndDate=20191231";
-        parameter = parameter + "&" + "pageNo=1";
-        parameter = parameter + "&" + "numOfRows=9";
+        parameter = parameter + "&" + "pageNo="+pageVo.getPage();
+        parameter = parameter + "&" + "numOfRows="+pageVo.getPageSize();
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
+        logger.debug("!!!!addr : {}",addr);
         URL url = new URL(addr);
  
         System.out.println(addr);
@@ -426,13 +434,36 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
+
         
-        logger.debug("!!!!! api:{}",s);
- 
-        JSONObject json = new JSONObject();
-        json.put("data", s);
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
+        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
+        double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
+        int boardCnt2=(int) boardCnt;
+        logger.debug("!!!!! json:{}",array);
+
         
-        logger.debug("!!!!! json:{}",json);
+        Gson gson = new Gson();
+
+        ArrayList<Object> list = gson.fromJson( array.toString() , new TypeToken <ArrayList<Object>>(){}.getType() );
+
+        model.addAttribute("list", list);
+        model.addAttribute("boardCnt", boardCnt2);
+        logger.debug("!!!!! list:{}",list);
+
+
+
+
+        
+        
+        int paginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("pageVo",pageVo);
+
+        
+        return "festivalAjaxHtml";
+        
     }
 	
 	
@@ -475,34 +506,27 @@ public class PostController {
     
         
         JsonParser jsonParser = new JsonParser();
-        JsonElement jsonElement = jsonParser.parse(s);
-        logger.debug("!!! jsonElement :{}",jsonElement);
-        
-        String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").toString();
-        logger.debug("!!! name :{}",name);
+//        JsonElement jsonElement = jsonParser.parse(s);
+//        logger.debug("!!! jsonElement :{}",jsonElement);
+//        
+//        String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").toString();
+//        logger.debug("!!! name :{}",name);
         
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
         JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
-       
-        logger.debug("!!! memberArray :{}",array);
+        int code =0;
         for (int i = 0; i < array.size(); i++) {          
         	JsonObject object = (JsonObject) array.get(i);
-        	String name2 =object.get("name").toString();
-        	name2= name2.substring(1, name2.lastIndexOf("\""));
-        	logger.debug("!!! name2 : {}", name2);
+        	String name2 =object.get("name").getAsString();
         	if(area.equals(name2)) {
-        		logger.debug("!!! object.get(\"code\"); : {}", object.get("code"));
-        		int code = Integer.parseInt(object.get("code").toString());
-        		logger.debug("!!! code : {}", code);
+        		code = Integer.parseInt(object.get("code").toString());
+        		break;
         	}
         	     
      
         }            
      
-        
-        
-        
-        return 1;
+        return code;
     }
 	
 	
