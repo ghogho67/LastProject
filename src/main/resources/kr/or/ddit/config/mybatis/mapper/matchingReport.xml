@@ -121,7 +121,21 @@
 		full outer join matching m
 		on r.mat_id = m.mat_id
 		where m.mem_id = #{mem_id} and r.rep_id=#{rep_id}
-
+	</select>
+    
+    
+    
+	<!-- //해당회원의 모든 보고서중 특정 보고서 아이디의 내용과 첨부파일을 가져온다 -->
+	<select id="getWorkerCertainReportWA"
+		resultType="MatchingReportAttachmentVo"
+		parameterType="MatchingReportAttachmentVo">
+		select *
+		from report r
+		full outer join reportattach ra
+		on r.rep_id = ra.rep_id
+		full outer join matching m
+		on r.mat_id = m.mat_id
+		where m.cw_mem_id = #{cw_mem_id} and r.rep_id=#{rep_id}
 	</select>
     
     
@@ -148,18 +162,20 @@ WHERE R.MAT_ID(+) = M.MAT_ID
 AND M.MEM_ID = #{MEM_ID} AND R.REP_ID=#{REP_ID} AND A.REP_ID=#{REP_ID}
 	
     
-		resultType="MatchingReportAttachmentVo"
-		parameterType="MatchingReportAttachmentVo">
-		select *
-		from report r
-		full outer join reportattach ra
-		on r.rep_id = ra.rep_id
-		full outer join matching m
-		on r.mat_id = m.mat_id
-		where m.cw_mem_id = #{cw_mem_id} and r.rep_id=#{rep_id}
 
 	</select>
 
+
+
+<!-- 		RESULTTYPE="MATCHINGREPORTATTACHMENTVO" -->
+<!-- 		PARAMETERTYPE="MATCHINGREPORTATTACHMENTVO"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM REPORT R -->
+<!-- 		FULL OUTER JOIN REPORTATTACH RA -->
+<!-- 		ON R.REP_ID = RA.REP_ID -->
+<!-- 		FULL OUTER JOIN MATCHING M -->
+<!-- 		ON R.MAT_ID = M.MAT_ID -->
+<!-- 		WHERE M.CW_MEM_ID = #{CW_MEM_ID} AND R.REP_ID=#{REP_ID} -->
 
 
 
