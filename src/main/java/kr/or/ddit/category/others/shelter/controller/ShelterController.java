@@ -114,6 +114,8 @@ public class ShelterController {
 		
 		model.addAttribute("shelterVo", shelterService.getShelter(sh_id));
 		logger.debug("☞shelterVo:{}",shelterService.getShelter(sh_id));
+	
+		
 		return "/shelter/detailShelter.tiles";
 	}
 	

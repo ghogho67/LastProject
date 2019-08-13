@@ -102,7 +102,6 @@ public class DonationApprovalVo {
 
 	public DonationApprovalVo(int don_id, String doner, String doner_phone, String doner_comment, int app_id,
 			int app_pay, Date app_time, String app_type, String mem_id, String app_del) {
-		super();
 		this.don_id = don_id;
 		this.doner = doner;
 		this.doner_phone = doner_phone;

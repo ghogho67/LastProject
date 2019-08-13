@@ -16,8 +16,6 @@ width:500px;
 height: 200px;
 }
 </style>
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="../../favicon.ico">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

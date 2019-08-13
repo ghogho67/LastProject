@@ -114,10 +114,10 @@
             timepicker:false,
             format:'d.m.Y',
         });
-
-        // // Nice Select
-        $('select').niceSelect();
-        
+//
+//        // // Nice Select
+//        $('select').niceSelect();
+//        
 
         // Google Map
         if ( $('#mapBox').length ){

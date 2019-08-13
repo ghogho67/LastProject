@@ -6,7 +6,6 @@
 
 <head>
 <meta charset="utf-8" />
-<link rel=" shortcut icon" href="image/favicon.ico">
 <head>
 
 <style>
@@ -75,8 +74,6 @@ table.cw td {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>FullCalendar Example</title>
 
-<link rel=" shortcut icon"
-	href="/FullCalendar-Example-master/image/favicon.ico">
 <link rel="stylesheet"
 	href="/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
 <link rel="stylesheet"

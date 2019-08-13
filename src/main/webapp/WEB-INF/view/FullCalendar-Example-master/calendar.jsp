@@ -9,7 +9,6 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>FullCalendar Example</title>
-<link rel=" shortcut icon" href="image/favicon.ico">
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
