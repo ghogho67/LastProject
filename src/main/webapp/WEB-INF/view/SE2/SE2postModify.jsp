@@ -72,9 +72,7 @@
 </script>
 </head>
 <body>
-	
-		<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
-			style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
-	<input type="button" id="savebutton" value="글등록" />
+	<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
+	<input type="button" id="savebutton" class="btn btn-primary btn-sm"	value="글등록" />
 </body>
 </html>

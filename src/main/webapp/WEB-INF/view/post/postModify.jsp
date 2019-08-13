@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,94 +38,40 @@
 <body>
 
 
-	<div class="container-fluid">
-
-		<div class="row">
-
-
-
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-				<div class="row">
-
-					<div class="col-sm-8 blog-main">
-
-						<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
-
-						<pre>
-cate_id : ${cate_id }<br> 
-post_id : ${post_id } <br>
-attachmentList : ${attachmentList }<br>
-postVo : ${postVo}<br>
+	<div class="container">
+		<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
+<pre>
+cate_id : ${cate_id }post_id : ${post_id }attachmentList : ${attachmentList }postVo : ${postVo}
 </pre>
-
-						<form id="frm" class="form-horizontal" role="form"
-							action="${cp}/post/modify" method="post"
-							enctype="multipart/form-data">
-
-							<input type="hidden" name="post_id" value="${post_id }">
-
-							<input type="hidden" name="cate_id" value="${cate_id }">
-
-							<div class="form-group">
-
-								<label for="filename" class="col-sm-2 control-label">제목</label>
-
-								<div class="col-sm-10">
-
-									<input type="text" class="form-control" id="post_nm"
-										name="post_nm" value="${postVo.post_nm}">
-								</div>
-							</div>
-
-							<div class="form-group">
-
-								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-
-								<div class="col-sm-10">
-
-									<%@include file="../../../SE2/SE2postModify.jsp"%>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-
-								<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-
-								<div class="col-sm-10">
-
-									<c:forEach items="${attachmentList}" var="attachment">
-										<br>
-
-										<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>
-										<br>
-
-										${attachment.att_id}
-
-										<a id="a"
-											href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }"
-											class="attachment	btn-default pull-right">X</a>
-									</c:forEach>
-								</div>
-
-								파일추가 <input type="button" value="파일추가" id="addFileBtn">
-
-								<div class="col-sm-10" id="fileArea">
-
-									<input type="file" name="file" multiple><br> <input
-										type="hidden" name="cate_id" value="${cate_id }">
-
-								</div>
-							</div>
-
-							<button type="submit" id="postModifyBtn">수정완료</button>
-
-						</form>
-					</div>
+		<form id="frm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="post_id" value="${post_id }"> <input
+				type="hidden" name="cate_id" value="${cate_id }">
+			<div>
+				<label for="filename" class="col-sm-2 control-label">제목</label>
+				<input type="text" class="form-control" id="post_nm" name="post_nm" value="${postVo.post_nm}">
+			</div>
+			<div>
+				<label for="mem_id" class="col-sm-2 control-label">글내용</label>
+				<div>
+					<%@include file="../../../SE2/SE2postModify.jsp"%>
 				</div>
 			</div>
-		</div>
+			<div>
+				<div>
+					<c:forEach items="${attachmentList}" var="attachment">
+						<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>
+										${attachment.att_id}
+										<a id="a"
+							href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }"
+							class="btn btn-primary btn-sm">X</a>
+					</c:forEach>
+				</div>
+				<div id="fileArea">
+					<input type="button" value="파일추가" class="btn btn-primary btn-sm"	id="addFileBtn"> <br> <input type="file" name="file" multiple> 
+					<input type="hidden" name="cate_id" value="${cate_id }">
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 <script>
@@ -162,9 +110,4 @@ postVo : ${postVo}<br>
 		}
 	}
 </script>
-
-
-
-
-
 </html>

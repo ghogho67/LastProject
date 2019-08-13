@@ -7,42 +7,42 @@
 <html>
 <head>
 <style>
-a {
-  width:100%;
-  min-height:125px;
-  padding:0px 3px 0px 0px;
-  margin-bottom:10px;
-  border:1px solid #d9d9d9;
-  /*background-color:#fff;*/
-  cursor:pointer;
+#a {
+	width: 100%;
+	min-height: 125px;
+	padding: 0px 3px 0px 0px;
+	margin-bottom: 10px;
+	border: 1px solid #d9d9d9;
+	/*background-color:#fff;*/
+	cursor: pointer;
 }
 
 .list {
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+	display: block;
+	padding: 10px 15px;
+	margin-bottom: -1px;
+	background-color: #fff;
+	border: 1px solid #ddd;
 }
 
-.btn {
+.bt {
 	background-color: white;
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
 }
 </style>
 
@@ -185,19 +185,19 @@ a {
 			if (mapBounds.hasLatLng(position)) {
 				showMarker(map, marker);
 				var div = $("<div>");
-					div.attr("class", "list");
-					div.attr("id", "div"+i);
-					div.attr("style", "cursor: pointer;")
-					div.attr("onclick", "location.href='/matching/meet?mem_id="+marker.title+"'")
-				
+				div.attr("class", "list");
+				div.attr("id", "div" + i);
+				div.attr("style", "cursor: pointer;")
+				div.attr("onclick", "location.href='/matching/meet?mem_id="	+ marker.title + "'")
+
 				var p = $("<p>");
-				var p2 = $("<p>");				
+				var p2 = $("<p>");
 				p.text(marker.title);
 				p2.text(marker.title2);
-				
+
 				$("#htmltest").append(div);
-				$("#div"+i).append(p);
-				$("#div"+i).append(p2);
+				$("#div" + i).append(p);
+				$("#div" + i).append(p2);
 			} else {
 				hideMarker(map, marker);
 			}
@@ -241,12 +241,11 @@ a {
 </script>
 </head>
 <body>
-<div>
-	<div class="container-fluid" style="width: 100%; height: auto; float:left;" >
-		<div id = "map" style="width: 80%; height: 800px; float:left;">
-		</div>
+	<!--  style="width: 100%; height: auto; float:left;" -->
+	<div class="container">
+		<div id="map" style="width: 80%; height: 700px; float: left;"></div>
 		<div>
-			<ul id="cwUl">	
+			<ul id="cwUl">
 				<c:forEach items="${cwList }" var="cw">
 					<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
 					<input type="hidden" name="add" value="${cw.mem_add1 }">
@@ -254,19 +253,18 @@ a {
 				</c:forEach>
 			</ul>
 		</div>
-		<div id = "ch" style="width:20%; float:left; background-color : #f0f1f3;">
-		<form id="choose" class="form-horizontal" role="form" action="${cp}/matching/gender" method="post" enctype="multipart/form-data" >
-			<input type="button" class = "btn" value="전체"> 
-			<input type="button" class = "btn" name="gender" value="남자" onclick="cwListChange()"> 
-			<input type="button" class = "btn" value="여자"> <br><br>
-			<input type="button" class = "btn" value="전체"> 
-			<input type="button" value="가능" class = "btn" >
-			<input type="button" value="불가능" class = "btn" >
-		</form>
+		<div id="ch" style="width: 20%; height: 100px; float: left; background-color: #f0f1f3;">
+			<form id="choose" class="form-horizontal" role="form" action="${cp}/matching/gender" method="post" enctype="multipart/form-data">
+				<input type="button" class="bt" value="전체"> 
+				<input type="button" class="bt" name="gender" value="남자" onclick="cwListChange()"> 
+				<input type="button" class="bt" value="여자"> <br>
+				<br> 
+				<input type="button" class="bt" value="전체"> 
+				<input type="button" value="가능" class="bt"> 
+				<input type="button" value="불가능" class="bt">
+			</form>
 		</div>
-		<div  id="htmltest" style ="float:left; width: 20%; height: 700px; background-color : #f0f1f3;">
-		</div><br>
+		<div id="htmltest" style="float: left; width: 20%; height: 600px; background-color: #f0f1f3;"></div>
 	</div>
-</div>
 </body>
 </html>
