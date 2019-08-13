@@ -11,8 +11,6 @@
 <meta name="author" content="">
 <title>Smart Editor</title>
 
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="../../favicon.ico">
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 

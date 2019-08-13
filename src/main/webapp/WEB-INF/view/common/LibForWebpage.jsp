@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-<!-- <link rel="shortcut icon" -->
-<%-- 	href="${pageContext.request.contextPath}/resource/medino/images/logo/favicon.png" --%>
-<!-- 	type="image/x-icon"> -->
-
 <!-- CSS Files -->
 <link rel="stylesheet"
 	href="${cp}/resource/medino/css/animate-3.7.0.css">

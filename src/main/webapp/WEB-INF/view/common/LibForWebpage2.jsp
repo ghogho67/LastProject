@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-<!-- <link rel="shortcut icon" -->
-<%-- 	href="${pageContext.request.contextPath}/resource/medino/images/logo/favicon.png" --%>
-<!-- 	type="image/x-icon"> -->
-
 <!-- CSS Files -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resource/medino/css/animate-3.7.0.css">
@@ -26,8 +21,6 @@
 	href="${pageContext.request.contextPath}/resource/wrap/css/style.css"
 	rel="stylesheet">
 
-
-
 <!-- Javascript -->
 <script
 	src="${pageContext.request.contextPath}/resource/medino/js/vendor/jquery-2.2.4.min.js"></script>
@@ -44,8 +37,6 @@
 	src="${pageContext.request.contextPath}/resource/medino/js/vendor/superfish.min.js"></script>
 <!-- 	<script -->
 <%-- 	src="${pageContext.request.contextPath}/resource/medino/js/main.js"></script> --%>
-	
-	
 <!-- 	<link rel="stylesheet" -->
 <%-- 	href="${cp}/resource/joinCare/css/jquery-ui.min.css" /> --%>
 <!-- 	<link rel="stylesheet" type="text/css" -->
@@ -70,5 +61,4 @@
 <%-- 	href="${cp}/resource/joinCare/css/policy.css"> --%>
 <!-- <link rel="stylesheet" type="text/css" -->
 <%-- 	href="${cp}/resource/joinCare/css/board.css"> --%>
-	
 
