@@ -301,7 +301,33 @@ public class LectureController {
 	
 
 	
-	
+	@RequestMapping(path = "/InsertCulture", method = RequestMethod.POST)
+	public String InsertCulture(Model model, HttpSession session,RedirectAttributes redirectAttributes,
+			@RequestParam(name = "cultureadd")String culture_add,
+			@RequestParam(name = "culture_type")String culture_type,
+			@RequestParam(name = "culture_phone")String culture_phone
+		) {
+		 
+         int cate_id =30020;
+		 int culture_id=0;
+		 
+		 CultureVo cultureVo= new CultureVo( culture_id,  culture_add,  culture_type,  culture_phone,  cate_id);
+
+		
+		String viewName =null;
+		
+		int insertleCulture = cultureService.InsertCulture(cultureVo);
+		
+		
+		if(insertleCulture==1) {
+			 viewName="redirect:/lecture/lectureListManagement";
+		}else {
+			viewName="redirect:/login";
+		}
+		
+		return viewName;
+		
+	}
 	
 	
 	

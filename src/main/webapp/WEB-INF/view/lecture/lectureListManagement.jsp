@@ -379,7 +379,7 @@ td {
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<input type="hidden" id="cate_id" name="cate_id" value="30020">
+					
 
 					<div style="padding: 0 20px 0 20px;">
 						<span>문화센터명</span> <input type="text" id="culture_type"

@@ -42,7 +42,13 @@
 	
 		<br>
 		<div >
-		<a  class="btn btn-success btn-lg mr-2"  data-toggle="modal" data-target="#myModalGrade" style="color: white">프리미엄 서비스 이용</a>
+		
+		<c:if test="${MEM_INFO.mem_grade==1}">
+				<<a  class="btn btn-success btn-lg mr-2"  data-toggle="modal" data-target="#myModalGrade" style="color: white">프리미엄 서비스 이용</a>
+		
+
+			</c:if>
+		
 		</div>
 	</div>
 	

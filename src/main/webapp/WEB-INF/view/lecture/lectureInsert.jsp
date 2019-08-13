@@ -53,8 +53,6 @@ td {
 </style>
 
 
-
-
 <script>
 	$(document).ready(function() {
 
@@ -98,19 +96,6 @@ td {
 								<div class="card">
 									<div class="card-body">
 										<div class="form-horizontal form-material">
-
-
-											<div class="form-group">
-												<label class="col-md-12">강좌아이디</label>
-												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_id}"
-														class="form-control form-control-line" name="lec_id"
-														id="lec_id" readonly="readonly">
-
-												</div>
-											</div>
-
-
 
 
 
@@ -229,9 +214,16 @@ td {
 											<div class="form-group">
 												<label for="birth" class="col-md-12">문화센터명</label>
 												<div class="col-md-12">
-													<input type="text" value="${culture.culture_id}"
-														class="form-control form-control-line" readonly="readonly"
-														name="culture_id" id="culture_id">
+												<select id="searchType" name="searchType">
+												<c:forEach items="${boardPostList}" var="post">
+										<option value="${culture.culture_id}" id="" name="">전체</option>
+												</c:forEach>
+												
+										
+									</select> 
+							
+												
+													
 												</div>
 											</div>
 										</div>
