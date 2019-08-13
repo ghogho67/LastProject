@@ -28,7 +28,7 @@
 				<li><a href="${cp}/test/basicBoard">공지사항</a></li>
 				<li><a href="${cp}/test/basicBoard">자유게시판</a></li>
 				<li><a href="${cp}/test/basicQnA">QnA</a></li>
-				<li><a href="post/pagingList?cate_id=1">게시판</a></li>
+				<li><a href="${cp}/post/pagingList?cate_id=1">게시판</a></li>
 			</ul></li>
 
 
