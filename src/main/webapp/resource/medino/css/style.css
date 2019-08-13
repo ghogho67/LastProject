@@ -10,6 +10,11 @@ font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 400
 }
 
+
+p{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 h1 {
 	color: white;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -1269,10 +1274,17 @@ background-color:white;
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
-	font-size: 12px;
-	line-height: 21px;
+	font-size: 15px;
+	font-weight:500;
+	line-height: 18px;
 	margin-bottom: 0px
 }
+
+.media-body p{
+		font-size: 15px;
+	font-weight:400;
+}
+
 
 .blog_right_sidebar .popular_post_widget .post_item+.post_item {
 	margin-top: 20px

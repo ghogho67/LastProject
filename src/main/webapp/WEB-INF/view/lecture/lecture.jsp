@@ -2,16 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>강좌상세</title>
 
 
 
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -25,6 +25,12 @@
 #titlee h2 span {
 	font-weight: bold;
 	color: #473fa0;
+}
+
+p {
+font-family: 'Noto Sans KR', sans-serif;
+letter-spacing: 1px;
+line-height:1.6em
 }
 </style>
 <script
@@ -67,10 +73,9 @@
 	}
 
 	var markers = [], infoWindows = [];
-	//요양보호사 아이디
-	var listData1 = []
 	//요양보호사 주소 
-	var listData2 = [ '대전 유성구 유성대로654번길 130', '대전광역시 중구 중앙로76', '대전 중구 중앙로 77' ];
+	var listData2 = ['${culture.culture_add}' ];
+	//var listData2 = ['대전광역시 중구 중앙로76' ];
 
 	function drawMarker() {
 		for (var i = 0; i < listData2.length; i++) {
@@ -104,15 +109,14 @@
 									},
 									zIndex : 100,
 									animation : naver.maps.Animation.BOUNCE
-								//id: 요양보호사 id listData1[i]
 								});
 
 								console.log("aaa");
 
 								var infoWindow = new naver.maps.InfoWindow(
 										{
-											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
-													+ "1234" + '"</b>.</div>'
+											content : '<div style="width:150px;text-align:center;padding:10px;">'
+													+ "${culture.culture_type}" + '</div>'
 										});
 
 								markers.push(marker);
@@ -210,8 +214,10 @@
 								<div class="blog_right_sidebar">
 									<aside class="single_sidebar_widget author_widget">
 										<h3>${lecture.lec_nm}</h3>
-										<p>${lecture.lec_tea}</p>
+										<h4>${lecture.lec_tea}</h4>
+											<div class="media-body">
 										<p>${lecture.lec_cont}</p>
+										</div>
 										<div class="br"></div>
 									</aside>
 									<aside class="single_sidebar_widget popular_post_widget">
@@ -220,14 +226,14 @@
 											<img src="/image/dotdot.png">
 											<div class="media-body">
 											
-												<p>강좌 시작일:<fmt:formatDate value="${lecture.lec_st_dt}"
+												<p>강좌 시작일 : <fmt:formatDate value="${lecture.lec_st_dt}"
 															pattern="yyyy-MM-dd" /></p>
 											</div>
 										</div>
 										<div class="media post_item">
 											<img src="/image/dotdot.png">
 											<div class="media-body">
-												<p>강좌 종료일 :<fmt:formatDate value="${lecture.lec_end_dt}"
+												<p>강좌 종료일 : <fmt:formatDate value="${lecture.lec_end_dt}"
 															pattern="yyyy-MM-dd" /></p>
 											</div>
 										</div>
@@ -236,7 +242,7 @@
 											<img src="/image/dotdot.png">
 											<div class="media-body">
 										
-												<p>수강 시간 :${lecture.lec_time}</p>
+												<p>수강 시간 : ${lecture.lec_time}</p>
 											</div>
 										</div>
 
@@ -245,7 +251,7 @@
 											<img src="/image/dotdot.png">
 											<div class="media-body">
 										
-												<p>수강료:${lecture.lec_fee}</p>
+												<p>수강료 : ${lecture.lec_fee}</p>
 											</div>
 										</div>
 
@@ -261,7 +267,7 @@
 										<div class="media post_item">
 											<img src="/image/dotdot.png">
 											<div class="media-body">
-												<p>수강인원 :${lecture.lec_amount}</p>
+												<p>수강인원 : ${lecture.lec_amount}</p>
 												
 
 											</div>
@@ -284,9 +290,9 @@
 
 									<div class="col-lg-12 blog_details">
 										<h3>센터위치</h3>
-										<div id="map" style="width: 100%; height: 600px;"></div>
+										<div id="map" style="width: 100%; height: 500px;"></div>
 										<div style=" position: absolute;">
-								${culture.culture_type}: ${culture.culture_phone}
+								${culture.culture_type}: &nbsp;${culture.culture_add}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${culture.culture_phone}
 									</div>
 									</div>
 									

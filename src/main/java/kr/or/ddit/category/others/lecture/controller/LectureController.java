@@ -140,7 +140,7 @@ public class LectureController {
 		 int updateCnt = lectureService.deleteLecture(lec_id);
 		
 		 if(updateCnt>=1) {
-			 viewName="redirect:/lecture/lectureListALL";
+			 viewName="redirect:/lecture/lectureListManagement";
 		 }else {
 			 viewName="redirect:/login";
 		 }
