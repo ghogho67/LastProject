@@ -203,16 +203,21 @@ right: 21%;
 	$(document).ready(function() {
 
 		var areaid;
-		var monthid = new Array();
+		var monthid;
 
 		boardPagingListAjaxHtml(1, 8);
 
 		$('#monthlist').on('click', "li button", function() {
+			monthid = new Array();
 			var id = $(this).parent().prop('id');
 			// 			console.log(id);
 			if (id == 'All1' && $(this).attr('class') == '') {
 				$('#monthlist li button').attr('class', 'btn');
 				$(this).attr('class', 'btn_all_active');
+				$("#monthlist li .btn_all_active").parent().each(function(i) {
+					monthid[i] = this.id;
+					console.log(monthid[i]);
+				});
 				return;
 			}
 
@@ -234,6 +239,9 @@ right: 21%;
 				console.log(monthid[i]);
 
 			});
+			
+			
+
 
 			console.log(monthid.length);
 			
