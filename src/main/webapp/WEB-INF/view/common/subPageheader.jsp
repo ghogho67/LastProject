@@ -21,8 +21,8 @@
 					<li><a href="">마이페이지</a></li>
 					<li><a href="">요양 정보</a>
 						<ul>
-							<li><a href="${cp}/basicU/findingCareWorker">요양원/요양병원 찾기</a></li>
-							<li><a href="${cp}/basicU/findingCareWorker">기관 정보 조회</a></li>
+							<li><a href="${cp}/hospital/pagingList">요양원/요양병원 찾기</a></li>
+							<li><a href="${cp}/nursingHome/pagingList">기관 정보 조회</a></li>
 						</ul></li>
 
 					<li class="menu-has-children"><a href="">커뮤니티</a>
