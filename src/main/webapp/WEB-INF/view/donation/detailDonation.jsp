@@ -84,14 +84,6 @@ $(document).ready(function(){
 <!--                      <div class="col-lg-4"> -->
                      <div class="col-lg-12">
                         <div class="blog_right_sidebar">
-<!--                            <aside class="single_sidebar_widget author_widget"> -->
-<%--                               <h3>${lecture.lec_nm}</h3> --%>
-<%--                               <h4>${lecture.lec_tea}</h4> --%>
-<!--                                  <div class="media-body"> -->
-<%--                               <p>${lecture.lec_cont}</p> --%>
-<!--                               </div> -->
-<!--                               <div class="br"></div> -->
-<!--                            </aside> -->
                            <aside class="single_sidebar_widget popular_post_widget">
 
                               <div class="media post_item">
@@ -106,7 +98,7 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
 <%--                                     <p>회원 아이디 : ${donationAppovalVo.mem_id }</p> --%>
-                                    <p>회원 아이디 : ${appovalVo.mem_id }</p>
+                                    <p>회원 아이디 : ${approvalVo.mem_id }</p>
                                  </div>
                               </div>
 
@@ -125,8 +117,9 @@ $(document).ready(function(){
                                  <div class="media-body">
                               
 <%--                                     <p>기부날자: <fmt:formatDate value="${donationAppovalVo.app_time }" --%>
-                                    <p>기부날자: <fmt:formatDate value="${appovalVo.app_time }"
-                                             pattern="yyyy-MM-dd" /></p>
+<%--                                     <p>기부날자: <fmt:formatDate value="${appovalVo.app_time }" --%>
+<%--                                              pattern="yyyy-MM-dd" /></p> --%>
+										<p>기부날자: ${approvalVo.app_time }</p>
                                  </div>
                               </div>
 
@@ -135,7 +128,7 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
 <%--                                     <p>기부 금액: ${donationAppovalVo.app_pay }</p> --%>
-                                    <p>기부 금액: ${appovalVo.app_pay }</p>
+                                    <p>기부 금액: ${approvalVo.app_pay }</p>
 
                                  </div>
                               </div>
