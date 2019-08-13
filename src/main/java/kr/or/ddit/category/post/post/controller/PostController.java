@@ -389,6 +389,7 @@ public class PostController {
 	public String ImageBoard() {
 		return "festival";
 	}
+	
 
 	@RequestMapping(path = "ImageBoard")
 	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo) throws Exception {
@@ -452,11 +453,6 @@ public class PostController {
         model.addAttribute("boardCnt", boardCnt2);
         logger.debug("!!!!! list:{}",list);
 
-
-
-
-        
-        
         int paginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("pageVo",pageVo);
@@ -506,12 +502,6 @@ public class PostController {
     
         
         JsonParser jsonParser = new JsonParser();
-//        JsonElement jsonElement = jsonParser.parse(s);
-//        logger.debug("!!! jsonElement :{}",jsonElement);
-//        
-//        String name = jsonElement.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").toString();
-//        logger.debug("!!! name :{}",name);
-        
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
         JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
         int code =0;
