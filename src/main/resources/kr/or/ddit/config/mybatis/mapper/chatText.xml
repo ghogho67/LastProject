@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chatText">
+
+<insert id="insertChatText" parameterType="chatTextVo">
+insert into chatText(
+					 chatText_id,
+					 chat_id,
+					 mem_id,
+					 chatText_cont,
+					 chatText_time )
+			
+			values(
+					chatText_id.nextVal,
+					#{chat_id},
+					#{mem_id},
+					#{chattext_cont},
+					sysdate
+				)
+</insert>	
+
+<select id="chattextList" parameterType="int" resultType="chatTextVo">
+select * from chatText where chat_id = #{chat_id} order by chattext_id
+</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

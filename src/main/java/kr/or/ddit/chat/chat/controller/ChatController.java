@@ -1,5 +1,6 @@
 package kr.or.ddit.chat.chat.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.ddit.chat.chat.service.IChatService;
 import kr.or.ddit.joinVo.ChatMemListVo;
+import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 
 @RequestMapping("/chat")
@@ -43,6 +45,17 @@ public class ChatController {
 	
 		return "thistok/thistok";
 	}
+	
+	
 
+	@RequestMapping(path = "/tokProfileView", method = RequestMethod.GET)
+	   public String profile(String mem_id, Model model) throws IOException {
+	      //사용자 정보(Path)를 조회
+	         MemberVo memberVo = memberService.getMemVo(mem_id);
+	         model.addAttribute("memberVo", memberVo);
+	         
+	         //profileView에서 처리하게 할예정
+	         return "profileView";
+	   }
 
 }
