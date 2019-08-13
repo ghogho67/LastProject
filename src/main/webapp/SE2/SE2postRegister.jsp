@@ -11,7 +11,6 @@
 <meta name="author" content="">
 <title>Smart Editor</title>
 
-
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script	src="${pageContext.request.contextPath}/SE2/js/HuskyEZCreator.js"></script>
@@ -193,7 +192,7 @@ cate_id : ${cate_id }<br><br>
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
 								파일추가/제거 
-								<input type="button" value="파일추가" id="addFileBtn">								
+								<input type="button" class = "btn btn-primary btn-sm full-right"  value="파일추가" id="addFileBtn">								
 								<div class="col-sm-10" id="fileArea">									
 									<input type="file" name="file"><br> 									
 									<input type="hidden" name="cate_id" value="${cate_id }">

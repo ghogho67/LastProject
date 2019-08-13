@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <title>postPagingList</title>
 
 <!-- css, js -->
@@ -26,8 +26,8 @@
 </style>
 <script>
 	$(document).ready(function() {
-		$(".postTr").on("click", function() {
-			var post_id = $(this).find(".postId").text();
+		$(".Category").on("click", function() {
+			var post_id = $(this).find(".CategoryId").text();
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
@@ -94,15 +94,15 @@ mem_id:${mem_id }
 								</table>
 							</div>
 							<a href="${cp}/post/register?cate_id=${cate_id}"
-								class=" btn	btn-default pull-right">새글등록</a>
-							<div class="text-center">
+								class="btn btn-primary btn-sm pull-right">새글등록</a>
+							<div class="demo">
 								<ul class="pagination">
 									<c:choose>
 										<c:when test="${pageVo.page == 1 }">
 											<li class="disabled"><span>«</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a
+											<li class="page-item"><a
 												href="${cp}/post/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}">«</a>
 											</li>
 										</c:otherwise>
@@ -110,10 +110,10 @@ mem_id:${mem_id }
 									<c:forEach begin="1" end="${paginationSize}" var="i">
 										<c:choose>
 											<c:when test="${pageVo.page == i}">
-												<li class="active"><span>${i}</span></li>
+												<li class="page-item"><span>${i}</span></li>
 											</c:when>
 											<c:otherwise>
-												<li><a
+												<li class="page-item"><a
 													href="${cp}/post/pagingList?page=${i}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}">${i}</a>
 												</li>
 											</c:otherwise>
@@ -124,7 +124,7 @@ mem_id:${mem_id }
 											<li class="disabled"><span>»</span></li>
 										</c:when>
 										<c:otherwise>
-											<li><a
+											<li class="page-item"><a
 												href="${cp}/post/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}">»</a>
 											</li>
 										</c:otherwise>

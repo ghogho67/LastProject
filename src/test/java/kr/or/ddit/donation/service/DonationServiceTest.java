@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.approval.service.IApprovalService;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.testenv.LogicTestEnv;
@@ -18,6 +19,8 @@ public class DonationServiceTest extends LogicTestEnv {
 
 	@Resource(name = "donationService")
 	private IDonationService donationService;
+	@Resource(name = "approvalService")
+	private IApprovalService approvalService;
 	
 	/**
 	* Method : insertDonationTest
@@ -38,25 +41,41 @@ public class DonationServiceTest extends LogicTestEnv {
 	}
 	
 	/**
-	* Method : insertDonationApprovalTest
+	* Method : insertApproval_memTest
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @throws ParseException
-	* Method 설명 :기부 등록 - approval
+	* Method 설명 :기부등록 맴버 - approval
 	*/
 	@Test
-	public void insertDonationApprovalTest() throws ParseException {
+	public void insertApproval_memTest() throws ParseException {
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(1, 10000, sdf.parse("2019-08-08"), "3", "", "N");
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "brown", "N");
 		/***When***/
-		int insertDonationApproval = donationService.insertDonationApproval(approvalVo);
-
+		int insertApproval_memCnt = approvalService.insertApproval_mem(approvalVo);
 		/***Then***/
-		assertEquals(1, insertDonationApproval);
-
+		assertEquals(1, insertApproval_memCnt);
+	}
+	
+	/**
+	* Method : insertApproval_nonTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @throws ParseException
+	* Method 설명 :기부등록 비회원 - approval
+	*/
+	@Test
+	public void insertApproval_nonTest() throws ParseException {
+		/***Given***/
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		ApprovalVo approvalVo = null;
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N");
+		/***When***/
+		int insertApproval_nonCnt = approvalService.insertApproval_non(approvalVo);
+		/***Then***/
+		assertEquals(1, insertApproval_nonCnt);
 	}
 	
 	/**
@@ -90,9 +109,9 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***Given***/
 
 		/***When***/
-		int currentApproval = donationService.currentApproval();
+		int currentApproval = approvalService.currentApproval();
 		/***Then***/
-		assertEquals(47, currentApproval);
+		assertEquals(115, currentApproval);
 	}
 
 }

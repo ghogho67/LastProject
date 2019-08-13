@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,12 +31,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
+import kr.or.ddit.category.post.post.model.ImageBoardVo;
 import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.category.post.post.service.IPostService;
 import kr.or.ddit.category.post.reply.service.IReplyService;
@@ -79,15 +78,12 @@ public class PostController {
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-		return "post/postPagingList";
+		return "/post/postPagingList.tiles";
 
 	}
 
 	@RequestMapping("detail")
 	public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
-
-		logger.debug("cate_id:{}", cate_id);
-		logger.debug("post_id:{}", post_id);
 
 		// cate_id
 		model.addAttribute("cate_id", cate_id);
@@ -109,7 +105,6 @@ public class PostController {
 	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
 
 		postVo = postService.getPost(post_id);
-
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("post_id", post_id);
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
@@ -123,7 +118,6 @@ public class PostController {
 			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
 			HttpSession session) {
 		// multipartRequest 사용할 준비
-		postVo = postService.getPost(post_id);
 		// reply 답글 등록 파라미터 설정==============================================
 		// ================================================
 
@@ -133,16 +127,12 @@ public class PostController {
 		postVo.setMem_id(mem_id);
 
 		postService.postModify(postVo);
+		postVo = postService.getPost(post_id);
 
 		// 댓글과 첨부파일 가져오기
-		PostVo postVoTime = postService.getLatestPost();
-		post_id = postVoTime.getPost_id();
-		postVo = postService.getPost(post_id);
 		// file data 받기=======================================================
 		// DB에 저장할 파일명
 		String savePath = PartUtil.getUploadPath();
-
-		logger.debug("file.size():{}", files.length);
 
 		for (MultipartFile file : files) {
 			if (!file.getOriginalFilename().isEmpty()) {
@@ -187,8 +177,6 @@ public class PostController {
 
 	@RequestMapping("/pagingList")
 	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
-//		@Valid MemberVo mvo, BindingResult result, 
-		logger.debug("☞pagingList");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
@@ -196,7 +184,6 @@ public class PostController {
 			map.put("cate_id", cate_id);
 
 		Map<String, Object> resultMap = postService.postPagingList(map);
-		logger.debug("resultMap:{}", resultMap);
 
 		pageVo.setPage((int) map.get("page"));
 		pageVo.setPageSize((int) map.get("pageSize"));
@@ -212,7 +199,6 @@ public class PostController {
 		// paginationSize
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-		logger.debug("☞mvo:{}", mvo);
 		model.addAttribute("mem_id", mvo.getMem_id());
 		// 화면 출력을 담당하는 jsp에게 역할 위임
 		return "/post/postPagingList.tiles";
@@ -235,7 +221,6 @@ public class PostController {
 		postVo.setCate_id(cate_id);
 		postVo.setMem_id(mvo.getMem_id());
 
-		logger.debug("postVo:{}", postVo);
 		// 게시글등록---------------------------------------------------------------------------------------
 		postService.postInsert(postVo);
 		postVo = postService.getLatestPost();
@@ -270,7 +255,6 @@ public class PostController {
 		model.addAttribute("postVo", postVo);
 		model.addAttribute("replyList", replyService.replyList(post_id));
 		mvo = (MemberVo) session.getAttribute("MEM_INFO");
-		logger.debug("☞mvo.getMem_id():{}", mvo.getMem_id());
 		model.addAttribute("mem_id", mvo.getMem_id());
 
 		return "/post/postDetail.tiles";
@@ -279,7 +263,6 @@ public class PostController {
 
 	@RequestMapping(path = "/reply", method = RequestMethod.GET)
 	public String postReply(int cate_id, int post_id, Model model) {
-
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("post_id", post_id);
 		return "/post/postReply.tiles";
@@ -294,7 +277,6 @@ public class PostController {
 
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 
-		logger.debug("☞postVo:{}", postVo);
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
@@ -302,13 +284,10 @@ public class PostController {
 		postVo.setPost_nm(post_nm);
 		postVo.setMem_id(mvo.getMem_id());
 		postVo.setPost_par(post_id);
-		logger.debug("☞postVo:{}", postVo);
 
 		// 답글 쓰기
 		postService.postReply(postVo);
-
 		PostVo postVoTime = postService.getLatestPost();
-
 		post_id = postVoTime.getPost_id();
 
 		// reply 답글 등록 파라미터 설정==============================================
@@ -370,7 +349,6 @@ public class PostController {
 
 			mvo.setMem_photo_path(filePath);
 			mvo.setMem_photo_nm(fileName);
-			logger.debug("uploadPath:{}", filePath);
 			try {
 				file.transferTo(new File(filePath));
 			} catch (IllegalStateException | IOException e) {
@@ -392,7 +370,7 @@ public class PostController {
 	
 
 	@RequestMapping(path = "ImageBoard")
-	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo) throws Exception {
+	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
 		 if(pageVo==null) {
 	        	pageVo.setPage(1);
 	        	pageVo.setPageSize(8);
@@ -407,18 +385,20 @@ public class PostController {
         PrintWriter out = response.getWriter();
         String area ="대전";
         
-        int areaCode = areaCode(request, response, area);
-        parameter = parameter + "&" + "areaCode="+areaCode;
-        parameter = parameter + "&" + "eventStartDate=201900101";
-        parameter = parameter + "&" + "eventEndDate=20191231";
+//        int areaCode = areaCode(request, response, area);
+        if(areaid!=0) {
+        	parameter = parameter + "&" + "areaCode="+areaid;
+        }
+        parameter = parameter + "&" + "eventStartDate="+firstDate;
+        parameter = parameter + "&" + "eventEndDate="+lastDate;
         parameter = parameter + "&" + "pageNo="+pageVo.getPage();
         parameter = parameter + "&" + "numOfRows="+pageVo.getPageSize();
+        parameter = parameter + "&" + "arrange=D";
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
-        logger.debug("!!!!addr : {}",addr);
         URL url = new URL(addr);
  
         System.out.println(addr);
@@ -435,27 +415,53 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
-
         
+
+        ArrayList<ImageBoardVo> list =null;
+        Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
+        if(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").isJsonObject() ==false) {
+
+
+        	String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+        	Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
+        	list= gson.fromJson(abc, type);
+        	
+        }else {
+        	
+        }
         double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
         int boardCnt2=(int) boardCnt;
-        logger.debug("!!!!! json:{}",array);
 
-        
-        Gson gson = new Gson();
-
-        ArrayList<Object> list = gson.fromJson( array.toString() , new TypeToken <ArrayList<Object>>(){}.getType() );
 
         model.addAttribute("list", list);
         model.addAttribute("boardCnt", boardCnt2);
-        logger.debug("!!!!! list:{}",list);
-
-        int paginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
+//        logger.debug("!!!!! list:{}",list);
+        int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        logger.debug("!!!!! paginationSize:{}",paginationSize);
+      
+        int lastpaginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
+        
+        logger.debug("!!!!! lastpaginationSize:{}",lastpaginationSize);
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+        model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo",pageVo);
+		
+		logger.debug("!!!!! startPage:{}",startPage);
+		logger.debug("!!!!! paginationSize:{}",paginationSize);
 
         
         return "festivalAjaxHtml";

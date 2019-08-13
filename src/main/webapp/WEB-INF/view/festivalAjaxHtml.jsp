@@ -10,10 +10,16 @@
 
 SEPERATORSEPERATOR
 
+
+
+ <c:if test="${list ne null}">
+   
+
+
 <c:forEach items="${list}" var="post" varStatus="status">
 
 <li class="item">
-	<a href="${cp}/post/aaa" class="anchor">
+	<a href="${cp}/post/aaa?contenid=${post.contentid}" class="anchor">
 		<div class="border">
 			<div class="rank_area">
 				<strong class="num">${status.count}</strong>
@@ -31,12 +37,18 @@ SEPERATORSEPERATOR
 			</div>
 			<div class="info">
 				<p class="title_name">${post.title}</p>
-				<p>${post.eventstartdate} ~ ${post.eventenddate}</p>
+				<p >${post.addr1}</p>
+				<fmt:parseDate value="${post.eventstartdate}" var="eventstartdate" pattern="yyyyMMdd"/>
+				<fmt:parseDate value="${post.eventenddate}" var="eventenddate" pattern="yyyyMMdd"/>
+				<p><fmt:formatDate value="${eventstartdate}" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${eventenddate}" pattern="yyyy-MM-dd"/></p>
+
 			</div>
 		</div>
 	</a>
 </li>
 </c:forEach>
+
+</c:if>
 
 
 SEPERATORSEPERATOR
@@ -48,7 +60,7 @@ SEPERATORSEPERATOR
 	</c:when>
 	<c:otherwise>
 		<li class="page-item prev">
-			<a class="page-link" aria-label="Previous" href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});">«</a></li>
+			<a class="page-link" aria-label="Previous" href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize} , areaid, firstDate, lastDate);">«</a></li>
 	</c:otherwise>
 </c:choose>
 
@@ -60,39 +72,39 @@ SEPERATORSEPERATOR
 	</c:when>
 	<c:otherwise>
 		<li class="page-item prev"><a class="page-link" aria-label="Previous"
-			href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});">‹</a></li>
+			href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize} , areaid, firstDate, lastDate);">‹</a></li>
 	</c:otherwise>
 </c:choose>
 
-<c:forEach begin="1" end="${paginationSize}" var="i">
+<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
 	<c:choose>
 		<c:when test="${pageVo.page == i}">
 			<li class="page-item active"><span>${i}</span></li>
 		</c:when>
 		<c:otherwise>
 			<li><a class="page-link"
-				href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+				href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize}, areaid, firstDate, lastDate);">${i}</a></li>
 		</c:otherwise>
 	</c:choose>
 
 </c:forEach>
 
 <c:choose>
-	<c:when test="${pageVo.page == paginationSize}">
+	<c:when test="${pageVo.page == lastpaginationSize}">
 		<li class="page-item next disabled"><span>›</span></li>
 	</c:when>
 	<c:otherwise>
 		<li class="page-item next"><a class="page-link" aria-label="Next"
-			href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});">›</a></li>
+			href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize}, areaid, firstDate, lastDate);">›</a></li>
 	</c:otherwise>
 </c:choose>
 
 <c:choose>
-	<c:when test="${pageVo.page == paginationSize}">
+	<c:when test="${pageVo.page == lastpaginationSize}">
 		<li class="page-item next disabled"><span>»</span></li>
 	</c:when>
 	<c:otherwise>
 		<li class="page-item next"><a class="page-link" aria-label="Next"
-			href="javascript:boardPagingListAjaxHtml(${paginationSize}, ${pageVo.pageSize});">»</a></li>
+			href="javascript:boardPagingListAjaxHtml(${paginationSize}, ${pageVo.pageSize}, areaid, firstDate, lastDate);">»</a></li>
 	</c:otherwise>
 </c:choose>
