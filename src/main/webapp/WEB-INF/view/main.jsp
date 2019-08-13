@@ -86,6 +86,11 @@
       <button type="submit">챗봇</button>
    </form>
    
+     <form action="${cp }/donation/memberDonation">
+      <button type="submit">기부하기</button>
+   </form>
+   
+   
 	<button id="submitBtn" type="button" onclick="popup()">ThisTok!</button>
 	  
 	<header class="header-area">
