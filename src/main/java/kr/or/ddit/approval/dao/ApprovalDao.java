@@ -35,4 +35,42 @@ public class ApprovalDao implements IApprovalDao {
 		return sqlSession.selectList("approval.approvalList", mem_id);
 	}
 
+	/**
+	* Method : insertApproval_mem
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param approvalVo
+	* @return
+	* Method 설명 :기부 등록 - 회원
+	*/
+	@Override
+	public int insertApproval_mem(ApprovalVo approvalVo) {
+		return sqlSession.insert("approval.insertApproval_mem",approvalVo);
+	}
+
+	/**
+	* Method : insertApproval_non
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param approvalVo
+	* @return
+	* Method 설명 :기부등록 - 비회원
+	*/
+	@Override
+	public int insertApproval_non(ApprovalVo approvalVo) {
+		return sqlSession.insert("approval.insertApproval_non",approvalVo);
+	}
+
+	/**
+	* Method : currentApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :가장 최근 app_id찾기
+	*/
+	@Override
+	public int currentApproval() {
+		return sqlSession.selectOne("approval.currentApproval");
+	}
+
 }

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import kr.or.ddit.approval.dao.IApprovalDao;
 import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.dao.IDonationDao;
 import kr.or.ddit.donation.model.DonationVo;
@@ -19,6 +20,8 @@ public class DonationDaoTest extends LogicTestEnv{
 
 	@Resource(name = "donationDao")
 	private IDonationDao donationDao;
+	@Resource(name = "approvalDao")
+	private IApprovalDao approvalDao;
 	
 	/**
 	* Method : insertDonationTest
@@ -39,23 +42,43 @@ public class DonationDaoTest extends LogicTestEnv{
 	}
 	
 	/**
-	* Method : insertDonationApprovalTest
+	* Method : insertApproval_memTest
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @throws ParseException
-	* Method 설명 :기부등록 - approval
+	* Method 설명 :기부등록 맴버 - approval
 	*/
 	@Test
-	public void insertDonationApprovalTest() throws ParseException {
+	public void insertApproval_memTest() throws ParseException {
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "", "N");
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "brown", "N");
 		/***When***/
-		int insertDonationApproval = donationDao.insertDonationApproval(approvalVo);
+		int insertApproval_memCnt = approvalDao.insertApproval_mem(approvalVo);
 		/***Then***/
-		assertEquals(1, insertDonationApproval);
+		assertEquals(1, insertApproval_memCnt);
 	}
+	
+	/**
+	* Method : insertApproval_nonTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @throws ParseException
+	* Method 설명 :기부등록 비회원 - approval
+	*/
+	@Test
+	public void insertApproval_nonTest() throws ParseException {
+		/***Given***/
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		ApprovalVo approvalVo = null;
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N");
+		/***When***/
+		int insertApproval_nonCnt = approvalDao.insertApproval_non(approvalVo);
+		/***Then***/
+		assertEquals(1, insertApproval_nonCnt);
+	}
+	
 	
 	/**
 	* Method : currentApprovalTest
@@ -68,9 +91,9 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 		
 		/***When***/
-		int currentApproval = donationDao.currentApproval();
+		int currentApproval = approvalDao.currentApproval();
 		/***Then***/
-		assertEquals(60, currentApproval);
+		assertEquals(113, currentApproval);
 
 	}
 	

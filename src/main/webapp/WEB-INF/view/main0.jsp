@@ -94,21 +94,6 @@
 	vertical-align: top
 }
 
-.banner_zone .btn a.pre {
-	background: url(/images/template/02162/main/btn_b_prev.gif) no-repeat
-}
-
-.banner_zone .btn a.next {
-	background: url(/images/template/02162/main/btn_b_next.gif) no-repeat
-}
-
-.banner_zone .btn a.stop {
-	background: url(/images/template/02162/main/btn_b_stop.gif) no-repeat
-}
-
-.banner_zone .btn a.list {
-	background: url('/images/template/02162/main/btn_b_list.gif') no-repeat
-}
 
 .banner_zone ul {
 	padding-top: 16px;
@@ -144,9 +129,6 @@
 						<button type="submit">챗봇</button>
 					</form>
 					<button id="submitBtn" type="button" onclick="popup()">ThisTok!</button>
-					<form action="${cp }/donation/memberDonation">
-						<button type="submit">기부하기</button>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -314,15 +296,16 @@
 
 
 
-	<section
-		style="position: absolute; bottom: 58%; margin: 0 auto; right: 90%;">
-		
-		<div id="banner_zone" class="banner_zone">
-		
-			<div class="inner">
-			
-				<ul style="left: 0px; width: 2119px; position: relative;">
+	<section style="position: absolute; bottom: 58%; margin: 0 auto; right: 90%;">
 
+
+
+
+		<div id="banner_zone" class="banner_zone">
+			<div class="inner">
+				
+				<ul style="left: -30.5427px; width: 2119px; position: relative;">
+					
 					<li style="opacity: 1;"><a
 						href="http://edu.edurang.net/ebs/index.html" target="_blank"
 						title="[EBS 논술톡] ICT 자료 연결하기(새창으로)"><img
@@ -375,6 +358,11 @@
 				</ul>
 			</div>
 		</div>
+
+
+
+
+
 
 
 	</section>

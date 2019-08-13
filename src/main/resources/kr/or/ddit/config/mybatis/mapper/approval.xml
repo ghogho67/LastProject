@@ -28,6 +28,42 @@
 		select*from approval where mem_id = #{mem_id} and app_del =
 		'N'
 	</select>
+	
+	<!-- 기부등록 member - approval -->
+	<insert id="insertApproval_mem" parameterType="approvalVo">
+		insert into approval(app_id
+		                    ,app_pay
+		                    ,app_time
+		                    ,app_type
+		                    ,mem_id
+		                    ,app_del)
+		             values(app_id.nextval
+		                   ,#{app_pay}
+		                   ,sysdate
+		                   ,'3'
+		                   ,#{mem_id}
+		                   ,'N')
+     </insert>
+     
+     <!-- 기부등록 nonmember - approval -->
+	<insert id="insertApproval_non" parameterType="approvalVo">
+		insert into approval(app_id
+		                    ,app_pay
+		                    ,app_time
+		                    ,app_type
+		                    ,app_del)
+		             values(app_id.nextval
+		                   ,#{app_pay}
+		                   ,sysdate
+		                   ,'3'
+		                   ,'N')
+     </insert>
+     
+     <!-- 가장 마지막 app_id 찾기 -->
+	<select id="currentApproval" resultType="int">
+		select max(app_id)
+		from approval
+	</select>
 
 </mapper>
 

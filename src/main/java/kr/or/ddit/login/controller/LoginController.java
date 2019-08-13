@@ -113,6 +113,7 @@ public class LoginController {
 				MemberVo memberVo = memberService.getMemVo(memVo.getMem_id());
 				logger.debug("@@@@memVo{}",memberVo);
 				session.setAttribute("MEM_INFO", memberVo);
+				session.setAttribute("mem_id", mem_id);
 				
 				
 			return "redirect:crawling";
