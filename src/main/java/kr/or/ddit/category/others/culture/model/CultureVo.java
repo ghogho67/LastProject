@@ -7,6 +7,19 @@ public class CultureVo {
 	private String culture_phone;
 	private int cate_id;
 
+	
+	
+	
+	
+	public CultureVo(int culture_id, String culture_add, String culture_type, String culture_phone, int cate_id) {
+		super();
+		this.culture_id = culture_id;
+		this.culture_add = culture_add;
+		this.culture_type = culture_type;
+		this.culture_phone = culture_phone;
+		this.cate_id = cate_id;
+	}
+
 	public int getCulture_id() {
 		return culture_id;
 	}

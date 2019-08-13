@@ -10,9 +10,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Smart Editor</title>
-
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="icon" href="../../favicon.ico">
+<style>
+dif{
+width:500px;
+height: 200px;
+}
+</style>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -109,52 +112,36 @@
 		return true;
 	}
 </script>
-<div style="position: absolute;,top: 100px; right: 50%;">
-	<div class="row">
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="row">
-				<div class="col-sm-8 blog-main">
-					<h2 class="sub-header">
-						게시글 신규 등록<br> <br> postRegister.jsp<br> <br>
-					</h2>
-					<pre>
-cate_id : ${cate_id }<br><br>
+<div class="container">
+					<h2 class="sub-header">	게시글 신규 등록 postRegister.jsp</h2>
+<pre>
+cate_id : ${cate_id }
 </pre>
 					<form id="frm1" class="form-horizontal" role="form"
 						action="${cp}/post/register" method="post"
 						enctype="multipart/form-data">
 
 						<input type="hidden" name="cate_id" value="${cate_id }" />
-						cate_id = ${cate_id }
-						<div class="form-group">
-
+						<div>
 							<label for="post_nm" class="col-sm-2 control-label">제목</label>
-
-							<div class="col-sm-10">
+							<div>
 								<input type="text" class="form-control" name="post_nm">
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="post_cont" class="col-sm-2 control-label">글내용</label>
-							<div class="col-sm-10">
+						<div>
+							<div >
+							<br>
 								<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
 									style="width: 600px; height: 412px;"></textarea>
-								<input type="button" id="savebutton" value="post/register" />
 							</div>
 						</div>
-						<input type="button" id="savebutton" value="글등록" />
-						<div class="form-group">
-							<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-							파일추가/제거 <input type="button" value="파일추가" id="addFileBtn">
-							<div class="col-sm-10" id="fileArea">
-								<input type="file" name="file"><br> <input
-									type="hidden" name="cate_id" value="${cate_id }">
-							</div>
+							<div>
+								<input type="button" class="btn btn-outline-danger btn-primary mr-2 pull-right" id="savebutton" value="post/register" />
+						</div>
+						<div>
+						<input type="button" class="btn btn-outline-danger btn-primary mr-2" value="파일추가" id="addFileBtn">
+						<input type="file" name="file"><br> <input type="hidden" name="cate_id" value="${cate_id }">
 						</div>
 					</form>
 				</div>
-			</div>
-		</div>
-	</div>
-</div>

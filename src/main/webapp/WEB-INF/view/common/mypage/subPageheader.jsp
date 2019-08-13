@@ -31,7 +31,7 @@
 							<li><a href="about.html">공지사항</a></li>
 							<li><a href="about.html">자유게시판</a></li>
 							<li><a href="elements.html">QnA</a></li>
-							<li><a href="post/pagingList?cate_id=1">게시판</a></li>
+							<li><a href="${cp}/post/pagingList?cate_id=1">게시판</a></li>
 						</ul></li>
 
 
@@ -54,8 +54,8 @@
 
 						<li class="menu-has-children"><a href="">관리자 메뉴 </a>
 							<ul>
-								<li><a href="${cp}category/categoryList">메뉴관리</a></li>
-								<li><a href="${cp}/lecture/lectureListManagement">메뉴관리</a></li>
+								<li><a href="${cp}/category/categoryList">카테고리 메뉴관리</a></li>
+								<li><a href="${cp}/lecture/lectureListManagement">강좌관리</a></li>
 
 							</ul></li>
 					</c:if>

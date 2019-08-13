@@ -48,6 +48,9 @@ $(document).ready(function(){
 		<div class="wrap-offset">
 			<div class="container-fluid">
 				<form id="frm" method="get" action="${cp}/donation/nonmemberDonation" class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
+<%-- 					<input type="hidden" name="app_id" id="app_id" value="${app_id }"> --%>
+<%-- 					<input type="hidden" name="don_id" id="don_id" value="${don_id }"> --%>
+					
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">
 
 						<div class="p-title" data-base-class="p-title">

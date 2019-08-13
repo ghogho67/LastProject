@@ -5,7 +5,6 @@
 <html>
 <head>
 <%@include file="/WEB-INF/view/common/gradeChange.jsp"%>
-<meta charset="UTF-8">
 <style type="text/css">
 span.silver {
 	border-radius: 3px;
@@ -46,9 +45,6 @@ span.admin {
 
 
 </head>
-
-
-
 <div class="header-top">
 	<div class="container">
 		<div class="row">
@@ -74,7 +70,7 @@ span.admin {
 				</ul>
 			</div>
 			<a class="btn-logout" style="position: absolute; left: 90%;"
-				href="/logout">로그아웃</a>
+				href="/logout">로그아웃 </a>
 			<c:if test="${MEM_INFO.mem_grade==1}">
 				<a class="btn-pri" data-toggle="modal" data-target="#myModalGrade"
 					style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
@@ -86,29 +82,24 @@ span.admin {
 				<c:when test="${goldvo.gold_del eq 'Y'}">
 
 
-             <div class="modal-dialog" role="document" id="modalpp">
-								<div class="modal-content2"  style="background-image: url('/image/Serviceextend.png');  
- 				background-size: 700px; background-repeat: no-repeat;">
-				<a href="${cp}/gradeChangeToGold" 
-				style="margin-left:151px; height:52px; width:58%; position:absolute;top: 56%;"  ></a>
-				
-				<button style="width: 10px; position: absolute; left: 95%;" type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnClose">
-							<span aria-hidden="true">&times;</span>
-						</button>
+					<div class="modal-dialog" role="document" id="modalpp">
+						<div class="modal-content2"
+							style="background-image: url('/image/Serviceextend.png'); background-size: 700px; background-repeat: no-repeat;">
+							<a href="${cp}/gradeChangeToGold"
+								style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 56%;"></a>
 
-<!-- <button id="btnClose">X</button> -->
-						
-				
-				</div>
-							</div>
-					
-			
-			
-			
+							<button style="width: 10px; position: absolute; left: 95%;"
+								type="button" class="close" data-dismiss="modal"
+								aria-label="Close" id="btnClose">
+								<span aria-hidden="true">&times;</span>
+							</button>
 
-			
-					
-					
+
+
+						</div>
+					</div>
+
+
 				</c:when>
 
 				<c:otherwise>
@@ -124,11 +115,9 @@ span.admin {
 
 
 <script>
+	$(".modal-content2").on("click", "#btnClose", function() {
+		//$('#modalpp').modal("hide");
+		$('#modalpp').hide();
 
-		$(".modal-content2").on("click", "#btnClose", function(){
-			//$('#modalpp').modal("hide");
-			$('#modalpp').hide();
-			
-		})
-	
+	})
 </script>

@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,57 +35,36 @@
 <body>
 	<!-- header -->
 
-	<div class="container-fluid">
-		<div class="row">
-
-			<!-- left -->
-
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="row">
-					<div class="col-sm-8 blog-main">
+	<div class="container">
 						<h2 class="sub-header">
 							게시글 답글 등록 postReply.jsp<br>
 						</h2>
 <pre>
-cate_id : ${cate_id }<br><br>
-post_id : ${post_id }<br><br>
+cate_id : ${cate_id } post_id : ${post_id }
 </pre>
-						<form id="frm" class="form-horizontal" role="form"
-							action="${cp }/post/reply"
-							method="post" enctype="multipart/form-data">
+						<form id="frm" class="form-horizontal" role="form" action="${cp }/post/reply" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="cate_id" value="${cate_id }">
 							<input type="hidden" name="post_id" value="${post_id }">
-							<div class="form-group">
+							<div>
 								<label for="filename" class="col-sm-2 control-label">제목</label>
-								<div class="col-sm-10">
+								<div>
 									<input type="text" class="form-control" id="mem_id"
 										name="post_nm">
 								</div>
 							</div>
-
-							<div class="form-group">
+							<div>
 								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-								<div class="col-sm-10">
 									<%@include file="../../../SE2/SE2postReply.jsp"%>
-								</div>
 							</div>
-
-							<div class="form-group">
-								<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-
-								파일추가/제거 <input type="button" value="파일추가" id="addFileBtn">
-								<div class="col-sm-10" id="fileArea">
-									<input type="file" name="file" multiple><br> <input
-										type="hidden" name="cate_id" value="${cate_id }">
+							<div>
+							<input type="button" class = "btn btn-primary btn-sm" value="파일추가" id="addFileBtn">
+								<div id="fileArea">
+									<input type="file" name="file" multiple><br> 
+									<input type="hidden" name="cate_id" value="${cate_id }">
 								</div>
 							</div>
 						</form>
-						<button id="userRegBtn" type="button" class="btn btn-default">저장</button>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </body>
 <script>
 	var form = document.forms[0];

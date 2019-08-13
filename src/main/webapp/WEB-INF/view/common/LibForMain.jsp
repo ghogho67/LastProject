@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 
-<!-- <link rel="shortcut icon" -->
-<%-- 	href="${cp}/resource/medino/images/logo/favicon.png" --%>
-<!-- 	type="image/x-icon"> -->
-
 <!-- CSS Files -->
 <link rel="stylesheet"
 	href="${cp}/resource/medino/css/animate-3.7.0.css">
@@ -23,6 +19,7 @@
 	href="${cp}/resource/medino/css/style.css">
 
 <!-- Javascript -->
+
 <script
 	src="${cp}/resource/medino/js/vendor/jquery-2.2.4.min.js"></script>
 <script

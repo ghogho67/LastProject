@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.approval.service.IApprovalService;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
@@ -24,7 +25,8 @@ public class DonationController {
 	
 	@Resource(name = "donationService")
 	public IDonationService donationService;
-	
+	@Resource(name = "approvalService")
+	public IApprovalService approvalService;
 	
 	/**
 	* Method : nonMemberInsertDonation
@@ -38,7 +40,6 @@ public class DonationController {
 		
 		return "/donation/nonmemberDonation"; 
 	}
-	
 	
 	/**
 	* Method : nonMemberInsertDonation
@@ -59,16 +60,17 @@ public class DonationController {
 		approvalVo.setApp_time(donationApprovalVo.getApp_time());
 		approvalVo.setApp_type("3");
 		approvalVo.setApp_del("N");
-		approvalVo.setMem_id("");
+
+//		approvalVo.setMem_id("");
 		
 		logger.debug("☞approvalVo:{}",approvalVo);
 		
-		int insertDonationApprovalCnt = donationService.insertDonationApproval(approvalVo);
+		int insertApproval_nonCnt = approvalService.insertApproval_non(approvalVo);
 		
-		logger.debug("☞insertDonationApprovalCnt:{}",insertDonationApprovalCnt);
+		logger.debug("☞insertApproval_nonCnt:{}",insertApproval_nonCnt);
 		
 		
-		donationVo.setApp_id(donationService.currentApproval());
+		donationVo.setApp_id(approvalService.currentApproval());
 		donationVo.setDon_id(donationApprovalVo.getDon_id());
 		donationVo.setDoner(donationApprovalVo.getDoner());
 		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
@@ -76,17 +78,37 @@ public class DonationController {
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
+		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
+		
 		int insertDonationCnt = donationService.insertDonation(donationVo);
 		
 		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
 		
-		if(insertDonationApprovalCnt == 1 && insertDonationCnt == 1) {
+		if(insertApproval_nonCnt == 1 && insertDonationCnt == 1) {
+			
+			model.addAttribute("donationApprovalVo",donationApprovalVo);
 			
 			return "/donation/detailDonation";
 		}else {
 			return "/login";
 		}
 	}
+	
+	
+	/**
+	* Method : memberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원 기부 요청
+	*/
+	@RequestMapping(path = "/memberDonation", method = RequestMethod.GET)
+	public String memberInsertDonation() {
+		
+		return "/donation/memberDonation"; 
+	}
+	
+	
 	
 	
 	/**
@@ -105,5 +127,7 @@ public class DonationController {
 		
 		return "/donation/checkDonation";
 	}
+	
+
 
 }

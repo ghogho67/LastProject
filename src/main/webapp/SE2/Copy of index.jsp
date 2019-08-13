@@ -8,8 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Smart Editor</title>
 
-<!-- Favicon -->
-<link rel="shortcut icon" href="favicon.ico" />
 
 <!-- jQuery -->
 <!-- <script type="text/javascript" src="/js/jquery.js"></script>

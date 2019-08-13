@@ -15,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.diseaseName.service.IDiseaseNameService;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.member.member.service.IMemberService;
 import kr.or.ddit.member.memberDisease.model.MemberDiseaseVo;
 import kr.or.ddit.member.memberDisease.service.IMemberDiseaseService;
 
@@ -25,6 +27,9 @@ public class CrawlingController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CrawlingController.class);
 
+	@Resource(name = "memberService")
+	private IMemberService memberService;
+	
 	@Resource(name = "memberDiseaseService")
 	private IMemberDiseaseService memberDiseaseService;
 
@@ -61,6 +66,13 @@ public class CrawlingController {
 		if (imgs.size() > 0) {
 			src = imgs.outerHtml();
 		}
+		
+		
+		//해당회원의  골드테이블정보를 가져온다 
+		GoldVo goldvo = memberService.downGradeMember(mem_id);
+		logger.debug("@@@@goldvo{}",goldvo);
+			model.addAttribute("goldvo",goldvo);
+		
 		session.setAttribute("MEM_INFO", memVo);
 		model.addAttribute("src", src);
 		return "main";

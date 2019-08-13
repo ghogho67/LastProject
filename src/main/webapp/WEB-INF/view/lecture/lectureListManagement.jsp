@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 
-
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style type="text/css">
 #titlee h2, #pzone h2 {
 	font-size: 40px;
@@ -202,21 +202,23 @@ td {
 	border-left: 2px solid #7BA7AB;
 	border-right: 2px solid #7BA7AB;
 }
+
+.title {
+	background-color: transparent;
+	width: 180px;
+	padding: 3px;
+	font-size: 8pt;
+	text-align: center;
+	color: black;
+    font-weight: 700;
+    min-height: 40px;
+    border-radius: 6px;
+	
+}
+
 </style>
 
 
-
-
-<script>
-	$(document).ready(function() {
-
-		$(".kkk").on("click", function() {
-
-			$("#frm").submit();
-		});
-
-	});
-</script>
 
 </head>
 <body>
@@ -226,7 +228,7 @@ td {
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
 
-<form id="frm" action="${cp}/lecture/lecture" method="get">
+	<form id="frm" action="${cp}/lecture/lecture" method="get">
 		<input type="hidden" id="lectureId" name="lectureId">
 	</form>
 
@@ -248,13 +250,16 @@ td {
 							<span>학습.문화</span> 프로그램_관리
 						</h2>
 					</div>
-						<div style="text-align: right;">
-							<a class="btn btn-warning btn-sm" href="${cp}/lecture/lectureListManagement">강좌추가
-									</a>
-							
-    </div>
+					<div style="text-align: right;">
+						<a class="btn btn-warning btn-sm"
+							href="${cp}/lecture/Insertlecture">강좌추가</a>&nbsp;
+						<button type="button" class="btn btn-warning btn-sm"
+							data-toggle="modal" data-target="#myModalCulture">문화센터
+							추가</button>
 
-				
+					</div>
+
+
 					<hr>
 
 					<div class="table-responsive">
@@ -290,33 +295,33 @@ td {
 												pattern="yyyy-MM-dd" /></td>
 										<td>${LTList.lec_time}</td>
 										<td>${LTList.lec_amount}</td>
-										
-												<c:choose>
-												<c:when test="${LTList.lec_use=='Y'}">
-													<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
-												</c:when>
-												<c:otherwise>
-													<td><label class="badge badge-danger">사용안함</label></td>
-												</c:otherwise>
-											</c:choose>
-											<td><a
-												href="${cp}/lecture/modifyLecture?lec_id=${LTList.lec_id}"
-												class="btn btn-primary btn-sm">강좌수정</a></td>
-											<c:choose>
-												<c:when test="${LTList.lec_use=='Y'}">
-													<td><a
-														href="${cp}/lecture/lectureDelete?lec_id=${LTList.lec_id}"
-														onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
-														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
-												</c:when>
-												<c:otherwise>
-													<td><a
-														href="${cp}/lecture/lectureUse?lec_id=${LTList.lec_id}"
-														onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
-														class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
-												</c:otherwise>
-											</c:choose>
-												
+
+										<c:choose>
+											<c:when test="${LTList.lec_use=='Y'}">
+												<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
+											</c:when>
+											<c:otherwise>
+												<td><label class="badge badge-danger">사용안함</label></td>
+											</c:otherwise>
+										</c:choose>
+										<td><a
+											href="${cp}/lecture/modifyLecture?lec_id=${LTList.lec_id}"
+											class="btn btn-primary btn-sm">강좌수정</a></td>
+										<c:choose>
+											<c:when test="${LTList.lec_use=='Y'}">
+												<td><a
+													href="${cp}/lecture/lectureDelete?lec_id=${LTList.lec_id}"
+													onclick="return confirm('해당강좌를  삭제하시겠습니까?')"
+													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+											</c:when>
+											<c:otherwise>
+												<td><a
+													href="${cp}/lecture/lectureUse?lec_id=${LTList.lec_id}"
+													onclick="return confirm('해당강좌를 사용 하시겠습니까?')"
+													class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
+											</c:otherwise>
+										</c:choose>
+
 									</tr>
 
 								</c:forEach>
@@ -327,9 +332,9 @@ td {
 						</table>
 
 
-				
 
-					
+
+
 
 					</div>
 				</div>
@@ -338,24 +343,87 @@ td {
 	</div>
 
 
-	<div class="demo" style="position: absolute; right: 40%;">
-		<nav class="pagination-outer" aria-label="Page navigation">
-			<ul class="pagination">
-				<li class="page-item"><a href="#" class="page-link"
-					aria-label="Previous"> <span aria-hidden="true">«</span>
-				</a></li>
-				<li class="page-item  active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a href="#" class="page-link"
-					aria-label="Next"> <span aria-hidden="true">»</span>
-				</a></li>
-			</ul>
-		</nav>
-	</div>
+	<!-- 	<div class="demo" style="position: absolute; right: 40%;"> -->
+	<!-- 		<nav class="pagination-outer" aria-label="Page navigation"> -->
+	<!-- 			<ul class="pagination"> -->
+	<!-- 				<li class="page-item"><a href="#" class="page-link" -->
+	<!-- 					aria-label="Previous"> <span aria-hidden="true">«</span> -->
+	<!-- 				</a></li> -->
+	<!-- 				<li class="page-item  active"><a class="page-link" href="#">1</a></li> -->
+	<!-- 				<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+	<!-- 				<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+	<!-- 				<li class="page-item"><a class="page-link" href="#">4</a></li> -->
+	<!-- 				<li class="page-item"><a class="page-link" href="#">5</a></li> -->
+	<!-- 				<li class="page-item"><a href="#" class="page-link" -->
+	<!-- 					aria-label="Next"> <span aria-hidden="true">»</span> -->
+	<!-- 				</a></li> -->
+	<!-- 			</ul> -->
+	<!-- 		</nav> -->
+	<!-- 	</div> -->
 
+
+
+
+	<!-- Modal -->
+
+	<form id="frm2" action="/lecture/InsertCulture" method="post">
+		<div class="modal fade" id="myModalCulture" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel"
+			style="padding: 50px; z-index: 1400">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content2">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">문화센터 추가</h4>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
+
+					<div style="padding: 0 20px 0 20px;">
+						<span>문화센터명</span> <input type="text" id="culture_type"
+							class="title" name="culture_type"> <br> <span>문화센터
+							번호</span> <input class="title" type="text" id="culture_phone"
+							name="culture_phone"> <br> <span>문화센터주소</span> <input
+							class="title" type="text" id="cultureadd" name="cultureadd" readonly="readonly">
+
+						<div class="col-sm-2">
+							<button type="button" id="addrSearchbtn"
+								class="btn btn-default pull-right">주소 검색</button>
+						</div>
+
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-danger" id="inserBtn"
+							data-dismiss="modal">추가</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+
+	<script>
+		$(".kkk").on("click", function() {
+
+			$("#frm").submit();
+		});
+
+		$("#inserBtn").on("click", function() {
+
+			$("#frm2").submit();
+		});
+
+		$('#addrSearchbtn').on('click', function() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					$('#cultureadd').val(data.roadAddress);
+				}
+			}).open();
+		});
+	</script>
 
 
 

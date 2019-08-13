@@ -9,8 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Smart Editor</title>
 
-<!-- Favicon -->
-<link rel="shortcut icon" href="favicon.ico" />
 
 <!-- jQuery -->
 <!-- <script type="text/javascript" src="/js/jquery.js"></script>
@@ -74,9 +72,11 @@
 </script>
 </head>
 <body>
-
-			<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
-				style="width: 600px; height: 412px;"></textarea>
-		<input type="button" id="savebutton" value="글등록" />
+	<div>
+		<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;"></textarea>
+	</div>
+	<div>
+		<input type="button" class="btn btn-primary btn-sm full-right" id="savebutton" value="글등록" style="float:right;"/>
+	</div>
 </body>
 </html>

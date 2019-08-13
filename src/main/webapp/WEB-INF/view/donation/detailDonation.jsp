@@ -30,6 +30,12 @@ font-family: 'Noto Sans KR', sans-serif;
 letter-spacing: 1px;
 line-height:1.6em
 }
+
+#loginBtn{
+/* 	text-align: right; */
+	float : right;
+	margin-right: 100px;
+}
 </style>
 
 
@@ -68,13 +74,15 @@ $(document).ready(function(){
                <hr>
 
 				 <form class="form-horizontal" role="form" action="${cp }/donation/detailDonation" method="get">
-                           <input type="hidden" class="form-control" id="app_id" name="app_id" placeholder="결제 아이디" value="${donationVo.don_id}">
+                           <input type="hidden" class="form-control" id="app_id" name="app_id" placeholder="결제 아이디" value="${appovalVo.app_id}">
+                           <input type="hidden" class="form-control" id="don_id" name="don_id" placeholder="결제 아이디" value="${donationVo.don_id}">
 				
                <div class="container">
                   <div class="row">
 
 
-                     <div class="col-lg-4">
+<!--                      <div class="col-lg-4"> -->
+                     <div class="col-lg-12">
                         <div class="blog_right_sidebar">
 <!--                            <aside class="single_sidebar_widget author_widget"> -->
 <%--                               <h3>${lecture.lec_nm}</h3> --%>
@@ -91,7 +99,7 @@ $(document).ready(function(){
                                  <div class="media-body">
                                  
 <%--                                     <p>기부자 이름 : ${donationAppovalVo.don_id }</p> --%>
-                                    <p>기부자 이름 : ${donnationVCo.doner }</p>
+                                    <p>기부자 이름 : ${donationVo.doner }</p>
                                  </div>
                               </div>
                               <div class="media post_item">
@@ -144,9 +152,10 @@ $(document).ready(function(){
                               <div class="br"></div>
                            </aside>
 
-
-
                         </div>
+                        
+                       
+                        
                      </div>
 
                   </div>
@@ -154,6 +163,13 @@ $(document).ready(function(){
                </div>
                
                </form> 
+               <br><br>
+               
+               <form action="${cp }/login" >
+               		<button type="submit" id="loginBtn" class="btn btn-default btn-md">로그인 화면 가기</button>
+               </form>
+               
+               
             </div>
 
 
