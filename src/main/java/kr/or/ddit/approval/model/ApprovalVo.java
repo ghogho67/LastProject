@@ -69,10 +69,6 @@ public class ApprovalVo {
 				+ app_type + ", mem_id=" + mem_id + "]";
 	}
 
-	public ApprovalVo() {
-
-	}
-
 	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del) {
 		this.app_id = app_id;
 		this.app_pay = app_pay;
