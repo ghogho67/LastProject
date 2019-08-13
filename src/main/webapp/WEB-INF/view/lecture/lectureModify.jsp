@@ -227,6 +227,13 @@ td {
 
 
 											<div class="form-group">
+												<label class="col-md-12"></label>
+												<div class="col-md-12">문화센터 정보는 수정이 불가합니다</div>
+											</div>
+
+
+
+											<div class="form-group">
 												<label for="birth" class="col-md-12">문화센터명</label>
 												<div class="col-md-12">
 													<input type="text" value="${culture.culture_id}"
@@ -234,6 +241,30 @@ td {
 														name="culture_id" id="culture_id">
 												</div>
 											</div>
+
+
+
+
+											<div class="form-group">
+
+												<label class="col-md-12">문화센터 주소</label>
+												<div class="col-md-12">
+													<input type="text" value="${culture.culture_add}"
+														class="form-control form-control-line" readonly="readonly">
+												</div>
+											</div>
+
+
+
+											<div class="form-group">
+
+												<label class="col-md-12">문화센터 전화번호 </label>
+												<div class="col-md-12">
+													<input type="text" value="${culture.culture_phone}"
+														class="form-control form-control-line" readonly="readonly">
+												</div>
+											</div>
+
 										</div>
 									</div>
 								</div>

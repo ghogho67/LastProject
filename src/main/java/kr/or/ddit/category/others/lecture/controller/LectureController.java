@@ -189,7 +189,31 @@ public class LectureController {
 	//강의 수정
 	
 	
+	
+	
+
 	@RequestMapping(path = "/modifyLecture", method = RequestMethod.GET)
+	public String modifyLecture(Model model,@RequestParam(name = "lec_id")int lec_id) {
+
+		
+		LectureVo lectureVo = lectureService.getLecture(lec_id);
+		logger.debug("@@@@lectureVo{}",lectureVo);
+		model.addAttribute("lecture",lectureVo);
+		
+		
+		int culture_id= lectureVo.getCulture_id();
+		CultureVo cultureVo = lectureService.getCulture(culture_id);
+		
+		logger.debug("@@@@cultureVo{}",cultureVo);
+		model.addAttribute("culture",cultureVo);
+		
+		
+		return "lecture/lectureModify";
+	
+	}
+	
+	
+	@RequestMapping(path = "/modifyLecture", method = RequestMethod.POST)
 	public String lectureupdate(Model model,
 			@RequestParam(name = "lec_id")int lec_id,
 			@RequestParam(name = "culture_id")int culture_id,
@@ -201,19 +225,22 @@ public class LectureController {
 			@RequestParam(name = "lec_fee")int lec_fee,
 			@RequestParam(name = "lec_day")String lec_day,
 			@RequestParam(name = "lec_type")String lec_type,
+			@RequestParam(name = "lec_cont")String lec_cont,
 			@RequestParam(name = "lec_amount")String lec_amount) {
-
+		
+		logger.debug("@@@@modifyLecture {}" ,"modifyLecture");
+		logger.debug("@@@@lec_id {}" ,lec_id);
 		
 		String lec_use ="Y";
 		
-		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_use);
+		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_cont);
 
 		String viewName =null;
 		
 		int updatelecture = lectureService.updateLecture(lectureVo);
 		
 		if(updatelecture==1) {
-			 viewName="redirect:/category/categoryManagement";
+			 viewName="redirect:/lecture/lectureListManagement";
 		}else {
 			viewName="redirect:/login";
 		}
@@ -238,7 +265,6 @@ public class LectureController {
 //강의 추가 
 	@RequestMapping(path = "/Insertlecture", method = RequestMethod.POST)
 	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes,
-			
 			@RequestParam(name = "culture_id")int culture_id,
 			@RequestParam(name = "lec_nm")String lec_nm,
 			@RequestParam(name = "lec_tea")String lec_tea,
@@ -248,13 +274,14 @@ public class LectureController {
 			@RequestParam(name = "lec_fee")int lec_fee,
 			@RequestParam(name = "lec_day")String lec_day,
 			@RequestParam(name = "lec_type")String lec_type,
+			@RequestParam(name = "lec_cont")String lec_cont,
 			@RequestParam(name = "lec_amount")String lec_amount
 		) {
 
 	     int lec_id =0;
 		 String lec_use="Y";
 		 
-		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_use);
+		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_cont);
 
 		
 		String viewName =null;
@@ -263,7 +290,7 @@ public class LectureController {
 		
 		
 		if(insertlecture==1) {
-			 viewName="redirect:/lecture/lectureListALL";
+			 viewName="redirect:/lecture/lectureListManagement";
 		}else {
 			viewName="redirect:/login";
 		}
