@@ -29,7 +29,7 @@ $(document).ready(function(){
 	
 	//home
 	$("#home").on("click", function(){
-		$("#frm").attr("action", "${cp}/login");
+		$("#frm").attr("action", "${cp}/main");
 		$("#frm").attr("method", "get");
 		$("#frm").submit();
 		
@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 		<div class="wrap-offset">
 			<div class="container-fluid">
-				<form id="frm" method="get" action="${cp}/donation/nonmemberDonation" class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
+				<form id="frm" method="get" action="${cp}/donation/memberDonation" class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
 					<input type="hidden" id="app_id" name="app_id" value="{app_id}">
 					<input type="hidden" id="don_id" name="don_id" value="{don_id}">
 					<div data-base-class="p-form" class="p-form p-shadowed p-form-md">

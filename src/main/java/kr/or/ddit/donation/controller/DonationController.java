@@ -76,6 +76,8 @@ public class DonationController {
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
+		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
+		
 		int insertDonationCnt = donationService.insertDonation(donationVo);
 		
 		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
@@ -87,6 +89,41 @@ public class DonationController {
 			return "/login";
 		}
 	}
+	
+	
+	/**
+	* Method : memberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원 기부요청
+	*/
+	@RequestMapping(path = "/memberDonation", method = RequestMethod.GET)
+	public String memberInsertDonation() {
+		
+		return "/donation/memberDonation";
+	}
+	
+	/**
+	* Method : memberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param session
+	* @param model
+	* @return
+	* Method 설명 :회원 기부
+	*/
+	@RequestMapping(path = "/memberDonation", method = RequestMethod.POST)
+	public String memberInsertDonation(Model model) {
+		
+			
+			return "/donation/detailDonation";
+	
+	}
+	
+	
+
+	
 	
 	
 	/**

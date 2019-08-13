@@ -73,7 +73,8 @@ $(document).ready(function(){
                   <div class="row">
 
 
-                     <div class="col-lg-4">
+<!--                      <div class="col-lg4"> -->
+                     <div class="col-lg12">
                         <div class="blog_right_sidebar">
 <!--                            <aside class="single_sidebar_widget author_widget"> -->
 <%--                               <h3>${lecture.lec_nm}</h3> --%>
