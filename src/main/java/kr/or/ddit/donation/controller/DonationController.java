@@ -1,6 +1,7 @@
 package kr.or.ddit.donation.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import kr.or.ddit.approval.service.IApprovalService;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.member.member.model.MemberVo;
 
 @Controller
 @RequestMapping("/donation")
@@ -90,6 +92,20 @@ public class DonationController {
 		}else {
 			return "/login";
 		}
+	}
+	
+	
+	/**
+	* Method : memberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원 기부 요청
+	*/
+	@RequestMapping(path = "/memberDonation", method = RequestMethod.GET)
+	public String memberInsertDonation() {
+		
+		return "/donation/memberDonation"; 
 	}
 	
 	
