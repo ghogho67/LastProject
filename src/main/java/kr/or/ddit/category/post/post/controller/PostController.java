@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,12 +31,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
+import kr.or.ddit.category.post.post.model.ImageBoardVo;
 import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.category.post.post.service.IPostService;
 import kr.or.ddit.category.post.reply.service.IReplyService;
@@ -392,7 +391,7 @@ public class PostController {
 	
 
 	@RequestMapping(path = "ImageBoard")
-	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo) throws Exception {
+	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
 		 if(pageVo==null) {
 	        	pageVo.setPage(1);
 	        	pageVo.setPageSize(8);
@@ -407,12 +406,15 @@ public class PostController {
         PrintWriter out = response.getWriter();
         String area ="대전";
         
-        int areaCode = areaCode(request, response, area);
-        parameter = parameter + "&" + "areaCode="+areaCode;
-        parameter = parameter + "&" + "eventStartDate=201900101";
-        parameter = parameter + "&" + "eventEndDate=20191231";
+//        int areaCode = areaCode(request, response, area);
+        if(areaid!=0) {
+        	parameter = parameter + "&" + "areaCode="+areaid;
+        }
+        parameter = parameter + "&" + "eventStartDate="+firstDate;
+        parameter = parameter + "&" + "eventEndDate="+lastDate;
         parameter = parameter + "&" + "pageNo="+pageVo.getPage();
         parameter = parameter + "&" + "numOfRows="+pageVo.getPageSize();
+        parameter = parameter + "&" + "arrange=D";
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "_type=json";
@@ -435,27 +437,53 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
-
         
+
+        ArrayList<ImageBoardVo> list =null;
+        Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
+        if(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").isJsonObject() ==false) {
+
+
+        	String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+        	Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
+        	list= gson.fromJson(abc, type);
+        	
+        }else {
+        	
+        }
         double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
         int boardCnt2=(int) boardCnt;
-        logger.debug("!!!!! json:{}",array);
 
-        
-        Gson gson = new Gson();
-
-        ArrayList<Object> list = gson.fromJson( array.toString() , new TypeToken <ArrayList<Object>>(){}.getType() );
 
         model.addAttribute("list", list);
         model.addAttribute("boardCnt", boardCnt2);
-        logger.debug("!!!!! list:{}",list);
-
-        int paginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
+//        logger.debug("!!!!! list:{}",list);
+        int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        logger.debug("!!!!! paginationSize:{}",paginationSize);
+      
+        int lastpaginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
+        
+        logger.debug("!!!!! lastpaginationSize:{}",lastpaginationSize);
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+        model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo",pageVo);
+		
+		logger.debug("!!!!! startPage:{}",startPage);
+		logger.debug("!!!!! paginationSize:{}",paginationSize);
 
         
         return "festivalAjaxHtml";

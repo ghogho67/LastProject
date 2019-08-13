@@ -166,31 +166,13 @@ right: 21%;
 }
 
 
-/* .area_tagList ul{ */
-/* list-style: none; */
 
-/*         display: block; */
-/*     list-style-type: disc; */
-/*     margin-block-start: 1em; */
-/*     margin-block-end: 1em; */
-/*     margin-inline-start: 0px; */
-/*     margin-inline-end: 0px; */
-/*     padding-inline-start: 40px */
-/* } */
-
-
-/* .category_deallist { */
-/*     position: relative; */
-/*     width: 100%; */
-/*     margin-top: 24px; */
-/* } */
-
-
-/* .list_wrap default-tmplgroup type-best-tmpl col4 { */
-/*     float: left; */
-/*     width: 600px; */
-/* } */
-
+.list_wrap.default-tmplgroup.col4 .title_name {
+    margin-top: 1px;
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
 
 
 
@@ -200,12 +182,59 @@ right: 21%;
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+
+Date.prototype.format = function (f) {
+    if (!this.valueOf()) return " ";
+    var weekKorName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    var weekKorShortName = ["일", "월", "화", "수", "목", "금", "토"];
+    var weekEngName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var weekEngShortName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var d = this;
+
+    return f.replace(/(yyyy|yy|MM|dd|KS|KL|ES|EL|HH|hh|mm|ss|a\/p)/gi, function ($1) {
+        switch ($1) {
+            case "yyyy": return d.getFullYear(); // 년 (4자리)
+            case "yy": return (d.getFullYear() % 1000).zf(2); // 년 (2자리)
+            case "MM": return (d.getMonth() + 1).zf(2); // 월 (2자리)
+            case "dd": return d.getDate().zf(2); // 일 (2자리)
+            case "KS": return weekKorShortName[d.getDay()]; // 요일 (짧은 한글)
+            case "KL": return weekKorName[d.getDay()]; // 요일 (긴 한글)
+            case "ES": return weekEngShortName[d.getDay()]; // 요일 (짧은 영어)
+            case "EL": return weekEngName[d.getDay()]; // 요일 (긴 영어)
+            case "HH": return d.getHours().zf(2); // 시간 (24시간 기준, 2자리)
+            case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2); // 시간 (12시간 기준, 2자리)
+            case "mm": return d.getMinutes().zf(2); // 분 (2자리)
+            case "ss": return d.getSeconds().zf(2); // 초 (2자리)
+            case "a/p": return d.getHours() < 12 ? "오전" : "오후"; // 오전/오후 구분
+            default: return $1;
+        }
+
+    });
+
+};
+
+String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) { s += this; } return s; };
+String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
+Number.prototype.zf = function (len) { return this.toString().zf(len); };
+
+
+var now= new Date();
+
+var areaid =0;
+var monthid;
+var month;
+var firstDate = new Date(now.getFullYear(), 1-1,1).format("yyyyMMdd");
+var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
+
+
+ 
 	$(document).ready(function() {
+		
+		
 
-		var areaid;
-		var monthid;
 
-		boardPagingListAjaxHtml(1, 8);
+
+		boardPagingListAjaxHtml(1, 8, areaid , firstDate, lastDate);
 
 		$('#monthlist').on('click', "li button", function() {
 			monthid = new Array();
@@ -218,7 +247,7 @@ right: 21%;
 					monthid[i] = this.id;
 					console.log(monthid[i]);
 				});
-				return;
+// 				return;
 			}
 
 			if ($(this).attr('class') == 'btn') {
@@ -239,26 +268,24 @@ right: 21%;
 				console.log(monthid[i]);
 
 			});
+			monthid.sort();
+
+			if(monthid[0]!='All1'){
+				firstDate = new Date(now.getFullYear(), monthid[0]-1,1);
+				lastDate = new Date(now.getFullYear(), monthid[monthid.length-1],0);
+			}else{
+				firstDate = new Date(now.getFullYear(), 1-1,1);
+				lastDate = new Date(now.getFullYear(), 12,0);
+				
+			}
+			firstDate=firstDate.format("yyyyMMdd");
+			lastDate=lastDate.format("yyyyMMdd");
+			console.log(firstDate);
+			console.log(lastDate);
 			
-			
+			boardPagingListAjaxHtml(1, 8, areaid , firstDate, lastDate)
 
 
-			console.log(monthid.length);
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath}/post/ImageBoard",
-				data : "page=" + page + "&pageSize=" + pageSize,
-				success : function(data) {
-					var html = data.split("SEPERATORSEPERATOR");
-
-					$('.board-count').html(html[0]);
-					$('#_dealList').html(html[1]);
-					$('.pagination').html(html[2]);
-
-				},
-				error : function(status) {
-				}
-			});
 			
 			
 
@@ -293,18 +320,21 @@ right: 21%;
 			areaid = $("#arealist li .active").parent().prop('id');
 			console.log(areaid);
 			
-			
-			
-			
+			if(areaid=='All2'){
+				areaid=0;
+			}
+			console.log(areaid);
+			boardPagingListAjaxHtml(1, 8, areaid , firstDate, lastDate)
+
 			
 		});
 
 	});
 
-	function boardPagingListAjaxHtml(page, pageSize) {
+	function boardPagingListAjaxHtml(page, pageSize, areaid , firstDate, lastDate) {
 		$.ajax({
 			url : "${pageContext.request.contextPath}/post/ImageBoard",
-			data : "page=" + page + "&pageSize=" + pageSize,
+			data : "page=" + page + "&pageSize=" + pageSize + "&areaid=" + areaid + "&firstDate=" + firstDate + "&lastDate=" + lastDate,
 			success : function(data) {
 				var html = data.split("SEPERATORSEPERATOR");
 
@@ -366,9 +396,9 @@ right: 21%;
                     <li id="thismonth"><a href="javascript:">#이달의축제</a></li>
                 </ul-->
                 <ul class="tag_list js_multi" id="monthlist">
-                    <li id="All1"><button  type="button" class=""><span>#전체</span></button></li>
+                    <li id="All1"><button  type="button" class="btn_all_active"><span>#전체</span></button></li>
                     <li id="01"><button type="button" class="btn"><span>#1월</span></button></li>
-                    <li id="02"><button type="button" class="btn active"><span>#2월</span></button></li>
+                    <li id="02"><button type="button" class="btn"><span>#2월</span></button></li>
                     <li id="03"><button type="button" class="btn"><span>#3월</span></button></li>
                     <li id="04"><button type="button" class="btn"><span>#4월</span></button></li>
                     <li id="05"><button type="button" class="btn"><span>#5월</span></button></li>
