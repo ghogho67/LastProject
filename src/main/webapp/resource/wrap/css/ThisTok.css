@@ -9,7 +9,7 @@ body {
 	overflow:scroll;
 	border-top: 1px solid #f6f6f6;
 	height: 400px;
-  width: 10%;
+  width: 99%;
   background: #fff;
   border-radius: 5px;
   box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3
@@ -36,14 +36,6 @@ margin-left:10px;
   text-transform: uppercase;
 }
 
-.alert alert-warning{
-	text-align : right;
-}
-
-.alert alert-info{
-	text-align: left;
-}
-
 .btn{
   background: #4A8CF6;
   border: 0;
@@ -67,6 +59,7 @@ margin-left:10px;
     background: none;
     margin: 0;
     padding: 2px;
+    overflow:scroll;
 }
 .chat li {
     padding: 0.5rem;
@@ -129,10 +122,15 @@ margin-left:10px;
     -ms-user-select: none;
     transition: all .2s cubic-bezier(0.565, -0.260, 0.255, 1.410);
 }
+.self{
+	text-align: left;
+	margin-left: 290px;
+}
 
 .other .msg {
     border-top-left-radius: 0px;
     box-shadow: -1px 2px 0px #c1cbcd;
+    
 }
 .other:before {
     content: "";

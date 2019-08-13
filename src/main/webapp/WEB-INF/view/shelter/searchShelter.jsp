@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -317,10 +319,9 @@ window.onload = function() {
 
 
 </head>
-
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
 	<div class="container">
@@ -329,7 +330,7 @@ window.onload = function() {
 				<div class="card-body">
 							<div id="titlee">
 						<h2>
-							<span>무더위 쉼터</span>
+							<span>무더위 쉼터</span> 지역검색
 						</h2>
 						</div>
 					

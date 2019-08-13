@@ -296,16 +296,23 @@
 
 
 
-	<section
-		style="position: absolute; bottom: 58%; margin: 0 auto; right: 90%;">
-		
-		<div id="banner_zone" class="banner_zone">
-		
-			<div class="inner">
-			
-				<ul style="left: 0px; width: 2119px; position: relative;">
+	<section style="position: absolute; bottom: 58%; margin: 0 auto; right: 90%;">
 
-					<li style="opacity: 1;"><a
+
+
+
+		<div id="banner_zone" class="banner_zone">
+			<div class="inner">
+				<h2>배너모음</h2>
+				<div class="btn">
+					<a href="#bannerPrev" class="pre" title="이전">이전</a> <a
+						href="#bannerStop" class="stop" title="정지">정지</a> <a
+						href="#bannerNext" class="next" title="다음">다음</a> <a
+						href="#bannerList" class="list dialogAllBannerList" title="배너 리스트">리스트</a>
+				</div>
+				<ul style="left: -30.5427px; width: 2119px; position: relative;">
+					
+					<li style="opacity: 0;"><a
 						href="http://edu.edurang.net/ebs/index.html" target="_blank"
 						title="[EBS 논술톡] ICT 자료 연결하기(새창으로)"><img
 							src="/image/banner/Banner_201702071159070710.png"></a></li>
@@ -357,6 +364,11 @@
 				</ul>
 			</div>
 		</div>
+
+
+
+
+
 
 
 	</section>

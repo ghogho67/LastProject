@@ -1,6 +1,7 @@
 package kr.or.ddit.donation.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.member.member.model.MemberVo;
 
 @Controller
 @RequestMapping("/donation")
@@ -24,6 +26,13 @@ public class DonationController {
 	public IDonationService donationService;
 	
 	
+	/**
+	* Method : nonMemberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 비회원 기부 요청
+	*/
 	@RequestMapping(path = "/nonmemberDonation", method = RequestMethod.GET)
 	public String nonMemberInsertDonation() {
 		
@@ -31,6 +40,17 @@ public class DonationController {
 	}
 	
 	
+	/**
+	* Method : nonMemberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param approvalVo
+	* @param donationVo
+	* @param donationApprovalVo
+	* @return
+	* Method 설명 :비회원 기부
+	*/
 	@RequestMapping(path = "/nonmemberDonation", method = RequestMethod.POST)
 	public String nonMemberInsertDonation(Model model, ApprovalVo approvalVo, DonationVo donationVo, DonationApprovalVo donationApprovalVo) {
 		
@@ -56,6 +76,8 @@ public class DonationController {
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
+		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
+		
 		int insertDonationCnt = donationService.insertDonation(donationVo);
 		
 		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
@@ -68,6 +90,51 @@ public class DonationController {
 		}
 	}
 	
+	
+	/**
+	* Method : memberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원 기부요청
+	*/
+	@RequestMapping(path = "/memberDonation", method = RequestMethod.GET)
+	public String memberInsertDonation() {
+		
+		return "/donation/memberDonation";
+	}
+	
+	/**
+	* Method : memberInsertDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param session
+	* @param model
+	* @return
+	* Method 설명 :회원 기부
+	*/
+	@RequestMapping(path = "/memberDonation", method = RequestMethod.POST)
+	public String memberInsertDonation(Model model) {
+		
+			
+			return "/donation/detailDonation";
+	
+	}
+	
+	
+
+	
+	
+	
+	/**
+	* Method : checkDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param donationApprovalVo
+	* @return
+	* Method 설명 :기부 상세보기
+	*/
 	@RequestMapping(name = "/detailDonation", method = RequestMethod.GET)
 	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo ) {
 		
