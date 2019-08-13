@@ -21,6 +21,7 @@
 					<li><a href="">마이페이지</a></li>
 					<li><a href="">요양 정보</a>
 						<ul>
+							<li><a href="${cp}/matching/map">요양보호사 매칭</a></li>
 							<li><a href="${cp}/basicU/findingCareWorker">요양원/요양병원 찾기</a></li>
 							<li><a href="${cp}/basicU/findingCareWorker">기관 정보 조회</a></li>
 						</ul></li>
@@ -30,6 +31,7 @@
 							<li><a href="about.html">공지사항</a></li>
 							<li><a href="about.html">자유게시판</a></li>
 							<li><a href="elements.html">QnA</a></li>
+							<li><a href="post/pagingList?cate_id=1">게시판</a></li>
 						</ul></li>
 
 

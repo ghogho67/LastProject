@@ -18,8 +18,8 @@
 		
 			<ul>
 <%-- 				<li><a href="${cp}/test/matching">요양보호소 찾기 </a></li> --%>
+				<li><a href="${cp}/matching/map">요양보호사 매칭</a></li>
 				<li><a href="${cp}/hospital/pagingList">요양원/요양병원 찾기</a></li>
-
 				<li><a href="${cp}/nursingHome/pagingList">기관 정보 조회</a></li>
 			</ul></li>
 
