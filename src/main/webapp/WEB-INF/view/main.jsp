@@ -75,6 +75,13 @@
 					<h1>ThisCare</h1>
 					<a href="${pageContext.request.contextPath}/main">Noincare,HowCare</a>
 					<span>|</span> <a href="${pageContext.request.contextPath}/main">Home</a>
+					   <form action="${cp }/chatbot">
+      <button type="submit">챗봇</button>  
+   </form>
+   <button id="submitBtn" type="button" onclick="popup()">ThisTok!</button>
+     <form action="${cp }/donation/memberDonation">
+      <button type="submit">기부하기</button>
+   </form>
 				</div>
 			</div>
 		</div>
@@ -82,16 +89,12 @@
 
 	<div id="crawling" style = "display:none">${src }</div>
 	
-	   <form action="${cp }/chatbot">
-      <button type="submit">챗봇</button>
-   </form>
-   
-     <form action="${cp }/donation/memberDonation">
-      <button type="submit">기부하기</button>
-   </form>
+	
    
    
-	<button id="submitBtn" type="button" onclick="popup()">ThisTok!</button>
+   
+   
+	
 	  
 	<header class="header-area">
 		<%@include file="/WEB-INF/view/common/top_Header.jsp"%>
@@ -242,6 +245,18 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</section>
 
 
