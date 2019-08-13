@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.category.others.culture.model.CultureVo;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
 
 @Repository
@@ -48,5 +49,10 @@ public class LectureDao implements ILectureDao {
 	@Override
 	public int InsertLecture(LectureVo LectureVo) {
 		return 	sqlSession.insert("lecture.InsertLecture",LectureVo);
+	}
+
+	@Override
+	public CultureVo getCulture(int culture_id) {
+		return 	sqlSession.selectOne("lecture.getCulture",culture_id);
 	}
 }

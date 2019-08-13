@@ -70,7 +70,7 @@ background-position:center; background-size: 280px; background-repeat: no-repeat
 				<li class="log">
 				<a class="btn type6" href="/regist/regist1" tabindex="3">회원가입</a></li>
 				<li class="log">
-				<a class="btn type6" href="/donation/donation" tabindex="3">기부하기</a></li>
+				<a class="btn type6" href="/donation/nonmemberDonation" tabindex="3">기부하기</a></li>
 
 					
 			</ul>

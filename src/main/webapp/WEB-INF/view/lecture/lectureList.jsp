@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +11,6 @@
 
 
 <style type="text/css">
-
-
-
-
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -30,7 +26,6 @@
 	color: #473fa0;
 }
 
-
 tr {
 	text-align: center;
 	font-weight: 500;
@@ -41,13 +36,13 @@ td {
 }
 
 .inputTitle {
-	    border-radius: 6px;
-    background-color: transparent;
-    width: 180px;
-    height:30px;
-    padding: 3px;
-    font-size: 8pt;
-    text-align: center;
+	border-radius: 6px;
+	background-color: transparent;
+	width: 180px;
+	height: 30px;
+	padding: 3px;
+	font-size: 8pt;
+	text-align: center;
 }
 
 .kkk {
@@ -212,16 +207,7 @@ td {
 
 
 
-<script>
-	$(document).ready(function() {
 
-		$(".kkk").on("click", function() {
-
-			$("#frm").submit();
-		});
-
-	});
-</script>
 
 </head>
 <body>
@@ -230,40 +216,40 @@ td {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
+
+
+
+	<form id="frm" action="${cp}/lecture/lecture" method="get">
+		<input type="hidden" id="lectureId" name="lectureId">
+	</form>
+
 	<div class="container">
-
-
-
-
-		<div  style="padding-top: 50px; width: 1350px;">
-
-
-
+		<div style="padding-top: 50px; width: 1350px;">
 			<div class="card">
 				<div class="card-body">
 
-				<div id="titlee">
+					<div id="titlee">
 						<h2>
-							<span>학습.문화</span> 프로그램 
+							<span>학습.문화</span> 프로그램
 						</h2>
-						</div>
-					
-									<div class="d1">
-										<form class="for">
+					</div>
 
-											<select id="searchType" name="searchType"
-												style="position: absolute; z-index: 999;">
-												<option value="all">전체</option>
-												<option value="title">제목</option>
-												<option value="content">내용</option>
-												<option value="writer">작성자</option>
-												<option value="tc">제목+내용</option>
-											</select> <input type="text" placeholder="검색어 입력">
-											<button type="submit"></button>
-										</form>
-									</div>
+					<div class="d1">
+						<form class="for">
+
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+								<option value="all">전체</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+								<option value="writer">작성자</option>
+								<option value="tc">제목+내용</option>
+							</select> <input type="text" placeholder="검색어 입력">
+							<button type="submit"></button>
+						</form>
+					</div>
 					<hr>
-					
+
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 							<thead>
@@ -282,38 +268,34 @@ td {
 
 
 							<tbody>
-	<c:forEach items="${LTList}" var="LTList">
-								<tr class="Lecture" data-userid="lectureId">
-								
-									<td class="LectureId" id="LectureId" name="LectureId">${LTList.lec_id}</td>
+								<c:forEach items="${LTList}" var="LTList">
+									<tr class="lectureTr" data-userid="${LTList.lec_id}">
+										<td class="lectureId" id="lectureId" name="lectureId">${LTList.lec_id}</td>
+										<td>${LTList.lec_nm}</td>
+										<td>${LTList.lec_tea}</td>
+										<td>${LTList.lec_fee}</td>
+										<td><fmt:formatDate value="${LTList.lec_st_dt}"
+												pattern="yyyy-MM-dd" /></td>
+										<td><fmt:formatDate value="${LTList.lec_end_dt}"
+												pattern="yyyy-MM-dd" /></td>
+										<td><fmt:formatDate value="${LTList.lec_end_dt}"
+												pattern="yyyy-MM-dd" /></td>
+										<td>${LTList.lec_amount}</td>
 
-									<td>${LTList.lec_nm}</td>
-									<td>${LTList.lec_tea}</td>
-									<td>${LTList.lec_fee}</td>
-									<td>
-									<fmt:formatDate value="${LTList.lec_st_dt}" pattern="yyyy-MM-dd"/>
-									</td>
-									<td>
-									<fmt:formatDate value="${LTList.lec_end_dt}"  pattern="yyyy-MM-dd"/>
-									</td>
-									<td><fmt:formatDate value="${LTList.lec_end_dt}" pattern="yyyy-MM-dd"  /></td>
-<%-- 									<td>${LTList.lec_time}</td> --%>
-									<td>${LTList.lec_amount}</td>
-									
-									<td><a class="btn btn-info btn-sm">&nbsp;&nbsp;접수 중&nbsp;&nbsp;</a>
-								    </td>
-								</tr>
+										<td><a class="btn btn-info btn-sm">&nbsp;&nbsp;접수
+												중&nbsp;&nbsp;</a></td>
+									</tr>
 
-</c:forEach>
-								
+								</c:forEach>
+
 							</tbody>
 
 
 						</table>
-				
-				
-				
-				
+
+
+
+
 					</div>
 				</div>
 			</div>
@@ -322,25 +304,37 @@ td {
 
 
 	<div class="demo" style="position: absolute; right: 40%;">
-									<nav class="pagination-outer" aria-label="Page navigation">
-										<ul class="pagination">
-											<li class="page-item"><a href="#" class="page-link"
-												aria-label="Previous"> <span aria-hidden="true">«</span>
-											</a></li>
-											<li class="page-item  active"><a class="page-link"
-												href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#">4</a></li>
-											<li class="page-item"><a class="page-link" href="#">5</a></li>
-											<li class="page-item"><a href="#" class="page-link"
-												aria-label="Next"> <span aria-hidden="true">»</span>
-											</a></li>
-										</ul>
-									</nav>
-								</div>
+		<nav class="pagination-outer" aria-label="Page navigation">
+			<ul class="pagination">
+				<li class="page-item"><a href="#" class="page-link"
+					aria-label="Previous"> <span aria-hidden="true">«</span>
+				</a></li>
+				<li class="page-item  active"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+				<li class="page-item"><a href="#" class="page-link"
+					aria-label="Next"> <span aria-hidden="true">»</span>
+				</a></li>
+			</ul>
+		</nav>
+	</div>
 
 
+
+
+<script>
+	
+		
+		$(".lectureTr").on("click", function() {
+			var lectureId = $(this).find(".lectureId").text();
+			$("#lectureId").val(lectureId);
+			$("#frm").submit();
+		});
+
+	
+</script>
 
 
 </body>

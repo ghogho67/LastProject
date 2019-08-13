@@ -3,6 +3,7 @@ package kr.or.ddit.member.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
@@ -132,6 +133,7 @@ public interface IMemberDao {
 
 	// 골드테이블에 정보입력
 	int upgradeMemberStep2(String mem_id);
+	int upgradeMemberStep3(String mem_id);
 
 	// <!-- 프리미엄혜택이 끝나는 회원을 조회한다 -->
 	List<String> downGradeMemberStep1();
@@ -142,5 +144,7 @@ public interface IMemberDao {
 //<!-- 프리미엄혜택이 끝나는 회원의 gold서비스 이력을 조정한다  -->
 	int downGradeMemberStep3(String mem_id);
 	
+	
+	GoldVo downGradeMember(String mem_id);
 	
 }

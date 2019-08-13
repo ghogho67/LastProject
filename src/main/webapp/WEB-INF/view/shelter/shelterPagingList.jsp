@@ -154,11 +154,11 @@ td {
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-							<div id="titlee">
+					<div id="titlee">
 						<h2>
 							<span>무더위 쉼터</span>
 						</h2>
-						</div>
+					</div>
 						
 						<div class="d1">
 							<form class="for" id="frm2" action="${cp}/shelter/searchShelter" method="post">

@@ -10,6 +10,10 @@ public class ApprovalVo {
 	private String app_type;
 	private String mem_id;
 	private String app_del;
+	
+	public ApprovalVo() {
+		
+	}
 
 	public String getApp_del() {
 		return app_del;
@@ -81,9 +85,5 @@ public class ApprovalVo {
 		this.app_type = app_type;
 		this.app_del = app_del;
 	}
-	
-	
-	
-	
 
 }

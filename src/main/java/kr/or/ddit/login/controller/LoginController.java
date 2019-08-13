@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 
@@ -83,25 +83,41 @@ public class LoginController {
 			
 			//오늘날짜로 골드회원이용권이 종료되는  회원아이디목록을 가져온다
 			List<String> downGradeMemberStep1=memberService.downGradeMemberStep1();	
+			logger.debug("@@@@downGradeMemberStep1{}",downGradeMemberStep1);
 			
 			
 			//해당 아이디 리스트안에 로근인한 회원의 아이디가 있는지 조회한다
 			if(downGradeMemberStep1.contains(mem_id)==true){
+				logger.debug("@@@@ture{}","ture");
+				logger.debug("@@@@mem_id{}",mem_id);
+				
+				
 				
 				//만약있다면  해당회원의 등급을 조정하고
 				int downGradeMemberStep2 =memberService.downGradeMemberStep2(mem_id);
+				logger.debug("@@@@downGradeMemberStep2{}",downGradeMemberStep2);
+				
 				
 				//조정이 완료 되었다면 골드서비스 사용이력을 조정한다
 				if(downGradeMemberStep2==1) {
-					int downGradeMemberStep3=memberService.downGradeMemberStep2(mem_id);
-						
+					int downGradeMemberStep3=memberService.downGradeMemberStep3(mem_id);
+					logger.debug("@@@@downGradeMemberStep3{}",downGradeMemberStep3);
+					
 				}
 			}
+				
+				//해당회원의  골드테이블정보를 가져온다 
+				GoldVo goldvo = memberService.downGradeMember(mem_id);
+				logger.debug("@@@@goldvo{}",goldvo);
+				model.addAttribute("goldvo",goldvo);
 			
-			
-			
-			
-			return "main";
+				
+				MemberVo memberVo = memberService.getMemVo(memVo.getMem_id());
+				logger.debug("@@@@memVo{}",memberVo);
+				session.setAttribute("MEM_INFO", memberVo);
+				
+				
+			return "redirect:crawling";
 		}
 		else {
 		
@@ -165,18 +181,33 @@ public class LoginController {
 		
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id=memberVo.getMem_id();
+		logger.debug("@@@@mem_id{}",mem_id);
 		
+		//골드테이블에 있는지 확인한다 
+		GoldVo goldvo = memberService.downGradeMember(mem_id);
 		
-		//회원테이블의 등급을 골드로 변경
-		int upgradeMemberStep1= memberService.upgradeMemberStep1(mem_id);
-		
-		if(upgradeMemberStep1==1) {
-			int upgradeMemberStep2 = memberService.upgradeMemberStep2(mem_id);
+		if(goldvo==null){
+			//골드테이블에 없다면
+			//회원테이블의 등급을 골드로 변경
+			int upgradeMemberStep1= memberService.upgradeMemberStep1(mem_id);
+			logger.debug("@@@@upgradeMemberStep1{}",upgradeMemberStep1);
+			
+			if(upgradeMemberStep1==1) {
+				int upgradeMemberStep2 = memberService.upgradeMemberStep2(mem_id);
+				logger.debug("@@@@upgradeMemberStep2{}",upgradeMemberStep2);
+			}
+			
+		}else {
+			//골드테이블에 있다면 
+			
 		}
 		
-	    //세션을 재설정
-		session.setAttribute("MEM_INFO", memberVo);
+		MemberVo memVo = memberService.getMemVo(memberVo.getMem_id());
+		logger.debug("@@@@memVo{}",memVo);
 		
+	    //세션을 재설정
+		session.setAttribute("MEM_INFO", memVo);
+		logger.debug("@@@@MEM_INFO{}",memVo);
 		return "main";
 	}
 	

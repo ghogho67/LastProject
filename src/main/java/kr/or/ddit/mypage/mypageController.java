@@ -303,11 +303,26 @@ public class mypageController {
 	public String Admin_Info() {
 		return "/mypage/Admin_Info.mytiles";
 	}
-
 	
+	@RequestMapping("/scheduleView")
+	public String scheduleView(HttpSession session, Model model) {
+		logger.debug("☞schedule");
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memvo.getMem_id();
+		model.addAttribute("mem_id",mem_id);
+		
+		return "mypage/schedule";
+	}
 	
-	
-	
+	@RequestMapping("/schedule")
+	public String schedule(HttpSession session, Model model) {
+		logger.debug("☞schedule");
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memvo.getMem_id();
+		model.addAttribute("mem_id",mem_id);
+		
+		return "jsonView";
+	}
 	
 	
 	/**
@@ -591,17 +606,12 @@ public class mypageController {
 	   @RequestMapping("/gpxMap")
 	   public String gpxMap(Model model, String mem_id) {
 			int gps_id = sosService.recentData(mem_id);
-			sosService.insertSOS(gps_id);
 			Map<String, Object>map = sosService.getGps(gps_id, mem_id);
 			GpsVo gpsVo =(GpsVo) map.get("gpsVo");
 			String mem_name =  (String) map.get("mem_name");
 			
 			model.addAttribute("gpsVo", gpsVo);
-//			
-//
-//			
-//			String lati=Double.toString(gpsVo.getGps_la());
-//			String longi=Double.toString(gpsVo.getGps_lo());
+
 	      return "mypage/gold/gpxMap";
 	   }
 	

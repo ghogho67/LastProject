@@ -20,6 +20,14 @@
 	
 
 
+	<!-- 	특정문화센터를 불러온다 -->
+	<select id="getCulture" resultType="cultureVo" parameterType="int">
+		select * from culture
+	where culture_id = #{culture_id}
+	</select>
+	
+
+
 <!-- 	분류별 강좌목록을 불러온다  불러온다 -->
 	<select id="getCertainLectureList" resultType="LectureVo">
 			select * from lecture

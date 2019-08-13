@@ -33,7 +33,7 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 
 .education-txt {
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:18px;
   font-weight:300;
   color:#3b3b3b;
@@ -56,7 +56,7 @@ font-family: 'Noto Sans KR', sans-serif;
   float:left;
   list-style-type:none;
   height:81px;
-  font-family: 'Noto Sans KR', gulim;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size:21px;
   font-weight:400;
   letter-spacing:-1px;

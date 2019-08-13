@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.category.others.culture.model.CultureVo;
 import kr.or.ddit.category.others.lecture.dao.ILectureDao;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
 
@@ -47,6 +48,11 @@ public class LectureService implements ILectureService {
 	@Override
 	public int InsertLecture(LectureVo LectureVo) {
 		return lectureDao.InsertLecture(LectureVo);
+	}
+
+	@Override
+	public CultureVo getCulture(int culture_id) {
+		return lectureDao.getCulture(culture_id);
 	}
 	
 }
