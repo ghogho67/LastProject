@@ -1,7 +1,5 @@
 package kr.or.ddit.chatbot.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +10,13 @@ public class ChatbotController {
 	@RequestMapping(path = "/chatbot")
 	public String chatbot(Model model, String str, String userquestion, String userSay, String chatBotSay) {
 	
-		if(userquestion == "매칭" || userquestion == "요양보호사" || userquestion == "요양보호사선택" || 
- 				userquestion == "요양사" || userquestion == "보호사"){
-			str = "매칭";
- 		}
+//		if(userquestion == "매칭" || userquestion == "요양보호사" || userquestion == "요양보호사선택" || 
+// 				userquestion == "요양사" || userquestion == "보호사"){
+//			str = "매칭";
+// 		}
+		
+		
+		
 //		else if(userquestion == "골드회원" || userquestion == "등급변경" || userquestion == "유료회원"){
 // 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 // 			$("#chat").append("<div id='chatBotSay'> 골드회원서비스 : chatbot "+"</div><br>");

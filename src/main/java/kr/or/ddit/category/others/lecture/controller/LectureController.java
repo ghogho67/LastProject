@@ -154,6 +154,14 @@ public class LectureController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	//강의 사용
 	
 	@RequestMapping(path = "/lectureUse", method = RequestMethod.GET)
@@ -166,7 +174,7 @@ public class LectureController {
 		 int updateCnt = lectureService.useLecture(lec_id);
 		
 		 if(updateCnt>=1) {
-			 viewName="redirect:/lecture/lectureListALL";
+			 viewName="redirect:/lecture/lectureListManagement";
 		 }else {
 			 viewName="redirect:/login";
 		 }
@@ -214,6 +222,19 @@ public class LectureController {
 	}
 	
 
+	
+	
+	
+	@RequestMapping(path = "/Insertlecture", method = RequestMethod.GET)
+	public String Insertlecture(Model model) {
+
+		return "lecture/lectureInsert";
+	
+	}
+	
+	
+	
+	
 //강의 추가 
 	@RequestMapping(path = "/Insertlecture", method = RequestMethod.POST)
 	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes,

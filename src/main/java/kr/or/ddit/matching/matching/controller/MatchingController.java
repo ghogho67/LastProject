@@ -94,7 +94,7 @@ public class MatchingController {
 		model.addAttribute("addrList", addrList);
 		model.addAttribute("list", list);
 
-		return "matching/maps";
+		return "/matching/maps.tiles";
 
 	}
 

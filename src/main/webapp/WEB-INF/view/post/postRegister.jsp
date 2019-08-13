@@ -13,7 +13,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 <title>게시글 등록</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script type="text/javascript" charset="utf-8"
@@ -21,62 +21,41 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
 	charset="utf-8"></script>
-
-
+<style>
+div{
+width: 800px;
+}
+</style>
 </head>
-
 <body>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="row">
-					<div class="col-sm-8 blog-main">
-						<h2 class="sub-header">
-							게시글 신규 등록<br> <br> postRegister.jsp<br> <br>
-						</h2>
+	<div class="container">
+		<h2 class="sub-header">게시글 신규 등록<br> <br> postRegister.jsp<br> <br></h2>
 <pre>
 cate_id : ${cate_id }<br><br>
 </pre>
-						<form id="frm1" class="form-horizontal" role="form"	action="${cp}/post/register" method="post" enctype="multipart/form-data">
-							
-							<input type="hidden" name="cate_id" value="${cate_id }" />
-							cate_id = ${cate_id }
-							<div class="form-group">
-								
-								<label for="post_nm" class="col-sm-2 control-label">제목</label>
-								
-								<div class="col-sm-10">
-									
-									<input type="text" class="form-control" name="post_nm">
-								</div>
-							</div>
-							<div class="form-group">
-								
-								<label for="post_cont" class="col-sm-2 control-label">글내용</label>
-								
-								<div class="col-sm-10">
-									
-									<%@include file="../../../SE2/SE2postRegister.jsp"%>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-								파일추가/제거 
-								<input type="button" value="파일추가" id="addFileBtn">
-								
-								<div class="col-sm-10" id="fileArea">
-									
-									<input type="file" name="file"><br> 
-									
-									<input type="hidden" name="cate_id" value="${cate_id }">
-								</div>
-							</div>
-						</form>
-						
-					</div>
+		<form id="frm1" role="form"	action="${cp}/post/register" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="cate_id" value="${cate_id }" />
+			<div class="card">
+				<label for="post_nm" class="col-sm-2 control-label">제목</label>
+				<div>
+					<input type="text" class="form-control" name="post_nm">
 				</div>
 			</div>
-		</div>
+			<div>
+				<label for="post_cont" class="col-sm-2 control-label">글내용</label>
+				<div>
+					<%@include file="../../../SE2/SE2postRegister.jsp"%>
+				</div>
+			</div>
+			<div>
+				<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
+				<input type="button" class="btn btn-outline-danger btn-primary mr-2" value="파일추가" id="addFileBtn">
+				<div id="fileArea">
+					<input type="file" name="file"><br> 
+					<input type="hidden" name="cate_id" value="${cate_id }">
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 

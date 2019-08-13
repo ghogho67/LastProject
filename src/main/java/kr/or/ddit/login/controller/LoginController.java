@@ -68,9 +68,7 @@ public class LoginController {
 			session.setAttribute("MEM_INFO", memVo);
 			model.addAttribute("mem_id",mem_id);
 		
-			
-			
-			
+		
 			// 
 			/**
 			 * Method : 
@@ -107,14 +105,15 @@ public class LoginController {
 			}
 				
 				//해당회원의  골드테이블정보를 가져온다 
-				GoldVo goldvo = memberService.downGradeMember(mem_id);
-				logger.debug("@@@@goldvo{}",goldvo);
+			GoldVo goldvo = memberService.downGradeMember(mem_id);
+			logger.debug("@@@@goldvo{}",goldvo);
 				model.addAttribute("goldvo",goldvo);
-			
+		
 				
 				MemberVo memberVo = memberService.getMemVo(memVo.getMem_id());
 				logger.debug("@@@@memVo{}",memberVo);
 				session.setAttribute("MEM_INFO", memberVo);
+				session.setAttribute("mem_id", mem_id);
 				
 				
 			return "redirect:crawling";

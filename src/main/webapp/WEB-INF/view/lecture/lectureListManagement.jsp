@@ -249,7 +249,7 @@ td {
 						</h2>
 					</div>
 						<div style="text-align: right;">
-							<a class="btn btn-warning btn-sm" href="${cp}/lecture/lectureListManagement">강좌추가
+							<a class="btn btn-warning btn-sm" href="${cp}/lecture/Insertlecture">강좌추가
 									</a>
 							
     </div>
@@ -306,13 +306,13 @@ td {
 												<c:when test="${LTList.lec_use=='Y'}">
 													<td><a
 														href="${cp}/lecture/lectureDelete?lec_id=${LTList.lec_id}"
-														onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
+														onclick="return confirm('해당강좌를  삭제하시겠습니까?')"
 														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
 												</c:when>
 												<c:otherwise>
 													<td><a
 														href="${cp}/lecture/lectureUse?lec_id=${LTList.lec_id}"
-														onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
+														onclick="return confirm('해당강좌를 사용 하시겠습니까?')"
 														class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
 												</c:otherwise>
 											</c:choose>

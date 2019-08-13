@@ -5,11 +5,11 @@
 <mapper namespace="chat">
 
 <select id="chatList" parameterType="String" resultType="chatMemListVo">
-select * 
-from chat c, chatMem cm
-where c.Chat_Id = cm.chat_id
-and mem_id = #{mem_id}
+
+select * from (select * from chatMem where chat_id IN (select chat_id from chatMem where mem_id=#{mem_id}) and Mem_Id!=#{mem_id}) cm, chat c
+where cm.Chat_Id = c.chat_id
 </select>
+
 
 
 	

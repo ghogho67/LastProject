@@ -81,7 +81,7 @@ function initSocket() {
          
       //나와 상대방이 보낸 메세지를 구분하여 영역을 나눈다.//
       if(currentusersession == sessionName.trim()){
-         var printHTML = "<li class='chat' style='text-align:right'>";
+         var printHTML = "<li class='chat'>";
          printHTML += "<li class='self'>";
          printHTML += "<div class='msg'>";
          printHTML += "<div class='user'>"+sessionName+"</div>";
@@ -94,7 +94,7 @@ function initSocket() {
          $("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
          
       } else{
-         var printHTML = "<li class='chat' style='text-align:left>";
+         var printHTML = "<li class='chat' >";
          printHTML += "<li class='other'>";
          printHTML += "<div class='msg'>";
          printHTML += "<div class='user'>"+sessionName+"</div>";
@@ -123,7 +123,13 @@ $(document).ready(function() {
    var userId = "${mem_id}";   //사용자 아이디를 파라미터로 받는다
    $("#userId").text(userId);
    initSocket();   //websocket 연결
+   
+   $(".msg").attr("tabindex", -1).focus();
 });
+
+function back(){
+	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
+}
 </script>
 </head>
 <body>
@@ -133,21 +139,57 @@ $(document).ready(function() {
    <table class="container-fluid" style="width: 80%;">
       <tr>
          <td>
-            <div class=chat-header style="width: 100.5%;">
+            <div class=chat-header style="width: 100%;">
                <h2 id="chat-header__name">ThisTok! (id: ${mem_id})</h2>
             </div>
-
             <div>
-
+            
+            
+            
+            
                <div class="chat" id="chatdata">
+               
+               <c:forEach items="${chatTextList }" var="chatText" varStatus="status">
+              
+               	<c:choose>
+	               		<c:when test="${mem_id eq chatText.mem_id }">
+	              		 <li class='chat'>
+	              		  <li class='self'>
+							         <div class='msg'>
+								       	 <div class='user'>${mem_id }</div>
+								         <p>${chatText.chattext_cont }</p>
+								     </div>
+					         </li>
+					     </li>
+	               		</c:when>
+	               		
+	               		<c:otherwise>
+	               		   <li class='chat'>
+					        <li class='other'>
+					         <div class='msg'>
+					        <div class='user'>${chatText.mem_id }</div>
+					        <p>${chatText.chattext_cont }</p>
+					         </div>
+					         </li>
+					        </li>
+	               		</c:otherwise>
+					</c:choose>
+				 </c:forEach>
+               
                   <!-- User Session Info Hidden -->
                   <input type="hidden" value='${mem_id}' id="sessionuserid">
                </div>
+           
+               
+               
                <div>
                   <input type="text" id="message" size="50" /> 
                   
                   <input class="btn" type="button" id="sendBtn" value="Send" />
+                  <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
                </div>
+
+
 
             </div>
          </td>
