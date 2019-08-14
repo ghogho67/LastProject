@@ -119,6 +119,19 @@ public class RegisterServiceTest extends LogicTestEnv{
 
 	}
 	
+	@Test
+	public void idCheckTest() throws ParseException {
+		/***Given***/
+		String mem_id = "brown";
+
+		/***When***/
+		int insertCnt = registerService.idCheck(mem_id);
+
+		/***Then***/
+		assertEquals(1, insertCnt);
+
+	}
+	
 	
 	
 	
