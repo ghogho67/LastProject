@@ -77,14 +77,14 @@ $(document).ready(function(){
 					// 동일한 도메인으로 전송
 					type : 'POST',
 					data : {
-// 						imp_uid : rsp.imp_uid,
+// 						imp_uid C: rsp.imp_uid,
 // 						app_type : editType.val(),
 // 						app_pay : 1,
 // 						mem_id : rsp.buyer_name
-// 						doner :
-// 						doner_phone :
-// 						app_pay :
-// 						doner_comment :
+						doner :$("#doner").val(),
+						doner_phone :$("#doner_phone").val(),
+						app_pay :$("#app_pay").val(),
+						doner_comment :$("#doner_comment").val()
 
 					// 기타 필요한 데이터가 있으면 추가 전달
 					}

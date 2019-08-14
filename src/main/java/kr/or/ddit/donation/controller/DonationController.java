@@ -194,7 +194,7 @@ public class DonationController {
 		
 		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(donationApprovalVo.getApp_id()));
 		
-		return "donation/detailDonation";
+		return "/donation/detailDonation";
 	}
 	
 	
