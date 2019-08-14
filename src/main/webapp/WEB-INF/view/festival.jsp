@@ -247,7 +247,6 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 					monthid[i] = this.id;
 					console.log(monthid[i]);
 				});
-// 				return;
 			}
 
 			if ($(this).attr('class') == 'btn') {
@@ -261,6 +260,7 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 			if ($("#monthlist li .active").children().length == 0) {
 				$("#All1 button").attr('class', 'btn_all_active');
+				monthid[0] = 'All1';
 			}
 
 			$("#monthlist li .active").parent().each(function(i) {
@@ -297,27 +297,32 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 			if (id == 'All2' && $(this).attr('class') == '') {
 				$('#arealist li button').attr('class', 'btn');
 				$(this).attr('class', 'btn_all_active');
-				return;
+				
+				areaid = $(this).parent().prop('id');
+				
 			}
 
 			if ($(this).attr('class') == 'btn') {
 				$('#All2 button').attr('class', '');
 				$('#arealist li button').attr('class', 'btn');
 				$(this).attr('class', 'btn active');
+				areaid = $(this).parent().prop('id');
 				// 			$(this).removeClass('btn').addClass('btn active');
 			} else {
 				$(this).attr('class', 'btn');
 				$('#All2 button').attr('class', 'btn_all_active');
+				areaid = $(this).parent().prop('id');
 
 			}
 
 			if ($("#arealist li .active").children().length == 0) {
 				$("#arealist #All2 button").attr('class', 'btn_all_active');
+				areaid = 'All2';
 
 			}
 			console.log($("#arealist li .active").children().length);
 
-			areaid = $("#arealist li .active").parent().prop('id');
+// 			areaid = $("#arealist li .active").parent().prop('id');
 			console.log(areaid);
 			
 			if(areaid=='All2'){
