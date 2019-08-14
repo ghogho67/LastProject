@@ -1,5 +1,7 @@
 package kr.or.ddit.donation.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -15,15 +17,30 @@ public class DonationService implements IDonationService {
 	private IDonationDao donationDao;
 
 	/**
-	* Method : insertDonation
+	* Method : insertDonation_non
 	* 작성자 : ADMIN
 	* 변경이력 :
+	* @param donationVo
 	* @return
-	* Method 설명 : 기부 등록 -donation
+	* Method 설명 :기부 등록 비회원-donation
 	*/
 	@Override
-	public int insertDonation(DonationVo donationVo) {
-		return donationDao.insertDonation(donationVo);
+	public int insertDonation_non(DonationVo donationVo) {
+		return donationDao.insertDonation_non(donationVo);
+	}
+
+
+	/**
+	* Method : insertDonation_mem
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param donationVo
+	* @return
+	* Method 설명 :기부 등록 회원-donation
+	*/
+	@Override
+	public int insertDonation_mem(DonationVo donationVo) {
+		return donationDao.insertDonation_mem(donationVo);
 	}
 
 	/**
@@ -38,6 +55,37 @@ public class DonationService implements IDonationService {
 	public DonationApprovalVo getDonationApproval(int app_id) {
 		return donationDao.getDonationApproval(app_id);
 	}
+
+
+	/**
+	* Method : getAllDoner
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 전체 기부자 목록 가져오기
+	*/
+	@Override
+	public List<DonationApprovalVo> getAllDoner() {
+		return donationDao.getAllDoner();
+	}
+
+
+	/**
+	* Method : getDoner_memYN
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_yn
+	* @return
+	* Method 설명 : 기부자 증 회원/ 비회원 목록 가져오기
+	*/
+	@Override
+	public List<DonationApprovalVo> getDoner_memYN(String mem_yn) {
+		return donationDao.getDoner_memYN(mem_yn);
+	}
+
+
+
+	
 
 	
 }
