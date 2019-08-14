@@ -16,6 +16,7 @@ public class LectureVo {
 	private String lec_amount;
 	private String lec_use;
 	private String lec_cont;
+	
 	public LectureVo() {
 		super();
 		// TODO Auto-generated constructor stub

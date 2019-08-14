@@ -228,7 +228,7 @@ td {
 
 											<div class="form-group">
 												<label class="col-md-12"></label>
-												<div class="col-md-12">문화센터 정보는 수정이 불가합니다</div>
+												<div class="col-md-12" style="padding-left: 170px;">문화센터정보는 부가제공 사항이며 수정이 불가합니다</div>
 											</div>
 
 

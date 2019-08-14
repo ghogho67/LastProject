@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,9 @@ public class LectureController {
 		return "lecture/lectureMain";
 	}
 	
+	
+	
+
 	
 	
 	
@@ -114,7 +118,7 @@ public class LectureController {
 	public String lectureListManagement(Model model) {
 		
 
-		List<LectureVo> LectureList = lectureService.getLectureList();
+		List<LectureVo> LectureList = lectureService.getLectureAllList();
 		
 		logger.debug("@@@@LectureList : {} ", LectureList);
 
@@ -219,8 +223,8 @@ public class LectureController {
 			@RequestParam(name = "culture_id")int culture_id,
 			@RequestParam(name = "lec_nm")String lec_nm,
 			@RequestParam(name = "lec_tea")String lec_tea,
-			@RequestParam(name = "lec_st_dt")Date lec_st_dt,
-			@RequestParam(name = "lec_end_dt")Date lec_end_dt,
+			@RequestParam(name = "lec_st_dt") @DateTimeFormat(pattern="yyyy-MM-dd")  Date lec_st_dt,
+			@RequestParam(name = "lec_end_dt")  @DateTimeFormat(pattern="yyyy-MM-dd")  Date lec_end_dt,
 			@RequestParam(name = "lec_time")String lec_time,
 			@RequestParam(name = "lec_fee")int lec_fee,
 			@RequestParam(name = "lec_day")String lec_day,
@@ -232,9 +236,7 @@ public class LectureController {
 		logger.debug("@@@@lec_id {}" ,lec_id);
 		
 		String lec_use ="Y";
-		
 		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_cont);
-
 		String viewName =null;
 		
 		int updatelecture = lectureService.updateLecture(lectureVo);
@@ -254,6 +256,10 @@ public class LectureController {
 	
 	@RequestMapping(path = "/Insertlecture", method = RequestMethod.GET)
 	public String Insertlecture(Model model) {
+		
+		List<CultureVo> cultureVo = lectureService.getCultureList();
+		model.addAttribute("cultureVo",cultureVo);
+		
 
 		return "lecture/lectureInsert";
 	
@@ -265,11 +271,11 @@ public class LectureController {
 //강의 추가 
 	@RequestMapping(path = "/Insertlecture", method = RequestMethod.POST)
 	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes,
-			@RequestParam(name = "culture_id")int culture_id,
+			@RequestParam(name = "searchType")int culture_id,
 			@RequestParam(name = "lec_nm")String lec_nm,
 			@RequestParam(name = "lec_tea")String lec_tea,
-			@RequestParam(name = "lec_st_dt")Date lec_st_dt,
-			@RequestParam(name = "lec_end_dt")Date lec_end_dt,
+		     @RequestParam(name = "lec_st_dt")  @DateTimeFormat(pattern="yyyy-MM-dd")  Date lec_st_dt,
+			@RequestParam(name = "lec_end_dt")  @DateTimeFormat(pattern="yyyy-MM-dd")  Date lec_end_dt,
 			@RequestParam(name = "lec_time")String lec_time,
 			@RequestParam(name = "lec_fee")int lec_fee,
 			@RequestParam(name = "lec_day")String lec_day,
@@ -278,10 +284,31 @@ public class LectureController {
 			@RequestParam(name = "lec_amount")String lec_amount
 		) {
 
+		
+
+		
 	     int lec_id =0;
 		 String lec_use="Y";
+		
+	
+		logger.debug("@@@@searchType{}",culture_id);
+		logger.debug("@@@@lec_nm{}",lec_nm);
+		logger.debug("@@@@lec_tea{}",lec_tea);
+		logger.debug("@@@@lec_st_dt{}",lec_st_dt);
+		logger.debug("@@@@lec_end_dt{}",lec_end_dt);
+		logger.debug("@@@@lec_time{}",lec_time);
+		logger.debug("@@@@lec_fee{}",lec_fee);
+		logger.debug("@@@@lec_day{}",lec_day);
+		logger.debug("@@@@lec_type{}",lec_type);
+		logger.debug("@@@@lec_amount{}",lec_amount);
+		logger.debug("@@@@lec_cont{}",lec_cont);
+		
+		
+
+		
 		 
-		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_cont);
+		 LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee,lec_day, lec_type, lec_amount, lec_use, lec_cont);
+		 logger.debug("!!! lectureVo : {} ",lectureVo);
 
 		
 		String viewName =null;
@@ -291,6 +318,11 @@ public class LectureController {
 		
 		if(insertlecture==1) {
 			 viewName="redirect:/lecture/lectureListManagement";
+
+				List<LectureVo> LectureList = lectureService.getLectureList();
+				
+
+				model.addAttribute("LList", LectureList);
 		}else {
 			viewName="redirect:/login";
 		}
