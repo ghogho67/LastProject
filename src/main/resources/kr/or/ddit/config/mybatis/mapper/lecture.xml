@@ -67,6 +67,19 @@
 
 
 
+
+<insert id="InsertCulture" parameterType="cultureVo">
+	
+insert into culture (culture_id, culture_add, culture_type, culture_phone, cate_id) values 
+(culture_id.nextval, #{culture_add}, #{culture_type}, #{culture_phone}, 30020)
+
+
+</insert>
+
+
+
+
+
 <update id="updateLecture" parameterType="LectureVo">
 	
 update lecture set

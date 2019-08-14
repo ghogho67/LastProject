@@ -167,6 +167,20 @@ ul, li, dl, dd {
 
 
 							<c:choose>
+								<c:when test="${checkScore==7}">
+								
+							<img
+								src="${pageContext.request.contextPath}/resource/medino/images/620.jpg"
+								alt="">
+
+								</c:when>
+								<c:when test="${checkScore==6}">
+								
+							<img
+								src="${pageContext.request.contextPath}/resource/medino/images/620.jpg"
+								alt="">
+
+								</c:when>
 								<c:when test="${checkScore==5}">
 								
 							<img
@@ -214,6 +228,16 @@ ul, li, dl, dd {
 
 
 							<c:choose>
+								<c:when test="${  checkScore==7}">
+									<h2 style="text-align: center;">
+										치매 <span style="color: red;">고위험군</span> 입니다
+									</h2>
+								</c:when>
+								<c:when test="${  checkScore==6}">
+									<h2 style="text-align: center;">
+										치매 <span style="color: red;">고위험군</span> 입니다
+									</h2>
+								</c:when>
 								<c:when test="${  checkScore==5}">
 									<h2 style="text-align: center;">
 										치매 <span style="color: red;">고위험군</span> 입니다

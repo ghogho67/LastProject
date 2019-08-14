@@ -10,6 +10,27 @@ select * from (select * from chatMem where chat_id IN (select chat_id from chatM
 where cm.Chat_Id = c.chat_id
 </select>
 
+<update id="deletChat" parameterType="int">
+
+update chat
+    set CHAT_DEL = 'Y' 
+    where chat_id = #{chat_id}
+
+</update>
+
+<insert id="createChat" parameterType="chatVo" keyProperty="chat_id" keyColumn="chat_id" useGeneratedKeys="true">
+
+  insert into Chat 
+  values(CHAT_ID.NEXTVAL, #{chat_nm}, sysdate, #{chat_mem_id}, 'N')
+  
+  	<selectKey keyProperty="chat_id" resultType="int" order="AFTER" keyColumn="chat_id">
+  		select CHAT_ID.currval chat_id 
+  		from dual
+  	
+  	</selectKey>
+
+</insert>
+
 
 
 	

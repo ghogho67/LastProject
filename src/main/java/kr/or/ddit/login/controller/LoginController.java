@@ -115,7 +115,6 @@ public class LoginController {
 				session.setAttribute("MEM_INFO", memberVo);
 				session.setAttribute("mem_id", mem_id);
 				
-				
 			return "redirect:crawling";
 		}
 		else {

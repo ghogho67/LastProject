@@ -123,8 +123,14 @@ $(document).ready(function() {
    var userId = "${mem_id}";   //사용자 아이디를 파라미터로 받는다
    $("#userId").text(userId);
    initSocket();   //websocket 연결
-   
    $(".msg").attr("tabindex", -1).focus();
+   
+   
+   $("#delBtn").on("click", function(){
+	   
+	   $("#deledte").submit();
+   });
+   
 });
 
 function back(){
@@ -177,17 +183,23 @@ function back(){
 				 </c:forEach>
                
                   <!-- User Session Info Hidden -->
-                  <input type="hidden" value='${mem_id}' id="sessionuserid">
+                
+                 	 <input type="hidden" value='${mem_id}' id="sessionuserid">
                </div>
            
                
                
-               <div>
+             
                   <input type="text" id="message" size="50" /> 
-                  
+               <div id="buttonCol">
                   <input class="btn" type="button" id="sendBtn" value="Send" />
                   <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
+                  <input class="btn" type="button" id="delBtn" value="Delete"/>
                </div>
+              
+              <form id="deledte" action="/chat/chatDelete"></form>
+               
+            
 
 
 
