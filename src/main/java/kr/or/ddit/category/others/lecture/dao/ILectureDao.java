@@ -17,6 +17,14 @@ public interface ILectureDao {
 	 * Method 설명 : 전체강의
 	 */
 	List<LectureVo> getLectureList();
+	 
+	List<LectureVo> getLectureAllList();
+	
+	
+	
+	
+	//문화센터 목록
+	List<CultureVo> getCultureList();
 	/**
 	 * Method : getLecture
 	 * 작성자 : 오도아
@@ -86,4 +94,9 @@ public interface ILectureDao {
 	 * Method 설명 : 강좌추가
 	 */
 	int  InsertLecture(LectureVo LectureVo);
+	
+	
+	
+	
 }
+

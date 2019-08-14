@@ -6,16 +6,31 @@
 
 
 
-<!-- 	전체강의를 불러온다 -->
+<!-- 	사용가능한전체강의를 불러온다 -->
 	<select id="getLectureList" resultType="LectureVo">
-		select * from lecture
+		select * from lecture 
+		where lec_use like 'Y'
+		 order by lec_nm
 	</select>
+	
+	
+<!-- 	관리용 전체강의를 불러온다 -->
+	<select id="getLectureAllList" resultType="LectureVo">
+		select * from lecture 
+		 order by lec_nm
+	</select>
+	
+	
+		<select id="getCultureList" resultType="cultureVo">
+		select * from culture order by culture_type
+	</select>
+	
 	
 	
 	<!-- 	특정강의를 불러온다 -->
 	<select id="getLecture" resultType="LectureVo" parameterType="int">
 		select * from lecture
-	where lec_id = #{lec_id}
+	where lec_id = #{lec_id} 
 	</select>
 	
 
@@ -31,7 +46,7 @@
 <!-- 	분류별 강좌목록을 불러온다  불러온다 -->
 	<select id="getCertainLectureList" resultType="LectureVo">
 			select * from lecture
-		where lec_type=#{lec_type}
+		where lec_type=#{lec_type} and lec_use='Y' order by lec_nm
         
 	</select>
 
@@ -55,25 +70,20 @@
 
 
 <insert id="InsertLecture" parameterType="LectureVo">
-	insert into lecture (lec_id, culture_id, lec_nm, lec_tea, lec_st_dt,
-	lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use)
-	values
-	(lec_id.naxtval, #{culture_id},#{lec_nm}, #{lec_tea},#{lec_st_dt},
-	#{lec_end_dt}, #{lec_time}, #{lec_fee},#{lec_day},#{lec_type},#{lec_amount}, 'Y')
+
+INSERT INTO LECTURE
+(LEC_ID, CULTURE_ID, LEC_NM, LEC_TEA, LEC_ST_DT, LEC_END_DT, LEC_TIME, LEC_FEE, LEC_DAY, LEC_TYPE, LEC_AMOUNT, LEC_USE, LEC_CONT)
+values 
+(lec_id.nextval,#{culture_id},#{lec_nm},#{lec_tea},#{lec_st_dt},
+#{lec_end_dt},#{lec_time},#{lec_fee}, #{lec_day},#{lec_type}, #{lec_amount}, 'Y', #{lec_cont})
 
 </insert>
-
-
-
-
 
 
 <insert id="InsertCulture" parameterType="cultureVo">
 	
 insert into culture (culture_id, culture_add, culture_type, culture_phone, cate_id) values 
 (culture_id.nextval, #{culture_add}, #{culture_type}, #{culture_phone}, 30020)
-
-
 </insert>
 
 
