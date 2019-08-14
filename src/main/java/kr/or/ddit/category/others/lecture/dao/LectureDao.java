@@ -20,6 +20,11 @@ public class LectureDao implements ILectureDao {
 
 		return sqlSession.selectList("lecture.getLectureList");
 	}
+	@Override
+	public List<LectureVo> getLectureAllList() {
+		
+		return sqlSession.selectList("lecture.getLectureAllList");
+	}
 
 	@Override
 	public LectureVo getLecture(int lec_id) {
@@ -54,5 +59,11 @@ public class LectureDao implements ILectureDao {
 	@Override
 	public CultureVo getCulture(int culture_id) {
 		return 	sqlSession.selectOne("lecture.getCulture",culture_id);
+	}
+
+	@Override
+	public List<CultureVo> getCultureList() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("lecture.getCultureList");
 	}
 }
