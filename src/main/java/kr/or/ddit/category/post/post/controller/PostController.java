@@ -365,8 +365,9 @@ public class PostController {
 
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 	public String ImageBoard() {
-		return "festival";
+		return "festival.tiles";
 	}
+	
 	
 
 	@RequestMapping(path = "ImageBoard")
