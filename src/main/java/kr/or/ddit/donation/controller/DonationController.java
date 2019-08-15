@@ -1,5 +1,8 @@
 package kr.or.ddit.donation.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +19,7 @@ import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Controller
 @RequestMapping("/donation")
@@ -189,55 +193,57 @@ public class DonationController {
 	* @return
 	* Method 설명 :기부 상세보기
 	*/
-	@RequestMapping(name = "/detailDonation", method = RequestMethod.GET)
-	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo ) {
+	@RequestMapping(path = "/detailDonation", method = RequestMethod.GET)
+	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo, ApprovalVo approvalVo ) {
 		
 		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(donationApprovalVo.getApp_id()));
+		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
-		return "/donation/detailDonation";
+		return "donation/detailDonation";
 	}
 	
 	
 	
+	//-- 관리자
+	
 	/**
-	* Method : donation
+	* Method : donationPagingList
 	* 작성자 : ADMIN
 	* 변경이력 :
-	* @param imp_uid
-	* @param app_type
-	* @param app_pay
-	* @param session
-	* @param model
 	* @return
-	* Method 설명 : 회원결제(import)
+	* Method 설명 :관리자 페이지에서 기부자 전체목록 가져오기 
 	*/
-//	@RequestMapping(path = "/donation_mem")
-//	public String donation_mem(String imp_uid, String app_type, int app_pay, HttpSession session, Model model) {
-//		
-//		ApprovalVo approvalVo = new ApprovalVo();
-//		
-//		approvalVo.setApp_pay(app_pay);
-//		approvalVo.setApp_type("3");
-//		
-//		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
-//		logger.debug("☞memberVo:{}",memberVo);
-//		approvalVo.setMem_id(memberVo.getMem_id());
-//		logger.debug("☞memberVo.getMem_id():{}",memberVo.getMem_id());
-////		approvalVo.setMem_id("brown");
-//		
-//		int insertCnt = approvalService.approvalInsert(approvalVo);
-//		
-//		model.addAttribute("insertCnt", String.valueOf(insertCnt));
-//		
-//		return "jsonView";
-//	}
-	
-	
-	
-	//-- 관리자
+	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
+	public String donationPagingList(Model model, PageVo pageVo) {
+		
+		Map<String, Object> resultMap = donationService.donationPagingList(pageVo);
+		
+		logger.debug("☞resultMap:{}",resultMap);
+		
+		List<DonationApprovalVo> getAllDoner = (List<DonationApprovalVo>) resultMap.get("getAllDoner");
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+		
+		logger.debug("☞getAllDoner:{}",getAllDoner);
+		
+		model.addAttribute("getAllDoner",getAllDoner);
+		model.addAttribute("paginationSize",paginationSize);
+		model.addAttribute("pageVo", pageVo);
+		
+		logger.debug("☞getAllDoner:{}",getAllDoner);
+		logger.debug("☞paginationSize:{}",paginationSize);
+		logger.debug("☞pageVo:{}",pageVo);
+		
+		return "/mypage/donation/donationPagingList.tiles";
+	}
 	
 	
 	
 
 
 }
+
+
+
+
+
+

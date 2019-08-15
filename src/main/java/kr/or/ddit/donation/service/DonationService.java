@@ -1,6 +1,8 @@
 package kr.or.ddit.donation.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import kr.or.ddit.donation.dao.IDonationDao;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Service
 public class DonationService implements IDonationService {
@@ -81,6 +84,28 @@ public class DonationService implements IDonationService {
 	@Override
 	public List<DonationApprovalVo> getDoner_memYN(String mem_yn) {
 		return donationDao.getDoner_memYN(mem_yn);
+	}
+
+
+	/**
+	* Method : donationPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :기부자 페이징 리스트
+	*/
+	@Override
+	public Map<String, Object> donationPagingList(PageVo pageVo) {
+	
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("getAllDoner", donationDao.donationPagingList(pageVo));
+		
+		int donerCnt = donationDao.donerCnt();
+		int paginationSize = (int) Math.ceil((double)donerCnt/pageVo.getPageSize());
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
 	}
 
 

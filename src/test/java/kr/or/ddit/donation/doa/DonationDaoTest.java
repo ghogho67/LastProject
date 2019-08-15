@@ -15,6 +15,7 @@ import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.donation.dao.IDonationDao;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class DonationDaoTest extends LogicTestEnv{
@@ -185,6 +186,41 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Then***/
 		assertEquals(6, getDoner_memYN.size());
 
+	}
+	
+	/**
+	* Method : donerCntTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 : 기부자 전체 수 
+	*/
+	@Test
+	public void donerCntTest() {
+		/***Given***/
+
+		/***When***/
+		int donerCnt = donationDao.donerCnt();
+		/***Then***/
+		assertEquals(20, donerCnt);
+
+	}
+	
+	/**
+	* Method : donationPagingListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :기부자 페이징 리스트
+	*/
+	@Test
+	public void donationPagingListTest() {
+		/***Given***/
+		PageVo pageVo = new PageVo(1,10);
+		/***When***/
+		List<DonationApprovalVo> donationPagingList = donationDao.donationPagingList(pageVo);
+		/***Then***/
+		assertEquals(10, donationPagingList.size());
+
+		
 	}
 	
 	

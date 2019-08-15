@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface IDonationDao {
 	
@@ -51,9 +52,32 @@ public interface IDonationDao {
 	* 변경이력 :
 	* @param mem_yn
 	* @return
-	* Method 설명 : 기부자 증 회원/ 비회원 목록 가져오기
+	* Method 설명 : 기부자 중 회원/ 비회원 목록 가져오기
 	*/
 	List<DonationApprovalVo> getDoner_memYN(String mem_yn); 
+	
+	/**
+	* Method : donerCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :기부자 전체 수 조회
+	*/
+	int donerCnt();
+	
+	/**
+	* Method : donationPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 : 기부자 페이징 리스트
+	*/
+	List<DonationApprovalVo> donationPagingList(PageVo pageVo);
+	
+	
+	
+	
 	
 	
 	
