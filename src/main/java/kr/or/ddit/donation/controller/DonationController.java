@@ -75,16 +75,17 @@ public class DonationController {
 		donationVo.setDoner(donationApprovalVo.getDoner());
 		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
 		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
+		donationVo.setMem_yn("N");
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
 		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
-		int insertDonationCnt = donationService.insertDonation(donationVo);
+		int insertDonation_nonCnt = donationService.insertDonation_non(donationVo);
 		
-		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
+		logger.debug("☞insertDonationCnt:{}",insertDonation_nonCnt);
 		
-		if(insertApproval_nonCnt == 1 && insertDonationCnt == 1) {
+		if(insertApproval_nonCnt == 1 && insertDonation_nonCnt == 1) {
 			
 			model.addAttribute("donationApprovalVo",donationApprovalVo);
 			model.addAttribute("donationVo",donationVo);
@@ -122,7 +123,7 @@ public class DonationController {
 	* Method 설명 :회원 기부
 	*/
 	@RequestMapping(path = "/memberDonation", method = RequestMethod.POST)
-	public String memberInsertDonation(Model model, ApprovalVo approvalVo, DonationVo donationVo, 
+	public String memberInsertDonation(Model model,String imp_uid, ApprovalVo approvalVo, DonationVo donationVo, 
 			DonationApprovalVo donationApprovalVo, HttpSession session) {
 		
 		approvalVo.setApp_id(donationApprovalVo.getApp_id());
@@ -149,16 +150,17 @@ public class DonationController {
 		donationVo.setDoner(donationApprovalVo.getDoner());
 		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
 		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
+		donationVo.setMem_yn("Y");
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
 		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
-		int insertDonationCnt = donationService.insertDonation(donationVo);
+		int insertDonation_memCnt = donationService.insertDonation_mem(donationVo);
 		
-		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
+		logger.debug("☞insertDonation_memCnt:{}",insertDonation_memCnt);
 		
-		if(insertApproval_memCnt == 1 && insertDonationCnt == 1) {
+		if(insertApproval_memCnt == 1 && insertDonation_memCnt == 1) {
 			
 			model.addAttribute("donationApprovalVo",donationApprovalVo);
 			model.addAttribute("donationVo",donationVo);
@@ -168,7 +170,8 @@ public class DonationController {
 			logger.debug("☞donationVo:{}",donationVo);
 			logger.debug("☞approvalVo:{}",approvalVo);
 		
-			return "donation/detailDonation";
+//			return "donation/detailDonation";
+			return "jsonView";
 		}else {
 			return "/login";
 		}
@@ -191,8 +194,49 @@ public class DonationController {
 		
 		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(donationApprovalVo.getApp_id()));
 		
-		return "donation/detailDonation";
+		return "/donation/detailDonation";
 	}
+	
+	
+	
+	/**
+	* Method : donation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param imp_uid
+	* @param app_type
+	* @param app_pay
+	* @param session
+	* @param model
+	* @return
+	* Method 설명 : 회원결제(import)
+	*/
+//	@RequestMapping(path = "/donation_mem")
+//	public String donation_mem(String imp_uid, String app_type, int app_pay, HttpSession session, Model model) {
+//		
+//		ApprovalVo approvalVo = new ApprovalVo();
+//		
+//		approvalVo.setApp_pay(app_pay);
+//		approvalVo.setApp_type("3");
+//		
+//		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+//		logger.debug("☞memberVo:{}",memberVo);
+//		approvalVo.setMem_id(memberVo.getMem_id());
+//		logger.debug("☞memberVo.getMem_id():{}",memberVo.getMem_id());
+////		approvalVo.setMem_id("brown");
+//		
+//		int insertCnt = approvalService.approvalInsert(approvalVo);
+//		
+//		model.addAttribute("insertCnt", String.valueOf(insertCnt));
+//		
+//		return "jsonView";
+//	}
+	
+	
+	
+	//-- 관리자
+	
+	
 	
 
 

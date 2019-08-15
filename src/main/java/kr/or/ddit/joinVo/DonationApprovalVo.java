@@ -8,6 +8,7 @@ public class DonationApprovalVo {
 	private String doner;
 	private String doner_phone;
 	private String doner_comment;
+	private String mem_yn;
 	
 	private int app_id;
 	private int app_pay;
@@ -50,6 +51,14 @@ public class DonationApprovalVo {
 
 	public void setDoner_comment(String doner_comment) {
 		this.doner_comment = doner_comment;
+	}
+
+	public String getMem_yn() {
+		return mem_yn;
+	}
+
+	public void setMem_yn(String mem_yn) {
+		this.mem_yn = mem_yn;
 	}
 
 	public int getApp_id() {
@@ -100,12 +109,13 @@ public class DonationApprovalVo {
 		this.app_del = app_del;
 	}
 
-	public DonationApprovalVo(int don_id, String doner, String doner_phone, String doner_comment, int app_id,
-			int app_pay, Date app_time, String app_type, String mem_id, String app_del) {
+	public DonationApprovalVo(int don_id, String doner, String doner_phone, String doner_comment, String mem_yn,
+			int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del) {
 		this.don_id = don_id;
 		this.doner = doner;
 		this.doner_phone = doner_phone;
 		this.doner_comment = doner_comment;
+		this.mem_yn = mem_yn;
 		this.app_id = app_id;
 		this.app_pay = app_pay;
 		this.app_time = app_time;
@@ -117,10 +127,14 @@ public class DonationApprovalVo {
 	@Override
 	public String toString() {
 		return "DonationApprovalVo [don_id=" + don_id + ", doner=" + doner + ", doner_phone=" + doner_phone
-				+ ", doner_comment=" + doner_comment + ", app_id=" + app_id + ", app_pay=" + app_pay + ", app_time="
-				+ app_time + ", app_type=" + app_type + ", mem_id=" + mem_id + ", app_del=" + app_del + "]";
+				+ ", doner_comment=" + doner_comment + ", mem_yn=" + mem_yn + ", app_id=" + app_id + ", app_pay="
+				+ app_pay + ", app_time=" + app_time + ", app_type=" + app_type + ", mem_id=" + mem_id + ", app_del="
+				+ app_del + "]";
 	}
+	
+	
 
+	
 	
 	
 	
