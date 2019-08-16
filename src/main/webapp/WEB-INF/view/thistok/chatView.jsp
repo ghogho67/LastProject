@@ -183,7 +183,6 @@ function back(){
 				 </c:forEach>
                
                   <!-- User Session Info Hidden -->
-                
                  	 <input type="hidden" value='${mem_id}' id="sessionuserid">
                </div>
            
