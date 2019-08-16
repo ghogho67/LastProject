@@ -4,19 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="donation">
 
-	<!-- 기부등록 - donation -->
-	<insert id="insertDonation" parameterType="donationVo">
+	
+	<!-- 기부등록 비회원 - donation -->
+	<insert id="insertDonation_non" parameterType="donationVo">
 		insert into donation (don_id
 		                     ,doner
 		                     ,doner_phone
 		                     ,doner_comment
-		                     ,app_id)
+		                     ,app_id
+		                     ,mem_yn)
 		              values(don_id.nextval
 		                    ,#{doner}
 		                    ,#{doner_phone}
 		                    ,#{doner_comment}
-		                    ,#{app_id})
+		                    ,#{app_id}
+		                    ,'N')
 	</insert>
+	
+	<!-- 기부등록 회원 - donation -->
+	<insert id="insertDonation_mem" parameterType="donationVo">
+		insert into donation (don_id
+		                     ,doner
+		                     ,doner_phone
+		                     ,doner_comment
+		                     ,app_id
+		                     ,mem_yn)
+		              values(don_id.nextval
+		                    ,#{doner}
+		                    ,#{doner_phone}
+		                    ,#{doner_comment}
+		                    ,#{app_id}
+		                    ,'Y')
+	</insert>
+	
+	
+	
 	
 
 

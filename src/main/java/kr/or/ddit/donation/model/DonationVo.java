@@ -7,6 +7,7 @@ public class DonationVo {
 	private String doner_phone;
 	private String doner_comment;
 	private int app_id;
+	private String mem_yn;
 	
 	public DonationVo() {
 		
@@ -52,20 +53,31 @@ public class DonationVo {
 		this.app_id = app_id;
 	}
 
-	public DonationVo(int don_id, String doner, String doner_phone, String doner_comment, int app_id) {
-		super();
+	public String getMem_yn() {
+		return mem_yn;
+	}
+
+	public void setMem_yn(String mem_yn) {
+		this.mem_yn = mem_yn;
+	}
+
+	public DonationVo(int don_id, String doner, String doner_phone, String doner_comment, int app_id, String mem_yn) {
 		this.don_id = don_id;
 		this.doner = doner;
 		this.doner_phone = doner_phone;
 		this.doner_comment = doner_comment;
 		this.app_id = app_id;
+		this.mem_yn = mem_yn;
 	}
+	
+	
 
 	@Override
 	public String toString() {
 		return "DonationVo [don_id=" + don_id + ", doner=" + doner + ", doner_phone=" + doner_phone + ", doner_comment="
-				+ doner_comment + ", app_id=" + app_id + "]";
+				+ doner_comment + ", app_id=" + app_id + ", mem_yn=" + mem_yn + "]";
 	}
+
 	
 	
 	

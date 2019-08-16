@@ -90,14 +90,14 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                                  
-<%--                                     <p>기부자 이름 : ${donationAppovalVo.don_id }</p> --%>
+<%--                                     <p>기부자 이름 : ${donationApprovalVo.doner }</p> --%>
                                     <p>기부자 이름 : ${donationVo.doner }</p>
                                  </div>
                               </div>
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
-<%--                                     <p>회원 아이디 : ${donationAppovalVo.mem_id }</p> --%>
+<%--                                     <p>회원 아이디 : ${donationApprovalVo.mem_id }</p> --%>
                                     <p>회원 아이디 : ${approvalVo.mem_id }</p>
                                  </div>
                               </div>
@@ -106,7 +106,7 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                               
-<%--                                     <p>전화번호: ${donationCAppovalVo.doner_phone }</p> --%>
+<%--                                     <p>전화번호: ${donationApprovalVo.doner_phone }</p> --%>
                                     <p>전화번호: ${donationVo.doner_phone }</p>
                                  </div>
                               </div>
@@ -116,10 +116,10 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                               
-<%--                                     <p>기부날자: <fmt:formatDate value="${donationAppovalVo.app_time }" --%>
-<%--                                     <p>기부날자: <fmt:formatDate value="${appovalVo.app_time }" --%>
+<%--                                     <p>기부날자: <fmt:formatDate value="${approvalVo.app_time }" --%>
 <%--                                              pattern="yyyy-MM-dd" /></p> --%>
-										<p>기부날자: ${approvalVo.app_time }</p>
+<%-- 										<p>기부 날자: ${donationApprovalVo.app_time }</p> --%>
+										<p>기부 날자: ${approvalVo.app_time }</p>
                                  </div>
                               </div>
 
@@ -127,7 +127,7 @@ $(document).ready(function(){
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
-<%--                                     <p>기부 금액: ${donationAppovalVo.app_pay }</p> --%>
+<%--                                     <p>기부 금액: ${donationApprovalVo.app_pay }</p> --%>
                                     <p>기부 금액: ${approvalVo.app_pay }</p>
 
                                  </div>
@@ -137,7 +137,7 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
 <%--                                     <p>기부사유: ${donationAppovalVo.don_comment }</p> --%>
-                                    <p>기부사유: ${donationVo.doner_comment }</p>
+                                    <p>기부 사유: ${donationVo.doner_comment }</p>
 
                                  </div>
                               </div>

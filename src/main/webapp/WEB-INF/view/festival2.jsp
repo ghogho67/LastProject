@@ -1,20 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>BasicSubPage</title>
+
+
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Rubik&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${cp}/common/festival.css" />
 <link rel="stylesheet" href="${cp}/common/content.css" />
 
-
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
-<%@include file="/WEB-INF/view/common/joinCare.jsp"%>
+<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
 
-<style>
+<style type="text/css">
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+
+tr {
+	text-align: center;
+	font-weight: 500;
+}
+
+td {
+	text-align: center;
+}
+
+.title {
+	background-color: transparent;
+	width: 180px;
+	padding: 3px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.kkk {
+	background-color: transparent;
+	border-color: transparent;
+	width: 30px;
+	padding: 3px;
+	font-size: 9pt;
+	width: 30px;
+}
+
 .pagination-outer{ text-align: center; }
 .pagination{
     font-family: 'Rubik', sans-serif;
@@ -135,9 +180,7 @@ right: 21%;
     height: 100%;
 }
 
-.info {
-	 background: #fff;
-}
+
 .box_rightType1 {
     float: right;
     width: 300px;
@@ -174,9 +217,29 @@ right: 21%;
     margin-bottom: 10px;
 }
 
+.info {
+	 background: #fff !important;
+}
+
+#header{
+    z-index: 2;
+}
+.left-sidebar{
+    z-index: 3 !important;
+ }
+ .container{
+ 	z-index: 1;
+ 	position: relative;
+    top: 100px;
+    right: 9px;
+    margin-right: 120px !important;
+}
+ }
+
 
 
 </style>
+
 
 
 <script
@@ -357,118 +420,95 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 
 
+</head>
+
+<body>
+
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+
+	<div class="container">
+		<div style="padding-top: 50px; width: 1250px;">
+			<div class="card">
+				<div class="card-body">
+					<div id="titlee">
+						<h2>
+							<span>2019 축제</span>
+							
+						</h2>
+						<p class="board-count"></p>
+					</div>
+					<hr>
+				<div class="table-responsive">
+						<!-- 게시글리스트 시작 -->
+				<div class="category_deallist">
+				            <!-- 태그 리스트 -->
+		            <div class="area_tagList">
+		                <ul class="tag_list js_multi" id="monthlist">
+		                    <li id="All1"><button  type="button" class="btn_all_active"><span>#전체</span></button></li>
+		                    <li id="01"><button type="button" class="btn"><span>#1월</span></button></li>
+		                    <li id="02"><button type="button" class="btn"><span>#2월</span></button></li>
+		                    <li id="03"><button type="button" class="btn"><span>#3월</span></button></li>
+		                    <li id="04"><button type="button" class="btn"><span>#4월</span></button></li>
+		                    <li id="05"><button type="button" class="btn"><span>#5월</span></button></li>
+		                    <li id="06"><button type="button" class="btn"><span>#6월</span></button></li>
+		                    <li id="07"><button type="button" class="btn"><span>#7월</span></button></li>
+		                    <li id="08"><button type="button" class="btn"><span>#8월</span></button></li>
+		                    <li id="09"><button type="button" class="btn"><span>#9월</span></button></li>
+		                    <li id="10"><button type="button" class="btn"><span>#10월</span></button></li>
+		                    <li id="11"><button type="button" class="btn"><span>#11월</span></button></li>
+		                    <li id="12"><button type="button" class="btn"><span>#12월</span></button></li>
+		                </ul>
+		                <ul class="tag_list area_list js_one" id="arealist">
+		                    <li id="All2"><button type="button" class="btn_all_active"><span>#전체</span></button></li>
+		                    <li id="1"><button type="button" class="btn"><span>#서울</span></button></li>
+		                    <li id="6"><button type="button" class="btn"><span>#부산</span></button></li>
+		                    <li id="4"><button type="button" class="btn"><span>#대구</span></button></li>
+		                    <li id="2"><button type="button" class="btn"><span>#인천</span></button></li>
+		                    <li id="5"><button type="button" class="btn"><span>#광주</span></button></li>
+		                    <li id="3"><button type="button" class="btn"><span>#대전</span></button></li>
+		                    <li id="7"><button type="button" class="btn"><span>#울산</span></button></li>
+		                    <li id="8"><button type="button" class="btn"><span>#세종</span></button></li>
+		                    <li id="31"><button type="button" class="btn"><span>#경기</span></button></li>
+		                    <li id="32"><button type="button" class="btn"><span>#강원</span></button></li>
+		                    <li id="33"><button type="button" class="btn"><span>#충북</span></button></li>
+		                    <li id="34"><button type="button" class="btn"><span>#충남</span></button></li>
+		                    <li id="35"><button type="button" class="btn"><span>#경북</span></button></li>
+		                    <li id="36"><button type="button" class="btn"><span>#경남</span></button></li>
+		                    <li id="37"><button type="button" class="btn"><span>#전북</span></button></li>
+		                    <li id="38"><button type="button" class="btn"><span>#전남</span></button></li>
+		                    <li id="39"><button type="button" class="btn"><span>#제주</span></button></li>
+		                </ul>
+		            </div>
+		            <!-- //태그 리스트 -->
+		        </div>
+				<div class="list_wrap default-tmplgroup type-best-tmpl col4">
+					<ul id="_dealList" class="list" data-reviewtype="A"
+						data-eventbinding="true">
+						
+					</ul>
+		
+				</div>
+				<br>
+				<br>
 
 
-<section class="patient-area section-padding3">
-	
 
-        <div class="container">
-	 <span style="font-size:30px;">자유게시판</span>
-	 <br>
-            <div class="row">
-           
+				</div>
 
-	
-           <section class="board-list">
-
-		<div class="board-list-in">
-			<div class="board-top">
-				<p class="board-count">
-				</p>
-
-
-
-
-         
-				
 			</div>
 		</div>
-
-		<!-- 게시글리스트 시작 -->
-		<div class="category_deallist">
-		            <!-- 태그 리스트 -->
-            <div class="area_tagList">
-                <!-- ul class="tag_menu">
-                    <li id="thismonth"><a href="javascript:">#이달의축제</a></li>
-                </ul-->
-                <ul class="tag_list js_multi" id="monthlist">
-                    <li id="All1"><button  type="button" class="btn_all_active"><span>#전체</span></button></li>
-                    <li id="01"><button type="button" class="btn"><span>#1월</span></button></li>
-                    <li id="02"><button type="button" class="btn"><span>#2월</span></button></li>
-                    <li id="03"><button type="button" class="btn"><span>#3월</span></button></li>
-                    <li id="04"><button type="button" class="btn"><span>#4월</span></button></li>
-                    <li id="05"><button type="button" class="btn"><span>#5월</span></button></li>
-                    <li id="06"><button type="button" class="btn"><span>#6월</span></button></li>
-                    <li id="07"><button type="button" class="btn"><span>#7월</span></button></li>
-                    <li id="08"><button type="button" class="btn"><span>#8월</span></button></li>
-                    <li id="09"><button type="button" class="btn"><span>#9월</span></button></li>
-                    <li id="10"><button type="button" class="btn"><span>#10월</span></button></li>
-                    <li id="11"><button type="button" class="btn"><span>#11월</span></button></li>
-                    <li id="12"><button type="button" class="btn"><span>#12월</span></button></li>
-                </ul>
-                <ul class="tag_list area_list js_one" id="arealist">
-                    <li id="All2"><button type="button" class="btn_all_active"><span>#전체</span></button></li>
-                    <li id="1"><button type="button" class="btn"><span>#서울</span></button></li>
-                    <li id="6"><button type="button" class="btn"><span>#부산</span></button></li>
-                    <li id="4"><button type="button" class="btn"><span>#대구</span></button></li>
-                    <li id="2"><button type="button" class="btn"><span>#인천</span></button></li>
-                    <li id="5"><button type="button" class="btn"><span>#광주</span></button></li>
-                    <li id="3"><button type="button" class="btn"><span>#대전</span></button></li>
-                    <li id="7"><button type="button" class="btn"><span>#울산</span></button></li>
-                    <li id="8"><button type="button" class="btn"><span>#세종</span></button></li>
-                    <li id="31"><button type="button" class="btn"><span>#경기</span></button></li>
-                    <li id="32"><button type="button" class="btn"><span>#강원</span></button></li>
-                    <li id="33"><button type="button" class="btn"><span>#충북</span></button></li>
-                    <li id="34"><button type="button" class="btn"><span>#충남</span></button></li>
-                    <li id="35"><button type="button" class="btn"><span>#경북</span></button></li>
-                    <li id="36"><button type="button" class="btn"><span>#경남</span></button></li>
-                    <li id="37"><button type="button" class="btn"><span>#전북</span></button></li>
-                    <li id="38"><button type="button" class="btn"><span>#전남</span></button></li>
-                    <li id="39"><button type="button" class="btn"><span>#제주</span></button></li>
-                </ul>
-            </div>
-            <!-- //태그 리스트 -->
-        </div>
-		<div class="list_wrap default-tmplgroup type-best-tmpl col4">
-			<ul id="_dealList" class="list" data-reviewtype="A"
-				data-eventbinding="true">
-				
-			</ul>
-
-		</div>
+							</div>
+							
+			<div class="demo" style="position:absolute; right: 20%;">
+		    	<nav class="pagination-outer" aria-label="Page navigation">
+		        	<ul class="pagination">
+		
+		        	</ul>
+		    	</nav>
+			</div>
 	</div>
-	
-	<div class="box_rightType1">
-            <div class="tit_mPop">
-                <h2>태그선택</h2>
-<!--                 <button type="button" class="btn_close">닫기</button> -->
-            </div>
 
 
-
-
-<br>
-<br>
-
-        <div class="demo" style="position:absolute; right: 40%;">
-    <nav class="pagination-outer" aria-label="Page navigation">
-        <ul class="pagination">
-
-        </ul>
-    </nav>
-		</div>
-
-
-
-	</section>
-              
-
-
-
-            </div>
-        </div>
-        
-
-    </section>
-    
-
+</body>
+</html>
