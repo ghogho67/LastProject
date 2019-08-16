@@ -3,13 +3,16 @@ package kr.or.ddit.approval.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class ApprovalDaoTest extends LogicTestEnv {
@@ -58,6 +61,21 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		List<ApprovalVo> appList = approvalDao.approvalList(mem_id);
 		/*** Then ***/
 		assertEquals(20000, appList.get(0).getApp_pay());
+	}
+	
+	@Test
+	public void approvalPageListTest() {
+		/*** Given ***/
+		String mem_id = "brown";
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mem_id", mem_id);
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		/*** When ***/
+		List<ApprovalVo> appList = approvalDao.approvalPageList(map);
+		/*** Then ***/
+		assertEquals(10, appList.size());
 	}
 
 }

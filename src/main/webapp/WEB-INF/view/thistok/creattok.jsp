@@ -1,9 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="${cp}/resource/wrap/css/ThisTok.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 #logo{
@@ -76,6 +79,10 @@ display:none;
 	margin-left: 20px;
 }
 
+#backBtn{
+	margin-left: 130px;
+	margin-top: 20px;
+}
 
 </style>
 <script type="text/javascript">
@@ -116,7 +123,9 @@ $(document).ready(function(){
 	});
 	
 });
-
+function back(){
+	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
+}
 //
 </script>
 
@@ -131,6 +140,10 @@ $(document).ready(function(){
 			<p>채팅방 이름 :</p><input type="text" name="chat_nm">
 			
 			<button id="creatBtn" type="button">채팅방 개설</button>
+		</div>
+		
+		<div>
+			 <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
 		</div>
 	</form>
 		

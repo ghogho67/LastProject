@@ -65,7 +65,7 @@
 
 										<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">보고서조회</a></li>
 
-										<li class="nav-item"><a class="nav-link" href="#">
+										<li class="nav-item"><a class="nav-link" href="${cp}/approval/approvalCheck">
 											결제 내역 </a></li>
 
 								

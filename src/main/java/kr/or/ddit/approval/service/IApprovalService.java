@@ -1,6 +1,7 @@
 package kr.or.ddit.approval.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.approval.model.ApprovalVo;
 
@@ -42,4 +43,15 @@ public interface IApprovalService {
 	* Method 설명 :가장 최근 app_id찾기
 	*/
 	int currentApproval();
+	
+	
+	/**
+	* Method : approvalPageList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param map
+	* @return
+	* Method 설명 : mem_id 를 검색하여 리스트 갖고오고 페이지네이션
+	*/
+	Map<String, Object> approvalPageList(Map<String, Object> map);
 }

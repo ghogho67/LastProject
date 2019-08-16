@@ -77,14 +77,13 @@ margin-left:10px;
 }
 .chat .day {
     position: relative;
-    display: block;
     text-align: center;
     color: rgba(255,255,255,0.3);
     height: 20px;
     text-shadow: 7px 0px 0px #252C33, 6px 0px 0px #252C33, 5px 0px 0px #252C33, 4px 0px 0px #252C33, 3px 0px 0px #252C33, 2px 0px 0px #252C33, 1px 0px 0px #252C33, 1px 0px 0px #252C33, 0px 0px 0px #252C33, -1px 0px 0px #252C33, -2px 0px 0px #252C33, -3px 0px 0px #252C33, -4px 0px 0px #252C33, -5px 0px 0px #252C33, -6px 0px 0px #252C33, -7px 0px 0px #252C33;
     box-shadow: inset 20px 0px 0px #252C33, inset -20px 0px 0px #252C33, inset 0px -2px 0px rgba(255,255,255,0.1);
     line-height: 38px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 20px;
     cursor: default;
     -webkit-touch-callout: none;
@@ -133,7 +132,7 @@ margin-left:10px;
 }
 .self{
 	text-align: left;
-	margin-left: 290px;
+    margin-left: 200px;
 }
 
 .other .msg {
@@ -156,14 +155,14 @@ margin-left:10px;
 
 .msg {
     background: #eef8ff;
-    min-width: 50px;
+    min-width: 140px !important;
     padding: 10px;
-    border-radius: 2px;
+    border-radius: 10px;
     word-break: break-all;
    
 }
 .msg .user {
-    font-size: 14px;
+    font-size: 18px;
     margin: 0 0 2px 0;
     color: #666;
     font-weight: 700;
@@ -187,10 +186,13 @@ margin-left:10px;
     margin-left: 5px;
 }
 .msg p {
-    font-size: 13px;
+    font-size: 18px;
     margin: 0 0 2px 0;
     color: #777;
     transition: all .2s ease;
+}
+.msg .nt{
+	font-size : 12px;
 }
 .msg img {
     position: relative;
@@ -284,3 +286,4 @@ emoji.shit{background-image: url(https://i.imgur.com/H5Jba8r.png);}
     display: block;
     height: 26px;
 }
+

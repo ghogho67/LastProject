@@ -35,34 +35,6 @@ public class AttendanceController {
 	@Resource(name = "memberService")
 	private IMemberService memberService; 
 	
-	
-	
-
-
-	/**
-	 * Method : rememberMeCookie
-	 * 작성자 : PC21
-	 * 변경이력 :
-	 * @param mem_id
-	 * @param remember
-	 * @param response
-	 * Method 설명 : rememberme 쿠키를 응답으로 생성
-	 */
-	private void rememberMeCookie(String mem_id, String remember, HttpServletResponse response) {
-		int cookieMaxAge = 0;
-		if(remember != null)
-			cookieMaxAge = 60*60*24*30;
-		
-		Cookie mem_idCookie = new Cookie("mem_id",mem_id);
-		mem_idCookie.setMaxAge(cookieMaxAge);
-		
-		Cookie rememberCookie = new Cookie("remember", "true");
-		rememberCookie.setMaxAge(cookieMaxAge);
-		
-		response.addCookie(mem_idCookie);
-		response.addCookie(rememberCookie);
-	}
-	
 	/**
 	* Method : worker_MatchingTest
 	* 작성자 : 이광호
