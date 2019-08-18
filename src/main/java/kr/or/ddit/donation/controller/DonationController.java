@@ -21,6 +21,7 @@ import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
+
 @Controller
 @RequestMapping("/donation")
 public class DonationController {
@@ -266,9 +267,6 @@ public class DonationController {
 //		
 //		return "/mypage/donation/detailDonation.tiles";
 //	}
-	
-	
-	
 	
 	
 

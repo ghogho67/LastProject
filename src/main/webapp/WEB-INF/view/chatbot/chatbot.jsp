@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+	<script type='text/javascript' src='${cp }/dist/annyang.min.js'></script>
 <link rel="stylesheet" href="/css/index.css">
 <script src="/js/index.js"></script>
 <head>
@@ -95,15 +95,25 @@ $(document).ready(function(){
 // 		$("#frm").val(userSay);
 // 		$("#frm").val(chatBotSay);
 
-
-
 // 	$("#sendBtn").on("click", function(){
+// 		var data = $("#frm").serialize();
 // 		$.ajax({
 // 			url : "${cp}/chatboat",
 // 			data : data,
-// 			type : "post",
-// 			success : function(){
-// 				if(data == )
+// 			type : "get",
+// 			success : function(data){
+// 				console.log(data);
+// 				var userquestion= $("#user").val();
+// 				var userSay = $("#chat").append("<div id='userSay'> user :"+userquestion+"</div>" );
+				
+// 				var str = "";
+// 				var chatBotSay = $("#chat").append("<div id='chatBotSay'>" +str+" : chatbot </div>");
+				
+// 				$("#chat").scrollTop($("#chat")[0].scrollHeight);
+				
+// 		 		$("#user").val("");
+// 		 		$("#user").focus();
+// 		 		$("#frm").submit();
 // 			}
 			
 // 		})
@@ -113,23 +123,35 @@ $(document).ready(function(){
 				userquestion == '요양사' || userquestion =='보호사'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#chat").append("<div id='chatBotSay'> 매칭 : chatbot "+"</div><br>"); 
+// 			$("#frm").attr("action", "${cp}");
+			$("#frm").submit();
 		}else if(userquestion == '골드회원' || userquestion == '등급변경' || userquestion == '유료회원'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#chat").append("<div id='chatBotSay'> 골드회원서비스 : chatbot "+"</div><br>");
+// 			$("#frm").attr("action", "${cp}");
+			$("#frm").submit();
 		}else if(userquestion == '내정보' || userquestion == '회원정보' || userquestion =='마이페이지'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#chat").append("<div id='chatBotSay'> 마이페이지 : chatbot "+"</div><br>");
+			$("#frm").attr("action", "${cp}/mypage/Patient_Info");
+			$("#frm").submit();
 		}else if(userquestion == '무더위쉼터' || userquestion == '더위' || userquestion == '더위대피소' 
 				|| userquestion == '무더위' || userquestion == '폭염' || userquestion == '양로원'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#chat").append("<div id='chatBotSay'> 무더위쉼터 : chatbot "+"</div><br>");
+			$("#frm").attr("action", "${cp}/shelter/pagingList");
+			$("#frm").submit();
 		}else if(userquestion == '문화센터' || userquestion == '강좌' || userquestion =='강의' || 
 				userquestion == '교육' || userquestion =='문화' || userquestion =='수업'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#chat").append("<div id='chatBotSay'> 문화강좌정보  : chatbot "+"</div><br>");
+			$("#frm").attr("action", "${cp}/lecture/lectureMain");
+			$("#frm").submit();
 		}else if(userquestion == '메신저' || userquestion == '메세지' || userquestion == '쪽지'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#chat").append("<div id='chatBotSay'> 메신저 : chatbot"+"</div><br>");
+// 			$("#frm").attr("action", "${cp}/");
+			$("#frm").submit();
 		}else if(userquestion == ''){
 			$("#chat").append("<div id='chatBotSay1'> 다시 입력해 주세요 : chatbot"+"</div><br>");
 		}else{
@@ -137,17 +159,14 @@ $(document).ready(function(){
 		} 					
 		
 	
-	
 		
 		
-		
-		
-		//스크롤 하단고정
+// 		//스크롤 하단고정
 		$("#chat").scrollTop($("#chat")[0].scrollHeight);
 		
 		$("#user").val("");
 		$("#user").focus();
-		$("#frm").submit();
+// 		$("#frm").submit();
 		
 	});
 });
@@ -170,6 +189,7 @@ $(document).ready(function(){
 			<button type="button" id="sendBtn" name="sendBtn">전송</button>
 		</div>
 	</div>
+	
 	</form>
 </body>
 

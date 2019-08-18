@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,10 +138,34 @@ $( document ).ready(function() {
 // 		 });
 // 		});
 	
-	$("#searchType").val("${searchType}");
-	$("#searchType").on("change", function(){
+// 	$("#searchType").val("${searchType}");
+// 	$("#searchType").on("change", function(){
+// 		$("#frm2").submit();
+// 	});
+
+	
+	$("#searchBtn").on("click", function() {
+		console.log("searchBtn click");
+		console.log($("#app_id").val());
+		
+//			var sh_add = $(this).find("#sh_add").text();
+//			$("#sh_add").val(sh_add);
+		
 		$("#frm2").submit();
 	});
+	
+	$(".donTr").on("click", function(){
+		console.log("donTr click");
+		
+		var sh_id = $(this).find(".sh_id").text();
+		$("#app_id").val(app_id);
+		$("#frm").attr("action", "${cp}/donation/detailDonation");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+	});
+
+
+
 	
 });
 </script>
@@ -161,26 +187,26 @@ $( document ).ready(function() {
 						</h2>
 					</div>
 						
-<!-- 						<div class="d1"> -->
-<%-- 							<form class="for" id="frm2" action="${cp}/shelter/searchShelter" method="post"> --%>
-<!-- 								<select id="searchType" name="searchType" -->
-<!-- 									style="position: absolute; z-index: 999;"> -->
-<!-- 									<option value="all">동 검색</option> -->
-<!-- 								</select> <input type="text" placeholder="동을 입력해 주세요" name="sh_add" id="sh_add"> -->
-<!-- 								<button type="button" id="searchBtn"></button> -->
-<!-- 							</form> -->
-<!-- 						</div> -->
+						<div class="d1">
+							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">
+								<select id="searchType" name="searchType"
+									style="position: absolute; z-index: 999;">
+									<option value="all">동 검색</option>
+								</select> <input type="text" placeholder="동을 입력해 주세요" name="sh_add" id="sh_add">
+								<button type="button" id="searchBtn"></button>
+							</form>
+						</div>
 						
-						<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> 
-						 <select id="searchType" name="searchType"
-							style="position: absolute; z-index: 999;">
-                                <option value="all">전체 기부자</option>
-                                <option value="mem_y">기부자(회원)</option>
-                                <option value="mem_n">기부자(비회원)</option>
-                             </select> 
-                            <input id="saerchVal" name="saerchVal" type="text" placeholder=""><br>
-                           <button id="saerchBtn" name="saerch" type="button"></button>
-						</form>
+<%-- 						<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">  --%>
+<!-- 						 <select id="searchType" name="searchType" -->
+<!-- 							style="position: absolute; z-index: 999;"> -->
+<!--                                 <option value="all">전체 기부자</option> -->
+<!--                                 <option value="mem_y">기부자(회원)</option> -->
+<!--                                 <option value="mem_n">기부자(비회원)</option> -->
+<!--                              </select>  -->
+<!--                             <input id="saerchVal" name="saerchVal" type="text" placeholder=""><br> -->
+<!--                            <button id="saerchBtn" name="saerch" type="button"></button> -->
+<!-- 						</form> -->
 						
 					<hr>
 					<form id="frm" action="${cp}/donation/pagingList" method="get">
@@ -189,6 +215,7 @@ $( document ).ready(function() {
 						<table class="table center-aligned-table">
 							<thead>
 							<tr>
+								<th scope="col">기부 아이디</th>
 								<th scope="col">기부자 이름</th>
 								<th scope="col">회원 아이디</th>
 								<th scope="col">전화번호</th>
@@ -199,7 +226,8 @@ $( document ).ready(function() {
 							</thead>
 							<tbody>
 							<c:forEach items="${getAllDoner }" var="vo" varStatus="status">
-								<tr>
+								<tr class="donTr" data-sh_id="${vo.sh_id ">
+									<td class="app_id">${vo.app_id }</td>
 									<td>${vo.doner }</td>
 									<td>${vo.mem_id }</td>
 									<td>${vo.doner_phone }</td>
@@ -215,39 +243,38 @@ $( document ).ready(function() {
 					
 					
 					<!-- 페이지 네이션 -->
-				<div class="text-center">
-					<ul class="pagination">
-				
-						<c:choose>
-							<c:when test="${pageVo.page == 1 }">
-								<li class="disabled"><span>«</span></li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="${cp}/donation/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
-							</c:otherwise>
-						</c:choose>
-						
-						<c:forEach begin="1" end="${paginationSize}" var="i">
+					<div class="text-center">
+						<ul class="pagination">
 							<c:choose>
-								<c:when test="${pageVo.page == i}">
-									<li class="active"><span>${i}</span></li>
+								<c:when test="${pageVo.page == 1 }">
+									<li class="disabled"><span>«</span></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="${cp}/donation/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+									<li><a href="${cp}/donation/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
 								</c:otherwise>
 							</c:choose>
-						</c:forEach>
-						
-						<c:choose>
-							<c:when test="${pageVo.page == paginationSize}">
-								<li class="disabled"><span>»</span></li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="${cp}/donation/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
-            </div>
+							
+							<c:forEach begin="1" end="${paginationSize}" var="i">
+								<c:choose>
+									<c:when test="${pageVo.page == i}">
+										<li class="active"><span>${i}</span></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${cp}/donation/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:choose>
+								<c:when test="${pageVo.page == paginationSize}">
+									<li class="disabled"><span>»</span></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${cp}/donation/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
+								</c:otherwise>
+							</c:choose>
+						</ul>
+					</div>
 					
 					</form>
 					
