@@ -118,29 +118,30 @@ td {
 
 
 <script>
-	$(document).ready(function() {
-		$("#searchBtn").on("click", function() {
-			console.log("searchBtn click");
-			console.log($("#sh_add").val());
-			
-// 			var sh_add = $(this).find("#sh_add").text();
-// 			$("#sh_add").val(sh_add);
-			
-			$("#frm2").submit();
-		});
-		
-		$(".shTr").on("click", function(){
-			console.log("shTr click");
-			
-			var sh_id = $(this).find(".sh_id").text();
-			$("#sh_id").val(sh_id);
-			$("#frm").attr("action", "${cp}/shelter/detailShelter");
-			$("#frm").attr("method", "get");
-			$("#frm").submit();
-		});
-
-
+$( document ).ready(function() {
+// 	   $("#saerchBtn").click("on",function(){
+// 			var data = $("#saerchList").serialize();
+// 			console.log(data);
+// 			$.ajax({
+// 				type: "POST",
+// 				url : "${cp}/donation/serachDonation",
+// 				data : data,
+// 				success : function(data){
+// 					console.log(data);
+// 				},
+// 			error : function(xhr){
+// 					alert(xhr.status);
+				
+// 			}
+// 		 });
+// 		});
+	
+	$("#searchType").val("${searchType}");
+	$("#searchType").on("change", function(){
+		$("#frm2").submit();
 	});
+	
+});
 </script>
 
 </head>
@@ -170,6 +171,7 @@ td {
 <!-- 							</form> -->
 <!-- 						</div> -->
 						
+						<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> 
 						 <select id="searchType" name="searchType"
 							style="position: absolute; z-index: 999;">
                                 <option value="all">전체 기부자</option>
@@ -178,7 +180,7 @@ td {
                              </select> 
                             <input id="saerchVal" name="saerchVal" type="text" placeholder=""><br>
                            <button id="saerchBtn" name="saerch" type="button"></button>
-						
+						</form>
 						
 					<hr>
 					<form id="frm" action="${cp}/donation/pagingList" method="get">

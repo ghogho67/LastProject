@@ -109,15 +109,6 @@ $(document).ready(function(){
 // 		})
 // 	});
 
-
-
-
-
-
-
-
-
-
 		if(userquestion == '매칭' || userquestion == '요양보호사' || userquestion == '요양보호사선택' || 
 				userquestion == '요양사' || userquestion =='보호사'){
 			$("#chat").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
@@ -156,7 +147,7 @@ $(document).ready(function(){
 		
 		$("#user").val("");
 		$("#user").focus();
-// 		$("#frm").submit();
+		$("#frm").submit();
 		
 	});
 });
