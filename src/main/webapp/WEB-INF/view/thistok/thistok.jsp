@@ -102,7 +102,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-   	//
+   	
 	 <img id="logo" alt="" src="/image/logosam2.png">
 	 <button id="myBtn" type="submit" >CreateChat</button>
 	 <form id="for" action="http://192.168.0.32/socket/view" method="post">

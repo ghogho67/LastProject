@@ -12,7 +12,7 @@
 				<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
 					<div class="user-info">
 						<img
-							src="${cp}/resource/Admin/images/300.jpg">
+							src="${cp }/chat/tokProfileView?mem_id=${MEM_INFO.mem_id}">
 						<p class="name">${MEM_INFO.mem_nm}</p>
 						<p class="designation"></p>
 						<span class="emp"> </span>

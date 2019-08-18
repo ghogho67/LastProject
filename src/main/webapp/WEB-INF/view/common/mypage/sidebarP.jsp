@@ -12,7 +12,7 @@
 				<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
 					<div class="user-info">
 						<img
-							src="${cp}/resource/Admin/images/900.jpg">
+							src="${cp }/chat/tokProfileView?mem_id=${MEM_INFO.mem_id}">
 						<p class="name">${MEM_INFO.mem_nm}</p>
 						<p class="designation"></p>
 						<span class="gold"> </span>
@@ -65,7 +65,7 @@
 
 										<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">보고서조회</a></li>
 
-										<li class="nav-item"><a class="nav-link" href="#">
+										<li class="nav-item"><a class="nav-link" href="${cp}/approval/approvalCheck">
 											결제 내역 </a></li>
 
 								

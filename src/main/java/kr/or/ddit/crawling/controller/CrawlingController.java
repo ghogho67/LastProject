@@ -37,9 +37,13 @@ public class CrawlingController {
 	private IDiseaseNameService diseaseNameService;
 
 	@RequestMapping(path = "/crawling")
-	public String crawling(HttpSession session, Model model, String mem_id, String keyWord) throws IOException {
+	public String crawling(HttpSession session, Model model) throws IOException {
 		MemberVo memVo = (MemberVo) session.getAttribute("MEM_INFO");
-		mem_id = memVo.getMem_id();
+		if(memVo==null) {
+			return "redirect: /login";
+		}
+		String keyWord=null;
+		String mem_id = memVo.getMem_id();
 		int num = 0;
 		List<MemberDiseaseVo> mdList = memberDiseaseService.getMemDisList(mem_id);
 		logger.debug("☞mdList:{}", mdList.size());

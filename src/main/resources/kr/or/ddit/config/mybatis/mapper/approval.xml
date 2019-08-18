@@ -64,6 +64,32 @@
 		select max(app_id)
 		from approval
 	</select>
+	
+	
+	
+	<select id="approvalPageList" parameterType="map" resultType="approvalVo">
+		<![CDATA[
+		select * 
+			from
+			(select a.*, rownum rn
+			from
+				(select 
+				app_id, 
+				app_pay,
+				to_char(app_time,'YYYY-MM-DD HH24:MI:SS')app_time, 
+				app_type,
+				mem_id
+				
+                from approval
+                where mem_id =#{mem_id})a )b
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
+	</select>
+	
+	<select id="approvalCnt" parameterType="String" resultType="int">
+	 select count(*) from approval
+                where MEM_ID = #{mem_id}
+	</select>
 
 </mapper>
 

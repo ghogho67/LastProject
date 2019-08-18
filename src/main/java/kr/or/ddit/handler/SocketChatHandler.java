@@ -84,6 +84,8 @@ public class SocketChatHandler extends TextWebSocketHandler {
 			logger.debug("연결 끊김 : {}", user);
 		}
 	
+	
+	
 	//webSocketSession으로부터 userId 정보 조회
 	private String getUser(WebSocketSession session) {
 		logger.debug("☞session.getAttributes().get(mem_id) :{}",session.getAttributes().get("mem_id"));

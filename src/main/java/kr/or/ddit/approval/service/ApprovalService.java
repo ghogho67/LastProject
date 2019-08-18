@@ -1,6 +1,8 @@
 package kr.or.ddit.approval.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -71,6 +73,22 @@ public class ApprovalService implements IApprovalService {
 	@Override
 	public int currentApproval() {
 		return approvalDao.currentApproval();
+	}
+
+	@Override
+	public Map<String, Object> approvalPageList(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("approvalPageList", approvalDao.approvalPageList(map));
+
+		
+		String mem_id = (String) map.get("mem_id");
+		int memAllCnt = approvalDao.approvalPageCnt(mem_id);
+		int pageSize = (int)map.get("pageSize");
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
 	}
 	
 	
