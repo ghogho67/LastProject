@@ -364,10 +364,13 @@ public class PostController {
 	}
 
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
-	public String ImageBoard() {
+	public String ImageBoard1() {
 		return "festival.tiles";
 	}
-	
+	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
+	public String ImageBoard2() {
+		return "festival2";
+	}
 	
 
 	@RequestMapping(path = "ImageBoard")
@@ -473,20 +476,32 @@ public class PostController {
 	
 	
 	
-	public int areaCode(HttpServletRequest request, HttpServletResponse response, String area) throws Exception {
-        request.setCharacterEncoding("utf-8");
+	@RequestMapping(path = "festvalPost") 
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
+		 if(pageVo==null) {
+	        	pageVo.setPage(1);
+	        	pageVo.setPageSize(8);
+	        }
+		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
-        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=";
+        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
         String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
         String parameter = "";
  
         PrintWriter out = response.getWriter();
         
-
+//        if(areaid!=0) {
+//        	parameter = parameter + "&" + "areaCode="+areaid;
+//        }
+//        parameter = parameter + "&" + "eventStartDate="+firstDate;
+//        parameter = parameter + "&" + "eventEndDate="+lastDate;
+//        parameter = parameter + "&" + "pageNo="+pageVo.getPage();
+//        parameter = parameter + "&" + "numOfRows="+pageVo.getPageSize();
+//        parameter = parameter + "&" + "arrange=D";
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "numOfRows=17";
+        parameter = parameter + "&" + "contentId=126508";
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
@@ -506,24 +521,57 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
-    
         
+
+        ArrayList<ImageBoardVo> list =null;
+        Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
-        int code =0;
-        for (int i = 0; i < array.size(); i++) {          
-        	JsonObject object = (JsonObject) array.get(i);
-        	String name2 =object.get("name").getAsString();
-        	if(area.equals(name2)) {
-        		code = Integer.parseInt(object.get("code").toString());
-        		break;
-        	}
-        	     
-     
-        }            
-     
-        return code;
+        if(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").isJsonObject() ==false) {
+
+
+        	String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+        	Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
+        	list= gson.fromJson(abc, type);
+        	
+        }else {
+        	
+        }
+        double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
+        int boardCnt2=(int) boardCnt;
+
+
+        model.addAttribute("list", list);
+        model.addAttribute("boardCnt", boardCnt2);
+//        logger.debug("!!!!! list:{}",list);
+        int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        logger.debug("!!!!! paginationSize:{}",paginationSize);
+      
+        int lastpaginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
+        
+        logger.debug("!!!!! lastpaginationSize:{}",lastpaginationSize);
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+        model.addAttribute("startPage", startPage);
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
+		model.addAttribute("pageVo",pageVo);
+		
+		logger.debug("!!!!! startPage:{}",startPage);
+		logger.debug("!!!!! paginationSize:{}",paginationSize);
+
+        
+        return "festivalAjaxHtml";
+        
     }
 
 }

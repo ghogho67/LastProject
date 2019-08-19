@@ -1,5 +1,8 @@
 package kr.or.ddit.donation.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +19,7 @@ import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Controller
 @RequestMapping("/donation")
@@ -75,16 +79,17 @@ public class DonationController {
 		donationVo.setDoner(donationApprovalVo.getDoner());
 		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
 		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
+		donationVo.setMem_yn("N");
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
 		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
-		int insertDonationCnt = donationService.insertDonation(donationVo);
+		int insertDonation_nonCnt = donationService.insertDonation_non(donationVo);
 		
-		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
+		logger.debug("☞insertDonationCnt:{}",insertDonation_nonCnt);
 		
-		if(insertApproval_nonCnt == 1 && insertDonationCnt == 1) {
+		if(insertApproval_nonCnt == 1 && insertDonation_nonCnt == 1) {
 			
 			model.addAttribute("donationApprovalVo",donationApprovalVo);
 			model.addAttribute("donationVo",donationVo);
@@ -122,7 +127,7 @@ public class DonationController {
 	* Method 설명 :회원 기부
 	*/
 	@RequestMapping(path = "/memberDonation", method = RequestMethod.POST)
-	public String memberInsertDonation(Model model, ApprovalVo approvalVo, DonationVo donationVo, 
+	public String memberInsertDonation(Model model,String imp_uid, ApprovalVo approvalVo, DonationVo donationVo, 
 			DonationApprovalVo donationApprovalVo, HttpSession session) {
 		
 		approvalVo.setApp_id(donationApprovalVo.getApp_id());
@@ -149,16 +154,17 @@ public class DonationController {
 		donationVo.setDoner(donationApprovalVo.getDoner());
 		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
 		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
+		donationVo.setMem_yn("Y");
 		
 		logger.debug("☞donationVo:{}",donationVo);
 		
 		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
-		int insertDonationCnt = donationService.insertDonation(donationVo);
+		int insertDonation_memCnt = donationService.insertDonation_mem(donationVo);
 		
-		logger.debug("☞insertDonationCnt:{}",insertDonationCnt);
+		logger.debug("☞insertDonation_memCnt:{}",insertDonation_memCnt);
 		
-		if(insertApproval_memCnt == 1 && insertDonationCnt == 1) {
+		if(insertApproval_memCnt == 1 && insertDonation_memCnt == 1) {
 			
 			model.addAttribute("donationApprovalVo",donationApprovalVo);
 			model.addAttribute("donationVo",donationVo);
@@ -168,7 +174,8 @@ public class DonationController {
 			logger.debug("☞donationVo:{}",donationVo);
 			logger.debug("☞approvalVo:{}",approvalVo);
 		
-			return "donation/detailDonation";
+//			return "donation/detailDonation";
+			return "jsonView";
 		}else {
 			return "/login";
 		}
@@ -186,14 +193,57 @@ public class DonationController {
 	* @return
 	* Method 설명 :기부 상세보기
 	*/
-	@RequestMapping(name = "/detailDonation", method = RequestMethod.GET)
-	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo ) {
+	@RequestMapping(path = "/detailDonation", method = RequestMethod.GET)
+	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo, ApprovalVo approvalVo ) {
 		
 		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(donationApprovalVo.getApp_id()));
+		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
 		return "donation/detailDonation";
 	}
 	
+	
+	
+	//-- 관리자
+	
+	/**
+	* Method : donationPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :관리자 페이지에서 기부자 전체목록 가져오기 
+	*/
+	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
+	public String donationPagingList(Model model, PageVo pageVo) {
+		
+		Map<String, Object> resultMap = donationService.donationPagingList(pageVo);
+		
+		logger.debug("☞resultMap:{}",resultMap);
+		
+		List<DonationApprovalVo> getAllDoner = (List<DonationApprovalVo>) resultMap.get("getAllDoner");
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+		
+		logger.debug("☞getAllDoner:{}",getAllDoner);
+		
+		model.addAttribute("getAllDoner",getAllDoner);
+		model.addAttribute("paginationSize",paginationSize);
+		model.addAttribute("pageVo", pageVo);
+		
+		logger.debug("☞getAllDoner:{}",getAllDoner);
+		logger.debug("☞paginationSize:{}",paginationSize);
+		logger.debug("☞pageVo:{}",pageVo);
+		
+		return "/mypage/donation/donationPagingList.tiles";
+	}
+	
+	
+	
 
 
 }
+
+
+
+
+
+

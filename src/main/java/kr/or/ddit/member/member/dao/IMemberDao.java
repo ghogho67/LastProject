@@ -57,7 +57,7 @@ public interface IMemberDao {
 	
 	/**
 	 * Method : updatePMember
-	 * 작성자 : PC02
+	 * 작성자 : 오도아
 	 * 변경이력 :
 	 * @param userVo
 	 * @return
@@ -69,7 +69,7 @@ public interface IMemberDao {
 	
 	/**
 	 * Method : updateMem
-	 * 작성자 : PC02
+	 * 작성자 : 오도아
 	 * 변경이력 :
 	 * @param userVo
 	 * @return

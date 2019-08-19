@@ -12,7 +12,7 @@
 				<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
 					<div class="user-info">
 						<img
-							src="${cp}/resource/Admin/images/900.jpg">
+							src="${cp }/chat/tokProfileView?mem_id=${MEM_INFO.mem_id}">
 						<p class="name">${MEM_INFO.mem_nm}</p>
 						<p class="designation"></p>
 						<span class="gold"> </span>
@@ -42,7 +42,7 @@
 									     GPS 정보 </a></li>
 									     <li class="nav-item"><a class="nav-link" href="${cp}/mypage/realBpm?mem_id=${MEM_INFO.mem_id}">
 									     심박 정보 </a></li>
-									      <li class="nav-item"><a class="nav-link" href="#">
+									      <li class="nav-item"><a class="nav-link" href="${cp}/mypage/recognitionActResult">
 									     인지 활동 내역 </a></li>
 									
 								</ul>

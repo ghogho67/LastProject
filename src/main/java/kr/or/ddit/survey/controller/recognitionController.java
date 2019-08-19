@@ -1,6 +1,8 @@
 package kr.or.ddit.survey.controller;
 
 
+import java.sql.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.survey.model.SurveyAnswerVo;
 import kr.or.ddit.survey.model.SurveyPartVo;
+import kr.or.ddit.survey.model.SurveyResultVo;
+import kr.or.ddit.survey.service.SurveyResult.ISurveyResultService;
 import kr.or.ddit.survey.service.question.IQuestionService;
 import kr.or.ddit.survey.service.survey.ISurveyService;
 import kr.or.ddit.survey.service.surveyAnswer.ISurveyAnswerService;
@@ -41,6 +45,9 @@ public class recognitionController {
 	@Resource(name = "surveyPartService")
 	private ISurveyPartService surveyPartService;
 
+	@Resource(name = "surveyResultService")
+	private ISurveyResultService surveyResultService;
+	
 
 	@Resource(name = "videoService")
 	private IVideoService videoService;
@@ -202,8 +209,6 @@ public class recognitionController {
 			SurveyAnswerVo SurveyAnswerVo= new SurveyAnswerVo(sur_part_id,ques_id,sur_ans_cont);
 			int insertQuestionAns = surveyAnswerService.insertQuestionAns(SurveyAnswerVo);
 	
-			
-			
 			//지금까지입력한 답변값을 비교하여  정답갯수를 산출한다 
 			
 			int sur_id=901 ;
@@ -217,10 +222,32 @@ public class recognitionController {
 			
 			int checkScore =surveyPartService.checkScore(surveypartVo);
 			
+			//결과를 저장한다
+			
+			
+			String surresult_id ="";
+			String sur_result = String.valueOf(checkScore);
+			
+			SurveyResultVo SurveyResultVo = new kr.or.ddit.survey.model.SurveyResultVo(surresult_id, sur_part_id, sur_result);
+			int insertTestResult=surveyResultService.InsertTestResult(SurveyResultVo);
+			
+			if(insertTestResult==0){
+				
+			}
+			
+			
 		 	logger.debug("@@@@checkScore {}",checkScore);
 			model.addAttribute("checkScore", checkScore);
 			
-		return "recognitionActivites/semiTestResult";
+			
+			String viewName;
+	if(insertTestResult==0){
+		viewName="main";
+			}else {
+				
+				viewName="recognitionActivites/semiTestResult";
+			}
+		return viewName;
 	}
 
 	
