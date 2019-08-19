@@ -51,15 +51,42 @@ td {
 	width: 30px;
 }
 </style>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script>
 	$(document).ready(function() {
 
-		$(".kkk").on("click", function() {
+		
+		
+		console.log('${vo.mapy}');
+		console.log('${vo.mapx}');
+		console.log('${vo.mlevel}');
+		var position = new naver.maps.LatLng('${vo.mapy}','${vo.mapx}');
 
-			$("#frm").submit();
+		var map = new naver.maps.Map('map', {
+		    center: position,
+		    zoom: 6
 		});
+
+		var markerOptions = {
+		    position: position.destinationPoint(90, 15),
+		    map: map,
+		    icon: {
+		        url: '${cp}/image/main.png',
+		        size: new naver.maps.Size(50, 52),
+		        origin: new naver.maps.Point(0, 0),
+		        anchor: new naver.maps.Point(25, 26)
+		    },
+			animation : naver.maps.Animation.BOUNCE
+		};
+
+		var marker = new naver.maps.Marker(markerOptions);
+
 
 	});
 </script>
@@ -83,7 +110,7 @@ td {
 
 						<div id="titlee">
 							<h2>
-								<span>학습.문화</span> 프로그램_등록
+								<span>${vo.title}</span>
 							</h2>
 						</div>
 						<hr>
@@ -91,6 +118,22 @@ td {
 
 
 						<div class="row">
+							<div class="col-lg-5 col-xlg-6 col-md-7">
+								<div class="card">
+									<div class="card-body">
+										<div class="form-horizontal form-material">
+											<div><img alt="" src="${vo.firstimage}" style="width: 100%; height: 400px;">
+											</div>
+											<br>
+											<div id="map" style="width: 100%; height: 400px;"></div>
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+						
 
 							<div class="col-lg-6 col-xlg-6 col-md-7">
 								<div class="card">
@@ -100,39 +143,22 @@ td {
 
 
 											<div class="form-group">
-												<label class="col-md-12">강좌명</label>
+												<label class="col-md-12">행사 소개</label>
 												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_nm}" name="lec_nm"
-														id="lec_nm" class="form-control form-control-line">
+												<p >${vo.overview}</p>
+												<hr class="form-control form-control-line">
 												</div>
 											</div>
-
-											<div class="form-group">
-												<label class="col-md-12">강사명</label>
-												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_tea}"
-														name="lec_tea" id="lec_tea"
-														class="form-control form-control-line">
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-md-12">강의소개</label>
-												<div class="col-md-12">
-													<input type="text" style="" value="${lecture.lec_cont}"
-														class="form-control form-control-line" name="lec_cont"
-														id="lec_cont">
-												</div>
-											</div>
-
-
-
-											<div class="form-group">
+											
+																<div class="form-group">
 												<label class="col-md-12">강좌 시작일</label>
 												<div class="col-md-12">
-													<input type="date" value="<fmt:formatDate value="${lecture.lec_st_dt}"  pattern="yyyy-MM-dd" />"
-														class="form-control form-control-line" name="lec_st_dt"
-														id="lec_st_dt">
+													<fmt:parseDate value="${startDate}" var="startDate" pattern="yyyyMMdd"/>
+													<input type="text" style="" value="<fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/>"
+														class="form-control form-control-line" name="lec_cont"
+														id="lec_cont">
+			
+
 												</div>
 											</div>
 
@@ -141,25 +167,51 @@ td {
 											<div class="form-group">
 												<label class="col-md-12">강좌 종료일</label>
 												<div class="col-md-12">
-													<input type="date"
-														value="<fmt:formatDate value="${lecture.lec_end_dt}"
-												pattern="yyyy-MM-dd" />"
-														class="form-control form-control-line" name="lec_end_dt"
-														id="lec_end_dt">
+														<fmt:parseDate value="${endDate}" var="endDate" pattern="yyyyMMdd"/>
+														<input type="text" style="" value="<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/>"
+														class="form-control form-control-line" name="lec_cont"
+														id="lec_cont">
 												</div>
 											</div>
 
-
 											<div class="form-group">
-												<label for="birth" class="col-md-12">강좌시간</label>
+												<label class="col-md-12">전화번호 </label>
 												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_time}"
+													<input type="text" value="${vo.telname} ${vo.tel}"
+														name="lec_tea" id="lec_tea"
+														class="form-control form-control-line">
+														
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<label for="birth" class="col-md-12">주소</label>
+												<div class="col-md-12">
+													<input type="text" value="${vo.addr1}"
 														class="form-control form-control-line" name="lec_time"
 														id="lec_time">
 												</div>
 											</div>
 
 
+											<div class="form-group">
+												<label class="col-md-12">홈페이지</label>
+												<div class="col-md-12">
+<%-- 													<input type="text" value="${vo.homepage}" --%>
+<!-- 														class="form-control form-control-line"> -->
+														<p>${vo.homepage}</p>
+												
+												</div>
+											</div>
+
+
+
+						
+
+
+
+
+
 										</div>
 									</div>
 								</div>
@@ -168,74 +220,6 @@ td {
 
 
 
-							<div class="col-lg-5 col-xlg-6 col-md-7">
-								<div class="card">
-									<div class="card-body">
-										<div class="form-horizontal form-material">
-
-
-											<div class="form-group">
-												<label for="birth" class="col-md-12">수강가능인원</label>
-												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_amount}"
-														class="form-control form-control-line" name="lec_amount"
-														id="lec_amount">
-												</div>
-
-
-											</div>
-
-
-
-
-											<div class="form-group">
-												<label class="col-md-12">강좌료</label>
-												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_fee}"
-														class="form-control form-control-line" name="lec_fee"
-														id="lec_fee">
-												</div>
-											</div>
-
-
-											<div class="form-group">
-												<label class="col-md-12">강좌요일</label>
-												<div class="col-md-12">
-													<input type="text" value="${lecture.lec_day}"
-														class="form-control form-control-line" name="lec_day"
-														id="lec_day">
-												</div>
-											</div>
-
-
-
-
-
-											<div class="form-group">
-												<label for="birth" class="col-md-12">문화센터명</label>
-												<div class="col-md-12">
-												<select id="searchType" name="searchType">
-												<c:forEach items="${boardPostList}" var="post">
-										<option value="${culture.culture_id}" id="" name="">전체</option>
-												</c:forEach>
-												
-										
-									</select> 
-							
-												
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-
-								<div class="col-sm-12" style="text-align: right;">
-									<button class="btn btn-success" id="kkk" type="submit">강좌정보수정</button>
-								</div>
-							</div>
 
 						</div>
 

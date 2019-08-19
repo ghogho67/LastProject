@@ -42,7 +42,7 @@
 									     GPS 정보 </a></li>
 									     <li class="nav-item"><a class="nav-link" href="${cp}/mypage/realBpm?mem_id=${MEM_INFO.mem_id}">
 									     심박 정보 </a></li>
-									      <li class="nav-item"><a class="nav-link" href="#">
+									      <li class="nav-item"><a class="nav-link" href="${cp}/mypage/recognitionActResult">
 									     인지 활동 내역 </a></li>
 									
 								</ul>
@@ -65,7 +65,7 @@
 
 										<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">보고서조회</a></li>
 
-										<li class="nav-item"><a class="nav-link" href="${cp}/approval/approvalCheck">
+										<li class="nav-item"><a class="nav-link" href="${cp}/approval/approvalCheck?page=1&pageSize=10">
 											결제 내역 </a></li>
 
 								
