@@ -282,7 +282,7 @@ connection.onUserStatusChanged = function(event) {
         names = [connection.extra.userFullName || 'You'].concat(names);
     }
 
-    infoBar.innerHTML = '<b>Active users:</b> ' + names.join(', ');
+    infoBar.innerHTML = '<b>참여한 사람:</b> ' + names.join(', ');
 };
 
 connection.onopen = function(event) {

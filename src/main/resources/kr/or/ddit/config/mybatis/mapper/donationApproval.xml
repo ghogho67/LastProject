@@ -47,29 +47,6 @@
 	<select id="donerCnt" resultType="int">
 		select count(*) 
 		from donation
-<<<<<<< HEAD
-	</select>
-	
-	<!-- 기부자 페이징 리스트 -->
-	<select id="donationPagingList" parameterType="pageVo" resultType="donationApprovalVo">
-		<![CDATA[
-		select *
-		from
-		(select a.*, rownum rn
-		from
-		(select d.doner
-		      ,a.mem_id
-		      ,d.doner_phone
-		      ,a.app_time
-		      ,a.app_pay
-		      ,d.doner_comment
-		from donation d, approval a
-		where a.app_id(+) = d.app_id) a)
-		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
-		]]>
-	</select>
-	
-=======
 	</select>
 	
 	<!-- 기부자 페이징 리스트 -->
@@ -92,9 +69,6 @@
 	</select>
 	
 
-	
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
-	
 	
 	
 	

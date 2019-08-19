@@ -472,15 +472,8 @@ public class PostController {
 	
 	
 	@RequestMapping(path = "festvalPost") 
-<<<<<<< HEAD
-	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
-		 if(pageVo==null) {
-	        	pageVo.setPage(1);
-	        	pageVo.setPageSize(8);
-	        }
-=======
+
 	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -490,19 +483,7 @@ public class PostController {
  
         PrintWriter out = response.getWriter();
         
-<<<<<<< HEAD
-//        if(areaid!=0) {
-//        	parameter = parameter + "&" + "areaCode="+areaid;
-//        }
-//        parameter = parameter + "&" + "eventStartDate="+firstDate;
-//        parameter = parameter + "&" + "eventEndDate="+lastDate;
-//        parameter = parameter + "&" + "pageNo="+pageVo.getPage();
-//        parameter = parameter + "&" + "numOfRows="+pageVo.getPageSize();
-//        parameter = parameter + "&" + "arrange=D";
-        parameter = parameter + "&" + "MobileOS=ETC";
-        parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "contentId=126508";
-=======
+
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "contentId="+contenid;
@@ -511,7 +492,7 @@ public class PostController {
         parameter = parameter + "&" + "addrinfoYN=Y";
         parameter = parameter + "&" + "mapinfoYN=Y";
         parameter = parameter + "&" + "overviewYN=Y";
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
+
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
@@ -531,58 +512,7 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
-        
 
-<<<<<<< HEAD
-        ArrayList<ImageBoardVo> list =null;
-        Gson gson = new Gson();
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        if(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").isJsonObject() ==false) {
-
-
-        	String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
-        	Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
-        	list= gson.fromJson(abc, type);
-        	
-        }else {
-        	
-        }
-        double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
-        int boardCnt2=(int) boardCnt;
-
-
-        model.addAttribute("list", list);
-        model.addAttribute("boardCnt", boardCnt2);
-//        logger.debug("!!!!! list:{}",list);
-        int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-        if(pageVo.getPage()==1) {
-        	startPage =1;
-        }
-        if(startPage>=2) {
-        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-        }
-        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-        
-        logger.debug("!!!!! paginationSize:{}",paginationSize);
-      
-        int lastpaginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
-        
-        logger.debug("!!!!! lastpaginationSize:{}",lastpaginationSize);
-        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-        	paginationSize= lastpaginationSize;
-        }
-        model.addAttribute("startPage", startPage);
-		model.addAttribute("paginationSize", paginationSize);
-		model.addAttribute("lastpaginationSize", lastpaginationSize);
-		model.addAttribute("pageVo",pageVo);
-		
-		logger.debug("!!!!! startPage:{}",startPage);
-		logger.debug("!!!!! paginationSize:{}",paginationSize);
-
-        
-        return "festivalAjaxHtml";
-=======
         Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
@@ -597,7 +527,6 @@ public class PostController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         return "festivalpost";
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
         
     }
 
