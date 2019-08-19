@@ -45,7 +45,7 @@ input[type="text"]::-webkit-input-placeholder {
 											<div class="form-group">
 												<label class="col-md-12">사용자 사진</label>
 												<div class="col-md-12">
-													<input type="text" placeholder="${MEM_INFO.mem_photo_path}"
+													<input type="text" placeholder="${MEM_INFO.mem_photo_nm}"
 														class="form-control form-control-line" readonly="readonly">
 
 												</div>

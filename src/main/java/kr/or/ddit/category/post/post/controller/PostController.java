@@ -30,7 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -48,6 +47,8 @@ import kr.or.ddit.util.PartUtil;
 @RequestMapping("/post")
 @Controller
 public class PostController {
+	
+
 	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
 	@Resource(name = "postService")
@@ -58,6 +59,61 @@ public class PostController {
 
 	@Resource(name = "attachmentService")
 	private IAttachmentService attachmentService;
+
+	@RequestMapping(path = "modifyView")
+	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
+
+		postVo = postService.getPost(post_id);
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("post_id", post_id);
+		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		model.addAttribute("postVo", postVo);
+
+		return "/post/postModify.tiles";
+	}
+
+
+	@RequestMapping("/pagingList")
+	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		if (cate_id != 0)
+			map.put("cate_id", cate_id);
+
+		Map<String, Object> resultMap = postService.postPagingList(map);
+
+		pageVo.setPage((int) map.get("page"));
+		pageVo.setPageSize((int) map.get("pageSize"));
+
+		// ====================================================
+		// set cate_id,postList,pageVo,paginationSize
+		// cate_id
+		model.addAttribute("cate_id", cate_id);
+		// postList
+		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
+		// pageVo
+		model.addAttribute("pageVo", pageVo);
+		// paginationSize
+		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
+		// 화면 출력을 담당하는 jsp에게 역할 위임
+		return "/post/postPagingList.tiles";
+	}
+
+	@RequestMapping(path = "/reply", method = RequestMethod.GET)
+	public String postReply(int cate_id, int post_id, Model model) {
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("post_id", post_id);
+		return "/post/postReply.tiles";
+
+	}
+
+	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
+	public String ImageBoard2() {
+		return "festival2";
+	}
 
 	@RequestMapping("delete")
 	public String postDelete(Model model, int cate_id, int post_id, PageVo pageVo) {
@@ -100,18 +156,6 @@ public class PostController {
 		// 페이지 이동
 		return "/post/postDetail.tiles";
 
-	}
-
-	@RequestMapping(path = "modifyView")
-	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
-
-		postVo = postService.getPost(post_id);
-		model.addAttribute("cate_id", cate_id);
-		model.addAttribute("post_id", post_id);
-		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-		model.addAttribute("postVo", postVo);
-
-		return "/post/postModify.tiles";
 	}
 
 	@RequestMapping(path = "/modify", method = RequestMethod.POST)
@@ -176,35 +220,6 @@ public class PostController {
 
 	}
 
-	@RequestMapping("/pagingList")
-	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", pageVo.getPage());
-		map.put("pageSize", pageVo.getPageSize());
-		if (cate_id != 0)
-			map.put("cate_id", cate_id);
-
-		Map<String, Object> resultMap = postService.postPagingList(map);
-
-		pageVo.setPage((int) map.get("page"));
-		pageVo.setPageSize((int) map.get("pageSize"));
-
-		// ====================================================
-		// set cate_id,postList,pageVo,paginationSize
-		// cate_id
-		model.addAttribute("cate_id", cate_id);
-		// postList
-		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
-		// pageVo
-		model.addAttribute("pageVo", pageVo);
-		// paginationSize
-		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-		model.addAttribute("mem_id", mvo.getMem_id());
-		// 화면 출력을 담당하는 jsp에게 역할 위임
-		return "/post/postPagingList.tiles";
-	}
-
 	@RequestMapping(path = "/register", method = RequestMethod.GET)
 	public String showPostRegister(int cate_id, Model model) {
 		model.addAttribute("cate_id", cate_id);
@@ -262,13 +277,7 @@ public class PostController {
 
 	}
 
-	@RequestMapping(path = "/reply", method = RequestMethod.GET)
-	public String postReply(int cate_id, int post_id, Model model) {
-		model.addAttribute("cate_id", cate_id);
-		model.addAttribute("post_id", post_id);
-		return "/post/postReply.tiles";
 
-	}
 
 	@RequestMapping(path = "/reply", method = RequestMethod.POST)
 	public String postReply(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
@@ -363,19 +372,17 @@ public class PostController {
 		return "/post/postRegister.tiles";
 
 	}
+	
 
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 	public String ImageBoard1() {
 		return "festival.tiles";
 	}
-	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-	public String ImageBoard2() {
-		return "festival2";
-	}
+
 	
 
 	@RequestMapping(path = "ImageBoard")
-	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
+   public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -386,7 +393,7 @@ public class PostController {
         PrintWriter out = response.getWriter();
         
         if(areaid!=0) {
-        	parameter = parameter + "&" + "areaCode="+areaid;
+           parameter = parameter + "&" + "areaCode="+areaid;
         }
         parameter = parameter + "&" + "eventStartDate="+firstDate;
         parameter = parameter + "&" + "eventEndDate="+lastDate;
@@ -423,12 +430,12 @@ public class PostController {
         if(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").isJsonObject() ==false) {
 
 
-        	String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
-        	Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
-        	list= gson.fromJson(abc, type);
-        	
+           String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+           Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
+           list= gson.fromJson(abc, type);
+           
         }else {
-        	
+           
         }
         double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
         int boardCnt2=(int) boardCnt;
@@ -439,10 +446,10 @@ public class PostController {
 //        logger.debug("!!!!! list:{}",list);
         int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
         if(pageVo.getPage()==1) {
-        	startPage =1;
+           startPage =1;
         }
         if(startPage>=2) {
-        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+           startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
         }
         int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
         
@@ -452,78 +459,75 @@ public class PostController {
         
         logger.debug("!!!!! lastpaginationSize:{}",lastpaginationSize);
         if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-        	paginationSize= lastpaginationSize;
+           paginationSize= lastpaginationSize;
         }
         model.addAttribute("startPage", startPage);
-		model.addAttribute("paginationSize", paginationSize);
-		model.addAttribute("lastpaginationSize", lastpaginationSize);
-		model.addAttribute("pageVo",pageVo);
-		
-		logger.debug("!!!!! startPage:{}",startPage);
-		logger.debug("!!!!! paginationSize:{}",paginationSize);
+      model.addAttribute("paginationSize", paginationSize);
+      model.addAttribute("lastpaginationSize", lastpaginationSize);
+      model.addAttribute("pageVo",pageVo);
+      
+      logger.debug("!!!!! startPage:{}",startPage);
+      logger.debug("!!!!! paginationSize:{}",paginationSize);
 
         
         return "festivalAjaxHtml";
         
     }
-	
-	
-	
-	
-	
-	@RequestMapping(path = "festvalPost") 
-	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
+
+	@RequestMapping(path = "festvalPost")
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid,
+			String startDate, String endDate) throws Exception {
 		request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
- 
-        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
-        String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
-        String parameter = "";
- 
-        PrintWriter out = response.getWriter();
-        parameter = parameter + "&" + "MobileOS=ETC";
-        parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "contentId="+contenid;
-        parameter = parameter + "&" + "defaultYN=Y";
-        parameter = parameter + "&" + "firstImageYN=Y";
-        parameter = parameter + "&" + "addrinfoYN=Y";
-        parameter = parameter + "&" + "mapinfoYN=Y";
-        parameter = parameter + "&" + "overviewYN=Y";
-        parameter = parameter + "&" + "_type=json";
- 
-        addr = addr + serviceKey + parameter;
-        URL url = new URL(addr);
- 
-        System.out.println(addr);
- 
-        InputStream in = url.openStream();                            //URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
- 
-        ByteArrayOutputStream bos1 = new ByteArrayOutputStream();        //InputStream의 데이터들을 바이트 배열로 저장하기 위해
-        IOUtils.copy(in, bos1);            //InputStream의 데이터를 바이트 배열로 복사
-        in.close();
-        bos1.close();
- 
-        String mbos = bos1.toString("UTF-8");
- 
-        byte[] b = mbos.getBytes("UTF-8");
-        String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
-        out.println(s);
+		response.setContentType("text/html; charset=utf-8");
 
-        Gson gson = new Gson();
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        DetailCommonVo vo = new DetailCommonVo();
-        String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
-    	vo= gson.fromJson(abc, DetailCommonVo.class);
-    	logger.debug("!!! vo : {}", vo);
-    	logger.debug("!!! startDate : {}", startDate);
-    	logger.debug("!!! endDate : {}", endDate);
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
+		String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
+		String parameter = "";
 
-        model.addAttribute("vo", vo);
-        model.addAttribute("startDate", startDate);
-        model.addAttribute("endDate", endDate);
-        return "festivalpost";
-        
-    }
+		PrintWriter out = response.getWriter();
+		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "MobileApp=aa";
+		parameter = parameter + "&" + "contentId=" + contenid;
+		parameter = parameter + "&" + "defaultYN=Y";
+		parameter = parameter + "&" + "firstImageYN=Y";
+		parameter = parameter + "&" + "addrinfoYN=Y";
+		parameter = parameter + "&" + "mapinfoYN=Y";
+		parameter = parameter + "&" + "overviewYN=Y";
+		parameter = parameter + "&" + "_type=json";
+
+		addr = addr + serviceKey + parameter;
+		URL url = new URL(addr);
+
+		System.out.println(addr);
+
+		InputStream in = url.openStream(); // URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
+
+		ByteArrayOutputStream bos1 = new ByteArrayOutputStream(); // InputStream의 데이터들을 바이트 배열로 저장하기 위해
+		IOUtils.copy(in, bos1); // InputStream의 데이터를 바이트 배열로 복사
+		in.close();
+		bos1.close();
+
+		String mbos = bos1.toString("UTF-8");
+
+		byte[] b = mbos.getBytes("UTF-8");
+		String s = new String(b, "UTF-8"); // String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
+		out.println(s);
+		Gson gson = new Gson();
+		JsonParser jsonParser = new JsonParser();
+		JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
+		DetailCommonVo vo = new DetailCommonVo();
+		String abc = gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body")
+				.getAsJsonObject().get("items").getAsJsonObject().get("item"));
+		vo = gson.fromJson(abc, DetailCommonVo.class);
+		logger.debug("!!! vo : {}", vo);
+		logger.debug("!!! startDate : {}", startDate);
+		logger.debug("!!! endDate : {}", endDate);
+
+		model.addAttribute("vo", vo);
+		model.addAttribute("startDate", startDate);
+		model.addAttribute("endDate", endDate);
+		return "festivalpost";
+
+	}
 
 }

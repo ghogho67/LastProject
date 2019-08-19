@@ -8,7 +8,7 @@
 	<select id="nursingList" resultType="nursingHomeVo">
 		select * 
 		from nursingHome
-		order by nh_id
+		order by nh_id asc
 	</select>
 	
 	<!-- 요양시설 전체 수 조회 -->

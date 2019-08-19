@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,6 @@
 
 
 <style>
-
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -29,7 +28,6 @@
 	color: #473fa0;
 }
 
-
 tr {
 	text-align: center;
 	font-weight: 500;
@@ -38,7 +36,6 @@ tr {
 td {
 	text-align: center;
 }
-
 
 .pagination-outer {
 	text-align: center;
@@ -140,7 +137,6 @@ td {
 }
 
 .d1 {
-	
 	background: white;
 	position: absolute;
 	right: 1%;
@@ -189,11 +185,9 @@ td {
 	border-right: 2px solid #7BA7AB;
 }
 
-
-tbody{
-text-align: center;
+tbody {
+	text-align: center;
 }
-
 </style>
 
 
@@ -272,37 +266,33 @@ text-align: center;
 		<div class="row mb-4">
 
 
-			<div class="col-lg-12" style="padding: 0 60px 0 60px ;">
+			<div class="col-lg-12" style="padding: 0 60px 0 60px;">
 				<div class="card">
 
 
-	<div class="d1">
-										<form class="for">
+					<div class="d1">
+						<form class="for">
 
-											<select id="searchType" name="searchType"
-												style="position: absolute; z-index: 999;">
-												<option value="all">전체</option>
-												<option value="title">제목</option>
-												<option value="content">내용</option>
-												<option value="writer">작성자</option>
-												<option value="tc">제목+내용</option>
-											</select> <input type="text" placeholder="검색어 입력">
-											<button type="submit"></button>
-										</form>
-									</div>
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+								<option value="all">전체</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+								<option value="writer">작성자</option>
+								<option value="tc">제목+내용</option>
+							</select> <input type="text" placeholder="검색어 입력">
+							<button type="submit"></button>
+						</form>
+					</div>
 
 					<div class="card-body">
 						<div id="titlee">
 							<h2>
 								<span>보고서</span> 조회
 							</h2>
-							
-							
-						
-							
 						</div>
-					
-						
+
+
 						<hr>
 						<div class="table-responsive">
 							<table class="table center-aligned-table">
@@ -312,8 +302,8 @@ text-align: center;
 
 								<thead>
 									<tr class="text-primary">
-										<th >보고서 아이디</th>
-										<th >제목</th>
+										<th>보고서 아이디</th>
+										<th>제목</th>
 										<th>담당요양보호사</th>
 										<th>매칭시작일</th>
 										<th>등록일</th>
@@ -325,13 +315,13 @@ text-align: center;
 
 
 									<c:forEach items="${reportlist}" var="report">
-
 										<tr class="reportTr" data-userid="${report.rep_id}">
 											<td class="reportId">${report.rep_id}</td>
 											<td>${report.rep_title}</td>
 											<td>${report.cw_mem_id}</td>
-											<td><fmt:formatDate value="${report.mat_st}" pattern="yyyy-MM-dd" /></td>
-											<td><fmt:formatDate value="${report.rep_time}" pattern="yyyy-MM-dd" /></td>
+											<td>${report.mat_st}</td>
+											<td><fmt:formatDate value="${report.rep_time}"
+													pattern="yyyy-MM-dd" /></td>
 										</tr>
 									</c:forEach>
 
@@ -352,24 +342,23 @@ text-align: center;
 
 			</div>
 		</div>
-									<div class="demo" style="position: absolute; right: 40%;">
-										<nav class="pagination-outer" aria-label="Page navigation">
-											<ul class="pagination">
-												<li class="page-item"><a href="#" class="page-link"
-													aria-label="Previous"> <span aria-hidden="true">«</span>
-												</a></li>
-												<li class="page-item  active"><a class="page-link"
-													href="#">1</a></li>
-												<li class="page-item"><a class="page-link" href="#">2</a></li>
-												<li class="page-item"><a class="page-link" href="#">3</a></li>
-												<li class="page-item"><a class="page-link" href="#">4</a></li>
-												<li class="page-item"><a class="page-link" href="#">5</a></li>
-												<li class="page-item"><a href="#" class="page-link"
-													aria-label="Next"> <span aria-hidden="true">»</span>
-												</a></li>
-											</ul>
-										</nav>
-									</div>
+		<div class="demo" style="position: absolute; right: 40%;">
+			<nav class="pagination-outer" aria-label="Page navigation">
+				<ul class="pagination">
+					<li class="page-item"><a href="#" class="page-link"
+						aria-label="Previous"> <span aria-hidden="true">«</span>
+					</a></li>
+					<li class="page-item  active"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item"><a href="#" class="page-link"
+						aria-label="Next"> <span aria-hidden="true">»</span>
+					</a></li>
+				</ul>
+			</nav>
+		</div>
 	</div>
 
 

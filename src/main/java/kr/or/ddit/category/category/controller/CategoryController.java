@@ -111,7 +111,7 @@ public class CategoryController {
 		 if(updateCnt==1) {
 			 viewName="redirect:/category/categoryList";
 		 }else {
-			 viewName="redirect:/login";
+			 viewName="redirect:/category/categoryList";
 		 }
 		 
 			return viewName;
@@ -174,20 +174,19 @@ public class CategoryController {
 			@RequestParam(name = "cate_id")int cate_id,
 			@RequestParam(name = "CateTitle")String cate_title) {
 		
-		logger.debug("@@@@CategoryId{}",cate_id);
+		logger.debug("@@@@cate_id{}",cate_id);
 		logger.debug("@@@@CateTitle{}",cate_title);
 		
 		CategoryVo categoryVo= new CategoryVo(cate_id, cate_title);
-		
 		
 		String viewName =null;
 		
 		int updateTitle = categoryService.updateCategoryTitle(categoryVo);
 		
 		if(updateTitle==1) {
-			 viewName="redirect:/category/categoryManagement";
+			 viewName="redirect:/category/categoryList";
 		}else {
-			viewName="redirect:/login";
+			 viewName="redirect:/category/categoryList";
 		}
 		
 		return viewName;

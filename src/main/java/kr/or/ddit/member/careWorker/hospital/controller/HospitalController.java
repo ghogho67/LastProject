@@ -51,7 +51,7 @@ public class HospitalController {
 		
 		List<HospitalVo> hosList = (List<HospitalVo>) resultMap.get("hosList");
 		
-		 int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
         if(pageVo.getPage()==1) {
         	startPage =1;
         }

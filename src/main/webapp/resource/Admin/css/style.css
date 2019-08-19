@@ -13204,8 +13204,7 @@ input:focus {
       
       
       
-        
-  .sidebar .nav {
+    .sidebar .nav {
     display: block;
     padding: 10px 0px 10px 20px; }
     .sidebar .nav .item-category {
@@ -13221,12 +13220,10 @@ input:focus {
       -o-transition-duration: 0s;
       transition-duration: 0s; }
     .sidebar .nav .nav-item a.nav-link {
-    font-family: 'Noto Sans KR', sans-serif;
       color: #636c72;
       padding: 1em;
       white-space: nowrap;
-      font-size: 15px;
-      font-weight: 600; }
+      font-size: 13px; }
       .sidebar .nav .nav-item a.nav-link .fa:first-child {
         margin-right: 0.5em; }
       .sidebar .nav .nav-item a.nav-link img {
@@ -13246,6 +13243,7 @@ input:focus {
       .sidebar .nav.sub-menu .nav-item.active .nav-link {
         border-left: 0;
         background: transparent; }
+
 
 /* style for off-canvas menu*/
 @media screen and (max-width: 991px) {
@@ -13676,7 +13674,7 @@ input:focus {
   outline: none; }
 
 .content-wrapper {
-  font-family: "Noto Sans KR", sans-serif;
+font-family: 'Noto Sans KR', sans-serif;
   background: #f5f5f5;
   margin-left: 215px;
   transition: all .8s ease;

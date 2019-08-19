@@ -129,8 +129,8 @@ td {
 												<c:when test="${Category.cate_usage=='Y'}">
 													<td><a
 														href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
-														onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
-														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+														onclick="return confirm('해당카테고리를 사용하지 않으시겠습니까?')"
+														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td>
 												</c:when>
 												<c:otherwise>
 													<td><a
