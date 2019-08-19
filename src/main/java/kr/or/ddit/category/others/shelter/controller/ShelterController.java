@@ -35,19 +35,38 @@ public class ShelterController {
 	* Method 설명 : 무더위쉼터 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String shelter(Model model, PageVo pageVo) {
+	public String shelter(Model model, PageVo pageVo, int page, int pageSize) {
+		
+		pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
 		
 		Map<String, Object> resultMap = shelterService.shelterPagingList(pageVo);
 		
 		logger.debug("☞resultMap:{}", resultMap);
 		
 		List<ShelterVo> shelterList = (List<ShelterVo>) resultMap.get("shelterList");
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+		
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
 		
 		logger.debug("☞shelterList:{}",shelterList);
 		
 		model.addAttribute("shelterList", shelterList);
 		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo", pageVo);
 		
 		logger.debug("☞shelterList:{}",shelterList);

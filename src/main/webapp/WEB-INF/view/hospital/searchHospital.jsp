@@ -117,15 +117,15 @@ td {
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 <script>
 $(document).ready(function(){
-// 	$(".shTr").on("click", function(){
-// 		console.log("shTr click");
+	$(".hosTr").on("click", function(){
+		console.log("hosTr click");
 		
-// 		var sh_id = $(this).find(".sh_id").text();
-// 		$("#sh_id").val(sh_id);
-// 		$("#frm").attr("action", "${cp}/shelter/detailShelter");
-// 		$("#frm").attr("method", "get");
-// 		$("#frm").submit();
-// 	});
+		var sh_id = $(this).find(".hos_id").text();
+		$("#hos_id").val(hos_id);
+		$("#frm").attr("action", "${cp}/hospital/detailHospital");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+	});
 	
 	//지도
 	getLocation();
@@ -369,7 +369,14 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</table>
 					</div>
 
-						<!-- 페이지네이션 -->
+						
+
+
+						<div id="map" style="width: 100%; height: 400px;"></div>
+					
+					</form>
+					
+					<!-- 페이지네이션 -->
 						<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
@@ -451,13 +458,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
-
-
-						<div id="map" style="width: 100%; height: 400px;"></div>
-					
-					</form>
-					
-	
 					
 					
 				</div>

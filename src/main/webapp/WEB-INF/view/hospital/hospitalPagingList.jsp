@@ -299,9 +299,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</table>
 					</div>
 					
-					
-							<!-- 페이지네이션 -->
-						
 
 					</form>
 					
