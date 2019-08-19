@@ -92,5 +92,27 @@ public class ApprovalDao implements IApprovalDao {
 	public int approvalPageCnt(String mem_id) {
 		return sqlSession.selectOne("approval.approvalCnt", mem_id);
 	}
+//==========================================검색 일반회원 =================================================
+	@Override
+	public List<ApprovalVo> daySaerchList(Map<String, Object> resultMap) {
+		return sqlSession.selectList("approval.dayPageList", resultMap);
+	}
+
+	@Override
+	public int daySaerchCnt(Map<String, Object> day) {
+		return sqlSession.selectOne("approval.dayCnt", day);
+	}
+
+	@Override
+	public List<ApprovalVo> typeSaerchList(Map<String, Object> resultMap) {
+		return sqlSession.selectList("approval.typePageList", resultMap);
+	}
+
+	@Override
+	public int typeSaerchCnt(Map<String, Object> type) {
+		return sqlSession.selectOne("approval.typeCnt", type);
+	}
+	
+//==========================================================================================================
 
 }
