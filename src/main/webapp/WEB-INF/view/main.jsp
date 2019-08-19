@@ -135,7 +135,10 @@
 
 
 
-#fixedbtn{position:fixed;right:10px;bottom:0px;z-index:1000}
+#fixedbtn{position:fixed;right:50px;bottom:50px;z-index:1000}
+
+
+#fixedbtn2{position:fixed;right:50px;bottom:120px;z-index:999}
 
 </style>
 
@@ -327,7 +330,8 @@
 
 
 
-<img src="/image/banner/Banner_201702071159070710.png"  id="fixedbtn">
+<img src="/image/1419496.svg"  style="width: 50px;height: auto;"  id="fixedbtn">
+<img src="/image/bot.svg"  style="width: 50px;height: auto;"  id="fixedbtn2">
 
 
 

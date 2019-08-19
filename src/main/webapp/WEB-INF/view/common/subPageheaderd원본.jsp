@@ -24,7 +24,7 @@
 			
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li><a href="index.html">Home</a></li>
+						<li><a href="${cp}/crawling">Home</a></li>
 						<li><a href="departments.html">회사소개</a></li>
 						<li><a href="departments.html">마이페이지</a></li>
 						<li><a href="#">요양 정보</a>

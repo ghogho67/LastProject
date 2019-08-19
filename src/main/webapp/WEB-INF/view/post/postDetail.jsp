@@ -96,6 +96,9 @@ margin:5px;
 		$("#replyBtn").on("click", function() {
 			$("#replyfrm").submit();
 		})
+		$("#postCont").on("click", function() {
+			$("#postContFrm").submit();
+		})
 
 	});
 </script>
@@ -143,7 +146,7 @@ margin:5px;
 					<div class="titlee">
 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2>
 						<pre>
-cate_id : ${cate_id } post_id : ${post_id }replyList : ${replyList }attachmentList : ${attachmentList }postVo : ${postVo }mem_id : ${mem_id }
+cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachmentList : ${attachmentList } postVo : ${postVo }mem_id : ${mem_id }
 </pre>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
@@ -234,12 +237,16 @@ cate_id : ${cate_id } post_id : ${post_id }replyList : ${replyList }attachmentLi
 								<input type="hidden" name="post_id" value="${post_id }" />
 								<button id="postReBtn" type="button" class="btn btn-primary btn-sm" name="button">답글</button>
 							</form>
+							<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+								<input type="hidden" name="cate_id" value="${cate_id }" /> 
+								<input type="hidden" name="post_id" value="${post_id }" />
+								<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
 

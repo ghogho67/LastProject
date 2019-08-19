@@ -8,155 +8,197 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
-<style>
+<style type="text/css">
+
+
+#titlee h2, #pzone h2 {
+   font-size: 40px;
+   font-weight: normal;
+   letter-spacing: -1px;
+}
+
+#titlee h2 {
+   padding: 25px 35px;
+}
+
+#titlee h2 span {
+   font-weight: bold;
+   color: #473fa0;
+}
+
+tr {
+   text-align: center;
+   font-weight: 500;
+}
+
+td {
+   text-align: center;
+}
+
+.title {
+   background-color: transparent;
+   width: 180px;
+   padding: 3px;
+   font-size: 8pt;
+   text-align: center;
+}
+
+.kkk {
+   background-color: transparent;
+   border-color: transparent;
+   width: 30px;
+   padding: 3px;
+   font-size: 9pt;
+}
 
 .pagination-outer {
-	text-align: center;
+   text-align: center;
 }
 
 .pagination {
-	font-family: 'Rubik', sans-serif;
-	padding: 0 30px;
-	display: inline-flex;
-	position: relative;
+   font-family: 'Rubik', sans-serif;
+   padding: 0 30px;
+   display: inline-flex;
+   position: relative;
 }
 
 .pagination li a.page-link {
-	color: #909090;
-	background-color: transparent;
-	font-size: 15px;
-	line-height: 35px;
-	height: 45px;
-	width: 40px;
-	margin: 0 3px;
-	border: none;
-	border-radius: 0;
-	overflow: hidden;
-	position: relative;
-	transition: all 0.4s ease 0s;
+   color: #909090;
+   background-color: transparent;
+   font-size: 15px;
+   line-height: 35px;
+   height: 45px;
+   width: 40px;
+   margin: 0 3px;
+   border: none;
+   border-radius: 0;
+   overflow: hidden;
+   position: relative;
+   transition: all 0.4s ease 0s;
 }
 
 .pagination li.active a.page-link, .pagination li a.page-link:hover,
-	.pagination li.active a.page-link:hover {
-	color: #006266;
-	background-color: transparent;
+   .pagination li.active a.page-link:hover {
+   color: #006266;
+   background-color: transparent;
 }
 
 .pagination li a.page-link span {
-	display: block;
-	transition: all 0.3s;
+   display: block;
+   transition: all 0.3s;
 }
 
 .pagination li a.page-link:hover span {
-	transform: rotateY(360deg);
+   transform: rotateY(360deg);
 }
 
 .pagination li a.page-link:before, .pagination li a.page-link:after {
-	content: "";
-	background-color: #006266;
-	height: 3px;
-	width: 0;
-	opacity: 1;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	z-index: -1;
-	transition: all 0.3s;
+   content: "";
+   background-color: #006266;
+   height: 3px;
+   width: 0;
+   opacity: 1;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   z-index: -1;
+   transition: all 0.3s;
 }
 
 .pagination li a.page-link:before {
-	background: linear-gradient(135deg, transparent 49%, #006266 50%);
-	height: 15px;
-	width: 15px;
-	transform: translateX(-50%) rotate(45deg);
-	bottom: auto;
-	top: -20px;
-	left: 50%;
+   background: linear-gradient(135deg, transparent 49%, #006266 50%);
+   height: 15px;
+   width: 15px;
+   transform: translateX(-50%) rotate(45deg);
+   bottom: auto;
+   top: -20px;
+   left: 50%;
 }
 
 .pagination li a.page-link:hover:after {
-	width: 100%;
+   width: 100%;
 }
 
 .pagination li a.page-link:hover:before {
-	top: -10px;
+   top: -10px;
 }
 
 .pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
-	{
-	top: -10px;
+   {
+   top: -10px;
 }
 
 .pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
-	{
-	width: 100%;
+   {
+   width: 100%;
 }
 
 @media only screen and (max-width: 480px) {
-	.pagination {
-		display: block;
-	}
-	.pagination li {
-		margin-bottom: 10px;
-		display: inline-block;
-	}
+   .pagination {
+      display: block;
+   }
+   .pagination li {
+      margin-bottom: 10px;
+      display: inline-block;
+   }
 }
 
 .for {
-	position: relative;
-	width: 250px;
-	height: 50px;
-	margin: 0 auto;
+   position: relative;
+   width: 250px;
+   height: 50px;
+   margin: 0 auto;
 }
 
 .d1 {
-	height: 30px;
-	background: white;
-	position: absolute;
-	right: 16%;
+   height: 30px;
+   background: white;
+   position: absolute;
+   right: 5%;
+   margin-top: 3%;
 }
 
 .d1 input {
-	width: 110%;
-	height: 20px;
-	padding-left: 90px;
-	border: 2px solid #7BA7AB;
-	border-radius: 5px;
-	outline: none;
-	background: white;
-	color: #9E9C9C;
-	font-size: 13px;
+   width: 110%;
+   height: 20px;
+   padding-left: 90px;
+   border: 2px solid #7BA7AB;
+   border-radius: 5px;
+   outline: none;
+   background: white;
+   color: #9E9C9C;
+   font-size: 13px;
 }
 
 .d1 button {
-	position: absolute;
-	top: 0;
-	right: -25px;
-/* 	left : 2px; */
-	width: 32px;
-	height: 38px;
-	border: none;
- 	background: #7BA7AB;
-	border-radius: 0 5px 5px 0;
- 	cursor: pointer; 
+   position: absolute;
+   top: 0;
+   right: -25px;
+/*    left : 2px; */
+   width: 32px;
+   height: 38px;
+   border: none;
+   background: #7BA7AB;
+   border-radius: 0 5px 5px 0;
+   cursor: pointer;
 }
 
 .d1 button:before {
-	content: "\f002";
-	font-family: FontAwesome;
-	font-size: 16px;
-	color: #F9F0DA;
+   content: "\f002";
+   font-family: FontAwesome;
+   font-size: 16px;
+   color: #F9F0DA;
 }
 
 #searchType {
-	height: 40px;
-	width: 90px;
-	font-size: 12px;
-	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #7BA7AB;
-	border-bottom: 2px solid #7BA7AB;
-	border-left: 2px solid #7BA7AB;
-	border-right: 2px solid #7BA7AB;
+   height: 40px;
+   width: 90px;
+   font-size: 12px;
+   border-radius: 5px 0px 0px 5px;
+   border-top: 2px solid #7BA7AB;
+   border-bottom: 2px solid #7BA7AB;
+   border-left: 2px solid #7BA7AB;
+   border-right: 2px solid #7BA7AB;
 }
 </style>
 
@@ -184,6 +226,32 @@ $( document ).ready(function() {
 
 	
 });
+$(document).ready(function() {
+//	   $("#searchType").change("on", function(){
+//// 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
+//			alert("/19/07/30형식으로 기입");
+//	   });
+	$("#searchType").val("${searchType}").prop("selected", true);
+	$("#searchVal").val("${searchVal}");
+	
+	   $("#searchBtn").click("on",function(){
+			var data = $("#saerchList").serialize();
+			console.log(data);
+			$.ajax({
+				type: "POST",
+				url : "${cp}/attendance/adminSaerch",
+				data : data,
+				success : function(data){
+					console.log(data);
+				},
+			error : function(xhr){
+					alert(xhr.status);
+				
+			}
+		 });
+		});
+	
+});
 
 
 
@@ -192,57 +260,45 @@ $( document ).ready(function() {
 </head>
 <body>
 
-	<div class="content-wrapper">
-
-		<div class="row mb-4">
-
-
-			<div class="col-lg-12">
-				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 보고서조회</h3>
-		
-                
-<!-- 		<div  style="padding-top: 50px; width: 1350px;"> -->
-      <div class="col-lg-12" style="padding-top: 50px;">
+	<div class="container">
+		<div style="padding-top: 50px; width: 1250px;">
          <div class="card">
             <div class="card-body">
             
-					 <div class="d1">
-                          <form id="saerchList" class="for" method="POST" action="${cp}/attendance/adminSaerch">
-
-                             <select id="searchType" name="searchType"
-							style="position: absolute; z-index: 999;">
-                                <option value="memid">회원아이디</option>
-                                <option value="day">날짜</option>
-                             </select> 
-                            <input id="saerchVal" name="saerchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
-                           <button id="saerchBtn" name="saerch" type="button"></button>
-                          </form>
-                       </div>
+                       <div class="d1">
+	                          <form id="searchList" class="for" action="${cp}/attendance/adminSaerch">
+	
+	                             <select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+	                                <option value="memid">회원아이디</option>
+	                                <option value="day">날짜</option>
+	                             </select> 
+	                            <input id="searchVal" name="searchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
+	                            <input type="hidden"  name = "page" id="page" value="1">
+	 							<input type="hidden" name = "pageSize" id="pageSize" value="10">
+	                           <button id="searchBtn" name="searchBtn" type="button"></button>
+	                          </form>
+	                       </div>
                        
-               <h3 style="font-size: 30px; font-weight: 500; margin-left: 220px;">요양보호사 출석체크 관리</h3>
-              
+						<div id="titlee">
+							<h2>
+								<span>요양보호사 </span>&nbsp;출석체크관리
+							</h2>
+						</div>              
                <hr>
-								<div class="board-list-in">
-									<table class="education-table" style="margin-left: 0px; margin-right: 100px">
+								<div class="table-responsive">
+									<table class="table center-aligned-table">
 
 
-										<colgroup>
-											<col style="width: 10%">
-											<col style="width: 25%" class="ng-scope">
-											<col style="width: 25%">
-											<col style="width: 20%">
-											<col style="width: 10%">
-											<col style="width: 10%">
-										</colgroup>
 
 										<thead>
-											<tr>
-												<th scope="col">NO.</th>
-												<th scope="col">출근시간</th>
-												<th scope="col">퇴근시간</th>
-												<th scope="col">회원아이디</th>
-												<th scope="col">요양보호사아이디</th>
-												<th scope="col">매칭번호</th>
+											<tr class="text-primary">
+												<th>NO.</th>
+												<th>출근시간</th>
+												<th>퇴근시간</th>
+												<th>회원아이디</th>
+												<th>요양보호사아이디</th>
+												<th>매칭번호</th>
 											</tr>
 										</thead>
 
@@ -261,47 +317,86 @@ $( document ).ready(function() {
 						</tbody>
                   </table>
                </div>
-               <!-- 페이지네이션 -->
-							<div class="text-center">
-								<ul class="pagination">
-							
-									<c:choose>
-										<c:when test="${pageVo.page == 1 }">
-											<li class="disabled"><span>«</span></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="${cp}/attendance/cwMatList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
-										</c:otherwise>
-									</c:choose>
-									
-									<c:forEach begin="1" end="${paginationSize}" var="i">
-										<c:choose>
-											<c:when test="${pageVo.page == i}">
-												<li class="active"><span>${i}</span></li>
-											</c:when>
-											<c:otherwise>
-												<li><a href="${cp}/attendance/cwMatList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-									
-									<c:choose>
-										<c:when test="${pageVo.page == paginationSize}">
-											<li class="disabled"><span>»</span></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="${cp}/attendance/cwMatList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-            </div>
          </div>
       </div>
    </div>
 
 </div>
-</div>
-</div>
+
+ 	<div class="demo" style="position:absolute; right: 20%;">
+                <nav class="pagination-outer" aria-label="Page navigation">
+                    <ul class="pagination">
+                       <c:choose>
+      <c:when test="${pageVo.page==1}">
+         <li class="page-item prev disabled">
+            <a href="#" class="page-link" aria-label="Previous">
+                       <span aria-hidden="true">«</span>
+                 </a>
+           </li>
+      </c:when>
+      <c:otherwise>
+         <li class="page-item">
+            <a class="page-link" aria-hidden="Previous" href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span aria-hidden="true">«</span></a></li>
+         
+      </c:otherwise>
+   </c:choose>
+   
+   <c:choose>
+      <c:when test="${pageVo.page==1}">
+         <li class="page-item prev disabled" >
+            <a href="#" class="page-link" aria-label="Previous">
+                       <span aria-hidden="true">‹</span>
+                 </a>
+           </li>
+      </c:when>
+      <c:otherwise>
+         <li class="page-item"><a class="page-link" aria-label="Previous"
+            href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span aria-hidden="true">‹</span></a></li>
+      </c:otherwise>
+   </c:choose>
+   
+   <c:forEach begin="${startPage}" end="${paginationSize}" var="i" >
+      <c:choose>
+         <c:when test="${pageVo.page == i}">
+            <li class="page-item active"><a class="page-link" href="#">${i}</a></li>
+         </c:when>
+         <c:otherwise>
+            <li><a class="page-link"
+               href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+         </c:otherwise>
+      </c:choose>
+   
+   </c:forEach>
+   
+   <c:choose>
+      <c:when test="${pageVo.page == lastpaginationSize}">
+         <li class="page-item next disabled">
+            <a href="#" class="page-link" aria-label="Next">
+                       <span aria-hidden="true">›</span>
+               </a>
+         </li>
+      </c:when>
+      <c:otherwise>
+         <li class="page-item"><a class="page-link"aria-label="Next" 
+            href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span aria-hidden="true">›</span></a></li>
+      </c:otherwise>
+   </c:choose>
+   
+   
+   <c:choose>
+      <c:when test="${pageVo.page == lastpaginationSize}">
+         <li class="page-item next disabled"><a href="#" class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+      </c:when>
+      <c:otherwise>
+         <li class="page-item"><a class="page-link" aria-label="Next"
+            href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span aria-hidden="true">»</span></a></li>
+      </c:otherwise>
+   </c:choose>
+         
+                    </ul>
+                </nav>
+            </div>
+   
 
 
 

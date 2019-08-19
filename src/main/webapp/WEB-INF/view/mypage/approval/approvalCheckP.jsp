@@ -310,7 +310,6 @@ function boardPagingListAjaxHtml(page, pageSize ) {
 							</thead>
 
 							<tbody>
-								<tr>
 									<c:forEach items="${appVo }" var="vo" varStatus="status">
 									<tr>
 										<td>${vo.rn}</td>

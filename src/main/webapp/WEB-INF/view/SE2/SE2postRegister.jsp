@@ -64,6 +64,10 @@ height: 200px;
 										}
 									}
 								})
+								
+						$("#postCont").click(function() {
+						$("#postContFrm").submit();
+						})
 						var form = document.forms[0];
 						var addFileBtn = document.getElementById("addFileBtn");
 						var delFileBtn = document.getElementById("delFileBtn");
@@ -138,10 +142,17 @@ cate_id : ${cate_id }
 						</div>
 							<div>
 								<input type="button" class="btn btn-outline-danger btn-primary mr-2 pull-right" id="savebutton" value="post/register" />
-						</div>
+							</div>
+							<div>
+								<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+							</div>
 						<div>
 						<input type="button" class="btn btn-outline-danger btn-primary mr-2" value="파일추가" id="addFileBtn">
 						<input type="file" name="file"><br> <input type="hidden" name="cate_id" value="${cate_id }">
 						</div>
 					</form>
+					<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+					<input type="hidden" name="cate_id" value="${cate_id }" /> 
+					<input type="hidden" name="post_id" value="${post_id }" />
+				</form>
 				</div>

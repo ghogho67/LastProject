@@ -278,8 +278,7 @@ td {
 												pattern="yyyy-MM-dd" /></td>
 										<td><fmt:formatDate value="${LTList.lec_end_dt}"
 												pattern="yyyy-MM-dd" /></td>
-										<td><fmt:formatDate value="${LTList.lec_end_dt}"
-												pattern="yyyy-MM-dd" /></td>
+											<td>${LTList.lec_time}</td>
 										<td>${LTList.lec_amount}</td>
 
 										<td><a class="btn btn-info btn-sm">&nbsp;&nbsp;접수
@@ -287,20 +286,17 @@ td {
 									</tr>
 
 								</c:forEach>
-
 							</tbody>
-
-
 						</table>
-
-
-
+						<a href="${cp}/lecture/lectureMain"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 
 	<div class="demo" style="position: absolute; right: 40%;">

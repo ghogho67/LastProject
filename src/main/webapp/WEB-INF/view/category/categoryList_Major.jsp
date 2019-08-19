@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>BasicSubPage</title>
+<title>대분류 카테고리 수정</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
@@ -26,7 +30,6 @@
 	font-weight: bold;
 	color: #473fa0;
 }
-
 
 tr {
 	text-align: center;
@@ -61,7 +64,7 @@ td {
 	$(document).ready(function() {
 
 		$(".kkk").on("click", function() {
-		
+
 			$("#frm").submit();
 		});
 
@@ -80,11 +83,11 @@ td {
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-							<div id="titlee">
+					<div id="titlee">
 						<h2>
 							<span>카테고리 관리</span> 대분류
 						</h2>
-						</div>
+					</div>
 					<hr>
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
@@ -101,47 +104,51 @@ td {
 							</thead>
 
 
-								<tbody>
-									<c:forEach items="${CategoryList}" var="Category">
-										<tr class="Category" data-userid="${Category.cate_id}">
-											<td class="CategoryId" id="CategoryId" name="CategoryId">${Category.cate_id}</td>
+							<tbody>
+								<c:forEach items="${CategoryList}" var="Category">
+									<tr class="Category" data-userid="${Category.cate_id}">
+										<td class="CategoryId" id="cate_id" name="cate_id">${Category.cate_id}</td>
+
+										<form id="frm" action="/category/updateCategoryTitle" method="post">
+											<td>
+											<input class="title" id="CateTitle" name="CateTitle" value="${Category.cate_title}"> 
+											<input type="hidden" id="cate_id" name="cate_id" value="${Category.cate_id}" >
 											
-								<form id="frm" action="/category/updateCategoryTitle" method="post">
-											<td><input class="title" id="CateTitle" name="CateTitle"
-												value="${Category.cate_title}">
-												<input type="hidden" value="${Category.cate_id}"  id="cate_id" name="cate_id">
 												<input type="submit" value="수정" class="kkk"></td>
-							</form>
-											<td>${Category.cate_date}</td>
-											<td>${Category.mem_id}</td>
-											<c:choose>
-												<c:when test="${Category.cate_usage=='Y'}">
-													<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
-												</c:when>
-												<c:otherwise>
-													<td><label class="badge badge-danger">사용안함</label></td>
-												</c:otherwise>
-											</c:choose>
-											<td><a
-												href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
-												class="btn btn-primary btn-sm">소분류관리</a></td>
-											<c:choose>
-												<c:when test="${Category.cate_usage=='Y'}">
-													<td><a
-														href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
-														onclick="return confirm('해당카테고리를  삭제하시겠습니까?')"
-														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
-												</c:when>
-												<c:otherwise>
-													<td><a
-														href="${cp}/category/categoryUse?cate_id=${Category.cate_id}"
-														onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
-														class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
-												</c:otherwise>
-											</c:choose>
-										</tr>
-									</c:forEach>
-								</tbody>
+										</form>
+
+
+										<td><fmt:formatDate value="${Category.cate_date}"
+												pattern="yyyy-MM-dd HH:mm" /></td>
+										<td>${Category.mem_id}</td>
+										<c:choose>
+											<c:when test="${Category.cate_usage=='Y'}">
+												<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
+											</c:when>
+											<c:otherwise>
+												<td><label class="badge badge-danger">사용안함</label></td>
+											</c:otherwise>
+										</c:choose>
+										<td><a
+											href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
+											class="btn btn-primary btn-sm">소분류관리</a></td>
+										<c:choose>
+											<c:when test="${Category.cate_usage=='Y'}">
+												<td><a
+													href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
+													onclick="return confirm('해당카테고리를 사용하지 않으시겠습니까?')"
+													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td>
+											</c:when>
+											<c:otherwise>
+												<td><a
+													href="${cp}/category/categoryUse?cate_id=${Category.cate_id}"
+													onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
+													class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+							</tbody>
 
 
 						</table>

@@ -21,6 +21,9 @@
 	src="${pageContext.request.contextPath}/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
 	var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함.
+	$("#postCont").on("click", function() {
+		$("#postContFrm").submit();
+	})
 
 	$(document)
 			.ready(
@@ -74,5 +77,10 @@
 <body>
 	<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
 	<input type="button" id="savebutton" class="btn btn-primary btn-sm"	value="글등록" />
+	<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+								<input type="hidden" name="cate_id" value="${cate_id }" /> 
+								<input type="hidden" name="post_id" value="${post_id }" />
+								<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+							</form>
 </body>
 </html>

@@ -212,8 +212,10 @@ td {
 // // 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
 // 			alert("/19/07/30형식으로 기입");
 // 	   });
-	   
-	   $("#saerchBtn").click("on",function(){
+	$("#searchType").val("${searchType}").prop("selected", true);
+	$("#searchVal").val("${searchVal}");
+	
+	   $("#searchBtn").click("on",function(){
 			var data = $("#saerchList").serialize();
 			console.log(data);
 			$.ajax({
@@ -241,18 +243,21 @@ td {
 		<div style="padding-top: 50px; width: 1250px;">
          <div class="card">
             <div class="card-body">
-					 <div class="d1">
-                          <form id="saerchList" class="for" method="POST">
-
-                             <select id="searchType" name="searchType"
-							style="position: absolute; z-index: 999;">
-                                <option value="memid">회원아이디</option>
-                                <option value="day">날짜</option>
-                             </select> 
-                            <input id="saerchVal" name="saerchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
-                           <button id="saerchBtn" name="saerch" type="button"></button>
-                          </form>
-                       </div>
+                       
+					<div class="d1">
+	                          <form id="searchList" class="for" action="${cp}/attendance/saerch">
+	
+	                             <select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+	                                <option value="memid">회원아이디</option>
+	                                <option value="day">날짜</option>
+	                             </select> 
+	                            <input id="searchVal" name="searchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
+	                            <input type="hidden"  name = "page" id="page" value="1">
+	 							<input type="hidden" name = "pageSize" id="pageSize" value="10">
+	                           <button id="searchBtn" name="searchBtn" type="button"></button>
+	                          </form>
+	                       </div>
                        
                <div id="titlee">
 						<h2>
@@ -273,7 +278,7 @@ td {
 											</tr>
 										</thead>
 						<tbody>
-                        <c:forEach items="${cwMatList }" var="vo" varStatus="status">
+                        <c:forEach items="${cwMatList }" var="vo" varStatus="status" >
                         				<tr>
 											<td>${vo.rn }</td>
 											<td>${vo.ad_st }</td>
@@ -323,7 +328,7 @@ td {
       </c:otherwise>
    </c:choose>
    
-   <c:forEach begin="${startPage}" end="${paginationSize}" var="i">
+   <c:forEach begin="${startPage}" end="${paginationSize}" var="i" >
       <c:choose>
          <c:when test="${pageVo.page == i}">
             <li class="page-item active"><a class="page-link" href="#">${i}</a></li>

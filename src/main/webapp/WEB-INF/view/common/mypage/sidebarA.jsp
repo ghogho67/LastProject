@@ -33,7 +33,8 @@
 								alt=""> <span class="menu-title">결산 관리</span>
 						</a></li>
 						
-						<li class="nav-item"><a class="nav-link"
+						<li class="nav-item">
+						<a class="nav-link"
 							data-toggle="collapse" href="#sample-pages" aria-expanded="false"
 							aria-controls="sample-pages"> <img
 								src="${cp}/resource/Admin/images/icons/9.png"
@@ -63,7 +64,7 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="/attendance/adminCheckList">
+									<li class="nav-item"><a class="nav-link" href="/attendance/adminSaerch?page=1&pageSize=10&searchType=&searchVal=">
 										  출퇴근 관리  </a></li>
 									<li class="nav-item"><a class="nav-link" href="#l">
 										  스케쥴 관리  </a></li>
