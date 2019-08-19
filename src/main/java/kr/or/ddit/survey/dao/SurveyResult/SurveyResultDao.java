@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.survey.model.SurveyPartVo;
 import kr.or.ddit.survey.model.SurveyResultVo;
 
 
@@ -26,7 +27,14 @@ public class SurveyResultDao implements ISurveyResultDao{
 
 	@Override
 	public List<SurveyResultVo> getTestResult(String mem_id) {
-		return sqlSession.selectList("survey.InsertTestResult",mem_id);
+		return sqlSession.selectList("survey.getTestResult",mem_id);
+	}
+
+
+
+	@Override
+	public List<SurveyResultVo> getCertainTestResult(SurveyPartVo SurveyPartVo) {
+		return sqlSession.selectList("survey.getCertainTestResult",SurveyPartVo);
 	}
 	
 }

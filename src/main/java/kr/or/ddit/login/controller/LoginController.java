@@ -197,7 +197,12 @@ public class LoginController {
 			}
 			
 		}else {
-			//골드테이블에 있다면 
+			//골드테이블에 있다면
+			int upgradeMemberStep1= memberService.upgradeMemberStep1(mem_id);
+			logger.debug("@@@@upgradeMemberStep1{}",upgradeMemberStep1);
+			
+			int upgradeMemberStep3 = memberService.upgradeMemberStep3(mem_id);
+			logger.debug("@@@@upgradeMemberStep3{}",upgradeMemberStep3);
 			
 		}
 		

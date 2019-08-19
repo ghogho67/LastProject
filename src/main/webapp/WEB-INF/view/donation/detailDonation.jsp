@@ -32,22 +32,22 @@ line-height:1.6em
 }
 
 #loginBtn{
-/* 	text-align: right; */
-	float : right;
-	margin-right: 100px;
+/*    text-align: right; */
+   float : right;
+   margin-right: 100px;
 }
 </style>
 
 
 <script >
 $(document).ready(function(){
-// 	   <c:if test="${not empty msg}">
-// 	      alert("${msg}");
-// 	   </c:if>
-	   
+//       <c:if test="${not empty msg}">
+//          alert("${msg}");
+//       </c:if>
+      
 });
 
-	
+   
 </script>
 
 
@@ -72,10 +72,10 @@ $(document).ready(function(){
                </div>
                <hr>
 
-				 <form class="form-horizontal" role="form" action="${cp }/donation/detailDonation" method="get">
+             <form class="form-horizontal" role="form" action="${cp }/donation/detailDonation" method="get">
                            <input type="hidden" class="form-control" id="app_id" name="app_id" placeholder="결제 아이디" value="${appovalVo.app_id}">
                            <input type="hidden" class="form-control" id="don_id" name="don_id" placeholder="결제 아이디" value="${donationVo.don_id}">
-				
+            
                <div class="container">
                   <div class="row">
 
@@ -117,8 +117,8 @@ $(document).ready(function(){
                               
 <%--                                     <p>기부날자: <fmt:formatDate value="${approvalVo.app_time }" --%>
 <%--                                              pattern="yyyy-MM-dd" /></p> --%>
-										<p>기부 날자: ${donationApprovalVo.app_time }</p>
-<%-- 										<p>기부 날자: ${approvalVo.app_time }</p> --%>
+                              <p>기부 날자: ${donationApprovalVo.app_time }</p>
+<%--                               <p>기부 날자: ${approvalVo.app_time }</p> --%>
                                  </div>
                               </div>
 
@@ -158,7 +158,7 @@ $(document).ready(function(){
                <br><br>
                
                <form action="${cp }/login" >
-               		<button type="submit" id="loginBtn" class="btn btn-default btn-md">로그인 화면 가기</button>
+                     <button type="submit" id="loginBtn" class="btn btn-default btn-md">로그인 화면 가기</button>
                </form>
                
                

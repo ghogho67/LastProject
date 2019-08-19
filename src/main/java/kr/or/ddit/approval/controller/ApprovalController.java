@@ -51,6 +51,9 @@ public class ApprovalController {
 
 		return "jsonView";
 	}
+
+	
+	
 	
 	@RequestMapping(path = "/approvalCheck")
 	public String approvalCheck(HttpSession session, Model model, int page, int pageSize) {

@@ -6,6 +6,7 @@ package kr.or.ddit.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,10 @@ import kr.or.ddit.gold.sos.service.ISosService;
 import kr.or.ddit.matching.grade.service.IGradeService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
+import kr.or.ddit.survey.model.SurveyPartVo;
+import kr.or.ddit.survey.model.SurveyResultVo;
+import kr.or.ddit.survey.service.SurveyResult.ISurveyResultService;
+import kr.or.ddit.survey.service.surveyPart.ISurveyPartService;
 import kr.or.ddit.util.PartUtil;
 
 @RequestMapping("/mypage")
@@ -52,6 +57,16 @@ public class mypageController {
 	@Resource(name = "sosService")
 	private ISosService sosService;
 
+	
+
+	@Resource(name = "surveyPartService")
+	private ISurveyPartService surveyPartService;
+
+	@Resource(name = "surveyResultService")
+	private ISurveyResultService surveyResultService;
+	
+	
+	
 	@RequestMapping("/Patient_Info")
 	public String Patient_Info() {
 		return "/mypage/Patient_Info.mytiles";
@@ -639,14 +654,46 @@ public class mypageController {
 			MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 			String mem_id = memvo.getMem_id();
 			
-			//간이인지 테스트 결과 
+			//간이인지 테스트 결과
+			int sur_id=901;
+			SurveyPartVo SurveyPartVo=new SurveyPartVo(sur_id, mem_id);
+			List<SurveyResultVo>  getCertainTestResult=surveyResultService.getCertainTestResult(SurveyPartVo);
 			
-			//전체 인지테스트 전체 결과 와 시간
+
+			//전체 인지테스트 전체 결과와 시간
+			List<SurveyResultVo> getTestResultVos=surveyResultService.getTestResult(mem_id);
+			List<String> sur_timeList = new ArrayList<String>();
+			List<String> sur_resultList = new ArrayList<String>();
+			for(int i=0; i<getTestResultVos.size(); i++) {
+				sur_resultList.add(getTestResultVos.get(i).getSur_result());
+				sur_timeList.add(getTestResultVos.get(i).getSur_time());
+			}
+
 			
+			model.addAttribute("getCertainTestResult",getCertainTestResult);
+			model.addAttribute("getTestResultVos",getTestResultVos);
+			
+			model.addAttribute("sur_resultList",sur_resultList);
+			model.addAttribute("sur_timeList",sur_timeList);
+			logger.debug("!!!!!sur_resultList : {}",sur_resultList);
+			logger.debug("!!!!!sur_timeList : {}",sur_timeList);
 		   
-	      return "mypage/gold/recognitionActResult";
+			
+	      return "mypage/gold/recognitionActResult2";
 	   }
 	   
 	   
-	
+
+		
+	   @RequestMapping("/recognitionActResult2")
+	   public String recognitionActResult2(HttpSession session, Model model) {
+
+			MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+			String mem_id = memvo.getMem_id();
+		
+		   
+	      return "mypage/gold/recognitionActResult2";
+	   }
+	   
+	   
 }

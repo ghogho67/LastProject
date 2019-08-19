@@ -24,6 +24,7 @@ public class SocketChatController {
 	private IChatTextService chatTextService;
 	//
 	
+	
 	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);
 	@Autowired
 	private SocketChatHandler socketHandler; // SocketChantHandelr
