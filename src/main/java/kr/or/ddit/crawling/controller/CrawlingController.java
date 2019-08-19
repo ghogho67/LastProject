@@ -76,8 +76,8 @@ public class CrawlingController {
 		GoldVo goldvo = memberService.downGradeMember(mem_id);
 		logger.debug("@@@@goldvo{}",goldvo);
 			model.addAttribute("goldvo",goldvo);
-		
 		session.setAttribute("MEM_INFO", memVo);
+		
 		model.addAttribute("src", src);
 		return "main";
 	}
