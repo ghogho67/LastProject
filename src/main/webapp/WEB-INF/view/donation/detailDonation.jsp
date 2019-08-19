@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>       
 <!DOCTYPE html>
 <html>
@@ -115,9 +115,9 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                               
-<%--                                     <p>기부날자: <fmt:formatDate value="${approvalVo.app_time }" --%>
-<%--                                              pattern="yyyy-MM-dd" /></p> --%>
-                              <p>기부 날자: ${donationApprovalVo.app_time }</p>
+                                    <p>기부날자: <fmt:formatDate value="${donationApprovalVo.app_time }"
+                                             pattern="yyyy.MM.dd HH:mm:ss" /></p>
+<%--                               <p>기부 날자: ${donationApprovalVo.app_time }</p> --%>
 <%--                               <p>기부 날자: ${approvalVo.app_time }</p> --%>
                                  </div>
                               </div>

@@ -40,10 +40,12 @@
 	
 	<!-- 지역으로 검색한 무더위 쉼터 조회 -->
 	<select id="getAddShelterList" resultType="shelterVo" parameterType="string">
-		select * 
+		select a.*, rownum rn
+		from
+		(select * 
 		from shelter
 		where sh_add like '%'||#{sh_add}||'%'
-		order by sh_id asc
+		order by sh_id asc)a
 	</select>
 	
 	<!-- 지역검색 후 주소만 검색 -->

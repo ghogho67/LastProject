@@ -10,6 +10,16 @@ public class NursingHomeVo {
 	private String nh_grade;
 	private int cate_id;
 	
+	private int rn;
+	
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	public NursingHomeVo() {
 		
 	}

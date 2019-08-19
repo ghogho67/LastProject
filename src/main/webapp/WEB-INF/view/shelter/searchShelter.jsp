@@ -344,11 +344,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						
 					<hr>
 					<form id="frm" action="${cp }/shelter/searchShelter?sh_add=${sh_add}" method="post">
-					<input type="hidden" id="sh_id" name="sh_id" value="${sh_id }">
+					<input type="hidden" id="sh_id" class="sh_id" name="sh_id" value="${sh_id }">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 						<thead>
 							<tr>
+								<th>NO</th>
 								<th>쉼터아이디</th>
 								<th>쉼터이름</th>
 								<th>쉼터주소</th>
@@ -359,6 +360,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<tbody>
 							<c:forEach items="${getAddShelterList }" var="vo" varStatus="status">
 								<tr class="shTr" data-sh_id="${vo.sh_id }">
+									<th>${vo.rn }</th>
 									<td class="sh_id">${vo.sh_id }</td>
 									<td>${vo.sh_nm }</td>
 									<td>${vo.sh_add }</td>

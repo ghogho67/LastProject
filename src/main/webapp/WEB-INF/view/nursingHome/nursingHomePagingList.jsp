@@ -271,7 +271,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<table class="table center-aligned-table">
 							<thead>
 							<tr class="text-primary">
-								<th>요양시설 아이디</th>
+								<th>NO</th>
+<!-- 								<th>요양시설 아이디</th> -->
 								<th>요양시설 명</th>
 								<th>주소</th>
 								<th>전화번호</th>
@@ -281,7 +282,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<tbody>
 							<c:forEach items="${nursingList }" var="vo" varStatus="status">
 								<tr class="nurTr" data-nh_id="${vo.nh_id }">
-									<td class="nh_id">${vo.nh_id }</td>
+									<td>${vo.rn }</td>
+<%-- 									<td class="nh_id">${vo.nh_id }</td> --%>
 									<td>${vo.nh_nm }</td>
 									<td>${vo.nh_add }</td>
 									<td>${vo.nh_phone }</td>

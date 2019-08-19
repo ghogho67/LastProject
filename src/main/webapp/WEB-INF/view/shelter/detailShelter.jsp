@@ -114,7 +114,7 @@ $(document).ready(function(){
                                  <div class="media-body">
                               
                                     <p>무더위쉼터 운영시작일 : <fmt:formatDate value="${shelterVo.sh_st_dt}"
-                                             pattern="yyyy-MM-dd" /></p>
+                                             pattern="yyyy.MM.dd" /></p>
                                  </div>
                               </div>
 
@@ -123,7 +123,7 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                                     <p>무더위쉼터 운영종료일: <fmt:formatDate value="${shelterVo.sh_end_dt}"
-                                             pattern="yyyy-MM-dd" /></p>
+                                             pattern="yyyy.MM.dd"/></p>
 
                                  </div>
                               </div>
@@ -131,7 +131,18 @@ $(document).ready(function(){
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
-                                    <p>무더위쉼터 평일 시작시간 : ${shelterVo.sh_day_st }</p>
+                                    <p>무더위쉼터 평일 시작시간 :<fmt:formatDate value="${shelterVo.sh_day_st }"
+                                             pattern="HH:mm:ss" /></p>
+                                    
+                                            
+
+                                 </div>
+                              </div>
+                              <div class="media post_item">
+                                 <img src="/image/dotdot.png">
+                                 <div class="media-body">
+                                    <p>무더위쉼터 평일 종료시간 :<fmt:formatDate value="${shelterVo.sh_day_end }"
+                                             pattern="HH:mm:ss" /></p>
                                     
 
                                  </div>
@@ -139,7 +150,8 @@ $(document).ready(function(){
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
-                                    <p>무더위쉼터 평일 종료시간 : ${shelterVo.sh_day_end }</p>
+                                    <p>무더위쉼터 주말 시작시간 :<fmt:formatDate value="${shelterVo.sh_we_st }"
+                                             pattern="HH:mm:ss" /></p>
                                     
 
                                  </div>
@@ -147,15 +159,8 @@ $(document).ready(function(){
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
-                                    <p>무더위쉼터 주말 시작시간 : ${shelterVo.sh_we_st }</p>
-                                    
-
-                                 </div>
-                              </div>
-                              <div class="media post_item">
-                                 <img src="/image/dotdot.png">
-                                 <div class="media-body">
-                                    <p>무더위쉼터 주말 종료시간: ${shelterVo.sh_we_end }</p>
+                                    <p>무더위쉼터 주말 종료시간:<fmt:formatDate value="${shelterVo.sh_we_end }"
+                                            pattern="HH:mm:ss" /></p>
                                     
 
                                  </div>

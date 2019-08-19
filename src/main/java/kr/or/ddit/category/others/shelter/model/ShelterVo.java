@@ -16,6 +16,16 @@ public class ShelterVo {
 	private String sw_nm;
 	private String sw_phone;
 	private int cate_id;
+	
+	private int rn;
+	
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
 
 	public int getSh_id() {
 		return sh_id;
