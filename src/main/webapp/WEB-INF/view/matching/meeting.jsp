@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko">
-
-
-
 <head>
 <meta charset="utf-8" />
 <head>
@@ -66,7 +65,8 @@ table.cw td {
 	border-bottom: 1px solid #ccc;
 }
 </style>
-<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
+	type="text/javascript"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -171,7 +171,7 @@ table.cw td {
 		<div style="width: 50%; float: left; height: 350px;">
 			<label for="userNm" class="col-sm-2 control-label">${path }</label> <img
 				id="img" src="${cp }/matching/photo?mem_id=anni"
-				style="float: right" />
+				style="float: right; width: 400px; height: 400px;" />
 		</div>
 		<!-- 		<div> -->
 		<!-- 		<input type="button" class="btn" width="50px" value="매칭신청" style="float:left"> -->
@@ -227,12 +227,19 @@ table.cw td {
 						</tr>
 						<tr>
 							<th>서비스 가능 지역</th>
-							<td></td>
+							<td>
+							<c:forEach items="${loList }" var= "lo">
+							${lo.loc_dong },							
+							</c:forEach>
+							</td>
 						</tr>
-						<tr>
+							
+							<c:forEach items="${carList }" var= "car" begin="1">
+							<tr>
 							<th>경력</th>
-							<td></td>
-						</tr>
+							<td>내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 : ${car.career_end_dt } 소속 기관 : ${car.career_hos }</td></tr>
+							</c:forEach>
+							
 						<tr>
 							<th>요양보호사 아이디</th>
 							<td id="mem_id">${memVo.mem_id }</td>
@@ -277,6 +284,9 @@ table.cw td {
 							</div>
 							<div class="col-xs-12">
 								<label class="col-xs-4" id="Ledit-type"></label><br>
+							</div>
+							<div class="col-xs-12">
+								<label class="col-xs-4" id="Ledit-cost"></label><br>
 							</div>
 						</div>
 					</div>
@@ -349,22 +359,62 @@ table.cw td {
 							</div>
 						</div>
 
+						<div class="row" id="timeInfo">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="timeInfo">시간 선택</label> 
+								<label
+									class="checkbox-inline"> 
+									<input type="checkbox"
+									name="timeInfo[]" value="1">09:00~10:00
+								</label> <label class="checkbox-inline"> 
+								<input type="checkbox"
+									name="timeInfo[]" value="2">10:30~11:30
+								</label> <label class="checkbox-inline"> 
+								<input type="checkbox"
+									name="timeInfo[]" value="3">12:00~13:00
+								</label> <label class="checkbox-inline"> 
+								<input type="checkbox"
+									name="timeInfo[]" value="4">13:30~14:30
+								</label> <label class="checkbox-inline"> 
+								<input type="checkbox"
+									name="timeInfo[]" value="5">15:00~16:00
+								</label> <label class="checkbox-inline"> 
+								<input type="checkbox"
+									name="timeInfo[]" value="6">16:30~17:00
+								</label>
+							</div>
+						</div>
+
 						<div class="row" id="dayInfo">
 							<div class="col-xs-12">
-								<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label
-									class="checkbox-inline"><input type="checkbox"
-									name="dayInfo[]" value="1">일요일</label> <label
-									class="checkbox-inline"><input type="checkbox"
-									name="dayInfo[]" value="2">월요일</label> <label
-									class="checkbox-inline"><input type="checkbox"
-									name="dayInfo[]" value="3">화요일</label> <label
-									class="checkbox-inline"><input type="checkbox"
-									name="dayInfo[]" value="4">수요일</label> <label
-									class="checkbox-inline"><input type="checkbox"
-									name="dayInfo[]" value="5">목요일</label> <label
-									class="checkbox-inline"><input type="checkbox"
-									name="dayInfo[]" value="6">금요일</label> <label
-									class="checkbox-inline"><input type="checkbox"
+								<label class="col-xs-4" for="dayInfo[]">요일 선택</label> 
+								<label
+									class="checkbox-inline">
+									<input type="checkbox"
+									name="dayInfo[]" value="1">일요일</label> 
+									<label
+									class="checkbox-inline">
+									<input type="checkbox"
+									name="dayInfo[]" value="2">월요일</label> 
+									<label
+									class="checkbox-inline">
+									<input type="checkbox"
+									name="dayInfo[]" value="3">화요일</label> 
+									<label
+									class="checkbox-inline">
+									<input type="checkbox"
+									name="dayInfo[]" value="4">수요일</label> 
+									<label
+									class="checkbox-inline">
+									<input type="checkbox"
+									name="dayInfo[]" value="5">목요일</label> 
+									<label
+									class="checkbox-inline">
+									<input type="checkbox"
+									name="dayInfo[]" value="6">금요일</label> 
+									<label
+									class="checkbox-inline">
+									<input type="checkbox"
 									name="dayInfo[]" value="7">토요일</label>
 							</div>
 						</div>
@@ -422,6 +472,7 @@ table.cw td {
 	</div>
 	<!-- /.container -->
 	<input id="mem_id" type="hidden" value="${mem_id }">
+	<input id="cw_mem_id" type="hidden" value="${cw_mem_id }">
 
 	<script src="/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
@@ -432,7 +483,7 @@ table.cw td {
 	<script src="/FullCalendar-Example-master/vendor/js/select2.min.js"></script>
 	<script
 		src="/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="/FullCalendar-Example-master/js/main.js"></script>
+	<script src="/FullCalendar-Example-master/js/mainCW.js"></script>
 	<script src="/FullCalendar-Example-master/js/addEvent.js"></script>
 	<script src="/FullCalendar-Example-master/js/editEvent.js"></script>
 	<script src="/FullCalendar-Example-master/js/etcSetting.js"></script>

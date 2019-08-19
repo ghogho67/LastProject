@@ -102,8 +102,6 @@ public class ApprovalController {
 		return"/mypage/approval/appovalCheckP.mytiles";
 	}
 	
-	
-	
 	@RequestMapping(path = "/saerch", method = RequestMethod.POST)
 	public String saerchList(Model model, String searchType, String saerchVal,HttpSession session,int page, int pageSize) {
 		PageVo pageVo = new PageVo();
@@ -196,7 +194,6 @@ public class ApprovalController {
 			
 		}
 	}
-	
 	
 }
 
