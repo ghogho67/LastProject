@@ -286,20 +286,17 @@ td {
 									</tr>
 
 								</c:forEach>
-
 							</tbody>
-
-
 						</table>
-
-
-
+						<a href="${cp}/lecture/lectureMain"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 
 	<div class="demo" style="position: absolute; right: 40%;">

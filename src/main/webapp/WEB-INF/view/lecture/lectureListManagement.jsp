@@ -311,8 +311,8 @@ td {
 											<c:when test="${LTList.lec_use=='Y'}">
 												<td><a
 													href="${cp}/lecture/lectureDelete?lec_id=${LTList.lec_id}"
-													onclick="return confirm('해당강좌를  삭제하시겠습니까?')"
-													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+													onclick="return confirm('해당강좌를  사용하지 않으시겠습니까?')"
+													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td>
 											</c:when>
 											<c:otherwise>
 												<td><a
