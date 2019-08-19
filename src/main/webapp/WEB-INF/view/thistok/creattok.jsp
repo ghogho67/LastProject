@@ -1,19 +1,17 @@
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
-=======
 <link rel="stylesheet"
-	href="${cp}/resource/wrap/css/ThisTok.css">
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
+   href="${cp}/resource/wrap/css/ThisTok.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 #logo{
-	height: 70px;
-	width: 200px;
+   height: 70px;
+   width: 200px;
 }
 
 body {
@@ -41,19 +39,19 @@ body {
 } 
 
 #chat{
-	overflow:scroll;
-	border-top: 1px solid #f6f6f6;
-	height: 550px;
+   overflow:scroll;
+   border-top: 1px solid #f6f6f6;
+   height: 550px;
   width: 100%;
   background: #fff;
   border-radius: 20px;
   box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3
   );
-	-ms-overflow-style: none; 
-	margin: 0 auto;
+   -ms-overflow-style: none; 
+   margin: 0 auto;
 }
 ::-webkit-scrollbar {
-	display:none;
+   display:none;
 }
 
 .hidden{
@@ -78,86 +76,78 @@ display:none;
 
 
 .leftmargin{
-	margin-left: 20px;
+   margin-left: 20px;
 }
 
 #backBtn{
-	margin-left: 130px;
-	margin-top: 20px;
+   margin-left: 130px;
+   margin-top: 20px;
 }
 
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#myBtn").on("click",function(){
-		var data = $("#searchId").serialize();
-		$.ajax({
-			type: "GET",
-			url : "${cp}/chat/searchId",
-			data : data,
-			success : function(data){
-//	 			console.log(data);
-				if(data.cm_id == 0){
-					
-					$("#idresult1").css("color", "red");
-					$("#idresult1").html("기입하신 ID가 없습니다.");
-					
-				}else{
-					$("#idresult1").css("color", "blue");
-					$("#idresult1").html("ID가 있습니다.");
-					
-				}
-								
-			},
-		error : function(xhr){
-				alert(xhr.status);
-		}
-			
-			
-		});
-	});
-	
-	
-	$("#creatBtn").on("click",function(){
-		
-		$("#searchId").submit();
-		
-	});
-	
+   $("#myBtn").on("click",function(){
+      var data = $("#searchId").serialize();
+      $.ajax({
+         type: "GET",
+         url : "${cp}/chat/searchId",
+         data : data,
+         success : function(data){
+//             console.log(data);
+            if(data.cm_id == 0){
+               
+               $("#idresult1").css("color", "red");
+               $("#idresult1").html("기입하신 ID가 없습니다.");
+               
+            }else{
+               $("#idresult1").css("color", "blue");
+               $("#idresult1").html("ID가 있습니다.");
+               
+            }
+                        
+         },
+      error : function(xhr){
+            alert(xhr.status);
+      }
+         
+         
+      });
+   });
+   
+   
+   $("#creatBtn").on("click",function(){
+      
+      $("#searchId").submit();
+      
+   });
+   
 });
-<<<<<<< HEAD
-
-=======
 function back(){
-	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
+   window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
 }
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 //
 </script>
 
 </head>
 <body>
-	<br>
-<!-- 	action="/chat/searchId" -->
-	<form id="searchId" action="${cp}/chat/createChat" method="POST">
-		<div class="leftmargin" >
-			<p>대상자 아이디 :</p><input type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
-			<p id="idresult1" class="idpw-txt">채팅을 같이 하실 회원의 아이디를 입력하세요</p>
-			<p>채팅방 이름 :</p><input type="text" name="chat_nm">
-			
-			<button id="creatBtn" type="button">채팅방 개설</button>
-		</div>
-	</form>
-		
-<<<<<<< HEAD
-=======
-		<div>
-			 <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
-		</div>
-	</form>
-		
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
-			
-	
+   <br>
+<!--    action="/chat/searchId" -->
+   <form id="searchId" action="${cp}/chat/createChat" method="POST">
+      <div class="leftmargin" >
+         <p>대상자 아이디 :</p><input type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
+         <p id="idresult1" class="idpw-txt">채팅을 같이 하실 회원의 아이디를 입력하세요</p>
+         <p>채팅방 이름 :</p><input type="text" name="chat_nm">
+         
+         <button id="creatBtn" type="button">채팅방 개설</button>
+      </div>
+   </form>
+      
+      <div>
+          <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
+      </div>
+      
+         
+   
 </body>
 </html>

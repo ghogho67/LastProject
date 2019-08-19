@@ -48,8 +48,7 @@ public class ApprovalController {
 		return "jsonView";
 	}
 	
-<<<<<<< HEAD
-=======
+
 	@RequestMapping(path = "/approvalCheck")
 	public String approvalCheck(HttpSession session, Model model) {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -77,5 +76,4 @@ public class ApprovalController {
 	
 	
 	
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 }

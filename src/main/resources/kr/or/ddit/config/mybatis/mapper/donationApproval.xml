@@ -47,7 +47,6 @@
 	<select id="donerCnt" resultType="int">
 		select count(*) 
 		from donation
-<<<<<<< HEAD
 	</select>
 	
 	<!-- 기부자 페이징 리스트 -->
@@ -69,8 +68,6 @@
 		]]>
 	</select>
 	
-=======
-	</select>
 	
 	<!-- 기부자 페이징 리스트 -->
 	<select id="donationPagingList" parameterType="pageVo" resultType="donationApprovalVo">
@@ -93,7 +90,6 @@
 	
 
 	
->>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 	
 	
 	
