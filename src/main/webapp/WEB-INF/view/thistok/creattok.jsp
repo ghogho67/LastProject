@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-   href="${cp}/resource/wrap/css/ThisTok.css">
+	href="${cp}/resource/wrap/css/ThisTok.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 #logo{
@@ -131,22 +130,24 @@ function back(){
 
 </head>
 <body>
-   <br>
-<!--    action="/chat/searchId" -->
-   <form id="searchId" action="${cp}/chat/createChat" method="POST">
-      <div class="leftmargin" >
-         <p>대상자 아이디 :</p><input type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
-         <p id="idresult1" class="idpw-txt">채팅을 같이 하실 회원의 아이디를 입력하세요</p>
-         <p>채팅방 이름 :</p><input type="text" name="chat_nm">
-         
-         <button id="creatBtn" type="button">채팅방 개설</button>
-      </div>
-   </form>
-      
-      <div>
-          <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
-      </div>
-      
+	<br>
+<!-- 	action="/chat/searchId" -->
+	<form id="searchId" action="${cp}/chat/createChat" method="POST">
+		<div class="leftmargin" >
+			<p>대상자 아이디 :</p><input type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
+			<p id="idresult1" class="idpw-txt">채팅을 같이 하실 회원의 아이디를 입력하세요</p>
+			<p>채팅방 이름 :</p><input type="text" name="chat_nm">
+			
+			<button id="creatBtn" type="button">채팅방 개설</button>
+		</div>
+	</form>
+		
+		<div>
+			 <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
+		</div>
+		
+			
+	
          
    
 </body>
