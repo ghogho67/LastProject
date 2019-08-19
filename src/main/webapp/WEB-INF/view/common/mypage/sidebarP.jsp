@@ -49,7 +49,6 @@
 							</div>
 							
 							</li>
-						
 					
 						
 						<li class="nav-item"><a class="nav-link"
@@ -65,7 +64,7 @@
 
 										<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">보고서조회</a></li>
 
-										<li class="nav-item"><a class="nav-link" href="${cp}/approval/approvalCheck?page=1&pageSize=10">
+										<li class="nav-item"><a class="nav-link" href="${cp}/approval/approvalCheck?page=1&pageSize=10&searchType=type&searchVal=">
 											결제 내역 </a></li>
 
 								

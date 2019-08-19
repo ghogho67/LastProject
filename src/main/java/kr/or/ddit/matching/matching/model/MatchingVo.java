@@ -9,7 +9,7 @@ public class MatchingVo {
 	private String mat_type;
 	private String mat_bc;
 	private String mat_tc;
-	private boolean mat_allDay;
+	private String mat_allDay;
 	private String cw_mem_id;
 	private String mem_id;
 	private String mat_del;
@@ -86,11 +86,11 @@ public class MatchingVo {
 		this.mat_tc = mat_tc;
 	}
 
-	public boolean isMat_allDay() {
+	public String getMat_allDay() {
 		return mat_allDay;
 	}
 
-	public void setMat_allDay(boolean mat_allDay) {
+	public void setMat_allDay(String mat_allDay) {
 		this.mat_allDay = mat_allDay;
 	}
 

@@ -1,8 +1,5 @@
 package kr.or.ddit.donation.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +16,9 @@ import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
+
 import kr.or.ddit.page.model.PageVo;
+
 
 
 @Controller
@@ -272,7 +271,6 @@ public class DonationController {
 
 
 }
-
 
 
 

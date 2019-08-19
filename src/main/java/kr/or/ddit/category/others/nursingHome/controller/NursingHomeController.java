@@ -35,18 +35,39 @@ public class NursingHomeController {
 	* Method 설명 : 요양시설 페이지 네이션
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String nursingHome(Model model, PageVo pageVo) {
+	public String nursingHome(Model model, PageVo pageVo, int page, int pageSize) {
+		
+		pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
 		
 		Map<String, Object> resultMap = nursingHomeService.nursingPagingList(pageVo);
 		logger.debug("☞resultMap:{}",resultMap);
 		
 		List<NursingHomeVo> nursingList = (List<NursingHomeVo>) resultMap.get("nursingList");
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+		
 		
 		logger.debug("☞nursingList:{}",nursingList);
 		
 		model.addAttribute("nursingList", nursingList);
+		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo", pageVo);
 		
 		logger.debug("☞nursingList:{}",nursingList);
@@ -90,7 +111,10 @@ public class NursingHomeController {
 	@RequestMapping(path = "/detailNursing", method = RequestMethod.GET)
 	public String detailNursingHome(Model model, int nh_id) {
 		
+		logger.debug("☞nh_id:{}",nh_id);
+		
 		model.addAttribute("nursingHomeVo", nursingHomeService.getNursingHome(nh_id));
+		logger.debug("☞nursingHomeVo:{}",nursingHomeService.getNursingHome(nh_id));
 		
 		return "/nursingHome/detailNursingHome.tiles";
 	}

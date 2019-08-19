@@ -8,150 +8,87 @@
 	<properties resource="kr/or/ddit/config/mybatis/db.properties"/>
 
 	<typeAliases>
-<typeAlias type="kr.or.ddit.category.post.post.model.PostVo" alias="PostVo"/>
+		<typeAlias alias="PostVo" type="kr.or.ddit.category.post.post.model.PostVo"/>
+		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
+		<typeAlias alias="goldVo" type="kr.or.ddit.gold.gold.model.GoldVo"/>
+		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
+		<typeAlias alias="memberDiseaseVo" type="kr.or.ddit.member.memberDisease.model.MemberDiseaseVo"/>
+		<typeAlias alias="locationVo" type="kr.or.ddit.member.careWorker.location.model.LocationVo"/>
+		<typeAlias alias="dayVo" type="kr.or.ddit.member.careWorker.day.model.DayVo"/>
+		<typeAlias alias="careerVo" type="kr.or.ddit.member.careWorker.career.model.CareerVo"/>
+		<typeAlias alias="hospitalVo" type="kr.or.ddit.member.careWorker.hospital.model.HospitalVo"/>
+		<typeAlias alias="matchingGradeVo" type = "kr.or.ddit.joinVo.MatchingGradeVo"/>
+		<typeAlias alias="cwServiceTypeVo" type = "kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo"/>
+		<typeAlias alias="matchingReportVo" type = "kr.or.ddit.joinVo.MatchingReportVo"/>
+		<typeAlias alias="MatchingReportAttachmentVo" type = "kr.or.ddit.joinVo.MatchingReportAttachmentVo"/>
+		<typeAlias alias="cardiacVo" type="kr.or.ddit.gold.cardiac.model.CardiacVo" />
+		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
+		<typeAlias alias="sosVo" type="kr.or.ddit.gold.sos.model.SOSVo" />
+		<typeAlias alias="ReportVo" type="kr.or.ddit.matching.report.model.ReportVo" />
+		<typeAlias alias="serviceTypeVo" type="kr.or.ddit.member.careWorker.serviceType.model.ServiceTypeVo"/>
+		<typeAlias alias="AttachmentVo" type = "kr.or.ddit.category.post.attachment.model.AttachmentVo"/>
+		<typeAlias alias="ReplyVo" type = "kr.or.ddit.category.post.reply.model.ReplyVo"/>
+		<typeAlias alias="MatchingVo" type="kr.or.ddit.matching.matching.model.MatchingVo" />
+		<typeAlias alias="ReportAttachVo" type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" />
+		<typeAlias alias="attendanceVo" type="kr.or.ddit.matching.attendance.model.AttendanceVo" />
+		<typeAlias alias="ApprovalVo" type="kr.or.ddit.approval.model.ApprovalVo" />
+		<typeAlias alias="CategoryVo" type="kr.or.ddit.category.category.model.CategoryVo" />
+		<typeAlias alias="LectureVo" type="kr.or.ddit.category.others.lecture.model.LectureVo" />
+		<typeAlias alias="cultureVo" type="kr.or.ddit.category.others.culture.model.CultureVo" />
+		<typeAlias alias="shelterVo" type="kr.or.ddit.category.others.shelter.model.ShelterVo" />
 
-<typeAlias type="kr.or.ddit.member.member.model.MemberVo" alias="memberVo"/>
-
-<typeAlias type="kr.or.ddit.gold.gold.model.GoldVo" alias="goldVo"/>
-
-<typeAlias type="kr.or.ddit.page.model.PageVo" alias="pageVo"/>
-
-<typeAlias type="kr.or.ddit.member.memberDisease.model.MemberDiseaseVo" alias="memberDiseaseVo"/>
-
-<typeAlias type="kr.or.ddit.member.careWorker.location.model.LocationVo" alias="locationVo"/>
-
-<typeAlias type="kr.or.ddit.member.careWorker.day.model.DayVo" alias="dayVo"/>
-
-<typeAlias type="kr.or.ddit.member.careWorker.career.model.CareerVo" alias="careerVo"/>
-
-<typeAlias type="kr.or.ddit.member.careWorker.hospital.model.HospitalVo" alias="hospitalVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.MatchingGradeVo" alias="matchingGradeVo"/>
-
-<typeAlias type="kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo" alias="cwServiceTypeVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.MatchingReportVo" alias="matchingReportVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.MatchingReportAttachmentVo" alias="MatchingReportAttachmentVo"/>
-
-<typeAlias type="kr.or.ddit.gold.cardiac.model.CardiacVo" alias="cardiacVo"/>
-
-<typeAlias type="kr.or.ddit.gold.gps.model.GpsVo" alias="gpsVo"/>
-
-<typeAlias type="kr.or.ddit.gold.sos.model.SOSVo" alias="sosVo"/>
-
-<typeAlias type="kr.or.ddit.matching.report.model.ReportVo" alias="ReportVo"/>
-
-<typeAlias type="kr.or.ddit.member.careWorker.serviceType.model.ServiceTypeVo" alias="serviceTypeVo"/>
-
-<typeAlias type="kr.or.ddit.category.post.attachment.model.AttachmentVo" alias="AttachmentVo"/>
-
-<typeAlias type="kr.or.ddit.category.post.reply.model.ReplyVo" alias="ReplyVo"/>
-
-<typeAlias type="kr.or.ddit.matching.matching.model.MatchingVo" alias="MatchingVo"/>
-
-<typeAlias type="kr.or.ddit.matching.reportAttach.model.ReportAttachVo" alias="ReportAttachVo"/>
-
-<typeAlias type="kr.or.ddit.matching.attendance.model.AttendanceVo" alias="attendanceVo"/>
-
-<typeAlias type="kr.or.ddit.approval.model.ApprovalVo" alias="ApprovalVo"/>
-
-<typeAlias type="kr.or.ddit.category.category.model.CategoryVo" alias="CategoryVo"/>
-
-<typeAlias type="kr.or.ddit.category.others.lecture.model.LectureVo" alias="LectureVo"/>
-
-<typeAlias type="kr.or.ddit.category.others.culture.model.CultureVo" alias="cultureVo"/>
-
-<typeAlias type="kr.or.ddit.category.others.shelter.model.ShelterVo" alias="shelterVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.QuestionVo" alias="QuestionVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.SurveyAnswerVo" alias="SurveyAnswerVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.SurveyPartVo" alias="SurveyPartVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.SurveyResultVo" alias="SurveyResultVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.SurveyVo" alias="SurveyVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.VideoVo" alias="VideoVo"/>
-
-<typeAlias type="kr.or.ddit.survey.model.QuestionChoiceVo" alias="QuestionChoiceVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.AttendanceMatchingVo" alias="attendanceMatchingVo"/>
-
-<typeAlias type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo" alias="nursingHomeVo"/>
-
-<typeAlias type="kr.or.ddit.chat.chatMem.model.ChatMemVo" alias="chatMemVo"/>
-
-<typeAlias type="kr.or.ddit.chat.chat.model.ChatVo" alias="chatVo"/>
-
-<typeAlias type="kr.or.ddit.chat.chatText.model.ChatTextVo" alias="chatTextVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.ChatMemListVo" alias="chatMemListVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.ChatCollectionVo" alias="chatCollectionVo"/>
-
-<typeAlias type="kr.or.ddit.donation.model.DonationVo" alias="donationVo"/>
-
-<typeAlias type="kr.or.ddit.joinVo.DonationApprovalVo" alias="donationApprovalVo"/>
-
-<typeAlias type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo" alias="diseaseNameVo"/>
+		<typeAlias alias="QuestionVo" type="kr.or.ddit.survey.model.QuestionVo" />
+		<typeAlias alias="SurveyAnswerVo" type="kr.or.ddit.survey.model.SurveyAnswerVo" />
+		<typeAlias alias="SurveyPartVo" type="kr.or.ddit.survey.model.SurveyPartVo" />
+		<typeAlias alias="SurveyResultVo" type="kr.or.ddit.survey.model.SurveyResultVo" />
+		<typeAlias alias="SurveyVo" type="kr.or.ddit.survey.model.SurveyVo" />
+		<typeAlias alias="VideoVo" type="kr.or.ddit.survey.model.VideoVo"/>
+		<typeAlias alias="QuestionChoiceVo" type="kr.or.ddit.survey.model.QuestionChoiceVo"/>
+		<typeAlias alias="attendanceMatchingVo" type="kr.or.ddit.joinVo.AttendanceMatchingVo" />
+		<typeAlias alias="nursingHomeVo" type="kr.or.ddit.category.others.nursingHome.model.NursingHomeVo"/>
+		<typeAlias alias="chatMemVo" type="kr.or.ddit.chat.chatMem.model.ChatMemVo"/>
+		<typeAlias alias="chatVo" type="kr.or.ddit.chat.chat.model.ChatVo"/>
+		<typeAlias alias="chatTextVo" type="kr.or.ddit.chat.chatText.model.ChatTextVo"/>
+		<typeAlias alias="chatMemListVo" type="kr.or.ddit.joinVo.ChatMemListVo" />
+		<typeAlias alias="chatCollectionVo" type="kr.or.ddit.joinVo.ChatCollectionVo" />
+		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/>
+		<typeAlias alias="donationApprovalVo" type="kr.or.ddit.joinVo.DonationApprovalVo"/>
+		<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
+		<typeAlias alias="reportWriteVo" type="kr.or.ddit.matching.report.model.ReportWriteVo"/>
 	</typeAliases>
 
 
 <mappers>
-      <mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/member.xml" />
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" />
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
+	  <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/lecture.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chatMem.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chatText.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/chatCollection.xml"/>
 
-<mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/attachment.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/grade.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/approval.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/category.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/lecture.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/shelter.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/survey.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/nursingHome.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/chat.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/chatMem.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/chatText.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/chatCollection.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>
-
-<!-- <mapper resource="kr/or/ddit/config/mybatis/mapper/donationApproval.xml"/> -->
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/diseaseName.xml"/>
-
-<mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/donationApproval.xml"/>
+      <mapper resource="kr/or/ddit/config/mybatis/mapper/diseaseName.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/career.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/location.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/report.xml"/>
 
    </mappers>
 </configuration>
