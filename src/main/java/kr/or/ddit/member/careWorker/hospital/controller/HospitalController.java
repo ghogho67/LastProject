@@ -41,9 +41,9 @@ public class HospitalController {
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
 	public String hospital(Model model, PageVo pageVo, int page, int pageSize) {
 		
-//		pageVo = new PageVo();
-//		pageVo.setPage(page);
-//		pageVo.setPageSize(pageSize);
+		pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
 		
 		Map<String, Object> resultMap = hospitalService.hosPagingList(pageVo);
 
@@ -140,6 +140,10 @@ public class HospitalController {
 		
 		//-------------- 페이지 네이션!!
 		
+//		pageVo = new PageVo();
+//		pageVo.setPage(page);
+//		pageVo.setPageSize(pageSize);
+//		
 //		Map<String, Object> map = new HashMap<String, Object>();
 //		hospitalVo = new HospitalVo(hos_add);
 //		
@@ -153,7 +157,7 @@ public class HospitalController {
 //		logger.debug("☞pageSize:{}",pageVo.getPageSize());
 //		
 //		Map<String, Object> resultMap = hospitalService.searchHosPagingList(map);
-//		List<HospitalVo> getSearchHosAdd = (List<HospitalVo>) resultMap.get("getSearchHosAdd");
+//		getSearchHosAdd = (List<HospitalVo>) resultMap.get("getSearchHosAdd");
 //		
 //		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
 //        if(pageVo.getPage()==1) {
