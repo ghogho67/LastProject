@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
+=======
 <link rel="stylesheet"
 	href="${cp}/resource/wrap/css/ThisTok.css">
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 #logo{
@@ -123,9 +125,13 @@ $(document).ready(function(){
 	});
 	
 });
+<<<<<<< HEAD
+
+=======
 function back(){
 	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
 }
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 //
 </script>
 
@@ -141,12 +147,16 @@ function back(){
 			
 			<button id="creatBtn" type="button">채팅방 개설</button>
 		</div>
+	</form>
 		
+<<<<<<< HEAD
+=======
 		<div>
 			 <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
 		</div>
 	</form>
 		
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 			
 	
 </body>

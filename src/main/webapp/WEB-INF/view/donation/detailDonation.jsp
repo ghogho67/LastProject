@@ -89,15 +89,25 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                                  
+<<<<<<< HEAD
+<%--                                     <p>기부자 이름 : ${donationApprovalVo.doner }</p> --%>
+                                    <p>기부자 이름 : ${donationVo.doner }</p>
+=======
                                     <p>기부자 이름 : ${donationApprovalVo.doner }</p>
 <%--                                     <p>기부자 이름 : ${donationVo.doner }</p> --%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
                                  </div>
                               </div>
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
+<<<<<<< HEAD
+<%--                                     <p>회원 아이디 : ${donationApprovalVo.mem_id }</p> --%>
+                                    <p>회원 아이디 : ${approvalVo.mem_id }</p>
+=======
                                     <p>회원 아이디 : ${donationApprovalVo.mem_id }</p>
 <%--                                     <p>회원 아이디 : ${approvalVo.mem_id }</p> --%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
                                  </div>
                               </div>
 
@@ -105,8 +115,13 @@ $(document).ready(function(){
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
                               
+<<<<<<< HEAD
+<%--                                     <p>전화번호: ${donationApprovalVo.doner_phone }</p> --%>
+                                    <p>전화번호: ${donationVo.doner_phone }</p>
+=======
                                     <p>전화번호: ${donationApprovalVo.doner_phone }</p>
 <%--                                     <p>전화번호: ${donationVo.doner_phone }</p> --%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
                                  </div>
                               </div>
 
@@ -117,8 +132,13 @@ $(document).ready(function(){
                               
 <%--                                     <p>기부날자: <fmt:formatDate value="${approvalVo.app_time }" --%>
 <%--                                              pattern="yyyy-MM-dd" /></p> --%>
+<<<<<<< HEAD
+<%-- 										<p>기부 날자: ${donationApprovalVo.app_time }</p> --%>
+										<p>기부 날자: ${approvalVo.app_time }</p>
+=======
 										<p>기부 날자: ${donationApprovalVo.app_time }</p>
 <%-- 										<p>기부 날자: ${approvalVo.app_time }</p> --%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
                                  </div>
                               </div>
 
@@ -126,8 +146,13 @@ $(document).ready(function(){
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
+<<<<<<< HEAD
+<%--                                     <p>기부 금액: ${donationApprovalVo.app_pay }</p> --%>
+                                    <p>기부 금액: ${approvalVo.app_pay }</p>
+=======
                                     <p>기부 금액: ${donationApprovalVo.app_pay }</p>
 <%--                                     <p>기부 금액: ${approvalVo.app_pay }</p> --%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 
                                  </div>
                               </div>
@@ -135,8 +160,13 @@ $(document).ready(function(){
                               <div class="media post_item">
                                  <img src="/image/dotdot.png">
                                  <div class="media-body">
+<<<<<<< HEAD
+<%--                                     <p>기부사유: ${donationAppovalVo.don_comment }</p> --%>
+                                    <p>기부 사유: ${donationVo.doner_comment }</p>
+=======
                                     <p>기부사유: ${donationApprovalVo.doner_comment }</p>
 <%--                                     <p>기부 사유: ${donationVo.doner_comment }</p> --%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 
                                  </div>
                               </div>

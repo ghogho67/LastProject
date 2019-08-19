@@ -41,8 +41,12 @@ insert into surveyanswer
 
 
 
-<!-- 문제의 답과 사용자의 답변을 비교하여 정답갯수를 산출한다  -->
 
+
+
+
+
+<!-- 문제의 답과 사용자의 답변을 비교하여 정답갯수를 산출한다  -->
 <select id="checkScore" resultType="int" parameterType="SurveyPartVo">
 select count(sur_ans_cont) as cnt from(   
 select a.*
@@ -53,7 +57,6 @@ from (select p.sur_id, a.sur_part_id,a.ques_id,a.sur_ans_cont
         and p.sur_part_id =#{sur_part_id}) a left outer join ( select ques_id, ans, sur_id from question where sur_id = #{sur_id}) b
 on a.sur_ans_cont=b.ans
 where b.ans is null)
-        
 </select>
 
 
@@ -84,6 +87,28 @@ select * from video where sur_id=#{sur_id}
 <select id="getAllVideos" resultType="VideoVo" >
 select * from video 
 </select>
+
+
+
+<!-- 테스크 결과를  저장한다  -->
+<insert id="InsertTestResult"  parameterType="SurveyResultVo">
+insert into surveyresult
+ (surresult_id, sur_part_id, sur_result, sur_time) 
+ values (surresult_id.nextval, #{sur_part_id}, #{sur_result}, to_date(sysdate, 'yyyy-mm-dd'))
+</insert>
+
+
+<!-- 사용자의 테스트 결과를 불러온다 -->
+<select id="getTestResult" parameterType="String">
+select  a.surresult_id, a.sur_part_id, a.sur_result, a.sur_time
+from surveyresult a ,( select * from  surveypart where mem_id= #{mem_id}) b
+where b.sur_part_id(+) =a.sur_part_id
+</select>
+
+<!-- //특정사용자의 특정테스트 결과를 불러온다 -->
+
+
+
 
 
 

@@ -42,7 +42,7 @@
 									     GPS 정보 </a></li>
 									     <li class="nav-item"><a class="nav-link" href="${cp}/mypage/realBpm?mem_id=${MEM_INFO.mem_id}">
 									     심박 정보 </a></li>
-									      <li class="nav-item"><a class="nav-link" href="#">
+									      <li class="nav-item"><a class="nav-link" href="${cp}/mypage/recognitionActResult">
 									     인지 활동 내역 </a></li>
 									
 								</ul>

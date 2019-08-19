@@ -40,6 +40,7 @@
 		<typeAlias alias="QuestionVo" type="kr.or.ddit.survey.model.QuestionVo" />
 		<typeAlias alias="SurveyAnswerVo" type="kr.or.ddit.survey.model.SurveyAnswerVo" />
 		<typeAlias alias="SurveyPartVo" type="kr.or.ddit.survey.model.SurveyPartVo" />
+		<typeAlias alias="SurveyResultVo" type="kr.or.ddit.survey.model.SurveyResultVo" />
 		<typeAlias alias="SurveyVo" type="kr.or.ddit.survey.model.SurveyVo" />
 		<typeAlias alias="VideoVo" type="kr.or.ddit.survey.model.VideoVo"/>
 		<typeAlias alias="QuestionChoiceVo" type="kr.or.ddit.survey.model.QuestionChoiceVo"/>
