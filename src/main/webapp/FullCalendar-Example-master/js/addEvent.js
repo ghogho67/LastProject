@@ -45,6 +45,11 @@ var newEvent = function (startDate, endDate, eventType) {
     $('input:checkbox[name="dayInfo[]"]:checked').each(function () {
     	dayInfo.push(parseInt($(this).val()));
     });
+
+    var timeInfo = [];
+    $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
+    	timeInfo.push(parseInt($(this).val()));
+    });
     
     
     $('input:checkbox[name="dayInfo[]"]').on('click', function() {
@@ -54,6 +59,15 @@ var newEvent = function (startDate, endDate, eventType) {
 			dayInfo.splice(dayInfo.indexOf(parseInt($(this).val())),1);
 		} 
     	dayInfo.sort();
+    })
+
+    $('input:checkbox[name="timeInfo[]"]').on('click', function() {
+    	if ( $(this).prop('checked') ) { 
+    		timeInfo.push(parseInt($(this).val()));;
+    	} else { 
+    		timeInfo.splice(timeInfo.indexOf(parseInt($(this).val())),1);
+    	} 
+    	timeInfo.sort();
     })
 
 
@@ -70,6 +84,35 @@ var newEvent = function (startDate, endDate, eventType) {
     
     $('#save-event2').on('click',function(){
     	  eventModal.modal('hide');
+    	  
+    	  //두 날짜 사이의 요일 수를 출력해준다 (금요일, 토요일, 일요일)
+    	  //parm d1 : 20170101
+    	  //parm d2 : 20171003
+    	  //getSatSun(d1, d2)
+//    	  	    var sDate =new Date(d1.substr(0,4),Number(d1.substr(4,2))-1,Number(d1.substr(6)));
+    	  var sDate = new Date(editStartDate.val());
+//    	      var eDate =new Date(d2.substr(0,4),Number(d2.substr(4,2))-1,Number(d2.substr(6)));
+    	  var eDate = new Date(editEndDate.val());
+    	  //alert(lcDateCountDay(sDate,eDate));
+    	  var count=0;
+    	  var tmp;
+    	  for (var i=0; i<=(eDate-sDate)/1000/60/60/24; i++) {
+    		  tmp=new Date(sDate);
+    		  tmp.setDate(tmp.getDate()+i);
+    		  //0(일요일), 5(금요일), 6(토요일)
+    		  for(j=0; j<dayInfo.length; j++){
+    			  if(tmp.getDay() == dayInfo[j]){
+    				  count++;
+    			  }
+    		  }
+    		  
+//    	        if (tmp.getDay()==0 || tmp.getDay()==5 || tmp.getDay()==6) {
+//    	          count++;
+//    	        }
+    	  }
+    	  alert(count);
+    	  alert(count*timeInfo.length);
+    	 
     	  $("#Ledit-title").text("매칭 이름 :"+editTitle.val());
     	  $("#Ledit-cont").text("매칭 내용 :"+editDesc.val());
     	  $("#Ledit-startDate").text("매칭 시작일 :"+editStartDate.val());
@@ -77,6 +120,7 @@ var newEvent = function (startDate, endDate, eventType) {
     	  $("#Ledit-startTime").text("서비스 시작 시간 :"+editStartTime.val());
     	  $("#Ledit-endTime").text("서비스 종료 시간 :"+editEndTime.val());
     	  $("#Ledit-type").text("매칭 서비스 타입 :"+editType.val());
+    	  $("#Ledit-cost").text("매칭 비용 :"+count*timeInfo.length*10000);
     	  
     	  approvalModal.modal('show');
     })
@@ -86,7 +130,7 @@ var newEvent = function (startDate, endDate, eventType) {
     
     $('#save-event').on('click', function () {
     	approvalModal.modal('hide');
-
+    	alert(dayInfo);
         var eventData = [{
 
         	title: editTitle.val(),
@@ -96,8 +140,9 @@ var newEvent = function (startDate, endDate, eventType) {
 			startDate: editStartDate.val() ,
 			endDate: editEndDate.val(),
 			dow:dayInfo,
+			time:timeInfo,
             type: editType.val(),
-            c_mem_id: 'brown',
+            c_mem_id: $("td#mem_id").text(),
             backgroundColor: editColor.val(),
             textColor: '#ffffff',
             allDay: false,
@@ -143,6 +188,7 @@ var newEvent = function (startDate, endDate, eventType) {
             data: JSON.stringify(eventData),
             success: function (response) {
             	$('input:checkbox[name="dayInfo[]"]').attr("checked", false);
+            	$('input:checkbox[name="timeInfo[]"]').attr("checked", false);
             },
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

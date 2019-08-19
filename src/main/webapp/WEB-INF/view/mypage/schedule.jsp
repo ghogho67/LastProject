@@ -69,13 +69,11 @@
 	<script src="/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/moment.min.js"></script>
-	<script
-		src="/FullCalendar-Example-master/vendor/js/fullcalendar.min.js"></script>
+	<script	src="/FullCalendar-Example-master/vendor/js/fullcalendar.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/ko.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/select2.min.js"></script>
-	<script
-		src="/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="/FullCalendar-Example-master/js/main.js"></script>
+	<script	src="/FullCalendar-Example-master/vendor/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/FullCalendar-Example-master/js/mainMem.js"></script>
 	<script src="/FullCalendar-Example-master/js/addEvent.js"></script>
 	<script src="/FullCalendar-Example-master/js/editEvent.js"></script>
 	<script src="/FullCalendar-Example-master/js/etcSetting.js"></script>

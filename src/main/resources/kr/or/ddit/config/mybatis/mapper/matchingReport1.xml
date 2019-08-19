@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="matchingReport">
+
+	<!-- / 회원아이디로 전체매칭내역을 불러온다 -->
+	<select id="getMatchingList" resultType="MatchingVo"
+		parameterType="String">
+
+		select * from matching
+		where mem_id = #{mem_id}
+
+	</select>
+
+
+	<!-- // 매칭아이디로 한개의 매칭매역을 불러온다 -->
+	<select id="getMatching" resultType="MatchingVo"
+		parameterType="String">
+
+		select * from matching
+		where
+		mat_id = #{mat_id}
+	</select>
+
+
+
+
+	<!-- // 매칭아이디로 해당 매칭아이디의 전체 보고서 목록을 불러온다 -->
+	<select id="getReportList" resultType="ReportVo"
+		parameterType="String">
+
+		select * from report
+		mat_id = #{mat_id}
+
+	</select>
+
+
+
+
+	<!-- // 리포트 아이디로 해당 보고서를 불러온다 -->
+	<select id="getReport" resultType="ReportVo"
+		parameterType="String">
+
+		select * from report
+		where rep_id = #{rep_id}
+	</select>
+
+
+
+
+
+	<select id="getAllReportList" resultType="matchingReportVo"
+		parameterType="String">
+
+		SELECT M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_CONT,
+		M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MAT_DEL,M.MEM_ID,M.CW_MEM_ID,
+		R.REP_ID ,R.REP_TIME
+		,R.REP_TITLE,R.REP_CONT
+		FROM REPORT R , MATCHING M
+		WHERE R.MAT_ID(+) =M.MAT_ID
+		AND M.MEM_ID = #{MEM_ID}
+
+	</select>
+	
+	
+	
+<!-- 	요양보호사가 본인이 작성한 보고서 확인 -->
+	<select id="getWorkerReportList" resultType="matchingReportVo"
+		parameterType="String">
+
+		select m.mat_id, m.mat_title,m.mat_cont,m.mat_cont,
+		m.mat_end,m.mat_bc,m.mat_tc,m.mat_allday,m.mat_type,m.mat_del,m.mem_id,m.cw_mem_id,
+		r.rep_id ,r.rep_time
+		,r.rep_title,r.rep_cont
+		from report r , matching m
+		where r.mat_id(+) =m.mat_id
+		and m.cw_mem_id = #{m.cw_mem_id}
+
+	</select>
+
+
+
+<!-- 	<select id="getCertainReport" resultType="matchingReportVo" -->
+<!-- 		parameterType="matchingReportVo"> -->
+<!-- 		select m.mat_id, m.mat_title,m.mat_cont,m.mat_st, -->
+<!-- 		m.mat_end,m.mat_bc,m.mat_tc,m.mat_del,m.mat_allday,m.mat_type,m.mem_id,m.cw_mem_id, -->
+<!-- 		r.rep_id ,r.rep_time -->
+<!-- 		,r.rep_title,r.rep_cont -->
+<!-- 		from report r , matching m -->
+<!-- 		where r.mat_id(+) =m.mat_id -->
+<!-- 		and m.mem_id = #{mem_id} and rep_id=#{rep_id} -->
+
+<!-- 	</select> -->
+
+
+
+	<!-- //해당회원의 모든 보고서중 특정 보고서 아이디의 내용과 첨부파일을 가져온다 -->
+	<!-- <select id="getCertainReportWA" resultType="MatchingReportAttachmentVo" 
+		parameterType="MatchingReportAttachmentVo"> -->
+
+	<!-- select m.mat_id, m.mat_title,m.mat_cont,m.mat_st, m.mat_end,m.mat_bc,m.mat_tc,m.mat_allday,m.mat_type,m.mat_del,m.mem_id,m.cw_mem_id, 
+		r.rep_id ,r.rep_time -->
+	<!-- ,r.rep_title,r.rep_cont,a.rep_att_id,a.rep_att_path,a.rep_att_nm -->
+	<!-- from report r, matching m, reportattach a -->
+	<!-- where r.mat_id(+) = m.mat_id -->
+	<!-- and m.mem_id = #{mem_id} and r.rep_id=#{rep_id} and a.rep_id=#{rep_id} -->
+	<!-- </select> -->
+
+
+
+
+	<!-- //해당회원의 모든 보고서중 특정 보고서 아이디의 내용과 첨부파일을 가져온다 -->
+	<select id="getCertainReportWA"
+		resultType="MatchingReportAttachmentVo"
+		parameterType="MatchingReportAttachmentVo">
+		select *
+		from report r
+		full outer join reportattach ra
+		on r.rep_id = ra.rep_id
+		full outer join matching m
+		on r.mat_id = m.mat_id
+		where m.mem_id = #{mem_id} and r.rep_id=#{rep_id}
+	</select>
+    
+    
+    
+	<!-- //해당회원의 모든 보고서중 특정 보고서 아이디의 내용과 첨부파일을 가져온다 -->
+	<select id="getWorkerCertainReportWA"
+		resultType="MatchingReportAttachmentVo"
+		parameterType="MatchingReportAttachmentVo">
+		select *
+		from report r
+		full outer join reportattach ra
+		on r.rep_id = ra.rep_id
+		full outer join matching m
+		on r.mat_id = m.mat_id
+		where m.cw_mem_id = #{cw_mem_id} and r.rep_id=#{rep_id}
+	</select>
+    
+    
+ <!--     //해당회원의 모든 보고서중 특정 보고서 아이디의 내용을 가져온다  -->
+<!--     <select id="getCertainReport" resultType="matchingReportAVo" parameterType="matchingReportVo"> -->
+<!-- 	SELECT  M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_ST, M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MEM_ID,M.CW_MEM_ID, R.REP_ID ,R.REP_TIME -->
+<!-- ,R.REP_TITLE,R.REP_CONT -->
+<!-- FROM REPORT R , MATCHING M   -->
+<!-- WHERE R.MAT_ID(+) =M.MAT_ID -->
+<!-- AND M.MEM_ID = #{MEM_ID} AND REP_ID=#{REP_ID} -->
+	
+<!-- 	</select> -->
+
+
+
+
+<!--     //해당회원의 모든 보고서중 특정 보고서 아이디의 내용과 첨부파일을 가져온다  -->
+    <select id="getCertainReport" resultType="MatchingReportAttachmentVo" parameterType="MatchingReportAttachmentVo">
+    
+SELECT  M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_ST, M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MEM_ID,M.CW_MEM_ID, R.REP_ID ,R.REP_TIME
+,R.REP_TITLE,R.REP_CONT,A.REP_ATT_ID,A.REP_ATT_PATH,A.REP_ATT_NM
+FROM REPORT R , MATCHING M   ,REPORTATTACH A
+WHERE R.MAT_ID(+) = M.MAT_ID 
+AND M.MEM_ID = #{MEM_ID} AND R.REP_ID=#{REP_ID} AND A.REP_ID=#{REP_ID}
+	
+    
+
+	</select>
+
+
+
+<!-- 		RESULTTYPE="MATCHINGREPORTATTACHMENTVO" -->
+<!-- 		PARAMETERTYPE="MATCHINGREPORTATTACHMENTVO"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM REPORT R -->
+<!-- 		FULL OUTER JOIN REPORTATTACH RA -->
+<!-- 		ON R.REP_ID = RA.REP_ID -->
+<!-- 		FULL OUTER JOIN MATCHING M -->
+<!-- 		ON R.MAT_ID = M.MAT_ID -->
+<!-- 		WHERE M.CW_MEM_ID = #{CW_MEM_ID} AND R.REP_ID=#{REP_ID} -->
+
+
+
+	<select id="FileDown" parameterType="int"
+		resultType="ReportAttachVo">
+		select *
+		from reportattach where rep_att_id = #{rep_att_id}
+	</select>
+
+
+
+
+
+
+</mapper>

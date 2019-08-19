@@ -53,7 +53,8 @@
 		<typeAlias alias="chatCollectionVo" type="kr.or.ddit.joinVo.ChatCollectionVo" />
 		<typeAlias alias="donationVo" type="kr.or.ddit.donation.model.DonationVo"/>
 		<typeAlias alias="donationApprovalVo" type="kr.or.ddit.joinVo.DonationApprovalVo"/>
-<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
+		<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
+		<typeAlias alias="reportWriteVo" type="kr.or.ddit.matching.report.model.ReportWriteVo"/>
 	</typeAliases>
 
 
@@ -84,7 +85,10 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/donation.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/donationApproval.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/diseaseName.xml"/>
-   <mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/memberDisease.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/career.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/location.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/report.xml"/>
 
    </mappers>
 </configuration>
