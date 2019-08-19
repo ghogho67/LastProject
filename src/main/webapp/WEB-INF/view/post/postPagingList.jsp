@@ -270,12 +270,12 @@ td {
 									<th>작성자 아이디</th>
 									<th>작성일시</th>
 								</tr>
-								<c:forEach items="${postList }" var="post">
+								<c:forEach items="${postList }" var="post" varStatus="status">
 									<c:choose>
 										<c:when test="${post.post_del eq 'N' }">
-											<tr class="Category" id="${post.post_id }"
-												data-post_id="${post.post_id }">
-												<td class="CategoryId">${post.post_id }</td>
+											<tr class="Category" id="${post.post_id }" data-post_id="${post.post_id }">
+<%-- 												<td class="CategoryId">${post.post_id }</td> --%>
+												<td class="CategoryId">${(postCnt - status.index)-((current-1)*10)}</td>
 												<td><c:if test="${post.level > 1 }">
 														<c:forEach var="i" begin="1" end="${post.level+1 }"
 															step="1">
@@ -325,7 +325,7 @@ td {
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="${cp}/post/pagingList?page=${i}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}">${i}</a>
+												href="${cp}/post/pagingList?page=${i}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}&current=${i}&postCnt=${postCnt}">${i}</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -347,7 +347,6 @@ td {
 							</ul>
 						</div>
 					</form>
-
 				</div>
 				</div>
 			</div>

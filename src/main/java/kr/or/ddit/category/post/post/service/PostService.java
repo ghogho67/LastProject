@@ -49,6 +49,7 @@ public class PostService implements IPostService {
 		resultMap.put("postList", postList);
 		int postCnt = (int) map.get("cate_id");
 		postCnt = postDao.postCnt((int) map.get("cate_id"));
+		resultMap.put("postCnt", postCnt);
 		int pageSize = (int) map.get("pageSize");
 		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
 		resultMap.put("paginationSize", paginationSize);
@@ -84,6 +85,7 @@ public class PostService implements IPostService {
 		resultMap.put("postList", postList);
 		int postCnt = (int) map.get("cate_id");
 		postCnt = postDao.titlePostCnt(map);
+		resultMap.put("postCnt", postCnt);
 		int pageSize = (int) map.get("pageSize");
 		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
 		resultMap.put("paginationSize", paginationSize);
@@ -99,6 +101,7 @@ public class PostService implements IPostService {
 		resultMap.put("postList", postList);
 		int postCnt = (int) map.get("cate_id");
 		postCnt = postDao.idPostCnt(map);
+		resultMap.put("postCnt", postCnt);
 		int pageSize = (int) map.get("pageSize");
 		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
 		resultMap.put("paginationSize", paginationSize);
@@ -114,6 +117,7 @@ public class PostService implements IPostService {
 		resultMap.put("postList", postList);
 		int postCnt = (int) map.get("cate_id");
 		postCnt = postDao.contPostCnt(map);
+		resultMap.put("postCnt", postCnt);
 		int pageSize = (int) map.get("pageSize");
 		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
 		resultMap.put("paginationSize", paginationSize);
