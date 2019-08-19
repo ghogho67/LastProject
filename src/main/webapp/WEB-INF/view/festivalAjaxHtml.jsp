@@ -19,7 +19,7 @@ SEPERATORSEPERATOR
 <c:forEach items="${list}" var="post" varStatus="status">
 
 <li class="item">
-	<a href="${cp}/post/aaa?contenid=${post.contentid}" class="anchor">
+	<a href="${cp}/post/festvalPost?contenid=${post.contentid}&startDate=${post.eventstartdate}&endDate=${post.eventenddate}" class="anchor">
 		<div class="border">
 			<div class="rank_area">
 				<strong class="num">${status.count}</strong>

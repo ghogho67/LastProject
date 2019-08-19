@@ -36,6 +36,7 @@ import com.google.gson.JsonParser;
 
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
+import kr.or.ddit.category.post.post.model.DetailCommonVo;
 import kr.or.ddit.category.post.post.model.ImageBoardVo;
 import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.category.post.post.service.IPostService;
@@ -375,10 +376,6 @@ public class PostController {
 
 	@RequestMapping(path = "ImageBoard")
 	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
-		 if(pageVo==null) {
-	        	pageVo.setPage(1);
-	        	pageVo.setPageSize(8);
-	        }
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -387,9 +384,7 @@ public class PostController {
         String parameter = "";
  
         PrintWriter out = response.getWriter();
-        String area ="대전";
         
-//        int areaCode = areaCode(request, response, area);
         if(areaid!=0) {
         	parameter = parameter + "&" + "areaCode="+areaid;
         }
@@ -477,11 +472,7 @@ public class PostController {
 	
 	
 	@RequestMapping(path = "festvalPost") 
-	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
-		 if(pageVo==null) {
-	        	pageVo.setPage(1);
-	        	pageVo.setPageSize(8);
-	        }
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -491,17 +482,14 @@ public class PostController {
  
         PrintWriter out = response.getWriter();
         
-//        if(areaid!=0) {
-//        	parameter = parameter + "&" + "areaCode="+areaid;
-//        }
-//        parameter = parameter + "&" + "eventStartDate="+firstDate;
-//        parameter = parameter + "&" + "eventEndDate="+lastDate;
-//        parameter = parameter + "&" + "pageNo="+pageVo.getPage();
-//        parameter = parameter + "&" + "numOfRows="+pageVo.getPageSize();
-//        parameter = parameter + "&" + "arrange=D";
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "contentId=126508";
+        parameter = parameter + "&" + "contentId="+contenid;
+        parameter = parameter + "&" + "defaultYN=Y";
+        parameter = parameter + "&" + "firstImageYN=Y";
+        parameter = parameter + "&" + "addrinfoYN=Y";
+        parameter = parameter + "&" + "mapinfoYN=Y";
+        parameter = parameter + "&" + "overviewYN=Y";
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
@@ -523,54 +511,20 @@ public class PostController {
         out.println(s);
         
 
-        ArrayList<ImageBoardVo> list =null;
         Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        if(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item").isJsonObject() ==false) {
+        DetailCommonVo vo = new DetailCommonVo();
+        String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+    	vo= gson.fromJson(abc, DetailCommonVo.class);
+    	logger.debug("!!! vo : {}", vo);
+    	logger.debug("!!! startDate : {}", startDate);
+    	logger.debug("!!! endDate : {}", endDate);
 
-
-        	String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
-        	Type type = new TypeToken<List<ImageBoardVo>>(){}.getType();          
-        	list= gson.fromJson(abc, type);
-        	
-        }else {
-        	
-        }
-        double boardCnt=jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("totalCount").getAsDouble();
-        int boardCnt2=(int) boardCnt;
-
-
-        model.addAttribute("list", list);
-        model.addAttribute("boardCnt", boardCnt2);
-//        logger.debug("!!!!! list:{}",list);
-        int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-        if(pageVo.getPage()==1) {
-        	startPage =1;
-        }
-        if(startPage>=2) {
-        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-        }
-        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-        
-        logger.debug("!!!!! paginationSize:{}",paginationSize);
-      
-        int lastpaginationSize= (int) Math.ceil((double)boardCnt/pageVo.getPageSize());
-        
-        logger.debug("!!!!! lastpaginationSize:{}",lastpaginationSize);
-        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-        	paginationSize= lastpaginationSize;
-        }
-        model.addAttribute("startPage", startPage);
-		model.addAttribute("paginationSize", paginationSize);
-		model.addAttribute("lastpaginationSize", lastpaginationSize);
-		model.addAttribute("pageVo",pageVo);
-		
-		logger.debug("!!!!! startPage:{}",startPage);
-		logger.debug("!!!!! paginationSize:{}",paginationSize);
-
-        
-        return "festivalAjaxHtml";
+        model.addAttribute("vo", vo);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        return "festivalpost";
         
     }
 
