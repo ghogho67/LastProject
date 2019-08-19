@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="${cp}/resource/wrap/css/ThisTok.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
 <script>
@@ -42,7 +45,7 @@ function initSocket() {
    });
    
    function onOpen(evt) {
-      $("#chatdata").append("연결 됨.");
+      $("#chatdata").append("채팅이 시작되었습니다. 즐거운 하루 되십시요");
    }
    
    function sendMessage(){      
@@ -78,6 +81,16 @@ function initSocket() {
       console.log("message : " + message);
       sessionId = strArray[2];
       console.log("sessionId : " + sessionId);
+      
+      var todate = new Date();
+      var year = todate.getFullYear();
+      var month = todate.getMonth() + 1;
+      var date = todate.getDate();
+      var hours = todate.getHours();
+      var mins = todate.getMinutes();
+      var seconds = todate.getSeconds();
+
+      var today = year+"."+month+"."+date+" "+hours+":"+mins+":"+seconds;
          
       //나와 상대방이 보낸 메세지를 구분하여 영역을 나눈다.//
       if(currentusersession == sessionName.trim()){
@@ -86,9 +99,11 @@ function initSocket() {
          printHTML += "<div class='msg'>";
          printHTML += "<div class='user'>"+sessionName+"</div>";
          printHTML += "<p>"+message+"</p>";
+         printHTML += "<p class='nt'>"+today+"</p>";
          printHTML += "</div>";
          printHTML += "</li>";
          printHTML += "</li>";  
+       
          
          $("#chatdata").append(printHTML);
          $("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
@@ -99,9 +114,11 @@ function initSocket() {
          printHTML += "<div class='msg'>";
          printHTML += "<div class='user'>"+sessionName+"</div>";
          printHTML += "<p>"+message+"</p>";
+         printHTML += "<p class='nt'>"+today+"</p>";
          printHTML += "</div>";
          printHTML += "</li>";
          printHTML += "</li>"; 
+       
          
          $("#chatdata").append(printHTML);
          $("#chatdata").scrollTop($("#chatdata")[0].scrollHeight);
@@ -118,6 +135,8 @@ function initSocket() {
    }    
 
 }
+
+
    
 $(document).ready(function() {
    var userId = "${mem_id}";   //사용자 아이디를 파라미터로 받는다
@@ -137,9 +156,9 @@ function back(){
 	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
 }
 </script>
+
 </head>
 <body>
-<%@include file="/WEB-INF/view/common/ChatView.jsp"%>
 
    <img id="logo" alt="" src="/image/logosam2.png">
    <table class="container-fluid" style="width: 80%;">
@@ -164,9 +183,12 @@ function back(){
 							         <div class='msg'>
 								       	 <div class='user'>${mem_id }</div>
 								         <p>${chatText.chattext_cont }</p>
+								         <p class="nt"><fmt:formatDate value="${chatText.chattext_time }" pattern="YYYY.MM.dd HH:mm:ss"/></p>
 								     </div>
 					         </li>
+					          
 					     </li>
+					    
 	               		</c:when>
 	               		
 	               		<c:otherwise>
@@ -175,9 +197,11 @@ function back(){
 					         <div class='msg'>
 					        <div class='user'>${chatText.mem_id }</div>
 					        <p>${chatText.chattext_cont }</p>
+					        <p class="nt"><fmt:formatDate value="${chatText.chattext_time }" pattern="YYYY.MM.dd HH:mm:ss"/></p>
 					         </div>
 					         </li>
 					        </li>
+					         
 	               		</c:otherwise>
 					</c:choose>
 				 </c:forEach>

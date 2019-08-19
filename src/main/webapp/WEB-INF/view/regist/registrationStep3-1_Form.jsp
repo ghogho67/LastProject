@@ -529,11 +529,11 @@ function captcha() {
 										<label for="email1">운전가능여부</label>
 										<div class="checkbox">
 
-											<label><input type="radio" name="cw_driver" value="유">
+											<label><input type="radio" name="cw_driver" value="Y">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">유</span></label>
 
-											<label><input type="radio" name="cw_driver" value="무">
+											<label><input type="radio" name="cw_driver" value="N">
 												<span class="p-check-icon"><span
 													class="p-check-block"></span></span> <span class="p-label">무</span></label>
 										</div>

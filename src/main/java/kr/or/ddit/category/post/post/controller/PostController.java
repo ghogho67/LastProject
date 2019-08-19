@@ -36,6 +36,7 @@ import com.google.gson.JsonParser;
 
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
+import kr.or.ddit.category.post.post.model.DetailCommonVo;
 import kr.or.ddit.category.post.post.model.ImageBoardVo;
 import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.category.post.post.service.IPostService;
@@ -375,10 +376,6 @@ public class PostController {
 
 	@RequestMapping(path = "ImageBoard")
 	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
-		 if(pageVo==null) {
-	        	pageVo.setPage(1);
-	        	pageVo.setPageSize(8);
-	        }
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -387,9 +384,7 @@ public class PostController {
         String parameter = "";
  
         PrintWriter out = response.getWriter();
-        String area ="대전";
         
-//        int areaCode = areaCode(request, response, area);
         if(areaid!=0) {
         	parameter = parameter + "&" + "areaCode="+areaid;
         }
@@ -477,11 +472,15 @@ public class PostController {
 	
 	
 	@RequestMapping(path = "festvalPost") 
+<<<<<<< HEAD
 	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
 		 if(pageVo==null) {
 	        	pageVo.setPage(1);
 	        	pageVo.setPageSize(8);
 	        }
+=======
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -491,6 +490,7 @@ public class PostController {
  
         PrintWriter out = response.getWriter();
         
+<<<<<<< HEAD
 //        if(areaid!=0) {
 //        	parameter = parameter + "&" + "areaCode="+areaid;
 //        }
@@ -502,6 +502,16 @@ public class PostController {
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "contentId=126508";
+=======
+        parameter = parameter + "&" + "MobileOS=ETC";
+        parameter = parameter + "&" + "MobileApp=aa";
+        parameter = parameter + "&" + "contentId="+contenid;
+        parameter = parameter + "&" + "defaultYN=Y";
+        parameter = parameter + "&" + "firstImageYN=Y";
+        parameter = parameter + "&" + "addrinfoYN=Y";
+        parameter = parameter + "&" + "mapinfoYN=Y";
+        parameter = parameter + "&" + "overviewYN=Y";
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
@@ -523,6 +533,7 @@ public class PostController {
         out.println(s);
         
 
+<<<<<<< HEAD
         ArrayList<ImageBoardVo> list =null;
         Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
@@ -571,6 +582,22 @@ public class PostController {
 
         
         return "festivalAjaxHtml";
+=======
+        Gson gson = new Gson();
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
+        DetailCommonVo vo = new DetailCommonVo();
+        String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+    	vo= gson.fromJson(abc, DetailCommonVo.class);
+    	logger.debug("!!! vo : {}", vo);
+    	logger.debug("!!! startDate : {}", startDate);
+    	logger.debug("!!! endDate : {}", endDate);
+
+        model.addAttribute("vo", vo);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        return "festivalpost";
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
         
     }
 

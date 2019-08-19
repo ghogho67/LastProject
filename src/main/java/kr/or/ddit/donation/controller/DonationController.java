@@ -20,6 +20,10 @@ import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 
 @Controller
 @RequestMapping("/donation")
@@ -194,9 +198,22 @@ public class DonationController {
 	* Method 설명 :기부 상세보기
 	*/
 	@RequestMapping(path = "/detailDonation", method = RequestMethod.GET)
+<<<<<<< HEAD
 	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo, ApprovalVo approvalVo ) {
 		
 		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(donationApprovalVo.getApp_id()));
+=======
+	public String checkDonation(Model model, DonationApprovalVo donationApprovalVo, ApprovalVo approvalVo, DonationVo donationVoss ) {
+		
+		int app_id = approvalService.currentApproval();
+		logger.debug("☞app_id:{}",app_id);
+		
+		donationApprovalVo = donationService.getDonationApproval(app_id);
+//		donationApprovalVo.setApp_id(app_id);
+		model.addAttribute("donationApprovalVo",donationApprovalVo);
+		
+//		model.addAttribute("donationApprovalVo", donationService.getDonationApproval(app_id));
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 		logger.debug("☞donationApprovalVo:{}",donationApprovalVo);
 		
 		return "donation/detailDonation";
@@ -206,6 +223,10 @@ public class DonationController {
 	
 	//-- 관리자
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 	/**
 	* Method : donationPagingList
 	* 작성자 : ADMIN
@@ -213,6 +234,7 @@ public class DonationController {
 	* @return
 	* Method 설명 :관리자 페이지에서 기부자 전체목록 가져오기 
 	*/
+<<<<<<< HEAD
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
 	public String donationPagingList(Model model, PageVo pageVo) {
 		
@@ -236,6 +258,53 @@ public class DonationController {
 		return "/mypage/donation/donationPagingList.tiles";
 	}
 	
+=======
+//	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
+//	public String donationPagingList(Model model, PageVo pageVo) {
+//		
+//		Map<String, Object> resultMap = donationService.donationPagingList(pageVo);
+//		
+//		logger.debug("☞resultMap:{}",resultMap);
+//		
+//		List<DonationApprovalVo> getAllDoner = (List<DonationApprovalVo>) resultMap.get("getAllDoner");
+//		int paginationSize = (Integer) resultMap.get("paginationSize");
+//		
+//		logger.debug("☞getAllDoner:{}",getAllDoner);
+//		
+//		model.addAttribute("getAllDoner",getAllDoner);
+//		model.addAttribute("paginationSize",paginationSize);
+//		model.addAttribute("pageVo", pageVo);
+//		
+//		logger.debug("☞getAllDoner:{}",getAllDoner);
+//		logger.debug("☞paginationSize:{}",paginationSize);
+//		logger.debug("☞pageVo:{}",pageVo);
+//		
+//		return "/mypage/donation/donationPagingList.tiles";
+//	}
+	
+	/**
+	* Method : searchDonation
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param app_id
+	* @param pageVo
+	* @return
+	* Method 설명 : 기부자 검색
+	*/
+//	@RequestMapping(path = "/searchDonation", method = RequestMethod.POST)
+//	public String searchDonation(Model model, int app_id, PageVo pageVo, String mem_yn, String searchType) {
+//		
+//			List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN(mem_yn);
+//			if(mem_yn == "Y") {
+//				model.addAttribute("getDoner_memYN", getDoner_memYN);
+//			}else if(mem_yn == "N"){
+//				model.addAttribute("getDoner_memYN", getDoner_memYN);
+//			}
+//		
+//		return "/mypage/donation/detailDonation.tiles";
+//	}
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 	
 	
 

@@ -11,6 +11,16 @@ public class ApprovalVo {
 	private String mem_id;
 	private String app_del;
 	
+	private int rn;
+	
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	public ApprovalVo() {
 		
 	}

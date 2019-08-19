@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,6 +123,7 @@ td {
 
 
 <script>
+<<<<<<< HEAD
 	$(document).ready(function() {
 		$("#searchBtn").on("click", function() {
 			console.log("searchBtn click");
@@ -141,6 +147,56 @@ td {
 
 
 	});
+=======
+$( document ).ready(function() {
+// 	   $("#saerchBtn").click("on",function(){
+// 			var data = $("#saerchList").serialize();
+// 			console.log(data);
+// 			$.ajax({
+// 				type: "POST",
+// 				url : "${cp}/donation/serachDonation",
+// 				data : data,
+// 				success : function(data){
+// 					console.log(data);
+// 				},
+// 			error : function(xhr){
+// 					alert(xhr.status);
+				
+// 			}
+// 		 });
+// 		});
+	
+// 	$("#searchType").val("${searchType}");
+// 	$("#searchType").on("change", function(){
+// 		$("#frm2").submit();
+// 	});
+
+	
+	$("#searchBtn").on("click", function() {
+		console.log("searchBtn click");
+		console.log($("#app_id").val());
+		
+//			var sh_add = $(this).find("#sh_add").text();
+//			$("#sh_add").val(sh_add);
+		
+		$("#frm2").submit();
+	});
+	
+	$(".donTr").on("click", function(){
+		console.log("donTr click");
+		
+		var sh_id = $(this).find(".sh_id").text();
+		$("#app_id").val(app_id);
+		$("#frm").attr("action", "${cp}/donation/detailDonation");
+		$("#frm").attr("method", "get");
+		$("#frm").submit();
+	});
+
+
+
+	
+});
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 </script>
 
 </head>
@@ -160,6 +216,7 @@ td {
 						</h2>
 					</div>
 						
+<<<<<<< HEAD
 <!-- 						<div class="d1"> -->
 <%-- 							<form class="for" id="frm2" action="${cp}/shelter/searchShelter" method="post"> --%>
 <!-- 								<select id="searchType" name="searchType" -->
@@ -179,6 +236,28 @@ td {
                             <input id="saerchVal" name="saerchVal" type="text" placeholder=""><br>
                            <button id="saerchBtn" name="saerch" type="button"></button>
 						
+=======
+						<div class="d1">
+							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">
+								<select id="searchType" name="searchType"
+									style="position: absolute; z-index: 999;">
+									<option value="all">동 검색</option>
+								</select> <input type="text" placeholder="동을 입력해 주세요" name="sh_add" id="sh_add">
+								<button type="button" id="searchBtn"></button>
+							</form>
+						</div>
+						
+<%-- 						<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">  --%>
+<!-- 						 <select id="searchType" name="searchType" -->
+<!-- 							style="position: absolute; z-index: 999;"> -->
+<!--                                 <option value="all">전체 기부자</option> -->
+<!--                                 <option value="mem_y">기부자(회원)</option> -->
+<!--                                 <option value="mem_n">기부자(비회원)</option> -->
+<!--                              </select>  -->
+<!--                             <input id="saerchVal" name="saerchVal" type="text" placeholder=""><br> -->
+<!--                            <button id="saerchBtn" name="saerch" type="button"></button> -->
+<!-- 						</form> -->
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 						
 					<hr>
 					<form id="frm" action="${cp}/donation/pagingList" method="get">
@@ -187,6 +266,10 @@ td {
 						<table class="table center-aligned-table">
 							<thead>
 							<tr>
+<<<<<<< HEAD
+=======
+								<th scope="col">기부 아이디</th>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 								<th scope="col">기부자 이름</th>
 								<th scope="col">회원 아이디</th>
 								<th scope="col">전화번호</th>
@@ -197,7 +280,12 @@ td {
 							</thead>
 							<tbody>
 							<c:forEach items="${getAllDoner }" var="vo" varStatus="status">
+<<<<<<< HEAD
 								<tr>
+=======
+								<tr class="donTr" data-sh_id="${vo.sh_id ">
+									<td class="app_id">${vo.app_id }</td>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 									<td>${vo.doner }</td>
 									<td>${vo.mem_id }</td>
 									<td>${vo.doner_phone }</td>
@@ -213,6 +301,7 @@ td {
 					
 					
 					<!-- 페이지 네이션 -->
+<<<<<<< HEAD
 				<div class="text-center">
 					<ul class="pagination">
 				
@@ -246,6 +335,40 @@ td {
 						</c:choose>
 					</ul>
             </div>
+=======
+					<div class="text-center">
+						<ul class="pagination">
+							<c:choose>
+								<c:when test="${pageVo.page == 1 }">
+									<li class="disabled"><span>«</span></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${cp}/donation/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:forEach begin="1" end="${paginationSize}" var="i">
+								<c:choose>
+									<c:when test="${pageVo.page == i}">
+										<li class="active"><span>${i}</span></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${cp}/donation/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:choose>
+								<c:when test="${pageVo.page == paginationSize}">
+									<li class="disabled"><span>»</span></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${cp}/donation/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
+								</c:otherwise>
+							</c:choose>
+						</ul>
+					</div>
+>>>>>>> 4b27b357da618ee5b0bec6929c9be83851e003ad
 					
 					</form>
 					
