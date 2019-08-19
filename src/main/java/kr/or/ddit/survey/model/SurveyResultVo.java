@@ -1,13 +1,12 @@
 package kr.or.ddit.survey.model;
 
-import java.util.Date;
 
 public class SurveyResultVo {
 
 	private String surresult_id;
 	private int sur_part_id;
 	private String sur_result;
-	private Date sur_time;
+	private String sur_time;
 	
 	
 	
@@ -18,7 +17,7 @@ public class SurveyResultVo {
 		this.sur_result = sur_result;
 	}
 	
-	public SurveyResultVo(String surresult_id, int sur_part_id, String sur_result, Date sur_time) {
+	public SurveyResultVo(String surresult_id, int sur_part_id, String sur_result, String sur_time) {
 		super();
 		this.surresult_id = surresult_id;
 		this.sur_part_id = sur_part_id;
@@ -64,12 +63,12 @@ public class SurveyResultVo {
 	}
 
 
-	public Date getSur_time() {
+	public String getSur_time() {
 		return sur_time;
 	}
 
 
-	public void setSur_time(Date sur_time) {
+	public void setSur_time(String sur_time) {
 		this.sur_time = sur_time;
 	}
 	

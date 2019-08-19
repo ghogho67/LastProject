@@ -49,6 +49,9 @@ public class ApprovalController {
 
 		return "jsonView";
 	}
+
+	
+	
 	
 //	@RequestMapping(path = "/approvalCheck")
 //	public String approvalCheck(HttpSession session, Model model, int page, int pageSize) {
@@ -281,8 +284,6 @@ public class ApprovalController {
 				return"/mypage/approval/approvalCheckP.mytiles";
 		
 			
-			
-			
 		}else if(searchType.equals("day")&&!searchVal.equals("")) {
 			String day = searchVal;
 			map.put("app_time", day);
@@ -323,7 +324,6 @@ public class ApprovalController {
 			
 		}
 	}
-	
 	
 }
 

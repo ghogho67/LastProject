@@ -46,7 +46,7 @@ public class ShelterService implements IShelterService {
 		
 		int shelterCnt = shelterDao.shelterCnt();
 		int paginationSize = (int) Math.ceil((double)shelterCnt/pageVo.getPageSize());
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}

@@ -39,20 +39,40 @@ public class HospitalController {
 	* Method 설명 : 병원 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String hospital(Model model, PageVo pageVo) {
+	public String hospital(Model model, PageVo pageVo, int page, int pageSize) {
+		
+		pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
 		
 		Map<String, Object> resultMap = hospitalService.hosPagingList(pageVo);
 
 		logger.debug("☞resultMap:{}", resultMap);
 		
 		List<HospitalVo> hosList = (List<HospitalVo>) resultMap.get("hosList");
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+		
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
 		
 		logger.debug("☞hosList:{}",hosList);
 		
 		model.addAttribute("hosList", hosList);
+		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
-		model.addAttribute("pageVo", pageVo);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
+		model.addAttribute("pageVo",pageVo);
 		
 		logger.debug("☞hosList:{}",hosList);
 		logger.debug("☞paginationSize:{}",paginationSize);
@@ -120,6 +140,10 @@ public class HospitalController {
 		
 		//-------------- 페이지 네이션!!
 		
+//		pageVo = new PageVo();
+//		pageVo.setPage(page);
+//		pageVo.setPageSize(pageSize);
+//		
 //		Map<String, Object> map = new HashMap<String, Object>();
 //		hospitalVo = new HospitalVo(hos_add);
 //		
@@ -133,15 +157,31 @@ public class HospitalController {
 //		logger.debug("☞pageSize:{}",pageVo.getPageSize());
 //		
 //		Map<String, Object> resultMap = hospitalService.searchHosPagingList(map);
-//		List<HospitalVo> getSearchHosAdd = (List<HospitalVo>) resultMap.get("getSearchHosAdd");
-//		int paginationSize = (Integer) resultMap.get("paginationSize");
+//		getSearchHosAdd = (List<HospitalVo>) resultMap.get("getSearchHosAdd");
+//		
+//		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+//        if(pageVo.getPage()==1) {
+//        	startPage =1;
+//        }
+//        if(startPage>=2) {
+//        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+//        }
+//        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+//        
+//        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+//        
+//        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+//        	paginationSize= lastpaginationSize;
+//        }
 //		
 //		logger.debug("☞resultMap:{}", resultMap);
 //		
 //		model.addAttribute("getSearchHosAdd", getSearchHosAdd);
-//		model.addAttribute("paginationSize", paginationSize);
-//		model.addAttribute("pageVo", pageVo);
 //		model.addAttribute("hos_add", hos_add);
+//		model.addAttribute("startPage", startPage);
+//		model.addAttribute("paginationSize", paginationSize);
+//		model.addAttribute("lastpaginationSize", lastpaginationSize);
+//		model.addAttribute("pageVo",pageVo);
 		
 		return "/hospital/searchHospital.tiles";
 	}

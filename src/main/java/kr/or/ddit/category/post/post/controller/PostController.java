@@ -466,14 +466,13 @@ public class PostController {
         return "festivalAjaxHtml";
         
     }
-   
-   
-   
-   
-   
-   @RequestMapping(path = "festvalPost") 
-   public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
-      request.setCharacterEncoding("utf-8");
+
+	
+	
+	
+	@RequestMapping(path = "festvalPost") 
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
+		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
         String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";

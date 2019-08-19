@@ -46,6 +46,15 @@ public class MatchingDao implements IMatchingDao {
 	public List<MatchingVo> getMatchingList(String cw_mem_id) {
 		return sqlSession.selectList("matching.getMatchingList", cw_mem_id);
 	}
+	
+	@Override
+	public List<MatchingVo> getMemMatchingList(String mem_id) {
+		return sqlSession.selectList("matching.getMemMatchingList", mem_id);
+	}
+	@Override
+	public List<MatchingVo> getCWMatchingList(String cw_mem_id) {
+		return sqlSession.selectList("matching.getCWMatchingList", cw_mem_id);
+	}
 
 	/**
 	 * Method : getCareWorker 작성자 : PC24 변경이력 :

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
 #logo{
-	height: 70px;
-	width: 200px;
+   height: 70px;
+   width: 200px;
 }
 
 body {
@@ -39,19 +38,19 @@ body {
 } 
 
 #chat{
-	overflow:scroll;
-	border-top: 1px solid #f6f6f6;
-	height: 550px;
+   overflow:scroll;
+   border-top: 1px solid #f6f6f6;
+   height: 550px;
   width: 100%;
   background: #fff;
   border-radius: 20px;
   box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3
   );
-	-ms-overflow-style: none; 
-	margin: 0 auto;
+   -ms-overflow-style: none; 
+   margin: 0 auto;
 }
 ::-webkit-scrollbar {
-	display:none;
+   display:none;
 }
 
 .hidden{
@@ -76,55 +75,55 @@ display:none;
 
 
 .leftmargin{
-	margin-left: 20px;
+   margin-left: 20px;
 }
 
 #backBtn{
-	margin-left: 130px;
-	margin-top: 20px;
+   margin-left: 130px;
+   margin-top: 20px;
 }
 
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#myBtn").on("click",function(){
-		var data = $("#searchId").serialize();
-		$.ajax({
-			type: "GET",
-			url : "${cp}/chat/searchId",
-			data : data,
-			success : function(data){
-//	 			console.log(data);
-				if(data.cm_id == 0){
-					
-					$("#idresult1").css("color", "red");
-					$("#idresult1").html("기입하신 ID가 없습니다.");
-					
-				}else{
-					$("#idresult1").css("color", "blue");
-					$("#idresult1").html("ID가 있습니다.");
-					
-				}
-								
-			},
-		error : function(xhr){
-				alert(xhr.status);
-		}
-			
-			
-		});
-	});
-	
-	
-	$("#creatBtn").on("click",function(){
-		
-		$("#searchId").submit();
-		
-	});
-	
+   $("#myBtn").on("click",function(){
+      var data = $("#searchId").serialize();
+      $.ajax({
+         type: "GET",
+         url : "${cp}/chat/searchId",
+         data : data,
+         success : function(data){
+//             console.log(data);
+            if(data.cm_id == 0){
+               
+               $("#idresult1").css("color", "red");
+               $("#idresult1").html("기입하신 ID가 없습니다.");
+               
+            }else{
+               $("#idresult1").css("color", "blue");
+               $("#idresult1").html("ID가 있습니다.");
+               
+            }
+                        
+         },
+      error : function(xhr){
+            alert(xhr.status);
+      }
+         
+         
+      });
+   });
+   
+   
+   $("#creatBtn").on("click",function(){
+      
+      $("#searchId").submit();
+      
+   });
+   
 });
 function back(){
-	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
+   window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
 }
 //
 </script>
@@ -149,5 +148,7 @@ function back(){
 		
 			
 	
+         
+   
 </body>
 </html>

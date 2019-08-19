@@ -10,6 +10,7 @@ import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.dao.IReportDao;
 import kr.or.ddit.matching.report.model.ReportVo;
+import kr.or.ddit.matching.report.model.ReportWriteVo;
 
 @Service
 public class ReportService implements IReportService {
@@ -58,4 +59,8 @@ public class ReportService implements IReportService {
 		return reportDao.getWorkerCertainReportWA(matchingReportAttachmentVo);
 	}
 
+	@Override
+	public int reportInsert(ReportWriteVo rwv) {
+		return reportDao.reportInsert(rwv);
+	}
 }

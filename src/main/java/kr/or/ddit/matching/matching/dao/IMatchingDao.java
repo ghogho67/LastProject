@@ -18,5 +18,10 @@ public interface IMatchingDao {
 	List<MemberVo> getCareWorker();
 	
 	List<MatchingVo> getMatchingList(String cw_mem_id);
+	
+	List<MatchingVo> getCWMatchingList(String cw_mem_id);
+
+	List<MatchingVo> getMemMatchingList(String mem_id);
+
 
 }

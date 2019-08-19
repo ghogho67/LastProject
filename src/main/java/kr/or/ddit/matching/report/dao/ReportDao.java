@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
+import kr.or.ddit.matching.report.model.ReportWriteVo;
 
 @Repository
 public class ReportDao implements IReportDao {
@@ -69,7 +70,10 @@ public class ReportDao implements IReportDao {
 	}
 
 
-
+	@Override
+	public int reportInsert(ReportWriteVo rwv) {
+		return sqlSession.insert("report.insert", rwv);
+	}
 
 
 

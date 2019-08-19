@@ -30,6 +30,16 @@
 		select * from matching
 		where cw_mem_id = #{cw_mem_id}
 	</select>
+	
+	<select id="getCWMatchingList" resultType="matchingVo">
+		select * from matching
+		where cw_mem_id = #{cw_mem_id}
+	</select>
+
+	<select id="getMemMatchingList" resultType="matchingVo">
+		select * from matching
+		where mem_id = #{mem_id}
+	</select>
 
 	<update id="modify" parameterType="matchingVo">
 		UPDATE matching SET
