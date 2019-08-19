@@ -63,6 +63,10 @@ cate_id : ${cate_id } post_id : ${post_id }
 								</div>
 							</div>
 						</form>
+						<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+							<input type="hidden" name="cate_id" value="${cate_id }" /> 
+							<input type="hidden" name="post_id" value="${post_id }" />
+						</form>
 					</div>
 </body>
 <script>

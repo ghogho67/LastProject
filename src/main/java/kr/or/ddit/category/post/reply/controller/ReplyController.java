@@ -50,6 +50,7 @@ public class ReplyController {
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String replyRegister(String reply_cont, int post_id, ReplyVo replyVo, Model model, int cate_id,
 			HttpSession session) {
+		logger.debug("☞cate_id:{}",cate_id);
 		replyVo.setPost_id(post_id);
 		replyVo.setReply_cont(reply_cont);
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");

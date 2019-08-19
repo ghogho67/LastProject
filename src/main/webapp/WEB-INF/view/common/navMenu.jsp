@@ -6,7 +6,7 @@
 
 <nav id="nav-menu-container">
 	<ul class="nav-menu">
-		<li class="menu-active"><a href="${cp}/main">Home</a></li>
+		<li class="menu-active"><a href="${cp}/crawling">Home</a></li>
 		<li><a href="departments.html">회사소개</a></li>
 	<c:choose>
 				<c:when test="${MEM_INFO.mem_grade==0}"><li><a href="${cp}mypage/Admin_Info">마이페이지</a></li></c:when>
@@ -24,9 +24,9 @@
 
 		<li class="menu-has-children"><a href="">커뮤니티</a>
 			<ul>
-				<li><a href="${cp}/test/basicBoard">공지사항</a></li>
-				<li><a href="${cp}/test/basicBoard">자유게시판</a></li>
-				<li><a href="${cp}/test/basicQnA">QnA</a></li>
+				<li><a href="${cp}/post/pagingList?cate_id=4">공지사항</a></li>
+				<li><a href="${cp}/post/pagingList?cate_id=3">자유게시판</a></li>
+				<li><a href="${cp}/post/pagingList?cate_id=2">QnA</a></li>
 				<li><a href="${cp}/post/pagingList?cate_id=1">게시판</a></li>
 			</ul></li>
 

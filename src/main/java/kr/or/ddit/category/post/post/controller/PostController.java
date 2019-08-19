@@ -97,6 +97,8 @@ public class PostController {
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
+		
+		
 		// 페이지 이동
 		return "/post/postDetail.tiles";
 
@@ -104,7 +106,9 @@ public class PostController {
 
 	@RequestMapping(path = "modifyView")
 	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
-
+		
+		logger.debug("☞cate_id:{}",cate_id);
+		logger.debug("☞post_id:{}",post_id);
 		postVo = postService.getPost(post_id);
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("post_id", post_id);
