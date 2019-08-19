@@ -1,6 +1,8 @@
 package kr.or.ddit.approval.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -71,6 +73,61 @@ public class ApprovalService implements IApprovalService {
 	@Override
 	public int currentApproval() {
 		return approvalDao.currentApproval();
+	}
+
+	@Override
+	public Map<String, Object> approvalPageList(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("approvalPageList", approvalDao.approvalPageList(map));
+
+		
+		String mem_id = (String) map.get("mem_id");
+		int memAllCnt = approvalDao.approvalPageCnt(mem_id);
+		int pageSize = (int)map.get("pageSize");
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("lastpaginationSize", paginationSize);
+		
+		return resultMap;
+	}
+
+	@Override
+	public Map<String, Object> daySaerchList(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("typeSaerchList", approvalDao.typeSaerchList(map));
+
+		
+		String mem_id = (String) map.get("mem_id");
+		int app_type = (int) map.get("type");
+		Map<String, Object> cnttMap = new HashMap<String, Object>();
+		cnttMap.put("mem_id", mem_id);
+		cnttMap.put("app_type", app_type);
+		int memAllCnt = approvalDao.typeSaerchCnt(cnttMap);
+		int pageSize = (int)map.get("pageSize");
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("lastpaginationSize", paginationSize);
+		return resultMap;
+	}
+
+	@Override
+	public Map<String, Object> typeSaerchList(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("daySaerchList", approvalDao.daySaerchList(map));
+
+		
+		String mem_id = (String) map.get("mem_id");
+		int app_time = (int) map.get("day");
+		Map<String, Object> cnttMap = new HashMap<String, Object>();
+		cnttMap.put("mem_id", mem_id);
+		cnttMap.put("app_time", app_time);
+		int memAllCnt = approvalDao.daySaerchCnt(cnttMap);
+		int pageSize = (int)map.get("pageSize");
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("lastpaginationSize", paginationSize);
+		
+		return resultMap;
 	}
 	
 	

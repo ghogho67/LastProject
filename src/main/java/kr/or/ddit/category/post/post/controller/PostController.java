@@ -36,6 +36,7 @@ import com.google.gson.JsonParser;
 
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
+import kr.or.ddit.category.post.post.model.DetailCommonVo;
 import kr.or.ddit.category.post.post.model.ImageBoardVo;
 import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.category.post.post.service.IPostService;
@@ -364,17 +365,17 @@ public class PostController {
 	}
 
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
-	public String ImageBoard() {
-		return "festival";
+	public String ImageBoard1() {
+		return "festival.tiles";
+	}
+	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
+	public String ImageBoard2() {
+		return "festival2";
 	}
 	
 
 	@RequestMapping(path = "ImageBoard")
 	public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
-		 if(pageVo==null) {
-	        	pageVo.setPage(1);
-	        	pageVo.setPageSize(8);
-	        }
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
@@ -383,9 +384,7 @@ public class PostController {
         String parameter = "";
  
         PrintWriter out = response.getWriter();
-        String area ="대전";
         
-//        int areaCode = areaCode(request, response, area);
         if(areaid!=0) {
         	parameter = parameter + "&" + "areaCode="+areaid;
         }
@@ -472,11 +471,13 @@ public class PostController {
 	
 	
 	
-	public int areaCode(HttpServletRequest request, HttpServletResponse response, String area) throws Exception {
-        request.setCharacterEncoding("utf-8");
+	@RequestMapping(path = "festvalPost") 
+
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
+		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
-        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=";
+        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
         String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
         String parameter = "";
  
@@ -485,7 +486,13 @@ public class PostController {
 
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "numOfRows=17";
+        parameter = parameter + "&" + "contentId="+contenid;
+        parameter = parameter + "&" + "defaultYN=Y";
+        parameter = parameter + "&" + "firstImageYN=Y";
+        parameter = parameter + "&" + "addrinfoYN=Y";
+        parameter = parameter + "&" + "mapinfoYN=Y";
+        parameter = parameter + "&" + "overviewYN=Y";
+
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
@@ -505,24 +512,22 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
-    
-        
+
+        Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        JsonArray array = (JsonArray) jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item");
-        int code =0;
-        for (int i = 0; i < array.size(); i++) {          
-        	JsonObject object = (JsonObject) array.get(i);
-        	String name2 =object.get("name").getAsString();
-        	if(area.equals(name2)) {
-        		code = Integer.parseInt(object.get("code").toString());
-        		break;
-        	}
-        	     
-     
-        }            
-     
-        return code;
+        DetailCommonVo vo = new DetailCommonVo();
+        String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
+    	vo= gson.fromJson(abc, DetailCommonVo.class);
+    	logger.debug("!!! vo : {}", vo);
+    	logger.debug("!!! startDate : {}", startDate);
+    	logger.debug("!!! endDate : {}", endDate);
+
+        model.addAttribute("vo", vo);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        return "festivalpost";
+        
     }
 
 }

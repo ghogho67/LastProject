@@ -3,11 +3,12 @@ package kr.or.ddit.chatbot.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ChatbotController {
 
-	@RequestMapping(path = "/chatbot")
+	@RequestMapping(path = "/chatbot", method = RequestMethod.GET)
 	public String chatbot(Model model, String str, String userquestion, String userSay, String chatBotSay) {
 	
 //		if(userquestion == "매칭" || userquestion == "요양보호사" || userquestion == "요양보호사선택" || 
@@ -44,10 +45,8 @@ public class ChatbotController {
 	}
 	
 	
-	@RequestMapping("/speechToText")
+	@RequestMapping(path = "/speechToText")
 	public String speechToText() {
-		
-		
 		
 		return "/chatbot/speechToText";
 	}

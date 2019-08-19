@@ -1,8 +1,10 @@
 package kr.or.ddit.approval.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.joinVo.AttendanceMatchingVo;
 
 public interface IApprovalDao {
 
@@ -42,6 +44,47 @@ public interface IApprovalDao {
 	* Method 설명 :가장 최근 app_id찾기
 	*/
 	int currentApproval();
+	
+	
+	/**
+	* Method : approvalPageList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param map
+	* @return
+	* Method 설명 : mem_id 를 검색하여 리스트 갖고오고 페이지네이션
+	*/
+	List<ApprovalVo> approvalPageList(Map<String, Object> map);
+	
+	
 
+	
+	int approvalPageCnt(String mem_id);
+	
+	
+	
+	
+	/**
+	* Method : daySaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 날짜별로 검색하여 리스트 갖고오기
+	*/
+	public List<ApprovalVo> daySaerchList(Map<String, Object> resultMap); 
+	public int daySaerchCnt(Map<String, Object> day);
+	
+	
+	/**
+	* Method : typeSaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
+	*/
+	public List<ApprovalVo> typeSaerchList(Map<String, Object> resultMap); 
+	public int typeSaerchCnt(Map<String, Object> type);
 
 }

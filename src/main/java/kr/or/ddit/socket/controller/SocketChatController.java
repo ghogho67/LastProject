@@ -22,6 +22,7 @@ import kr.or.ddit.handler.SocketChatHandler;
 public class SocketChatController {
 	@Resource(name = "chatTextService")
 	private IChatTextService chatTextService;
+	//
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);
@@ -29,8 +30,11 @@ public class SocketChatController {
 	private SocketChatHandler socketHandler; // SocketChantHandelr
 
 	// 채팅 화면 요청(파리미터로 userId를 전송) : http://localhost/socketView?userId=brown
-	@RequestMapping(path = "/socket/view", method = RequestMethod.POST)
+	@RequestMapping(path = "/socket/view")
 	public String socketView(HttpSession session, String mem_id, Model model, int chat_id) {
+		logger.debug("mem_id :{}", mem_id);
+		logger.debug("chat_id :{}", chat_id);
+		
 		session.setAttribute("mem_id", mem_id);
 		session.setAttribute("chat_id", chat_id);
 		

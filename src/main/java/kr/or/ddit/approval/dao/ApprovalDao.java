@@ -1,6 +1,7 @@
 package kr.or.ddit.approval.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -72,5 +73,46 @@ public class ApprovalDao implements IApprovalDao {
 	public int currentApproval() {
 		return sqlSession.selectOne("approval.currentApproval");
 	}
+	
+	
+	/**
+	* Method : approvalPageList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param map
+	* @return
+	* Method 설명 : mem_id 를 검색하여 리스트 갖고오고 페이지네이션
+	*/
+	@Override
+	public List<ApprovalVo> approvalPageList(Map<String, Object> map) {
+		return sqlSession.selectList("approval.approvalPageList",map);
+	}
+
+	@Override
+	public int approvalPageCnt(String mem_id) {
+		return sqlSession.selectOne("approval.approvalCnt", mem_id);
+	}
+//==========================================검색 일반회원 =================================================
+	@Override
+	public List<ApprovalVo> daySaerchList(Map<String, Object> resultMap) {
+		return sqlSession.selectList("approval.dayPageList", resultMap);
+	}
+
+	@Override
+	public int daySaerchCnt(Map<String, Object> day) {
+		return sqlSession.selectOne("approval.dayCnt", day);
+	}
+
+	@Override
+	public List<ApprovalVo> typeSaerchList(Map<String, Object> resultMap) {
+		return sqlSession.selectList("approval.typePageList", resultMap);
+	}
+
+	@Override
+	public int typeSaerchCnt(Map<String, Object> type) {
+		return sqlSession.selectOne("approval.typeCnt", type);
+	}
+	
+//==========================================================================================================
 
 }

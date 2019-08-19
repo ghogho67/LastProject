@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>인지 능력 향상프로그램</title>
 
 <style type="text/css">
 @charset "UTF-8";
@@ -74,16 +74,17 @@
           
      
        <iframe width="1200px" height="600px" src="${video.video_path}" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen >
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen allow="autoplay; encrypted-media" >
             </iframe>
 
      
      
             </div>
         </div>
+        
+        <br>
 
-
-  <a style="text-align: right;"  href="${cp}/recognitionImp/impTestQ1?sur_id=${sur_id}">문제화면</a>
+  <a style="text-align: right;position:absolute; left:85%; font-size:2em; font-weight: bold; color: #473fa0;"  href="${cp}/recognitionImp/impTestQ1?sur_id=${sur_id}"> 문제풀기</a>
 
 		</div>
 

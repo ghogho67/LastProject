@@ -19,6 +19,10 @@ public class LectureService implements ILectureService {
 	public List<LectureVo> getLectureList() {
 		return lectureDao.getLectureList();
 	}
+	@Override
+	public List<LectureVo> getLectureAllList() {
+		return lectureDao.getLectureAllList();
+	}
 
 	@Override
 	public LectureVo getLecture(int lec_id) {
@@ -53,6 +57,11 @@ public class LectureService implements ILectureService {
 	@Override
 	public CultureVo getCulture(int culture_id) {
 		return lectureDao.getCulture(culture_id);
+	}
+
+	@Override
+	public List<CultureVo> getCultureList() {
+		return lectureDao.getCultureList();
 	}
 	
 }

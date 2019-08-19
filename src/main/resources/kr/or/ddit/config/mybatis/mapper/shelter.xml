@@ -11,7 +11,7 @@
 		order by sh_id
 	</select>
 	
-	<!-- 무더위 쉼터 조회 -->
+	<!-- 무더위 쉼터수 조회 -->
 	<select id="shelterCnt" resultType="int">
 		select count(*)
 		from shelter

@@ -211,7 +211,7 @@ public class mypageController {
 	
 	/**
 	 * Method : Worker_InfoModification
-	 * 작성자 : PC02
+	 * 작성자 : 오도아
 	 * 변경이력 :
 	 * @return
 	 * Method 설명 : 마이페잊 요양보호사 정보 출력
@@ -614,6 +614,32 @@ public class mypageController {
 
 	      return "mypage/gold/gpxMap";
 	   }
+	   
+	   @RequestMapping("/PagingList")
+	   public String memberPagingList() {
+		   
+		   
+		   return "/mypage/memberManage/memberPagingList.tiles";
+	   }
 	
+	   
+	   
+	   
+		
+	   @RequestMapping("/recognitionActResult")
+	   public String recognitionActResult(HttpSession session, Model model) {
+
+			MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+			String mem_id = memvo.getMem_id();
+			
+			//간이인지 테스트 결과 
+			
+			//전체 인지테스트 전체 결과 와 시간
+			
+		   
+	      return "mypage/gold/recognitionActResult";
+	   }
+	   
+	   
 	
 }

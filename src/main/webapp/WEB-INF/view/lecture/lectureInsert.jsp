@@ -71,8 +71,7 @@ td {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
-	<form action="${cp}/lecture/modifyLecture" method="post">
-
+	<form action="${cp}/lecture/Insertlecture" method="post">
 
 		<div class="container">
 
@@ -130,7 +129,8 @@ td {
 											<div class="form-group">
 												<label class="col-md-12">강좌 시작일</label>
 												<div class="col-md-12">
-													<input type="date" value="<fmt:formatDate value="${lecture.lec_st_dt}"  pattern="yyyy-MM-dd" />"
+													<input type="date"
+														value="<fmt:formatDate value="${lecture.lec_st_dt}"  pattern="yyyy-MM-dd" />"
 														class="form-control form-control-line" name="lec_st_dt"
 														id="lec_st_dt">
 												</div>
@@ -209,41 +209,61 @@ td {
 
 
 
-
-
 											<div class="form-group">
-												<label for="birth" class="col-md-12">문화센터명</label>
-												<div class="col-md-12">
-												<select id="searchType" name="searchType">
-												<c:forEach items="${boardPostList}" var="post">
-										<option value="${culture.culture_id}" id="" name="">전체</option>
-												</c:forEach>
-												
-										
-									</select> 
-							
-												
-													
-												</div>
+												<label class="col-md-12">강좌분류&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select
+													id="lec_type" name="lec_type" style="width: 400px;">
+														<option value="601">순수학문</option>
+														<option value="602">외국어</option>
+														<option value="603">생활기술</option>
+														<option value="604">요리</option>
+														<option value="605">미술/음악</option>
+														<option value="606">건강/생활체육</option>
+
+
+												</select>
+												</label>
+
 											</div>
+
+
+<hr>
+
+
+
+										<div class="form-group">
+											<label for="birth" class="col-md-12">문화센터명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select
+												id="searchType" name="searchType" style="width: 400px;">
+													<c:forEach items="${cultureVo}" var="culture">
+														<option value="${culture.culture_id}" id="culture_id"
+															name="culture_id">${culture.culture_type}</option>
+													</c:forEach>
+
+
+											</select>
+											</label>
 										</div>
 									</div>
 								</div>
-
-
-
-								<div class="col-sm-12" style="text-align: right;">
-									<button class="btn btn-success" id="kkk" type="submit">강좌정보수정</button>
-								</div>
 							</div>
 
+
+
+							<div class="col-sm-12" style="text-align: right;">
+								<button class="btn btn-success" id="kkk" type="submit">강좌
+									등록</button>
+							</div>
 						</div>
 
-
-
 					</div>
+
+
+
 				</div>
 			</div>
+		</div>
 		</div>
 	</form>
 </body>

@@ -1,6 +1,6 @@
 package kr.or.ddit.chat.chatText.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.chat.chatText.model.ChatTextVo;
+import kr.or.ddit.joinVo.ChatCollectionVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class ChatTextDaoTest extends LogicTestEnv{
@@ -43,6 +44,21 @@ public class ChatTextDaoTest extends LogicTestEnv{
 
 		/***Then***/
 		assertEquals(4, test.size());
+	}
+	
+	@Test
+	public void chatCntTest() {
+		/***Given***/
+		String mem_id = "brown";
+		int cnt = 0;
+		/***When***/
+		List<ChatCollectionVo> test = chatTextDao.chatCntList(mem_id);
+		for(int i = 0; i < test.size(); i ++) {
+			cnt += test.get(i).getCnt();
+		}
+
+		/***Then***/
+		assertEquals(106, cnt);
 	}
 
 }

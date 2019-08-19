@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,6 +125,12 @@
 	width: 155px;
 	height: 40px
 }
+
+
+.slidebanner{position:relative;height:50px;width:985px;overflow:hidden;}
+.slidebanner .bannerbox{position:absolute;margin:0;padding:0;}
+.slidebanner li{float:left;list-style:none;margin-left:10px}
+.slidebanner li:first-child{margin:0}
 </style>
 
 
@@ -314,8 +321,28 @@
 
 
 
+
+<div class="slidebanner" style="padding-left: 1500px;">
+  <ul class="bannerbox">    
+    <li><img src="http://placehold.it/187x50/E64E4F" alt="dw" /></li>
+    <li><img src="/image/banner/BannerImg_201709111200074660.gif" alt="dw" /></li>
+    <li><img src="/image/banner/BannerImg_201902250554538880.jpg" alt="dw" /></li>
+    <li><img src="/image/banner/BannerImg_201709111200074660.gif"alt="dw" /></li>
+    <li><img src="/image/banner/BannerImg_201709111200074660.gif" alt="dw" /></li>
+    <li><img src="/image/banner/BannerImg_201709111200074660.gif" alt="dw" /></li>
+    <li><img src="http://placehold.it/187x50/7992D9" alt="dw" /></li>
+    <li><img src="/image/banner/BannerImg_201709111200074660.gif" alt="dw" /></li>
+    <li><img src="http://placehold.it/187x50/FFA500" alt="dw" /></li>
+    <li><img src="/image/banner/Banner_201702071159070710.png" alt="dw" /></li>
+  </ul>                
+</div>
+
+
+
+
+
 	<section
-		style="position: absolute; bottom: 58%; margin: 0 auto; right: 90%;">
+		style="position: absolute; bottom: 50%; margin: 0 auto; right: 90%;">
 		
 		<div id="banner_zone" class="banner_zone">
 		
@@ -323,10 +350,9 @@
 			
 				<ul style="left: 0px; width: 2119px; position: relative;">
 
-					<li style="opacity: 1;"><a
-						href="http://edu.edurang.net/ebs/index.html" target="_blank"
-						title="[EBS 논술톡] ICT 자료 연결하기(새창으로)"><img
-							src="/image/banner/Banner_201702071159070710.png"></a></li>
+					<li style="opacity: 1;">
+					<a href="http://edu.edurang.net/ebs/index.html" target="_blank" title="[EBS 논술톡] ICT 자료 연결하기(새창으로)">
+					<img src="/image/banner/Banner_201702071159070710.png"></a></li>
 
 					<li style="opacity: 1;"><a
 						href="http://www.teachforkorea.go.kr" target="_blank"
@@ -383,6 +409,25 @@
 
 	<%@include file="/WEB-INF/view/common/footer.jsp"%>
 
+
+<!-- <script language="JavaScript"> -->
+// timer();
+// var current=0;
+// var $interval;
+
+// function timer(){
+//   var $interval=setInterval(function(){slide()},2000);                        
+// }
+
+// function slide(){
+//   $(".bannerbox").animate({left:"-=187px"},1000,function(){
+//     $(this).css({"left":0});
+//     $(".bannerbox").append( $("ul").children("li").eq(0) );
+//   });    
+//   current++;
+//   if(current==5)current=0;
+// }    
+<!-- </script> -->
 
 
 
