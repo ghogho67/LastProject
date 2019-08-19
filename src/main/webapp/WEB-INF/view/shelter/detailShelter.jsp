@@ -37,6 +37,7 @@ $(document).ready(function(){
    <c:if test="${not empty msg}">
       alert("${msg}");
    </c:if>
+
    
 	   
 });
@@ -205,9 +206,11 @@ $(document).ready(function(){
                </div>
                
                </form> 
+               
             </div>
 
-
+			<!-- 뒤로가기 -->
+			<a href="${cp}/shelter/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 
 
 

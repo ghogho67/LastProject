@@ -287,6 +287,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					
 					</form>
 					
+					<!-- 뒤로가기 -->
+					<a href="${cp}/nursingHome/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
+					
 					
 				</div>
 			</div>

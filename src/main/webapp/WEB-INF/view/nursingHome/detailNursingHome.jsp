@@ -173,59 +173,10 @@ td {
 
                   </form> 
                   
+                  <!-- 뒤로가기 -->
+					<a href="${cp}/nursingHome/searchNursing"><img  src="/image/backButton.svg" style="width: 50px;"></a>
                   
-                    <!-- 댓글 -->
-                     
-<!--                     <div class="form-group"> -->
-                    
-<!--                         <label for="replyid" class="col-sm-2 control-label">댓글</label><br> -->
-<%--  						<c:forEach items="${replyList }" var="replyVo" varStatus="status"> --%>
-<%-- 		                    <form id="redelfrm" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/deleteReply" method="post"> --%>
-		                      
-		                      
-<%-- 		                       <input type="hidden" class="form-control" id="post_id" name="post_id" value="${replyVo.post_id }"> --%>
-<%-- 		                       <input type="hidden" class="form-control" id="reply_id" name="reply_id" value="${replyVo.reply_id }"> --%>
-<%-- 		                       <input type="hidden" class="form-control" id="reuse_yn" name="reuse_yn" value="${replyVo.reuse_yn }"> --%>
-<%-- 		                       <input type="hidden" class="form-control" id="board_id" name="board_id" value="${postVo.board_id }"> --%>
-	                        	
-<!-- 		                      <table> -->
-	                        
-<%-- 	                        	<c:choose> --%>
-<%-- 	                        	<c:when test="${replyVo.reuse_yn == '1' }"> --%>
-<!-- 		                        	<tr> -->
-<%-- 		                        	<td class="control-label">${replyVo.reply_content }</td> --%>
-<%-- 		                        	<td class="control-label">${replyVo.userid}</td> --%>
-<%-- 		                        	<td class="control-label">${replyVo.reply_date }</td> --%>
-<!-- 		                        	</tr> -->
-<!-- 	                        		<button id="removeReply" class="removeReply">댓글삭제</button> -->
-<%-- 		                        </c:when> --%>
-		                        	
-<%-- 	                        	<c:otherwise> --%>
-<!-- 	                        	<tr> -->
-<!-- 	                        		<td>삭제된 댓글입니다</td> -->
-<!-- 	                        	</tr> -->
-	                        		
-<%-- 	                        	</c:otherwise> --%>
-<%-- 	                        	</c:choose> --%>
-	                        	
-<!-- 		                       </table> -->
-<!-- 	                        </form> -->
-<%--                         </c:forEach>    --%>
-                        
-                        
-<%--                         <form id="refrm" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/reply" method="post"> --%>
-<!--                         	<input type="text" class="form-control" id="reply_content" name="reply_content" > -->
-<%--                         	<input type="hidden" class="form-control" id="userid" name="userid" value="${replyVo.userid }"> --%>
-<%--                         	<input type="hidden" class="form-control" id="reply_date" name="reply_date" value="${replyVo.reply_date }"> --%>
-<%--                         	<input type="hidden" class="form-control" id="post_id" name="post_id" value="${postVo.post_id}"> --%>
-<%--                         	<input type="hidden" class="form-control" id="board_id" name="board_id" value="${postVo.board_id}"> --%>
-<!--                             <button type="submit" class="btn btn-default" id="replyBtn">댓글저장</button> -->
-<!-- 						</form>                      -->
-<!--                         </div> -->
-					
-	
-					
-					
+                  
 				</div>
 			</div>
 		</div>

@@ -370,6 +370,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							</c:forEach>
 							</tbody>
 						</table>
+						
+						
 					</div>
 					
 					
@@ -378,6 +380,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					<div id="map" style="width: 100%; height: 400px;"></div>
 					
 					</form>
+					
+					<!-- 뒤로가기 -->
+						<a href="${cp}/shelter/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 					
 					<!-- 페이지 네이션 -->
 					<div class="demo" style="position: absolute; right: 20%;">
