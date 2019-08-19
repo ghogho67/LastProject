@@ -136,10 +136,16 @@
 				to_char(app_time,'YYYY-MM-DD HH24:MI:SS')app_time, 
 				app_type,
 				mem_id
+		]]>
 				
                 from approval
                 where mem_id =#{mem_id}
-                and app_type =#{app_type} 
+		 	    <if test="app_type!=0">
+		 	    <![CDATA[
+		    	and app_type =#{app_type} 
+		    	]]>
+   				</if>
+		<![CDATA[
                 order by app_time desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
@@ -148,7 +154,9 @@
 	<select id="typeCnt" parameterType="map" resultType="int">
 	 select count(*) from approval
                 where MEM_ID = #{mem_id}
-                and app_type = #{app_type}
+                <if test="app_type!=0">
+		    	and app_type =#{app_type} 
+                </if>
 	</select>
 
 </mapper>

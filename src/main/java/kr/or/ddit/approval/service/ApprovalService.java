@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.approval.dao.IApprovalDao;
@@ -13,6 +15,8 @@ import kr.or.ddit.approval.model.ApprovalVo;
 
 @Service
 public class ApprovalService implements IApprovalService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ApprovalService.class);
 
 	@Resource(name = "approvalDao")
 	private IApprovalDao approvalDao;
@@ -90,15 +94,18 @@ public class ApprovalService implements IApprovalService {
 		
 		return resultMap;
 	}
-
 	@Override
-	public Map<String, Object> daySaerchList(Map<String, Object> map) {
+	public Map<String, Object> typeSaerchList(Map<String, Object> map) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("typeSaerchList", approvalDao.typeSaerchList(map));
+		logger.debug("☞map:{}",map);
+		List<ApprovalVo> list = approvalDao.typeSaerchList(map);
+		resultMap.put("typeSaerchList", list);
+		
+		logger.debug("☞list:{}",list);
 
 		
 		String mem_id = (String) map.get("mem_id");
-		int app_type = (int) map.get("type");
+		int app_type = (int) map.get("app_type");
 		Map<String, Object> cnttMap = new HashMap<String, Object>();
 		cnttMap.put("mem_id", mem_id);
 		cnttMap.put("app_type", app_type);
@@ -109,15 +116,17 @@ public class ApprovalService implements IApprovalService {
 		resultMap.put("lastpaginationSize", paginationSize);
 		return resultMap;
 	}
+	
+	
 
 	@Override
-	public Map<String, Object> typeSaerchList(Map<String, Object> map) {
+	public Map<String, Object> daySaerchList(Map<String, Object> map) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("daySaerchList", approvalDao.daySaerchList(map));
 
 		
 		String mem_id = (String) map.get("mem_id");
-		int app_time = (int) map.get("day");
+		String app_time = (String) map.get("app_time");
 		Map<String, Object> cnttMap = new HashMap<String, Object>();
 		cnttMap.put("mem_id", mem_id);
 		cnttMap.put("app_time", app_time);

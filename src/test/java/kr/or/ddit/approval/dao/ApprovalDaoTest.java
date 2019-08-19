@@ -77,5 +77,28 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		/*** Then ***/
 		assertEquals(10, appList.size());
 	}
+	
+	@Test
+	public void typePageListTest() {
+		/*** Given ***/
+		String mem_id = "brown";
+		String typeName = "기부";
+		int app_type = 0;
+		if(typeName.equals("기부")) {
+			app_type = 3;
+		}
+				
+				
+		PageVo pageVo = new PageVo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mem_id", mem_id);
+		map.put("app_type", 3);
+		map.put("page", 1);
+		map.put("pageSize", 10);
+		/*** When ***/
+		List<ApprovalVo> appList = approvalDao.typeSaerchList(map);
+		/*** Then ***/
+		assertEquals(8, appList.size());
+	}
 
 }
