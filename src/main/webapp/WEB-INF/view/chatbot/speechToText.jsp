@@ -24,6 +24,8 @@
 			}
 			result = final_transcript.replace(/(\s*)/g,"");  // 음성 데이터를 result에 넣고 출력함
 			document.getElementById('result').innerHTML = result;  
+			
+			
 		};
 	}
 	function end(){
