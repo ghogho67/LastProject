@@ -56,7 +56,11 @@
 										}
 									}
 								})
+						$("#postCont").click(function() {
+							$("#postContFrm").submit();
+						})
 					});
+	
 
 	// 필수값 Check
 	function validation() {
@@ -77,6 +81,7 @@
 	</div>
 	<div>
 		<input type="button" class="btn btn-primary btn-sm full-right" id="savebutton" value="글등록" style="float:right;"/>
+		<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
 	</div>
 </body>
 </html>

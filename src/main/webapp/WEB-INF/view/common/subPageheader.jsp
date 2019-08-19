@@ -16,7 +16,7 @@
 		<div class="row">
 			<nav id="nav-menu-container" style="padding-left: 900px;">
 				<ul class="nav-menu">
-					<li class=""><a href="${cp}/main">Home</a></li>
+					<li class=""><a href="${cp}/crawling">Home</a></li>
 					<li><a href="">회사소개</a></li>
 					<li><a href="">마이페이지</a></li>
 					<li><a href="">요양 정보</a>
@@ -28,9 +28,9 @@
 
 					<li class="menu-has-children"><a href="">커뮤니티</a>
 						<ul>
-							<li><a href="about.html">공지사항</a></li>
-							<li><a href="about.html">자유게시판</a></li>
-							<li><a href="elements.html">QnA</a></li>
+							<li><a href="${cp}/post/pagingList?cate_id=4">공지사항</a></li>
+							<li><a href="${cp}/post/pagingList?cate_id=3">자유게시판</a></li>
+							<li><a href="${cp}/post/pagingList?cate_id=2">QnA</a></li>
 							<li><a href="${cp}/post/pagingList?cate_id=1">게시판</a></li>
 						</ul></li>
 

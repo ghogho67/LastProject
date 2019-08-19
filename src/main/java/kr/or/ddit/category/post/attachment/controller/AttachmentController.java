@@ -78,6 +78,9 @@ public class AttachmentController {
 	//0725
 	@RequestMapping(path = "/delete")
 	public String attachmentDelete(int att_id, int post_id, int cate_id, Model model, PostVo postVo, HttpSession session) {
+		
+		logger.debug("☞post_id:{}",post_id);
+		logger.debug("☞cate_id:{}",cate_id);
 		attachmentService.attchmentDelete(att_id);
 
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
@@ -85,7 +88,8 @@ public class AttachmentController {
 		model.addAttribute("board_id", postVo.getCate_id());
 		model.addAttribute("postVo", postVo);
 		model.addAttribute("replyList", replyService.replyList(post_id));
-		model.addAttribute("post_id", postVo.getPost_id());
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("post_id", post_id);
 		MemberVo mvo = (MemberVo)session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id",mvo.getMem_id());
 		return "/post/postDetail.tiles";
