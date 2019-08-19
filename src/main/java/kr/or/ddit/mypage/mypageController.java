@@ -614,6 +614,13 @@ public class mypageController {
 
 	      return "mypage/gold/gpxMap";
 	   }
+	   
+	   @RequestMapping("/PagingList")
+	   public String memberPagingList() {
+		   
+		   
+		   return "/mypage/memberManage/memberPagingList.tiles";
+	   }
 	
 	
 }
