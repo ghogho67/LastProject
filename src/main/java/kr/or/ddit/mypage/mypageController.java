@@ -615,7 +615,14 @@ public class mypageController {
 	      return "mypage/gold/gpxMap";
 	   }
 	   
-	   @RequestMapping("/PagingList")
+	   /**
+	* Method : memberPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :회원관리 - 회원목록
+	*/
+	@RequestMapping("/pagingList")
 	   public String memberPagingList() {
 		   
 		   

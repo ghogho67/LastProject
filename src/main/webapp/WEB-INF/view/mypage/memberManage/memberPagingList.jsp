@@ -125,7 +125,7 @@ td {
 $(document).ready(function() {
 	$("#searchBtn").on("click", function() {
 		console.log("searchBtn click");
-		console.log($("#hos_add").val());
+		console.log($("#mem_id").val());
 		
 //			var hos_add = $(this).find("#hos_add").text();
 //			$("#hos_add").val(hos_add);
@@ -156,7 +156,7 @@ $(document).ready(function() {
 						</div>
 						
 						<div class="d1">
-							<form class="frm2" id="frm2" action="${cp}/hospital/searchPagingList" method="post">
+							<form class="frm2" id="frm2" action="${cp}/mypage/pagingList" method="post">
 								<select id="searchType" name="searchType"
 									style="position: absolute; z-index: 999;">
 									<option value="all">동 검색</option>
