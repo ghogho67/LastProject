@@ -33,7 +33,7 @@ import kr.or.ddit.member.member.service.IMemberService;
 public class MatchingController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MatchingController.class);
-
+//
 	@Resource(name = "matchingService")
 	IMatchingService matchingService;
 
