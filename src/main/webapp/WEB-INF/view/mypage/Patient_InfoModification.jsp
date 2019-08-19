@@ -28,6 +28,40 @@ input[] {
 input[type="text"]::-webkit-input-value {
 	font-size: 110%;
 }
+
+.file_input label {
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	width: 80px;
+	height: 30px;
+	background: #777;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+}
+
+.file_input label input {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.file_input input[type=text] {
+	vertical-align: middle;
+	display: inline-block;
+	width: 400px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 11px;
+	padding: 0;
+	border: 0;
+	border: 1px solid #777;
+}
 </style>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -64,10 +98,11 @@ input[type="text"]::-webkit-input-value {
 
 	<form action="${cp}/mypage/Patient_InfoModification" method="post"
 		enctype="multipart/form-data">
-				<input type="hidden" id="grade" name="grade" value="${MEM_INFO.mem_grade}">
-		<input type="hidden" id="memid" name="memid" value="${MEM_INFO.mem_id}">
-		
-		
+		<input type="hidden" id="grade" name="grade"
+			value="${MEM_INFO.mem_grade}"> <input type="hidden"
+			id="memid" name="memid" value="${MEM_INFO.mem_id}">
+
+
 		<div class="content-wrapper">
 			<h3>&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
 			<div class="row mb-4">
@@ -81,14 +116,22 @@ input[type="text"]::-webkit-input-value {
 										<div class="card-body">
 											<div class="form-horizontal form-material">
 
-												
+
 												<div class="form-group">
 													<label class="col-md-12">프로필사진</label>
 													<div class="col-md-12">
-														<div style="position: absolute; left: 73%;">
-															<input type="file" class="form-control form-control-line"  id="profile" name="profile" />
 
+
+														<div class="file_input" style="text-align: right;">
+															<label>파일첨부<input type="file"
+																onchange="javascript:document.getElementById('file_route').value=this.value"
+																id="profile" name="profile">
+															</label> <input type="text" readonly="readonly"
+																title="File Route" id="file_route">
 														</div>
+
+
+
 														<br>
 													</div>
 												</div>
@@ -116,7 +159,8 @@ input[type="text"]::-webkit-input-value {
 													<label class="col-md-12">비밀번호</label>
 													<div class="col-md-12">
 														<input type="password" value="${MEM_INFO.mem_pass}"
-															class="form-control form-control-line"  id="pass" name="pass">
+															class="form-control form-control-line" id="pass"
+															name="pass">
 													</div>
 												</div>
 
@@ -154,7 +198,7 @@ input[type="text"]::-webkit-input-value {
 													<label class="col-md-12">연락처</label>
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.mem_phone}"
-															class="form-control form-control-line"   name="phone"
+															class="form-control form-control-line" name="phone"
 															name="phone">
 													</div>
 												</div>
@@ -180,7 +224,7 @@ input[type="text"]::-webkit-input-value {
 													<div class="col-md-10">
 														<input type="text" value="${MEM_INFO.mem_zipcd}"
 															class="form-control form-control-line" name="zipcd"
-															id="zipcd">
+															id="zipcd"  readonly="readonly">
 													</div>
 
 													<button style="position: absolute; left: 85%; top: 30px;"
@@ -197,7 +241,7 @@ input[type="text"]::-webkit-input-value {
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.mem_add1}"
 															class="form-control form-control-line" name="addr1"
-															id="addr1">
+															id="addr1"  readonly="readonly">
 													</div>
 												</div>
 
@@ -208,7 +252,7 @@ input[type="text"]::-webkit-input-value {
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.mem_add2}"
 															class="form-control form-control-line" name="addr2"
-															id="addr2">
+															id="addr2" >
 													</div>
 												</div>
 
@@ -218,8 +262,8 @@ input[type="text"]::-webkit-input-value {
 
 													<label class="col-md-12">보호자 성함</label>
 													<div class="col-md-12">
-														<input type="text" value="${MEM_INFO.pro_nm}" 
-															class="form-control form-control-line"  name="pro_nm"
+														<input type="text" value="${MEM_INFO.pro_nm}"
+															class="form-control form-control-line" name="pro_nm"
 															id="pro_nm">
 													</div>
 												</div>
@@ -229,8 +273,8 @@ input[type="text"]::-webkit-input-value {
 													<label class="col-md-12">보호자와의 관계</label>
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.pro_relation}"
-															class="form-control form-control-line"  name="pro_relation"
-															id="pro_relation">
+															class="form-control form-control-line"
+															name="pro_relation" id="pro_relation">
 													</div>
 												</div>
 
@@ -239,7 +283,7 @@ input[type="text"]::-webkit-input-value {
 													<label class="col-md-12">긴급연락처</label>
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.pro_phone}"
-															class="form-control form-control-line"  name="pro_phone"
+															class="form-control form-control-line" name="pro_phone"
 															id="pro_phone">
 													</div>
 												</div>
@@ -251,8 +295,8 @@ input[type="text"]::-webkit-input-value {
 									</div>
 
 									<div class="col-sm-12" style="text-align: right;">
-										<button class="btn btn-success" id="modificationComplete"
-											>수정 내용 반영 </button>
+										<button class="btn btn-success" id="modificationComplete">수정
+											내용 반영</button>
 									</div>
 								</div>
 							</div>

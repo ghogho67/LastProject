@@ -67,7 +67,6 @@ public class ReportController {
 		logger.debug("@@@@mem_grade : {} ", mem_grade);
 
 		if (mem_grade.equals("3")) {
-
 			logger.debug("요양보호사");
 			// 요양보호사 회원이 작성한 보고서
 			String cw_mem_id = mem_id;
@@ -104,7 +103,7 @@ public class ReportController {
 	 * @param mem_id
 	 * @param mem_grade
 	 * @return
-	 * Method 설명 : \리포트 세부 내용출력
+	 * Method 설명 : 리포트 세부 내용출력
 	 */
 	@RequestMapping(path = "/report", method = RequestMethod.GET)
 	public String report(Model model, HttpSession session, RedirectAttributes redirectAttributes,

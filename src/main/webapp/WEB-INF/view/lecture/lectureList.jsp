@@ -278,8 +278,7 @@ td {
 												pattern="yyyy-MM-dd" /></td>
 										<td><fmt:formatDate value="${LTList.lec_end_dt}"
 												pattern="yyyy-MM-dd" /></td>
-										<td><fmt:formatDate value="${LTList.lec_end_dt}"
-												pattern="yyyy-MM-dd" /></td>
+											<td>${LTList.lec_time}</td>
 										<td>${LTList.lec_amount}</td>
 
 										<td><a class="btn btn-info btn-sm">&nbsp;&nbsp;접수

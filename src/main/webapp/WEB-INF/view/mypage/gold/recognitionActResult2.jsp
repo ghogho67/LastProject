@@ -43,121 +43,134 @@ td {
 }
 </style>
 <script>
-window.onload = function () {
-	var ex =[];
-	ex.push({ x: new Date(2019, 0, 3), y: 40 ,indexLabel: "간이인지",markerColor: "red", markerType: "triangle"})
-	ex.push({ x: new Date(2019, 0, 3), y: 40 })
-	ex.push({ x: new Date(2019, 0, 4), y: 40 })
-	ex.push({ x: new Date(2019, 0, 5), y: 44 })
-	ex.push({ x: new Date(2019, 0, 6), y: 45 });
-	
-	
-	var data = [];
-
-	
-	var resurtStr = "${sur_resultList}";
-	resurtStr = resurtStr.replace("[", ""); 
-	resurtStr = resurtStr.replace("]", ""); 
-
-	var resultList = resurtStr.split(",");
-
-	console.log("${sur_timeList}");
-	
-	var timetStr = "${sur_timeList}";
-	timetStr = timetStr.replace("[", ""); 
-	timetStr = timetStr.replace("]", ""); 
-
-	var timeList = timetStr.split(",");
-	
-	for (var i = 0; i<timeList.length ; i++) {
-		console.log(timeList[i])
-		data.push({
-			x: new Date(timeList[i]),
-			y: parseInt(resultList[i].trim())
+	window.onload = function() {
+		var ex = [];
+		ex.push({
+			x : new Date(2019, 0, 3),
+			y : 40,
+			indexLabel : "간이인지",
+			markerColor : "red",
+			markerType : "triangle"
+		})
+		ex.push({
+			x : new Date(2019, 0, 3),
+			y : 40
+		})
+		ex.push({
+			x : new Date(2019, 0, 4),
+			y : 40
+		})
+		ex.push({
+			x : new Date(2019, 0, 5),
+			y : 44
+		})
+		ex.push({
+			x : new Date(2019, 0, 6),
+			y : 45
 		});
-	}
-	console.log(ex);
-	console.log(data);
-	
-	
-	
 
-	
+		var data = [];
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-// 	title:{
-// 		text: "Site Traffic"
-// 	},
-	axisX:{
-		valueFormatString: "M월  D일",
-		crosshair: {
-			enabled: true,
-			snapToDataPoint: true
+		var resurtStr = "${sur_resultList}";
+		resurtStr = resurtStr.replace("[", "");
+		resurtStr = resurtStr.replace("]", "");
+
+		var resultList = resurtStr.split(",");
+
+		console.log("${sur_timeList}");
+
+		var timetStr = "${sur_timeList}";
+		timetStr = timetStr.replace("[", "");
+		timetStr = timetStr.replace("]", "");
+
+		var timeList = timetStr.split(",");
+
+		for (var i = 0; i < timeList.length; i++) {
+			console.log(timeList[i])
+			data.push({
+				x : new Date(timeList[i]),
+				y : parseInt(resultList[i].trim())
+			});
 		}
-	},
-	axisY: {
-		title: "인지 지수",
-		crosshair: {
-			enabled: true
+		console.log(ex);
+		console.log(data);
+
+		var chart = new CanvasJS.Chart("chartContainer", {
+			animationEnabled : true,
+			theme : "light2",
+
+			axisX : {
+				valueFormatString : "M월  D일",
+				crosshair : {
+					enabled : true,
+					snapToDataPoint : true
+				}
+			},
+			axisY : {
+// 				title : "인지 지수",
+				crosshair : {
+					enabled : true
+				}
+			},
+			toolTip : {
+				shared : true
+			},
+			legend : {
+				cursor : "pointer",
+				verticalAlign : "bottom",
+				horizontalAlign : "left",
+				dockInsidePlotArea : true,
+				itemclick : toogleDataSeries
+			},
+			data : [ {
+				type : "line",
+				showInLegend : true,
+				name : "인지 평가점수",
+				markerType : "square",
+				valueFormatString : "M월  D일",
+				color : "#F08080",
+				dataPoints : data
+			}
+			
+// 			, {
+// 				type : "line",
+// 				showInLegend : true,
+// 				name : "회원 평균 인지점수",
+// 				lineDashType : "dash",
+// 				dataPoints : [ {
+// 					x : new Date(2019, 7, 8),
+// 					y : 50
+// 				}, {
+// 					x : new Date(2019, 7, 18),
+// 					y : 51
+// 				}, {
+// 					x : new Date(2019, 7, 19),
+// 					y : 54
+// 				}, {
+// 					x : new Date(2019, 7, 29),
+// 					y : 55
+// 				},
+
+// 				]
+// 			} 
+			
+			
+			]
+
+		});
+		chart.render();
+
+		function toogleDataSeries(e) {
+			if (typeof (e.dataSeries.visible) === "undefined"
+					|| e.dataSeries.visible) {
+				e.dataSeries.visible = false;
+			} else {
+				e.dataSeries.visible = true;
+			}
+			chart.render();
 		}
-	},
-	toolTip:{
-		shared:true
-	},  
-	legend:{
-		cursor:"pointer",
-		verticalAlign: "bottom",
-		horizontalAlign: "left",
-		dockInsidePlotArea: true,
-		itemclick: toogleDataSeries
-	},
-	data: [{
-		type: "line",
-		showInLegend: true,
-		name: "인지 평가점수",
-		markerType: "square",
-		xValueFormatString: "YYYY MM DD",
-		color: "#F08080",
-		dataPoints: data
-	},
-	{
-		type: "line",
-		showInLegend: true,
-		name: "회원 평균 인지점수",
-		lineDashType: "dash",
-		dataPoints: [
-			{ x: new Date(2019, 0, 3), y: 50 },
-			{ x: new Date(2019, 0, 4), y: 51 },
-			{ x: new Date(2019, 0, 5), y: 54 },
-			{ x: new Date(2019, 0, 6), y: 55 },
-			{ x: new Date(2019, 0, 7), y: 54 },
-			{ x: new Date(2019, 0, 8), y: 60 },
-			{ x: new Date(2019, 0, 9), y: 57 },
-			{ x: new Date(2019, 0, 10), y: 56 },
-			{ x: new Date(2019, 0, 11), y: 55 },
-			{ x: new Date(2019, 0, 12), y: 59 },
-			{ x: new Date(2019, 0, 13), y: 64},
-			{ x: new Date(2019, 0, 14), y: 67 },
-			{ x: new Date(2019, 0, 15), y: 65 },
-			{ x: new Date(2019, 0, 16), y: 67 }
-		]
-	}]
 
-});
-chart.render();
-
-function toogleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	} else{
-		e.dataSeries.visible = true;
 	}
-	chart.render();
-}
-
-}
 </script>
 </head>
 <body>
@@ -220,7 +233,7 @@ function toogleDataSeries(e){
 
 
 
-<div id="chartContainer" style="height: 500px; width: 100%;"></div>
+						<div id="chartContainer" style="height: 500px; width: 100%;"></div>
 
 					</div>
 
