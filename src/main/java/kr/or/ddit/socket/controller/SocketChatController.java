@@ -23,6 +23,7 @@ public class SocketChatController {
 	@Resource(name = "chatTextService")
 	private IChatTextService chatTextService;
 	
+	
 	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);
 	@Autowired
 	private SocketChatHandler socketHandler; // SocketChantHandelr
