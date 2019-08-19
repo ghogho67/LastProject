@@ -48,6 +48,7 @@
 		select count(*) 
 		from donation
 	</select>
+
 	
 	<!-- 기부자 페이징 리스트 -->
 	<select id="donationPagingList" parameterType="pageVo" resultType="donationApprovalVo">

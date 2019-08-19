@@ -472,6 +472,7 @@ public class PostController {
 	
 	
 	@RequestMapping(path = "festvalPost") 
+
 	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
@@ -482,6 +483,7 @@ public class PostController {
  
         PrintWriter out = response.getWriter();
         
+
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "contentId="+contenid;
@@ -490,6 +492,7 @@ public class PostController {
         parameter = parameter + "&" + "addrinfoYN=Y";
         parameter = parameter + "&" + "mapinfoYN=Y";
         parameter = parameter + "&" + "overviewYN=Y";
+
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;
@@ -509,8 +512,8 @@ public class PostController {
         byte[] b = mbos.getBytes("UTF-8");
         String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
         out.println(s);
-        
 
+        
         Gson gson = new Gson();
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
