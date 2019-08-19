@@ -25,4 +25,10 @@ public interface IPostService {
 	int updateStep(PostVo postVo);
 
 	int postReply(PostVo postVo);
+
+	Map<String, Object> titlePagingList(Map<String, Object> map);
+
+	Map<String, Object> idPagingList(Map<String, Object> map);
+
+	Map<String, Object> contPagingList(Map<String, Object> map);
 }
