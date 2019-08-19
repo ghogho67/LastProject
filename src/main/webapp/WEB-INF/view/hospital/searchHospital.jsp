@@ -11,6 +11,8 @@
 
 
 <style type="text/css">
+
+
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -25,7 +27,6 @@
 	font-weight: bold;
 	color: #473fa0;
 }
-
 
 tr {
 	text-align: center;
@@ -50,12 +51,104 @@ td {
 	width: 30px;
 	padding: 3px;
 	font-size: 9pt;
-	width: 30px;
 }
+
+.pagination-outer {
+	text-align: center;
+}
+
+.pagination {
+	font-family: 'Rubik', sans-serif;
+	padding: 0 30px;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination li a.page-link {
+	color: #909090;
+	background-color: transparent;
+	font-size: 15px;
+	line-height: 35px;
+	height: 45px;
+	width: 40px;
+	margin: 0 3px;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease 0s;
+}
+
+.pagination li.active a.page-link, .pagination li a.page-link:hover,
+	.pagination li.active a.page-link:hover {
+	color: #006266;
+	background-color: transparent;
+}
+
+.pagination li a.page-link span {
+	display: block;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:hover span {
+	transform: rotateY(360deg);
+}
+
+.pagination li a.page-link:before, .pagination li a.page-link:after {
+	content: "";
+	background-color: #006266;
+	height: 3px;
+	width: 0;
+	opacity: 1;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:before {
+	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	height: 15px;
+	width: 15px;
+	transform: translateX(-50%) rotate(45deg);
+	bottom: auto;
+	top: -20px;
+	left: 50%;
+}
+
+.pagination li a.page-link:hover:after {
+	width: 100%;
+}
+
+.pagination li a.page-link:hover:before {
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
+	{
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
+	{
+	width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	.pagination {
+		display: block;
+	}
+	.pagination li {
+		margin-bottom: 10px;
+		display: inline-block;
+	}
+}
+
 .for {
 	position: relative;
 	width: 250px;
-	height: 30px;
+	height: 50px;
 	margin: 0 auto;
 }
 
@@ -63,13 +156,13 @@ td {
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 1%;
-	top: 75px;
+	right: 5%;
+	margin-top: 3%;
 }
 
 .d1 input {
-	width: 100%;
-	height: 30px;
+	width: 110%;
+	height: 20px;
 	padding-left: 90px;
 	border: 2px solid #7BA7AB;
 	border-radius: 5px;
@@ -82,9 +175,10 @@ td {
 .d1 button {
 	position: absolute;
 	top: 0;
-	right: 0px;
+	right: -25px;
+/* 	left : 2px; */
 	width: 32px;
-	height: 30px;
+	height: 38px;
 	border: none;
 	background: #7BA7AB;
 	border-radius: 0 5px 5px 0;
@@ -99,16 +193,15 @@ td {
 }
 
 #searchType {
-	height: 30px;
-	width: 70px;
-	font-size: 11px;
+	height: 40px;
+	width: 90px;
+	font-size: 12px;
 	border-radius: 5px 0px 0px 5px;
 	border-top: 2px solid #7BA7AB;
 	border-bottom: 2px solid #7BA7AB;
 	border-left: 2px solid #7BA7AB;
 	border-right: 2px solid #7BA7AB;
 }
-
 </style>
 
 <script
@@ -327,7 +420,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 	
-	 <form id="pageForm" action="${cp}/approval/approvalCheck">
+	 <form id="pageForm" action="${cp}/hospital/searchHospital">
 	 	<input type="hidden" name = "page" id="page">
 	 	<input type="hidden" name = "pageSize" id="pageSize">
 	 </form>
@@ -376,7 +469,11 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					
 					</form>
 					
-					<!-- 페이지네이션 -->
+					
+				</div>
+			</div>
+			
+			<!-- 페이지네이션 -->
 						<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
@@ -458,10 +555,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
-					
-					
-				</div>
-			</div>
+			
 		</div>
 	</div>
 	

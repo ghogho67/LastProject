@@ -31,14 +31,14 @@
 								<ul class="nav-menu" style="color: white;">
 
 
-									<li><a class="ko" href="${cp}/main">Home</a></li>
+									<li><a class="ko" href="${cp}/crawling">Home</a></li>
 									<li><a class="ko" href="departments.html">마이페이지</a></li>
 									<li><a class="ko" href="#">요양 정보</a>
 										<ul>
 											<li><a href="${cp}/basicU/main">요양보호소 찾기 </a></li>
-											<li><a href="${cp}/basicU/findingCareWorker">요양원/요양병원
+											<li><a href="${cp}/hospital/pagingList?page=1&pageSize=10">요양원/요양병원
 													찾기</a></li>
-											<li><a href="${cp}/basicU/findingCareWorker">기관 정보
+											<li><a href="${cp}/nursingHome/pagingList?page=1&pageSize=10">기관 정보
 													조회</a></li>
 										</ul></li>
 
@@ -61,7 +61,7 @@
 
 									<li><a class="ko" href="">기타 문화 정보</a>
 										<ul>
-											<li><a href="blog-home.html">무더위 쉼터</a></li>
+											<li><a href="${cp }/shelter/pagingList?page=1&pageSize=10">무더위 쉼터</a></li>
 											<li><a href="blog-home.html">문화시설</a></li>
 
 										</ul>

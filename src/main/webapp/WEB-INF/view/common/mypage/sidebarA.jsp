@@ -33,7 +33,8 @@
 								alt=""> <span class="menu-title">결산 관리</span>
 						</a></li>
 						
-						<li class="nav-item"><a class="nav-link"
+						<li class="nav-item">
+						<a class="nav-link"
 							data-toggle="collapse" href="#sample-pages" aria-expanded="false"
 							aria-controls="sample-pages"> <img
 								src="${cp}/resource/Admin/images/icons/9.png"

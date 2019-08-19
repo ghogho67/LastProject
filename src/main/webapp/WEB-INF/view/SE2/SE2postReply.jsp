@@ -43,8 +43,7 @@
 								});
 
 						// 전송버튼 클릭이벤트
-						$("#savebutton").click(
-								function() {
+						$("#savebutton").click(function() {
 									if (confirm("저장하시겠습니까?")) {
 										// id가 smarteditor인 textarea에 에디터에서 대입
 										oEditors.getById["smarteditor"].exec(
@@ -56,6 +55,9 @@
 										}
 									}
 								})
+						$("#postCont").click(function() {
+							$("#postContFrm").submit();
+						})
 					});
 
 	// 필수값 Check
@@ -73,8 +75,8 @@
 </head>
 <body>
 
-			<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
-				style="width: 600px; height: 412px;"></textarea>
-		<input type="button" id="savebutton" class = "btn btn-primary btn-sm full-right" value="글등록" style="float:right;"/>
+	<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;"></textarea>
+	<input type="button" id="savebutton" class="btn btn-primary btn-sm full-right" value="글등록" style="float: right;" />
+	
 </body>
 </html>

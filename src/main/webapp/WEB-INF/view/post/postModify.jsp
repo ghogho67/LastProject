@@ -40,7 +40,7 @@
 	<div class="container">
 		<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
 <pre>
-cate_id : ${cate_id }post_id : ${post_id }attachmentList : ${attachmentList }postVo : ${postVo}
+cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList }  postVo : ${postVo}
 </pre>
 		<form id="frm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="post_id" value="${post_id }"> <input
@@ -72,6 +72,10 @@ cate_id : ${cate_id }post_id : ${post_id }attachmentList : ${attachmentList }pos
 			</div>
 		</form>
 	</div>
+		<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+		<input type="hidden" name="cate_id" value="${cate_id }" /> 
+		<input type="hidden" name="post_id" value="${post_id }" /> 
+		</form>
 </body>
 <script>
 	var form = document.forms[0];

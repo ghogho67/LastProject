@@ -44,7 +44,7 @@ public class NursingHomeService implements INursingHomeService{
 		resultMap.put("nursingList", nursingHomeDao.nursingPagingList(pageVo));
 		 int nursingCnt = nursingHomeDao.nursingCnt();
 		 int paginationSize = (int) Math.ceil((double)nursingCnt/pageVo.getPageSize());
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 	
 		return resultMap;
 	}

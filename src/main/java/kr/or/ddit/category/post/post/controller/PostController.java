@@ -30,7 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -48,335 +47,343 @@ import kr.or.ddit.util.PartUtil;
 @RequestMapping("/post")
 @Controller
 public class PostController {
-   private static final Logger logger = LoggerFactory.getLogger(PostController.class);
+	
 
-   @Resource(name = "postService")
-   private IPostService postService;
+	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
-   @Resource(name = "replyService")
-   private IReplyService replyService;
+	@Resource(name = "postService")
+	private IPostService postService;
 
-   @Resource(name = "attachmentService")
-   private IAttachmentService attachmentService;
+	@Resource(name = "replyService")
+	private IReplyService replyService;
 
-   @RequestMapping("delete")
-   public String postDelete(Model model, int cate_id, int post_id, PageVo pageVo) {
+	@Resource(name = "attachmentService")
+	private IAttachmentService attachmentService;
 
-      postService.postDelete(post_id);
+	@RequestMapping(path = "modifyView")
+	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
 
-      Map<String, Object> map = new HashMap<String, Object>();
-      map.put("page", pageVo.getPage());
-      map.put("pageSize", pageVo.getPageSize());
-      if (cate_id != 0)
-         map.put("cate_id", cate_id);
+		postVo = postService.getPost(post_id);
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("post_id", post_id);
+		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		model.addAttribute("postVo", postVo);
 
-      Map<String, Object> resultMap = postService.postPagingList(map);
-      pageVo.setPage((int) map.get("page"));
-      pageVo.setPageSize((int) map.get("pageSize"));
+		return "/post/postModify.tiles";
+	}
 
-      model.addAttribute("post_id", post_id);
-      model.addAttribute("cate_id", cate_id);
-      model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
-      model.addAttribute("pageVo", pageVo);
-      model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-      return "/post/postPagingList.tiles";
 
-   }
+	@RequestMapping("/pagingList")
+	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		if (cate_id != 0)
+			map.put("cate_id", cate_id);
 
-   @RequestMapping("detail")
-   public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
+		Map<String, Object> resultMap = postService.postPagingList(map);
 
-      // cate_id
-      model.addAttribute("cate_id", cate_id);
-      // replyList
-      model.addAttribute("replyList", replyService.replyList(post_id));
-      // postVo
-      model.addAttribute("postVo", postService.getPost(post_id));
-      // post_id
-      model.addAttribute("post_id", post_id);
-      model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-      MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-      model.addAttribute("mem_id", mvo.getMem_id());
-      // 페이지 이동
-      return "/post/postDetail.tiles";
+		pageVo.setPage((int) map.get("page"));
+		pageVo.setPageSize((int) map.get("pageSize"));
 
-   }
+		// ====================================================
+		// set cate_id,postList,pageVo,paginationSize
+		// cate_id
+		model.addAttribute("cate_id", cate_id);
+		// postList
+		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
+		// pageVo
+		model.addAttribute("pageVo", pageVo);
+		// paginationSize
+		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
+		// 화면 출력을 담당하는 jsp에게 역할 위임
+		return "/post/postPagingList.tiles";
+	}
 
-   @RequestMapping(path = "modifyView")
-   public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
+	@RequestMapping(path = "/reply", method = RequestMethod.GET)
+	public String postReply(int cate_id, int post_id, Model model) {
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("post_id", post_id);
+		return "/post/postReply.tiles";
 
-      postVo = postService.getPost(post_id);
-      model.addAttribute("cate_id", cate_id);
-      model.addAttribute("post_id", post_id);
-      model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-      model.addAttribute("postVo", postVo);
+	}
 
-      return "/post/postModify.tiles";
-   }
+	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
+	public String ImageBoard2() {
+		return "festival2";
+	}
 
-   @RequestMapping(path = "/modify", method = RequestMethod.POST)
-   public String postModify(Model model, int post_id, @RequestParam("file") MultipartFile[] files, PostVo postVo,
-         String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
-         HttpSession session) {
-      // multipartRequest 사용할 준비
-      // reply 답글 등록 파라미터 설정==============================================
-      // ================================================
+	@RequestMapping("delete")
+	public String postDelete(Model model, int cate_id, int post_id, PageVo pageVo) {
 
-      postVo.setPost_nm(post_nm);
-      postVo.setPost_cont(post_cont);
-      postVo.setCate_id(cate_id);
-      postVo.setMem_id(mem_id);
+		postService.postDelete(post_id);
 
-      postService.postModify(postVo);
-      postVo = postService.getPost(post_id);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		if (cate_id != 0)
+			map.put("cate_id", cate_id);
 
-      // 댓글과 첨부파일 가져오기
-      // file data 받기=======================================================
-      // DB에 저장할 파일명
-      String savePath = PartUtil.getUploadPath();
+		Map<String, Object> resultMap = postService.postPagingList(map);
+		pageVo.setPage((int) map.get("page"));
+		pageVo.setPageSize((int) map.get("pageSize"));
 
-      for (MultipartFile file : files) {
-         if (!file.getOriginalFilename().isEmpty()) {
-            String a = file.getOriginalFilename();
-            String ext = PartUtil.getExt(file.getOriginalFilename());
-            String fileName = UUID.randomUUID().toString();
-            File uploadfile = new File(savePath + File.separator + fileName + ext);
-            logger.debug("savePath +File.separator+ fileName + ext:{}", savePath + File.separator + fileName + ext);
-            try {
-               file.transferTo(uploadfile);
-            } catch (IllegalStateException | IOException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-            }
-            attachmentVo.setAtt_nm(file.getOriginalFilename());
-            attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
-            attachmentVo.setPost_id(post_id);
-            attachmentService.attachmentInsert(attachmentVo);
-         }
-      }
+		model.addAttribute("post_id", post_id);
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
+		model.addAttribute("pageVo", pageVo);
+		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
+		return "/post/postPagingList.tiles";
 
-      // 객체 넘기기=============================================================
-      // cate_id,post_id,replyList,attachmentList,postVo
-      // cate_id
-      model.addAttribute("cate_id", cate_id);
-      // post_id
-      model.addAttribute("post_id", post_id);
-      // replyList
-      model.addAttribute("replyList", replyService.replyList(post_id));
-      // attachmentList
-      model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-      // postVo
-      model.addAttribute("postVo", postVo);
-      // mem_id
-      MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-      model.addAttribute("mem_id", mvo.getMem_id());
-      // 페이지
-      // 이동====================================================================
-      return "/post/postDetail.tiles";
+	}
 
-   }
+	@RequestMapping("detail")
+	public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
 
-   @RequestMapping("/pagingList")
-   public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
-      Map<String, Object> map = new HashMap<String, Object>();
-      map.put("page", pageVo.getPage());
-      map.put("pageSize", pageVo.getPageSize());
-      if (cate_id != 0)
-         map.put("cate_id", cate_id);
+		// cate_id
+		model.addAttribute("cate_id", cate_id);
+		// replyList
+		model.addAttribute("replyList", replyService.replyList(post_id));
+		// postVo
+		model.addAttribute("postVo", postService.getPost(post_id));
+		// post_id
+		model.addAttribute("post_id", post_id);
+		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
+		// 페이지 이동
+		return "/post/postDetail.tiles";
 
-      Map<String, Object> resultMap = postService.postPagingList(map);
+	}
 
-      pageVo.setPage((int) map.get("page"));
-      pageVo.setPageSize((int) map.get("pageSize"));
+	@RequestMapping(path = "/modify", method = RequestMethod.POST)
+	public String postModify(Model model, int post_id, @RequestParam("file") MultipartFile[] files, PostVo postVo,
+			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
+			HttpSession session) {
+		// multipartRequest 사용할 준비
+		// reply 답글 등록 파라미터 설정==============================================
+		// ================================================
 
-      // ====================================================
-      // set cate_id,postList,pageVo,paginationSize
-      // cate_id
-      model.addAttribute("cate_id", cate_id);
-      // postList
-      model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
-      // pageVo
-      model.addAttribute("pageVo", pageVo);
-      // paginationSize
-      model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-      MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-      model.addAttribute("mem_id", mvo.getMem_id());
-      // 화면 출력을 담당하는 jsp에게 역할 위임
-      return "/post/postPagingList.tiles";
-   }
+		postVo.setPost_nm(post_nm);
+		postVo.setPost_cont(post_cont);
+		postVo.setCate_id(cate_id);
+		postVo.setMem_id(mem_id);
 
-   @RequestMapping(path = "/register", method = RequestMethod.GET)
-   public String showPostRegister(int cate_id, Model model) {
-      model.addAttribute("cate_id", cate_id);
-      return "/SE2/SE2postRegister.tiles";
-//      return "board/basicWriting수정";
-   }
+		postService.postModify(postVo);
+		postVo = postService.getPost(post_id);
 
-   @RequestMapping(path = "/register", method = RequestMethod.POST)
-   public String postRegister(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
-         @RequestParam("file") MultipartFile[] files, AttachmentVo attachmentVo, HttpSession session) {
+		// 댓글과 첨부파일 가져오기
+		// file data 받기=======================================================
+		// DB에 저장할 파일명
+		String savePath = PartUtil.getUploadPath();
 
-      MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-      postVo.setPost_nm(post_nm);
-      postVo.setPost_cont(post_cont);
-      postVo.setCate_id(cate_id);
-      postVo.setMem_id(mvo.getMem_id());
+		for (MultipartFile file : files) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				String a = file.getOriginalFilename();
+				String ext = PartUtil.getExt(file.getOriginalFilename());
+				String fileName = UUID.randomUUID().toString();
+				File uploadfile = new File(savePath + File.separator + fileName + ext);
+				logger.debug("savePath +File.separator+ fileName + ext:{}", savePath + File.separator + fileName + ext);
+				try {
+					file.transferTo(uploadfile);
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				attachmentVo.setAtt_nm(file.getOriginalFilename());
+				attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
+				attachmentVo.setPost_id(post_id);
+				attachmentService.attachmentInsert(attachmentVo);
+			}
+		}
 
-      // 게시글등록---------------------------------------------------------------------------------------
-      postService.postInsert(postVo);
-      postVo = postService.getLatestPost();
-      int post_id = postVo.getPost_id();
-      String fieldName = "";
-      MultipartFile mfile = null;
+		// 객체 넘기기=============================================================
+		// cate_id,post_id,replyList,attachmentList,postVo
+		// cate_id
+		model.addAttribute("cate_id", cate_id);
+		// post_id
+		model.addAttribute("post_id", post_id);
+		// replyList
+		model.addAttribute("replyList", replyService.replyList(post_id));
+		// attachmentList
+		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		// postVo
+		model.addAttribute("postVo", postVo);
+		// mem_id
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
+		// 페이지
+		// 이동====================================================================
+		return "/post/postDetail.tiles";
 
-      String savePath = PartUtil.getUploadPath();
-      for (MultipartFile file : files) {
-         if (!file.getOriginalFilename().isEmpty()) {
-            String att_nm = file.getOriginalFilename();
-            String ext = PartUtil.getExt(file.getOriginalFilename());
-            String fileName = UUID.randomUUID().toString();
-            File uploadfile = new File(savePath + File.separator + fileName + ext);
-            try {
-               file.transferTo(uploadfile);
-            } catch (IllegalStateException | IOException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-            }
-            attachmentVo.setAtt_nm(file.getOriginalFilename());
-            attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
-            attachmentVo.setPost_id(post_id);
-            attachmentService.attachmentInsert(attachmentVo);
-         }
-      }
-      model.addAttribute("post_id", post_id);
+	}
 
-      if (attachmentService.getAttachmentList(post_id) != null)
-         model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-      model.addAttribute("cate_id", cate_id);
-      model.addAttribute("postVo", postVo);
-      model.addAttribute("replyList", replyService.replyList(post_id));
-      mvo = (MemberVo) session.getAttribute("MEM_INFO");
-      model.addAttribute("mem_id", mvo.getMem_id());
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	public String showPostRegister(int cate_id, Model model) {
+		model.addAttribute("cate_id", cate_id);
+		return "/SE2/SE2postRegister.tiles";
+//		return "board/basicWriting수정";
+	}
 
-      return "/post/postDetail.tiles";
+	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	public String postRegister(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
+			@RequestParam("file") MultipartFile[] files, AttachmentVo attachmentVo, HttpSession session) {
 
-   }
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		postVo.setPost_nm(post_nm);
+		postVo.setPost_cont(post_cont);
+		postVo.setCate_id(cate_id);
+		postVo.setMem_id(mvo.getMem_id());
 
-   @RequestMapping(path = "/reply", method = RequestMethod.GET)
-   public String postReply(int cate_id, int post_id, Model model) {
-      model.addAttribute("cate_id", cate_id);
-      model.addAttribute("post_id", post_id);
-      return "/post/postReply.tiles";
+		// 게시글등록---------------------------------------------------------------------------------------
+		postService.postInsert(postVo);
+		postVo = postService.getLatestPost();
+		int post_id = postVo.getPost_id();
+		String fieldName = "";
+		MultipartFile mfile = null;
 
-   }
+		String savePath = PartUtil.getUploadPath();
+		for (MultipartFile file : files) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				String att_nm = file.getOriginalFilename();
+				String ext = PartUtil.getExt(file.getOriginalFilename());
+				String fileName = UUID.randomUUID().toString();
+				File uploadfile = new File(savePath + File.separator + fileName + ext);
+				try {
+					file.transferTo(uploadfile);
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				attachmentVo.setAtt_nm(file.getOriginalFilename());
+				attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
+				attachmentVo.setPost_id(post_id);
+				attachmentService.attachmentInsert(attachmentVo);
+			}
+		}
+		model.addAttribute("post_id", post_id);
 
-   @RequestMapping(path = "/reply", method = RequestMethod.POST)
-   public String postReply(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
-         AttachmentVo attachmentVo, int post_id, @RequestParam("file") MultipartFile[] files, HttpSession session) {
+		if (attachmentService.getAttachmentList(post_id) != null)
+			model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("postVo", postVo);
+		model.addAttribute("replyList", replyService.replyList(post_id));
+		mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
 
-      postVo = postService.getPost(post_id);
+		return "/post/postDetail.tiles";
 
-      MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+	}
 
-      postVo.setPost_nm(post_nm);
-      postVo.setPost_cont(post_cont);
-      postVo.setCate_id(cate_id);
-      postVo.setPost_group(postVo.getPost_group());
-      postVo.setPost_nm(post_nm);
-      postVo.setMem_id(mvo.getMem_id());
-      postVo.setPost_par(post_id);
 
-      // 답글 쓰기
-      postService.postReply(postVo);
-      PostVo postVoTime = postService.getLatestPost();
-      post_id = postVoTime.getPost_id();
 
-      // reply 답글 등록 파라미터 설정==============================================
-      // ================================================
+	@RequestMapping(path = "/reply", method = RequestMethod.POST)
+	public String postReply(PostVo postVo, int cate_id, String post_nm, String post_cont, Model model,
+			AttachmentVo attachmentVo, int post_id, @RequestParam("file") MultipartFile[] files, HttpSession session) {
 
-      // 댓글과 첨부파일 가져오기
+		postVo = postService.getPost(post_id);
 
-      // file data 받기=======================================================
-      // DB에 저장할 파일명
-      String savePath = PartUtil.getUploadPath();
-      for (MultipartFile file : files) {
-         if (!file.getOriginalFilename().isEmpty()) {
-            String att_nm = file.getOriginalFilename();
-            String ext = PartUtil.getExt(file.getOriginalFilename());
-            String fileName = UUID.randomUUID().toString();
-            File uploadfile = new File(savePath + File.separator + fileName + ext);
-            try {
-               file.transferTo(uploadfile);
-            } catch (IllegalStateException | IOException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-            }
-            attachmentVo.setAtt_nm(file.getOriginalFilename());
-            attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
-            attachmentVo.setPost_id(post_id);
-            attachmentService.attachmentInsert(attachmentVo);
-         }
-      }
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 
-      // 객체 넘기기=============================================================
-      // cate_id,post_id,replyList,attachmentList,postVo
-      // cate_id
-      model.addAttribute("cate_id", cate_id);
-      // post_id
-      model.addAttribute("post_id", post_id);
-      // replyList
-      model.addAttribute("replyList", replyService.replyList(post_id));
-      // attachmentList
-      model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-      // postVo
-      model.addAttribute("postVo", postVo);
-      mvo = (MemberVo) session.getAttribute("MEM_INFO");
-      model.addAttribute("mem_id", mvo.getMem_id());
-      // 페이지
-      // 이동====================================================================
-      return "/post/postDetail.tiles";
+		postVo.setPost_nm(post_nm);
+		postVo.setPost_cont(post_cont);
+		postVo.setCate_id(cate_id);
+		postVo.setPost_group(postVo.getPost_group());
+		postVo.setPost_nm(post_nm);
+		postVo.setMem_id(mvo.getMem_id());
+		postVo.setPost_par(post_id);
 
-   }
+		// 답글 쓰기
+		postService.postReply(postVo);
+		PostVo postVoTime = postService.getLatestPost();
+		post_id = postVoTime.getPost_id();
 
-   @RequestMapping("upload")
-   public String postUpload(Model model, MultipartFile file, MemberVo mvo, int cate_id) {
-      String fileName = null;
+		// reply 답글 등록 파라미터 설정==============================================
+		// ================================================
 
-      if (file.getSize() > 0) {
-         fileName = file.getOriginalFilename();
-         String ext = PartUtil.getExt(fileName);
-         String uploadPath = PartUtil.getUploadPath();
-         String filePath = uploadPath + File.pathSeparator + UUID.randomUUID().toString() + ext;
+		// 댓글과 첨부파일 가져오기
 
-         mvo.setMem_photo_path(filePath);
-         mvo.setMem_photo_nm(fileName);
-         try {
-            file.transferTo(new File(filePath));
-         } catch (IllegalStateException | IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-         }
-      }
+		// file data 받기=======================================================
+		// DB에 저장할 파일명
+		String savePath = PartUtil.getUploadPath();
+		for (MultipartFile file : files) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				String att_nm = file.getOriginalFilename();
+				String ext = PartUtil.getExt(file.getOriginalFilename());
+				String fileName = UUID.randomUUID().toString();
+				File uploadfile = new File(savePath + File.separator + fileName + ext);
+				try {
+					file.transferTo(uploadfile);
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				attachmentVo.setAtt_nm(file.getOriginalFilename());
+				attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
+				attachmentVo.setPost_id(post_id);
+				attachmentService.attachmentInsert(attachmentVo);
+			}
+		}
 
-      model.addAttribute("cate_id", cate_id);
-      model.addAttribute("fileName", fileName);
-      return "/post/postRegister.tiles";
+		// 객체 넘기기=============================================================
+		// cate_id,post_id,replyList,attachmentList,postVo
+		// cate_id
+		model.addAttribute("cate_id", cate_id);
+		// post_id
+		model.addAttribute("post_id", post_id);
+		// replyList
+		model.addAttribute("replyList", replyService.replyList(post_id));
+		// attachmentList
+		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
+		// postVo
+		model.addAttribute("postVo", postVo);
+		mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
+		// 페이지
+		// 이동====================================================================
+		return "/post/postDetail.tiles";
 
-   }
+	}
 
-   @RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
-   public String ImageBoard1() {
-      return "festival.tiles";
-   }
-   @RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-   public String ImageBoard2() {
-      return "festival2";
-   }
-   
+	@RequestMapping("upload")
+	public String postUpload(Model model, MultipartFile file, MemberVo mvo, int cate_id) {
+		String fileName = null;
 
-   @RequestMapping(path = "ImageBoard")
+		if (file.getSize() > 0) {
+			fileName = file.getOriginalFilename();
+			String ext = PartUtil.getExt(fileName);
+			String uploadPath = PartUtil.getUploadPath();
+			String filePath = uploadPath + File.pathSeparator + UUID.randomUUID().toString() + ext;
+
+			mvo.setMem_photo_path(filePath);
+			mvo.setMem_photo_nm(fileName);
+			try {
+				file.transferTo(new File(filePath));
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("fileName", fileName);
+		return "/post/postRegister.tiles";
+
+	}
+	
+
+	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
+	public String ImageBoard1() {
+		return "festival.tiles";
+	}
+
+	
+
+	@RequestMapping(path = "ImageBoard")
    public String ImageBoard(Model model, HttpServletRequest request, HttpServletResponse response, PageVo pageVo, int areaid, int firstDate, int lastDate ) throws Exception {
-      request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
  
         String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?ServiceKey=";
@@ -467,61 +474,60 @@ public class PostController {
         
     }
 
-	
-	
-	
-	@RequestMapping(path = "festvalPost") 
-	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
+	@RequestMapping(path = "festvalPost")
+	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid,
+			String startDate, String endDate) throws Exception {
 		request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
- 
-        String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
-        String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
-        String parameter = "";
- 
-        PrintWriter out = response.getWriter();
-        parameter = parameter + "&" + "MobileOS=ETC";
-        parameter = parameter + "&" + "MobileApp=aa";
-        parameter = parameter + "&" + "contentId="+contenid;
-        parameter = parameter + "&" + "defaultYN=Y";
-        parameter = parameter + "&" + "firstImageYN=Y";
-        parameter = parameter + "&" + "addrinfoYN=Y";
-        parameter = parameter + "&" + "mapinfoYN=Y";
-        parameter = parameter + "&" + "overviewYN=Y";
-        parameter = parameter + "&" + "_type=json";
- 
-        addr = addr + serviceKey + parameter;
-        URL url = new URL(addr);
- 
-        System.out.println(addr);
- 
-        InputStream in = url.openStream();                            //URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
- 
-        ByteArrayOutputStream bos1 = new ByteArrayOutputStream();        //InputStream의 데이터들을 바이트 배열로 저장하기 위해
-        IOUtils.copy(in, bos1);            //InputStream의 데이터를 바이트 배열로 복사
-        in.close();
-        bos1.close();
- 
-        String mbos = bos1.toString("UTF-8");
- 
-        byte[] b = mbos.getBytes("UTF-8");
-        String s = new String(b, "UTF-8");        //String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
-        out.println(s);
-        Gson gson = new Gson();
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
-        DetailCommonVo vo = new DetailCommonVo();
-        String abc= gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body").getAsJsonObject().get("items").getAsJsonObject().get("item"));
-       vo= gson.fromJson(abc, DetailCommonVo.class);
-       logger.debug("!!! vo : {}", vo);
-       logger.debug("!!! startDate : {}", startDate);
-       logger.debug("!!! endDate : {}", endDate);
+		response.setContentType("text/html; charset=utf-8");
 
-        model.addAttribute("vo", vo);
-        model.addAttribute("startDate", startDate);
-        model.addAttribute("endDate", endDate);
-        return "festivalpost";
-        
-    }
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=";
+		String serviceKey = "t%2FXGXgVLvr7AP3UYDfiatY68OGq5G8nNprjWOevj7BoQRawrcLoRsspN7RY9I034kI5tntajdfp8Bd9Z7mBXCg%3D%3D";
+		String parameter = "";
+
+		PrintWriter out = response.getWriter();
+		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "MobileApp=aa";
+		parameter = parameter + "&" + "contentId=" + contenid;
+		parameter = parameter + "&" + "defaultYN=Y";
+		parameter = parameter + "&" + "firstImageYN=Y";
+		parameter = parameter + "&" + "addrinfoYN=Y";
+		parameter = parameter + "&" + "mapinfoYN=Y";
+		parameter = parameter + "&" + "overviewYN=Y";
+		parameter = parameter + "&" + "_type=json";
+
+		addr = addr + serviceKey + parameter;
+		URL url = new URL(addr);
+
+		System.out.println(addr);
+
+		InputStream in = url.openStream(); // URL로 부터 자바로 데이터 읽어오도록 URL객체로 스트림 열기
+
+		ByteArrayOutputStream bos1 = new ByteArrayOutputStream(); // InputStream의 데이터들을 바이트 배열로 저장하기 위해
+		IOUtils.copy(in, bos1); // InputStream의 데이터를 바이트 배열로 복사
+		in.close();
+		bos1.close();
+
+		String mbos = bos1.toString("UTF-8");
+
+		byte[] b = mbos.getBytes("UTF-8");
+		String s = new String(b, "UTF-8"); // String으로 풀었다가 byte배열로 했다가 다시 String으로 해서 json에 저장할 배열을 print?? 여긴 잘 모르겠다
+		out.println(s);
+		Gson gson = new Gson();
+		JsonParser jsonParser = new JsonParser();
+		JsonObject jsonObj = (JsonObject) jsonParser.parse(s);
+		DetailCommonVo vo = new DetailCommonVo();
+		String abc = gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body")
+				.getAsJsonObject().get("items").getAsJsonObject().get("item"));
+		vo = gson.fromJson(abc, DetailCommonVo.class);
+		logger.debug("!!! vo : {}", vo);
+		logger.debug("!!! startDate : {}", startDate);
+		logger.debug("!!! endDate : {}", endDate);
+
+		model.addAttribute("vo", vo);
+		model.addAttribute("startDate", startDate);
+		model.addAttribute("endDate", endDate);
+		return "festivalpost";
+
+	}
 
 }
