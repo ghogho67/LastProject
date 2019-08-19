@@ -8,7 +8,7 @@
 	<select id="hosList" resultType="hospitalVo">
 		select * 
 		from hospital
-		order by hos_id
+		order by hos_id asc
 	</select>
 	
 	<!-- 병원 전체 수 조회 -->
@@ -33,7 +33,7 @@
 		from
 		(select a.*
 		from hospital a
-		order by hos_id) a)
+		order by hos_id asc) a)
 		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}	
 		]]>
 		
@@ -64,6 +64,7 @@
    		select *
    		from hospital
    		where hos_add like '%'||#{hos_add}||'%'
+   		order by hos_add asc
    </select>
    
    <!-- 지역별 검색을 한 병원 리스트 수 -->
@@ -83,7 +84,7 @@
 		(select a.*
 		from hospital a
 		where  hos_add like '%'||#{hos_add}||'%'
-		order by hos_id) a)
+		order by hos_id asc) a)
 		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
    ]]>
    </select>

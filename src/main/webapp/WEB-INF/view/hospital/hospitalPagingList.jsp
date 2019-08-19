@@ -213,7 +213,7 @@ td {
 
 
 <script>
-<script>
+
 $(document).ready(function() {
 	$("#searchBtn").on("click", function() {
 		console.log("searchBtn click");
@@ -244,7 +244,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 	
-	 <form id="pageForm" action="${cp}/approval/approvalCheck">
+	 <form id="pageForm" action="${cp}/hospital/pagingList">
 	 	<input type="hidden" name = "page" id="page">
 	 	<input type="hidden" name = "pageSize" id="pageSize">
 	 </form>
@@ -253,11 +253,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-							<div id="titlee">
-						<h2>
-							<span>병원, 요양기관</span>
-						</h2>
-						</div>
+							
 						
 						<div class="d1">
 							<form class="for" id="frm2" action="${cp}/hospital/searchPagingList" method="post">
@@ -267,6 +263,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</select> <input type="text" placeholder="동을 입력해 주세요" name="hos_add" id="hos_add">
 								<button type="button" id="searchBtn"></button>
 							</form>
+						</div>
+						
+						<div id="titlee">
+						<h2>
+							<span>병원, 요양기관</span>
+						</h2>
 						</div>
 						
 						
@@ -297,9 +299,14 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</table>
 					</div>
 					
+
+					</form>
 					
-							<!-- 페이지네이션 -->
-						<div class="demo" style="position: absolute; right: 20%;">
+					
+				</div>
+			</div>
+			
+			<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
 									<c:choose>
@@ -380,15 +387,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
-
-					</form>
-					
-					
-				</div>
-			</div>
+			
 		</div>
+		
+		
 	</div>
-
+	
 
 </body>
 </html>

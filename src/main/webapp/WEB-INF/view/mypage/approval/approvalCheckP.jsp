@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Insert title here</title>
+<title>BasicSubPage</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
-
-
-
 
 <style type="text/css">
 
@@ -206,92 +206,147 @@ td {
 }
 </style>
 
+
 <script>
-   $(document).ready(function() {
-// 	   $("#searchType").change("on", function(){
-// // 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
-// 			alert("/19/07/30형식으로 기입");
-// 	   });
-	   
-	   $("#saerchBtn").click("on",function(){
-			var data = $("#saerchList").serialize();
-			console.log(data);
-			$.ajax({
-				type: "POST",
-				url : "${cp}/attendance/saerch",
-				data : data,
-				success : function(data){
-					console.log(data);
-				},
-			error : function(xhr){
-					alert(xhr.status);
-				
-			}
-		 });
-		});
+
+$(document).ready(function() {
 	
-   });
+	$("#searchType").val("${searchType}").prop("selected", true);
+	$("#searchVal").val("${searchVal}");
+	
+		   $("#searchType").change("on", function(){
+//	 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
+				alert("/19/07/30형식으로 기입");
+		   });
+		   
+		   
+		   
+		   $("#searchBtn").on("click",function(){
+// 				var data = $("#searchList").serialize();
+// 				console.log(data);
+// 				$.ajax({
+// 					type: "POST",
+// 					url : "${cp}/approval/search",
+// 					data : data,
+// 					success : function(data){
+// 						alert("success");
+// 						console.log(data);
+// 					},
+// 				error : function(xhr){
+// 						alert(xhr.status);
+					
+// 				}
+// 			 });
+				$("#searchList").submit();
+				
+			});
+		
+});
+
+function boardPagingListAjaxHtml(page, pageSize ) {
+		$("#page").val(page);
+		$("#pageSize").val(pageSize);
+		$("#searchList").submit();
+	
+	}
+	
+
+
+
+
+
+
 </script>
 
+
+
+
 </head>
+
 <body>
 
-	
-<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
-         <div class="card">
-            <div class="card-body">
-					 <div class="d1">
-                          <form id="saerchList" class="for" method="POST">
+<%-- 	 <form id="pageForm" action="${cp}/approval/approvalCheck"> --%>
+<!-- 	 	<input type="hidden" name = "page" id="page"> -->
+<!-- 	 	<input type="hidden" name = "pageSize" id="pageSize"> -->
+<!-- 	 </form> -->
 
-                             <select id="searchType" name="searchType"
-							style="position: absolute; z-index: 999;">
-                                <option value="memid">회원아이디</option>
-                                <option value="day">날짜</option>
-                             </select> 
-                            <input id="saerchVal" name="saerchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
-                           <button id="saerchBtn" name="saerch" type="button"></button>
-                          </form>
-                       </div>
-                       
-               <div id="titlee">
+
+	<div class="container">
+		<div style="padding-top: 50px; width: 1250px;">
+			<div class="card">
+				<div class="card-body">
+				
+					<div class="d1">
+	                          <form id="searchList" class="for" action="${cp}/approval/approvalCheck">
+	
+	                             <select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+	                                <option value="day">날짜</option>
+	                                <option value="type">결제구분</option>
+	                             </select> 
+	                            <input id="searchVal" name="searchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
+	                            <input type="hidden"  name = "page" id="page" value="1">
+	 							<input type="hidden" name = "pageSize" id="pageSize" value="10">
+	                           <button id="searchBtn" name="searchBtn" type="button"></button>
+	                          </form>
+	                       </div>
+	                       
+			<div id="titlee">
 						<h2>
-							<span>요양보호사 </span>&nbsp;출석체크관리
+							<span>결재내역</span>&nbsp;골드회원 및 일반회원
 						</h2>
 						</div>
-						<hr>        
-								<div class="table-responsive">
-									<table class="table center-aligned-table">
+					<hr>
+					<div class="table-responsive">
+						<table class="table center-aligned-table">
+							<thead>
+								<tr class="text-primary">
+									<th>NO.</th>
+									<th>결제구분</th>
+									<th>결제금액</th>
+									<th>결제시간</th>
+									<th>결제자</th>
+								</tr>
+							</thead>
 
-										<thead>
-											<tr class="text-primary">
-												<th>NO.</th>
-												<th>출근시간</th>
-												<th>퇴근시간</th>
-												<th>회원아이디</th>
-												<th>매칭번호</th>
-											</tr>
-										</thead>
-						<tbody>
-                        <c:forEach items="${cwMatList }" var="vo" varStatus="status">
-                        				<tr>
-											<td>${vo.rn }</td>
-											<td>${vo.ad_st }</td>
-											<td>${vo.ad_end }</td>
-											<td>${vo.mem_id }</td>
-											<td>${vo.mat_id }</td>
-										</tr>
+							<tbody>
+								<tr>
+									<c:forEach items="${appVo }" var="vo" varStatus="status">
+									<tr>
+										<td>${vo.rn}</td>
+										<td>
+											<c:choose>
+												<c:when test="${vo.app_type eq 1}">
+													매칭
+												</c:when>
+												<c:when test="${vo.app_type eq 2}">
+												 	골드가입
+												</c:when>
+												<c:when test="${vo.app_type eq 3}">
+												 	기부
+												</c:when>
+												
+											</c:choose>
+										
+										</td>
+										<td>${vo.app_pay}</td>
+										<td><fmt:formatDate value="${vo.app_time }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
+										<td>${vo.mem_id }</td>
+									</tr>
 									</c:forEach>
-						</tbody>
-                  </table>
-               </div>
-         </div>
-      </div>
-   </div>
+									
+								
+							</tbody>
+						</table>
 
-</div>
 
- 	<div class="demo" style="position:absolute; right: 20%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="demo" style="position:absolute; right: 20%;">
                 <nav class="pagination-outer" aria-label="Page navigation">
                     <ul class="pagination">
                        <c:choose>

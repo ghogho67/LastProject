@@ -16,14 +16,14 @@ import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.survey.model.QuestionChoiceVo;
 import kr.or.ddit.survey.model.SurveyAnswerVo;
 import kr.or.ddit.survey.model.SurveyPartVo;
+import kr.or.ddit.survey.model.SurveyResultVo;
 import kr.or.ddit.survey.model.VideoVo;
+import kr.or.ddit.survey.service.SurveyResult.ISurveyResultService;
 import kr.or.ddit.survey.service.question.IQuestionService;
 import kr.or.ddit.survey.service.survey.ISurveyService;
 import kr.or.ddit.survey.service.surveyAnswer.ISurveyAnswerService;
 import kr.or.ddit.survey.service.surveyPart.ISurveyPartService;
 import kr.or.ddit.survey.service.video.IVideoService;
-
-
 
 
 @RequestMapping("/recognitionImp")
@@ -46,7 +46,10 @@ public class impProgramController {
 	private IVideoService videoService;
 
 	
+	@Resource(name = "surveyResultService")
+	private ISurveyResultService surveyResultService;
 	
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(impProgramController.class);
 
@@ -373,6 +376,26 @@ public class impProgramController {
 
 		int checkScore = surveyPartService.checkScore(surveypartVo);
 
+		
+		
+		
+		
+		
+		
+		
+		String surresult_id ="";
+		String sur_result = String.valueOf(checkScore);
+		
+		SurveyResultVo SurveyResultVo = new kr.or.ddit.survey.model.SurveyResultVo(surresult_id, sur_part_id, sur_result);
+		int insertTestResult=surveyResultService.InsertTestResult(SurveyResultVo);
+		
+		if(insertTestResult==0){
+			
+		}
+		
+		
+		
+		
 		logger.debug("@@@@checkScore {}", checkScore);
 		model.addAttribute("checkScore", checkScore);
 
