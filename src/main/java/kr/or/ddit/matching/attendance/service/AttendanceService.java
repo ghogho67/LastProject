@@ -127,7 +127,7 @@ public class AttendanceService implements IAttendanceService {
 		
 		int cwMatchingCnt = attendanceDao.cwMatchingCnt(cw_mem_id);
 		int paginationSize = (int) Math.ceil((double)cwMatchingCnt/pageSize);
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		
 		return resultMap;
@@ -146,7 +146,7 @@ public class AttendanceService implements IAttendanceService {
 		int dayAllCnt = attendanceDao.daySaerchCnt(dayCnt);
 		
 		int paginationSize = (int) Math.ceil((double)dayAllCnt/pageSize);
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		
 		return resultMap;
@@ -165,7 +165,7 @@ public class AttendanceService implements IAttendanceService {
 		int memAllCnt = attendanceDao.memidSaerchCnt(memCnt);
 		
 		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}
@@ -180,7 +180,7 @@ public class AttendanceService implements IAttendanceService {
 		
 		int checkCnt = attendanceDao.adminCheckCnt();
 		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}
@@ -197,7 +197,7 @@ public class AttendanceService implements IAttendanceService {
 		String memid = (String) map.get("mem_id");
 		int checkCnt =  attendanceDao.adminMemSearchCnt(memid);
 		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		return resultMap;
 	}
 	
@@ -212,7 +212,7 @@ public class AttendanceService implements IAttendanceService {
 		String day = (String) map.get("day");
 		int checkCnt =  attendanceDao.adminDaySearchCnt(day);
 		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		return resultMap;
 	}
 
