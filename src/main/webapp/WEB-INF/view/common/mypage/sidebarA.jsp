@@ -78,12 +78,12 @@
 							</li>
 							
 							<!-- 기부관리 -->
-							<li class="nav-item"><a class="nav-link"
-							href="${cp}/resource/Admin/pages/forms/index.html">
-								<img
-								src="${cp}/resource/Admin/images/icons/005-forms.png"
-								alt=""> <span class="menu-title">기부 목록</span>
-							</a></li>
+<!-- 							<li class="nav-item"><a class="nav-link" -->
+<%-- 							href="${cp}/donation/pagingList"> --%>
+<!-- 								<img -->
+<%-- 								src="${cp}/resource/Admin/images/icons/005-forms.png" --%>
+<!-- 								alt=""> <span class="menu-title">기부 목록</span> -->
+<!-- 							</a></li> -->
 						
 						
 						<li class="nav-item"><a class="nav-link"

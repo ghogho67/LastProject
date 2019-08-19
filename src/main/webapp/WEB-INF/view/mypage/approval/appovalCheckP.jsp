@@ -1,0 +1,277 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>BasicSubPage</title>
+<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
+<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
+
+<style type="text/css">
+
+
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+tr {
+	text-align: center;
+	font-weight: 500;
+}
+
+td {
+	text-align: center;
+}
+
+.title {
+	background-color: transparent;
+	width: 180px;
+	padding: 3px;
+	font-size: 8pt;
+	text-align: center;
+}
+
+.kkk {
+	background-color: transparent;
+	border-color: transparent;
+	width: 30px;
+	padding: 3px;
+	font-size: 9pt;
+}
+
+.pagination-outer {
+	text-align: center;
+}
+
+.pagination {
+	font-family: 'Rubik', sans-serif;
+	padding: 0 30px;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination li a.page-link {
+	color: #909090;
+	background-color: transparent;
+	font-size: 15px;
+	line-height: 35px;
+	height: 45px;
+	width: 40px;
+	margin: 0 3px;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease 0s;
+}
+
+.pagination li.active a.page-link, .pagination li a.page-link:hover,
+	.pagination li.active a.page-link:hover {
+	color: #006266;
+	background-color: transparent;
+}
+
+.pagination li a.page-link span {
+	display: block;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:hover span {
+	transform: rotateY(360deg);
+}
+
+.pagination li a.page-link:before, .pagination li a.page-link:after {
+	content: "";
+	background-color: #006266;
+	height: 3px;
+	width: 0;
+	opacity: 1;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:before {
+	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	height: 15px;
+	width: 15px;
+	transform: translateX(-50%) rotate(45deg);
+	bottom: auto;
+	top: -20px;
+	left: 50%;
+}
+
+.pagination li a.page-link:hover:after {
+	width: 100%;
+}
+
+.pagination li a.page-link:hover:before {
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
+	{
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
+	{
+	width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	.pagination {
+		display: block;
+	}
+	.pagination li {
+		margin-bottom: 10px;
+		display: inline-block;
+	}
+}
+
+.for {
+	position: relative;
+	width: 250px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.d1 {
+	height: 30px;
+	background: white;
+	position: absolute;
+	right: 5%;
+	margin-top: 3%;
+}
+
+.d1 input {
+	width: 110%;
+	height: 20px;
+	padding-left: 90px;
+	border: 2px solid #7BA7AB;
+	border-radius: 5px;
+	outline: none;
+	background: white;
+	color: #9E9C9C;
+	font-size: 13px;
+}
+
+.d1 button {
+	position: absolute;
+	top: 0;
+	right: -25px;
+/* 	left : 2px; */
+	width: 32px;
+	height: 38px;
+	border: none;
+	background: #7BA7AB;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+}
+
+.d1 button:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	font-size: 16px;
+	color: #F9F0DA;
+}
+
+#searchType {
+	height: 40px;
+	width: 90px;
+	font-size: 12px;
+	border-radius: 5px 0px 0px 5px;
+	border-top: 2px solid #7BA7AB;
+	border-bottom: 2px solid #7BA7AB;
+	border-left: 2px solid #7BA7AB;
+	border-right: 2px solid #7BA7AB;
+}
+</style>
+
+
+
+<script>
+</script>
+
+
+
+
+</head>
+
+<body>
+	<div class="container">
+		<div style="padding-top: 50px; width: 1250px;">
+			<div class="card">
+				<div class="card-body">
+					<div class="d1">
+	                          <form id="saerchList" class="for" method="POST" action="">
+	
+	                             <select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+	                                <option value="memid">회원아이디</option>
+	                                <option value="day">날짜</option>
+	                             </select> 
+	                            <input id="saerchVal" name="saerchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
+	                           <button id="saerchBtn" name="saerch" type="button"></button>
+	                          </form>
+	                       </div>
+			<div id="titlee">
+						<h2>
+							<span>결재내역</span>&nbsp;골드회원 및 일반회원
+						</h2>
+						</div>
+					<hr>
+					<div class="table-responsive">
+						<table class="table center-aligned-table">
+							<thead>
+								<tr class="text-primary">
+									<th>NO.</th>
+									<th>결제구분</th>
+									<th>결제금액</th>
+									<th>결제시간</th>
+									<th>결제자</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<c:forEach items="${appVo }" var="vo" varStatus="status">
+									<tr>
+										<td>${vo.rn}</td>
+										<td>${vo.app_type }</td>
+										<td>${vo.app_pay}</td>
+										<td>${vo.app_time }</td>
+										<td>${vo.mem_id }</td>
+									</tr>
+									</c:forEach>
+									
+								
+							</tbody>
+						</table>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

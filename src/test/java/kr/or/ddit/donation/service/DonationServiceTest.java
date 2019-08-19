@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,6 +15,7 @@ import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.approval.service.IApprovalService;
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class DonationServiceTest extends LogicTestEnv {
@@ -182,6 +184,25 @@ public class DonationServiceTest extends LogicTestEnv {
 		List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN("N");
 		/***Then***/
 		assertEquals(6, getDoner_memYN.size());
+
+	}
+	
+	/**
+	* Method : donationPagingListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :기부자 페이징 리스트
+	*/
+	@Test
+	public void donationPagingListTest() {
+		/***Given***/
+		PageVo pageVo = new PageVo(1, 10);
+		/***When***/
+		Map<String , Object> resultMap = donationService.donationPagingList(pageVo);
+		List<DonationApprovalVo> getAllDoner = (List<DonationApprovalVo>) resultMap.get("getAllDoner");
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+		/***Then***/
+		assertEquals(2, paginationSize);
 
 	}
 	

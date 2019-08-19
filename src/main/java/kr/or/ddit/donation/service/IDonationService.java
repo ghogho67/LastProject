@@ -1,9 +1,11 @@
 package kr.or.ddit.donation.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface IDonationService {
 	
@@ -54,6 +56,16 @@ public interface IDonationService {
 	* Method 설명 : 기부자 증 회원/ 비회원 목록 가져오기
 	*/
 	List<DonationApprovalVo> getDoner_memYN(String mem_yn); 
+	
+	/**
+	* Method : donationPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :무더위 쉼터 페이징 리스트
+	*/
+	Map<String, Object> donationPagingList(PageVo pageVo);
 	
 	
 	

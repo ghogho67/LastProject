@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.chat.chatText.model.ChatTextVo;
+import kr.or.ddit.joinVo.ChatCollectionVo;
 
 @Repository
 public class ChatTextDao implements IChatTextDao {
@@ -22,6 +23,11 @@ public class ChatTextDao implements IChatTextDao {
 	@Override
 	public List<ChatTextVo> getChatTextList(int chat_id) {
 		return sqlSession.selectList("chatText.chattextList", chat_id);
+	}
+
+	@Override
+	public List<ChatCollectionVo> chatCntList(String mem_id) {
+		return sqlSession.selectList("chatCollection.chatCntList", mem_id);
 	}
 	
 }
