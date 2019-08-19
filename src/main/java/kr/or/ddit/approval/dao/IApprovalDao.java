@@ -57,6 +57,34 @@ public interface IApprovalDao {
 	List<ApprovalVo> approvalPageList(Map<String, Object> map);
 	
 	
+
+	
 	int approvalPageCnt(String mem_id);
+	
+	
+	
+	
+	/**
+	* Method : daySaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 날짜별로 검색하여 리스트 갖고오기
+	*/
+	public List<ApprovalVo> daySaerchList(Map<String, Object> resultMap); 
+	public int daySaerchCnt(Map<String, Object> day);
+	
+	
+	/**
+	* Method : typeSaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
+	*/
+	public List<ApprovalVo> typeSaerchList(Map<String, Object> resultMap); 
+	public int typeSaerchCnt(Map<String, Object> type);
 
 }

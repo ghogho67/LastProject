@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.survey.dao.SurveyResult.ISurveyResultDao;
+import kr.or.ddit.survey.model.SurveyPartVo;
 import kr.or.ddit.survey.model.SurveyResultVo;
 
 
@@ -26,6 +27,12 @@ public class SurveyResultService implements ISurveyResultService {
 	@Override
 	public List<SurveyResultVo> getTestResult(String mem_id) {
 		return surveyResultDao.getTestResult(mem_id);
+	}
+
+
+	@Override
+	public List<SurveyResultVo> getCertainTestResult(SurveyPartVo SurveyPartVo) {
+		return surveyResultDao.getCertainTestResult(SurveyPartVo);
 	}
 
 	

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SACCO VIDEO REFERENCE | OH~DOA조</title>
+  <title>This Care VIDEO REFERENCE | OH~DOA조</title>
   <meta name="description" content="WebRTC Dashboard including support for canvas drawing, canvas data syncing, video conferencing, screen sharing and video conferencing. Including chat and file sharing.">
 
   <link rel="shortcut icon" href="../logo.png">
@@ -293,11 +293,11 @@ input[disabled], button[disabled] {
 </head>
 <body>
   <header style="margin-bottom: 20px;">
-    <img class="logo" src="../logo.png" alt="RTCMultiConnection" /> <span class="logo-text">SACCO VIDEO REFERENCE</span>
+    <img class="logo" src="../logo.png" alt="RTCMultiConnection" /> <span class="logo-text">This Care VIDEO REFERENCE</span>
 
     <div style="float: right;margin-top: 15px;">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#startRoomModel">Create A New Room</button>
-      <button id="btn-show-join-hidden-room" class="top-span btn btn-secondary" data-toggle="modal" data-target="#joinRoomModel">Join A Room</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#startRoomModel">방 만들기</button>
+      <button id="btn-show-join-hidden-room" class="top-span btn btn-secondary" data-toggle="modal" data-target="#joinRoomModel">참여하기</button>
       <span class="top-span">Active rooms: <span id="active-rooms">0</span></span>
     </div>
   </header>
@@ -306,7 +306,7 @@ input[disabled], button[disabled] {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="startRoomModelLabel">Create A New Room</h5>
+          <h5 class="modal-title" id="startRoomModelLabel">방 만들기</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -315,35 +315,35 @@ input[disabled], button[disabled] {
           <form>
             <div class="form-group">
               <p>
-                <label for="txt-roomid" class="col-form-label">Enter Room ID:</label>
+                <label for="txt-roomid" class="col-form-label">방 제목 입력:</label>
                 <input type="text" class="form-control" id="txt-roomid">
               </p>
 
               <p>
-                <label for="txt-user-name" class="col-form-label">Enter Your Name:</label>
+                <label for="txt-user-name" class="col-form-label">이름 이력:</label>
                 <input type="text" class="form-control" id="txt-user-name">
               </p>
 
               <p style="display: none;">
-                <label for="txt-room-password" class="col-form-label">Enter Room Password:</label>
+                <label for="txt-room-password" class="col-form-label">패스워드 입력:</label>
                 <input type="text" class="form-control" id="txt-room-password">
               </p>
 
-              <a href="" style="float: right; margin-bottom: 10px; font-size: 14px;" onclick="event.preventDefault();$('.more-options').show();$(this).hide();">Show More Options</a>
+              <a href="" style="float: right; margin-bottom: 10px; font-size: 14px;" onclick="event.preventDefault();$('.more-options').show();$(this).hide();">옵션 더보기</a>
 
               <p class="more-options" style="margin-bottom: 0; display: none;">
-                <label class="col-form-label"><input type="checkbox" id="chk-room-password"> Set Room Password?</label>
+                <label class="col-form-label"><input type="checkbox" id="chk-room-password"> 패스워드를 설정하시겠습니까?</label>
               </p>
 
               <p class="more-options" style="margin-top: 0; margin-bottom: 0; display: none;">
-                <label class="col-form-label"><input type="checkbox" id="chk-hidden-room"> Hidden Room? (Hide from the list)</label>
+                <label class="col-form-label"><input type="checkbox" id="chk-hidden-room"> 방을 숨기겠습니까? (리스트에 출력되지 않는 방)</label>
               </p>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="btn-create-room">Create</button>
+          <button type="button" class="btn" data-dismiss="modal">취소</button>
+          <button type="button" class="btn btn-primary" id="btn-create-room">만들기</button>
         </div>
       </div>
     </div>
@@ -353,7 +353,7 @@ input[disabled], button[disabled] {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="joinRoomModelLabel">Join A Room</h5>
+          <h5 class="modal-title" id="joinRoomModelLabel">참여하기</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -362,25 +362,25 @@ input[disabled], button[disabled] {
           <form>
             <div class="form-group">
               <p>
-                <label for="txt-roomid-hidden" class="col-form-label">Enter Room ID:</label>
+                <label for="txt-roomid-hidden" class="col-form-label">방 제목을 입력하세요:</label>
                 <input type="text" class="form-control" id="txt-roomid-hidden">
               </p>
 
               <p>
-                <label for="txt-user-name-hidden" class="col-form-label">Enter Your Name:</label>
+                <label for="txt-user-name-hidden" class="col-form-label">이름을 입력하세요:</label>
                 <input type="text" class="form-control" id="txt-user-name-hidden">
               </p>
 
               <p style="display: none;">
-                <label for="txt-room-password-hidden" class="col-form-label">Enter Room Password:</label>
+                <label for="txt-room-password-hidden" class="col-form-label">패스워드를 입력하세요:</label>
                 <input type="text" class="form-control" id="txt-room-password-hidden">
               </p>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="btn-join-hidden-room">Join</button>
+          <button type="button" class="btn" data-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-primary" id="btn-join-hidden-room">대화 참여</button>
         </div>
       </div>
     </div>
@@ -432,7 +432,7 @@ input[disabled], button[disabled] {
       <thead>
         <tr>
           <th>#</th>
-          <th>Room ID</th>
+          <th>방 제목</th>
           <th>Owner ID</th>
           <th>Session</th>
           <th>Extra</th>
@@ -444,7 +444,7 @@ input[disabled], button[disabled] {
     </table>
   </section>
 
-  <footer style="text-align: center;">SACCO VIDEO REFERENCE | OH~DOA조</footer>
+  <footer style="text-align: center;">This Care VIDEO REFERENCE | How Care</footer>
 
 <script>
 // this object is used to get uniquie rooms based on this demo
@@ -558,13 +558,13 @@ $('#btn-show-join-hidden-room').click(function(e) {
 $('#btn-join-hidden-room').click(function() {
     var roomid = $('#txt-roomid-hidden').val().toString();
     if (!roomid || !roomid.replace(/ /g, '').length) {
-        alertBox('Please enter room-id.', 'Room ID Is Required');
+        alertBox('방 제목을 설정해주세요', '방 제목이 필요합니다');
         return;
     }
 
     var fullName = $('#txt-user-name-hidden').val().toString();
     if (!fullName || !fullName.replace(/ /g, '').length) {
-        alertBox('Please enter your name.', 'Your Name Is Required');
+        alertBox('이름을 입려해주세요', '이름이 필요합니다');
         return;
     }
 
@@ -573,7 +573,7 @@ $('#btn-join-hidden-room').click(function() {
     if($('#txt-room-password-hidden').parent().css('display') !== 'none') {
       var roomPassword = $('#txt-room-password-hidden').val().toString();
       if (!roomPassword || !roomPassword.replace(/ /g, '').length) {
-          alertBox('Please enter room password.', 'Password Box Is Empty');
+          alertBox('비밀번호를 입력해주세요', '비밀번호가 필요합니다');
           return;
       }
       connection.password = roomPassword;

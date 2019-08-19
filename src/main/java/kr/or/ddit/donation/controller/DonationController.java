@@ -17,6 +17,9 @@ import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
 
+import kr.or.ddit.page.model.PageVo;
+
+
 
 @Controller
 @RequestMapping("/donation")

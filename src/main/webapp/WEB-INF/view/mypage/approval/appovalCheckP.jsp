@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,6 +209,43 @@ td {
 
 
 <script>
+
+$(document).ready(function() {
+		   $("#searchType").change("on", function(){
+//	 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
+				alert("/19/07/30형식으로 기입");
+		   });
+		   
+		   
+		   
+		   $("#saerchBtn").click("on",function(){
+				var data = $("#saerchList").serialize();
+				console.log(data);
+				$.ajax({
+					type: "POST",
+					url : "${cp}/approval/saerch",
+					data : data,
+					success : function(data){
+						console.log(data);
+					},
+				error : function(xhr){
+						alert(xhr.status);
+					
+				}
+			 });
+			});
+		
+});
+function boardPagingListAjaxHtml(page, pageSize) {
+	$("#page").val(page);
+	$("#pageSize").val(pageSize);
+	$("#pageForm").submit();
+	
+	}
+
+
+
+
 </script>
 
 
@@ -216,6 +254,13 @@ td {
 </head>
 
 <body>
+
+	 <form id="pageForm" action="${cp}/approval/approvalCheck">
+	 	<input type="hidden" name = "page" id="page">
+	 	<input type="hidden" name = "pageSize" id="pageSize">
+	 </form>
+
+
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
@@ -225,8 +270,8 @@ td {
 	
 	                             <select id="searchType" name="searchType"
 								style="position: absolute; z-index: 999;">
-	                                <option value="memid">회원아이디</option>
 	                                <option value="day">날짜</option>
+	                                <option value="type">결제구분</option>
 	                             </select> 
 	                            <input id="saerchVal" name="saerchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
 	                           <button id="saerchBtn" name="saerch" type="button"></button>
@@ -255,9 +300,24 @@ td {
 									<c:forEach items="${appVo }" var="vo" varStatus="status">
 									<tr>
 										<td>${vo.rn}</td>
-										<td>${vo.app_type }</td>
+										<td>
+											<c:choose>
+												<c:when test="${vo.app_type eq 1}">
+													매칭
+												</c:when>
+												<c:when test="${vo.app_type eq 2}">
+												 	골드가입
+												</c:when>
+												<c:when test="${vo.app_type eq 3}">
+												 	기부
+												</c:when>
+												
+											</c:choose>
+										
+										</td>
 										<td>${vo.app_pay}</td>
-										<td>${vo.app_time }</td>
+										<td><fmt:formatDate value="${vo.app_time }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
+										
 										<td>${vo.mem_id }</td>
 									</tr>
 									</c:forEach>
@@ -272,6 +332,82 @@ td {
 			</div>
 		</div>
 	</div>
+
+		<div class="demo" style="position:absolute; right: 20%;">
+			    	<nav class="pagination-outer" aria-label="Page navigation">
+			        	<ul class="pagination">
+			        		<c:choose>
+		<c:when test="${pageVo.page==1}">
+			<li class="page-item prev disabled">
+				<a href="#" class="page-link" aria-label="Previous">
+	                    <span aria-hidden="true">«</span>
+	              </a>
+	        </li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item">
+				<a class="page-link" aria-hidden="Previous" href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span aria-hidden="true">«</span></a></li>
+			
+		</c:otherwise>
+	</c:choose>
+	
+	<c:choose>
+		<c:when test="${pageVo.page==1}">
+			<li class="page-item prev disabled" >
+				<a href="#" class="page-link" aria-label="Previous">
+	                    <span aria-hidden="true">‹</span>
+	              </a>
+	        </li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item"><a class="page-link" aria-label="Previous"
+				href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span aria-hidden="true">‹</span></a></li>
+		</c:otherwise>
+	</c:choose>
+	
+	<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
+		<c:choose>
+			<c:when test="${pageVo.page == i}">
+				<li class="page-item active"><a class="page-link" href="#">${i}</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a class="page-link"
+					href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+			</c:otherwise>
+		</c:choose>
+	
+	</c:forEach>
+	
+	<c:choose>
+		<c:when test="${pageVo.page == lastpaginationSize}">
+			<li class="page-item next disabled">
+				<a href="#" class="page-link" aria-label="Next">
+	                    <span aria-hidden="true">›</span>
+	            </a>
+			</li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item"><a class="page-link"aria-label="Next" 
+				href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span aria-hidden="true">›</span></a></li>
+		</c:otherwise>
+	</c:choose>
+	
+	
+	<c:choose>
+		<c:when test="${pageVo.page == lastpaginationSize}">
+			<li class="page-item next disabled"><a href="#" class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item"><a class="page-link" aria-label="Next"
+				href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span aria-hidden="true">»</span></a></li>
+		</c:otherwise>
+	</c:choose>
+			
+			        	</ul>
+			    	</nav>
+				</div>
+	
+	
 
 </body>
 </html>

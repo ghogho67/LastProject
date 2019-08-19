@@ -45,7 +45,7 @@ public class HospitalService implements IHospitalService{
 		
 		int hosCnt = hospitalDao.hosCnt();
 		int paginationSize = (int) Math.ceil((double)hosCnt/pageVo.getPageSize());
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}
@@ -91,7 +91,7 @@ public class HospitalService implements IHospitalService{
 		resultMap.put("getSearchHosAdd", hospitalDao.searchHosPagingList(map));
 		int searchHosCnt = hospitalDao.searchHosCnt((String)map.get("hos_add"));
 		int paginationSize = (int) Math.ceil((double)searchHosCnt/(int)map.get("pageSize"));
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}

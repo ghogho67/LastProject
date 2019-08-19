@@ -54,4 +54,28 @@ public interface IApprovalService {
 	* Method 설명 : mem_id 를 검색하여 리스트 갖고오고 페이지네이션
 	*/
 	Map<String, Object> approvalPageList(Map<String, Object> map);
+	
+	
+	
+	/**
+	* Method : daySaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 날짜별로 검색하여 리스트 갖고오기
+	*/
+	public Map<String, Object> daySaerchList(Map<String, Object> resultMap); 
+	
+	
+	/**
+	* Method : typeSaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
+	*/
+	public Map<String, Object> typeSaerchList(Map<String, Object> resultMap); 
+
 }
