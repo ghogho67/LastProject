@@ -70,12 +70,112 @@
 		AND 	B.RN <= #{page} * #{pageSize}		
 	 	]]>
 	</select>
+	<select id="titlePagingList" parameterType="map"
+		resultType="PostVo">
+				<![CDATA[
+	 SELECT  B.*
+		FROM
+		(
+			SELECT	A.*, ROWNUM RN
+			FROM(	SELECT  	P.post_id
+							   ,P.cate_id, P.mem_id
+							   ,NVL(post_par, 0) post_par
+						  	   ,LPAD('└▶', (LEVEL-1)*4) || P.post_nm post_nm
+						  	   ,post_cont
+						  	   ,post_time
+						  	   ,post_del
+						  	   ,post_group
+						  	   ,LEVEL
+					FROM    POST P
+					WHERE  cate_id=#{cate_id} and post_nm like '%'||#{post_nm}||'%'
+					START WITH P.post_par IS NULL
+					CONNECT BY PRIOR P.post_id = P.post_par
+					ORDER SIBLINGS BY P.post_group DESC, P.post_id  ) A
+		) B
+		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	B.RN <= #{page} * #{pageSize}	
+	 	]]>
+	</select>
+	<select id="contPagingList" parameterType="map"
+		resultType="PostVo">
+		<![CDATA[
+	 SELECT  B.*
+		FROM
+		(
+			SELECT	A.*, ROWNUM RN
+			FROM(	SELECT  	P.post_id
+							   ,P.cate_id, P.mem_id
+							   ,NVL(post_par, 0) post_par
+						  	   ,LPAD('└▶', (LEVEL-1)*4) || P.post_nm post_nm
+						  	   ,post_cont
+						  	   ,post_time
+						  	   ,post_del
+						  	   ,post_group
+						  	   ,LEVEL
+					FROM    POST P
+					WHERE   cate_id=#{cate_id} and post_cont like '%'||#{post_cont}||'%'
+					START WITH P.post_par IS NULL
+					CONNECT BY PRIOR P.post_id = P.post_par
+					ORDER SIBLINGS BY P.post_group DESC, P.post_id  ) A
+		) B
+		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	B.RN <= #{page} * #{pageSize}	
+	 	]]>
+	</select>
+	<select id="idPagingList" parameterType="map"
+		resultType="PostVo">
+		<![CDATA[
+	 SELECT  B.*
+		FROM
+		(
+			SELECT	A.*, ROWNUM RN
+			FROM(	SELECT  	P.post_id
+							   ,P.cate_id, P.mem_id
+							   ,NVL(post_par, 0) post_par
+						  	   ,LPAD('└▶', (LEVEL-1)*4) || P.post_nm post_nm
+						  	   ,post_cont
+						  	   ,post_time
+						  	   ,post_del
+						  	   ,post_group
+						  	   ,LEVEL
+					FROM    POST P
+					WHERE   cate_id=#{cate_id} and mem_id like '%'||#{mem_id}||'%'
+					START WITH P.post_par IS NULL
+					CONNECT BY PRIOR P.post_id = P.post_par
+					ORDER SIBLINGS BY P.post_group DESC, P.post_id  ) A
+		) B
+		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	B.RN <= #{page} * #{pageSize}	
+	 	]]>
+	</select>
 
 	<select id="postCnt" parameterType="int" resultType="int">
 
 		select
 		count(*) from post where
 		cate_id=#{cate_id} and post_del='N'
+
+	</select>
+
+	<select id="titlePostCnt" parameterType="map" resultType="int">
+
+		select
+		count(*) from post where
+		cate_id=#{cate_id} and post_nm like '%'||#{post_nm}||'%' and post_del='N'
+
+	</select>
+	<select id="contPostCnt" parameterType="map" resultType="int">
+
+		select
+		count(*) from post where
+		cate_id=#{cate_id} and post_cont like '%'||#{post_cont}||'%' and post_del='N'
+
+	</select>
+	<select id="idPostCnt" parameterType="map" resultType="int">
+
+		select
+		count(*) from post where
+		cate_id=#{cate_id} mem_id like '%'||#{mem_id}||'%' and post_del='N'
 
 	</select>
 

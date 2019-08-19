@@ -75,4 +75,49 @@ public class PostService implements IPostService {
 	public int postReply(PostVo postVo) {
 		return postDao.postReply(postVo);
 	}
+
+	@Override
+	public Map<String, Object> titlePagingList(Map<String, Object> map) {
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<PostVo> postList = postDao.titlePagingList(map);
+		resultMap.put("postList", postList);
+		int postCnt = (int) map.get("cate_id");
+		postCnt = postDao.titlePostCnt(map);
+		int pageSize = (int) map.get("pageSize");
+		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
+		resultMap.put("paginationSize", paginationSize);
+
+		return resultMap;
+	}
+
+	@Override
+	public Map<String, Object> idPagingList(Map<String, Object> map) {
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<PostVo> postList = postDao.idPagingList(map);
+		resultMap.put("postList", postList);
+		int postCnt = (int) map.get("cate_id");
+		postCnt = postDao.idPostCnt(map);
+		int pageSize = (int) map.get("pageSize");
+		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
+		resultMap.put("paginationSize", paginationSize);
+
+		return resultMap;
+	}
+
+	@Override
+	public Map<String, Object> contPagingList(Map<String, Object> map) {
+
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<PostVo> postList = postDao.contPagingList(map);
+		resultMap.put("postList", postList);
+		int postCnt = (int) map.get("cate_id");
+		postCnt = postDao.contPostCnt(map);
+		int pageSize = (int) map.get("pageSize");
+		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
+		resultMap.put("paginationSize", paginationSize);
+		
+		return resultMap;
+	}
 }

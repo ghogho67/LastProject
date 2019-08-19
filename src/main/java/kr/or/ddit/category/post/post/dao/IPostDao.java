@@ -27,4 +27,16 @@ public interface IPostDao {
 
 	int postCnt(int cate_id);
 
+	List<PostVo> titlePagingList(Map<String, Object> map);
+
+	List<PostVo> idPagingList(Map<String, Object> map);
+
+	List<PostVo> contPagingList(Map<String, Object> map);
+
+	int titlePostCnt(Map<String, Object> map);
+
+	int idPostCnt(Map<String, Object> map);
+
+	int contPostCnt(Map<String, Object> map);
+
 }

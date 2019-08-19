@@ -373,6 +373,48 @@ public class PostController {
 
 	}
 	
+	@RequestMapping(path = "/searchPagingList", method = RequestMethod.POST)
+	public String titlePagingList(Model model, int cate_id,String search, HttpSession session, PageVo pageVo, String searchType) {
+
+		logger.debug("searchType:{}", searchType);
+		logger.debug("cate_id:{}", cate_id);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
+		if (cate_id != 0)
+			map.put("cate_id", cate_id);
+
+		if(searchType.equals("title")) {
+			String post_nm = search;
+			map.put("post_nm", post_nm);
+			resultMap = postService.titlePagingList(map);
+		}
+		if(searchType.equals("cont")) {
+			String post_cont = search;
+			map.put("post_cont", post_cont);
+			resultMap = postService.contPagingList(map);
+		}
+		if(searchType.equals("id")) {
+			String mem_id = search;
+			map.put("mem_id", mem_id);
+			resultMap = postService.idPagingList(map);
+		}
+		
+		pageVo.setPage((int) map.get("page"));
+		pageVo.setPageSize((int) map.get("pageSize"));
+
+		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
+		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("pageVo", pageVo);
+		logger.debug("paginationSize:{}",  (Integer) resultMap.get("paginationSize"));
+		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
+		
+		return "/post/postPagingList.tiles";
+	}
 
 	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 	public String ImageBoard1() {
