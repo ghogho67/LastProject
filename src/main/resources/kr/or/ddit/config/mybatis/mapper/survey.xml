@@ -99,15 +99,22 @@ insert into surveyresult
 
 
 <!-- 사용자의 테스트 결과를 불러온다 -->
-<select id="getTestResult" parameterType="String">
-select  a.surresult_id, a.sur_part_id, a.sur_result, a.sur_time
-from surveyresult a ,( select * from  surveypart where mem_id= #{mem_id}) b
-where b.sur_part_id(+) =a.sur_part_id
+<select id="getTestResult" parameterType="String"  resultType="SurveyResultVo">
+select  a.surresult_id, a.sur_part_id, a.sur_result, to_char(a.sur_time,'yyyy-MM-dd') sur_time
+from surveyresult a ,surveypart b
+where a.sur_part_id =b.sur_part_id(+)
+and b.mem_id= #{mem_id}
+order by sur_time
 </select>
 
 <!-- //특정사용자의 특정테스트 결과를 불러온다 -->
 
-
+<select id="getCertainTestResult" parameterType="SurveyPartVo" resultType="SurveyResultVo">
+select  a.surresult_id, a.sur_part_id, a.sur_result, a.sur_time
+from surveyresult a ,surveypart b
+where a.sur_part_id =b.sur_part_id(+)
+and b.mem_id= #{mem_id} and b.sur_id=#{sur_id}
+</select>
 
 
 

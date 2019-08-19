@@ -69,5 +69,17 @@ public class MatchingService implements IMatchingService {
 	public List<MatchingVo> getMatchingList(String cw_mem_id) {
 		return matchingDao.getMatchingList(cw_mem_id);
 	}
+	
+	@Override
+	public List<MatchingVo> getCWMatchingList(String cw_mem_id) {
+		// TODO Auto-generated method stub
+		return matchingDao.getCWMatchingList(cw_mem_id);
+	}
+
+	@Override
+	public List<MatchingVo> getMemMatchingList(String mem_id) {
+		// TODO Auto-generated method stub
+		return matchingDao.getMemMatchingList(mem_id);
+	}
 
 }

@@ -51,6 +51,9 @@ public class ApprovalController {
 
 		return "jsonView";
 	}
+
+	
+	
 	
 	@RequestMapping(path = "/approvalCheck")
 	public String approvalCheck(HttpSession session, Model model, int page, int pageSize) {
@@ -98,8 +101,6 @@ public class ApprovalController {
 
 		return"/mypage/approval/appovalCheckP.mytiles";
 	}
-	
-	
 	
 	@RequestMapping(path = "/saerch", method = RequestMethod.POST)
 	public String saerchList(Model model, String searchType, String saerchVal,HttpSession session,int page, int pageSize) {
@@ -193,7 +194,6 @@ public class ApprovalController {
 			
 		}
 	}
-	
 	
 }
 

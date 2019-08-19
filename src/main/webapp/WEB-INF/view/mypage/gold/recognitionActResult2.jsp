@@ -44,13 +44,52 @@ td {
 </style>
 <script>
 window.onload = function () {
-	jQuery.ajaxSettings.traditional = true; 
+	var ex =[];
+	ex.push({ x: new Date(2019, 0, 3), y: 40 ,indexLabel: "간이인지",markerColor: "red", markerType: "triangle"})
+	ex.push({ x: new Date(2019, 0, 3), y: 40 })
+	ex.push({ x: new Date(2019, 0, 4), y: 40 })
+	ex.push({ x: new Date(2019, 0, 5), y: 44 })
+	ex.push({ x: new Date(2019, 0, 6), y: 45 });
 	
+	
+	var data = [];
+
+	
+	var resurtStr = "${sur_resultList}";
+	resurtStr = resurtStr.replace("[", ""); 
+	resurtStr = resurtStr.replace("]", ""); 
+
+	var resultList = resurtStr.split(",");
+
+	console.log("${sur_timeList}");
+	
+	var timetStr = "${sur_timeList}";
+	timetStr = timetStr.replace("[", ""); 
+	timetStr = timetStr.replace("]", ""); 
+
+	var timeList = timetStr.split(",");
+	
+	for (var i = 0; i<timeList.length ; i++) {
+		console.log(timeList[i])
+		data.push({
+			x: new Date(timeList[i]),
+			y: parseInt(resultList[i].trim())
+		});
+	}
+	console.log(ex);
+	console.log(data);
+	
+	
+	
+
+	
+
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
-	contentType : "application/json; charset=UTF-8",
 	theme: "light2",
-
+// 	title:{
+// 		text: "Site Traffic"
+// 	},
 	axisX:{
 		valueFormatString: "M월  D일",
 		crosshair: {
@@ -58,7 +97,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 			snapToDataPoint: true
 		}
 	},
-	axisY: {s
+	axisY: {
+		title: "인지 지수",
 		crosshair: {
 			enabled: true
 		}
@@ -80,12 +120,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		markerType: "square",
 		xValueFormatString: "YYYY MM DD",
 		color: "#F08080",
-		dataPoints: [
-			for (var i = 0; i <'${getTestResultVos}'.length; i++) {
-				{ x: new Date('${getTestResultVos.sur_time}'.text(data)), y:'${getTestResultVos.sur_result}' },
-			}
-			
-		]
+		dataPoints: data
 	},
 	{
 		type: "line",
@@ -93,12 +128,23 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		name: "회원 평균 인지점수",
 		lineDashType: "dash",
 		dataPoints: [
-			
-			for (var i = 0; i <'${getTestResultVos}'.length; i++) {
-				{ x: new Date('${getTestResultVos.sur_time}'.text(data)), y:'${getTestResultVos.sur_result}' },
-			}
+			{ x: new Date(2019, 0, 3), y: 50 },
+			{ x: new Date(2019, 0, 4), y: 51 },
+			{ x: new Date(2019, 0, 5), y: 54 },
+			{ x: new Date(2019, 0, 6), y: 55 },
+			{ x: new Date(2019, 0, 7), y: 54 },
+			{ x: new Date(2019, 0, 8), y: 60 },
+			{ x: new Date(2019, 0, 9), y: 57 },
+			{ x: new Date(2019, 0, 10), y: 56 },
+			{ x: new Date(2019, 0, 11), y: 55 },
+			{ x: new Date(2019, 0, 12), y: 59 },
+			{ x: new Date(2019, 0, 13), y: 64},
+			{ x: new Date(2019, 0, 14), y: 67 },
+			{ x: new Date(2019, 0, 15), y: 65 },
+			{ x: new Date(2019, 0, 16), y: 67 }
 		]
 	}]
+
 });
 chart.render();
 

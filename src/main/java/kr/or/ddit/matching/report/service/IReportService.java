@@ -5,6 +5,7 @@ import java.util.List;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
+import kr.or.ddit.matching.report.model.ReportWriteVo;
 
 public interface IReportService {
 
@@ -23,5 +24,5 @@ List<ReportVo> getReportList(String mat_id);
 
 	List<MatchingReportVo> getWorkerReportList (String cw_mem_id);
 	MatchingReportAttachmentVo getWorkerCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
-
+	int reportInsert(ReportWriteVo rwv);
 }

@@ -23,9 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
+import kr.or.ddit.matching.report.model.ReportWriteVo;
 import kr.or.ddit.matching.report.service.IReportService;
 import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
 import kr.or.ddit.matching.reportAttach.service.IReportAttachService;
+import kr.or.ddit.member.member.model.MemberVo;
 
 @RequestMapping("/report")
 @Controller
@@ -182,4 +184,22 @@ public class ReportController {
 		fis.close();
 	}
 
+	@RequestMapping(path = "/writeView")
+	public String writeView(Model model,  ReportWriteVo rwv) throws IOException {
+		return "matching/report";
+	}
+	@RequestMapping(path = "/write", method  = RequestMethod.POST)
+	public String write(Model model,  ReportWriteVo rwv, HttpSession session) throws IOException {
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memberVo.getMem_id();
+		
+		rwv.setMem_id(mem_id);
+		
+		logger.debug("insertCntrwv:{}", rwv);
+		int insertCnt = reportService.reportInsert(rwv);
+		logger.debug("insertCnt:{}", insertCnt);
+		
+		return "matching/report";
+	}
+	
 }

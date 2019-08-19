@@ -472,7 +472,6 @@ public class PostController {
 	
 	
 	@RequestMapping(path = "festvalPost") 
-
 	public String festvalPost(Model model, HttpServletRequest request, HttpServletResponse response, int contenid, String startDate, String endDate) throws Exception {
 		request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
@@ -482,8 +481,6 @@ public class PostController {
         String parameter = "";
  
         PrintWriter out = response.getWriter();
-        
-
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=aa";
         parameter = parameter + "&" + "contentId="+contenid;
@@ -492,7 +489,6 @@ public class PostController {
         parameter = parameter + "&" + "addrinfoYN=Y";
         parameter = parameter + "&" + "mapinfoYN=Y";
         parameter = parameter + "&" + "overviewYN=Y";
-
         parameter = parameter + "&" + "_type=json";
  
         addr = addr + serviceKey + parameter;

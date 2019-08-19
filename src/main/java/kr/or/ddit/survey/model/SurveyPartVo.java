@@ -8,6 +8,14 @@ public class SurveyPartVo {
 		this.mem_id = mem_id;
 	}
 
+	
+	public SurveyPartVo(int sur_id, String mem_id) {
+		super();
+		this.sur_id = sur_id;
+		this.mem_id = mem_id;
+	}
+
+	
 	private int sur_part_id;
 	private int sur_id;
 	private String mem_id;

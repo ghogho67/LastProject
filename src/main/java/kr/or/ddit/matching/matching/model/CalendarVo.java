@@ -26,8 +26,9 @@ public class CalendarVo {
 	private String c_mem_id;
 	private String c_backgroundColor;
 	private String c_textColor;
-	private boolean c_allDay;
+	private String c_allDay;
 	private String c_worker;
+	///
 
 	public int getC_id() {
 		return c_id;
@@ -93,11 +94,11 @@ public class CalendarVo {
 		this.c_textColor = c_textColor;
 	}
 
-	public boolean isC_allDay() {
+	public String getC_allDay() {
 		return c_allDay;
 	}
 
-	public void setC_allDay(boolean c_allDay) {
+	public void setC_allDay(String c_allDay) {
 		this.c_allDay = c_allDay;
 	}
 
