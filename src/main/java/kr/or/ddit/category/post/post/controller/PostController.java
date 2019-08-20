@@ -156,10 +156,10 @@ public class PostController {
 	public String postModify(Model model, int post_id, @RequestParam("file") MultipartFile[] files, PostVo postVo,
 			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
 			HttpSession session) {
-		// multipartRequest 사용할 준비
-		// reply 답글 등록 파라미터 설정==============================================
-		// ================================================
-
+		logger.debug("☞post_id:{}",post_id);
+		logger.debug("☞cate_id:{}",cate_id);
+		logger.debug("☞postVo:{}",postVo);
+		
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
@@ -174,6 +174,8 @@ public class PostController {
 		String savePath = PartUtil.getUploadPath();
 
 		for (MultipartFile file : files) {
+			logger.debug("☞file:{}",file);
+			
 			if (!file.getOriginalFilename().isEmpty()) {
 				String a = file.getOriginalFilename();
 				String ext = PartUtil.getExt(file.getOriginalFilename());
@@ -189,27 +191,19 @@ public class PostController {
 				attachmentVo.setAtt_nm(file.getOriginalFilename());
 				attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
 				attachmentVo.setPost_id(post_id);
+				
 				attachmentService.attachmentInsert(attachmentVo);
 			}
 		}
 
-		// 객체 넘기기=============================================================
-		// cate_id,post_id,replyList,attachmentList,postVo
-		// cate_id
 		model.addAttribute("cate_id", cate_id);
-		// post_id
 		model.addAttribute("post_id", post_id);
-		// replyList
 		model.addAttribute("replyList", replyService.replyList(post_id));
-		// attachmentList
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-		// postVo
 		model.addAttribute("postVo", postVo);
-		// mem_id
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
-		// 페이지
-		// 이동====================================================================
+
 		return "/post/postDetail.tiles";
 
 	}
@@ -218,7 +212,6 @@ public class PostController {
 	public String showPostRegister(int cate_id, Model model) {
 		model.addAttribute("cate_id", cate_id);
 		return "/SE2/SE2postRegister.tiles";
-//		return "board/basicWriting수정";
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
@@ -235,8 +228,6 @@ public class PostController {
 		postService.postInsert(postVo);
 		postVo = postService.getLatestPost();
 		int post_id = postVo.getPost_id();
-		String fieldName = "";
-		MultipartFile mfile = null;
 
 		String savePath = PartUtil.getUploadPath();
 		for (MultipartFile file : files) {
