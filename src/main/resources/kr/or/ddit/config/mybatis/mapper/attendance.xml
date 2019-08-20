@@ -44,11 +44,21 @@
 		where mat_id = #{mat_id}
 	</select>
 	
-	<select id="checkLogin" parameterType="map" resultType="String">
-	select MAT_ID
+	
+	
+<!-- 	<select id="checkLogin" parameterType="map" resultType="String"> -->
+<!-- 	select MAT_ID -->
+<!-- 		from matching -->
+<!-- 		where mem_id = #{mem_id} -->
+<!-- 		and cw_mem_id =#{cw_mem_id} -->
+<!-- 	</select> -->
+
+	<select id="checkLogin" parameterType="map" resultType="MatchingVo">
+	 select * from  
+        (select mat_id, substr (replace(mat_st,'T',' '),1, instr(replace(mat_st,'T',' '),':',-1)-1) mat_st
 		from matching
 		where mem_id = #{mem_id}
-		and cw_mem_id =#{cw_mem_id}
+		and cw_mem_id = #{cw_mem_id}) where (select to_char(sysdate,'YYYY-MM-dd HH24') mat_st from dual) in mat_st
 	</select>
 	
 	<insert id="checkIn" parameterType="int">
@@ -62,6 +72,8 @@
 		where mat_id = #{mat_id}
   		and ad_id = #{ad_id}
 	</update>
+	
+	
 	
 	<delete id="attendanceDelete" parameterType="int">
 	delete from attendance

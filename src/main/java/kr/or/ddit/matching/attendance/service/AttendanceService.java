@@ -44,7 +44,7 @@ public class AttendanceService implements IAttendanceService {
 	* Method 설명 : 회원 아이디와 , 요양보호사 아이디로 매칭 번호를 알아낸다.
 	*/
 	@Override
-	public String checkLogin(Map<String, String> check) {
+	public MatchingVo checkLogin(Map<String, String> check) {
 		return attendanceDao.checkLogin(check);
 	}
 	/**
