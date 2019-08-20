@@ -110,10 +110,7 @@ public class PostController {
 
 	}
 
-	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-	public String ImageBoard2() {
-		return "festival2";
-	}
+
 
 	@RequestMapping("delete")
 	public String postDelete(Model model, int cate_id, int post_id, PageVo pageVo) {
@@ -378,7 +375,11 @@ public class PostController {
 	public String ImageBoard1() {
 		return "festival.tiles";
 	}
-
+	
+	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
+	public String ImageBoard2() {
+		return "festival2";
+	}
 	
 
 	@RequestMapping(path = "ImageBoard")

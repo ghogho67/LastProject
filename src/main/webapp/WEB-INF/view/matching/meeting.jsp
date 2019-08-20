@@ -96,6 +96,14 @@ table.cw td {
 </script>
 
 <script>
+$(document).ready(function() {
+
+	$("#videochat").on("click", function() {
+	
+		window.open("${cp}/matching/webRtc")
+	});
+
+});
 	// import결제 함수
 	function requestPay() {
 		var app_pay;
@@ -180,7 +188,7 @@ table.cw td {
 		<div id="button" style="width: 40%; float: right; height: 400px;">
 			<input type="hidden" class="btn"><br> <br> <input
 				type="button" id="app" class="M_btn" value="매칭신청"><br>
-			<br> <input type="button" class="M_btn" value="화상채팅"><br>
+			<br> <input type="button" class="M_btn" value="화상채팅" id="videochat"><br>
 			<br> <input type="button" class="M_btn" value="채팅"> <input
 				type="hidden" name="mem_id" value="${mem_id}">
 		</div>

@@ -430,7 +430,7 @@
    <%@include file="/WEB-INF/view/common/footer.jsp"%>
 
 
-<!-- <script language="JavaScript"> -->
+ <script language="JavaScript"> 
 // timer();
 // var current=0;
 // var $interval;
@@ -447,7 +447,7 @@
 //   current++;
 //   if(current==5)current=0;
 // }    
-<!-- </script> -->
+ </script> 
 
 
 

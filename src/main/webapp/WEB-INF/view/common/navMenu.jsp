@@ -44,6 +44,7 @@
 			<ul>
 				<li><a href="${cp }/shelter/pagingList?page=1&pageSize=10">무더위 쉼터</a></li>
 			<li><a href="${cp}/lecture/lectureMain">문화.강좌 정보</a></li>
+			<li><a href="${cp}/post/ImageBoard2">2019행사 정보</a></li>
 
 			</ul>
 			
