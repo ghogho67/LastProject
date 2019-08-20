@@ -296,8 +296,8 @@ td {
 <%-- 									<td class="sh_id">${vo.sh_id }</td> --%>
 									<td>${vo.sh_nm }</td>
 									<td>${vo.sh_add }</td>
-									<td>${vo.sh_st_dt }</td>
-									<td>${vo.sh_end_dt }</td>
+									<td><fmt:formatDate value="${vo.sh_st_dt }" pattern="yyyy-MM-dd"/></td>
+									<td><fmt:formatDate value="${vo.sh_end_dt }" pattern="yyyy-MM-dd"/></td>
 								</tr>
 							</c:forEach>
 							</tbody>

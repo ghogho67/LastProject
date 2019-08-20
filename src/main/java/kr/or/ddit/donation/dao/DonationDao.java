@@ -56,15 +56,15 @@ public class DonationDao implements IDonationDao {
 	}
 
 	/**
-	* Method : getAllDoner
+	* Method : getAllDonerList
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @return
 	* Method 설명 : 전체 기부자 목록 가져오기
 	*/
 	@Override
-	public List<DonationApprovalVo> getAllDoner() {
-		return sqlSession.selectList("donationApproval.getAllDoner");
+	public List<DonationApprovalVo> getAllDonerList() {
+		return sqlSession.selectList("donationApproval.getAllDonerList");
 	}
 
 	/**

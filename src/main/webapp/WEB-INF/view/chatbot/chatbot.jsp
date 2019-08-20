@@ -85,7 +85,7 @@ $(document).ready(function(){
 			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>");
 			
 			$("#result").append("<div id='chatBotSay'> 매칭 : chatbot "+"</div><br>"); 
-// 			$("#frm").attr("action", "${cp}");
+			$("#frm").attr("action", "${cp}/matching/map");
 			$("#result").scrollTop($("#result")[0].scrollHeight);
 			$("#user").val("");
 			$("#user").focus();
@@ -127,7 +127,7 @@ $(document).ready(function(){
 		}else if(userquestion == '메신저' || userquestion == '메세지' || userquestion == '쪽지'){
 			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
 			$("#result").append("<div id='chatBotSay'> 메신저 : chatbot"+"</div><br>");
-// 			$("#frm").attr("action", "${cp}/");
+// 			$("#frm").attr("action", "http://192.168.0.32/chat/thistok?mem_id=${mem_id}");
 			$("#result").scrollTop($("#result")[0].scrollHeight);
 			$("#user").val("");
 			$("#user").focus();
