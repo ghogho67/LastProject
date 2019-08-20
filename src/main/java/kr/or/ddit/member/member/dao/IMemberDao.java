@@ -42,6 +42,15 @@ public interface IMemberDao {
 	int memberCnt();
 	
 	/**
+	* Method : memberGradeCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원등급간 수 
+	*/
+	int memberGradeCnt(String mem_grade);
+	
+	/**
 	 * Method : updateMem
 	 * 작성자 : PC21
 	 * 변경이력 :

@@ -12,6 +12,13 @@
       FROM   MEMBER
    </select>
    
+   <!-- 회원 등급 간의 수 조회 -->
+   <select id="memberGradeCnt" resultType="int" parameterType="string">
+   		select count(*)
+		from member
+		where mem_grade = #{mem_grade}
+   </select>
+   
    <!-- 일반회원 등록 -->
    <insert id="insertMember" parameterType="memberVo">
       INSERT INTO MEMBER(mem_id

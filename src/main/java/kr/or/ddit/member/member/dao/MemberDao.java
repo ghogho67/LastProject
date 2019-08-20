@@ -131,4 +131,16 @@ public class MemberDao implements IMemberDao {
 		return sqlSession.selectList("member.getAllMemberList",pageVo);
 	}
 
+	/**
+	* Method : memberGradeCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :회원등급간 수 조회
+	*/
+	@Override
+	public int memberGradeCnt(String mem_grade) {
+		return sqlSession.selectOne("member.memberGradeCnt",mem_grade);
+	}
+
 }

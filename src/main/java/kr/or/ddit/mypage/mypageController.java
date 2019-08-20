@@ -641,7 +641,7 @@ public class mypageController {
 	* Method 설명 :회원관리 - 회원목록
 	*/
 	@RequestMapping("/pagingList")
-	public String memberPagingList(Model model, PageVo pageVo, int page, int pageSize) {
+	public String memberPagingList(Model model, PageVo pageVo, int page, int pageSize ) {
 		   
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -680,10 +680,37 @@ public class mypageController {
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
 		
+		
+		//구글 pie chart API
+		
+		
+//		manager = memberService.memberGradeCnt("0");
+//		nomalMember = memberService.memberGradeCnt("1");
+//		goldMember = memberService.memberGradeCnt("2");
+//		careWorker = memberService.memberGradeCnt("3");
+//		logger.debug("☞manager:{}",manager);
+//		logger.debug("☞nomalMember:{}",nomalMember);
+//		logger.debug("☞careWorker:{}",careWorker);
+//		logger.debug("☞careWorker:{}",careWorker);
+//		
+//		model.addAttribute("manager",manager);
+//		model.addAttribute("nomalMember",nomalMember);
+//		model.addAttribute("goldMember",goldMember);
+//		model.addAttribute("careWorker",careWorker);
+		
+		model.addAttribute("manager",memberService.memberGradeCnt("0"));
+		model.addAttribute("nomalMember",memberService.memberGradeCnt("1"));
+		model.addAttribute("goldMember",memberService.memberGradeCnt("2"));
+		model.addAttribute("careWorker",memberService.memberGradeCnt("3"));
+		
+		
+		
 		   return "/mypage/memberManage/memberPagingList.mytiles";
 	   }
 	
 	   
+	
+	
 	   
 	   
 		
