@@ -80,22 +80,16 @@ span.admin {
 
 			<c:choose>
 				<c:when test="${goldvo.gold_del eq 'Y'}">
-
-
 					<div class="modal-dialog" role="document" id="modalpp">
 						<div class="modal-content2"
 							style="background-image: url('/image/Serviceextend.png'); background-size: 700px; background-repeat: no-repeat;">
-							<a href="${cp}/gradeChangeToGold"
-								style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 56%;"></a>
-
+			
+<button class="btn" id="trans" type="button" onclick="requestPay()" style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 78%; background-color: transparent;" ></button>
 							<button style="width: 10px; position: absolute; left: 95%;"
 								type="button" class="close" data-dismiss="modal"
 								aria-label="Close" id="btnClose">
 								<span aria-hidden="true">&times;</span>
 							</button>
-
-
-
 						</div>
 					</div>
 
@@ -120,4 +114,64 @@ span.admin {
 		$('#modalpp').hide();
 
 	})
+</script>
+
+
+
+
+<script>
+$(document).ready(function(){
+	$(document).ready(function() {
+		IMP.init("imp21318637");
+	})
+	
+});
+
+</script>
+
+<script>
+
+	// import결제 함수
+	function requestPay() {
+		var app_pay;
+		var app_type;
+		var mem_id;
+		IMP.request_pay({
+			// 결제회사
+			pg : 'kakaopay', // version 1.1.0부터 지원.
+			pay_method : 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '주문명:결제테스트',
+			amount : 1,
+			buyer_email : 'alsckd123@naver.com',
+			buyer_name : '구매자이름',
+			buyer_tel : '010-1234-5678',
+			buyer_addr : '서울특별시 강남구 삼성동',
+			buyer_postcode : '123-456',
+		}, function(rsp) {
+			if (rsp.success) {
+				jQuery.ajax({
+					url : "/gradeChangeToGold", 
+					type : 'GET',
+					data : {
+
+					}
+				}).done(function(data) {
+					var msg = '결제가 완료되었습니다.';
+					location.href = "/main";
+					alert(msg);
+					$('#modalpp').hide();
+
+	
+				});
+			} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+
+				alert(msg);
+				$('#modalpp').hide();
+
+			}
+		});
+	}
 </script>
