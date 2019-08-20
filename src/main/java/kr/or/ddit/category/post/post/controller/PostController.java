@@ -47,7 +47,7 @@ import kr.or.ddit.util.PartUtil;
 @RequestMapping("/post")
 @Controller
 public class PostController {
-
+//
 	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
 	@Resource(name = "postService")
