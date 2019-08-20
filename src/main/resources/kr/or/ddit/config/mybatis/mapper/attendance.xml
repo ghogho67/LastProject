@@ -203,6 +203,12 @@
                 where m.MAT_ID = a.MAT_ID 
                 and m.mem_id like '%'||#{day}||'%'
     </select>
+    
+    
+    <select id="getNames" parameterType="int" resultType="memberVo">
+    
+    select mem_id, mem_nm from member where mem_id =(select cw_mem_id from matching where mat_id = #{mat_id})
+    </select>
 	
 
 </mapper>

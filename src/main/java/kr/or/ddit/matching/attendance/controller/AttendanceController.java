@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.or.ddit.SMS.SMS;
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.service.IAttendanceService;
 import kr.or.ddit.matching.matching.model.MatchingVo;
@@ -130,14 +131,19 @@ public class AttendanceController {
 	 * @return 
 	* @return
 	* Method 설명 : 요양보호사가 방문요양 할시 출석체크 할수있는 메서드(담당회원정보에 QR코드로)
+	 * @throws Exception 
 	*/
 	@RequestMapping(path = "/checkIn", method = RequestMethod.GET)
-	public String worker_OnWork(Model model, String matid) {
-		
+	public String worker_OnWork(Model model, String matid,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		SMS sms = new SMS();
 		int mat_id = Integer.parseInt(matid);
 		int bool = attendanceService.checkInCheck(mat_id);
 		if(bool != 1) {
 			int insert = attendanceService.checkIn(mat_id);
+			MemberVo memberVo = attendanceService.getNames(mat_id);
+			String msg = memberVo.getMem_nm()+"님이 출근하셨습니다";
+			sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"출근완료", null, null, null, null, null, null, null, "S");
+			
 			return "check/checkIn";
 		}else {
 			return "check/checkInDouble";
@@ -155,9 +161,11 @@ public class AttendanceController {
 	* @param check
 	* @return
 	* Method 설명 : 요양보호사가 방문요양을 할시 퇴근체크 할수있는 메서드(담당회원정보에 QR코드로)
+	 * @throws Exception 
 	*/
 	@RequestMapping(path = "/checkOut", method = RequestMethod.GET)
-	public String worker_OffWork(Model model, String matid) {
+	public String worker_OffWork(Model model, String matid,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		SMS sms = new SMS();
 		logger.debug("☞퇴근 완료");
 		logger.debug("☞matid:{}",matid);
 		
@@ -169,6 +177,12 @@ public class AttendanceController {
 		checkOut.put("mat_id", mat_id);
 		checkOut.put("ad_id", ad_id);
 		int insert = attendanceService.checkOut(checkOut);
+		
+		
+		MemberVo memberVo = attendanceService.getNames(mat_id);
+		String msg = memberVo.getMem_nm()+"님이 퇴근하셨습니다";
+		sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"퇴근완료", null, null, null, null, null, null, null, "S");
+		
 		
 		
 		return "check/checkOut";
