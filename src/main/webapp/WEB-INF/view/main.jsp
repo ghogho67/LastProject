@@ -361,73 +361,74 @@
 
 
 
-   <section
-      style="position: absolute; bottom: 50%; margin: 0 auto; right: 90%;">
+<!--    <section -->
+<!--       style="position: absolute; bottom: 50%; margin: 0 auto; right: 90%;"> -->
       
-      <div id="banner_zone" class="banner_zone">
+<!--       <div id="banner_zone" class="banner_zone"> -->
       
-         <div class="inner">
+<!--          <div class="inner"> -->
          
-            <ul style="left: 0px; width: 2119px; position: relative;">
+<!--             <ul style="left: 0px; width: 2119px; position: relative;"> -->
 
-               <li style="opacity: 1;">
-               <a href="http://edu.edurang.net/ebs/index.html" target="_blank" title="[EBS 논술톡] ICT 자료 연결하기(새창으로)">
-               <img src="/image/banner/Banner_201702071159070710.png"></a></li>
+<!--                <li style="opacity: 1;"> -->
+<!--                <a href="http://edu.edurang.net/ebs/index.html" target="_blank" title="[EBS 논술톡] ICT 자료 연결하기(새창으로)"> -->
+<!--                <img src="/image/banner/Banner_201702071159070710.png"></a></li> -->
 
-               <li style="opacity: 1;"><a
-                  href="http://www.teachforkorea.go.kr" target="_blank"
-                  title="교육기부 연결하기(새창으로)"><img
-                     src="/image/banner/Banner_201612280116006010.gif"></a></li>
-               <li style="opacity: 1;"><a
-                  href="http://www.dje.go.kr/fac/main.do" title="학교시설사용예약시스템 연결하기"><img
-                     src="/image/banner/BannerImg_201703300814427710.gif"></a></li>
-               <li style="opacity: 1;"><a href="http://www.ebs.co.kr/main"
-                  target="_blank" title="ebs 연결하기(새창으로)"><img
-                     src="/image/banner/Banner_201612280117151560.gif"></a></li>
-               <li style="opacity: 1;"><a
-                  href="http://www.uschoolnet.co.kr/v3/?sc_id=sanseong"
-                  title="원어민초스피드자동암기 연결하기"><img
-                     src="/image/banner/Banner_201703030320183440.jpg"></a></li>
-               <li style="opacity: 1;"><a
-                  href="https://1398.acrc.go.kr/hpg/cts/selectHpgContentView.do?contentTyCode=CMS011"
-                  title="공익신고 연결하기"><img
-                     src="/image/banner/BannerImg_201707190411398180.jpg"></a></li>
-               <li style="opacity: 1;"><a
-                  href="http://www.airkorea.or.kr/realschoolSearch"
-                  title="학교 인근 대기질 정보 제공 연결하기"><img
-                     src="/image/banner/BannerImg_201712121047180930.jpg"></a></li>
-               <li style="opacity: 1;"><a
-                  href="http://1398.acrc.go.kr/case/ISGAcase" target="_blank"
-                  title="청탁금지법 통합검색 서비스 연결하기(새창으로)"><img
-                     src="/image/banner/BannerImg_201709111200074660.gif"></a></li>
-               <li style="opacity: 1;"><a
-                  href="https://together.kakao.com/promotions/68" target="_blank"
-                  title="[통합배너] 온라인 학교폭력 피해상담 상다미쌤 연결하기(새창으로)"><img
-                     src="/image/banner/BannerImg_201803140938370700.jpg"></a></li>
-               <li style="opacity: 1;"><a
-                  href="https://www.moe.go.kr/sub/info.do?m=011508&amp;page=011508&amp;s=moe"
-                  target="_blank" title="[통합배너] 교육분야 성희롱 성폭력 온라인 신고센터 연결하기(새창으로)"><img
-                     src="/image/banner/Banner_201803270948084380.jpg"></a></li>
-               <li style="opacity: 1;"><a
-                  href="http://asp.djsch.kr/boardCnts/view.do?boardID=81226&amp;boardSeq=7213828&amp;lev=0&amp;searchType=null&amp;statusYN=W&amp;page=1&amp;pSize=12&amp;s=call&amp;m=0604&amp;opType=N"
-                  target="_blank" title="[통합]신학년 신학기 개인정보 처리 유의사항 안내 연결하기(새창으로)"><img
-                     src="/image/banner/BannerImg_201902250554538880.jpg"></a></li>
-               <li style="opacity: 1;"><a
-                  href="http://www.parents.go.kr/index.do" title="학부모On누리 연결하기"><img
-                     src="/image/banner/Banner_201612280116596210.gif" alt="학부모On누리"></a></li>
-               <li style="opacity: 1;"><a href="http://www.edunet.net"
-                  target="_blank" title="에듀넷 T-CLEAR 연결하기(새창으로)"><img
-                     src="/image/banner/BannerImg_201810220113360510.jpg"></a></li>
-            </ul>
-         </div>
-      </div>
-
-
-   </section>
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://www.teachforkorea.go.kr" target="_blank" -->
+<!--                   title="교육기부 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/Banner_201612280116006010.gif"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://www.dje.go.kr/fac/main.do" title="학교시설사용예약시스템 연결하기"><img -->
+<!--                      src="/image/banner/BannerImg_201703300814427710.gif"></a></li> -->
+<!--                <li style="opacity: 1;"><a href="http://www.ebs.co.kr/main" -->
+<!--                   target="_blank" title="ebs 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/Banner_201612280117151560.gif"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://www.uschoolnet.co.kr/v3/?sc_id=sanseong" -->
+<!--                   title="원어민초스피드자동암기 연결하기"><img -->
+<!--                      src="/image/banner/Banner_201703030320183440.jpg"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="https://1398.acrc.go.kr/hpg/cts/selectHpgContentView.do?contentTyCode=CMS011" -->
+<!--                   title="공익신고 연결하기"><img -->
+<!--                      src="/image/banner/BannerImg_201707190411398180.jpg"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://www.airkorea.or.kr/realschoolSearch" -->
+<!--                   title="학교 인근 대기질 정보 제공 연결하기"><img -->
+<!--                      src="/image/banner/BannerImg_201712121047180930.jpg"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://1398.acrc.go.kr/case/ISGAcase" target="_blank" -->
+<!--                   title="청탁금지법 통합검색 서비스 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/BannerImg_201709111200074660.gif"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="https://together.kakao.com/promotions/68" target="_blank" -->
+<!--                   title="[통합배너] 온라인 학교폭력 피해상담 상다미쌤 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/BannerImg_201803140938370700.jpg"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="https://www.moe.go.kr/sub/info.do?m=011508&amp;page=011508&amp;s=moe" -->
+<!--                   target="_blank" title="[통합배너] 교육분야 성희롱 성폭력 온라인 신고센터 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/Banner_201803270948084380.jpg"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://asp.djsch.kr/boardCnts/view.do?boardID=81226&amp;boardSeq=7213828&amp;lev=0&amp;searchType=null&amp;statusYN=W&amp;page=1&amp;pSize=12&amp;s=call&amp;m=0604&amp;opType=N" -->
+<!--                   target="_blank" title="[통합]신학년 신학기 개인정보 처리 유의사항 안내 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/BannerImg_201902250554538880.jpg"></a></li> -->
+<!--                <li style="opacity: 1;"><a -->
+<!--                   href="http://www.parents.go.kr/index.do" title="학부모On누리 연결하기"><img -->
+<!--                      src="/image/banner/Banner_201612280116596210.gif" alt="학부모On누리"></a></li> -->
+<!--                <li style="opacity: 1;"><a href="http://www.edunet.net" -->
+<!--                   target="_blank" title="에듀넷 T-CLEAR 연결하기(새창으로)"><img -->
+<!--                      src="/image/banner/BannerImg_201810220113360510.jpg"></a></li> -->
+<!--             </ul> -->
+<!--          </div> -->
+<!--       </div> -->
 
 
+<!--    </section> -->
 
-   <%@include file="/WEB-INF/view/common/footer.jsp"%>
+
+
+<%--    <%@include file="/WEB-INF/view/common/footer.jsp"%> --%>
+
 
 
  <script language="JavaScript"> 
@@ -448,6 +449,7 @@
 //   if(current==5)current=0;
 // }    
  </script> 
+
 
 
 

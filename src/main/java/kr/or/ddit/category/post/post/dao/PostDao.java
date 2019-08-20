@@ -64,8 +64,6 @@ public class PostDao implements IPostDao {
 
 	@Override
 	public List<PostVo> postPagingList(Map<String, Object> map) {
-		logger.debug("whawt");
-		logger.debug("map:{}", map);
 		return sqlSession.selectList("post.postPagingList", map);
 	}
 
@@ -73,4 +71,38 @@ public class PostDao implements IPostDao {
 	public int postCnt(int cate_id) {
 		return sqlSession.selectOne("post.postCnt", cate_id);
 	}
+
+	@Override
+	public List<PostVo> titlePagingList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("post.titlePagingList", map);
+	}
+
+	@Override
+	public List<PostVo> idPagingList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("post.idPagingList", map);
+	}
+
+	@Override
+	public List<PostVo> contPagingList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("post.contPagingList", map);
+	}
+
+	@Override
+	public int titlePostCnt(Map<String, Object> map) {
+		return sqlSession.selectOne("post.titlePostCnt", map);
+	}
+
+	@Override
+	public int idPostCnt(Map<String, Object> map) {
+		return sqlSession.selectOne("post.idPostCnt", map);
+	}
+
+	@Override
+	public int contPostCnt(Map<String, Object> map) {
+		return sqlSession.selectOne("post.contPostCnt", map);
+	}
+
 }

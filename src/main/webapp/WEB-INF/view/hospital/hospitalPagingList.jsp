@@ -279,7 +279,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<table class="table center-aligned-table">
 							<thead>
 							<tr>
-								<th>병원아이디</th>
+								<th>NO</th>
+<!-- 								<th>병원아이디</th> -->
 								<th>병원이름</th>
 								<th>병원주소</th>
 								<th>병원 전화번호</th>
@@ -288,7 +289,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<tbody>
 							<c:forEach items="${hosList }" var="vo" varStatus="status">
 								<tr class="hosTr" data-hos_id="${vo.hos_id }">
-									<td class="hos_id">${vo.hos_id }</td>
+									<td>${vo.rn }</td>
+<%-- 									<td class="hos_id">${vo.hos_id }</td> --%>
 									<td>${vo.hos_nm }</td>
 									<td>${vo.hos_add }</td>
 									<td>${vo.hos_phone }</td>

@@ -262,7 +262,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<table class="table center-aligned-table">
 						<thead>
 							<tr class="text-primary">
-								<th>요양시설 아이디</th>
+							<!-- <th>요양시설 아이디</th> -->
+								<th>NO</th>
 								<th>요양시설 명</th>
 								<th>주소</th>
 								<th>전화번호</th>
@@ -272,7 +273,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<tbody>
 							<c:forEach items="${searchNursingHome }" var="vo" varStatus="status">
 								<tr class="nurTr" data-nh_id="${vo.nh_id }">
-									<td>${vo.nh_id }</td>
+<%-- 									<td>${vo.nh_id }</td> --%>
+									<td>${vo.rn }</td>
 									<td>${vo.nh_nm }</td>
 									<td>${vo.nh_add }</td>
 									<td>${vo.nh_phone }</td>
@@ -284,6 +286,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					</div>
 					
 					</form>
+					
+					<!-- 뒤로가기 -->
+					<a href="${cp}/nursingHome/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 					
 					
 				</div>

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
@@ -210,50 +211,139 @@ public class AttendanceController {
 	* @return
 	* Method 설명 : 요양보호사 검색 날짜, 회원별 검색
 	*/
-	@RequestMapping(path = "/saerch", method = RequestMethod.POST)
-	public String saerchList(Model model, String searchType, String saerchVal,HttpSession session) {
-		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
-		String cw_mem_id = memvo.getMem_id();
+	@RequestMapping(path = "/saerch")
+	public String saerchList(HttpSession session, Model model, int page, int pageSize, String searchType, @RequestParam(required = false)String searchVal) {
 		PageVo pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
+		
+		
+		
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memberVo.getMem_id();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("cw_mem_id", cw_mem_id);
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
+		logger.debug("☞ cw_mem_id:{}",cw_mem_id);
+		logger.debug("☞pageVo.getPage() : {}", pageVo.getPage());
+		logger.debug("☞ pageVo.getPageSize():{}",pageVo.getPageSize());
+		logger.debug("☞ searchType:{}",searchType);
+		logger.debug("☞ searchVal:{}",searchVal);
 		
-		if(searchType.equals("memid")&&!saerchVal.equals("")) {
-			String mem_id = saerchVal;
+		
+		if(searchVal.equals("")&&searchType.equals("")) {
+			Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("cwMatchingList");
+			logger.debug("☞searchVal.equals()attendanceList:{}",attendanceList);
+			
+			  int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		        if(pageVo.getPage()==1) {
+		        	startPage = 1;
+		        }
+		        if(startPage>=2) {
+		        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+		        }
+		        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+		        
+		        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+		        
+		        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+		        	paginationSize= lastpaginationSize;
+		        }
+			
+			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("paginationSize", paginationSize);
+			model.addAttribute("lastpaginationSize", lastpaginationSize);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("page",pageVo.getPage());
+			model.addAttribute("pageSize",pageVo.getPageSize());
+			
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchVal",searchVal);
+			
+			return "/mypage/check/cw_check.mytiles";
+		}
+		
+		else if(searchType.equals("memid")&&!searchVal.equals("")) {
+			String mem_id = searchVal;
 			map.put("mem_id", mem_id);
 			Map<String, Object> resultMap = attendanceService.memidSaerchList(map);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("memidSaerchList");
-			logger.debug("☞:saerchVal :{}",saerchVal);
+			logger.debug("☞:saerchVal :{}",searchVal);
 			logger.debug("☞:searchType :{}",searchType);
 			logger.debug("☞:attendanceList:{}",attendanceList);
 			
+			 int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		        if(pageVo.getPage()==1) {
+		        	startPage =1;
+		        }
+		        if(startPage>=2) {
+		        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+		        }
+		        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+		        
+		        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+		        
+		        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+		        	paginationSize= lastpaginationSize;
+		        }
+			
 			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("paginationSize", paginationSize);
+			model.addAttribute("lastpaginationSize", lastpaginationSize);
 			model.addAttribute("pageVo",pageVo);
-			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			model.addAttribute("page",pageVo.getPage());
+			model.addAttribute("pageSize",pageVo.getPageSize());
+			
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchVal",searchVal);
 			return "/mypage/check/cw_check.mytiles";
 		
-		}else if(searchType.equals("day")&&!saerchVal.equals("")) {
-			String day = saerchVal;
+		}else if(searchType.equals("day")&&!searchVal.equals("")) {
+			String day = searchVal;
 			map.put("day", day);
 			Map<String, Object> resultMap = attendanceService.daySaerchList(map);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("daySaerchList");
-			logger.debug("☞:saerchVal :{}",saerchVal);
+			logger.debug("☞:saerchVal :{}",searchVal);
 			logger.debug("☞:day :{}",day);
 			logger.debug("☞:attendanceList :{}",attendanceList);
 			
+			 int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		        if(pageVo.getPage()==1) {
+		        	startPage =1;
+		        }
+		        if(startPage>=2) {
+		        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+		        }
+		        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+		        
+		        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+		        
+		        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+		        	paginationSize= lastpaginationSize;
+		        }
+			
 			model.addAttribute("cwMatList", attendanceList);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("paginationSize", paginationSize);
+			model.addAttribute("lastpaginationSize", lastpaginationSize);
 			model.addAttribute("pageVo",pageVo);
-			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			model.addAttribute("page",pageVo.getPage());
+			model.addAttribute("pageSize",pageVo.getPageSize());
+			
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchVal",searchVal);
 			return "/mypage/check/cw_check.mytiles";
 			
-		}else if(searchType.equals("memid") && saerchVal.equals("")){
-			return "redirect:/attendance/cwMatList";
-		}else if((searchType.equals("day")&&saerchVal.equals(""))){
-			return "redirect:/attendance/cwMatList";
+		}else if(searchType.equals("memid") && searchVal.equals("")){
+			return "redirect:/attendance/saerch";
+		}else if((searchType.equals("day")&&searchVal.equals(""))){
+			return "redirect:/attendance/saerch";
 		}else {
-			return "redirect:/attendance/cwMatList";
+			return "redirect:/attendance/saerch";
 			
 		}
 	}
@@ -267,6 +357,8 @@ public class AttendanceController {
 		
 		Map<String, Object> resultMap = attendanceService.adminCheckList(pageVo);
 		List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminCheckList");
+		
+		
 		model.addAttribute("adminCheckList", attendanceList);
 		model.addAttribute("pageVo",pageVo);
 		model.addAttribute("paginationSize",resultMap.get("paginationSize"));
@@ -285,42 +377,128 @@ public class AttendanceController {
 	* @return
 	* Method 설명 : 요양보호사 검색 날짜, 회원별 검색
 	*/
-	@RequestMapping(path = "/adminSaerch", method = RequestMethod.POST)
-	public String adminSaerch(Model model, String searchType, String saerchVal,HttpSession session) {
+	@RequestMapping(path = "/adminSaerch")
+	public String adminSaerch(HttpSession session, Model model, int page, int pageSize, String searchType, @RequestParam(required = false)String searchVal) {
 		PageVo pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
+		
+		
+		
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String cw_mem_id = memberVo.getMem_id();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
 		
-		if(searchType.equals("memid")&&!saerchVal.equals("")) {
-			String mem_id = saerchVal;
+		
+		if(searchVal.equals("")&&searchType.equals("")) {
+			Map<String, Object> resultMap = attendanceService.adminCheckList(pageVo);
+			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminCheckList");
+			
+			 int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		        if(pageVo.getPage()==1) {
+		        	startPage =1;
+		        }
+		        if(startPage>=2) {
+		        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+		        }
+		        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+		        
+		        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+		        
+		        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+		        	paginationSize= lastpaginationSize;
+		        }
+		        
+			model.addAttribute("adminCheckList", attendanceList);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("paginationSize", paginationSize);
+			model.addAttribute("lastpaginationSize", lastpaginationSize);
+			model.addAttribute("pageVo",pageVo);
+			model.addAttribute("page",pageVo.getPage());
+			model.addAttribute("pageSize",pageVo.getPageSize());
+			
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchVal",searchVal);
+			
+			return "/mypage/check/admin_check.mytiles";
+			
+		}
+		
+		else if(searchType.equals("memid")&&!searchVal.equals("")) {
+			String mem_id = searchVal;
 			map.put("mem_id", mem_id);
 			Map<String, Object> resultMap = attendanceService.adminMemShearch(map);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminMemSaerch");
 			
+			 int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		        if(pageVo.getPage()==1) {
+		        	startPage =1;
+		        }
+		        if(startPage>=2) {
+		        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+		        }
+		        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+		        
+		        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+		        
+		        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+		        	paginationSize= lastpaginationSize;
+		        }
+			
 			model.addAttribute("adminCheckList", attendanceList);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("paginationSize", paginationSize);
+			model.addAttribute("lastpaginationSize", lastpaginationSize);
 			model.addAttribute("pageVo",pageVo);
-			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			model.addAttribute("page",pageVo.getPage());
+			model.addAttribute("pageSize",pageVo.getPageSize());
+			
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchVal",searchVal);
 			return "/mypage/check/admin_check.mytiles";
 		
-		}else if(searchType.equals("day")&&!saerchVal.equals("")) {
-			String day = saerchVal;
+		}else if(searchType.equals("day")&&!searchVal.equals("")) {
+			String day = searchVal;
 			map.put("day", day);
 			Map<String, Object> resultMap = attendanceService.adminDaySearch(map);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminDaySaerch");
 			
+			 int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		        if(pageVo.getPage()==1) {
+		        	startPage =1;
+		        }
+		        if(startPage>=2) {
+		        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+		        }
+		        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+		        
+		        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+		        
+		        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+		        	paginationSize= lastpaginationSize;
+		        }
+			
 			
 			model.addAttribute("adminCheckList", attendanceList);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("paginationSize", paginationSize);
+			model.addAttribute("lastpaginationSize", lastpaginationSize);
 			model.addAttribute("pageVo",pageVo);
-			model.addAttribute("paginationSize",resultMap.get("paginationSize"));
+			model.addAttribute("page",pageVo.getPage());
+			model.addAttribute("pageSize",pageVo.getPageSize());
+			
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchVal",searchVal);
 			return "/mypage/check/admin_check.mytiles";
 			
-		}else if(searchType.equals("memid") && saerchVal.equals("")){
-			return "redirect:/attendance/adminCheckList";
-		}else if((searchType.equals("day")&&saerchVal.equals(""))){
-			return "redirect:/attendance/adminCheckList";
+		}else if(searchType.equals("memid") && searchVal.equals("")){
+			return "redirect:/attendance/adminSaerch";
+		}else if((searchType.equals("day")&&searchVal.equals(""))){
+			return "redirect:/attendance/adminSaerch";
 		}else {
-			return "redirect:/attendance/adminCheckList";
+			return "redirect:/attendance/adminSaerch";
 			
 		}
 	}

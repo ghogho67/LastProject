@@ -11,12 +11,11 @@
 <meta name="author" content="">
 <title>Smart Editor</title>
 <style>
-dif{
-width:500px;
-height: 200px;
+dif {
+	width: 500px;
+	height: 200px;
 }
 </style>
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -60,14 +59,19 @@ height: 200px;
 
 										// 이부분에 에디터 validation 검증
 										if (validation()) {
+											var text = $("#text").val().replace(/</gi,"&lt;");
+											$("#text").val(text);
+											var text = $("#text").val().replace(/>/gi,"&gt;");
+											$("#text").val(text);
 											$("#frm1").submit();
 										}
 									}
 								})
-								
+
 						$("#postCont").click(function() {
-						$("#postContFrm").submit();
+							$("#postContFrm").submit();
 						})
+						
 						var form = document.forms[0];
 						var addFileBtn = document.getElementById("addFileBtn");
 						var delFileBtn = document.getElementById("delFileBtn");
@@ -78,11 +82,11 @@ height: 200px;
 							event.preventDefault();
 						};
 						addFileBtn.onclick = function() {
+							
 							if (cnt <= 5) {
 								var element = document.createElement("input");
 								element.type = "file";
 								element.name = "file";
-								// 			element.name = "upfile" + cnt;
 								cnt++;
 								fileArea.appendChild(element);
 								fileArea.appendChild(document
@@ -117,42 +121,46 @@ height: 200px;
 	}
 </script>
 <div class="container">
-					<h2 class="sub-header">	게시글 신규 등록 postRegister.jsp</h2>
-<pre>
+	<h2 class="sub-header">게시글 신규 등록 SE2postRegister.jsp</h2>
+	<pre>
 cate_id : ${cate_id }
 </pre>
-					<form id="frm1" class="form-horizontal" role="form"
-						action="${cp}/post/register" method="post"
-						enctype="multipart/form-data">
+	<form id="frm1" class="form-horizontal" role="form"
+		action="${cp}/post/register" method="post"
+		enctype="multipart/form-data">
 
-						<input type="hidden" name="cate_id" value="${cate_id }" />
-						<div>
-							<label for="post_nm" class="col-sm-2 control-label">제목</label>
-							<div>
-								<input type="text" class="form-control" name="post_nm">
-							</div>
-						</div>
+		<input type="hidden" name="cate_id" value="${cate_id }" />
+		<div>
+			<label for="post_nm" class="col-sm-2 control-label">제목</label>
+			<div>
+				<input type="text" id = "text" class="form-control" name="post_nm">
+			</div>
+		</div>
 
-						<div>
-							<div >
-							<br>
-								<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
-									style="width: 600px; height: 412px;"></textarea>
-							</div>
-						</div>
-							<div>
-								<input type="button" class="btn btn-outline-danger btn-primary mr-2 pull-right" id="savebutton" value="post/register" />
-							</div>
-							<div>
-								<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
-							</div>
-						<div>
-						<input type="button" class="btn btn-outline-danger btn-primary mr-2" value="파일추가" id="addFileBtn">
-						<input type="file" name="file"><br> <input type="hidden" name="cate_id" value="${cate_id }">
-						</div>
-					</form>
-					<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
-					<input type="hidden" name="cate_id" value="${cate_id }" /> 
-					<input type="hidden" name="post_id" value="${post_id }" />
-				</form>
-				</div>
+		<div>
+			<div>
+				<br>
+				<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
+					style="width: 600px; height: 412px;"></textarea>
+			</div>
+		</div>
+		<div>
+			<input type="button"
+				class="btn btn-outline-danger btn-primary mr-2 pull-right"
+				id="savebutton" value="post/register" />
+		</div>
+		<div>
+			<input id="postCont" type="button"
+				class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+		</div>
+		<div id = "fileArea">
+			<input type="button" class="btn btn-outline-danger btn-primary mr-2" value="파일추가" id="addFileBtn"> 
+			<input type="file" name="file"><br>
+			<input type="hidden" name="cate_id" value="${cate_id }">
+		</div>
+	</form>
+	<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+		<input type="hidden" name="cate_id" value="${cate_id }" /> 
+		<input type="hidden" name="post_id" value="${post_id }" />
+	</form>
+</div>

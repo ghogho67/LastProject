@@ -74,7 +74,6 @@ $(document).ready(function(){
 				<div class="modal-content"  style="background-image: url('/image/gold.png');  
 				background-size: 700px; background-repeat: no-repeat;">
 				<button class="btn" id="trans" type="button" onclick="requestPay()"style="margin-left:151px; height:52px; width:58%; position:absolute;top: 77%; background-color: transparent;"></button>
-				<%-- <a href="${cp}/gradeChangeToGold" style="margin-left:151px; height:52px; width:58%; position:absolute;top: 77%" ></a> --%>
 				</div>
 			</div>
 		</div>

@@ -76,7 +76,6 @@ public class ShelterController {
 		return "/shelter/shelterPagingList.tiles";
 	}
 	
-
 	
 	/**
 	* Method : searchShelter

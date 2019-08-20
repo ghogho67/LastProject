@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -280,7 +281,8 @@ td {
 						<table class="table center-aligned-table">
 							<thead>
 							<tr>
-								<th>쉼터아이디</th>
+								<th>NO</th>
+<!-- 								<th>쉼터아이디</th> -->
 								<th>쉼터이름</th>
 								<th>쉼터주소</th>
 								<th>운영시작일</th>
@@ -290,7 +292,8 @@ td {
 							<tbody>
 							<c:forEach items="${shelterList }" var="vo" varStatus="status">
 								<tr class="shTr" data-sh_id="${vo.sh_id }">
-									<td class="sh_id">${vo.sh_id }</td>
+									<td>${vo.rn }</td>
+<%-- 									<td class="sh_id">${vo.sh_id }</td> --%>
 									<td>${vo.sh_nm }</td>
 									<td>${vo.sh_add }</td>
 									<td>${vo.sh_st_dt }</td>
@@ -300,6 +303,7 @@ td {
 							</tbody>
 							
 						</table>
+						
 					</div>
 					
 					
