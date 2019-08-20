@@ -14,6 +14,7 @@ import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.dao.IAttendanceDao;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
 @Service
@@ -44,7 +45,7 @@ public class AttendanceService implements IAttendanceService {
 	* Method 설명 : 회원 아이디와 , 요양보호사 아이디로 매칭 번호를 알아낸다.
 	*/
 	@Override
-	public String checkLogin(Map<String, String> check) {
+	public MatchingVo checkLogin(Map<String, String> check) {
 		return attendanceDao.checkLogin(check);
 	}
 	/**
@@ -214,6 +215,10 @@ public class AttendanceService implements IAttendanceService {
 		int paginationSize = (int) Math.ceil((double)checkCnt/pageSize);
 		resultMap.put("lastpaginationSize", paginationSize);
 		return resultMap;
+	}
+	@Override
+	public MemberVo getNames(int mat_id) {
+		return attendanceDao.getNames(mat_id);
 	}
 
 

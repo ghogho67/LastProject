@@ -1,5 +1,9 @@
 package kr.or.ddit.donation.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -211,7 +215,7 @@ public class DonationController {
    
    
    
-   //-- 관리자
+   //--------------- 관리자
    
 
    /**
@@ -221,28 +225,48 @@ public class DonationController {
    * @return
    * Method 설명 :관리자 페이지에서 기부자 전체목록 가져오기 
    */
-//   @RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-//   public String donationPagingList(Model model, PageVo pageVo) {
-//      
-//      Map<String, Object> resultMap = donationService.donationPagingList(pageVo);
-//      
-//      logger.debug("☞resultMap:{}",resultMap);
-//      
-//      List<DonationApprovalVo> getAllDoner = (List<DonationApprovalVo>) resultMap.get("getAllDoner");
-//      int paginationSize = (Integer) resultMap.get("paginationSize");
-//      
-//      logger.debug("☞getAllDoner:{}",getAllDoner);
-//      
-//      model.addAttribute("getAllDoner",getAllDoner);
-//      model.addAttribute("paginationSize",paginationSize);
-//      model.addAttribute("pageVo", pageVo);
-//      
-//      logger.debug("☞getAllDoner:{}",getAllDoner);
-//      logger.debug("☞paginationSize:{}",paginationSize);
-//      logger.debug("☞pageVo:{}",pageVo);
-//      
-//      return "/mypage/donation/donationPagingList.tiles";
-//   }
+   @RequestMapping(path = "/pagingList", method = RequestMethod.GET)
+   public String donationPagingList(Model model, PageVo pageVo, int page, int pageSize) {
+      
+	  pageVo = new PageVo();
+	  pageVo.setPage(page);
+	  pageVo.setPageSize(pageSize); 
+	   
+      Map<String, Object> resultMap = donationService.donationPagingList(pageVo);
+      
+      logger.debug("☞resultMap:{}",resultMap);
+      
+      List<DonationApprovalVo> getAllDonerList = (List<DonationApprovalVo>) resultMap.get("getAllDonerList");
+      
+      int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+      if(pageVo.getPage()==1) {
+      	startPage =1;
+      }
+      if(startPage>=2) {
+      	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+      }
+      int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+      
+      int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+      
+      if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+      	paginationSize= lastpaginationSize;
+      }
+      
+      logger.debug("☞getAllDonerList:{}",getAllDonerList);
+      
+      model.addAttribute("getAllDonerList",getAllDonerList);
+      model.addAttribute("startPage", startPage);
+      model.addAttribute("paginationSize", paginationSize);
+	  model.addAttribute("lastpaginationSize", lastpaginationSize);
+	  model.addAttribute("pageVo", pageVo);
+      
+      logger.debug("☞getAllDonerList:{}",getAllDonerList);
+      logger.debug("☞paginationSize:{}",paginationSize);
+      logger.debug("☞pageVo:{}",pageVo);
+      
+      return "/mypage/donation/donationPagingList.mytiles";
+   }
    
    /**
    * Method : searchDonation
@@ -252,19 +276,23 @@ public class DonationController {
    * @param app_id
    * @param pageVo
    * @return
-   * Method 설명 : 기부자 검색
+   * Method 설명 : 기부자 검색 - 회원:Y//비회원:N
    */
 //   @RequestMapping(path = "/searchDonation", method = RequestMethod.POST)
-//   public String searchDonation(Model model, int app_id, PageVo pageVo, String mem_yn, String searchType) {
+//   public String searchDonation(Model model, int app_id, PageVo pageVo, String mem_yn) {
 //      
+//	   model.addAttribute("app_id", app_id);	
+//	   logger.debug("☞app_id:{}",app_id);
 //         List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN(mem_yn);
 //         if(mem_yn == "Y") {
 //            model.addAttribute("getDoner_memYN", getDoner_memYN);
+//            logger.debug("☞getDoner_memYN-회원:{}",getDoner_memYN);
 //         }else if(mem_yn == "N"){
 //            model.addAttribute("getDoner_memYN", getDoner_memYN);
+//            logger.debug("☞getDoner_memYN-비회원:{}",getDoner_memYN);
 //         }
-//      
-//      return "/mypage/donation/detailDonation.tiles";
+//         
+//      return "/mypage/donation/searchDonation.mytiles";
 //   }
    
    

@@ -40,14 +40,14 @@ public class SosController {
 		String lati=Double.toString(gpsVo.getGps_la());
 		String longi=Double.toString(gpsVo.getGps_lo());
 		
-	//	String address = sms.getAddress_DAUM(lati, longi);
+		String address = sms.getAddress_DAUM(lati, longi);
 		
 		String str = mem_name+"님 응급발신\r\n위치\r\n";
-		//String msg = str+address;
+		String msg = str+address;
 		
-	//	logger.debug("!!! msg : {}", msg);
+		logger.debug("!!! msg : {}", msg);
 
-		//sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
+		sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
 		
 		
 

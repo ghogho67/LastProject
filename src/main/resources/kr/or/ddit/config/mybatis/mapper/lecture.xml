@@ -14,11 +14,6 @@
 	</select>
 	
 	
-<!-- 	관리용 전체강의를 불러온다 -->
-	<select id="getLectureAllList" resultType="LectureVo">
-		select * from lecture 
-		 order by lec_nm
-	</select>
 	
 	
 		<select id="getCultureList" resultType="cultureVo">
@@ -27,11 +22,65 @@
 	
 	
 	
+	<select id="AllLectureCnt" resultType="int">
+		select count(*)
+		from lecture
+	</select>
+	
+	
+	
+		<select id="lectureCnt" resultType="int" parameterType="LpageVo">
+		select count(*)
+		from lecture
+		where lec_type = #{lec_type}
+	</select>
+	
+	
+<!-- 	관리용 전체강의를 불러온다 -->
+	<select id="getLectureAllList" resultType="LectureVo">
+		select * from lecture 
+		 order by lec_nm
+	</select>
+	
+	
 	<!-- 	특정강의를 불러온다 -->
 	<select id="getLecture" resultType="LectureVo" parameterType="int">
 		select * from lecture
 	where lec_id = #{lec_id} 
 	</select>
+	
+	
+	
+		<select id="AlllecturePagingList" parameterType="pageVo" resultType="LectureVo">
+		<![CDATA[
+			select *
+			from
+			(select a.*, rownum rn
+			from
+			(select a.*
+			from lecture a
+			order by lec_nm asc) a)
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
+	</select>
+	
+	
+		<select id="lecturePagingList" parameterType="LpageVo" resultType="LectureVo">
+		<![CDATA[
+			select *
+			from
+			(select a.*, rownum rn
+			from
+			(select a.*
+			from lecture a where lec_type = #{lec_type} 
+			order by lec_nm asc) a)
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
+	</select>
+	
+	
+	
+	
 	
 
 

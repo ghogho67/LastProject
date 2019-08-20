@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
 public interface IAttendanceDao {
@@ -28,7 +29,7 @@ public interface IAttendanceDao {
 	* @return
 	* Method 설명 : 회원 아이디와 , 요양보호사 아이디로 매칭 번호를 알아낸다.
 	*/
-	public String checkLogin(Map<String, String> check); 
+	public MatchingVo checkLogin(Map<String, String> check); 
 	
 	
 	/**
@@ -142,6 +143,8 @@ public interface IAttendanceDao {
 	
 	public List<AttendanceMatchingVo> adminDaySearch(Map<String, Object> map);
 	public int adminDaySearchCnt(String day);
+	
+	public MemberVo getNames(int mat_id);
 	
 	
 	

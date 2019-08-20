@@ -114,7 +114,7 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***When***/
 		int currentApproval = approvalService.currentApproval();
 		/***Then***/
-		assertEquals(115, currentApproval);
+		assertEquals(195, currentApproval);
 	}
 	
 	/**
@@ -147,9 +147,9 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***Given***/
 
 		/***When***/
-		List<DonationApprovalVo> getAllDoner = donationService.getAllDoner();
+		List<DonationApprovalVo> getAllDoner = donationService.getAllDonerList();
 		/***Then***/
-		assertEquals(10, getAllDoner.size());
+		assertEquals(50, getAllDoner.size());
 
 	}
 	
@@ -166,7 +166,7 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***When***/
 		List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN("Y");
 		/***Then***/
-		assertEquals(4, getDoner_memYN.size());
+		assertEquals(24, getDoner_memYN.size());
 
 	}
 
@@ -183,7 +183,7 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***When***/
 		List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN("N");
 		/***Then***/
-		assertEquals(6, getDoner_memYN.size());
+		assertEquals(27, getDoner_memYN.size());
 
 	}
 	
@@ -199,7 +199,7 @@ public class DonationServiceTest extends LogicTestEnv {
 		PageVo pageVo = new PageVo(1, 10);
 		/***When***/
 		Map<String , Object> resultMap = donationService.donationPagingList(pageVo);
-		List<DonationApprovalVo> getAllDoner = (List<DonationApprovalVo>) resultMap.get("getAllDoner");
+		List<DonationApprovalVo> getAllDonerList = (List<DonationApprovalVo>) resultMap.get("getAllDonerList");
 		int paginationSize = (Integer) resultMap.get("paginationSize");
 		/***Then***/
 		assertEquals(2, paginationSize);

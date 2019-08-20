@@ -166,6 +166,20 @@
 		FROM MEMBER
 		ORDER BY mem_id
 	</select>
+	
+	<!-- 전체 사용자 페이징 리스트 -->
+	<select id="getAllMemberList" resultType="memberVo" parameterType="pageVo">
+		<![CDATA[
+		select *
+		from
+		(select a.*, rownum rn
+		from
+		(select a.*
+		from member a
+		order by mem_id asc) a)
+		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+ 		]]> 
+	</select>
 
 
 

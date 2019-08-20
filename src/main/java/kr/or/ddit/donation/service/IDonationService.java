@@ -39,13 +39,13 @@ public interface IDonationService {
 	DonationApprovalVo getDonationApproval(int app_id);
 	
 	/**
-	* Method : getAllDoner
+	* Method : getAllDonerList
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @return
 	* Method 설명 : 전체 기부자 목록 가져오기
 	*/
-	List<DonationApprovalVo> getAllDoner();
+	List<DonationApprovalVo> getAllDonerList();
 	
 	/**
 	* Method : getDoner_memYN
@@ -63,7 +63,7 @@ public interface IDonationService {
 	* 변경이력 :
 	* @param pageVo
 	* @return
-	* Method 설명 :무더위 쉼터 페이징 리스트
+	* Method 설명 :기부자 페이징 리스트
 	*/
 	Map<String, Object> donationPagingList(PageVo pageVo);
 	

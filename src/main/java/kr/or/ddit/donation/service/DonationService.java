@@ -61,15 +61,15 @@ public class DonationService implements IDonationService {
 
 
 	/**
-	* Method : getAllDoner
+	* Method : getAllDonerList
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @return
 	* Method 설명 : 전체 기부자 목록 가져오기
 	*/
 	@Override
-	public List<DonationApprovalVo> getAllDoner() {
-		return donationDao.getAllDoner();
+	public List<DonationApprovalVo> getAllDonerList() {
+		return donationDao.getAllDonerList();
 	}
 
 
@@ -99,11 +99,11 @@ public class DonationService implements IDonationService {
 	public Map<String, Object> donationPagingList(PageVo pageVo) {
 	
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("getAllDoner", donationDao.donationPagingList(pageVo));
+		resultMap.put("getAllDonerList", donationDao.donationPagingList(pageVo));
 		
 		int donerCnt = donationDao.donerCnt();
 		int paginationSize = (int) Math.ceil((double)donerCnt/pageVo.getPageSize());
-		resultMap.put("paginationSize", paginationSize);
+		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}

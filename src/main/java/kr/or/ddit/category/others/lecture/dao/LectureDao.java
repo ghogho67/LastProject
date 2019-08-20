@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.category.others.culture.model.CultureVo;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
+import kr.or.ddit.page.model.LPageVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Repository
 public class LectureDao implements ILectureDao {
@@ -65,5 +67,21 @@ public class LectureDao implements ILectureDao {
 	public List<CultureVo> getCultureList() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("lecture.getCultureList");
+	}
+	@Override
+	public List<LectureVo> AlllecturePagingList(PageVo pageVo) {
+		return sqlSession.selectList("lecture.AlllecturePagingList",pageVo);
+	}
+	@Override
+	public List<LectureVo> lecturePagingList(LPageVo pageVo) {
+		return sqlSession.selectList("lecture.lecturePagingList", pageVo);
+	}
+	@Override
+	public int AllLectureCnt() {
+		return sqlSession.selectOne("lecture.AllLectureCnt");
+	}
+	@Override
+	public int lectureCnt(LPageVo pageVo) {
+		return sqlSession.selectOne("lecture.lectureCnt",pageVo);
 	}
 }

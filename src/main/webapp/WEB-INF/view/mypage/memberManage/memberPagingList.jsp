@@ -15,6 +15,8 @@
 
 
 <style type="text/css">
+
+
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -29,7 +31,6 @@
 	font-weight: bold;
 	color: #473fa0;
 }
-
 
 tr {
 	text-align: center;
@@ -54,14 +55,104 @@ td {
 	width: 30px;
 	padding: 3px;
 	font-size: 9pt;
-	width: 30px;
 }
 
+.pagination-outer {
+	text-align: center;
+}
+
+.pagination {
+	font-family: 'Rubik', sans-serif;
+	padding: 0 30px;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination li a.page-link {
+	color: #909090;
+	background-color: transparent;
+	font-size: 15px;
+	line-height: 35px;
+	height: 45px;
+	width: 40px;
+	margin: 0 3px;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease 0s;
+}
+
+.pagination li.active a.page-link, .pagination li a.page-link:hover,
+	.pagination li.active a.page-link:hover {
+	color: #006266;
+	background-color: transparent;
+}
+
+.pagination li a.page-link span {
+	display: block;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:hover span {
+	transform: rotateY(360deg);
+}
+
+.pagination li a.page-link:before, .pagination li a.page-link:after {
+	content: "";
+	background-color: #006266;
+	height: 3px;
+	width: 0;
+	opacity: 1;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:before {
+	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	height: 15px;
+	width: 15px;
+	transform: translateX(-50%) rotate(45deg);
+	bottom: auto;
+	top: -20px;
+	left: 50%;
+}
+
+.pagination li a.page-link:hover:after {
+	width: 100%;
+}
+
+.pagination li a.page-link:hover:before {
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
+	{
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
+	{
+	width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	.pagination {
+		display: block;
+	}
+	.pagination li {
+		margin-bottom: 10px;
+		display: inline-block;
+	}
+}
 
 .for {
 	position: relative;
 	width: 250px;
-	height: 30px;
+	height: 50px;
 	margin: 0 auto;
 }
 
@@ -69,13 +160,13 @@ td {
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 1%;
-	top: 75px;
+	right: 5%;
+	margin-top: 3%;
 }
 
 .d1 input {
-	width: 100%;
-	height: 30px;
+	width: 110%;
+	height: 20px;
 	padding-left: 90px;
 	border: 2px solid #7BA7AB;
 	border-radius: 5px;
@@ -88,9 +179,10 @@ td {
 .d1 button {
 	position: absolute;
 	top: 0;
-	right: 0px;
+	right: -25px;
+/* 	left : 2px; */
 	width: 32px;
-	height: 30px;
+	height: 38px;
 	border: none;
 	background: #7BA7AB;
 	border-radius: 0 5px 5px 0;
@@ -105,36 +197,42 @@ td {
 }
 
 #searchType {
-	height: 30px;
-	width: 70px;
-	font-size: 11px;
+	height: 40px;
+	width: 90px;
+	font-size: 12px;
 	border-radius: 5px 0px 0px 5px;
 	border-top: 2px solid #7BA7AB;
 	border-bottom: 2px solid #7BA7AB;
 	border-left: 2px solid #7BA7AB;
 	border-right: 2px solid #7BA7AB;
 }
-
-
 </style>
 
 
 
+
 <script>
-<script>
-$(document).ready(function() {
-	$("#searchBtn").on("click", function() {
-		console.log("searchBtn click");
-		console.log($("#mem_id").val());
+
+// $(document).ready(function() {
+// 	$("#searchBtn").on("click", function() {
+// 		console.log("searchBtn click");
+// 		console.log($("#mem_id").val());
 		
-//			var hos_add = $(this).find("#hos_add").text();
-//			$("#hos_add").val(hos_add);
+// //			var hos_add = $(this).find("#hos_add").text();
+// //			$("#hos_add").val(hos_add);
 		
-		$("#frm2").submit();
-	});
+// 		$("#frm2").submit();
+// 	});
 
 
-});
+// });
+
+function boardPagingListAjaxHtml(page, pageSize) {
+	$("#page").val(page);
+	$("#pageSize").val(pageSize);
+	$("#pageForm").submit();
+	
+	}
 
 </script>
 
@@ -145,47 +243,63 @@ $(document).ready(function() {
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 
+	<form id="pageForm" action="${cp}/mypage/pagingList">
+	 	<input type="hidden" name = "page" id="page">
+	 	<input type="hidden" name = "pageSize" id="pageSize">
+	 </form>
+
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-							<div id="titlee">
+					
+						
+						<!-- 검색 -->
+<!-- 						<div class="d1"> -->
+<%-- 							<form class="frm2" id="frm2" action="${cp}/mypage/pagingList" method="post"> --%>
+<!-- 								<select id="searchType" name="searchType" -->
+<!-- 									style="position: absolute; z-index: 999;"> -->
+<!-- 									<option value="all">동 검색</option> -->
+<!-- 								</select> <input type="text" placeholder="동을 입력해 주세요" name="hos_add" id="hos_add"> -->
+<!-- 								<button type="button" id="searchBtn"></button> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
+						
+						
+						<div id="titlee">
 						<h2>
 							<span>회원관리</span>
 						</h2>
-						</div>
-						
-						<div class="d1">
-							<form class="frm2" id="frm2" action="${cp}/mypage/pagingList" method="post">
-								<select id="searchType" name="searchType"
-									style="position: absolute; z-index: 999;">
-									<option value="all">동 검색</option>
-								</select> <input type="text" placeholder="동을 입력해 주세요" name="hos_add" id="hos_add">
-								<button type="button" id="searchBtn"></button>
-							</form>
-						</div>
-						
+					</div>
 						
 					<hr>
-					<form id="frm" action="${cp}/hospital/searchPagingList" method="get">
-						<input type="hidden" class="hos_id" id="hos_id" name="hos_id">
+					<form id="frm" action="${cp}/mypage/pagingList" method="get">
+						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 							<thead>
 							<tr>
-								<th>병원아이디</th>
-								<th>병원이름</th>
-								<th>병원주소</th>
-								<th>병원 전화번호</th>
+								<th>NO</th>
+								<th>회원아이디</th>
+								<th>회원이름</th>
+								<th>생년월일</th>
+								<th>성별</th>
+								<th>연락처</th>
+								<th>회원등급</th>
+								<th>탈퇴여부</th>
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${hosList }" var="vo" varStatus="status">
-								<tr class="hosTr" data-hos_id="${vo.hos_id }">
-									<td class="hos_id">${vo.hos_id }</td>
-									<td>${vo.hos_nm }</td>
-									<td>${vo.hos_add }</td>
-									<td>${vo.hos_phone }</td>
+							<c:forEach items="${getMemList }" var="vo" varStatus="status">
+								<tr class="memTr" data-mem_id="${vo.mem_id }">
+									<th>${vo.rn }</th>
+									<td class="mem_id">${vo.mem_id }</td>
+									<td>${vo.mem_nm }</td>
+									<td>${vo.mem_birth }</td>
+									<td>${vo.mem_gender }</td>
+									<td>${vo.mem_phone }</td>
+									<td>${vo.mem_grade }</td>
+									<td>${vo.mem_del}</td>
 								</tr>
 							</c:forEach>
 							</tbody>
@@ -193,46 +307,94 @@ $(document).ready(function() {
 						</table>
 					</div>
 					
-					
-							<!-- 페이지네이션 -->
-							<div class="text-center">
-								<ul class="pagination">
-									<c:choose>
-										<c:when test="${pageVo.page == 1 }">
-											<li class="disabled"><span>«</span></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="${cp}/hospital/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}">«</a></li>
-										</c:otherwise>
-									</c:choose>
-									
-									<c:forEach begin="1" end="${paginationSize}" var="i">
-										<c:choose>
-											<c:when test="${pageVo.page == i}">
-												<li class="active"><span>${i}</span></li>
-											</c:when>
-											<c:otherwise>
-												<li><a href="${cp}/hospital/pagingList?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-									
-									<c:choose>
-										<c:when test="${pageVo.page == paginationSize}">
-											<li class="disabled"><span>»</span></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="${cp}/hospital/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">»</a></li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-							</div>
-					
 					</form>
-					
 					
 				</div>
 			</div>
+			
+			<div class="demo" style="position: absolute; right: 20%;">
+							<nav class="pagination-outer" aria-label="Page navigation">
+								<ul class="pagination">
+									<c:choose>
+										<c:when test="${pageVo.page==1}">
+											<li class="page-item prev disabled"><a href="#"
+												class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">«</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-hidden="Previous"
+												href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
+													aria-hidden="true">«</span></a></li>
+
+										</c:otherwise>
+									</c:choose>
+
+									<c:choose>
+										<c:when test="${pageVo.page==1}">
+											<li class="page-item prev disabled"><a href="#"
+												class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">‹</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Previous"
+												href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
+													aria-hidden="true">‹</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
+										<c:choose>
+											<c:when test="${pageVo.page == i}">
+												<li class="page-item active"><a class="page-link"
+													href="#">${i}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a class="page-link"
+													href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+
+									</c:forEach>
+
+									<c:choose>
+										<c:when test="${pageVo.page == lastpaginationSize}">
+											<li class="page-item next disabled"><a href="#"
+												class="page-link" aria-label="Next"> <span
+													aria-hidden="true">›</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
+													aria-hidden="true">›</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+
+									<c:choose>
+										<c:when test="${pageVo.page == lastpaginationSize}">
+											<li class="page-item next disabled"><a href="#"
+												class="page-link" aria-label="Next"><span
+													aria-hidden="true">»</span></a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
+													aria-hidden="true">»</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+								</ul>
+							</nav>
+						</div>
+			
+			
 		</div>
 	</div>
 

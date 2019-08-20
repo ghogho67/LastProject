@@ -44,11 +44,21 @@
 		where mat_id = #{mat_id}
 	</select>
 	
-	<select id="checkLogin" parameterType="map" resultType="String">
-	select MAT_ID
+	
+	
+<!-- 	<select id="checkLogin" parameterType="map" resultType="String"> -->
+<!-- 	select MAT_ID -->
+<!-- 		from matching -->
+<!-- 		where mem_id = #{mem_id} -->
+<!-- 		and cw_mem_id =#{cw_mem_id} -->
+<!-- 	</select> -->
+
+	<select id="checkLogin" parameterType="map" resultType="MatchingVo">
+	 select * from  
+        (select mat_id, substr (replace(mat_st,'T',' '),1, instr(replace(mat_st,'T',' '),':',-1)-1) mat_st
 		from matching
 		where mem_id = #{mem_id}
-		and cw_mem_id =#{cw_mem_id}
+		and cw_mem_id = #{cw_mem_id}) where (select to_char(sysdate,'YYYY-MM-dd HH24') mat_st from dual) in mat_st
 	</select>
 	
 	<insert id="checkIn" parameterType="int">
@@ -62,6 +72,8 @@
 		where mat_id = #{mat_id}
   		and ad_id = #{ad_id}
 	</update>
+	
+	
 	
 	<delete id="attendanceDelete" parameterType="int">
 	delete from attendance
@@ -110,7 +122,7 @@
                 from MATCHING m, ATTENDANCE att
                 where m.MAT_ID = att.MAT_ID 
                 and m.CW_MEM_ID= #{cw_mem_id}
-                and m.mem_id = #{mem_id})a )b
+                and m.mem_id = '%'||#{mem_id}||'%')a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 			]]>
 	</select>
@@ -190,6 +202,11 @@
      select count(*) from MATCHING m, ATTENDANCE a
                 where m.MAT_ID = a.MAT_ID 
                 and m.mem_id like '%'||#{day}||'%'
+    </select>
+    
+    
+    <select id="getNames" parameterType="int" resultType="memberVo">
+    	select mem_id, mem_nm from member where mem_id =(select cw_mem_id from matching where mat_id = #{mat_id})
     </select>
 	
 
