@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -131,7 +133,8 @@ td {
 										</form>
 
 
-										<td>${Category.cate_date}</td>
+									<td><fmt:formatDate value="${Category.cate_date}"
+												pattern="yyyy-MM-dd HH:mm" /></td>
 										<td>${Category.mem_id}</td>
 										<c:choose>
 											<c:when test="${Category.cate_usage=='Y'}">

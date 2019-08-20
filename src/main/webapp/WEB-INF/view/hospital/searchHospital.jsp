@@ -443,7 +443,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<table class="table center-aligned-table">
 						<thead>
 							<tr>
-								<th>병원아이디</th>
+								<th>NO</th>
+<!-- 								<th>병원아이디</th> -->
 								<th>병원이름</th>
 								<th>병원주소</th>
 								<th>병원 전화번호</th>
@@ -452,7 +453,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<tbody>
 							<c:forEach items="${getSearchHosAdd}" var="vo" varStatus="status">
 								<tr class="hosTr" data-hos_id="${vo.hos_id }">
-									<td>${vo.hos_id }</td>
+									<td>${vo.rn }</td>
+<%-- 									<td>${vo.hos_id }</td> --%>
 									<td>${vo.hos_nm }</td>
 									<td>${vo.hos_add }</td>
 									<td>${vo.hos_phone }</td>
@@ -468,6 +470,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<div id="map" style="width: 100%; height: 400px;"></div>
 					
 					</form>
+					
+					<!-- 뒤로가기 -->
+						<a href="${cp}/hospital/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 					
 					
 				</div>

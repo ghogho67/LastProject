@@ -344,11 +344,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						
 					<hr>
 					<form id="frm" action="${cp }/shelter/searchShelter?sh_add=${sh_add}" method="post">
-					<input type="hidden" id="sh_id" name="sh_id" value="${sh_id }">
+					<input type="hidden" id="sh_id" class="sh_id" name="sh_id" value="${sh_id }">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 						<thead>
 							<tr>
+								<th>NO</th>
 								<th>쉼터아이디</th>
 								<th>쉼터이름</th>
 								<th>쉼터주소</th>
@@ -359,15 +360,18 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<tbody>
 							<c:forEach items="${getAddShelterList }" var="vo" varStatus="status">
 								<tr class="shTr" data-sh_id="${vo.sh_id }">
+									<th>${vo.rn }</th>
 									<td class="sh_id">${vo.sh_id }</td>
 									<td>${vo.sh_nm }</td>
 									<td>${vo.sh_add }</td>
-									<td>${vo.sh_st_dt }</td>
-									<td>${vo.sh_end_dt }</td>
+									<td><fmt:formatDate value="${vo.sh_st_dt }" pattern="yyyy-MM-dd"/></td>
+									<td><fmt:formatDate value="${vo.sh_end_dt }" pattern="yyyy-MM-dd"/></td>
 								</tr>
 							</c:forEach>
 							</tbody>
 						</table>
+						
+						
 					</div>
 					
 					
@@ -376,6 +380,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					<div id="map" style="width: 100%; height: 400px;"></div>
 					
 					</form>
+					
+					<!-- 뒤로가기 -->
+						<a href="${cp}/shelter/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 					
 					<!-- 페이지 네이션 -->
 					<div class="demo" style="position: absolute; right: 20%;">

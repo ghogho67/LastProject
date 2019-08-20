@@ -38,13 +38,13 @@ public interface IDonationDao {
 	DonationApprovalVo getDonationApproval(int app_id);
 	
 	/**
-	* Method : getAllDoner
+	* Method : getAllDonerList
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @return
 	* Method 설명 : 전체 기부자 목록 가져오기
 	*/
-	List<DonationApprovalVo> getAllDoner();
+	List<DonationApprovalVo> getAllDonerList();
 	
 	/**
 	* Method : getDoner_memYN

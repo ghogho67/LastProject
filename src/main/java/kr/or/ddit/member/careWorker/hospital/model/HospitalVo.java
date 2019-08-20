@@ -6,6 +6,16 @@ public class HospitalVo {
 	private String hos_add;
 	private String hos_phone;
 	
+	private int rn;
+	
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	public HospitalVo() {
 		
 	}

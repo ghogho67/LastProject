@@ -13223,7 +13223,8 @@ input:focus {
       color: #636c72;
       padding: 1em;
       white-space: nowrap;
-      font-size: 13px; }
+      font-size: 15px;
+      font-weight: 500; }
       .sidebar .nav .nav-item a.nav-link .fa:first-child {
         margin-right: 0.5em; }
       .sidebar .nav .nav-item a.nav-link img {

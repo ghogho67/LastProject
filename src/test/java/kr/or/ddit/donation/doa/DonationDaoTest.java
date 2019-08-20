@@ -114,7 +114,7 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***When***/
 		int currentApproval = approvalDao.currentApproval();
 		/***Then***/
-		assertEquals(113, currentApproval);
+		assertEquals(191, currentApproval);
 
 	}
 	
@@ -148,9 +148,9 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 
 		/***When***/
-		List<DonationApprovalVo> getAllDoner = donationDao.getAllDoner();
+		List<DonationApprovalVo> getAllDoner = donationDao.getAllDonerList();
 		/***Then***/
-		assertEquals(10, getAllDoner.size());
+		assertEquals(46, getAllDoner.size());
 
 	}
 	
@@ -167,7 +167,7 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***When***/
 		List<DonationApprovalVo> getDoner_memYN = donationDao.getDoner_memYN("Y");
 		/***Then***/
-		assertEquals(4, getDoner_memYN.size());
+		assertEquals(21, getDoner_memYN.size());
 
 	}
 
@@ -184,7 +184,7 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***When***/
 		List<DonationApprovalVo> getDoner_memYN = donationDao.getDoner_memYN("N");
 		/***Then***/
-		assertEquals(6, getDoner_memYN.size());
+		assertEquals(25, getDoner_memYN.size());
 
 	}
 	
@@ -201,7 +201,7 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***When***/
 		int donerCnt = donationDao.donerCnt();
 		/***Then***/
-		assertEquals(20, donerCnt);
+		assertEquals(46, donerCnt);
 
 	}
 	
