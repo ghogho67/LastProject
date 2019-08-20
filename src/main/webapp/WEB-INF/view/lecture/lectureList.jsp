@@ -205,13 +205,13 @@ td {
 </style>
 
 
-
-
-
-
 </head>
 <body>
 
+	<form id="pageForm" action="${cp}/lecture/lectureList">
+	 	<input type="hidden" name = "page" id="page">
+	 	<input type="hidden" name = "pageSize" id="pageSize">
+	 </form>
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
@@ -299,23 +299,99 @@ td {
 
 
 
-	<div class="demo" style="position: absolute; right: 40%;">
-		<nav class="pagination-outer" aria-label="Page navigation">
-			<ul class="pagination">
-				<li class="page-item"><a href="#" class="page-link"
-					aria-label="Previous"> <span aria-hidden="true">«</span>
-				</a></li>
-				<li class="page-item  active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a href="#" class="page-link"
-					aria-label="Next"> <span aria-hidden="true">»</span>
-				</a></li>
-			</ul>
-		</nav>
-	</div>
+
+
+
+
+                       <div class="demo" style="position: absolute; right: 20%;">
+							<nav class="pagination-outer" aria-label="Page navigation">
+								<ul class="pagination">
+									<c:choose>
+										<c:when test="${pageVo.page==1}">
+											<li class="page-item prev disabled"><a href="#"
+												class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">«</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-hidden="Previous"
+												href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
+													aria-hidden="true">«</span></a></li>
+
+										</c:otherwise>
+									</c:choose>
+
+									<c:choose>
+										<c:when test="${pageVo.page==1}">
+											<li class="page-item prev disabled"><a href="#"
+												class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">‹</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Previous"
+												href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
+													aria-hidden="true">‹</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
+										<c:choose>
+											<c:when test="${pageVo.page == i}">
+												<li class="page-item active"><a class="page-link"
+													href="#">${i}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a class="page-link"
+													href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+
+									</c:forEach>
+
+									<c:choose>
+										<c:when test="${pageVo.page == lastpaginationSize}">
+											<li class="page-item next disabled"><a href="#"
+												class="page-link" aria-label="Next"> <span
+													aria-hidden="true">›</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
+													aria-hidden="true">›</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+
+									<c:choose>
+										<c:when test="${pageVo.page == lastpaginationSize}">
+											<li class="page-item next disabled"><a href="#"
+												class="page-link" aria-label="Next"><span
+													aria-hidden="true">»</span></a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
+													aria-hidden="true">»</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+								</ul>
+							</nav>
+						</div>
+			
+			
+
+
+
+
+
+
 
 
 
@@ -330,6 +406,15 @@ td {
 		});
 
 	
+		
+
+		function boardPagingListAjaxHtml(page, pageSize) {
+			$("#page").val(page);
+			$("#pageSize").val(pageSize);
+			$("#pageForm").submit();
+			
+			}
+		
 </script>
 
 

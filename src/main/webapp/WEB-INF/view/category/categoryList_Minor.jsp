@@ -148,7 +148,7 @@ td {
 										<c:choose>
 											<c:when test="${Category.cate_usage=='Y'}">
 													<td><a
-														href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
+														href="${cp}/category/categoryMinorDelete?cate_id=${Category.cate_id}&cate_paerent_id=${Category.cate_paerent_id}"
 														onclick="return confirm('해당카테고리를 사용하지 않으시겠습니까?')"
 														class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td>
 												</c:when>
@@ -209,7 +209,7 @@ td {
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" style="padding: 50px; z-index: 1400">
 			<div class="modal-dialog" role="document">
-				<div class="modal-content">
+				<div class="modal-content3">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabel">카테고리 추가</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">

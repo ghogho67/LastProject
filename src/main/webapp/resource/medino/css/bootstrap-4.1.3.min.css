@@ -5435,6 +5435,27 @@ button.close {
 	content: ""
 }
 
+
+
+.modal-content3 {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+    width: 500px;
+    height: 270px;
+	pointer-events: auto;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: .3rem;
+	outline: 0;
+	padding: 15px;
+}
+
+
+
 .modal-content {
 	position: relative;
 	display: -ms-flexbox;
