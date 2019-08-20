@@ -68,7 +68,9 @@ function showPosition(position) {
 	
 // 	36.325072, 127.420319
 // '${gpsVo.gps_la}'
+console.log('${gpsVo.gps_la}', '${gpsVo.gps_lo}')
 	var position = new naver.maps.LatLng('${gpsVo.gps_la}', '${gpsVo.gps_lo}');
+// 	var position = new naver.maps.LatLng(36.325072, 127.420319);
 	
 	console.log(position);
 	var map2 = new naver.maps.Map('map2', {

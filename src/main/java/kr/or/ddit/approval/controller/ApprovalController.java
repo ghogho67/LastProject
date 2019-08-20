@@ -28,7 +28,7 @@ public class ApprovalController {
 	IApprovalService approvalService;
 
 	private static final Logger logger = LoggerFactory.getLogger(ApprovalController.class);
-
+//
 	@RequestMapping(path = "/show")
 	public String show() {
 		return "/approval/post.tiles";
@@ -51,7 +51,7 @@ public class ApprovalController {
 	}
 
 	
-	
+	//
 	
 //	@RequestMapping(path = "/approvalCheck")
 //	public String approvalCheck(HttpSession session, Model model, int page, int pageSize) {

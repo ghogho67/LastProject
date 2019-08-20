@@ -226,7 +226,6 @@
 											<section class="panel">
 												<header class="panel-heading wht-bg">
 													<h4 class="gen-case">
-														<%--                   ${report.rep_id} --%>
 													</h4>
 												</header>
 												<div class="panel-body ">
@@ -236,7 +235,6 @@
 														</div>
 														<div class="col-md-4">
 															<div class="compose-btn pull-right">
-																<!--                       <a href="mail_compose.html" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> 뒤로</a> -->
 															</div>
 														</div>
 													</div>

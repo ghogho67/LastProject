@@ -38,13 +38,13 @@
 
 
 	<div class="container">
-		<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
-<pre>
-cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList }  postVo : ${postVo}
-</pre>
+									<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
+									<pre>
+									cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList }  postVo : ${postVo}
+									</pre>
 		<form id="frm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="post_id" value="${post_id }"> <input
-				type="hidden" name="cate_id" value="${cate_id }">
+				<input type="hidden" name="post_id" value="${post_id }"> 
+				<input type="hidden" name="cate_id" value="${cate_id }">
 			<div>
 				<label for="filename" class="col-sm-2 control-label">제목</label>
 				<input type="text" class="form-control" id="post_nm" name="post_nm" value="${postVo.post_nm}">
@@ -58,11 +58,8 @@ cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList 
 			<div>
 				<div>
 					<c:forEach items="${attachmentList}" var="attachment">
-						<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>
-										${attachment.att_id}
-										<a id="a"
-							href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }"
-							class="btn btn-primary btn-sm">X</a>
+						<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>${attachment.att_id}
+						<a id="a" href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }" class="btn btn-primary btn-sm">X</a>
 					</c:forEach>
 				</div>
 				<div id="fileArea">
@@ -72,10 +69,11 @@ cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList 
 			</div>
 		</form>
 	</div>
-		<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+	<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
 		<input type="hidden" name="cate_id" value="${cate_id }" /> 
 		<input type="hidden" name="post_id" value="${post_id }" /> 
-		</form>
+	</form>
+		
 </body>
 <script>
 	var form = document.forms[0];
@@ -89,9 +87,9 @@ cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList 
 	};
 
 	addFileBtn.onclick = function() {
-		var a = $('.attachment').length;
+		var a = $("a").length;
 
-		if (a + cnt <= 5) {
+		if (a + cnt <= 32) {
 			var element = document.createElement("input");
 			element.type = "file";
 			element.name = "file"
