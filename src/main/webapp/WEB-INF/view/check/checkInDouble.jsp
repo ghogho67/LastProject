@@ -11,7 +11,7 @@ h1{
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-<img id="myimg" src="/image/logo.png" width="500" height="600" border="1" 
+<img id="myimg" src="/image/logosam.png" width="500" height="600" border="1" 
 	style="margin-left: auto; margin-right: auto; display: block;">
 	<br>
 	
