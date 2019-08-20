@@ -182,7 +182,7 @@ public class AttendanceDao implements IAttendanceDao {
 	}
 	@Override
 	public MemberVo getNames(int mat_id) {
-		return sqlSession.selectOne("attendance.getNames");
+		return sqlSession.selectOne("attendance.getNames",mat_id);
 	}
 	
 	

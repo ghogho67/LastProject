@@ -140,7 +140,11 @@ public class AttendanceController {
 		int bool = attendanceService.checkInCheck(mat_id);
 		if(bool != 1) {
 			int insert = attendanceService.checkIn(mat_id);
+			logger.debug("☞mat_id:{}",mat_id);
+			logger.debug("☞slskdjflskdfasdf:{}");
 			MemberVo memberVo = attendanceService.getNames(mat_id);
+			logger.debug("☞여기로 들어왔니");
+			
 			String msg = memberVo.getMem_nm()+"님이 출근하셨습니다";
 			sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"출근완료", null, null, null, null, null, null, null, "S");
 			
@@ -252,7 +256,7 @@ public class AttendanceController {
 		logger.debug("☞ searchVal:{}",searchVal);
 		
 		
-		if(searchVal.equals("")&&searchType.equals("")) {
+		if(searchVal.equals("")&&searchType.equals("memid")) {
 			Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("cwMatchingList");
 			logger.debug("☞searchVal.equals()attendanceList:{}",attendanceList);
@@ -402,7 +406,7 @@ public class AttendanceController {
 		PageVo pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
-		
+		logger.debug("☞pageVo:{}",pageVo);
 		
 		
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -412,7 +416,7 @@ public class AttendanceController {
 		map.put("pageSize", pageVo.getPageSize());
 		
 		
-		if(searchVal.equals("")&&searchType.equals("")) {
+		if(searchVal.equals("")&&searchType.equals("memid")) {
 			Map<String, Object> resultMap = attendanceService.adminCheckList(pageVo);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("adminCheckList");
 			
@@ -438,7 +442,6 @@ public class AttendanceController {
 			model.addAttribute("pageVo",pageVo);
 			model.addAttribute("page",pageVo.getPage());
 			model.addAttribute("pageSize",pageVo.getPageSize());
-			
 			model.addAttribute("searchType",searchType);
 			model.addAttribute("searchVal",searchVal);
 			

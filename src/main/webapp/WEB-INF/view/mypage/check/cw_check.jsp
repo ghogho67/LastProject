@@ -208,31 +208,45 @@ td {
 
 <script>
    $(document).ready(function() {
+// 	   $("#searchType").val("${searchType}").prop("selected", true);
+// 		$("#searchVal").val("${searchVal}");
 // 	   $("#searchType").change("on", function(){
 // // 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
 // 			alert("/19/07/30형식으로 기입");
 // 	   });
-	$("#searchType").val("${searchType}").prop("selected", true);
-	$("#searchVal").val("${searchVal}");
+// 	$("#searchType").val("${searchType}").prop("selected", true);
+// 	$("#searchVal").val("${searchVal}");
 	
-	   $("#searchBtn").click("on",function(){
-			var data = $("#saerchList").serialize();
-			console.log(data);
-			$.ajax({
-				type: "POST",
-				url : "${cp}/attendance/saerch",
-				data : data,
-				success : function(data){
-					console.log(data);
-				},
-			error : function(xhr){
-					alert(xhr.status);
+// 	   $("#searchBtn").click("on",function(){
+// 			var data = $("#saerchList").serialize();
+// 			console.log(data);
+// 			$.ajax({
+// 				type: "POST",
+// 				url : "${cp}/attendance/saerch",
+// 				data : data,
+// 				success : function(data){
+// 					console.log(data);
+// 				},
+// 			error : function(xhr){
+// 					alert(xhr.status);
 				
-			}
-		 });
-		});
+// 			}
+// 		 });
+// 		});
+	 $("#searchBtn").on("click",function(){
+
+	   $("#searchList").submit();
 	
-   });
+	   });
+	});
+   
+   function boardPagingListAjaxHtml(page, pageSize) {
+	   $("#page").val(page);
+		$("#page").val(page);
+
+		$("#searchList").submit();
+	
+	}
 </script>
 
 </head>

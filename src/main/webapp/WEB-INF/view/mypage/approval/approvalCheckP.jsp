@@ -215,8 +215,9 @@ $(document).ready(function() {
 	$("#searchVal").val("${searchVal}");
 	
 		   $("#searchType").change("on", function(){
-//	 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
-				alert("/19/07/30형식으로 기입");
+			 
+	 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
+				
 		   });
 		   
 		   
