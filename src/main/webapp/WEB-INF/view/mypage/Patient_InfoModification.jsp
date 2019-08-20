@@ -72,6 +72,7 @@ input[type="text"]::-webkit-input-value {
 		var msg = '${msg}';
 		if (msg != '')
 			alert(msg);
+		
 
 		$('#addrSearchbtn').on('click', function() {
 			new daum.Postcode({

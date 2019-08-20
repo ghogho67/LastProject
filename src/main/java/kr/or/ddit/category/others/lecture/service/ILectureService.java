@@ -1,12 +1,21 @@
 package kr.or.ddit.category.others.lecture.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.category.others.culture.model.CultureVo;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
+import kr.or.ddit.page.model.LPageVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface ILectureService {
 
+	
+	
+	//페이징 처리
+	Map<String, Object> AlllecturePagingList(PageVo pageVo);
+	Map<String, Object>  lecturePagingList(LPageVo pageVo);
+	
 	
 	
 	/**

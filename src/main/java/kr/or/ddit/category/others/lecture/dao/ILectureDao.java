@@ -4,9 +4,19 @@ import java.util.List;
 
 import kr.or.ddit.category.others.culture.model.CultureVo;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
+import kr.or.ddit.category.others.shelter.model.ShelterVo;
+import kr.or.ddit.page.model.LPageVo;
+import kr.or.ddit.page.model.PageVo;
 
 
 public interface ILectureDao {
+	
+	int AllLectureCnt();
+	int lectureCnt(LPageVo pageVo);
+	
+	//페이징 처리
+	List<LectureVo> AlllecturePagingList(PageVo pageVo);
+	List<LectureVo> lecturePagingList(LPageVo pageVo);
 	
 	
 	/**
