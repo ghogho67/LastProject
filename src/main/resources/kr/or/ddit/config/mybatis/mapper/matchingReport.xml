@@ -69,12 +69,12 @@
 	<select id="getWorkerReportList" resultType="matchingReportVo"
 		parameterType="String">
 
-		select m.mat_id, m.mat_title,m.mat_cont,m.mat_cont,
+		select m.mat_id, m.mat_title,m.mat_cont,m.mat_cont,m.mat_st,
 		m.mat_end,m.mat_bc,m.mat_tc,m.mat_allday,m.mat_type,m.mat_del,m.mem_id,m.cw_mem_id,
 		r.rep_id ,r.rep_time
 		,r.rep_title,r.rep_cont
 		from report r , matching m
-		where r.mat_id(+) =m.mat_id
+		where r.mat_id =m.mat_id(+)
 		and m.cw_mem_id = #{m.cw_mem_id}
 
 	</select>
