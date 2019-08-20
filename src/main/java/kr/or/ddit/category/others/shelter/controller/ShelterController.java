@@ -65,6 +65,7 @@ public class ShelterController {
 		logger.debug("☞shelterList:{}",shelterList);
 		
 		model.addAttribute("shelterList", shelterList);
+		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo", pageVo);

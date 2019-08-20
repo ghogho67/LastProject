@@ -1,5 +1,6 @@
 package kr.or.ddit.donation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -255,6 +256,7 @@ public class DonationController {
       logger.debug("☞getAllDonerList:{}",getAllDonerList);
       
       model.addAttribute("getAllDonerList",getAllDonerList);
+      model.addAttribute("startPage", startPage);
       model.addAttribute("paginationSize", paginationSize);
 	  model.addAttribute("lastpaginationSize", lastpaginationSize);
 	  model.addAttribute("pageVo", pageVo);
@@ -263,7 +265,7 @@ public class DonationController {
       logger.debug("☞paginationSize:{}",paginationSize);
       logger.debug("☞pageVo:{}",pageVo);
       
-      return "/mypage/donation/donationPagingList.tiles";
+      return "/mypage/donation/donationPagingList.mytiles";
    }
    
    /**
@@ -274,19 +276,23 @@ public class DonationController {
    * @param app_id
    * @param pageVo
    * @return
-   * Method 설명 : 기부자 검색
+   * Method 설명 : 기부자 검색 - 회원:Y//비회원:N
    */
 //   @RequestMapping(path = "/searchDonation", method = RequestMethod.POST)
-//   public String searchDonation(Model model, int app_id, PageVo pageVo, String mem_yn, String searchType) {
+//   public String searchDonation(Model model, int app_id, PageVo pageVo, String mem_yn) {
 //      
+//	   model.addAttribute("app_id", app_id);	
+//	   logger.debug("☞app_id:{}",app_id);
 //         List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN(mem_yn);
 //         if(mem_yn == "Y") {
 //            model.addAttribute("getDoner_memYN", getDoner_memYN);
+//            logger.debug("☞getDoner_memYN-회원:{}",getDoner_memYN);
 //         }else if(mem_yn == "N"){
 //            model.addAttribute("getDoner_memYN", getDoner_memYN);
+//            logger.debug("☞getDoner_memYN-비회원:{}",getDoner_memYN);
 //         }
-//      
-//      return "/mypage/donation/searchDonation.tiles";
+//         
+//      return "/mypage/donation/searchDonation.mytiles";
 //   }
    
    

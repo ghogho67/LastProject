@@ -140,6 +140,16 @@ public interface IMemberService {
 	int downGradeMemberStep3(String mem_id);
 	
 	GoldVo downGradeMember(String mem_id);
+	
+	/**
+	* Method : getAllMemberList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :전체 사용자 페이징 리스트
+	*/
+	Map<String, Object> getAllMemberList(PageVo pageVo);
 
 
 }

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.member.member.dao.IMemberDao;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
 public class MemberDaoTest extends LogicTestEnv {
@@ -63,6 +64,23 @@ public class MemberDaoTest extends LogicTestEnv {
 		String profilePath = memberDao.getProfile(mem_id);
 		/*** Then ***/
 		assertEquals(null, profilePath);
+	}
+	
+	/**
+	* Method : getAllMemberList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :회원 페이징 리스트
+	*/
+	@Test
+	public void  getAllMemberListTest() {
+		/***Given***/
+		PageVo pageVo = new PageVo(1, 10);
+		/***When***/
+		List<MemberVo> memberList = memberDao.getAllMemberList(pageVo);
+		/***Then***/
+		assertEquals(10, memberList.size());
+
 	}
 
 
