@@ -169,4 +169,18 @@ public class MemberService implements IMemberService {
 
 
 
+	/**
+	* Method : memberGradeCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원등급간 수 
+	*/
+	@Override
+	public int memberGradeCnt(String mem_grade) {
+		return memberDao.memberGradeCnt(mem_grade);
+	}
+
+
+
 }

@@ -210,23 +210,39 @@ td {
 
 
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
 
-<script>
+//구글 chart API
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-// $(document).ready(function() {
-// 	$("#searchBtn").on("click", function() {
-// 		console.log("searchBtn click");
-// 		console.log($("#mem_id").val());
-		
-// //			var hos_add = $(this).find("#hos_add").text();
-// //			$("#hos_add").val(hos_add);
-		
-// 		$("#frm2").submit();
-// 	});
+function drawChart() {
+	
+// 	var manager = $("#manager").val()
+// 	var nomalMember = $("#nomalMember").val()
+// 	var goldMember = $("#goldMember").val()
+// 	var careWorker = $("#careWorker").val()
+ 
+	var data = google.visualization.arrayToDataTable([
+     ['member', 'mem_grade'],
+	 ['관리자',      ${manager}],
+	 ['일반회원',  ${nomalMember}],
+	 ['골드회원', ${goldMember}],
+	 ['요양보호사',    ${careWorker}]
+  ]);
+
+  var options = {
+    title: '회원 등급별 pie Chart'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, options);
+}
 
 
-// });
-
+//pagenation
 function boardPagingListAjaxHtml(page, pageSize) {
 	$("#page").val(page);
 	$("#pageSize").val(pageSize);
@@ -307,6 +323,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</table>
 					</div>
 					
+					<!-- 구글Chart API -->
+					<div id="piechart" style="width: 900px; height: 500px;"></div>
+					<input type="hidden" name = "manager" id="manager">
+					<input type="hidden" name = "nomalMember" id="nomalMember">
+					<input type="hidden" name = "goldMember" id="goldMember">
+					<input type="hidden" name = "careWorker" id="careWorker">
 					</form>
 					
 				</div>
