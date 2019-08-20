@@ -226,6 +226,9 @@ td {
 		$("#searchBtn").on("click", function() {
 			$("#frm2").submit();
 		});
+
+		$("#searchType").val("${searchType}").prop("selected", true);
+		$("#searchType").val().prop("selected", true);
 	});
 </script>
 </head>
@@ -238,16 +241,14 @@ td {
 				<div class="card-body">
 					<pre>${cate_id}</pre>
 					<div class="d1">
-						<form class="for" id="frm2" action="${cp}/post/searchPagingList"
-							method="post">
-							<select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
+						<form class="for" id="frm2" action="${cp}/post/pagingList" method="post">
+							<select id="searchType" name="searchType" style="position: absolute; z-index: 999;">
 								<option value="title">제목 검색</option>
 								<option value="cont">내용 검색</option>
 								<option value="id">아이디 검색</option>
-							</select> <input type="hidden" name="cate_id" id="search"
-								value="${cate_id}"> <input type="text" name="search"
-								id="search">
+							</select> 
+							<input type="hidden" name="cate_id" id="cate_id" value="${cate_id}"> 
+							<input type="text" name="search" id="search">
 							<button type="button" id="searchBtn"></button>
 						</form>
 					</div>
@@ -258,11 +259,8 @@ td {
 						</h2>
 					</div>
 					<hr>
-					<form id="frm" action="${cp}/post/detail" method="post"
-						enctype="multipart/form-data">
+					<form id="frm" action="${cp}/post/detail" method="post"	enctype="multipart/form-data">
 						<input type="hidden" class="post_id" id="post_id" name="post_id">
-
-
 						<div class="table-responsive">
 							<table class="table center-aligned-table">
 								<tr class="text-primary">
@@ -271,27 +269,31 @@ td {
 									<th>작성자 아이디</th>
 									<th>작성일시</th>
 								</tr>
-								<c:set var = "number" value = "1"/>
+								<c:set var="number" value="0" />
 								<c:forEach items="${postList }" var="post" varStatus="status">
-								<c:forEach var = "i" begin="0" end="2">
-									<c:set var = "number" value = "${number+3 }"/>
-								</c:forEach>
 									<c:choose>
 										<c:when test="${post.post_del eq 'N' }">
 											<tr class="Category" id="${post.post_id }"
 												data-post_id="${post.post_id }">
-												<%-- 												<td class="CategoryId">${post.post_id }</td> --%>
-												<td class="CategoryId"><c:if test="${post.post_par eq 0}">${(status.index+1)+((current)*10)}
-												${status.index+1 }
-												
-												${number}</c:if></td>
-												<%-- 												${(postCnt - status.index)-((current-1)*10)} --%>
-												<td><c:if test="${post.level > 1 }">
+												<%--<td class="CategoryId">${post.post_id }</td> --%>
+												<td class="CategoryId"><c:if test="${post.post_par eq 0}">
+														${postCnt }
+														${status.index }
+														${current }
+														${((postCnt-status.index))-((current-1)*10)}
+													</c:if> <c:if test="${post.post_par ne 0 }">
+														<c:forEach var="i" begin="0" end="0">
+															<c:set var="number" value="${number+1 }" />
+														</c:forEach>
+													</c:if></td>
+												<%--${(postCnt - status.index)-((current-1)*10)} --%>
+												<td>${number}<c:if test="${post.level > 1 }">
 														<c:forEach var="i" begin="1" end="${post.level+1 }"
 															step="1">
 															&nbsp;&nbsp;
 														</c:forEach>
-													</c:if> ${post.post_nm }</td>
+													</c:if> ${post.post_nm }
+												</td>
 												<td>${post.mem_id }</td>
 												<td><fmt:formatDate value="${post.post_time }"
 														pattern="yyyy-MM-dd" /></td>
@@ -300,6 +302,9 @@ td {
 											<input type="hidden" class="post_id" value="${post.post_id }">
 										</c:when>
 										<c:otherwise>
+											<c:forEach var="i" begin="0" end="0">
+												<c:set var="number" value="${number+1 }" />
+											</c:forEach>
 											<tr>
 												<td></td>
 												<%-- <td>${post.post_id }</td> --%>
@@ -323,7 +328,7 @@ td {
 									<c:otherwise>
 										<li class="page-item"><a class="page-link"
 											aria-label="Next"
-											href="${cp}/post/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}"><span
+											href="${cp}/post/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}&searchType=${searchType }&search=${search}"><span
 												aria-hidden="true">«</span></a></li>
 									</c:otherwise>
 								</c:choose>
@@ -336,7 +341,7 @@ td {
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="${cp}/post/pagingList?page=${i}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}&current=${i}&postCnt=${postCnt}">${i}</a>
+												href="${cp}/post/pagingList?page=${i}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}&current=${i}&postCnt=${postCnt}&searchType=${searchType }&search=${search}">${i}</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -351,7 +356,7 @@ td {
 									<c:otherwise>
 										<li class="page-item"><a class="page-link"
 											aria-label="Next"
-											href="${cp}/post/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}"><span
+											href="${cp}/post/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}&searchType=${searchType }&search=${search}"><span
 												aria-hidden="true">»</span></a></li>
 									</c:otherwise>
 								</c:choose>

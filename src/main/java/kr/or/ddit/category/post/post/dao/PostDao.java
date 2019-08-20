@@ -74,19 +74,16 @@ public class PostDao implements IPostDao {
 
 	@Override
 	public List<PostVo> titlePagingList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("post.titlePagingList", map);
 	}
 
 	@Override
 	public List<PostVo> idPagingList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("post.idPagingList", map);
 	}
 
 	@Override
 	public List<PostVo> contPagingList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("post.contPagingList", map);
 	}
 
