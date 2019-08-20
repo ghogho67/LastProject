@@ -40,7 +40,7 @@ public class ApprovalController {
 		ApprovalVo avo = new ApprovalVo();
 
 		avo.setApp_pay(app_pay);
-		avo.setApp_type(app_type);
+		avo.setApp_type("1");
 		avo.setMem_id("brown");
 
 		int insertCnt = approvalService.approvalInsert(avo);
