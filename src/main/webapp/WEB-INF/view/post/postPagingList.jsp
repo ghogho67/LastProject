@@ -23,10 +23,9 @@
 .postTr:hover {
 	cursor: pointer;
 }
-<style type="text/css">
 
-
-#titlee h2, #pzone h2 {
+<
+style type ="text /css">#titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
 	letter-spacing: -1px;
@@ -189,7 +188,7 @@ td {
 	position: absolute;
 	top: 0;
 	right: -25px;
-/* 	left : 2px; */
+	/* 	left : 2px; */
 	width: 32px;
 	height: 38px;
 	border: none;
@@ -223,7 +222,7 @@ td {
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
-		
+
 		$("#searchBtn").on("click", function() {
 			$("#frm2").submit();
 		});
@@ -232,26 +231,27 @@ td {
 </head>
 
 <body>
-<pre>${cate_id}</pre>
+	<pre>${cate_id}</pre>
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
-			<div class = "card">
+			<div class="card">
 				<div class="card-body">
-				<pre>${cate_id}</pre>
+					<pre>${cate_id}</pre>
 					<div class="d1">
-						<form class="for" id="frm2" action="${cp}/post/searchPagingList" method="post">
-							<select id="searchType" name="searchType" style="position: absolute; z-index: 999;">
+						<form class="for" id="frm2" action="${cp}/post/searchPagingList"
+							method="post">
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
 								<option value="title">제목 검색</option>
 								<option value="cont">내용 검색</option>
 								<option value="id">아이디 검색</option>
-							</select> 
-							<input type="hidden" name="cate_id" id="search" value = "${cate_id}">
-							<input type="text" name="search" id="search">
+							</select> <input type="hidden" name="cate_id" id="search"
+								value="${cate_id}"> <input type="text" name="search"
+								id="search">
 							<button type="button" id="searchBtn"></button>
 						</form>
 					</div>
-						
-						
+
 					<div id="titlee">
 						<h2>
 							<span>postPagingList.jsp</span>
@@ -271,12 +271,21 @@ td {
 									<th>작성자 아이디</th>
 									<th>작성일시</th>
 								</tr>
+								<c:set var = "number" value = "1"/>
 								<c:forEach items="${postList }" var="post" varStatus="status">
+								<c:forEach var = "i" begin="0" end="2">
+									<c:set var = "number" value = "${number+3 }"/>
+								</c:forEach>
 									<c:choose>
 										<c:when test="${post.post_del eq 'N' }">
-											<tr class="Category" id="${post.post_id }" data-post_id="${post.post_id }">
-<%-- 												<td class="CategoryId">${post.post_id }</td> --%>
-												<td class="CategoryId">${(postCnt - status.index)-((current-1)*10)}</td>
+											<tr class="Category" id="${post.post_id }"
+												data-post_id="${post.post_id }">
+												<%-- 												<td class="CategoryId">${post.post_id }</td> --%>
+												<td class="CategoryId"><c:if test="${post.post_par eq 0}">${(status.index+1)+((current)*10)}
+												${status.index+1 }
+												
+												${number}</c:if></td>
+												<%-- 												${(postCnt - status.index)-((current-1)*10)} --%>
 												<td><c:if test="${post.level > 1 }">
 														<c:forEach var="i" begin="1" end="${post.level+1 }"
 															step="1">
@@ -292,7 +301,8 @@ td {
 										</c:when>
 										<c:otherwise>
 											<tr>
-												<td>${post.post_id }</td>
+												<td></td>
+												<%-- <td>${post.post_id }</td> --%>
 												<td colspan="3">삭제된 게시글입니다.</td>
 											</tr>
 										</c:otherwise>
@@ -349,8 +359,8 @@ td {
 						</div>
 					</form>
 				</div>
-				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

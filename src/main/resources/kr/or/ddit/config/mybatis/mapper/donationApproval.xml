@@ -6,7 +6,7 @@
 
 	
 	<!-- 기부자 전체 목록 가져오기 -->
-	<select id="getAllDoner" resultType="donationApprovalVo">
+	<select id="getAllDonerList" resultType="donationApprovalVo">
 		 select d.doner
 		      ,a.mem_id
 		      ,d.doner_phone

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.model.AttendanceVo;
+import kr.or.ddit.matching.matching.model.MatchingVo;
+import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.page.model.PageVo;
 
 @Repository
@@ -38,7 +40,7 @@ public class AttendanceDao implements IAttendanceDao {
 	* Method 설명 : 회원 아이디와 , 요양보호사 아이디로 매칭 번호를 알아낸다.
 	*/
 	@Override
-	public String checkLogin(Map<String, String> check) {
+	public MatchingVo checkLogin(Map<String, String> check) {
 		return sqlSession.selectOne("attendance.checkLogin", check);
 	}
 	/**
@@ -177,6 +179,10 @@ public class AttendanceDao implements IAttendanceDao {
 	@Override
 	public int adminDaySearchCnt(String day) {
 		return sqlSession.selectOne("attendance.adminMemSearchCnt", day);
+	}
+	@Override
+	public MemberVo getNames(int mat_id) {
+		return sqlSession.selectOne("attendance.getNames");
 	}
 	
 	

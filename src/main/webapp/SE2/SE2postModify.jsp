@@ -82,9 +82,7 @@
 	
 	<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
 	<input type="button" id="savebutton" value="글등록"  class="btn btn-primary btn-sm" style="float:right;"/>
-	<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
-		<input type="hidden" name="cate_id" value="${cate_id }" /> 
-		<input type="hidden" name="post_id" value="${post_id }" />
-	</form>
+	<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+
 </body>
 </html>
