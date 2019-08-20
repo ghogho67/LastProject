@@ -64,7 +64,7 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="/attendance/adminSaerch?page=1&pageSize=10&searchType=&searchVal=">
+									<li class="nav-item"><a class="nav-link" href="/attendance/adminSaerch?page=1&pageSize=10&searchType=memid&searchVal=">
 										  출퇴근 관리  </a></li>
 									<li class="nav-item"><a class="nav-link" href="#l">
 										  스케쥴 관리  </a></li>

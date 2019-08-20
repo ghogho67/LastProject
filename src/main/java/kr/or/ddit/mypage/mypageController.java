@@ -626,7 +626,7 @@ public class mypageController {
 			GpsVo gpsVo =(GpsVo) map.get("gpsVo");
 			String mem_name =  (String) map.get("mem_name");
 			
-			logger.debug("!!!!! gpsVo : {}",gpsVo.getGps_la());
+//			logger.debug("!!!!! gpsVo : {}",gpsVo.getGps_la());
 			
 			model.addAttribute("gpsVo", gpsVo);
 

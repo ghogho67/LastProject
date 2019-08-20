@@ -2,6 +2,7 @@ package kr.or.ddit.category.others.lecture.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,8 @@ import kr.or.ddit.category.others.culture.service.ICultureService;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
 import kr.or.ddit.category.others.lecture.service.ILectureService;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.page.model.LPageVo;
+import kr.or.ddit.page.model.PageVo;
 
 @RequestMapping("/lecture")
 @Controller
@@ -49,15 +52,49 @@ public class LectureController {
 	
 	
 	@RequestMapping(path = "/lectureList", method = RequestMethod.GET)
-	public String cultureList(Model model, HttpSession session, String lec_type) {
+	public String cultureList(Model model, HttpSession session, String lec_type, int page, int pageSize) {
 		logger.debug("@@@@lec_type {}",lec_type);
+		logger.debug("@@@@page {}",page);
+		logger.debug("@@@@pageSize {}",pageSize);
+		
+		LPageVo pageVo = new LPageVo();
+		pageVo = new LPageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
+		pageVo.setLec_type(lec_type);
+		
+
+		Map<String, Object> resultMap = lectureService.lecturePagingList(pageVo);
+		
+		List<LectureVo> CertainLectureList = (List<LectureVo>) resultMap.get("lectureList");
+	    
 		
 		
-		List<LectureVo> CertainLectureList = lectureService.getCertainLectureList(lec_type);
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
 		
-		logger.debug("@@@@CategoryList : {} ", CertainLectureList);
+		
 
 		model.addAttribute("LTList", CertainLectureList);
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
+		model.addAttribute("pageVo", pageVo);
+		
+		logger.debug("@@@@shelterList:{}",CertainLectureList);
+		logger.debug("@@@@paginationSize:{}",paginationSize);
+		logger.debug("@@@@pageVo:{}",pageVo);
 		
 		
 		return "lecture/lectureList";
@@ -69,18 +106,53 @@ public class LectureController {
 	
 	
 	@RequestMapping(path = "/lectureListALL", method = RequestMethod.GET)
-	public String lectureListALL(Model model,HttpSession session) {
+	public String lectureListALL(Model model,HttpSession session , int page, int pageSize) {
+		logger.debug("@@@@page {}",page);
+		logger.debug("@@@@pageSize {}",pageSize);
+		
+		PageVo pageVo = new PageVo();
+		pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
 		
 
-		List<LectureVo> LectureList = lectureService.getLectureList();
+		Map<String, Object> resultMap = lectureService.AlllecturePagingList(pageVo);
+		List<LectureVo> AllLectureList = (List<LectureVo>) resultMap.get("AlllectureList");
+		
+		logger.debug("@@@@resultMap {}",resultMap);
+		logger.debug("@@@@AllLectureList {}",AllLectureList);
+		
+		
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+		
+		
+
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
+		model.addAttribute("pageVo", pageVo);
+		
+		logger.debug("@@@@paginationSize:{}",paginationSize);
+		logger.debug("@@@@pageVo:{}",pageVo);
+		
+
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		String memgrade=memvo.getMem_grade();
-		
-		logger.debug("@@@@LectureList : {} ", LectureList);
-		logger.debug("@@@@memgrade : {} ", memgrade);
-
-		model.addAttribute("LList", LectureList);
 		model.addAttribute("memgrade", memgrade);
+	
+		model.addAttribute("LList", AllLectureList);
 		
 		return "lecture/lectureListAll";
 	
@@ -89,10 +161,16 @@ public class LectureController {
 	
 	
 	
+	
+	
+	
+	
+	
 	//강의 상세보기 페이지 
 	@RequestMapping(path = "/lecture", method = RequestMethod.GET)
 	public String lecture(Model model,
 			@RequestParam(name = "lectureId")int lec_id) {
+		
 		
 		
 		LectureVo lectureVo = lectureService.getLecture(lec_id);

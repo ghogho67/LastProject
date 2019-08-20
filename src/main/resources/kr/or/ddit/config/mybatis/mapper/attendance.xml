@@ -122,7 +122,7 @@
                 from MATCHING m, ATTENDANCE att
                 where m.MAT_ID = att.MAT_ID 
                 and m.CW_MEM_ID= #{cw_mem_id}
-                and m.mem_id = #{mem_id})a )b
+                and m.mem_id = '%'||#{mem_id}||'%')a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 			]]>
 	</select>
@@ -202,6 +202,11 @@
      select count(*) from MATCHING m, ATTENDANCE a
                 where m.MAT_ID = a.MAT_ID 
                 and m.mem_id like '%'||#{day}||'%'
+    </select>
+    
+    
+    <select id="getNames" parameterType="int" resultType="memberVo">
+    	select mem_id, mem_nm from member where mem_id =(select cw_mem_id from matching where mat_id = #{mat_id})
     </select>
 	
 

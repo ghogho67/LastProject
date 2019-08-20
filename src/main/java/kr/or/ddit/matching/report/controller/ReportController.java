@@ -3,7 +3,9 @@ package kr.or.ddit.matching.report.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
@@ -28,6 +31,7 @@ import kr.or.ddit.matching.report.service.IReportService;
 import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
 import kr.or.ddit.matching.reportAttach.service.IReportAttachService;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.page.model.PageVo;
 
 @RequestMapping("/report")
 @Controller
@@ -63,7 +67,16 @@ public class ReportController {
 	@RequestMapping(path = "/reportList", method = RequestMethod.GET)
 	public String reportList(Model model, HttpSession session, RedirectAttributes redirectAttributes,
 			HttpServletRequest request, @RequestParam(name = "memid") String mem_id,
-			@RequestParam(name = "memgrade") String mem_grade) {
+			@RequestParam(name = "memgrade") String mem_grade
+			) {
+		
+		
+		
+	
+		
+		
+		
+		
 
 		logger.debug("@@@@mem_id : {} ", mem_id);
 		logger.debug("@@@@mem_grade : {} ", mem_grade);
@@ -75,15 +88,23 @@ public class ReportController {
 
 			List<MatchingReportVo> reportlist = reportService.getWorkerReportList(cw_mem_id);
 			logger.debug("@@@@reportlist : {} ", reportlist);
-
 			model.addAttribute("reportlist", reportlist);
 
+			
+			
+			
+			
+			
+			
 		} else {
 
 			List<MatchingReportVo> reportlist = reportService.getAllReportList(mem_id);
 			logger.debug("@@@@reportlist : {} ", reportlist);
-
 			model.addAttribute("reportlist", reportlist);
+			
+			
+			
+			
 		}
 
 		return "mypage/report/reportList";
