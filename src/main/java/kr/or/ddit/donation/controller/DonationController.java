@@ -68,9 +68,8 @@ public class DonationController {
       approvalVo.setApp_time(donationApprovalVo.getApp_time());
       approvalVo.setApp_type("3");
       approvalVo.setApp_del("N");
+//      approvalVo.setMem_id("비회원");
 
-//      approvalVo.setMem_id("");
-      
       logger.debug("☞approvalVo:{}",approvalVo);
       
       int insertApproval_nonCnt = approvalService.insertApproval_non(approvalVo);
