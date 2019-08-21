@@ -33,6 +33,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
 import kr.or.ddit.category.post.post.model.DetailCommonVo;
@@ -58,6 +60,9 @@ public class PostController {
 
 	@Resource(name = "attachmentService")
 	private IAttachmentService attachmentService;
+	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
 
 	@RequestMapping(path = "modifyView")
 	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
@@ -119,6 +124,10 @@ public class PostController {
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
 
 		return "/post/postPagingList.tiles";
 	}
@@ -436,13 +445,16 @@ public class PostController {
 		return "/post/postPagingList.tiles";
 	}
 
-	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
-	public String ImageBoard1() {
-		return "festival.tiles";
-	}
+//	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
+//	public String ImageBoard1() {
+//		return "festival.tiles";
+//	}
 	
 	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-	public String ImageBoard2() {
+	public String ImageBoard2(HttpSession session, int cate_id) {
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
 		return "festival2";
 	}
 

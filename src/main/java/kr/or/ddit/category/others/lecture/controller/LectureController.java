@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.category.others.culture.model.CultureVo;
 import kr.or.ddit.category.others.culture.service.ICultureService;
 import kr.or.ddit.category.others.lecture.model.LectureVo;
@@ -37,10 +39,21 @@ public class LectureController {
 	@Resource(name = "cultureService")
 	private ICultureService cultureService;
 	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
+
+	
 	
 	
 	@RequestMapping(path = "/lectureMain", method = RequestMethod.GET)
-	public String categoryList(Model model, HttpSession session) {
+	public String categoryList( int cate_id, Model model, HttpSession session) {
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
+		
+		logger.debug("!!!!!!!!cate_id : {}",cate_id);
+		logger.debug("!!!!!!!!categoryList : {}",categoryList);
 		return "lecture/lectureMain";
 	}
 	

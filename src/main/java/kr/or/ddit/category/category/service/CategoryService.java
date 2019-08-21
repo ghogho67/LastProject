@@ -66,5 +66,10 @@ public class CategoryService implements ICategoryService {
 	public CategoryVo getCategory(int cate_id) {
 		return categoryDao.getCategory(cate_id);
 	}
+
+	@Override
+	public List<CategoryVo> sideBarList(int cate_id) {
+		return categoryDao.sideBarList(cate_id);
+	}
 	
 }

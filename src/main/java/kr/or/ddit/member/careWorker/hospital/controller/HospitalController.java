@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.member.careWorker.hospital.model.HospitalVo;
 import kr.or.ddit.member.careWorker.hospital.service.IHospitalService;
 import kr.or.ddit.page.model.PageVo;
@@ -28,6 +31,8 @@ public class HospitalController {
 	@Resource(name = "hospitalService")
 	private IHospitalService hospitalService;
 	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
 
 	/**
 	* Method : hospital
@@ -39,7 +44,7 @@ public class HospitalController {
 	* Method 설명 : 병원 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String hospital(Model model, PageVo pageVo, int page, int pageSize) {
+	public String hospital(int cate_id, HttpSession session,Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -77,6 +82,10 @@ public class HospitalController {
 		logger.debug("☞hosList:{}",hosList);
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
 		
 		return "/hospital/hospitalPagingList.tiles";
 	}

@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
@@ -23,6 +25,9 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Resource(name = "memberService")
 	private IMemberService memberService;
+	
+	@Resource(name = "categoryService")
+	private ICategoryService categoryService;
 
 	/**
 	 * Method : loginView
@@ -114,8 +119,11 @@ public class LoginController {
 			logger.debug("@@@@memVo{}",memberVo);
 			session.setAttribute("MEM_INFO", memberVo);
 			session.setAttribute("mem_id", mem_id);
+			
+			List<CategoryVo> categoryList = categoryService.getCategoryList();
+			session.setAttribute("categoryList", categoryList);
+			logger.debug("cate : {}",categoryList);
 
-				
 			return "redirect:crawling";
 		}
 		else {
