@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
@@ -14,6 +16,9 @@ import kr.or.ddit.matching.report.model.ReportWriteVo;
 
 @Repository
 public class ReportDao implements IReportDao {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReportDao.class);
+	
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
 	
@@ -27,10 +32,10 @@ public class ReportDao implements IReportDao {
 
 
 
-	@Override
-	public ReportVo getReport(String rep_id) {
-		return sqlSession.selectOne("matchingReport.getMatching",rep_id);
-	}
+//	@Override
+//	public ReportVo getReport(String rep_id) {
+//		return sqlSession.selectOne("matchingReport.getMatching",rep_id);
+//	}
 
 
 
@@ -52,9 +57,6 @@ public class ReportDao implements IReportDao {
 	public MatchingReportVo getCertainReport(MatchingReportVo matchingReportVo) {
 		return sqlSession.selectOne("matchingReport.getCertainReport",matchingReportVo);
 	}
-
-
-	
 	
 
 	@Override
@@ -62,13 +64,10 @@ public class ReportDao implements IReportDao {
 		return sqlSession.selectList("matchingReport.getWorkerReportList",cw_mem_id);
 	}
 
-
-
 	@Override
 	public MatchingReportAttachmentVo getWorkerCertainReportWA(MatchingReportAttachmentVo matchingReportAttachmentVo) {
 		return sqlSession.selectOne("matchingReport.getWorkerCertainReportWA",matchingReportAttachmentVo);
 	}
-
 
 	@Override
 	public int reportInsert(ReportWriteVo rwv) {
@@ -78,12 +77,34 @@ public class ReportDao implements IReportDao {
 	
 	@Override
 	public ReportVo getReportVo(int mat_id) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.selectOne("report.getReportVo",mat_id);
+
+	}
+
+	@Override
+	public ReportVo getLatestReport() {
+		
+		return sqlSession.selectOne("report.getLatestReport");
+		
 	}
 
 
 
+	@Override
+	public int reportWrite(ReportVo reportVo) {
+		logger.debug("☞reportVo:{}",reportVo);
+		return sqlSession.insert("report.reportWrite",reportVo);
+	}
+
+
+
+//	@Override
+//	public ReportVo getReport(int rep_id) {
+//		
+//		return sqlSession.selectOne("report.getReport",rep_id);
+//	}
+	
 
 }
 

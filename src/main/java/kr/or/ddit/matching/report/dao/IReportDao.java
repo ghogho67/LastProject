@@ -9,14 +9,8 @@ import kr.or.ddit.matching.report.model.ReportWriteVo;
 
 
 public interface IReportDao {
-
 	
-	
-	
-	
-	ReportVo getReport(String rep_id);
-	
-	
+//	ReportVo getReport(String rep_id);
 	
 	List<MatchingReportVo> getAllReportList (String mem_id);
 	
@@ -24,14 +18,19 @@ public interface IReportDao {
 	
 	MatchingReportAttachmentVo getCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
 	
-	
-	
-	
 	List<MatchingReportVo> getWorkerReportList (String cw_mem_id);
+	
 	MatchingReportAttachmentVo getWorkerCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
+	
 	int reportInsert(ReportWriteVo rwv);
 
 	List<ReportVo> getReportList(String mat_id);
 
 	ReportVo getReportVo(int mat_id);
+
+	ReportVo getLatestReport();
+
+	int reportWrite(ReportVo reportVo);
+
+//	ReportVo getReport(int rep_id);
 }

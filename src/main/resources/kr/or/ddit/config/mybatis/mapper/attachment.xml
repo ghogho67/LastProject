@@ -5,7 +5,8 @@
 <mapper namespace="attachment">
 
 	<insert id="attachmentInsert" parameterType="AttachmentVo">
-		insert into	attachment values (att_id.nextval,#{att_path},#{att_nm},#{post_id})
+		insert into
+		attachment values (att_id.nextval,#{att_path},#{att_nm},#{post_id})
 	</insert>
 
 	<update id="attachmentDelete" parameterType="AttachmentVo">
@@ -13,11 +14,13 @@
 		attachment where att_id = #{att_id}
 	</update>
 
-	<select id="getAttachmentList" parameterType="int" resultType="AttachmentVo">
+	<select id="getAttachmentList" parameterType="int"
+		resultType="AttachmentVo">
 		select*from attachment where post_id =#{post_id}
 	</select>
 
-	<select id="getAttachment" parameterType="int" resultType="AttachmentVo">
+	<select id="getAttachment" parameterType="int"
+		resultType="AttachmentVo">
 		select*from attachment where att_id = #{att_id}
 	</select>
 

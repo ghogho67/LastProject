@@ -1,6 +1,7 @@
 package kr.or.ddit.matching.matching.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.matching.matching.model.MatchingVo;
 
@@ -31,5 +32,7 @@ public interface IMatchingService {
 	List<MatchingVo> getCWMatchingList(String cw_mem_id);
 
 	List<MatchingVo> getMemMatchingList(String mem_id);
+
+	Map<String, Object> matchingPagingList(Map<String, Object> map);
 
 }

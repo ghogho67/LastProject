@@ -217,24 +217,12 @@ td {
 </style>
 <script>
 	$(document).ready(function() {
-		$(".Category").on("click", function() {
-			var post_id = $(this).find(".CategoryId").text();
-			$("#post_id").val(post_id);
-			$("#frm").submit();
-		});
-
-		$("#searchBtn").on("click", function() {
-			$("#frm2").submit();
-		});
-
-		$("#searchType").val("${searchType}").prop("selected", true);
-		$("#searchType").val().prop("selected", true);
 	});
 </script>
 </head>
 
 <body>
-	<pre>${cate_id}</pre>
+	<pre>pageVo.page:{pageVo.page}pageVo.pageSize:{pageVo.pageSize}</pre>
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
@@ -246,94 +234,93 @@ td {
 						</h2>
 					</div>
 					<hr>
-					<form id="frm" action="${cp}/post/detail" method="post"
-						enctype="multipart/form-data">
-						<input type="hidden" class="post_id" id="post_id" name="post_id">
-						<div class="table-responsive">
-							<table class="table center-aligned-table">
-								<tr class="text-primary">
-									<th>매칭 번호</th>
-									<th>매칭일</th>
-									<th>매칭 시작시간</th>
-									<th>매칭 종료시간</th>
-									<th>매칭 유형</th>
-									<th>매칭 대상자</th>
-									<th>보고서 작성</th>
-									<th>보고서 확인</th>
-								</tr>
-								<c:set var="number" value="0" />
-								<c:forEach items="${reportList }" var="report"
-									varStatus="status">
-										<tr class="Category" id="${report.mat_id }"
-											data-post_id="${report.mat_id }">
-											<%--<td class="CategoryId">${post.post_id }</td> --%>
-											<td class="CategoryId">
-														${postCnt }
-														${status.index }
-														${current }
-														${((postCnt-status.index))-((current-1)*10)}
-											</td>
-											<%--${(postCnt - status.index)-((current-1)*10)} --%>
-											<td>${report.day }</td>
-											<td>${report.stTime }</td>
-											<td>${report.endTime }</td>
-											<td>${report.mat_type }</td>
-											<td>${report.mem_id }</td>
-											<td><a href="${cp}/report/reportWrite?mat_id=${report.mat_id }"	class="btn btn-primary btn-sm">보고서 작성</a></td>
-											<td><a href="${cp}/report/reportWrite?mat_id=${report.mat_id }"	class="btn btn-primary btn-sm">보고서 확인</a></td>
-										</tr>
-										<input type="hidden" class="post_id" value="${report.mat_id }">
-								</c:forEach>
-							</table>
-						</div>
-						<div class="demo" style="position: absolute; right: 40%;">
-							<ul class="pagination">
-								<c:choose>
-									<c:when test="${pageVo.page == 1 }">
-										<li class="page-item prev disabled"><a href="#"
-											class="page-link" aria-label="Previous"><span
-												aria-hidden="true">«</span> </a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											aria-label="Next"
-											href="${cp}/report/reportPagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}"><span
-												aria-hidden="true">«</span></a></li>
-									</c:otherwise>
-								</c:choose>
-
-								<c:forEach begin="1" end="${paginationSize}" var="i">
-									<c:choose>
-										<c:when test="${pageVo.page == i}">
-											<li class="page-item active"><a class="page-link"
-												href="#">${i}</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												href="${cp}/report/reportPagingList?page=${i}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}&current=${i}&postCnt=${postCnt}">${i}</a>
-											</li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<c:choose>
-									<c:when test="${pageVo.page == paginationSize}">
-										<li class="page-item next disabled"><a href="#"
-											class="page-link" aria-label="Next"><span
-												aria-hidden="true">»</span></a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											aria-label="Next"
-											href="${cp}/report/reportPagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}&cate_id=${cate_id}"><span
-												aria-hidden="true">»</span></a></li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</div>
-					</form>
+					<div class="table-responsive">
+						<table class="table center-aligned-table">
+							<tr class="text-primary">
+								<th>매칭 번호</th>
+								<th>매칭일</th>
+								<th>매칭 시작시간</th>
+								<th>매칭 종료시간</th>
+								<th>매칭 유형</th>
+								<th>매칭 대상자</th>
+								<th>보고서 작성</th>
+								<th>보고서 확인</th>
+							</tr>
+							<c:set var="number" value="0" />
+							<c:forEach items="${reportList }" var="report"
+								varStatus="status">
+									<tr class="Category" id="${report.mat_id }"
+										data-post_id="${report.mat_id }">
+										<%--<td class="CategoryId">${post.post_id }</td> --%>
+										<td class="CategoryId">
+<%-- 														${matchingCnt } --%>
+<%-- 														${status.index } --%>
+<%-- 														${current } --%>
+													${((matchingCnt-status.index+1))-((current-1)*10)}
+										</td>
+										<%--${(postCnt - status.index)-((current-1)*10)} --%>
+										<td>${report.day }</td>
+										<td>${report.stTime }</td>
+										<td>${report.endTime }</td>
+										<td>${report.mat_type }</td>
+										<td>${report.mem_id }</td>
+										<td><a href="${cp}/report/reportWrite?mat_id=${report.mat_id }"	class="btn btn-primary btn-sm">보고서 작성</a></td>
+										<td>
+										<c:if test="${report.check eq 1 }">
+										<a href="${cp}/report/detail?mat_id=${report.mat_id }" class="btn btn-primary btn-sm">보고서 확인</a>
+										</c:if>
+										</td>
+									</tr>
+									<input type="hidden" class="mat_id" value="${report.mat_id }">
+							</c:forEach>
+						</table>
+					</div>
 				</div>
 			</div>
+					<div class="demo" style="position: absolute; right: 40%;">
+						<ul class="pagination">
+							<c:choose>
+								<c:when test="${pageVo.page == 1 }">
+									<li class="page-item prev disabled"><a href="#"
+										class="page-link" aria-label="Previous"><span
+											aria-hidden="true">«</span> </a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item"><a class="page-link"
+										aria-label="Next"
+										href="${cp}/report/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}"><span
+											aria-hidden="true">«</span></a></li>
+								</c:otherwise>
+							</c:choose>
+
+							<c:forEach begin="1" end="${paginationSize}" var="i">
+								<c:choose>
+									<c:when test="${pageVo.page == i}">
+										<li class="page-item active"><a class="page-link"
+											href="#">${i}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											href="${cp}/report/pagingList?page=${i}&pageSize=${pageVo.pageSize}&current=${i}&matchingCnt=${matchingCnt}">${i}</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+							<c:choose>
+								<c:when test="${pageVo.page == paginationSize}">
+									<li class="page-item next disabled">
+									<a href="#" class="page-link" aria-label="Next">
+									<span aria-hidden="true">»</span></a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+									<a class="page-link" aria-label="Next" href="${cp}/report/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">
+									<span aria-hidden="true">»</span></a></li>
+								</c:otherwise>
+							</c:choose>
+						</ul>
+					</div>
 		</div>
 	</div>
 </body>

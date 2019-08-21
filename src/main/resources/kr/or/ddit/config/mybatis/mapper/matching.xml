@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="matching">
 
-	<insert id="create" parameterType="matchingVo">
+	<insert id="create" parameterType="MatchingVo">
 		INSERT INTO matching
 		VALUES
 		(mat_id.nextval,
@@ -21,27 +21,28 @@
 		'N')
 	</insert>
 
-	<select id="getMatchingVo" resultType="matchingVo">
+	<select id="getMatchingVo" resultType="MatchingVo">
 		select * from matching
 		where mat_id = 1
 	</select>
 
-	<select id="getMatchingList" resultType="matchingVo">
-		select * from matching
-		where cw_mem_id = #{cw_mem_id}
-	</select>
-	
-	<select id="getCWMatchingList" resultType="matchingVo">
+	<select id="getMatchingList" parameterType="string" resultType="MatchingVo">
 		select * from matching
 		where cw_mem_id = #{cw_mem_id}
 	</select>
 
-	<select id="getMemMatchingList" resultType="matchingVo">
+	<select id="getCWMatchingList" parameterType="string" resultType="MatchingVo">
 		select * from matching
+		where cw_mem_id = #{cw_mem_id}
+	</select>
+
+	<select id="getMemMatchingList" parameterType="string" resultType="MatchingVo">
+		select * from
+		matching
 		where mem_id = #{mem_id}
 	</select>
 
-	<update id="modify" parameterType="matchingVo">
+	<update id="modify" parameterType="MatchingVo">
 		UPDATE matching SET
 		mat_title
 		=#{mat_title},
@@ -61,9 +62,64 @@
 		UPDATE matching SET
 		mat_del='Y' WHERE mat_id = #{mat_id}
 	</update>
-	
+
 	<select id="getCareWorker" resultType="memberVo">
-		select * from member where mem_grade = 3;
+		select * from member where
+		mem_grade = 3
+	</select>
+
+	<select id="cwMatchingPagingList" parameterType="map" resultType="MatchingVo">
+		<![CDATA[
+		SELECT *
+		FROM
+		(SELECT A.*, ROWNUM RN
+		FROM
+		(SELECT
+		MAT_ID,MAT_TITLE,MAT_CONT,SUBSTR (REPLACE(MAT_ST,'T',' '),1) MAT_ST,
+		SUBSTR (REPLACE(MAT_END,'T',' '),1) MAT_END,
+		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
+		FROM MATCHING
+		WHERE CW_MEM_ID =
+		#{cw_mem_id}
+		ORDER BY MAT_ST DESC)A)B
+		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	B.RN <= #{page} * #{pageSize}	
+		]]>
+	</select>
+
+	<select id="memMatchingPagingList" parameterType="map" resultType="MatchingVo">
+		<![CDATA[
+		SELECT *
+		FROM
+		(SELECT A.*, ROWNUM RN
+		FROM
+		(SELECT
+		MAT_ID,MAT_TITLE,MAT_CONT,SUBSTR (REPLACE(MAT_ST,'T',' '),1) MAT_ST,
+		SUBSTR (REPLACE(MAT_END,'T',' '),1) MAT_END,
+		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
+		FROM MATCHING
+		WHERE mem_id =
+		#{mem_id}
+		ORDER BY MAT_ST DESC)A)B
+		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	B.RN <= #{page} * #{pageSize}	
+		]]>
+	</select>
+
+	<select id="cwMatchingCnt" parameterType="string" resultType = "int">
+
+		select
+		count(*) from matching where
+		cw_mem_id=#{cw_mem_id} and mat_del='N'
+
+	</select>
+	
+	<select id="memMatchingCnt" parameterType="string" resultType = "int">
+
+		select
+		count(*) from matching where
+		cw_mem_id=#{cw_mem_id} and mat_del='N'
+
 	</select>
 
 </mapper>
