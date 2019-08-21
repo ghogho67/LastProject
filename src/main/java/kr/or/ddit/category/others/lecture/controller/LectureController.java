@@ -141,6 +141,7 @@ public class LectureController {
 		
 
 		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("startPage", startPage);
 		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo", pageVo);
 		
