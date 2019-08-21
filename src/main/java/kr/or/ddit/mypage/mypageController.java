@@ -29,6 +29,7 @@ import kr.or.ddit.gold.sos.service.ISosService;
 import kr.or.ddit.matching.grade.service.IGradeService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
+import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.survey.model.SurveyPartVo;
 import kr.or.ddit.survey.model.SurveyResultVo;
 import kr.or.ddit.survey.service.SurveyResult.ISurveyResultService;
@@ -569,10 +570,75 @@ public class mypageController {
 	 * @return Method 설명 :회원관리 - 회원목록
 	 */
 	@RequestMapping("/pagingList")
-	public String memberPagingList() {
+	public String memberPagingList(Model model, PageVo pageVo, int page, int pageSize ) {
+		   
+		pageVo = new PageVo();
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
+		
+		Map<String, Object> resultMap = memberService.getAllMemberList(pageVo);
+		
+		logger.debug("☞resultMap:{}",resultMap);
+		
+		List<MemberVo> getMemList = (List<MemberVo>) resultMap.get("getMemList");
+		
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+		if(pageVo.getPage() == 1) {
+			startPage = 1;
+		}
+		if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+        
+        logger.debug("☞getMemList:{}",getMemList);
+        
+        model.addAttribute("getMemList", getMemList);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("paginationSize", paginationSize);
+        model.addAttribute("lastpaginationSize", lastpaginationSize);
+        model.addAttribute("pageVo", pageVo);
+		
+		logger.debug("☞getMemList:{}",getMemList);
+		logger.debug("☞paginationSize:{}",paginationSize);
+		logger.debug("☞pageVo:{}",pageVo);
+		
+		
+		//구글 pie chart API
+		
+		
+//		manager = memberService.memberGradeCnt("0");
+//		nomalMember = memberService.memberGradeCnt("1");
+//		goldMember = memberService.memberGradeCnt("2");
+//		careWorker = memberService.memberGradeCnt("3");
+//		logger.debug("☞manager:{}",manager);
+//		logger.debug("☞nomalMember:{}",nomalMember);
+//		logger.debug("☞careWorker:{}",careWorker);
+//		logger.debug("☞careWorker:{}",careWorker);
+//		
+//		model.addAttribute("manager",manager);
+//		model.addAttribute("nomalMember",nomalMember);
+//		model.addAttribute("goldMember",goldMember);
+//		model.addAttribute("careWorker",careWorker);
+		
+		model.addAttribute("manager",memberService.memberGradeCnt("0"));
+		model.addAttribute("nomalMember",memberService.memberGradeCnt("1"));
+		model.addAttribute("goldMember",memberService.memberGradeCnt("2"));
+		model.addAttribute("careWorker",memberService.memberGradeCnt("3"));
+		
+		
+		
+		   return "/mypage/memberManage/memberPagingList.mytiles";
+	   }
+	
+	   
 
-		return "/mypage/memberManage/memberPagingList.tiles";
-	}
 
 	@RequestMapping("/recognitionActResult")
 	public String recognitionActResult(HttpSession session, Model model) {

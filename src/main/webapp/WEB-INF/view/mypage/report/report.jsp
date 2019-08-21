@@ -267,7 +267,7 @@
 														</ul>
 													</div>
 													<div class="compose-btn pull-left">
-														<a href="${cp}/report/reportList?memid=sona&memgrade=2"
+														<a href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}"
 															class="btn btn-sm btn-theme"><i class="fa fa-reply"></i>뒤로가기</a>
 													</div>
 												</div>

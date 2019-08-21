@@ -1,5 +1,6 @@
 package kr.or.ddit.member.member.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -141,6 +142,43 @@ public class MemberService implements IMemberService {
 	public int upgradeMemberStep3(String mem_id) {
 		// TODO Auto-generated method stub
 		return memberDao.upgradeMemberStep3(mem_id);
+	}
+
+
+
+	/**
+	* Method : getAllMemberList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :전체 사용자 페이징 리스트
+	*/
+	@Override
+	public Map<String, Object> getAllMemberList(PageVo pageVo) {
+		
+		Map<String, Object> resultMap = new HashMap<String , Object>();
+		resultMap.put("getMemList", memberDao.getAllMemberList(pageVo));
+		
+		int memberCnt = memberDao.memberCnt();
+		int paginationSize = (int) Math.ceil((double)memberCnt/pageVo.getPageSize());
+		resultMap.put("lastpaginationSize", paginationSize);
+		
+		return resultMap;
+	}
+
+
+
+	/**
+	* Method : memberGradeCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원등급간 수 
+	*/
+	@Override
+	public int memberGradeCnt(String mem_grade) {
+		return memberDao.memberGradeCnt(mem_grade);
 	}
 
 

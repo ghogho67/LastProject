@@ -202,15 +202,15 @@ width: 70%
 						</h2>
 						
 						<ul>
-							<li><a href="${cp}/lecture/lectureList?lec_type=601">순수학문</a></li>
-							<li><a href="${cp}/lecture/lectureList?lec_type=602">외국어</a></li>
-							<li><a href="${cp}/lecture/lectureList?lec_type=603">생활기술</a></li>
-							<li><a href="${cp}/lecture/lectureList?lec_type=604">요리</a></li>
-							<li><a href="${cp}/lecture/lectureList?lec_type=605">미술/음악</a></li>
-							<li><a href="${cp}/lecture/lectureList?lec_type=606">건강/생활체육</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=601&page=1&pageSize=10">순수학문</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=602&page=1&pageSize=10">외국어</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=603&page=1&pageSize=10">생활기술</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=604&page=1&pageSize=10">요리</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=605&page=1&pageSize=10">미술/음악</a></li>
+							<li><a href="${cp}/lecture/lectureList?lec_type=606&page=1&pageSize=10">건강/생활체육</a></li>
 						</ul>
 			
-	<a href="${cp}/lecture/lectureListALL" style=" position:absolute; left:86%; font-size:2em; font-weight: bold; color: #473fa0; ">전체 강좌 보기 </a>
+	<a href="${cp}/lecture/lectureListALL?page=1&pageSize=10" style=" position:absolute; left:86%; font-size:2em; font-weight: bold; color: #473fa0; ">전체 강좌 보기 </a>
 						
 						
 					</div>

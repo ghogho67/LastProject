@@ -12,6 +12,7 @@
 		<typeAlias alias="memberVo" type="kr.or.ddit.member.member.model.MemberVo"/>
 		<typeAlias alias="goldVo" type="kr.or.ddit.gold.gold.model.GoldVo"/>
 		<typeAlias alias="pageVo" type="kr.or.ddit.page.model.PageVo"/>
+		<typeAlias alias="LpageVo" type="kr.or.ddit.page.model.LPageVo"/>
 		<typeAlias alias="memberDiseaseVo" type="kr.or.ddit.member.memberDisease.model.MemberDiseaseVo"/>
 		<typeAlias alias="locationVo" type="kr.or.ddit.member.careWorker.location.model.LocationVo"/>
 		<typeAlias alias="dayVo" type="kr.or.ddit.member.careWorker.day.model.DayVo"/>
@@ -55,6 +56,8 @@
 		<typeAlias alias="donationApprovalVo" type="kr.or.ddit.joinVo.DonationApprovalVo"/>
 		<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
 		<typeAlias alias="reportWriteVo" type="kr.or.ddit.matching.report.model.ReportWriteVo"/>
+		<typeAlias alias="ReportPageVo" type="kr.or.ddit.matching.report.model.ReportPageVo"/>
+		
 	</typeAliases>
 
 

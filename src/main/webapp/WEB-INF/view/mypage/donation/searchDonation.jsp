@@ -162,6 +162,7 @@ $(document).ready(function(){
 						<table class="table center-aligned-table">
 						<thead>
 							<tr>
+								<th scope="col">NO</th>
 								<th scope="col">기부자 이름</th>
 								<th scope="col">회원 아이디</th>
 								<th scope="col">전화번호</th>
@@ -173,6 +174,7 @@ $(document).ready(function(){
 							<tbody>
 							<c:forEach items="${getAllDoner }" var="vo" varStatus="status">
 								<tr>
+									<td>${vo.rn }</td>
 									<td>${vo.doner }</td>
 									<td>${vo.mem_id }</td>
 									<td>${vo.doner_phone }</td>
