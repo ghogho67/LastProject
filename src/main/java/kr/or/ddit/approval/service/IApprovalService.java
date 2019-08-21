@@ -97,5 +97,15 @@ public interface IApprovalService {
 	* Method 설명 :결제자 전체 리스트
 	*/
 	List<ApprovalVo> approvalAllList();
+	
+	/**
+	* Method : gradeApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_grade
+	* @return
+	* Method 설명 :결산관리 - 등급별 결제액 
+	*/
+	int gradeApproval(String mem_grade);
 
 }

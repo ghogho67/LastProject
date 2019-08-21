@@ -152,6 +152,19 @@ public class ApprovalDao implements IApprovalDao {
 	public List<ApprovalVo> approvalAllList() {
 		return sqlSession.selectList("approval.approvalAllList");
 	}
+
+	/**
+	* Method : gradeApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_grade
+	* @return
+	* Method 설명 :결산관리 - 등급별 결제액 
+	*/
+	@Override
+	public int gradeApproval(String mem_grade) {
+		return sqlSession.selectOne("approval.gradeApproval",mem_grade);
+	}
 	
 	
 

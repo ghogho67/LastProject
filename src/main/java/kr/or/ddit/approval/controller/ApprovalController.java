@@ -470,46 +470,66 @@ public class ApprovalController {
 //		
 //	}
 	
-	@RequestMapping(path = "/approvalCheckA", method = RequestMethod.GET)
-	public String approvalCheckA(Model model, PageVo pageVo, int page, int pageSize) {
+	
+	/**
+	* Method : approvalCheckA
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param pageVo
+	* @param page
+	* @param pageSize
+	* @return
+	* Method 설명 : 관리자 결산관리 - 등급별 pie chart
+	*/
+	@RequestMapping("/approvalCheckA")
+	public String approvalCheckA(Model model,PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
 		
 		Map<String, Object> resultMap = approvalService.approvalAllPagingList(pageVo);
-		logger.debug("☞resultMap:{}",resultMap);
+		logger.debug("☞resultMap:{}", resultMap);
 		
 		List<ApprovalVo> approvalAllList = (List<ApprovalVo>) resultMap.get("approvalAllList");
+		int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
+		if (pageVo.getPage() == 1) {
+			startPage = 1;
+		}
+		if (startPage >= 2) {
+			startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10) * 10) + 1;
+		}
+		int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
+
+		int lastpaginationSize = (int) resultMap.get("lastpaginationSize");
+
+		if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
+			paginationSize = lastpaginationSize;
+		}
 		
-		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-        if(pageVo.getPage()==1) {
-        	startPage =1;
-        }
-        if(startPage>=2) {
-        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-        }
-        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-        
-        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
-        
-        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-        	paginationSize= lastpaginationSize;
-        }
-		
-        model.addAttribute("approvalAllList",approvalAllList);
-        model.addAttribute("startPage", startPage);
+		model.addAttribute("approvalAllList", approvalAllList);
+		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("lastpaginationSize", lastpaginationSize);
-		model.addAttribute("pageVo",pageVo);
+		model.addAttribute("pageVo", pageVo);
 		
-		logger.debug("☞approvalAllList:{}",approvalAllList);
-		logger.debug("☞paginationSize:{}",paginationSize);
-		logger.debug("☞pageVo:{}",pageVo);
+		logger.debug("☞approvalAllList:{}", approvalAllList);
+		logger.debug("☞paginationSize:{}", paginationSize);
+		logger.debug("☞pageVo:{}", pageVo);
 		
 		
-		return"/mypage/approval/approvalCheckA.mytiles";
+		// 구글 pie chart API
+		model.addAttribute("nomalMember", approvalService.gradeApproval("1"));
+		model.addAttribute("goldMember", approvalService.gradeApproval("2"));
+		model.addAttribute("careWorker", approvalService.gradeApproval("3"));
+
+	
+		return "/mypage/approval/approvalCheckA.mytiles";
+
 	}
+	
+	
 
 }
 

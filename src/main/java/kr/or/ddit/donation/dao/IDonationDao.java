@@ -75,69 +75,6 @@ public interface IDonationDao {
 	*/
 	List<DonationApprovalVo> donationPagingList(PageVo pageVo);
 	
-	/**
-	* Method : doantionCnt_Y
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @param mem_yn
-	* @return
-	* Method 설명 :회원  기부자 전체 수
-	*/
-	int donationCnt_Y();
-	
-	/**
-	 * Method : doantionCnt_N
-	 * 작성자 : ADMIN
-	 * 변경이력 :
-	 * @param mem_yn
-	 * @return
-	 * Method 설명 :비회원 기부자 전체 수
-	 */
-	int donationCnt_N();
-	
-	/**
-	* Method : getDonationList_Y
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @param mem_yn
-	* @return
-	* Method 설명 :회원 리스트 조회
-	*/
-	List<DonationApprovalVo> getDonationList_Y();
-	
-	/**
-	 * Method : getDonationList_N
-	 * 작성자 : ADMIN
-	 * 변경이력 :
-	 * @param mem_yn
-	 * @return
-	 * Method 설명 :회원/비회원 리스트 조회
-	 */
-	List<DonationApprovalVo> getDonationList_N();
-	
-	/**
-	* Method : donationPagingList_Y
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @param pageVo
-	* @return
-	* Method 설명 :회원 기부자 페이징 리스트
-	*/
-	List<DonationApprovalVo> donationPagingList_Y(PageVo pageVo);
-	
-	/**
-	* Method : donationPagingList_N
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @param pageVo
-	* @return
-	* Method 설명 :비회원 기부자 페이징 리스트
-	*/
-	List<DonationApprovalVo> donationPagingList_N(PageVo pageVo);
-	
-	
-	
-	
 	
 	
 }

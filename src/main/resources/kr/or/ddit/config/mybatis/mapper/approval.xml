@@ -189,8 +189,20 @@
 		select * 
 		from approval
 	</select>
+	
+	<!-- 결산관리 - 등급별 결제액 -->
+	<select id="gradeApproval" parameterType="string" resultType="int">
+		select sum(app_pay)
+		from member, approval 
+		where (app_type ='1' or app_type='2') 
+		and mem_grade=#{mem_grade}
+	</select>
+	
 
 </mapper>
+
+
+
 
 
 

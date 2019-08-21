@@ -422,7 +422,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							</nav>
 						</div>
 			
-			
 		
 	</div>
 

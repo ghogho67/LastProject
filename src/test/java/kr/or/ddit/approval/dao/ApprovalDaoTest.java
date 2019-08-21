@@ -114,7 +114,7 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		/***When***/
 		int approvalAllCnt = approvalDao.approvalAllCnt();
 		/***Then***/
-		assertEquals(59, approvalAllCnt);
+		assertEquals(61, approvalAllCnt);
 
 	}
 	
@@ -131,7 +131,7 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		/***When***/
 		List<ApprovalVo> approvalAllList = approvalDao.approvalAllList();
 		/***Then***/
-		assertEquals(59, approvalAllList.size());
+		assertEquals(61, approvalAllList.size());
 
 	}
 	
@@ -149,6 +149,23 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		List<ApprovalVo> approvalPagingList = approvalDao.approvalAllPagingList(pageVo);
 		/***Then***/
 		assertEquals(10, approvalPagingList.size());
+
+	}
+	
+	/**
+	* Method : gradeApprovalTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :결산관리 - 등급별 결제액 
+	*/
+	@Test
+	public void gradeApprovalTest() {
+		/***Given***/
+		String mem_grade = "1";
+		/***When***/
+		int gradeApproval = approvalDao.gradeApproval(mem_grade);
+		/***Then***/
+		assertEquals(1600000, gradeApproval);
 
 	}
 	

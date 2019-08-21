@@ -172,6 +172,19 @@ public class ApprovalService implements IApprovalService {
 	public List<ApprovalVo> approvalAllList() {
 		return approvalDao.approvalAllList();
 	}
+
+	/**
+	* Method : gradeApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_grade
+	* @return
+	* Method 설명 :결산관리 - 등급별 결제액 
+	*/
+	@Override
+	public int gradeApproval(String mem_grade) {
+		return approvalDao.gradeApproval(mem_grade);
+	}
 	
 	
 	
