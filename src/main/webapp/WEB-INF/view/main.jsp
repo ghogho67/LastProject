@@ -5,7 +5,7 @@
 <head>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMain.jsp"%>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
 <script>
 
 
@@ -51,7 +51,7 @@
    }
 
    function popup() {
-      window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
+      window.open("/chat/thistok?mem_id=${mem_id}",
             "thisTok!", "width=400, height=700, left=100, top=50");
    }
 </script>
@@ -135,10 +135,28 @@
 
 
 
-#fixedbtn{position:fixed;right:50px;bottom:50px;z-index:1000}
+.fixalram{
+	position:fixed;
+	right:45px;
+	bottom:79px;
+	z-index:1000;
+	background: red;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+		 
+}
+#alramCount{
+	color: white;
+	font-size: 7px;
+	font-style: italic;
+	text-align: center;
+	margin-top: 3px;
+}
 
+#fixedbtn{position:fixed;right:50px;bottom:50px;z-index:999}
 
-#fixedbtn2{position:fixed;right:50px;bottom:120px;z-index:999}
+#fixedbtn2{position:fixed;right:50px;bottom:120px;z-index:998}
 
 </style>
 
@@ -159,7 +177,9 @@
                <form action="${cp }/chatbot">
                   <button type="submit">챗봇</button>
                </form>
-               <button id="submitBtn" type="button" onclick="popup()">ThisTok!</button>
+               
+              
+               
                <form action="${cp }/donation/memberDonation">
                   <button type="submit">기부하기</button>
                </form>
@@ -329,8 +349,63 @@
    </section>
 
 
+<script type="text/javascript">
+function initSocket() {
 
-<img src="/image/1419496.svg"  style="width: 50px;height: auto;"  id="fixedbtn">
+	   socket = new SockJS("/alram");
+	   
+	   socket.onopen = onOpen;
+	   socket.onmessage = onMessage; 
+	   socket.onclose = onClose;
+	   
+	   
+	   function onOpen(evt) {
+	   		alert("카운터 쓰기 오픈했따."); 
+	   }
+	   
+	   function sendMessage(){      
+	      //websocket으로 메시지를 보내겠다.
+	        socket.send($("#message").val());     
+	   }
+	   
+	        /* sock.close(); */
+	       
+	   function onClose(evt){
+		   alert("카운터 쓰기 클로즈 했따."); 
+	    }    
+}
+
+$(document).ready(function() { 
+	 alert("로딩 완료");
+	 initSocket();   //websocket 연결
+	
+});
+
+
+
+
+	   
+// 	$(document).ready(function() {
+// 	   var userId = "${mem_id}";   //사용자 아이디를 파라미터로 받는다
+// 	   initSocket();   //websocket 연결
+	   
+// 	});
+
+
+</script>
+	<div>
+		<div class="fixalram">
+		<p id="alramCount">10</p>
+		</div>
+		<img src="/image/1419496.svg"  style="width: 50px;height: auto;"  id="fixedbtn" onclick="popup()">
+	</div>
+	
+
+
+
+
+
+	
 <img src="/image/bot.svg"  style="width: 50px;height: auto;"  id="fixedbtn2">
 
 

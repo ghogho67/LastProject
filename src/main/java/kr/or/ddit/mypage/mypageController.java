@@ -507,6 +507,7 @@ public class mypageController {
 		GpsVo gpsVo = new GpsVo();
 		if (gps_time == null) {
 			gps_time = sdf.format(time);
+
 		}
 
 		logger.debug("!!!!! gps_time : {}", gps_time);
@@ -518,6 +519,7 @@ public class mypageController {
 		for (int i = 0; i < list.size(); i++) {
 			list2.add(list.get(i).getCar_bpm());
 		}
+
 
 		model.addAttribute("list", list2);
 
@@ -545,18 +547,24 @@ public class mypageController {
 	}
 
 	@RequestMapping("/gpxMap")
-	public String gpxMap(Model model, String mem_id) {
-		int gps_id = sosService.recentData(mem_id);
-		Map<String, Object> map = sosService.getGps(gps_id, mem_id);
-		GpsVo gpsVo = (GpsVo) map.get("gpsVo");
-		String mem_name = (String) map.get("mem_name");
+	   public String gpxMap(Model model, String mem_id) {
+	      GpsVo gpsVo = new GpsVo();
+	      if(sosService.gpsCnt(mem_id)==0) {
+	         gpsVo.setGps_la(36.325072);
+	         gpsVo.setGps_lo(127.420319);
+	      }else {
+	         
+	         int gps_id = sosService.recentData(mem_id);
+	         Map<String, Object> map = sosService.getGps(gps_id, mem_id);
+	         gpsVo = (GpsVo) map.get("gpsVo");
+	         String mem_name = (String) map.get("mem_name");
+	      }
 
-//			logger.debug("!!!!! gpsVo : {}",gpsVo.getGps_la());
 
-		model.addAttribute("gpsVo", gpsVo);
+	      model.addAttribute("gpsVo", gpsVo);
 
-		return "mypage/gold/gpxMap";
-	}
+	      return "mypage/gold/gpxMap";
+	   }
 
 	/**
 	 * Method : memberPagingList 작성자 : ADMIN 변경이력 :
@@ -651,5 +659,6 @@ public class mypageController {
 
 		return "mypage/gold/recognitionActResult2";
 	}
+
 
 }

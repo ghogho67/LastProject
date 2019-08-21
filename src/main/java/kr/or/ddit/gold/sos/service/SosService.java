@@ -37,4 +37,9 @@ public class SosService implements ISosService {
 		return map;
 	}
 
+	@Override
+	public int gpsCnt(String mem_id) {
+		return sosDao.gpsCnt(mem_id);
+	}
+
 }

@@ -14,18 +14,7 @@ body {
 }
 
 
-#chatdata{
-	overflow:scroll;
-	border-top: 1px solid #f6f6f6;
-	height: 400px;
-  width: 99%;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3
-  );
-	-ms-overflow-style: none; 
-	margin: 0 auto;
-}
+
 ::-webkit-scrollbar {
 	display:none;
 }

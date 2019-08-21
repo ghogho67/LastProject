@@ -19,6 +19,9 @@
 		SELECT MEM_NM FROM MEMBER WHERE MEM_ID=#{mem_id}
 	</select>
 	
+	<select id= "gpsCnt" parameterType="String" resultType="int">
+		SELECT count(*) FROM GPS WHERE MEM_ID=#{mem_id}
+	</select>
 
 </mapper>
 

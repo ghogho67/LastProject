@@ -75,6 +75,13 @@ public class ReportDao implements IReportDao {
 		return sqlSession.insert("report.insert", rwv);
 	}
 
+	
+	@Override
+	public ReportVo getReportVo(int mat_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("report.getReportVo",mat_id);
+	}
+
 
 
 

@@ -29,7 +29,7 @@ public class ApprovalController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ApprovalController.class);
 
-//
+
 	@RequestMapping(path = "/show")
 	public String show() {
 		return "/approval/post.tiles";
