@@ -360,7 +360,7 @@ function initSocket() {
 	   
 	   
 	   function onOpen(evt) {
-	   		alert("카운터 쓰기 오픈했따."); 
+// 	   		alert("카운터 쓰기 오픈했따."); 
 	   }
 	   
 	   function sendMessage(){      
@@ -371,12 +371,12 @@ function initSocket() {
 	        /* sock.close(); */
 	       
 	   function onClose(evt){
-		   alert("카운터 쓰기 클로즈 했따."); 
+// 		   alert("카운터 쓰기 클로즈 했따."); 
 	    }    
 }
 
 $(document).ready(function() { 
-	 alert("로딩 완료");
+// 	 alert("로딩 완료");
 	 initSocket();   //websocket 연결
 	
 });
