@@ -441,19 +441,18 @@ public class ApprovalController {
 			model.addAttribute("searchType",searchType);
 			model.addAttribute("searchVal",searchVal);
 			
-			return"/mypage/approval/approvalCheckP.mytiles";
+			return"/mypage/approval/approvalCheckA.mytiles";
 			
 		}else if(searchType.equals("memid") && searchVal.equals("")){
-			return "redirect:/approval/approvalCheck";
+			return "redirect:/approval/approvalCheckA";
 		}else if((searchType.equals("day")&&searchVal.equals(""))){
-			return "redirect:/approval/approvalCheck";
+			return "redirect:/approval/approvalCheckA";
 		}else {
-			return "redirect:/approval/approvalCheck";
+			return "redirect:/approval/approvalCheckA";
 			
 		}
 		
 
-		return "/mypage/approval/approvalCheckA.mytiles";
 	}
 
 }
