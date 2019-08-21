@@ -49,9 +49,9 @@ public class NursingHomeServiceTest extends LogicTestEnv{
 		/***When***/
 		Map<String, Object> resultMap = nursingHomeService.nursingPagingList(pageVo);
 		List<NursingHomeVo> nursingPagingList = (List<NursingHomeVo>) resultMap.get("nursingList");
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
 		/***Then***/
-		assertEquals(12, paginationSize);
+		assertEquals(11, paginationSize);
 	}
 	
 	/**

@@ -126,6 +126,12 @@ public class HospitalDaoTest extends LogicTestEnv{
 		assertEquals(25, searchHosCnt);
 	}
 	
+	/**
+	* Method : searchHosPagingListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :지역단위로 검색한 후 페이징 리스트
+	*/
 	@Test
 	public void searchHosPagingListTest() {
 		/***Given***/

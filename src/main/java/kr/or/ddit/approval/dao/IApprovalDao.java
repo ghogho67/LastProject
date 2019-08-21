@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface IApprovalDao {
 
@@ -85,6 +86,35 @@ public interface IApprovalDao {
 	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
 	*/
 	public List<ApprovalVo> typeSaerchList(Map<String, Object> resultMap); 
+	
 	public int typeSaerchCnt(Map<String, Object> type);
+	
+	/**
+	* Method : approvalPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :결제자 전체 목록 페이지네이션
+	*/
+	List<ApprovalVo> approvalAllPagingList(PageVo pageVo);
+	
+	/**
+	* Method : approvalCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제자 전체 목록 가져오기
+	*/
+	int approvalAllCnt();
+	
+	/**
+	* Method : approvalAllList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제자 전체 리스트
+	*/
+	List<ApprovalVo> approvalAllList();
 
 }

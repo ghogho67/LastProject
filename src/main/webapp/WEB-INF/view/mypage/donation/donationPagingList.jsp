@@ -88,7 +88,7 @@ td {
 
 .pagination li.active a.page-link, .pagination li a.page-link:hover,
 	.pagination li.active a.page-link:hover {
-	color: #006266;
+	color: #5ab4dc;
 	background-color: transparent;
 }
 
@@ -103,7 +103,7 @@ td {
 
 .pagination li a.page-link:before, .pagination li a.page-link:after {
 	content: "";
-	background-color: #006266;
+	background-color: #5ab4dc;
 	height: 3px;
 	width: 0;
 	opacity: 1;
@@ -115,7 +115,7 @@ td {
 }
 
 .pagination li a.page-link:before {
-	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	background: linear-gradient(135deg, transparent 49%, #5ab4dc 50%);
 	height: 15px;
 	width: 15px;
 	transform: translateX(-50%) rotate(45deg);
@@ -171,7 +171,7 @@ td {
 	width: 110%;
 	height: 20px;
 	padding-left: 90px;
-	border: 2px solid #7BA7AB;
+	border: 2px solid #5ab4dc;
 	border-radius: 5px;
 	outline: none;
 	background: white;
@@ -187,7 +187,7 @@ td {
 	width: 32px;
 	height: 38px;
 	border: none;
-	background: #7BA7AB;
+	background: #5ab4dc;
 	border-radius: 0 5px 5px 0;
 	cursor: pointer;
 }
@@ -204,10 +204,10 @@ td {
 	width: 90px;
 	font-size: 12px;
 	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #7BA7AB;
-	border-bottom: 2px solid #7BA7AB;
-	border-left: 2px solid #7BA7AB;
-	border-right: 2px solid #7BA7AB;
+	border-top: 2px solid #5ab4dc;
+	border-bottom: 2px solid #5ab4dc;
+	border-left: 2px solid #5ab4dc;
+	border-right: 2px solid #5ab4dc;
 }
 </style>
 
@@ -273,15 +273,15 @@ function boardPagingListAjaxHtml(page, pageSize) {
 				<div class="card-body">
 							
 						<!-- 검색 -->
-<!-- 						<div class="d1"> -->
-<%-- 							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> --%>
-<!-- 								<select id="searchType" name="mem_yn" -->
-<!-- 									style="position: absolute; z-index: 999;"> -->
-<!-- 									<option value="all">회원/비회원</option> -->
-<!-- 								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add"> -->
-<!-- 								<button type="button" id="searchBtn"></button> -->
-<!-- 							</form> -->
-<!-- 						</div> -->
+						<div class="d1">
+							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">
+								<select id="searchType" name="mem_yn"
+									style="position: absolute; z-index: 999;">
+									<option value="all">회원/비회원</option>
+								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add">
+								<button type="button" id="searchBtn"></button>
+							</form>
+						</div>
 
 						
 						<div id="titlee">

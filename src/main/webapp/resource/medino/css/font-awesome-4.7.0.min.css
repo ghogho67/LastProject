@@ -1003,7 +1003,8 @@ keyframes fa-spin { 0%{
 }
 
 .fa-sort-down:before, .fa-sort-desc:before {
-	content: "\f0dd"
+	content: "\f0dd";
+	padding-left: 10px;
 }
 
 .fa-sort-up:before, .fa-sort-asc:before {
