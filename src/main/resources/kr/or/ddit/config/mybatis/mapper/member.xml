@@ -192,8 +192,7 @@
 
 
 	<!-- 특정 사용자 조회 -->
-	<select id="getMemVo" resultType="memberVo"
-		parameterType="String">
+	<select id="getMemVo" resultType="memberVo" parameterType="String">
 		SELECT *
 		FROM MEMBER
 		WHERE mem_id = #{mem_id}

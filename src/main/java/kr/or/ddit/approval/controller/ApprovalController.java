@@ -313,146 +313,202 @@ public class ApprovalController {
 		}
 	}
 
-	@RequestMapping(path = "/approvalCheckA")
-	public String approvalCheckA(Model model, int page, int pageSize, String searchType,
-			@RequestParam(required = false) String searchVal) {
-
-		PageVo pageVo = new PageVo();
+	/**
+	* Method : approvalCheckA
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param model
+	* @param page
+	* @param pageSize
+	* @param searchType
+	* @param searchVal
+	* @return
+	* Method 설명 :관리자- 결제관리
+	*/
+//	@RequestMapping(path = "/approvalCheckA")
+//	public String approvalCheckA(Model model, int page, int pageSize, String searchType,
+//			@RequestParam(required = false) String searchVal) {
+//
+//		PageVo pageVo = new PageVo();
+//		pageVo.setPage(page);
+//		pageVo.setPageSize(pageSize);
+//		
+//		MemberVo memberVo = new MemberVo();
+//		String mem_id = memberVo.getMem_id();
+//
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("mem_id", mem_id);
+//		map.put("page", pageVo.getPage());
+//		map.put("pageSize", pageVo.getPageSize());
+//		logger.debug("☞page:{}", pageVo.getPage());
+//		logger.debug("☞pageSize:{}", pageVo.getPageSize());
+//		logger.debug("☞ searchType:{}", searchType);
+//		logger.debug("☞ searchVal:{}", searchVal);
+//
+//		if (searchType.equals("type")) {
+//			int type = 0;
+//			if (searchVal == null) {
+//				type = 0;
+//			} else if (searchVal.equals("매칭")) {
+//				type = 1;
+//			} else if (searchVal.equals("골드")) {
+//				type = 2;
+//			} else if (searchVal.equals("기부")) {
+//				type = 3;
+//			}
+//			map.put("app_type", type);
+//			logger.debug("☞map:{}", map);
+//			logger.debug("☞type:{}", type);
+//
+//			Map<String, Object> resultMap = approvalService.typeSaerchList(map);
+//			List<ApprovalVo> typeSaerchList = (List<ApprovalVo>) resultMap.get("typeSaerchList");
+//
+//			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
+//			if (pageVo.getPage() == 1) {
+//				startPage = 1;
+//			}
+//			if (startPage >= 2) {
+//				startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10) * 10) + 1;
+//			}
+//			int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
+//
+//			int lastpaginationSize = (int) resultMap.get("lastpaginationSize");
+//
+//			if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
+//				paginationSize = lastpaginationSize;
+//			}
+//			model.addAttribute("approvalVo", typeSaerchList);
+//			model.addAttribute("startPage", startPage);
+//			model.addAttribute("paginationSize", paginationSize);
+//			model.addAttribute("lastpaginationSize", lastpaginationSize);
+//			model.addAttribute("pageVo", pageVo);
+//			model.addAttribute("page", pageVo.getPage());
+//			model.addAttribute("pageSize", pageVo.getPageSize());
+//			model.addAttribute("searchType",searchType);
+//			model.addAttribute("searchVal",searchVal);
+//			
+//			return"/mypage/approval/approvalCheckA.mytiles";
+//		
+//		}else if(searchType.equals("day") && !searchType.equals("")) {
+//			String day = searchVal;
+//			map.put("app_time", day);
+//			logger.debug("☞dayMap:{}",map);
+//			
+//			Map<String, Object> resultMap = approvalService.daySaerchList(map);
+//			List<ApprovalVo> daySaerchList = (List<ApprovalVo>) resultMap.get("daySaerchList");
+//			logger.debug("☞daySaerchList:{}",daySaerchList);
+//			model.addAttribute("approvalVo",daySaerchList);
+//			
+//			int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+//	        if(pageVo.getPage()==1) {
+//	        	startPage =1;
+//	        }
+//	        if(startPage>=2) {
+//	        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+//	        }
+//	        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+//	        
+//	        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+//	        
+//	        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+//	        	paginationSize= lastpaginationSize;
+//	        }
+//	        
+//	        model.addAttribute("startPage", startPage);
+//			model.addAttribute("paginationSize", paginationSize);
+//			model.addAttribute("lastpaginationSize", lastpaginationSize);
+//			model.addAttribute("pageVo",pageVo);
+//			model.addAttribute("page",pageVo.getPage());
+//			model.addAttribute("pageSize",pageVo.getPageSize());
+//			model.addAttribute("searchType",searchType);
+//			model.addAttribute("searchVal",searchVal);
+//			
+//			return"/mypage/approval/approvalCheckA.mytiles";
+//			
+//		}else if(searchType.equals("mem_id") && !searchVal.equals("")) {
+//			mem_id = searchVal;
+//			map.put("mem_id", mem_id);
+//			logger.debug("☞mem_id:{}",mem_id);
+//			Map<String, Object> resultMap =approvalService.approvalPageList(map);
+//			List<ApprovalVo> memSearchList = (List<ApprovalVo>) resultMap.get("memSearchList");
+//			logger.debug("☞memSearchList:{}",memSearchList);
+//			model.addAttribute("approvalVo",memSearchList);
+//			
+//			int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+//	        if(pageVo.getPage()==1) {
+//	        	startPage =1;
+//	        }
+//	        if(startPage>=2) {
+//	        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+//	        }
+//	        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+//	        
+//	        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+//	        
+//	        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+//	        	paginationSize= lastpaginationSize;
+//	        }
+//	        model.addAttribute("startPage", startPage);
+//			model.addAttribute("paginationSize", paginationSize);
+//			model.addAttribute("lastpaginationSize", lastpaginationSize);
+//			model.addAttribute("pageVo",pageVo);
+//			model.addAttribute("page",pageVo.getPage());
+//			model.addAttribute("pageSize",pageVo.getPageSize());
+//			model.addAttribute("searchType",searchType);
+//			model.addAttribute("searchVal",searchVal);
+//			
+//			return"/mypage/approval/approvalCheckA.mytiles";
+//			
+//		}else if(searchType.equals("memid") && searchVal.equals("")){
+//			return "redirect:/approval/approvalCheckA";
+//		}else if((searchType.equals("day")&&searchVal.equals(""))){
+//			return "redirect:/approval/approvalCheckA";
+//		}else {
+//			return "redirect:/approval/approvalCheckA";
+//			
+//		}
+//		
+//	}
+	
+	@RequestMapping(path = "/approvalCheckA", method = RequestMethod.GET)
+	public String approvalCheckA(Model model, PageVo pageVo, int page, int pageSize) {
+		
+		pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", pageVo.getPage());
-		map.put("pageSize", pageVo.getPageSize());
-		logger.debug("☞page:{}", pageVo.getPage());
-		logger.debug("☞pageSize:{}", pageVo.getPageSize());
-		logger.debug("☞ searchType:{}", searchType);
-		logger.debug("☞ searchVal:{}", searchVal);
-
-		if (searchType.equals("type")) {
-			int type = 0;
-			if (searchVal == null) {
-				type = 0;
-			} else if (searchVal.equals("매칭")) {
-				type = 1;
-			} else if (searchVal.equals("골드")) {
-				type = 2;
-			} else if (searchVal.equals("기부")) {
-				type = 3;
-			}
-			map.put("app_type", type);
-			logger.debug("☞map:{}", map);
-			logger.debug("☞type:{}", type);
-
-			Map<String, Object> resultMap = approvalService.typeSaerchList(map);
-			List<ApprovalVo> typeSaerchList = (List<ApprovalVo>) resultMap.get("typeSaerchList");
-
-			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
-			if (pageVo.getPage() == 1) {
-				startPage = 1;
-			}
-			if (startPage >= 2) {
-				startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10) * 10) + 1;
-			}
-			int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
-
-			int lastpaginationSize = (int) resultMap.get("lastpaginationSize");
-
-			if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
-				paginationSize = lastpaginationSize;
-			}
-			model.addAttribute("approvalVo", typeSaerchList);
-			model.addAttribute("startPage", startPage);
-			model.addAttribute("paginationSize", paginationSize);
-			model.addAttribute("lastpaginationSize", lastpaginationSize);
-			model.addAttribute("pageVo", pageVo);
-			model.addAttribute("page", pageVo.getPage());
-			model.addAttribute("pageSize", pageVo.getPageSize());
-			model.addAttribute("searchType",searchType);
-			model.addAttribute("searchVal",searchVal);
-			
-			return"/mypage/approval/approvalCheckA.mytiles";
 		
-		}else if(searchType.equals("day") && !searchType.equals("")) {
-			String day = searchVal;
-			map.put("app_time", day);
-			logger.debug("☞dayMap:{}",map);
-			
-			Map<String, Object> resultMap = approvalService.daySaerchList(map);
-			List<ApprovalVo> daySaerchList = (List<ApprovalVo>) resultMap.get("daySaerchList");
-			logger.debug("☞daySaerchList:{}",daySaerchList);
-			model.addAttribute("approvalVo",daySaerchList);
-			
-			int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-	        if(pageVo.getPage()==1) {
-	        	startPage =1;
-	        }
-	        if(startPage>=2) {
-	        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-	        }
-	        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-	        
-	        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
-	        
-	        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-	        	paginationSize= lastpaginationSize;
-	        }
-	        
-	        model.addAttribute("startPage", startPage);
-			model.addAttribute("paginationSize", paginationSize);
-			model.addAttribute("lastpaginationSize", lastpaginationSize);
-			model.addAttribute("pageVo",pageVo);
-			model.addAttribute("page",pageVo.getPage());
-			model.addAttribute("pageSize",pageVo.getPageSize());
-			model.addAttribute("searchType",searchType);
-			model.addAttribute("searchVal",searchVal);
-			
-			return"/mypage/approval/approvalCheckA.mytiles";
-			
-		}else if(searchType.equals("mem_id") && !searchVal.equals("")) {
-			String mem_id = searchVal;
-			map.put("mem_id", mem_id);
-			logger.debug("☞mem_id:{}",mem_id);
-			Map<String, Object> resultMap =approvalService.approvalPageList(map);
-			List<ApprovalVo> memSearchList = (List<ApprovalVo>) resultMap.get("memSearchList");
-			logger.debug("☞memSearchList:{}",memSearchList);
-			model.addAttribute("approvalVo",memSearchList);
-			
-			int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-	        if(pageVo.getPage()==1) {
-	        	startPage =1;
-	        }
-	        if(startPage>=2) {
-	        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-	        }
-	        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-	        
-	        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
-	        
-	        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-	        	paginationSize= lastpaginationSize;
-	        }
-	        model.addAttribute("startPage", startPage);
-			model.addAttribute("paginationSize", paginationSize);
-			model.addAttribute("lastpaginationSize", lastpaginationSize);
-			model.addAttribute("pageVo",pageVo);
-			model.addAttribute("page",pageVo.getPage());
-			model.addAttribute("pageSize",pageVo.getPageSize());
-			model.addAttribute("searchType",searchType);
-			model.addAttribute("searchVal",searchVal);
-			
-			return"/mypage/approval/approvalCheckA.mytiles";
-			
-		}else if(searchType.equals("memid") && searchVal.equals("")){
-			return "redirect:/approval/approvalCheckA";
-		}else if((searchType.equals("day")&&searchVal.equals(""))){
-			return "redirect:/approval/approvalCheckA";
-		}else {
-			return "redirect:/approval/approvalCheckA";
-			
-		}
+		Map<String, Object> resultMap = approvalService.approvalAllPagingList(pageVo);
+		logger.debug("☞resultMap:{}",resultMap);
 		
-
+		List<ApprovalVo> approvalAllList = (List<ApprovalVo>) resultMap.get("approvalAllList");
+		
+		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
+        if(pageVo.getPage()==1) {
+        	startPage =1;
+        }
+        if(startPage>=2) {
+        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
+        }
+        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
+        
+        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
+        
+        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
+        	paginationSize= lastpaginationSize;
+        }
+		
+        model.addAttribute("approvalAllList",approvalAllList);
+        model.addAttribute("startPage", startPage);
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
+		model.addAttribute("pageVo",pageVo);
+		
+		logger.debug("☞approvalAllList:{}",approvalAllList);
+		logger.debug("☞paginationSize:{}",paginationSize);
+		logger.debug("☞pageVo:{}",pageVo);
+		
+		
+		return"/mypage/approval/approvalCheckA.mytiles";
 	}
 
 }

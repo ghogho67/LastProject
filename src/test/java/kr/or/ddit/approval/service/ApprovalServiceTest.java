@@ -100,10 +100,10 @@ public class ApprovalServiceTest extends LogicTestEnv {
 		logger.debug("☞resultMap:{}",resultMap);
 		List<ApprovalVo> approvalAllList = (List<ApprovalVo>) resultMap.get("approvalAllList");
 		logger.debug("☞approvalAllList:{}",approvalAllList);
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
 		logger.debug("☞paginationSize:{}",paginationSize);
 		/***Then***/
-		assertEquals(6, paginationSize);
+		assertEquals(7, paginationSize);
 
 	}
 

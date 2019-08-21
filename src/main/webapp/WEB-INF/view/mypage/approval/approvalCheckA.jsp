@@ -1,7 +1,11 @@
+<%@page import="kr.or.ddit.page.model.PageVo"%>
+<%@page import="kr.or.ddit.member.careWorker.hospital.model.HospitalVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,197 +16,198 @@
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
+
 <style type="text/css">
 
 
 #titlee h2, #pzone h2 {
-   font-size: 40px;
-   font-weight: normal;
-   letter-spacing: -1px;
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
 }
 
 #titlee h2 {
-   padding: 25px 35px;
+	padding: 25px 35px;
 }
 
 #titlee h2 span {
-   font-weight: bold;
-   color: #473fa0;
+	font-weight: bold;
+	color: #473fa0;
 }
 
 tr {
-   text-align: center;
-   font-weight: 500;
+	text-align: center;
+	font-weight: 500;
 }
 
 td {
-   text-align: center;
+	text-align: center;
 }
 
 .title {
-   background-color: transparent;
-   width: 180px;
-   padding: 3px;
-   font-size: 8pt;
-   text-align: center;
+	background-color: transparent;
+	width: 180px;
+	padding: 3px;
+	font-size: 8pt;
+	text-align: center;
 }
 
 .kkk {
-   background-color: transparent;
-   border-color: transparent;
-   width: 30px;
-   padding: 3px;
-   font-size: 9pt;
+	background-color: transparent;
+	border-color: transparent;
+	width: 30px;
+	padding: 3px;
+	font-size: 9pt;
 }
 
 .pagination-outer {
-   text-align: center;
+	text-align: center;
 }
 
 .pagination {
-   font-family: 'Rubik', sans-serif;
-   padding: 0 30px;
-   display: inline-flex;
-   position: relative;
+	font-family: 'Rubik', sans-serif;
+	padding: 0 30px;
+	display: inline-flex;
+	position: relative;
 }
 
 .pagination li a.page-link {
-   color: #909090;
-   background-color: transparent;
-   font-size: 15px;
-   line-height: 35px;
-   height: 45px;
-   width: 40px;
-   margin: 0 3px;
-   border: none;
-   border-radius: 0;
-   overflow: hidden;
-   position: relative;
-   transition: all 0.4s ease 0s;
+	color: #909090;
+	background-color: transparent;
+	font-size: 15px;
+	line-height: 35px;
+	height: 45px;
+	width: 40px;
+	margin: 0 3px;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease 0s;
 }
 
 .pagination li.active a.page-link, .pagination li a.page-link:hover,
-   .pagination li.active a.page-link:hover {
-   color: #006266;
-   background-color: transparent;
+	.pagination li.active a.page-link:hover {
+	color: #006266;
+	background-color: transparent;
 }
 
 .pagination li a.page-link span {
-   display: block;
-   transition: all 0.3s;
+	display: block;
+	transition: all 0.3s;
 }
 
 .pagination li a.page-link:hover span {
-   transform: rotateY(360deg);
+	transform: rotateY(360deg);
 }
 
 .pagination li a.page-link:before, .pagination li a.page-link:after {
-   content: "";
-   background-color: #006266;
-   height: 3px;
-   width: 0;
-   opacity: 1;
-   position: absolute;
-   left: 0;
-   bottom: 0;
-   z-index: -1;
-   transition: all 0.3s;
+	content: "";
+	background-color: #006266;
+	height: 3px;
+	width: 0;
+	opacity: 1;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: all 0.3s;
 }
 
 .pagination li a.page-link:before {
-   background: linear-gradient(135deg, transparent 49%, #006266 50%);
-   height: 15px;
-   width: 15px;
-   transform: translateX(-50%) rotate(45deg);
-   bottom: auto;
-   top: -20px;
-   left: 50%;
+	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	height: 15px;
+	width: 15px;
+	transform: translateX(-50%) rotate(45deg);
+	bottom: auto;
+	top: -20px;
+	left: 50%;
 }
 
 .pagination li a.page-link:hover:after {
-   width: 100%;
+	width: 100%;
 }
 
 .pagination li a.page-link:hover:before {
-   top: -10px;
+	top: -10px;
 }
 
 .pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
-   {
-   top: -10px;
+	{
+	top: -10px;
 }
 
 .pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
-   {
-   width: 100%;
+	{
+	width: 100%;
 }
 
 @media only screen and (max-width: 480px) {
-   .pagination {
-      display: block;
-   }
-   .pagination li {
-      margin-bottom: 10px;
-      display: inline-block;
-   }
+	.pagination {
+		display: block;
+	}
+	.pagination li {
+		margin-bottom: 10px;
+		display: inline-block;
+	}
 }
 
 .for {
-   position: relative;
-   width: 250px;
-   height: 50px;
-   margin: 0 auto;
+	position: relative;
+	width: 250px;
+	height: 50px;
+	margin: 0 auto;
 }
 
 .d1 {
-   height: 30px;
-   background: white;
-   position: absolute;
-   right: 5%;
-   margin-top: 3%;
+	height: 30px;
+	background: white;
+	position: absolute;
+	right: 5%;
+	margin-top: 3%;
 }
 
 .d1 input {
-   width: 110%;
-   height: 20px;
-   padding-left: 90px;
-   border: 2px solid #7BA7AB;
-   border-radius: 5px;
-   outline: none;
-   background: white;
-   color: #9E9C9C;
-   font-size: 13px;
+	width: 110%;
+	height: 20px;
+	padding-left: 90px;
+	border: 2px solid #7BA7AB;
+	border-radius: 5px;
+	outline: none;
+	background: white;
+	color: #9E9C9C;
+	font-size: 13px;
 }
 
 .d1 button {
-   position: absolute;
-   top: 0;
-   right: -25px;
-/*    left : 2px; */
-   width: 32px;
-   height: 38px;
-   border: none;
-   background: #7BA7AB;
-   border-radius: 0 5px 5px 0;
-   cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: -25px;
+/* 	left : 2px; */
+	width: 32px;
+	height: 38px;
+	border: none;
+	background: #7BA7AB;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
 }
 
 .d1 button:before {
-   content: "\f002";
-   font-family: FontAwesome;
-   font-size: 16px;
-   color: #F9F0DA;
+	content: "\f002";
+	font-family: FontAwesome;
+	font-size: 16px;
+	color: #F9F0DA;
 }
 
 #searchType {
-   height: 40px;
-   width: 90px;
-   font-size: 12px;
-   border-radius: 5px 0px 0px 5px;
-   border-top: 2px solid #7BA7AB;
-   border-bottom: 2px solid #7BA7AB;
-   border-left: 2px solid #7BA7AB;
-   border-right: 2px solid #7BA7AB;
+	height: 40px;
+	width: 90px;
+	font-size: 12px;
+	border-radius: 5px 0px 0px 5px;
+	border-top: 2px solid #7BA7AB;
+	border-bottom: 2px solid #7BA7AB;
+	border-left: 2px solid #7BA7AB;
+	border-right: 2px solid #7BA7AB;
 }
 </style>
 
@@ -219,8 +224,6 @@ $(document).ready(function() {
 	 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
 				
 		   });
-		   
-		   
 		   
 		   $("#searchBtn").on("click",function(){
 // 				var data = $("#searchList").serialize();
@@ -244,61 +247,58 @@ $(document).ready(function() {
 		
 });
 
-function boardPagingListAjaxHtml(page, pageSize ) {
-		$("#page").val(page);
-		$("#pageSize").val(pageSize);
-		$("#searchList").submit();
+function boardPagingListAjaxHtml(page, pageSize) {
+	$("#page").val(page);
+	$("#pageSize").val(pageSize);
+	$("#pageForm").submit();
 	
 	}
-	
-
-
-
-
-
 
 </script>
-
-
-
 
 </head>
 
 <body>
 
-<%-- 	 <form id="pageForm" action="${cp}/approval/approvalCheck"> --%>
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+	
+<%-- 	 <form id="pageForm" action="${cp}/approval/approvalCheckA"> --%>
 <!-- 	 	<input type="hidden" name = "page" id="page"> -->
 <!-- 	 	<input type="hidden" name = "pageSize" id="pageSize"> -->
 <!-- 	 </form> -->
-
 
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-				
-					<div class="d1">
-	                          <form id="searchList" class="for" action="${cp}/approval/approvalCheckA">
-	
-	                             <select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
-	                                <option value="day">날짜</option>
-	                                <option value="type">결제구분</option>
-	                                <option value="mem_id">아이디</option> 
-	                             </select> 
-	                            <input id="searchVal" name="searchVal" type="text" placeholder="회원등급 Ex)1/2/3"><br>
-	                            <input type="hidden"  name = "page" id="page" value="1">
-	 							<input type="hidden" name = "pageSize" id="pageSize" value="10">
-	                           <button id="searchBtn" name="searchBtn" type="button"></button>
-	                          </form>
-	                       </div>
-	                       
-			<div id="titlee">
+							
+						
+						<div class="d1">
+                        <form id="searchList" class="for" action="${cp}/approval/approvalCheckA">
+
+                           <select id="searchType" name="searchType"style="position: absolute; z-index: 999;">
+                              <option value="day">날짜</option>
+                              <option value="type">결제구분</option>
+                              <option value="mem_id">아이디</option> 
+                           </select> 
+                          <input id="searchVal" name="searchVal" type="text" placeholder="회원등급 Ex)1/2/3"><br>
+                          <input type="hidden"  name = "page" id="page" value="1">
+						<input type="hidden" name = "pageSize" id="pageSize" value="10">
+                         <button id="searchBtn" name="searchBtn" type="button"></button>
+                        </form>
+                     </div>
+						
+					<div id="titlee">
 						<h2>
-							<span>결재내역</span>
+							<span>결제 관리</span>
 						</h2>
-						</div>
+					</div>
+						
 					<hr>
+					
+					<form id="frm" action="${cp}/approval/approvalCheckA" method="get">
+						<input type="hidden" class="app_id" id="app_id" name="app_id">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 							<thead>
@@ -308,122 +308,132 @@ function boardPagingListAjaxHtml(page, pageSize ) {
 									<th>결제금액</th>
 									<th>결제시간</th>
 									<th>결제자</th>
-									<th>환불여부</th>
 								</tr>
 							</thead>
-
+							
 							<tbody>
-									<c:forEach items="${approvalVo }" var="vo" varStatus="status">
-									<tr>
-										<td>${vo.rn}</td>
-										<td>
-											<c:choose>
-												<c:when test="${vo.app_type eq 1}">
-													매칭
-												</c:when>
-												<c:when test="${vo.app_type eq 2}">
-												 	골드가입
-												</c:when>
-												<c:when test="${vo.app_type eq 3}">
-												 	기부
-												</c:when>
-												
-											</c:choose>
-										
-										</td>
-										<td>${vo.app_pay}</td>
-										<td><fmt:formatDate value="${vo.app_time }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
-										<td>${vo.mem_id }</td>
-										<td>${vo.app_del }</td>
-									</tr>
-									</c:forEach>
+							<c:forEach items="${approvalAllList }" var="vo" varStatus="status">
+								<tr class="hosTr" data-hos_id="${vo.hos_id }">
+									<td>${vo.rn}</td>
+									<td>
+										<c:choose>
+											<c:when test="${vo.app_type eq 1}">
+												매칭
+											</c:when>
+											<c:when test="${vo.app_type eq 2}">
+											 	골드가입
+											</c:when>
+											<c:when test="${vo.app_type eq 3}">
+											 	기부
+											</c:when>
+											
+										</c:choose>
 									
-								
+									</td>
+									<td>${vo.app_pay}</td>
+									<td><fmt:formatDate value="${vo.app_time }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
+									<td>${vo.mem_id }</td>
+								</tr>
+							</c:forEach>
 							</tbody>
+							
 						</table>
-
-
 					</div>
+					
+
+					</form>
+					
+					
 				</div>
 			</div>
-		</div>
-	</div>
+			
+			<div class="demo" style="position: absolute; right: 20%;">
+							<nav class="pagination-outer" aria-label="Page navigation">
+								<ul class="pagination">
+									<c:choose>
+										<c:when test="${pageVo.page==1}">
+											<li class="page-item prev disabled"><a href="#"
+												class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">«</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-hidden="Previous"
+												href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
+													aria-hidden="true">«</span></a></li>
 
-	<div class="demo" style="position:absolute; right: 20%;">
-                <nav class="pagination-outer" aria-label="Page navigation">
-                    <ul class="pagination">
-                       <c:choose>
-      <c:when test="${pageVo.page==1}">
-         <li class="page-item prev disabled">
-            <a href="#" class="page-link" aria-label="Previous">
-                       <span aria-hidden="true">«</span>
-                 </a>
-           </li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item">
-            <a class="page-link" aria-hidden="Previous" href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span aria-hidden="true">«</span></a></li>
-         
-      </c:otherwise>
-   </c:choose>
-   
-   <c:choose>
-      <c:when test="${pageVo.page==1}">
-         <li class="page-item prev disabled" >
-            <a href="#" class="page-link" aria-label="Previous">
-                       <span aria-hidden="true">‹</span>
-                 </a>
-           </li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item"><a class="page-link" aria-label="Previous"
-            href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span aria-hidden="true">‹</span></a></li>
-      </c:otherwise>
-   </c:choose>
-   
-   <c:forEach begin="${startPage}" end="${paginationSize}" var="i">
-      <c:choose>
-         <c:when test="${pageVo.page == i}">
-            <li class="page-item active"><a class="page-link" href="#">${i}</a></li>
-         </c:when>
-         <c:otherwise>
-            <li><a class="page-link"
-               href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
-         </c:otherwise>
-      </c:choose>
-   
-   </c:forEach>
-   
-   <c:choose>
-      <c:when test="${pageVo.page == lastpaginationSize}">
-         <li class="page-item next disabled">
-            <a href="#" class="page-link" aria-label="Next">
-                       <span aria-hidden="true">›</span>
-               </a>
-         </li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item"><a class="page-link"aria-label="Next" 
-            href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span aria-hidden="true">›</span></a></li>
-      </c:otherwise>
-   </c:choose>
-   
-   
-   <c:choose>
-      <c:when test="${pageVo.page == lastpaginationSize}">
-         <li class="page-item next disabled"><a href="#" class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item"><a class="page-link" aria-label="Next"
-            href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span aria-hidden="true">»</span></a></li>
-      </c:otherwise>
-   </c:choose>
-         
-                    </ul>
-                </nav>
-            </div>
-   
-   
+										</c:otherwise>
+									</c:choose>
+
+									<c:choose>
+										<c:when test="${pageVo.page==1}">
+											<li class="page-item prev disabled"><a href="#"
+												class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">‹</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Previous"
+												href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
+													aria-hidden="true">‹</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
+										<c:choose>
+											<c:when test="${pageVo.page == i}">
+												<li class="page-item active"><a class="page-link"
+													href="#">${i}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a class="page-link"
+													href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+
+									</c:forEach>
+
+									<c:choose>
+										<c:when test="${pageVo.page == lastpaginationSize}">
+											<li class="page-item next disabled"><a href="#"
+												class="page-link" aria-label="Next"> <span
+													aria-hidden="true">›</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
+													aria-hidden="true">›</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+
+									<c:choose>
+										<c:when test="${pageVo.page == lastpaginationSize}">
+											<li class="page-item next disabled"><a href="#"
+												class="page-link" aria-label="Next"><span
+													aria-hidden="true">»</span></a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
+													aria-hidden="true">»</span></a></li>
+										</c:otherwise>
+									</c:choose>
+
+								</ul>
+							</nav>
+						</div>
+			
+		</div>
+		
+		
+	</div>
+	
 
 </body>
 </html>

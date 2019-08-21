@@ -48,7 +48,7 @@ public class ShelterServiceTest extends LogicTestEnv{
 		/***When***/
 		Map<String, Object> resultMap = shelterService.shelterPagingList(pageVo);
 		List<ShelterVo> shelterList = (List<ShelterVo>) resultMap.get("shelterList");
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
 		/***Then***/
 		assertEquals(94, paginationSize);
 

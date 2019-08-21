@@ -200,10 +200,83 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***When***/
 		Map<String , Object> resultMap = donationService.donationPagingList(pageVo);
 		List<DonationApprovalVo> getAllDonerList = (List<DonationApprovalVo>) resultMap.get("getAllDonerList");
-		int paginationSize = (Integer) resultMap.get("paginationSize");
+		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
 		/***Then***/
-		assertEquals(2, paginationSize);
+		assertEquals(6, paginationSize);
 
+	}
+	
+	/**
+	* Method : donationPagingList_YTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :회원 기부자 페이징 리스트
+	*/
+	@Test
+	public void donationPagingList_YTest() {
+		/***Given***/
+		PageVo pageVo  = new PageVo(1, 10);
+		/***When***/
+		Map<String, Object> resultMap = donationService.donationPagingList_Y(pageVo);
+		List<DonationApprovalVo> getDonationList_Y = (List<DonationApprovalVo>) resultMap.get("getDonationList_Y");
+		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
+		/***Then***/
+		assertEquals(4, paginationSize);
+
+	}
+	
+	
+	/**
+	* Method : donationPagingList_NTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :비회원 기부자 페이징 리스트
+	*/
+	@Test
+	public void donationPagingList_NTest() {
+		/***Given***/
+		PageVo pageVo  = new PageVo(1, 10);
+		/***When***/
+		Map<String, Object> resultMap = donationService.donationPagingList_N(pageVo);
+		List<DonationApprovalVo> getDonationList_N = (List<DonationApprovalVo>) resultMap.get("getDonationList_N");
+		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
+		/***Then***/
+		assertEquals(4, paginationSize);
+		
+	}
+	
+	/**
+	* Method : getDonationList_YTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :회원 리스트 조회
+	*/
+	@Test
+	public void getDonationList_YTest() {
+		/***Given***/
+
+		/***When***/
+		List<DonationApprovalVo> getDonationList_Y = donationService.getDonationList_Y();
+		/***Then***/
+		assertEquals(25, getDonationList_Y.size());
+
+	}
+	
+	/**
+	 * Method : getDonationList_NTest
+	 * 작성자 : ADMIN
+	 * 변경이력 :
+	 * Method 설명 :비회원 리스트 조회
+	 */
+	@Test
+	public void getDonationList_NTest() {
+		/***Given***/
+		
+		/***When***/
+		List<DonationApprovalVo> getDonationList_N = donationService.getDonationList_N();
+		/***Then***/
+		assertEquals(32, getDonationList_N.size());
+		
 	}
 	
 	

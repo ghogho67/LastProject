@@ -11,6 +11,7 @@ import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.page.model.PageVo;
 
+
 @Repository
 public class DonationDao implements IDonationDao {
 
@@ -105,6 +106,84 @@ public class DonationDao implements IDonationDao {
 		return sqlSession.selectList("donationApproval.donationPagingList",pageVo);
 	}
 
+
+	/**
+	* Method : donationPagingList_Y
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :회원 기부자 페이징 리스트
+	*/
+	@Override
+	public List<DonationApprovalVo> donationPagingList_Y(PageVo pageVo) {
+		return sqlSession.selectList("donationApproval.donationPagingList_Y",pageVo);
+	}
+
+	/**
+	* Method : donationPagingList_Y
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :비회원 기부자 페이징 리스트
+	*/
+	@Override
+	public List<DonationApprovalVo> donationPagingList_N(PageVo pageVo) {
+		return sqlSession.selectList("donationApproval.donationPagingList_N",pageVo);
+	}
+
+	
+	/**
+	* Method : donationCnt_Y
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :회원 기부자 전체 수
+	*/
+	@Override
+	public int donationCnt_Y() {
+		return sqlSession.selectOne("donationApproval.donationCnt_Y");
+	}
+
+	
+	/**
+	* Method : donationCnt_N
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :비회원 기부자 전체 수
+	*/
+	@Override
+	public int donationCnt_N() {
+		return sqlSession.selectOne("donationApproval.donationCnt_N");
+	}
+
+	/**
+	* Method : getDonationList_Y
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 회원 기부자 전체 리스트
+	*/
+	@Override
+	public List<DonationApprovalVo> getDonationList_Y() {
+		return sqlSession.selectList("donationApproval.getDonationList_Y");
+	}
+
+	/**
+	* Method : getDonationList_N
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 : 비회원  기부자 전체 리스트
+	*/
+	@Override
+	public List<DonationApprovalVo> getDonationList_N() {
+		return sqlSession.selectList("donationApproval.getDonationList_N");
+	}
+	
+	
 	
 	
 	
