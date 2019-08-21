@@ -22,10 +22,17 @@ public class MemberVo {
 	private String pro_phone;
 	private String cw_driver;
 	private String cw_lic;
-
-
 	
+	private int rn;
 	
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	public String getMem_id() {
 		return mem_id;
 	}

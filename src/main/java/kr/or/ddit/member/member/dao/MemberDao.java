@@ -118,4 +118,29 @@ public class MemberDao implements IMemberDao {
 		return sqlSession.update("member.upgradeMemberStep3", mem_id);
 	}
 
+	/**
+	* Method : getAllMemberList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :전체 회원 페이징 리스트
+	*/
+	@Override
+	public List<MemberVo> getAllMemberList(PageVo pageVo) {
+		return sqlSession.selectList("member.getAllMemberList",pageVo);
+	}
+
+	/**
+	* Method : memberGradeCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :회원등급간 수 조회
+	*/
+	@Override
+	public int memberGradeCnt(String mem_grade) {
+		return sqlSession.selectOne("member.memberGradeCnt",mem_grade);
+	}
+
 }

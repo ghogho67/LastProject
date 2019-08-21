@@ -100,5 +100,57 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		/*** Then ***/
 		assertEquals(8, appList.size());
 	}
+	
+	/**
+	* Method : approvalCntTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 : 결제자 전체 수 조회
+	*/
+	@Test
+	public void approvalCntTest() {
+		/***Given***/
+
+		/***When***/
+		int approvalAllCnt = approvalDao.approvalAllCnt();
+		/***Then***/
+		assertEquals(59, approvalAllCnt);
+
+	}
+	
+	/**
+	* Method : approvalAllList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :결제 전체 리스트 조회
+	*/
+	@Test
+	public void approvalAllList() {
+		/***Given***/
+
+		/***When***/
+		List<ApprovalVo> approvalAllList = approvalDao.approvalAllList();
+		/***Then***/
+		assertEquals(59, approvalAllList.size());
+
+	}
+	
+	/**
+	* Method : approvalPagingListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :결제 페이지네이션
+	*/
+	@Test
+	public void approvalPagingListTest() {
+		/***Given***/
+		PageVo pageVo = new PageVo(1, 10);
+		/***When***/
+		List<ApprovalVo> approvalPagingList = approvalDao.approvalAllPagingList(pageVo);
+		/***Then***/
+		assertEquals(10, approvalPagingList.size());
+
+	}
+	
 
 }

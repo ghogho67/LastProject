@@ -7,4 +7,5 @@ public interface ISosDao {
 	int recentData(String mem_id);
 	GpsVo getGps(int gps_id);
 	String getName(String mem_id);
+	int gpsCnt(String mem_id);
 }

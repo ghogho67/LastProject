@@ -32,6 +32,7 @@ import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
+import kr.or.ddit.handler.SocketAlramHandler;
 import kr.or.ddit.handler.SocketChatHandler;
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
@@ -210,6 +211,11 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
        .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
        .addInterceptors(new HttpSessionHandshakeInterceptor())
        .withSockJS();
+      
+      registry.addHandler(socetAlramHandler(), "/alram")
+      .setAllowedOrigins("*") //어떤 도메인이든 상관없이 처리
+      .addInterceptors(new HttpSessionHandshakeInterceptor())
+      .withSockJS();
        
    }
    
@@ -217,12 +223,16 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    public SocketChatHandler socketHandler(){
       return new SocketChatHandler();   // socketHandler
    }
+   
+   @Bean
+   public SocketAlramHandler socetAlramHandler() {
+      return new SocketAlramHandler();   // socketHandler
+   }
 
    
    @Bean
    public HttpSessionHandshakeInterceptor handshaker() {
    return new HttpSessionHandshakeInterceptor();
-      
    }
    
 

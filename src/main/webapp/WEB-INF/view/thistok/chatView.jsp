@@ -10,6 +10,20 @@
 	href="${cp}/resource/wrap/css/ThisTok.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
+<style type="text/css">
+#chatdata{
+	overflow:scroll;
+	border-top: 1px solid #f6f6f6;
+	height: 455px;
+  width: 99%;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3
+  );
+	-ms-overflow-style: none; 
+	margin: 0 auto;
+}
+</style>
 <script>
 var socket;
 
@@ -153,7 +167,7 @@ $(document).ready(function() {
 });
 
 function back(){
-	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
+	window.open("/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
 }
 </script>
 

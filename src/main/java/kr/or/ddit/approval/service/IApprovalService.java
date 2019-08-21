@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 
 public interface IApprovalService {
 
@@ -77,5 +78,24 @@ public interface IApprovalService {
 	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
 	*/
 	public Map<String, Object> typeSaerchList(Map<String, Object> resultMap); 
+	
+	/**
+	* Method : approvalPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 : 결제자 전체 정보  페이지네이션
+	*/
+	Map<String, Object> approvalAllPagingList(PageVo pageVo);
+	
+	/**
+	* Method : approvalAllList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제자 전체 리스트
+	*/
+	List<ApprovalVo> approvalAllList();
 
 }

@@ -27,7 +27,7 @@
 						</a></li>
 					
 						<li class="nav-item"><a class="nav-link"
-							href="${cp}/resource/Admin/pages/forms/index.html">
+							href="${cp}/mypage/approval/approvalCheckA?page=1&pageSize=10">
 								<img
 								src="${cp}/resource/Admin/images/icons/005-forms.png"
 								alt=""> <span class="menu-title">결산 관리</span>
@@ -43,12 +43,10 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="#l">
+									<li class="nav-item"><a class="nav-link" href="${cp }/mypage/pagingList?page=1&pageSize=10">
 										  회원목록  </a></li>
-									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">
-											보고서 작성 </a></li>
-												<li class="nav-item"><a class="nav-link" href="#">
-											보고서 조회 </a></li>
+									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">	보고서 작성 </a></li>
+									<li class="nav-item"><a class="nav-link" href="#">보고서 조회 </a></li>
 									
 								</ul>
 							</div>
@@ -64,7 +62,7 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="/attendance/adminSaerch?page=1&pageSize=10&searchType=&searchVal=">
+									<li class="nav-item"><a class="nav-link" href="/attendance/adminSaerch?page=1&pageSize=10&searchType=memid&searchVal=">
 										  출퇴근 관리  </a></li>
 									<li class="nav-item"><a class="nav-link" href="#l">
 										  스케쥴 관리  </a></li>

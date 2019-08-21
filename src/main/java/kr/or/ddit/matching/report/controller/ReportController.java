@@ -3,9 +3,8 @@ package kr.or.ddit.matching.report.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -22,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.or.ddit.approval.model.ApprovalVo;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
+import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
+import kr.or.ddit.matching.report.model.ReportPageVo;
+import kr.or.ddit.matching.report.model.ReportVo;
 import kr.or.ddit.matching.report.model.ReportWriteVo;
 import kr.or.ddit.matching.report.service.IReportService;
 import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
@@ -208,6 +209,7 @@ public class ReportController {
 	public String writeView(Model model,  ReportWriteVo rwv) throws IOException {
 		return "matching/report";
 	}
+
 	@RequestMapping(path = "/write", method  = RequestMethod.POST)
 	public String write(Model model,  ReportWriteVo rwv, HttpSession session) throws IOException {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -221,5 +223,44 @@ public class ReportController {
 		
 		return "matching/report";
 	}
+	
+	@RequestMapping(path = "/reportWrite")
+	public String reportWrite(Model model,  ReportWriteVo rwv) throws IOException {
+		return "/matching/reportWrite.tiles";
+	}
+
+	@RequestMapping(path = "/getMatInfo")
+	public String getMatInfo(PageVo pageVo, Model model,  ReportWriteVo rwv, HttpSession session) throws IOException {
+	
+		pageVo.setPage(pageVo.getPage());
+		pageVo.setPageSize(pageVo.getPageSize());
+		
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memberVo.getMem_id();
+		List<MatchingVo> mvl = matchingService.getCWMatchingList(mem_id);
+		List<ReportPageVo> reportList = new ArrayList<ReportPageVo>();
+		
+		for(MatchingVo mv : mvl ) {
+			ReportVo rv = reportService.getReportVo(mv.getMat_id());
+			String st = mv.getMat_st();
+			int idx = mv.getMat_st().indexOf("T");
+			String day = st.substring(0, idx);
+			String stTime = st.substring(idx + 1);
+
+			String end = mv.getMat_end();
+			String endTime = end.substring(idx + 1);
+
+			ReportPageVo rpv = new ReportPageVo(mv.getMat_id(), mv.getMat_title(), mv.getMat_cont(), day, stTime,
+					endTime, mv.getMat_type(), mv.getMem_id());
+			logger.debug("rpv:{}", rpv);
+			reportList.add(rpv);
+		}
+		logger.debug("rpl:{}", reportList);
+		model.addAttribute("pageVo", pageVo);
+		model.addAttribute("reportList", reportList);
+		
+		return "/report/reportPagingList.tiles";
+	}
+	
 	
 }
