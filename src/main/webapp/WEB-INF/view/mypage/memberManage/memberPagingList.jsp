@@ -226,14 +226,15 @@ function drawChart() {
  
 	var data = google.visualization.arrayToDataTable([
      ['member', 'mem_grade'],
-	 ['관리자',      ${manager}],
-	 ['일반회원',  ${nomalMember}],
-	 ['골드회원', ${goldMember}],
-	 ['요양보호사',    ${careWorker}]
-  ]);
+	 ['관리자',      parseInt("${manager}")],
+	 ['일반회원',  parseInt("${nomalMember}")],
+	 ['골드회원', parseInt("${goldMember}")],
+	 ['요양보호사',    parseInt("${careWorker}")]
+	]
+  );
 
   var options = {
-    title: '회원 등급별 pie Chart'
+    title: '회원 분류 pie Chart'
   };
 
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -324,7 +325,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					</div>
 					
 					<!-- 구글Chart API -->
-					<div id="piechart" style="width: 900px; height: 500px;"></div>
+					<div id="piechart" style="width: 1000px; height: 500px;"></div>
 					<input type="hidden" name = "manager" id="manager">
 					<input type="hidden" name = "nomalMember" id="nomalMember">
 					<input type="hidden" name = "goldMember" id="goldMember">
@@ -333,6 +334,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					
 				</div>
 			</div>
+			
 			
 			<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">

@@ -27,7 +27,7 @@
 						</a></li>
 					
 						<li class="nav-item"><a class="nav-link"
-							href="${cp}/resource/Admin/pages/forms/index.html">
+							href="${cp}/mypage/approval/approvalCheckA?page=1&pageSize=10">
 								<img
 								src="${cp}/resource/Admin/images/icons/005-forms.png"
 								alt=""> <span class="menu-title">결산 관리</span>
