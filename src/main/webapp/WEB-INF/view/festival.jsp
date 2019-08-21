@@ -39,7 +39,7 @@
 .pagination li.active a.page-link,
 .pagination li a.page-link:hover,
 .pagination li.active a.page-link:hover{
-    color: #006266;
+    color: #5ab4dc;
     background-color: transparent;
 }
 .pagination li a.page-link span{
@@ -50,7 +50,7 @@
 .pagination li a.page-link:before,
 .pagination li a.page-link:after{
     content: "";
-    background-color: #006266;
+    background-color: #5ab4dc;
     height: 3px;
     width: 0;
     opacity: 1;
@@ -61,7 +61,7 @@
     transition: all 0.3s;
 }
 .pagination li a.page-link:before{
-    background: linear-gradient(135deg,transparent 49%, #006266 50%);
+    background: linear-gradient(135deg,transparent 49%, #5ab4dc 50%);
     height: 15px;
     width: 15px;
     transform: translateX(-50%) rotate(45deg);
@@ -105,7 +105,7 @@ right: 21%;
   width: 100%;
   height: 32px;
   padding-left: 10px;
-  border: 2px solid #7BA7AB;
+  border: 2px solid #5ab4dc;
   border-radius: 5px;
   outline: none;
   background: white;
@@ -119,7 +119,7 @@ right: 21%;
   width: 32px;
   height: 32px;
   border: none;
-  background: #7BA7AB;
+  background: #5ab4dc;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }

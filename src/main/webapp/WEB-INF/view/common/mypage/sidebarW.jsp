@@ -1,95 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${cp}/resource/wrap/css/mypageSide.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-latest.min.js"
+	type="text/javascript"></script>
+<script src="script.js"></script>
 </head>
 <body>
 
-		<div class="container-fluid">
-			<div class="row row-offcanvas row-offcanvas-right">
-				<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
-					<div class="user-info">
-						<img
-							src="${cp }/chat/tokProfileView?mem_id=${MEM_INFO.mem_id}">
-						<p class="name">${MEM_INFO.mem_nm}</p>
-						<p class="designation"></p>
-						<span class="emp"> </span>
+
+<div style="     background-color: #a7a7a71c;
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    left: 14%;
+    top: 10%;
+    max-height: 80%;" >
+</div>
 
 
+	<div class="container-fluid">
+		<div class="row row-offcanvas row-offcanvas-right">
+			<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+				<div class="user-info">
+					<img src="${cp }/chat/tokProfileView?mem_id=${MEM_INFO.mem_id}">
+					<p class="name">${MEM_INFO.mem_nm}</p>
+					<p class="designation"></p>
+					<span class="emp"> </span>
+</div>
+
+
+
+
+
+
+
+
+					<div id='cssmenu'>
+						<ul>
+							<li><a href="${cp}/mypage/Worker_Info"><span>회원정보</span></a></li>
+							<li><a
+								href="${cp}/mypage/approval/approvalCheckA?page=1&pageSize=10"><span>결산관리</span></a></li>
+							<li class='active has-sub'><a><span>회원관리<i
+										class="fa fa-sort-down"></i></span></a>
+								<ul>
+									<li><a
+										href="${cp}/mypage/stress?mem_id=${MEM_INFO.mem_id}"><span>나의
+												회원목록</span></a></li>
+									<li class='has-sub'><a><span>나의 보고서<i
+												class="fa fa-sort-down"></i></span></a>
+										<ul>
+											<li><a
+												href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}"><span>보고서
+														조회</span></a></li>
+											<li><a href="${cp}/report/writeView"><span>급여명세서
+														작성</span></a></li>
+											<li class='last'><a href="${cp}/report/getMatInfo"><span>보고서
+														작성</span></a></li>
+										</ul></li>
+
+								</ul></li>
+
+							<li class='active has-sub'><a><span>나의 스케쥴<i
+										class="fa fa-sort-down"></i></span></a>
+								<ul>
+									<li class='has-sub'><a
+										href="/attendance/saerch?page=1&pageSize=10&searchType=memid&searchVal="><span>출퇴근
+												확인<span></a></li>
+									<li class='has-sub'><a href="/mypage/scheduleView"><span>스케쥴
+												관리 <span></a></li>
+									<li class='has-sub'><a
+										href="${cp}/approval/approvalCheck?page=1&pageSize=10&searchType=type&searchVal="><span>일정
+												조율</span></a></li>
+									<li class='has-sub'><a
+										href="${cp}/approval/approvalCheck?page=1&pageSize=10&searchType=type&searchVal="><span>전체일정</span></a></li>
+								</ul></li>
+
+
+
+
+							<li class='last'><a href="${cp}/mypage/Worker_Wd"><span>회원탈퇴</span></a></li>
+						</ul>
 					</div>
-					<ul class="nav">
-						<li class="nav-item active"><a class="nav-link"
-							href="${cp}/mypage/Patient_Info"> <img
-								src="${cp}/resource/Admin/images/icons/1.png"
-								alt=""> <span class="menu-title">회원정보</span>
-						</a></li>
-					
-						<li class="nav-item"><a class="nav-link"
-							href="${cp}/resource/Admin/pages/forms/index.html">
-								<img
-								src="${cp}/resource/Admin/images/icons/005-forms.png"
-								alt=""> <span class="menu-title">결산 관리</span>
-						</a></li>
-						
-						<li class="nav-item"><a class="nav-link"
-							data-toggle="collapse" href="#sample-pages" aria-expanded="false"
-							aria-controls="sample-pages"> <img
-								src="${cp}/resource/Admin/images/icons/9.png"
-								alt=""> <span class="menu-title">회원 관리<i
-									class="fa fa-sort-down"></i></span>
-						</a>
-							<div class="collapse" id="sample-pages">
-								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="#l">
-										  회원목록  </a></li>
-										  
-									<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">
-											보고서 확인 </a></li>
-									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">	급여 명세서 작성 </a></li>
-									<li class="nav-item"><a class="nav-link" href="${cp}/report/getMatInfo">보고서 작성 </a></li>
-									
-								</ul>
-							</div>
-							
-							</li>
+			</nav>
 
-						<li class="nav-item"><a class="nav-link"
-							data-toggle="collapse" href="#sample-pages" aria-expanded="false"
-							aria-controls="sample-pages"> <img
-									src="${cp}/resource/Admin/images/icons/6.png"
-								alt=""> <span class="menu-title">일정 관리<i
-									class="fa fa-sort-down"></i></span>
-						</a>
-							<div class="collapse" id="sample-pages">
-								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="/attendance/saerch?page=1&pageSize=10&searchType=memid&searchVal=">
-										  출퇴근확인  </a></li>
-									<li class="nav-item"><a class="nav-link" href="/mypage/scheduleView">
-										  스케쥴 관리  </a></li>
-									<li class="nav-item"><a class="nav-link" href="#">
-											전체 일정 </a></li>
-									<li class="nav-item"><a class="nav-link" href="#">
-										일정 조율 </a></li>
-									
-								</ul>
-							</div>
-							
-							</li>
-						
-						
-						<li class="nav-item"><a class="nav-link"
-							href="${cp}/mypage/Worker_Wd">
-								<img src="${cp}/resource/Admin//images/icons/10.png"
-								alt=""> <span class="menu-title">회원탈퇴</span>
-						</a></li>
-						
-					</ul>
-				</nav>
-
-			</div>
 		</div>
+	</div>
 
 </body>
 </html>
