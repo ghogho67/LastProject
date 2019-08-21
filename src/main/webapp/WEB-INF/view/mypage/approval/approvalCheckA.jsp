@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -210,47 +210,47 @@ td {
 <script>
 
 $(document).ready(function() {
-	
-	$("#searchType").val("${searchType}").prop("selected", true);
-	$("#searchVal").val("${searchVal}");
-	
-		   $("#searchType").change("on", function(){
-			 
-	 		  $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
-				
-		   });
-		   
-		   
-		   
-		   $("#searchBtn").on("click",function(){
-// 				var data = $("#searchList").serialize();
-// 				console.log(data);
-// 				$.ajax({
-// 					type: "POST",
-// 					url : "${cp}/approval/search",
-// 					data : data,
-// 					success : function(data){
-// 						alert("success");
-// 						console.log(data);
-// 					},
-// 				error : function(xhr){
-// 						alert(xhr.status);
-					
-// 				}
-// 			 });
-				$("#searchList").submit();
-				
-			});
-		
+   
+   $("#searchType").val("${searchType}").prop("selected", true);
+   $("#searchVal").val("${searchVal}");
+   
+         $("#searchType").change("on", function(){
+          
+            $("#saerchVal").attr( "placeholder", "/19/07/30형식으로 기입" );
+            
+         });
+         
+         
+         
+         $("#searchBtn").on("click",function(){
+//             var data = $("#searchList").serialize();
+//             console.log(data);
+//             $.ajax({
+//                type: "POST",
+//                url : "${cp}/approval/search",
+//                data : data,
+//                success : function(data){
+//                   alert("success");
+//                   console.log(data);
+//                },
+//             error : function(xhr){
+//                   alert(xhr.status);
+               
+//             }
+//           });
+            $("#searchList").submit();
+            
+         });
+      
 });
 
 function boardPagingListAjaxHtml(page, pageSize ) {
-		$("#page").val(page);
-		$("#pageSize").val(pageSize);
-		$("#searchList").submit();
-	
-	}
-	
+      $("#page").val(page);
+      $("#pageSize").val(pageSize);
+      $("#searchList").submit();
+   
+   }
+   
 
 
 
@@ -266,90 +266,90 @@ function boardPagingListAjaxHtml(page, pageSize ) {
 
 <body>
 
-<%-- 	 <form id="pageForm" action="${cp}/approval/approvalCheck"> --%>
-<!-- 	 	<input type="hidden" name = "page" id="page"> -->
-<!-- 	 	<input type="hidden" name = "pageSize" id="pageSize"> -->
-<!-- 	 </form> -->
+<%--     <form id="pageForm" action="${cp}/approval/approvalCheck"> --%>
+<!--        <input type="hidden" name = "page" id="page"> -->
+<!--        <input type="hidden" name = "pageSize" id="pageSize"> -->
+<!--     </form> -->
 
 
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
-			<div class="card">
-				<div class="card-body">
-				
-					<div class="d1">
-	                          <form id="searchList" class="for" action="${cp}/approval/approvalCheckA">
-	
-	                             <select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
-	                                <option value="day">날짜</option>
-	                                <option value="type">결제구분</option>
-	                                <option value="mem_id">아이디</option> 
-	                             </select> 
-	                            <input id="searchVal" name="searchVal" type="text" placeholder="회원등급 Ex)1/2/3"><br>
-	                            <input type="hidden"  name = "page" id="page" value="1">
-	 							<input type="hidden" name = "pageSize" id="pageSize" value="10">
-	                           <button id="searchBtn" name="searchBtn" type="button"></button>
-	                          </form>
-	                       </div>
-	                       
-			<div id="titlee">
-						<h2>
-							<span>결재내역</span>
-						</h2>
-						</div>
-					<hr>
-					<div class="table-responsive">
-						<table class="table center-aligned-table">
-							<thead>
-								<tr class="text-primary">
-									<th>NO.</th>
-									<th>결제구분</th>
-									<th>결제금액</th>
-									<th>결제시간</th>
-									<th>결제자</th>
-									<th>환불여부</th>
-								</tr>
-							</thead>
+   <div class="container">
+      <div style="padding-top: 50px; width: 1250px;">
+         <div class="card">
+            <div class="card-body">
+            
+               <div class="d1">
+                             <form id="searchList" class="for" action="${cp}/approval/approvalCheckA">
+   
+                                <select id="searchType" name="searchType"
+                        style="position: absolute; z-index: 999;">
+                                   <option value="day">날짜</option>
+                                   <option value="type">결제구분</option>
+                                   <option value="mem_id">아이디</option> 
+                                </select> 
+                               <input id="searchVal" name="searchVal" type="text" placeholder="회원등급 Ex)1/2/3"><br>
+                               <input type="hidden"  name = "page" id="page" value="1">
+                         <input type="hidden" name = "pageSize" id="pageSize" value="10">
+                              <button id="searchBtn" name="searchBtn" type="button"></button>
+                             </form>
+                          </div>
+                          
+         <div id="titlee">
+                  <h2>
+                     <span>결재내역</span>
+                  </h2>
+                  </div>
+               <hr>
+               <div class="table-responsive">
+                  <table class="table center-aligned-table">
+                     <thead>
+                        <tr class="text-primary">
+                           <th>NO.</th>
+                           <th>결제구분</th>
+                           <th>결제금액</th>
+                           <th>결제시간</th>
+                           <th>결제자</th>
+                           <th>환불여부</th>
+                        </tr>
+                     </thead>
 
-							<tbody>
-									<c:forEach items="${approvalVo }" var="vo" varStatus="status">
-									<tr>
-										<td>${vo.rn}</td>
-										<td>
-											<c:choose>
-												<c:when test="${vo.app_type eq 1}">
-													매칭
-												</c:when>
-												<c:when test="${vo.app_type eq 2}">
-												 	골드가입
-												</c:when>
-												<c:when test="${vo.app_type eq 3}">
-												 	기부
-												</c:when>
-												
-											</c:choose>
-										
-										</td>
-										<td>${vo.app_pay}</td>
-										<td><fmt:formatDate value="${vo.app_time }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
-										<td>${vo.mem_id }</td>
-										<td>${vo.app_del }</td>
-									</tr>
-									</c:forEach>
-									
-								
-							</tbody>
-						</table>
+                     <tbody>
+                           <c:forEach items="${approvalVo }" var="vo" varStatus="status">
+                           <tr>
+                              <td>${vo.rn}</td>
+                              <td>
+                                 <c:choose>
+                                    <c:when test="${vo.app_type eq 1}">
+                                       매칭
+                                    </c:when>
+                                    <c:when test="${vo.app_type eq 2}">
+                                        골드가입
+                                    </c:when>
+                                    <c:when test="${vo.app_type eq 3}">
+                                        기부
+                                    </c:when>
+                                    
+                                 </c:choose>
+                              
+                              </td>
+                              <td>${vo.app_pay}</td>
+                              <td><fmt:formatDate value="${vo.app_time }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
+                              <td>${vo.mem_id }</td>
+                              <td>${vo.app_del }</td>
+                           </tr>
+                           </c:forEach>
+                           
+                        
+                     </tbody>
+                  </table>
 
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 
-	<div class="demo" style="position:absolute; right: 20%;">
+   <div class="demo" style="position:absolute; right: 20%;">
                 <nav class="pagination-outer" aria-label="Page navigation">
                     <ul class="pagination">
                        <c:choose>

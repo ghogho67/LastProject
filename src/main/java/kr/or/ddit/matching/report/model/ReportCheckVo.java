@@ -2,11 +2,12 @@ package kr.or.ddit.matching.report.model;
 
 import java.util.Date;
 
-public class ReportVo {
+public class ReportCheckVo {
 	private int mat_id;
 	private Date rep_time;
 	private String rep_title;
 	private String rep_cont;
+	private int check;
 
 	public int getMat_id() {
 		return mat_id;
@@ -40,10 +41,18 @@ public class ReportVo {
 		this.rep_cont = rep_cont;
 	}
 
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+
 	@Override
 	public String toString() {
-		return "ReportVo [mat_id=" + mat_id + ", rep_time=" + rep_time + ", rep_title=" + rep_title + ", rep_cont="
-				+ rep_cont + "]";
+		return "ReportCheckVo [mat_id=" + mat_id + ", rep_time=" + rep_time + ", rep_title=" + rep_title + ", rep_cont="
+				+ rep_cont + ", check=" + check + "]";
 	}
 
 }

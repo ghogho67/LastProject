@@ -50,34 +50,34 @@
 
 
 
-	<select id="getAllReportList" resultType="matchingReportVo"
-		parameterType="String">
+<!-- 	<select id="getAllReportList" resultType="matchingReportVo" -->
+<!-- 		parameterType="String"> -->
 
-		SELECT M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_CONT,M.MAT_ST,
-		M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MAT_DEL,M.MEM_ID,M.CW_MEM_ID,
-		R.REP_ID ,R.REP_TIME
-		,R.REP_TITLE,R.REP_CONT
-		FROM REPORT R , MATCHING M
-		WHERE R.MAT_ID =M.MAT_ID(+)
-		AND M.MEM_ID = #{MEM_ID}
+<!-- 		SELECT M.MAT_ID, M.MAT_TITLE,M.MAT_CONT,M.MAT_CONT,M.MAT_ST, -->
+<!-- 		M.MAT_END,M.MAT_BC,M.MAT_TC,M.MAT_ALLDAY,M.MAT_TYPE,M.MAT_DEL,M.MEM_ID,M.CW_MEM_ID, -->
+<!-- 		R.REP_ID ,R.REP_TIME -->
+<!-- 		,R.REP_TITLE,R.REP_CONT -->
+<!-- 		FROM REPORT R , MATCHING M -->
+<!-- 		WHERE R.MAT_ID =M.MAT_ID(+) -->
+<!-- 		AND M.MEM_ID = #{MEM_ID} -->
 
-	</select>
+<!-- 	</select> -->
 	
 	
 	
 <!-- 	요양보호사가 본인이 작성한 보고서 확인 -->
-	<select id="getWorkerReportList" resultType="matchingReportVo"
-		parameterType="String">
+<!-- 	<select id="getWorkerReportList" resultType="matchingReportVo" -->
+<!-- 		parameterType="String"> -->
 
-		select m.mat_id, m.mat_title,m.mat_cont,m.mat_cont,m.mat_st,
-		m.mat_end,m.mat_bc,m.mat_tc,m.mat_allday,m.mat_type,m.mat_del,m.mem_id,m.cw_mem_id,
-		r.rep_id ,r.rep_time
-		,r.rep_title,r.rep_cont
-		from report r , matching m
-		where r.mat_id =m.mat_id(+)
-		and m.cw_mem_id = #{m.cw_mem_id}
+<!-- 		select m.mat_id, m.mat_title,m.mat_cont,m.mat_cont,m.mat_st, -->
+<!-- 		m.mat_end,m.mat_bc,m.mat_tc,m.mat_allday,m.mat_type,m.mat_del,m.mem_id,m.cw_mem_id, -->
+<!-- 		r.rep_id ,r.rep_time -->
+<!-- 		,r.rep_title,r.rep_cont -->
+<!-- 		from report r , matching m -->
+<!-- 		where r.mat_id =m.mat_id(+) -->
+<!-- 		and m.cw_mem_id = #{m.cw_mem_id} -->
 
-	</select>
+<!-- 	</select> -->
 
 
 
@@ -184,10 +184,5 @@ AND M.MEM_ID = #{MEM_ID} AND R.REP_ID=#{REP_ID} AND A.REP_ID=#{REP_ID}
 		select *
 		from reportattach where rep_att_id = #{rep_att_id}
 	</select>
-
-
-
-
-
 
 </mapper>

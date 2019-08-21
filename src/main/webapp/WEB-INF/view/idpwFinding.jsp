@@ -73,6 +73,17 @@ $(document).ready(function(){
 });
 </script>
 
+<style type="text/css">
+
+.ptagdiv{
+
+	width: 548.5px;
+	height: 25px;
+
+}
+
+</style>
+
 </head>
 <body>
 
@@ -99,9 +110,9 @@ $(document).ready(function(){
 	              <input type="text" name="mem_nm" maxlength="20" size="30"  value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" placeholder="회원 이름 입력">
 	            </p>
           	</form>
-            	
+            	<div class="ptagdiv">
             		<p id="idresult1" class="idpw-txt"></p>
-           
+           		</div>
             <div class="find-btn-div">
               <button id="idBtn" type="button" class="hp-btn" ng-click="hpAuthCheck('pw');">본인인증 확인</button>
             </div>
@@ -118,7 +129,9 @@ $(document).ready(function(){
 		              <input type="text" name="mem_mail" maxlength="20" size="30"  value="" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" placeholder="회원 이메일 입력">
 		            </p>
 	            </form>
+	            <div class="ptagdiv">
 	            <p id="idresult2" class="idpw-txt"></p>
+            	</div>
             <div class="find-btn-div">
               <button id="passBtn" type="button" class="hp-btn">임시비밀번호발송</button>
                   <p class="idpw-txt">이메일로 임시 비밀번호가 발송됩니다.</p>

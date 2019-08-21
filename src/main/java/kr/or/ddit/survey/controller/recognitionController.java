@@ -2,6 +2,7 @@ package kr.or.ddit.survey.controller;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.survey.model.SurveyAnswerVo;
 import kr.or.ddit.survey.model.SurveyPartVo;
@@ -51,16 +54,19 @@ public class recognitionController {
 
 	@Resource(name = "videoService")
 	private IVideoService videoService;
-
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
 
 	private static final Logger logger = LoggerFactory.getLogger(recognitionController.class);
 	
 
 	
 	@RequestMapping("/semiTestStart")
-	public String semiRecognitionTestStart() {
+	public String semiRecognitionTestStart(HttpSession session, int cate_id) {
 		
-		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
 		return "recognitionActivites/semiRecognitionTestStart";
 	}
 	

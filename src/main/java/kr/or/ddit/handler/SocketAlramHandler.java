@@ -28,13 +28,16 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 	private List<WebSocketSession> sessionList;	// 소켓에 연결된 세션정보
 	public SocketAlramHandler() {
 		sessionList = new ArrayList<>();
+		
 		logger.debug("☞sessionList:{}",sessionList);
 	}
 	
 	// 클라이언트가 웹소켓에 접속하여 연결이 맺어진 후에 호출
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		
 		String user = getUser(session);
+		
 		sessionList.add(session);
 		
 		
@@ -48,9 +51,31 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) 
 	throws Exception {
 		
-			for (WebSocketSession currentSession : sessionList) {
-					currentSession.sendMessage(new TextMessage(message.getPayload()));
+		String user = getUser(session);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		for (WebSocketSession currentSession : sessionList) {
+			
+				map = currentSession.getAttributes();
+				String mapMem_id = (String) map.get("mem_id");
+				if(mapMem_id.equals(user)) {
+					int counter = chaTextService.chatAllCnt(user);
+						currentSession.sendMessage(new TextMessage(counter+message.getPayload()));
+				}
 			}
+		
+			
+//			Map<String, Object> map = new HashMap<String, Object>();
+//			for (WebSocketSession currentSession : sessionList) {
+//				logger.debug("☞currentSession:{}",currentSession);
+//				
+//				 map = currentSession.getAttributes();
+//				 logger.debug("☞currentSession.getAttributes();:{}",currentSession.getAttributes());
+//				 logger.debug("☞map:{}",map);
+//				int mapChat_id = (int) map.get("chat_id");
+//				if(mapChat_id == chat_id) {
+//					currentSession.sendMessage(new TextMessage(user + " : " + message.getPayload()));
+//				}
 		}
 		
 	

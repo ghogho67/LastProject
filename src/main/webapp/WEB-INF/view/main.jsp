@@ -51,7 +51,7 @@
    }
 
    function popup() {
-      window.open("/chat/thistok?mem_id=${mem_id}",
+      window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
             "thisTok!", "width=400, height=700, left=100, top=50");
    }
 </script>
@@ -144,6 +144,7 @@
 	border-radius: 50%;
 	width: 25px;
 	height: 25px;
+/* 	display: none; */
 		 
 }
 #alramCount{
@@ -350,54 +351,93 @@
 
 
 <script type="text/javascript">
+
+//  $(document).ready(function() { 
+// 		 setInterval(function(){
+// 				$.ajax({
+// 					type: "POST",
+// 					url : "${cp}/chatText/chatAllCnt",
+// 					success : function(data){
+// 						if(data.cnt != null){
+// 							$(".fixalram").css("display","inline");
+// 							$("#alramCount").html(data.cnt);
+// 						}else{
+						
+// 						}
+										
+// 					},
+// 				error : function(xhr){
+					
+// 				}
+// 				});
+// 		},1000)
+//  });
+
+var socket;
+
 function initSocket() {
 
-	   socket = new SockJS("/alram");
-	   
-	   socket.onopen = onOpen;
-	   socket.onmessage = onMessage; 
-	   socket.onclose = onClose;
-	   
-	   
-	   function onOpen(evt) {
-// 	   		alert("카운터 쓰기 오픈했따."); 
-	   }
-	   
-	   function sendMessage(){      
-	      //websocket으로 메시지를 보내겠다.
-	        socket.send($("#message").val());     
-	   }
-	   
-	        /* sock.close(); */
-	       
-	   function onClose(evt){
-// 		   alert("카운터 쓰기 클로즈 했따."); 
-	    }    
+   socket = new SockJS("/alram");
+   
+   socket.onopen = function(evt){
+	   onOpen(evt);
+   }
+   socket.onmessage = function(evt){
+	   onMessage(evt); 
+   }
+   socket.onclose = function(evt){
+	   onClose(evt);
+   }
+   
+  
+   
+   function onOpen(evt) {
+// 	   setInterval(function(){
+	   	socket.send($("${mem_id}")); 
+// 	   },1000)
+   }
+   
+   function sendMessage(){      
+      
+   }
+   
+   //evt 파라미터는 websocket이 보내준 데이터다.
+   function onMessage(evt){  //변수 안에 function자체를 넣음.
+	   var data = evt.data;
+	   var strArray = data.split('[');
+       $('#alramCount').html(strArray[0]);
+       console.log(strArray[0]);
+	      
+   }
+       
+   function onClose(evt){
+
+   }    
+
 }
 
-$(document).ready(function() { 
-// 	 alert("로딩 완료");
-	 initSocket();   //websocket 연결
-	
+
+   
+$(document).ready(function() {
+   initSocket();   //websocket 연결
+   
 });
+	
 
 
 
-
-	   
-// 	$(document).ready(function() {
-// 	   var userId = "${mem_id}";   //사용자 아이디를 파라미터로 받는다
-// 	   initSocket();   //websocket 연결
-	   
-// 	});
 
 
 </script>
 	<div>
-		<div class="fixalram">
-		<p id="alramCount">10</p>
-		</div>
-		<img src="/image/1419496.svg"  style="width: 50px;height: auto;"  id="fixedbtn" onclick="popup()">
+		<form id="chatCnt" action="">
+	
+				<div class="fixalram">
+				<p id="alramCount"></p>
+				<input type="hidden" id="chatCounter">
+				</div>
+				<img src="/image/1419496.svg"  style="width: 50px;height: auto;"  id="fixedbtn" onclick="popup()">
+		</form>
 	</div>
 	
 

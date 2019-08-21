@@ -67,6 +67,45 @@ public interface IDonationService {
 	*/
 	Map<String, Object> donationPagingList(PageVo pageVo);
 	
+	/**
+	* Method : getDonationList_Y
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_yn
+	* @return
+	* Method 설명 :회원 리스트 조회
+	*/
+	List<DonationApprovalVo> getDonationList_Y();
+	
+	/**
+	 * Method : getDonationList_N
+	 * 작성자 : ADMIN
+	 * 변경이력 :
+	 * @param mem_yn
+	 * @return
+	 * Method 설명 :비회원 리스트 조회
+	 */
+	List<DonationApprovalVo> getDonationList_N();
+	
+	/**
+	* Method : donationPagingList_Y
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :회원 기부자 페이징 리스트
+	*/
+	Map<String, Object> donationPagingList_Y(PageVo pageVo);
+	
+	/**
+	* Method : donationPagingList_N
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pgeVo
+	* @return
+	* Method 설명 :비회원 기부자 페이징 리스트
+	*/
+	Map<String, Object> donationPagingList_N(PageVo pageVo);
 	
 	
 

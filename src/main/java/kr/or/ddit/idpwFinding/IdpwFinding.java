@@ -109,8 +109,9 @@ public class IdpwFinding {
 	
 	//SMTP 메일보내기
 	public static void gmailSend(String mail, String title, String content) {
-        String user = "ghogho67@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-        String password = "dlrhkdgh12";   // 패스워드
+        String user = "rhkdghtkddk12@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
+        String password = "dlrhkdgh12!";   // 패스워드
+    
 
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();

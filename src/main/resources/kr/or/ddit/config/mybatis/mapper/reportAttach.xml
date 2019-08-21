@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reportAttach">
+
+	<insert id="reportAttachInsert" parameterType="ReportAttachVo">
+		insert into reportattach values (rep_att_id.nextval,#{rep_att_path},#{rep_att_nm},#{mat_id})
+	</insert>
+
+	<update id="reportAttachDelete" parameterType="ReportAttachVo">
+		delete from reportattach where rep_att_id = #{rep_att_id}
+	</update>
+
+	<select id="getReportAttachList" parameterType="int" resultType="AttachmentVo">
+		select*from reportattach where mat_id =#{mat_id}
+	</select>
+
+	<select id="getReportAttach" parameterType="int" resultType="ReportAttachVo">
+		select*from reportattach where rep_att_id = #{rep_att_id}
+	</select>
+
+</mapper>

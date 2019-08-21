@@ -21,21 +21,21 @@
     max-height: 70%;" >
 </div>
 
-		<div class="container-fluid">
-			<div class="row row-offcanvas row-offcanvas-right">
-				<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
-					<div class="user-info">
-						<img
-							src="${cp}/resource/Admin/images/5000.png">
-						<p class="name">${MEM_INFO.mem_nm}</p>
-						<p class="designation"></p>
-						<span class="admin"> </span>
+      <div class="container-fluid">
+         <div class="row row-offcanvas row-offcanvas-right">
+            <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+               <div class="user-info">
+                  <img
+                     src="${cp}/resource/Admin/images/5000.png">
+                  <p class="name">${MEM_INFO.mem_nm}</p>
+                  <p class="designation"></p>
+                  <span class="admin"> </span>
 
 
-					</div>
-					
-					
-					
+               </div>
+               
+               
+               
 <div id='cssmenu'>
 <ul>
    <li><a href='${cp}/mypage/Patient_Info'><span>회원정보</span></a></li>
@@ -76,19 +76,19 @@
    <li class='last'><a href='#'><span>회원탈퇴</span></a></li>
 </ul>
 </div>
-					
-					
-	
-					
-					
-					
-					
-					
-					
-				</nav>
+               
+               
+   
+               
+               
+               
+               
+               
+               
+            </nav>
 
-			</div>
-		</div>
+         </div>
+      </div>
 
 </body>
 </html>

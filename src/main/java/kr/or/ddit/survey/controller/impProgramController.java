@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.survey.model.QuestionChoiceVo;
 import kr.or.ddit.survey.model.SurveyAnswerVo;
@@ -48,14 +50,19 @@ public class impProgramController {
 	
 	@Resource(name = "surveyResultService")
 	private ISurveyResultService surveyResultService;
-	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(impProgramController.class);
 
 	@RequestMapping("/impStart")
-	public String impStart() {
-
+	public String impStart(int cate_id,HttpSession session) {
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
+		
 		return "recognitionActivites/improvementProgram/impStart";
 	}
 

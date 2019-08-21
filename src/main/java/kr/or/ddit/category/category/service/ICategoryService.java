@@ -46,6 +46,8 @@ public interface ICategoryService {
 	int  InsertCategory(CategoryVo categoryVo);
 	CategoryVo getCategory(int cate_id);
 	
+	List<CategoryVo> sideBarList(int cate_id);
+	
 
 	
 }

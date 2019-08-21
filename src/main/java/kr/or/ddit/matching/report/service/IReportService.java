@@ -13,17 +13,21 @@ public interface IReportService {
 List<ReportVo> getReportList(String mat_id);
 ReportVo getReportVo(int mat_id);
 	
-	ReportVo getReport(String rep_id);
-
-	
+//	ReportVo getReport(String rep_id);
 
 	List<MatchingReportVo> getAllReportList (String mem_id);
-	
-	//MatchingReportVo getCertainReport (MatchingReportVo matchingReportVo);
 	
 	MatchingReportAttachmentVo getCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
 
 	List<MatchingReportVo> getWorkerReportList (String cw_mem_id);
+	
 	MatchingReportAttachmentVo getWorkerCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
+	
 	int reportInsert(ReportWriteVo rwv);
+	
+	int reportWrite(ReportVo reportVo);
+	
+	ReportVo getLatestReport();
+	
+//	ReportVo getReport(int rep_id);
 }

@@ -76,6 +76,11 @@ public class CategoryDao implements ICategoryDao {
 		return 	sqlSession.selectOne("category.getCategory",cate_id);
 	}
 
+	@Override
+	public List<CategoryVo> sideBarList(int cate_id) {
+		return sqlSession.selectList("category.sideBarList",cate_id);
+	}
+
 	
 	
 }

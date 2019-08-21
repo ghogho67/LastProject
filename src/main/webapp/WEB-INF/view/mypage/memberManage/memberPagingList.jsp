@@ -288,8 +288,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<span>회원관리</span>
 						</h2>
 					</div>
-						
 					<hr>
+					
+					<div class="container">
+						<div class="row">
+					
+					
 					<form id="frm" action="${cp}/mypage/pagingList" method="get">
 						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
 					<div class="table-responsive">
@@ -419,7 +423,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</div>
 			
 			
-		</div>
+		
 	</div>
 
 
