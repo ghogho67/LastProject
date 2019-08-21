@@ -6,16 +6,30 @@
 
 	<insert id="insert" parameterType="reportWriteVo">
 		insert into costreport
-		(REPORT_ID,	MEM_ID,	NAME,FACNM,REG,GRADE,CWNUM,FACNUM,YEAR, M1,	M7, M6, M5, M4, M3, M2, D7, D6, D5, D4, D3, D2, D1, 
-		TT6, TT5,TT4,TT3, TT2, TT7, TT1, sh1, sh7, sh6, sh5, sh4, sh3, sh2, sm7, sm6,sm5,sm4, sm3, sm2, sm1, 
-		EH7, EH6, EH5, EH4, EH3, EH2, EH1, EM7, EM6,EM5,EM4, EM3, EM2, EM1, 
-		PHYSUP7, PHYSUP6, PHYSUP5, PHYSUP4, PHYSUP3,PHYSUP2, PHYSUP1, COGSUR7, COGSUR6, COGSUR5, COGSUR4, COGSUR3,	COGSUR2, COGSUR1, 
-		LIFE7, LIFE6, LIFE5, LIFE4, LIFE3, LIFE2, LIFE1,TALK7, TALK6, TALK5, TALK4, TALK3, TALK2, TALK1, 
-		CLEAN7, CLEAN6,	CLEAN5, CLEAN4, CLEAN3, CLEAN2, CLEAN1, PHY7, PHY6, PHY5, PHY4, PHY3,PHY2, PHY1, 
-		FOOD7, FOOD6, FOOD5, FOOD4, FOOD3, FOOD2, FOOD1, COG7,COG6, COG5, COG4, COG3, COG2, COG1, 
-		LN7, LN6, LN5, LN4, LN3, LN2, LN1,SN7, SN6, SN5, SN4, SN3, SN2, SN1, 
-		FT7, FT6, FT5, FT4, FT3, FT2, FT1,FC7, FC6, FC5, FC4, FC3, FC2, FC1, 
-		SIGN7, SIGN6, SIGN5, SIGN4, SIGN3,SIGN2, SIGN1, PATSIGN7, PATSIGN6, PATSIGN5, PATSIGN4, PATSIGN3,PATSIGN2, PATSIGN1
+		(REPORT_ID, MEM_ID, NAME,FACNM,REG,GRADE,CWNUM,FACNUM,YEAR, M1, M7,
+		M6, M5, M4, M3, M2, D7, D6, D5, D4, D3, D2, D1,
+		TT6, TT5,TT4,TT3, TT2,
+		TT7, TT1, sh1, sh7, sh6, sh5, sh4, sh3, sh2, sm7,
+		sm6,sm5,sm4, sm3,
+		sm2, sm1,
+		EH7, EH6, EH5, EH4, EH3, EH2, EH1, EM7, EM6,EM5,EM4, EM3,
+		EM2, EM1,
+		PHYSUP7, PHYSUP6, PHYSUP5, PHYSUP4, PHYSUP3,PHYSUP2, PHYSUP1,
+		COGSUR7,
+		COGSUR6, COGSUR5, COGSUR4, COGSUR3, COGSUR2, COGSUR1,
+		LIFE7,
+		LIFE6, LIFE5, LIFE4, LIFE3, LIFE2, LIFE1,TALK7, TALK6, TALK5, TALK4,
+		TALK3, TALK2, TALK1,
+		CLEAN7, CLEAN6, CLEAN5, CLEAN4, CLEAN3, CLEAN2,
+		CLEAN1, PHY7, PHY6, PHY5,
+		PHY4, PHY3,PHY2, PHY1,
+		FOOD7, FOOD6, FOOD5,
+		FOOD4, FOOD3, FOOD2, FOOD1, COG7,COG6, COG5, COG4,
+		COG3, COG2, COG1,
+		LN7, LN6, LN5, LN4, LN3, LN2, LN1,SN7, SN6, SN5, SN4, SN3, SN2, SN1,
+		FT7, FT6, FT5, FT4, FT3, FT2, FT1,FC7, FC6, FC5, FC4, FC3, FC2, FC1,
+		SIGN7, SIGN6, SIGN5, SIGN4, SIGN3,SIGN2, SIGN1, PATSIGN7, PATSIGN6,
+		PATSIGN5, PATSIGN4, PATSIGN3,PATSIGN2, PATSIGN1
 		) values
 		(report_id.nextval,
 		#{mem_id,jdbcType=VARCHAR},
@@ -29,17 +43,20 @@
 		#{m1,jdbcType=INTEGER },
 		#{m7,jdbcType=INTEGER },
 		#{m6,jdbcType=INTEGER },
-		#{m5,jdbcType=INTEGER },
+		#{m5,jdbcType=INTEGER
+		},
 		#{m4,jdbcType=INTEGER },
 		#{m3,jdbcType=INTEGER },
 		#{m2,jdbcType=INTEGER },
 		#{d7,jdbcType=INTEGER },
-		#{d6,jdbcType=INTEGER },
+		#{d6,jdbcType=INTEGER
+		},
 		#{d5,jdbcType=INTEGER },
 		#{d4,jdbcType=INTEGER },
 		#{d3,jdbcType=INTEGER },
 		#{d2,jdbcType=INTEGER },
-		#{d1,jdbcType=INTEGER },
+		#{d1,jdbcType=INTEGER
+		},
 		#{tt6,jdbcType=INTEGER },
 		#{tt5,jdbcType=INTEGER },
 		#{tt4,jdbcType=INTEGER },
@@ -173,6 +190,23 @@
 		#{patsign3,jdbcType=VARCHAR},
 		#{patsign2,jdbcType=VARCHAR},
 		#{patsign1,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- // 리포트 아이디로 해당 보고서를 불러온다 -->
+	<select id="getReportVo" resultType="ReportVo" parameterType="int">
+		select * from report where mat_id = #{mat_id}
+	</select>
+
+	<select id="getReport" resultType="ReportVo" parameterType="int">
+		select * from report where mat_id = #{mat_id}
+	</select>
+	
+	<select id="getLatestReport" resultType="ReportVo">
+		select * from (select * from report order by rep_time desc) where rownum = 1
+	</select>
+	
+	<insert id="reportWrite" parameterType="ReportVo">
+		insert into	report values	( #{mat_id}, sysdate,#{rep_title},#{rep_cont})
 	</insert>
 
 </mapper>

@@ -146,7 +146,7 @@ margin:5px;
 					<div class="titlee">
 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2>
 						<pre>
-cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachmentList : ${attachmentList } postVo : ${postVo }mem_id : ${mem_id }
+cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachmentList : ${attachmentList } postVo : ${postVo }mem_id : ${mem_id } cw_mem_id:${cw_mem_id }
 </pre>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">

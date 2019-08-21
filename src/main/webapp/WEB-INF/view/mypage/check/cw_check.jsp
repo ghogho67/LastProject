@@ -83,7 +83,7 @@ td {
 
 .pagination li.active a.page-link, .pagination li a.page-link:hover,
    .pagination li.active a.page-link:hover {
-   color: #006266;
+   color: #5ab4dc;
    background-color: transparent;
 }
 
@@ -98,7 +98,7 @@ td {
 
 .pagination li a.page-link:before, .pagination li a.page-link:after {
    content: "";
-   background-color: #006266;
+   background-color: #5ab4dc;
    height: 3px;
    width: 0;
    opacity: 1;
@@ -110,13 +110,13 @@ td {
 }
 
 .pagination li a.page-link:before {
-   background: linear-gradient(135deg, transparent 49%, #006266 50%);
+   background: linear-gradient(135deg, transparent 49%, #5ab4dc 50%);
    height: 15px;
    width: 15px;
    transform: translateX(-50%) rotate(45deg);
    bottom: auto;
    top: -20px;
-   left: 50%;
+   left: 38%;
 }
 
 .pagination li a.page-link:hover:after {
@@ -166,7 +166,7 @@ td {
    width: 110%;
    height: 20px;
    padding-left: 90px;
-   border: 2px solid #7BA7AB;
+   border: 2px solid #5ab4dc;
    border-radius: 5px;
    outline: none;
    background: white;
@@ -182,7 +182,7 @@ td {
    width: 32px;
    height: 38px;
    border: none;
-   background: #7BA7AB;
+   background: #5ab4dc;
    border-radius: 0 5px 5px 0;
    cursor: pointer;
 }
@@ -199,10 +199,10 @@ td {
    width: 90px;
    font-size: 12px;
    border-radius: 5px 0px 0px 5px;
-   border-top: 2px solid #7BA7AB;
-   border-bottom: 2px solid #7BA7AB;
-   border-left: 2px solid #7BA7AB;
-   border-right: 2px solid #7BA7AB;
+   border-top: 2px solid #5ab4dc;
+   border-bottom: 2px solid #5ab4dc;
+   border-left: 2px solid #5ab4dc;
+   border-right: 2px solid #5ab4dc;
 }
 </style>
 
@@ -253,9 +253,9 @@ td {
 <body>
 
 	
-<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
-         <div class="card">
+	<div class="content-wrapper">
+			<div class="col-lg-12">
+				<div class="card">
             <div class="card-body">
                        
 					<div class="d1">
@@ -306,11 +306,9 @@ td {
                </div>
          </div>
       </div>
-   </div>
 
-</div>
 
- 	<div class="demo" style="position:absolute; right: 20%;">
+ 	<div class="demo" style="position:absolute; right: 38%;">
                 <nav class="pagination-outer" aria-label="Page navigation">
                     <ul class="pagination">
                        <c:choose>
@@ -385,6 +383,7 @@ td {
             </div>
    
    
-
+</div>
+</div>
 </body>
 </html>

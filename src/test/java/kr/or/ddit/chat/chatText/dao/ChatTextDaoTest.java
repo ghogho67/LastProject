@@ -58,7 +58,7 @@ public class ChatTextDaoTest extends LogicTestEnv{
 		}
 
 		/***Then***/
-		assertEquals(106, cnt);
+		assertEquals(15, cnt);
 	}
 
 }

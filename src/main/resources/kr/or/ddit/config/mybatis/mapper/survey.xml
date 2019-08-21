@@ -94,7 +94,7 @@ select * from video
 <insert id="InsertTestResult"  parameterType="SurveyResultVo">
 insert into surveyresult
  (surresult_id, sur_part_id, sur_result, sur_time) 
- values (surresult_id.nextval, #{sur_part_id}, #{sur_result}, to_date(sysdate, 'yyyy-mm-dd'))
+ values (surresult_id.nextval, #{sur_part_id}, #{sur_result},sysdate)
 </insert>
 
 

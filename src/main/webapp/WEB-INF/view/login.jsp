@@ -69,9 +69,7 @@ background-position:center; background-size: 280px; background-repeat: no-repeat
 					tabindex="3">로그인</button></li>
 				<li class="log">
 				<a class="btn type6" href="/regist/regist1" tabindex="3">회원가입</a></li>
-				<li class="log">
-				<a class="btn type6" href="/donation/nonmemberDonation" tabindex="3">기부하기</a></li>
-
+				
 					
 			</ul>
 			<br>
@@ -88,12 +86,11 @@ background-position:center; background-size: 280px; background-repeat: no-repeat
 				</div>
 			</div>
 		<div class="info"> 
-<!-- 				<p>	언제나 내 부모처럼 모시겠습니다<br> -->
-			
-<!-- 	고객센터 -->
-<!-- 					평일 09:00 ~ 18:00<br>(점심시간 12:30 ~ 13:30) -->
-<!-- 				</p> -->
-<br>
+		
+		<a class="btn type12" 
+ href="/donation/nonmemberDonation" tabindex="3"> <img src="/image/donation.png" style="width: 80px;"/>기부하기</a>
+		
+
  			</div> 
 		</div>
 		

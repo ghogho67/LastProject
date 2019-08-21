@@ -70,7 +70,7 @@ td {
 	width: 100%;
 	height: 30px;
 	padding-left: 90px;
-	border: 2px solid #7BA7AB;
+	border: 2px solid #5ab4dc;
 	border-radius: 5px;
 	outline: none;
 	background: white;
@@ -85,7 +85,7 @@ td {
 	width: 32px;
 	height: 30px;
 	border: none;
-	background: #7BA7AB;
+	background: #5ab4dc;
 	border-radius: 0 5px 5px 0;
 	cursor: pointer;
 }
@@ -102,10 +102,10 @@ td {
 	width: 70px;
 	font-size: 11px;
 	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #7BA7AB;
-	border-bottom: 2px solid #7BA7AB;
-	border-left: 2px solid #7BA7AB;
-	border-right: 2px solid #7BA7AB;
+	border-top: 2px solid #5ab4dc;
+	border-bottom: 2px solid #5ab4dc;
+	border-left: 2px solid #5ab4dc;
+	border-right: 2px solid #5ab4dc;
 }
 
 </style>

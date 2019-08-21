@@ -12,6 +12,13 @@
 	where cm.Chat_Id = c.chat_id)) group by chat_id order by chat_id
 		
 	</select>
+	
+	<select id="chatAllCnt" parameterType="String" resultType="int">
+	select SUM(count(*))cnt from chattext ct  
+	where  Chat_Id IN(
+	(select c.chat_id from (select * from chatMem where chat_id IN (select chat_id from chatMem where mem_id=#{mem_id}) and Mem_Id=#{mem_id}) cm, chat c
+	where cm.Chat_Id = c.chat_id)) group by chat_id order by chat_id
+	</select>
 
 
 </mapper>

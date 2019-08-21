@@ -75,6 +75,10 @@ display:none;
   margin-right: 5px;
   border-radius: 20px;
 }
+
+#chatTime{
+	font-size: 3px;
+}
 </style>
 
 
@@ -102,10 +106,10 @@ $(document).ready(function(){
 
 </head>
 <body>
-   	//
+   	
 	 <img id="logo" alt="" src="/image/logosam2.png">
 	 <button id="myBtn" type="submit" >CreateChat</button>
-	 <form id="for" action="http://192.168.0.32/socket/view" method="post">
+	 <form id="for" action="/socket/view" method="post">
 		<div id="chat">
 		   <table>
 				<c:forEach items="${chatList }" var="chat" varStatus="status">
@@ -114,7 +118,7 @@ $(document).ready(function(){
 						<th><img id="profileimg" src="${cp }/chat/tokProfileView?mem_id=${chat.mem_id}"></th>
 						<th class="hidden">${chat.chat_id}</th>				
 						<th>${chat.mem_id }<br>${chat.chat_nm }</th>
-						<th><fmt:formatDate value="${chat.chat_dt }" pattern="yyyy-MM-dd HH:mm:ss"/></th>
+						<th id="chatTime"><fmt:formatDate value="${chat.chat_dt }" pattern="yyyy-MM-dd"/></th>
 					</tr>
 					</c:if>
 				</c:forEach>

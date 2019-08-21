@@ -3,18 +3,17 @@ package kr.or.ddit.matching.report.model;
 import java.util.Date;
 
 public class ReportVo {
-	private int rep_id;
+	private int mat_id;
 	private Date rep_time;
 	private String rep_title;
 	private String rep_cont;
-	private int mat_id;
 
-	public int getRep_id() {
-		return rep_id;
+	public int getMat_id() {
+		return mat_id;
 	}
 
-	public void setRep_id(int rep_id) {
-		this.rep_id = rep_id;
+	public void setMat_id(int mat_id) {
+		this.mat_id = mat_id;
 	}
 
 	public Date getRep_time() {
@@ -41,18 +40,10 @@ public class ReportVo {
 		this.rep_cont = rep_cont;
 	}
 
-	public int getMat_id() {
-		return mat_id;
-	}
-
-	public void setMat_id(int mat_id) {
-		this.mat_id = mat_id;
-	}
-
 	@Override
 	public String toString() {
-		return "ReportVo [rep_id=" + rep_id + ", rep_time=" + rep_time + ", rep_title=" + rep_title + ", rep_cont="
-				+ rep_cont + ", mat_id=" + mat_id + "]";
+		return "ReportVo [mat_id=" + mat_id + ", rep_time=" + rep_time + ", rep_title=" + rep_title + ", rep_cont="
+				+ rep_cont + "]";
 	}
 
 }

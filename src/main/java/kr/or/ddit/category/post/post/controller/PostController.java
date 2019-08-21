@@ -83,10 +83,6 @@ public class PostController {
 
 		pageVo.setPage(pageVo.getPage());
 		pageVo.setPageSize(pageVo.getPageSize());
-		logger.debug("searchType:{}", searchType);
-		logger.debug("search:{}", search);
-		logger.debug("cate_id:{}", cate_id);
-		logger.debug("pageVo:{}", pageVo);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -115,12 +111,11 @@ public class PostController {
 
 		model.addAttribute("search", search);
 		model.addAttribute("searchType", searchType);
-		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("current", current);
-		logger.debug("☞postList:{}", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
+		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
