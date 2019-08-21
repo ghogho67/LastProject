@@ -139,14 +139,15 @@ margin:5px;
 </script>
 </head>
 <body>
+
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
 					<div class="titlee">
-						<h2 class="sub-header">게시글 상세조회 reportDetail.jsp</h2>
-						<pre>
-rep_id : ${rep_id } reportAttachList : ${reportAttachList } reportVo : ${reportVo }: mem_id : ${mem_id }
+						<h2 class="sub-header">보고서 상세조회 reportDetail.jsp</h2>
+	<pre>
+rep_id : ${rep_id } reportAttachList : ${reportAttachList } reportVo : ${reportVo }: mem_id : ${mem_id } cw_mem_id : ${cw_mem_id}
 </pre>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
@@ -184,12 +185,6 @@ rep_id : ${rep_id } reportAttachList : ${reportAttachList } reportVo : ${reportV
 								<button id="reportModifyBtn" type="button" class="btn btn-primary btn-sm" name="button">수정</button>
 								<input type="hidden" value="${mat_id }" name="mat_id">
 							</form>
-							</c:if>
-							<c:if test="${cw_mem_id eq mem_id }">
-								<form style="float:left;" id="reportDeletefrm" method="post" action="${cp}/post/delete?rep_id=${rep_id}">
-									<button id="reportDeleteBtn" type="button" class="btn btn-primary btn-sm" name="button">삭제</button>
-									<input type="hidden" value="${rep_id }" name="rep_id">
-								</form>
 							</c:if>
 							<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm pull-right">매칭목록</a>
 						</div>
