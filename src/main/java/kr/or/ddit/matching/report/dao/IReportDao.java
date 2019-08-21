@@ -13,7 +13,6 @@ public interface IReportDao {
 	
 	
 	
-	List<ReportVo> getReportList(String mat_id);
 	
 	ReportVo getReport(String rep_id);
 	
@@ -31,4 +30,8 @@ public interface IReportDao {
 	List<MatchingReportVo> getWorkerReportList (String cw_mem_id);
 	MatchingReportAttachmentVo getWorkerCertainReportWA (MatchingReportAttachmentVo matchingReportAttachmentVo);
 	int reportInsert(ReportWriteVo rwv);
+
+	List<ReportVo> getReportList(String mat_id);
+
+	ReportVo getReportVo(int mat_id);
 }

@@ -82,6 +82,24 @@ public class MemberDaoTest extends LogicTestEnv {
 		assertEquals(10, memberList.size());
 
 	}
+	
+	/**
+	* Method : memberGradeCntTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :회원등급에 따른 회원수
+	*/
+	@Test
+	public void memberGradeCntTest() {
+		/***Given***/
+		String mem_grade = "1";
+		/***When***/
+		int memberGradeCnt = memberDao.memberGradeCnt(mem_grade);
+		/***Then***/
+		assertEquals(17, memberGradeCnt);
+		
+
+	}
 
 
 }

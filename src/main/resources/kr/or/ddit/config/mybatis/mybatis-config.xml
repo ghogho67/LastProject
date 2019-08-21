@@ -56,6 +56,8 @@
 		<typeAlias alias="donationApprovalVo" type="kr.or.ddit.joinVo.DonationApprovalVo"/>
 		<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
 		<typeAlias alias="reportWriteVo" type="kr.or.ddit.matching.report.model.ReportWriteVo"/>
+		<typeAlias alias="ReportPageVo" type="kr.or.ddit.matching.report.model.ReportPageVo"/>
+		
 	</typeAliases>
 
 

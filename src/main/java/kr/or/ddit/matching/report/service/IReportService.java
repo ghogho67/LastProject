@@ -11,6 +11,7 @@ public interface IReportService {
 
 	
 List<ReportVo> getReportList(String mat_id);
+ReportVo getReportVo(int mat_id);
 	
 	ReportVo getReport(String rep_id);
 
