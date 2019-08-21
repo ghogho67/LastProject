@@ -157,7 +157,8 @@ $(document).ready(function(){
 						
 					<hr>
 					<form id="frm" action="${cp }/donation/searchDonation?app_id=${app_id}" method="post">
-					<input type="hidden" id="sh_id" name="app_id" value="${app_id }">
+					<input type="hidden" id="sh_id" name="app_id" class="app_id" value="${app_id }">
+					<input type="hidden" class="mem_yn" id="mem_yn" name="mem_yn">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 						<thead>
@@ -172,7 +173,7 @@ $(document).ready(function(){
 							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${getAllDoner }" var="vo" varStatus="status">
+							<c:forEach items="${getDonationList_YN }" var="vo" varStatus="status">
 								<tr>
 									<td>${vo.rn }</td>
 									<td>${vo.doner }</td>
@@ -221,12 +222,7 @@ $(document).ready(function(){
 							</ul>
 						</div>
 					
-					
-					<div id="map" style="width: 100%; height: 400px;"></div>
-					
 					</form>
-					
-	
 					
 					
 				</div>

@@ -1,5 +1,7 @@
 package kr.or.ddit.donation.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -246,6 +248,21 @@ public class DonationController {
 		return "/mypage/donation/donationPagingList.mytiles";
 	}
 
+	
+	@RequestMapping(path = "/searchDonation", method = RequestMethod.GET)
+	public String searchDonation(Model model, String mem_yn) {
+		
+		if(mem_yn.equals("Y")) {
+			model.addAttribute("getDonationList_YN",donationService.getDonationList_Y());
+			logger.debug("☞getDonationList_YN_Y:{}",donationService.getDonationList_Y());
+		}else if(mem_yn.equals("N")){
+			model.addAttribute("getDonationList_YN", donationService.getDonationList_N());
+			logger.debug("☞getDonationList_YN_N:{}",donationService.getDonationList_N());
+		}
+		
+		return "/mypage/donation/searchDonation.mytiles";
+	}
+	
 	/**
 	 * Method : searchDonation 작성자 : ADMIN 변경이력 :
 	 * 
@@ -276,7 +293,7 @@ public class DonationController {
 			Map<String, Object> resultMap = donationService.donationPagingList_Y(pageVo);
 			logger.debug("☞resultMap:{}",resultMap);
 			
-			List<DonationApprovalVo> getDonationList_YN = (List<DonationApprovalVo>) resultMap.get("getDonationList_YN");
+			List<DonationApprovalVo> getDonationList_YN = (List<DonationApprovalVo>) resultMap.get("getDonationList_Y");
 			
 			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
 			if (pageVo.getPage() == 1) {
@@ -307,7 +324,7 @@ public class DonationController {
 		}else if(mem_yn.equals("N")) {
 			Map<String, Object> resultMap = donationService.donationPagingList_N(pageVo);
 			
-			List<DonationApprovalVo> getDonationList_YN = (List<DonationApprovalVo>) resultMap.get("getDonationList_YN");
+			List<DonationApprovalVo> getDonationList_YN = (List<DonationApprovalVo>) resultMap.get("getDonationList_N");
 			
 			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
 			if (pageVo.getPage() == 1) {
