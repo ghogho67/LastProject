@@ -29,5 +29,10 @@ public class ChatTextDao implements IChatTextDao {
 	public List<ChatCollectionVo> chatCntList(String mem_id) {
 		return sqlSession.selectList("chatCollection.chatCntList", mem_id);
 	}
+
+	@Override
+	public int chatAllCnt(String mem_id) {
+		return sqlSession.selectOne("chatCollection.chatAllCnt", mem_id);
+	}
 	
 }
