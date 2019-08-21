@@ -63,4 +63,10 @@ public class ReportService implements IReportService {
 	public int reportInsert(ReportWriteVo rwv) {
 		return reportDao.reportInsert(rwv);
 	}
+
+	@Override
+	public ReportVo getReportVo(int mat_id) {
+		// TODO Auto-generated method stub
+		return reportDao.getReportVo(mat_id);
+	}
 }

@@ -28,7 +28,7 @@ public class ApprovalController {
 	IApprovalService approvalService;
 
 	private static final Logger logger = LoggerFactory.getLogger(ApprovalController.class);
-//
+
 	@RequestMapping(path = "/show")
 	public String show() {
 		return "/approval/post.tiles";
@@ -40,7 +40,7 @@ public class ApprovalController {
 		ApprovalVo avo = new ApprovalVo();
 
 		avo.setApp_pay(app_pay);
-		avo.setApp_type(app_type);
+		avo.setApp_type("1");
 		avo.setMem_id("brown");
 
 		int insertCnt = approvalService.approvalInsert(avo);

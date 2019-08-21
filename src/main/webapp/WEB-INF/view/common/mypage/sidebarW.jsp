@@ -47,8 +47,8 @@
 										  
 									<li class="nav-item"><a class="nav-link" href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}">
 											보고서 확인 </a></li>
-									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">
-											보고서 작성 </a></li>
+									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">	급여 명세서 작성 </a></li>
+									<li class="nav-item"><a class="nav-link" href="${cp}/report/getMatInfo">보고서 작성 </a></li>
 									
 								</ul>
 							</div>

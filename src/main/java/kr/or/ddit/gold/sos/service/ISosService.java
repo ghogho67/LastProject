@@ -9,5 +9,7 @@ public interface ISosService {
 	int recentData(String mem_id);
 	
 	Map<String, Object> getGps(int gps_id, String mem_id);
+	
+	int gpsCnt(String mem_id);
 
 }

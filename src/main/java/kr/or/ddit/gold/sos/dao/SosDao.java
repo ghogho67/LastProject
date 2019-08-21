@@ -41,5 +41,10 @@ public class SosDao implements ISosDao {
 	public String getName(String mem_id) {
 		return sqlSession.selectOne("sos.getName",mem_id);
 	}
+
+	@Override
+	public int gpsCnt(String mem_id) {
+		return sqlSession.selectOne("sos.gpsCnt",mem_id);
+	}
 	
 }

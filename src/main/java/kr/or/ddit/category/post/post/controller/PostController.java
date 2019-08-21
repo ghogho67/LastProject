@@ -47,7 +47,7 @@ import kr.or.ddit.util.PartUtil;
 @RequestMapping("/post")
 @Controller
 public class PostController {
-
+//
 	private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
 	@Resource(name = "postService")
@@ -72,26 +72,54 @@ public class PostController {
 	}
 
 	@RequestMapping("/pagingList")
-	public String postPagingList(int cate_id, PageVo pageVo, Model model, HttpSession session) {
+	public String postPagingList(PageVo pageVo, int cate_id, Model model,
+			HttpSession session, @RequestParam(required = false) String current, 
+			@RequestParam(required = false) String searchType, @RequestParam(required = false) String search) {
+
+		pageVo.setPage(pageVo.getPage());
+		pageVo.setPageSize(pageVo.getPageSize());
+		logger.debug("searchType:{}", searchType);
+		logger.debug("search:{}", search);
+		logger.debug("cate_id:{}", cate_id);
+		logger.debug("pageVo:{}", pageVo);
+
 		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
+
 		if (cate_id != 0)
 			map.put("cate_id", cate_id);
+		if (searchType != null) {
+			if (searchType.equals("title")) {
+				String post_nm = search;
+				map.put("post_nm", post_nm);
+				resultMap = postService.titlePagingList(map);
+			} else if (searchType.equals("cont")) {
+				String post_cont = search;
+				map.put("post_cont", post_cont);
+				resultMap = postService.contPagingList(map);
+			} else if (searchType.equals("id")) {
+				String mem_id = search;
+				map.put("mem_id", mem_id);
+				resultMap = postService.idPagingList(map);
+			} else {
+				resultMap = postService.postPagingList(map);
+			}
+		}
 
-		Map<String, Object> resultMap = postService.postPagingList(map);
-
-		pageVo.setPage((int) map.get("page"));
-		pageVo.setPageSize((int) map.get("pageSize"));
-
+		model.addAttribute("search", search);
+		model.addAttribute("searchType", searchType);
 		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("cate_id", cate_id);
+		model.addAttribute("current", current);
+		logger.debug("☞postList:{}", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
-		// 화면 출력을 담당하는 jsp에게 역할 위임
+
 		return "/post/postPagingList.tiles";
 	}
 
@@ -153,10 +181,10 @@ public class PostController {
 	public String postModify(Model model, int post_id, @RequestParam("file") MultipartFile[] files, PostVo postVo,
 			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
 			HttpSession session) {
-		logger.debug("☞post_id:{}",post_id);
-		logger.debug("☞cate_id:{}",cate_id);
-		logger.debug("☞postVo:{}",postVo);
-		
+		logger.debug("☞post_id:{}", post_id);
+		logger.debug("☞cate_id:{}", cate_id);
+		logger.debug("☞postVo:{}", postVo);
+
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
 		postVo.setCate_id(cate_id);
@@ -171,8 +199,8 @@ public class PostController {
 		String savePath = PartUtil.getUploadPath();
 
 		for (MultipartFile file : files) {
-			logger.debug("☞file:{}",file);
-			
+			logger.debug("☞file:{}", file);
+
 			if (!file.getOriginalFilename().isEmpty()) {
 				String a = file.getOriginalFilename();
 				String ext = PartUtil.getExt(file.getOriginalFilename());
@@ -188,7 +216,7 @@ public class PostController {
 				attachmentVo.setAtt_nm(file.getOriginalFilename());
 				attachmentVo.setAtt_path(savePath + File.separator + fileName + ext);
 				attachmentVo.setPost_id(post_id);
-				
+
 				attachmentService.attachmentInsert(attachmentVo);
 			}
 		}
@@ -354,16 +382,22 @@ public class PostController {
 	}
 
 	@RequestMapping(path = "/searchPagingList", method = RequestMethod.POST)
-	public String titlePagingList(Model model, int cate_id, String search, HttpSession session, PageVo pageVo,
-			String searchType) {
+	public String titlePagingList(Model model, int cate_id, String search, HttpSession session, PageVo pageVo, int page,
+			int pageSize, String searchType) {
 
+		pageVo.setPage(page);
+		pageVo.setPageSize(pageSize);
 		logger.debug("searchType:{}", searchType);
+		logger.debug("search:{}", search);
 		logger.debug("cate_id:{}", cate_id);
+		logger.debug("page:{}", page);
+		logger.debug("pageSize:{}", pageSize);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
+		logger.debug("☞map:{}", map);
 		if (cate_id != 0)
 			map.put("cate_id", cate_id);
 
@@ -385,8 +419,11 @@ public class PostController {
 
 		pageVo.setPage((int) map.get("page"));
 		pageVo.setPageSize((int) map.get("pageSize"));
-		
-		
+
+		int current = 1;
+		model.addAttribute("searchType", searchType);
+		model.addAttribute("search", search);
+		model.addAttribute("current", current);
 		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("cate_id", cate_id);

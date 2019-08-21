@@ -43,12 +43,10 @@
 						</a>
 							<div class="collapse" id="sample-pages">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"><a class="nav-link" href="#l">
+									<li class="nav-item"><a class="nav-link" href="${cp }/mypage/pagingList?page=1&pageSize=10">
 										  회원목록  </a></li>
-									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">
-											보고서 작성 </a></li>
-												<li class="nav-item"><a class="nav-link" href="#">
-											보고서 조회 </a></li>
+									<li class="nav-item"><a class="nav-link" href="${cp}/report/writeView">	보고서 작성 </a></li>
+									<li class="nav-item"><a class="nav-link" href="#">보고서 조회 </a></li>
 									
 								</ul>
 							</div>

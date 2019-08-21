@@ -215,6 +215,8 @@ td {
 <script>
 
 $(document).ready(function() {
+	
+	//검색
 	$("#searchBtn").on("click", function() {
 		console.log("searchBtn click");
 		console.log($("#mem_yn").val());
@@ -225,15 +227,21 @@ $(document).ready(function() {
 		$("#frm2").submit();
 	});
 	
-	$(".donTr").on("click", function(){
-	      console.log("donTr click");
+	//selectBox사용
+// 	$("#searchType").val("${mem_yn}");
+// 	$("#searchType").on("change", function(){
+// 		$("#frm2").submit();	
+// 	});
+	
+// 	$(".donTr").on("click", function(){
+// 	      console.log("donTr click");
 	      
-	      var app_id = $(this).find(".app_id").text();
-	      $("#app_id").val(app_id);
-	      $("#frm").attr("action", "${cp}/donation/detailDonation");
-	      $("#frm").attr("method", "get");
-	      $("#frm").submit();
-	   });
+// 	      var app_id = $(this).find(".app_id").text();
+// 	      $("#app_id").val(app_id);
+// 	      $("#frm").attr("action", "${cp}/donation/detailDonation");
+// 	      $("#frm").attr("method", "get");
+// 	      $("#frm").submit();
+// 	   });
 
 
 });
@@ -265,17 +273,15 @@ function boardPagingListAjaxHtml(page, pageSize) {
 				<div class="card-body">
 							
 						<!-- 검색 -->
-						<div class="d1">
-							<form class="for" id="frm2" action="${cp}/hospital/searchPagingList" method="post">
-								<select id="searchType" name="searchType"
-									style="position: absolute; z-index: 999;">
-									<option value="all">전체 기부</option>
-									<option value="mem_y">기부(회원)</option>
-									<option value="mem_n">기부(비회원)</option>
-								</select> <input type="text" placeholder="동을 입력해 주세요" name="hos_add" id="hos_add">
-								<button type="button" id="searchBtn"></button>
-							</form>
-						</div>
+<!-- 						<div class="d1"> -->
+<%-- 							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> --%>
+<!-- 								<select id="searchType" name="mem_yn" -->
+<!-- 									style="position: absolute; z-index: 999;"> -->
+<!-- 									<option value="all">회원/비회원</option> -->
+<!-- 								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add"> -->
+<!-- 								<button type="button" id="searchBtn"></button> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
 
 						
 						<div id="titlee">
