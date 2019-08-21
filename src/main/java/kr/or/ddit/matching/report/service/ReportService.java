@@ -23,18 +23,10 @@ public class ReportService implements IReportService {
 		return reportDao.getReportList(mat_id);
 	}
 
-	@Override
-	public ReportVo getReport(String rep_id) {
-		return reportDao.getReport(rep_id);
-	}
-
-	
-	
-	
-	
-	
-	
-	
+//	@Override
+//	public ReportVo getReport(String rep_id) {
+//		return reportDao.getReport(rep_id);
+//	}
 	
 	@Override
 	public List<MatchingReportVo> getAllReportList(String mem_id) {
@@ -45,9 +37,6 @@ public class ReportService implements IReportService {
 	public MatchingReportAttachmentVo getCertainReportWA(MatchingReportAttachmentVo matchingReportAttachmentVo) {
 		return reportDao.getCertainReportWA(matchingReportAttachmentVo);
 	}
-
-
-
 	
 	@Override
 	public List<MatchingReportVo> getWorkerReportList(String cw_mem_id) {
@@ -66,7 +55,24 @@ public class ReportService implements IReportService {
 
 	@Override
 	public ReportVo getReportVo(int mat_id) {
-		// TODO Auto-generated method stub
 		return reportDao.getReportVo(mat_id);
 	}
+
+	@Override
+	public int reportWrite(ReportVo reportVo) {
+		return reportDao.reportWrite(reportVo);
+	}
+
+	@Override
+	public ReportVo getLatestReport() {
+		
+		return reportDao.getLatestReport();
+		
+	}
+
+//	@Override
+//	public ReportVo getReport(int rep_id) {
+//		
+//		return reportDao.getReport(rep_id);
+//	}
 }

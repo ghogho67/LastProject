@@ -65,7 +65,7 @@ td {
 
 .pagination li.active a.page-link, .pagination li a.page-link:hover,
 	.pagination li.active a.page-link:hover {
-	color: #006266;
+	color: #5ab4dc;
 	background-color: transparent;
 }
 
@@ -80,7 +80,7 @@ td {
 
 .pagination li a.page-link:before, .pagination li a.page-link:after {
 	content: "";
-	background-color: #006266;
+	background-color: #5ab4dc;
 	height: 3px;
 	width: 0;
 	opacity: 1;
@@ -92,7 +92,7 @@ td {
 }
 
 .pagination li a.page-link:before {
-	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	background: linear-gradient(135deg, transparent 49%, #5ab4dc 50%);
 	height: 15px;
 	width: 15px;
 	transform: translateX(-50%) rotate(45deg);
@@ -150,7 +150,7 @@ td {
 	width: 100%;
 	height: 20px;
 	padding-left: 90px;
-	border: 2px solid #7BA7AB;
+	border: 2px solid #5ab4dc;
 	border-radius: 5px;
 	outline: none;
 	background: white;
@@ -165,7 +165,7 @@ td {
 	width: 32px;
 	height: 38px;
 	border: none;
-	background: #7BA7AB;
+	background: #5ab4dc;
 	border-radius: 0 5px 5px 0;
 	cursor: pointer;
 }
@@ -182,10 +182,10 @@ td {
 	width: 70px;
 	font-size: 15px;
 	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #7BA7AB;
-	border-bottom: 2px solid #7BA7AB;
-	border-left: 2px solid #7BA7AB;
-	border-right: 2px solid #7BA7AB;
+	border-top: 2px solid #5ab4dc;
+	border-bottom: 2px solid #5ab4dc;
+	border-left: 2px solid #5ab4dc;
+	border-right: 2px solid #5ab4dc;
 }
 
 tbody {
@@ -323,8 +323,7 @@ tbody {
 											<td>${report.rep_title}</td>
 											<td>${report.cw_mem_id}</td>
 											<td>${report.mat_st}</td>
-											<td><fmt:formatDate value="${report.rep_time}"
-													pattern="yyyy-MM-dd" /></td>
+											<td><fmt:formatDate value="${report.rep_time}" pattern="yyyy-MM-dd" /></td>
 										</tr>
 									</c:forEach>
 
@@ -333,13 +332,6 @@ tbody {
 							</table>
 						</div>
 					</div>
-
-
-
-
-
-
-
 
 				</div>
 
@@ -350,82 +342,7 @@ tbody {
 
 
 
-	<div class="demo" style="position:absolute; right: 20%;">
-                <nav class="pagination-outer" aria-label="Page navigation">
-                    <ul class="pagination">
-                       <c:choose>
-      <c:when test="${pageVo.page==1}">
-         <li class="page-item prev disabled">
-            <a href="#" class="page-link" aria-label="Previous">
-                       <span aria-hidden="true">«</span>
-                 </a>
-           </li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item">
-            <a class="page-link" aria-hidden="Previous" href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span aria-hidden="true">«</span></a></li>
-         
-      </c:otherwise>
-   </c:choose>
-   
-   <c:choose>
-      <c:when test="${pageVo.page==1}">
-         <li class="page-item prev disabled" >
-            <a href="#" class="page-link" aria-label="Previous">
-                       <span aria-hidden="true">‹</span>
-                 </a>
-           </li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item"><a class="page-link" aria-label="Previous"
-            href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span aria-hidden="true">‹</span></a></li>
-      </c:otherwise>
-   </c:choose>
-   
-   <c:forEach begin="${startPage}" end="${paginationSize}" var="i">
-      <c:choose>
-         <c:when test="${pageVo.page == i}">
-            <li class="page-item active"><a class="page-link" href="#">${i}</a></li>
-         </c:when>
-         <c:otherwise>
-            <li><a class="page-link"
-               href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
-         </c:otherwise>
-      </c:choose>
-   
-   </c:forEach>
-   
-   <c:choose>
-      <c:when test="${pageVo.page == lastpaginationSize}">
-         <li class="page-item next disabled">
-            <a href="#" class="page-link" aria-label="Next">
-                       <span aria-hidden="true">›</span>
-               </a>
-         </li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item"><a class="page-link"aria-label="Next" 
-            href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span aria-hidden="true">›</span></a></li>
-      </c:otherwise>
-   </c:choose>
-   
-   
-   <c:choose>
-      <c:when test="${pageVo.page == lastpaginationSize}">
-         <li class="page-item next disabled"><a href="#" class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-      </c:when>
-      <c:otherwise>
-         <li class="page-item"><a class="page-link" aria-label="Next"
-            href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span aria-hidden="true">»</span></a></li>
-      </c:otherwise>
-   </c:choose>
-         
-                    </ul>
-                </nav>
-            </div>
 
-
-	</div>
 
 
 

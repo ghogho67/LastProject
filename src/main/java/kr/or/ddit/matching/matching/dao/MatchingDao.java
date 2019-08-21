@@ -1,6 +1,7 @@
 package kr.or.ddit.matching.matching.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -46,14 +47,36 @@ public class MatchingDao implements IMatchingDao {
 	public List<MatchingVo> getMatchingList(String cw_mem_id) {
 		return sqlSession.selectList("matching.getMatchingList", cw_mem_id);
 	}
-	
+
 	@Override
 	public List<MatchingVo> getMemMatchingList(String mem_id) {
 		return sqlSession.selectList("matching.getMemMatchingList", mem_id);
 	}
+
 	@Override
 	public List<MatchingVo> getCWMatchingList(String cw_mem_id) {
 		return sqlSession.selectList("matching.getCWMatchingList", cw_mem_id);
+	}
+
+	@Override
+	public List<MatchingVo> cwMatchingPagingList(Map<String, Object> map) {
+		logger.debug("☞map:{}",map);
+		return sqlSession.selectList("matching.cwMatchingPagingList", map);
+	}
+
+	@Override
+	public List<MatchingVo> memMatchingPagingList(Map<String, Object> map) {
+		return sqlSession.selectList("matching.memMatchingPagingList", map);
+	}
+
+	@Override
+	public int cwMatchingCnt(String cw_mem_id) {
+		return sqlSession.selectOne("matching.cwMatchingCnt", cw_mem_id);
+	}
+
+	@Override
+	public int memMatchingCnt(String mem_id) {
+		return sqlSession.selectOne("matching.memMatchingCnt", mem_id);
 	}
 
 	/**

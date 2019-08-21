@@ -59,11 +59,11 @@ dif {
 
 										// 이부분에 에디터 validation 검증
 										if (validation()) {
-											var text = $("#text").val().replace(/</gi,"&lt;");
-											$("#text").val(text);
-											var text = $("#text").val().replace(/>/gi,"&gt;");
-											$("#text").val(text);
-											$("#frm1").submit();
+											var rep_title = $("#rep_title").val().replace(/</gi,"&lt;");
+											var text = rep_title.replace(/>/gi,"&gt;");
+											$("#rep_title").val(text);
+											$("#rep_title").val();
+											$("#saveFrm").submit();
 										}
 									}
 								})
@@ -101,8 +101,7 @@ dif {
 								cnt--;
 								var inputs = fileArea
 										.getElementsByTagName('input');
-								fileArea
-										.removeChild(inputs[cnt].nextElementSibling);
+								fileArea.removeChild(inputs[cnt].nextElementSibling);
 								fileArea.removeChild(inputs[cnt]);
 							}
 						}
@@ -125,39 +124,32 @@ dif {
 	<pre>
 mat_id : ${param.mat_id}
 </pre>
-	<form id="frm1" class="form-horizontal" role="form"
-		action="${cp}/post/register" method="post"
-		enctype="multipart/form-data">
-
-		<input type="hidden" name="cate_id" value="${cate_id }" />
+	<form id="saveFrm" class="form-horizontal" role="form" action="${cp}/report/register" method="post" enctype="multipart/form-data">
 		<div>
-			<label for="post_nm" class="col-sm-2 control-label">제목</label>
+			<label for="rep_title" class="col-sm-2 control-label">제목</label>
 			<div>
-				<input type="text" id = "text" class="form-control" name="post_nm">
+				<input type="text" id ="rep_title" class="form-control" name="rep_title">
 			</div>
 		</div>
-
 		<div>
 			<div>
 				<br>
-				<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
-					style="width: 600px; height: 412px;"></textarea>
+				<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"	style="width: 600px; height: 412px;"></textarea>
 			</div>
 		</div>
 		<div>
 			<input type="button" class="btn btn-primary btn-sm pull-right" id="savebutton" value="작성완료" />
 		</div>
 		<div>
-			<a href="${cp}/report/getMatInfo" class="btn btn-primary btn-sm pull-right">매칭목록</a>
+			<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm pull-right">매칭목록</a>
 		</div>
 		<div id = "fileArea">
 			<input type="button" class="btn btn-primary btn-sm" value="파일추가" id="addFileBtn"> 
 			<input type="file" name="file"><br>
-			<input type="hidden" name="cate_id" value="${cate_id }">
+			<input type="hidden" name="mat_id" value="${param.mat_id }">
 		</div>
 	</form>
-	<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
-		<input type="hidden" name="cate_id" value="${cate_id }" /> 
-		<input type="hidden" name="post_id" value="${post_id }" />
+	<form id="postContFrm" method="get" style="float: left;" action="${cp}/report/pagingList">
+		<input type="hidden" name="mat_id" value="${param.mat_id }" />
 	</form>
 </div>

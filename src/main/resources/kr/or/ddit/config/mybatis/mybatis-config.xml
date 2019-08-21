@@ -20,8 +20,8 @@
 		<typeAlias alias="hospitalVo" type="kr.or.ddit.member.careWorker.hospital.model.HospitalVo"/>
 		<typeAlias alias="matchingGradeVo" type = "kr.or.ddit.joinVo.MatchingGradeVo"/>
 		<typeAlias alias="cwServiceTypeVo" type = "kr.or.ddit.member.careWorker.cwServiceType.model.CwServiceTypeVo"/>
-		<typeAlias alias="matchingReportVo" type = "kr.or.ddit.joinVo.MatchingReportVo"/>
-		<typeAlias alias="MatchingReportAttachmentVo" type = "kr.or.ddit.joinVo.MatchingReportAttachmentVo"/>
+<!-- 		<typeAlias alias="matchingReportVo" type = "kr.or.ddit.joinVo.MatchingReportVo"/> -->
+<!-- 		<typeAlias alias="MatchingReportAttachmentVo" type = "kr.or.ddit.joinVo.MatchingReportAttachmentVo"/> -->
 		<typeAlias alias="cardiacVo" type="kr.or.ddit.gold.cardiac.model.CardiacVo" />
 		<typeAlias alias="gpsVo" type="kr.or.ddit.gold.gps.model.GpsVo" />
 		<typeAlias alias="sosVo" type="kr.or.ddit.gold.sos.model.SOSVo" />
@@ -70,7 +70,7 @@
       <mapper resource="kr/or/ddit/config/mybatis/mapper/cardiac.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/gps.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/sos.xml"/>
-      <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/>
+<!--       <mapper resource="kr/or/ddit/config/mybatis/mapper/matchingReport.xml"/> -->
 	  <mapper resource="kr/or/ddit/config/mybatis/mapper/attendance.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/hospital.xml"/>
       <mapper resource="kr/or/ddit/config/mybatis/mapper/matching.xml"/>
@@ -92,6 +92,7 @@
 	   <mapper resource="kr/or/ddit/config/mybatis/mapper/career.xml"/>
 	   <mapper resource="kr/or/ddit/config/mybatis/mapper/location.xml"/>
 	   <mapper resource="kr/or/ddit/config/mybatis/mapper/report.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/reportAttach.xml"/>
 
    </mappers>
 </configuration>

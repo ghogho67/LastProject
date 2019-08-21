@@ -85,7 +85,7 @@ td {
 
 .pagination li.active a.page-link, .pagination li a.page-link:hover,
 	.pagination li.active a.page-link:hover {
-	color: #006266;
+	color: #5ab4dc;
 	background-color: transparent;
 }
 
@@ -100,7 +100,7 @@ td {
 
 .pagination li a.page-link:before, .pagination li a.page-link:after {
 	content: "";
-	background-color: #006266;
+	background-color: #5ab4dc;
 	height: 3px;
 	width: 0;
 	opacity: 1;
@@ -112,7 +112,7 @@ td {
 }
 
 .pagination li a.page-link:before {
-	background: linear-gradient(135deg, transparent 49%, #006266 50%);
+	background: linear-gradient(135deg, transparent 49%, #5ab4dc 50%);
 	height: 15px;
 	width: 15px;
 	transform: translateX(-50%) rotate(45deg);
@@ -168,7 +168,7 @@ td {
 	width: 110%;
 	height: 20px;
 	padding-left: 90px;
-	border: 2px solid #7BA7AB;
+	border: 2px solid #5ab4dc;
 	border-radius: 5px;
 	outline: none;
 	background: white;
@@ -184,7 +184,7 @@ td {
 	width: 32px;
 	height: 38px;
 	border: none;
-	background: #7BA7AB;
+	background: #5ab4dc;
 	border-radius: 0 5px 5px 0;
 	cursor: pointer;
 }
@@ -201,10 +201,10 @@ td {
 	width: 90px;
 	font-size: 12px;
 	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #7BA7AB;
-	border-bottom: 2px solid #7BA7AB;
-	border-left: 2px solid #7BA7AB;
-	border-right: 2px solid #7BA7AB;
+	border-top: 2px solid #5ab4dc;
+	border-bottom: 2px solid #5ab4dc;
+	border-left: 2px solid #5ab4dc;
+	border-right: 2px solid #5ab4dc;
 }
 </style>
 
@@ -226,14 +226,15 @@ function drawChart() {
  
 	var data = google.visualization.arrayToDataTable([
      ['member', 'mem_grade'],
-	 ['관리자',      ${manager}],
-	 ['일반회원',  ${nomalMember}],
-	 ['골드회원', ${goldMember}],
-	 ['요양보호사',    ${careWorker}]
-  ]);
+	 ['관리자',      parseInt("${manager}")],
+	 ['일반회원',  parseInt("${nomalMember}")],
+	 ['골드회원', parseInt("${goldMember}")],
+	 ['요양보호사',    parseInt("${careWorker}")]
+	]
+  );
 
   var options = {
-    title: '회원 등급별 pie Chart'
+    title: '회원 분류 pie Chart'
   };
 
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -287,8 +288,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							<span>회원관리</span>
 						</h2>
 					</div>
-						
 					<hr>
+					
+					<div class="container">
+						<div class="row">
+					
+					
 					<form id="frm" action="${cp}/mypage/pagingList" method="get">
 						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
 					<div class="table-responsive">
@@ -324,7 +329,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					</div>
 					
 					<!-- 구글Chart API -->
-					<div id="piechart" style="width: 900px; height: 500px;"></div>
+					<div id="piechart" style="width: 1000px; height: 500px;"></div>
 					<input type="hidden" name = "manager" id="manager">
 					<input type="hidden" name = "nomalMember" id="nomalMember">
 					<input type="hidden" name = "goldMember" id="goldMember">
@@ -333,6 +338,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					
 				</div>
 			</div>
+			
 			
 			<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
@@ -417,7 +423,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</div>
 			
 			
-		</div>
+		
 	</div>
 
 

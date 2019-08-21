@@ -507,6 +507,7 @@ public class mypageController {
 		GpsVo gpsVo = new GpsVo();
 		if (gps_time == null) {
 			gps_time = sdf.format(time);
+
 		}
 
 		logger.debug("!!!!! gps_time : {}", gps_time);
@@ -518,6 +519,7 @@ public class mypageController {
 		for (int i = 0; i < list.size(); i++) {
 			list2.add(list.get(i).getCar_bpm());
 		}
+
 
 		model.addAttribute("list", list2);
 
@@ -545,24 +547,24 @@ public class mypageController {
 	}
 
 	@RequestMapping("/gpxMap")
-	public String gpxMap(Model model, String mem_id) {
-		GpsVo gpsVo = new GpsVo();
-		if(sosService.gpsCnt(mem_id)==0) {
-			gpsVo.setGps_la(36.325072);
-			gpsVo.setGps_lo(127.420319);
-		}else {
-			
-			int gps_id = sosService.recentData(mem_id);
-			Map<String, Object> map = sosService.getGps(gps_id, mem_id);
-			gpsVo = (GpsVo) map.get("gpsVo");
-			String mem_name = (String) map.get("mem_name");
-		}
+	   public String gpxMap(Model model, String mem_id) {
+	      GpsVo gpsVo = new GpsVo();
+	      if(sosService.gpsCnt(mem_id)==0) {
+	         gpsVo.setGps_la(36.325072);
+	         gpsVo.setGps_lo(127.420319);
+	      }else {
+	         
+	         int gps_id = sosService.recentData(mem_id);
+	         Map<String, Object> map = sosService.getGps(gps_id, mem_id);
+	         gpsVo = (GpsVo) map.get("gpsVo");
+	         String mem_name = (String) map.get("mem_name");
+	      }
 
 
-		model.addAttribute("gpsVo", gpsVo);
+	      model.addAttribute("gpsVo", gpsVo);
 
-		return "mypage/gold/gpxMap";
-	}
+	      return "mypage/gold/gpxMap";
+	   }
 
 	/**
 	 * Method : memberPagingList 작성자 : ADMIN 변경이력 :
@@ -570,75 +572,53 @@ public class mypageController {
 	 * @return Method 설명 :회원관리 - 회원목록
 	 */
 	@RequestMapping("/pagingList")
-	public String memberPagingList(Model model, PageVo pageVo, int page, int pageSize ) {
-		   
+	public String memberPagingList(Model model, PageVo pageVo, int page, int pageSize) {
+
 		pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
-		
+
 		Map<String, Object> resultMap = memberService.getAllMemberList(pageVo);
-		
-		logger.debug("☞resultMap:{}",resultMap);
-		
+
+		logger.debug("☞resultMap:{}", resultMap);
+
 		List<MemberVo> getMemList = (List<MemberVo>) resultMap.get("getMemList");
-		
-		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-		if(pageVo.getPage() == 1) {
+
+		int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
+		if (pageVo.getPage() == 1) {
 			startPage = 1;
 		}
-		if(startPage>=2) {
-        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-        }
-        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-        
-        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
-        
-        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-        	paginationSize= lastpaginationSize;
-        }
-        
-        logger.debug("☞getMemList:{}",getMemList);
-        
-        model.addAttribute("getMemList", getMemList);
-        model.addAttribute("startPage", startPage);
-        model.addAttribute("paginationSize", paginationSize);
-        model.addAttribute("lastpaginationSize", lastpaginationSize);
-        model.addAttribute("pageVo", pageVo);
-		
-		logger.debug("☞getMemList:{}",getMemList);
-		logger.debug("☞paginationSize:{}",paginationSize);
-		logger.debug("☞pageVo:{}",pageVo);
-		
-		
-		//구글 pie chart API
-		
-		
-//		manager = memberService.memberGradeCnt("0");
-//		nomalMember = memberService.memberGradeCnt("1");
-//		goldMember = memberService.memberGradeCnt("2");
-//		careWorker = memberService.memberGradeCnt("3");
-//		logger.debug("☞manager:{}",manager);
-//		logger.debug("☞nomalMember:{}",nomalMember);
-//		logger.debug("☞careWorker:{}",careWorker);
-//		logger.debug("☞careWorker:{}",careWorker);
-//		
-//		model.addAttribute("manager",manager);
-//		model.addAttribute("nomalMember",nomalMember);
-//		model.addAttribute("goldMember",goldMember);
-//		model.addAttribute("careWorker",careWorker);
-		
-		model.addAttribute("manager",memberService.memberGradeCnt("0"));
-		model.addAttribute("nomalMember",memberService.memberGradeCnt("1"));
-		model.addAttribute("goldMember",memberService.memberGradeCnt("2"));
-		model.addAttribute("careWorker",memberService.memberGradeCnt("3"));
-		
-		
-		
-		   return "/mypage/memberManage/memberPagingList.mytiles";
-	   }
-	
-	   
+		if (startPage >= 2) {
+			startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10) * 10) + 1;
+		}
+		int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
 
+		int lastpaginationSize = (int) resultMap.get("lastpaginationSize");
+
+		if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
+			paginationSize = lastpaginationSize;
+		}
+
+		logger.debug("☞getMemList:{}", getMemList);
+
+		model.addAttribute("getMemList", getMemList);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("lastpaginationSize", lastpaginationSize);
+		model.addAttribute("pageVo", pageVo);
+
+		logger.debug("☞getMemList:{}", getMemList);
+		logger.debug("☞paginationSize:{}", paginationSize);
+		logger.debug("☞pageVo:{}", pageVo);
+
+		// 구글 pie chart API
+		model.addAttribute("manager", memberService.memberGradeCnt("0"));
+		model.addAttribute("nomalMember", memberService.memberGradeCnt("1"));
+		model.addAttribute("goldMember", memberService.memberGradeCnt("2"));
+		model.addAttribute("careWorker", memberService.memberGradeCnt("3"));
+
+		return "/mypage/memberManage/memberPagingList.mytiles";
+	}
 
 	@RequestMapping("/recognitionActResult")
 	public String recognitionActResult(HttpSession session, Model model) {
@@ -679,5 +659,6 @@ public class mypageController {
 
 		return "mypage/gold/recognitionActResult2";
 	}
+
 
 }

@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.page.model.PageVo;
 
 @Repository
 public class ApprovalDao implements IApprovalDao {
@@ -112,7 +113,46 @@ public class ApprovalDao implements IApprovalDao {
 	public int typeSaerchCnt(Map<String, Object> type) {
 		return sqlSession.selectOne("approval.typeCnt", type);
 	}
-	
+
 //==========================================================================================================
+	
+	/**
+	* Method : approvalPagingList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param pageVo
+	* @return
+	* Method 설명 :결제자 전체 목록 페이지네이션
+	*/
+	@Override
+	public List<ApprovalVo> approvalAllPagingList(PageVo pageVo) {
+		return sqlSession.selectList("approval.approvalAllPagingList",pageVo);
+	}
+
+	/**
+	* Method : approvalCnt
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제자 전체 목록 가져오기
+	*/
+	@Override
+	public int approvalAllCnt() {
+		return sqlSession.selectOne("approval.approvalAllCnt");
+	}
+
+	/**
+	* Method : approvalAllList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제자 전체 리스트
+	*/
+	@Override
+	public List<ApprovalVo> approvalAllList() {
+		return sqlSession.selectList("approval.approvalAllList");
+	}
+	
+	
 
 }
