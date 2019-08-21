@@ -8,7 +8,7 @@
 
 <!-- 	모든 카테고리를 불러온다 -->
 	<select id="getCategoryList" resultType="CategoryVo">
-		select * from category
+		select * from category order by CATE_SORTNUM
 	</select>
 	
 	
@@ -84,6 +84,12 @@ insert into category (cate_id, cate_paerent_id, cate_title, cate_usage, cate_sor
 	<select id="getCategory" resultType="CategoryVo" parameterType="int">
 		select * from category
 		where cate_id=#{cate_id} 
+	</select>
+	
+<!-- 	사이드바 카테고리 -->
+	<select id="sideBarList" resultType="CategoryVo" parameterType="int">
+select * from category where (CATE_PAERENT_ID =(select CATE_PAERENT_ID from category where cate_id =#{cate_id}) or CATE_ID =(select CATE_PAERENT_ID from category where cate_id =#{cate_id})) and CATE_USAGE ='Y' ORDER BY CATE_SORTNUM
+
 	</select>
 
 

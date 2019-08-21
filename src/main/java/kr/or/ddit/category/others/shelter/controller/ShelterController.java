@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.category.others.shelter.model.ShelterVo;
 import kr.or.ddit.category.others.shelter.service.IShelterService;
 import kr.or.ddit.page.model.PageVo;
@@ -25,6 +28,10 @@ public class ShelterController {
 	@Resource(name = "shelterService")
 	private IShelterService shelterService;
 	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
+
+	
 	/**
 	* Method : shelter
 	* 작성자 : ADMIN
@@ -35,7 +42,7 @@ public class ShelterController {
 	* Method 설명 : 무더위쉼터 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String shelter(Model model, PageVo pageVo, int page, int pageSize) {
+	public String shelter(HttpSession session, int cate_id, Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -73,6 +80,13 @@ public class ShelterController {
 		logger.debug("☞shelterList:{}",shelterList);
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
+		
+		logger.debug("!!!!!!!!cate_id : {}",cate_id);
+		logger.debug("!!!!!!!!categoryList : {}",categoryList);
 		
 		return "/shelter/shelterPagingList.tiles";
 	}

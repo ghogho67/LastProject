@@ -27,10 +27,7 @@ public class CategoryController {
 	private ICategoryService categoryService;
 	
 	
-	
-	
 	private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
-	
 	
 	
 	@RequestMapping(path = "/categoryList", method = RequestMethod.GET)

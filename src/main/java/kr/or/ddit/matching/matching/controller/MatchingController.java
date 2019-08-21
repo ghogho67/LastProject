@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.matching.matching.model.CalendarVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
@@ -45,6 +47,9 @@ public class MatchingController {
 
 	@Resource(name = "careerService")
 	ICareerService careerService;
+	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
 
 	@RequestMapping(path = "/sample")
 	public String sample() {
@@ -180,7 +185,7 @@ public class MatchingController {
 	}
 
 	@RequestMapping(path = "/map")
-	public String showMap(Model model) {
+	public String showMap(Model model, int cate_id,HttpSession session) {
 		List<MemberVo> cwList = memberService.getCwList();
 //		List<String> addrList = memberService.getCwaddr();
 //		List<String> list = new ArrayList<String>();
@@ -190,6 +195,13 @@ public class MatchingController {
 		model.addAttribute("cwList", cwList);
 //		model.addAttribute("addrList", addrList);
 //		model.addAttribute("list", list);
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
+		
+		logger.debug("!!!!!!!!cate_id : {}",cate_id);
+		logger.debug("!!!!!!!!categoryList : {}",categoryList);
 
 		return "/matching/maps.tiles";
 

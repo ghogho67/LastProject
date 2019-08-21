@@ -132,7 +132,7 @@ $(document).ready(function(){
 	
 		
 		
-	<form id="createChat" action="/chat/createChatView" method="get">
+	<form id="createChat" action="http://192.168.0.32/chat/createChatView" method="get">
 	</form>
 	
 	  

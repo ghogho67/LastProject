@@ -5,7 +5,7 @@ public class ReportAttachVo {
 	private int rep_att_id;
 	private String rep_att_path;
 	private String rep_att_nm;
-	private int rep_id;
+	private int mat_id;
 
 	public int getRep_att_id() {
 		return rep_att_id;
@@ -31,18 +31,18 @@ public class ReportAttachVo {
 		this.rep_att_nm = rep_att_nm;
 	}
 
-	public int getRep_id() {
-		return rep_id;
+	public int getMat_id() {
+		return mat_id;
 	}
 
-	public void setRep_id(int rep_id) {
-		this.rep_id = rep_id;
+	public void setMat_id(int mat_id) {
+		this.mat_id = mat_id;
 	}
 
 	@Override
 	public String toString() {
 		return "ReportAttachVo [rep_att_id=" + rep_att_id + ", rep_att_path=" + rep_att_path + ", rep_att_nm="
-				+ rep_att_nm + ", rep_id=" + rep_id + "]";
+				+ rep_att_nm + ", mat_id=" + mat_id + "]";
 	}
 
 }

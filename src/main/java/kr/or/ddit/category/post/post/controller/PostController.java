@@ -33,6 +33,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
 import kr.or.ddit.category.post.attachment.service.IAttachmentService;
 import kr.or.ddit.category.post.post.model.DetailCommonVo;
@@ -58,6 +60,9 @@ public class PostController {
 
 	@Resource(name = "attachmentService")
 	private IAttachmentService attachmentService;
+	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
 
 	@RequestMapping(path = "modifyView")
 	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
@@ -78,10 +83,6 @@ public class PostController {
 
 		pageVo.setPage(pageVo.getPage());
 		pageVo.setPageSize(pageVo.getPageSize());
-		logger.debug("searchType:{}", searchType);
-		logger.debug("search:{}", search);
-		logger.debug("cate_id:{}", cate_id);
-		logger.debug("pageVo:{}", pageVo);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -110,15 +111,18 @@ public class PostController {
 
 		model.addAttribute("search", search);
 		model.addAttribute("searchType", searchType);
-		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("current", current);
-		logger.debug("☞postList:{}", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
+		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
 
 		return "/post/postPagingList.tiles";
 	}
@@ -436,13 +440,16 @@ public class PostController {
 		return "/post/postPagingList.tiles";
 	}
 
-	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
-	public String ImageBoard1() {
-		return "festival.tiles";
-	}
+//	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
+//	public String ImageBoard1() {
+//		return "festival.tiles";
+//	}
 	
 	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-	public String ImageBoard2() {
+	public String ImageBoard2(HttpSession session, int cate_id) {
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		session.setAttribute("sideBar",categoryList);
 		return "festival2";
 	}
 

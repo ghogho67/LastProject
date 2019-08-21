@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.category.others.nursingHome.model.NursingHomeVo;
 import kr.or.ddit.category.others.nursingHome.service.INursingHomeService;
 import kr.or.ddit.page.model.PageVo;
@@ -25,6 +28,9 @@ public class NursingHomeController {
 	@Resource(name = "nursingHomeService")
 	private INursingHomeService nursingHomeService;
 	
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
+	
 	/**
 	* Method : nursingHome
 	* 작성자 : ADMIN
@@ -35,7 +41,7 @@ public class NursingHomeController {
 	* Method 설명 : 요양시설 페이지 네이션
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String nursingHome(Model model, PageVo pageVo, int page, int pageSize) {
+	public String nursingHome(HttpSession session, int cate_id,Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -73,6 +79,12 @@ public class NursingHomeController {
 		logger.debug("☞nursingList:{}",nursingList);
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
+		
+		//사이드바 처리
+		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+		logger.debug("!!!!!!!!cate_id : {}",cate_id);
+		logger.debug("!!!!!!!!categoryList : {}",categoryList);
+		session.setAttribute("sideBar",categoryList);
 		
 		return "/nursingHome/nursingHomePagingList.tiles";
 	}
