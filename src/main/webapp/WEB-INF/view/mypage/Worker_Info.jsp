@@ -14,6 +14,32 @@ input[readonly="readonly"] {
 input[type="text"]::-webkit-input-placeholder {
 	font-size: 110%;
 }
+
+
+
+
+#titlee h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+	width: 50%
+}
+
+
+#titlee h2 {
+	padding: 10px 5px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
+
+
+.inin{
+font-size: 15px
+}
+
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -31,10 +57,15 @@ $(document).ready(function() {
 		<div class="row mb-4">
 
 			<div class="col-lg-12">
-				<h3 class="accept-title">&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수(${grades})</p>
+				
 				<div class="card">
 					<div class="card-body">
+					<div id="titlee">
+							<h2>
+								<span>내 정보</span> 조회<span class="inin">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수(${grades})</span>
+							</h2>
+						</div>
+					
 						<div class="row">
 
 							<div class="col-lg-6 col-xlg-6 col-md-7">

@@ -93,6 +93,7 @@ public class LectureController {
 		model.addAttribute("pageVo", pageVo);
 		
 		logger.debug("@@@@shelterList:{}",CertainLectureList);
+		model.addAttribute("startPage", startPage);
 		logger.debug("@@@@paginationSize:{}",paginationSize);
 		logger.debug("@@@@pageVo:{}",pageVo);
 		
