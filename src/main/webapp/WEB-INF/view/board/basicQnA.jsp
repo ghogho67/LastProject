@@ -34,7 +34,7 @@
 .pagination li.active a.page-link,
 .pagination li a.page-link:hover,
 .pagination li.active a.page-link:hover{
-    color: #006266;
+    color: #5ab4dc;
     background-color: transparent;
 }
 .pagination li a.page-link span{
@@ -45,7 +45,7 @@
 .pagination li a.page-link:before,
 .pagination li a.page-link:after{
     content: "";
-    background-color: #006266;
+    background-color: #5ab4dc;
     height: 3px;
     width: 0;
     opacity: 1;
@@ -56,7 +56,7 @@
     transition: all 0.3s;
 }
 .pagination li a.page-link:before{
-    background: linear-gradient(135deg,transparent 49%, #006266 50%);
+    background: linear-gradient(135deg,transparent 49%, #5ab4dc 50%);
     height: 15px;
     width: 15px;
     transform: translateX(-50%) rotate(45deg);

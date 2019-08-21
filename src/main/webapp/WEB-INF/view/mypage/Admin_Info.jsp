@@ -41,8 +41,6 @@ input[type="text"]::-webkit-input-placeholder {
 </head>
 <body>
 	<div class="content-wrapper">
-
-		<div class="row mb-4">
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-body">
@@ -194,7 +192,6 @@ input[type="text"]::-webkit-input-placeholder {
 			</div>
 
 		</div>
-	</div>
 	
 	
 	

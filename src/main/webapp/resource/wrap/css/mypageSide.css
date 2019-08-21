@@ -60,6 +60,7 @@
   font-size: 15px;
   font-weight:400;
   width: 200px;
+  margin-top: 100px;
 }
 #cssmenu ul a,
 #cssmenu ul a:link,
@@ -76,10 +77,11 @@
   background: #fff;
 }
 #cssmenu > ul > li {
-  border-left: 3px solid #d7d8da;
+  border-left: 3px solid #769cb75c;
+  margin: 7px;
 }
 #cssmenu > ul > li > a {
-  padding: 15px 20px;
+  padding: 15px 10px;
   background:url(../../../resource/joinCare/images/dot.png) no-repeat 50% 0px;
   background-position: left;
     margin-left: 20px;
@@ -110,7 +112,7 @@
 }
 #cssmenu ul ul li {
   padding: 0 20px;
-  background: #fff;
+  background: #c0c3c542;
 }
 #cssmenu ul ul li:last-child {
   border-bottom: 3px solid #d7d8da;

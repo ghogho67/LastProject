@@ -10,6 +10,17 @@
    
 </head>
 <body>
+
+
+<div style="     background-color: #a7a7a71c;
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    left: 14%;
+    top: 15%;
+    max-height: 70%;" >
+</div>
+
 		<div class="container-fluid">
 			<div class="row row-offcanvas row-offcanvas-right">
 				<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
