@@ -393,4 +393,56 @@ public class ReportController {
 		return "/report/reportDetail.tiles";
 	}
 	
+	@RequestMapping(path = "/modify", method = RequestMethod.POST)
+	public String postModify(Model model, int mat_id, @RequestParam("file") MultipartFile[] files, ReportVo reportVo,
+			String rep_title, String rep_cont, String mem_id, ReportAttachVo reportAttachVo,
+			HttpSession session) {
+
+		reportVo.setRep_title(rep_title);
+		reportVo.setRep_cont(rep_cont);
+		reportVo.setMat_id(mat_id);
+
+		reportService.reportModify(reportVo);
+		reportVo = reportService.getReportVo(mat_id);
+
+		// 댓글과 첨부파일 가져오기
+		// file data 받기=======================================================
+		// DB에 저장할 파일명
+		String savePath = PartUtil.getUploadPath();
+
+		for (MultipartFile file : files) {
+			logger.debug("☞file:{}", file);
+
+			if (!file.getOriginalFilename().isEmpty()) {
+				String a = file.getOriginalFilename();
+				String ext = PartUtil.getExt(file.getOriginalFilename());
+				String fileName = UUID.randomUUID().toString();
+				File uploadfile = new File(savePath + File.separator + fileName + ext);
+				logger.debug("savePath +File.separator+ fileName + ext:{}", savePath + File.separator + fileName + ext);
+				try {
+					file.transferTo(uploadfile);
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				reportAttachVo.setRep_att_nm(file.getOriginalFilename());
+				reportAttachVo.setRep_att_path(savePath + File.separator + fileName + ext);
+				reportAttachVo.setMat_id(mat_id);;
+
+				reportAttachService.reportAttachInsert(reportAttachVo);
+			}
+		}
+		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
+		logger.debug("☞mvo:{}",mvo);
+		model.addAttribute("cw_mem_id",mvo.getCw_mem_id());
+		model.addAttribute("mat_id", mat_id);
+		model.addAttribute("attachmentList", reportAttachService.getReportAttachList(mat_id));
+		model.addAttribute("reportVo", reportVo);
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", memvo.getMem_id());
+
+		return "/report/reportDetail.tiles";
+
+	}
+
 }

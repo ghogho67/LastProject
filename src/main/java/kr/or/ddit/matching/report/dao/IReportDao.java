@@ -32,5 +32,7 @@ public interface IReportDao {
 
 	int reportWrite(ReportVo reportVo);
 
+	int reportModify(ReportVo reportVo);
+
 //	ReportVo getReport(int rep_id);
 }

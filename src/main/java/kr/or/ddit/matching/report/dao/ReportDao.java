@@ -99,6 +99,13 @@ public class ReportDao implements IReportDao {
 
 
 
+	@Override
+	public int reportModify(ReportVo reportVo) {
+		return sqlSession.update("report.reportModify", reportVo);
+	}
+
+
+
 //	@Override
 //	public ReportVo getReport(int rep_id) {
 //		
