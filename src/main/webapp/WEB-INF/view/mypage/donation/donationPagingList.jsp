@@ -226,23 +226,6 @@ $(document).ready(function() {
 		
 		$("#frm2").submit();
 	});
-	
-	//selectBox사용
-// 	$("#searchType").val("${mem_yn}");
-// 	$("#searchType").on("change", function(){
-// 		$("#frm2").submit();	
-// 	});
-	
-// 	$(".donTr").on("click", function(){
-// 	      console.log("donTr click");
-	      
-// 	      var app_id = $(this).find(".app_id").text();
-// 	      $("#app_id").val(app_id);
-// 	      $("#frm").attr("action", "${cp}/donation/detailDonation");
-// 	      $("#frm").attr("method", "get");
-// 	      $("#frm").submit();
-// 	   });
-
 
 });
 

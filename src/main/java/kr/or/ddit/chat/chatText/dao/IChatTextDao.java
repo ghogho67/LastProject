@@ -12,5 +12,7 @@ public interface IChatTextDao {
 	List<ChatTextVo> getChatTextList(int chat_id);
 	
 	List<ChatCollectionVo> chatCntList(String mem_id);
+	
+	int chatAllCnt(String mem_id);
 
 }

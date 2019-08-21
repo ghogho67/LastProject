@@ -26,9 +26,23 @@ SEPERATORSEPERATOR
 			</div>
 			<div class="fig">
 				<div class="thumb">
+				<c:choose>
+					<c:when test="${post.firstimage2==null}">
+					<img
+						src="${cp}/image/no_image.gif"
+						alt="${post.title}">
+					
+					</c:when>
+					<c:otherwise>
 					<img
 						src="${post.firstimage2}"
 						alt="${post.title}">
+					
+					</c:otherwise>
+				
+				</c:choose>
+
+						
 				</div>
 				<div class="mask">
 					<div class="mask_bg"></div>
