@@ -101,7 +101,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<div class="row">
 
 
-							<div class="col-lg-7">
+							<div class="col-lg-8">
 								<div class="blog_right_sidebar">
 						
 						
@@ -119,6 +119,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								<th>회원등급</th>
 								<th>결제시간</th>
 								<th>결제구분</th>
+								<th>결제 대상자</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -132,6 +133,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 									<td><fmt:formatDate value="${vo.app_time }"
 											pattern="yyyy.MM.dd HH:mm:ss" /></td>
 									<td>${vo.app_type}</td>
+									<td>${vo.app_obj}</td>
 								</tr>
 							</c:forEach>
 							</tbody>
@@ -233,7 +235,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 
 
 
-							<div class="col-lg-5 posts-list">
+							<div class="col-lg-4 posts-list">
 								<div class="single-post row">
 
 									<!-- 구글Chart API -->

@@ -17,9 +17,23 @@ public class ApprovalVo {
 		
 	}
 	
+	
+	
+	
+	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String app_del, String app_obj) {
+		this.app_id = app_id;
+		this.app_pay = app_pay;
+		this.app_time = app_time;
+		this.app_type = app_type;
+		this.app_del = app_del;
+		this.app_obj = app_obj;
+	}
+
+
+
+
 	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del,
 			String app_obj, int rn) {
-		super();
 		this.app_id = app_id;
 		this.app_pay = app_pay;
 		this.app_time = app_time;
@@ -29,6 +43,19 @@ public class ApprovalVo {
 		this.app_obj = app_obj;
 		this.rn = rn;
 	}
+
+	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del,
+			String app_obj) {
+		this.app_id = app_id;
+		this.app_pay = app_pay;
+		this.app_time = app_time;
+		this.app_type = app_type;
+		this.mem_id = mem_id;
+		this.app_del = app_del;
+		this.app_obj = app_obj;
+	}
+
+
 
 	public int getApp_id() {
 		return app_id;
