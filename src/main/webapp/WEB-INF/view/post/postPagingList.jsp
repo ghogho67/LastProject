@@ -168,7 +168,7 @@ td {
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 5%;
+	right: 12%;
 	margin-top: 3%;
 }
 
@@ -214,11 +214,16 @@ td {
 	border-left: 2px solid #5ab4dc;
 	border-right: 2px solid #5ab4dc;
 }
+
+.post_id {
+	visibility: hidden
+}
 </style>
 <script>
 	$(document).ready(function() {
 		$(".Category").on("click", function() {
-			var post_id = $(this).find(".CategoryId").text();
+			var post_id = $(this).find(".post_id").text();
+			alert(post_id);
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
@@ -227,8 +232,19 @@ td {
 			$("#frm2").submit();
 		});
 
-		$("#searchType").val("${searchType}").prop("selected", true);
-		$("#searchType").val().prop("selected", true);
+		var searchType = $("#searchType").val();
+
+		if (searchType == null || searchType == 'a') {
+
+			$('#searchType option[value=title]').attr('selected', 'selected');
+
+		} else {
+
+			$("#searchType").val(searchType).prop("selected", true);
+			$("#searchType").val().prop("selected", true);
+
+		}
+
 	});
 </script>
 </head>
@@ -239,16 +255,18 @@ td {
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-					<pre>${cate_id}</pre>
+					<pre>cate_id:${cate_id} postList:${postList}</pre>
 					<div class="d1">
-						<form class="for" id="frm2" action="${cp}/post/pagingList" method="post">
-							<select id="searchType" name="searchType" style="position: absolute; z-index: 999;">
+						<form class="for" id="frm2" action="${cp}/post/pagingList"
+							method="post">
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
 								<option value="title">제목 검색</option>
 								<option value="cont">내용 검색</option>
 								<option value="id">아이디 검색</option>
-							</select> 
-							<input type="hidden" name="cate_id" id="cate_id" value="${cate_id}"> 
-							<input type="text" name="search" id="search">
+							</select> <input type="hidden" name="cate_id" id="cate_id"
+								value="${cate_id}"> <input type="text" name="search"
+								id="search">
 							<button type="button" id="searchBtn"></button>
 						</form>
 					</div>
@@ -259,8 +277,8 @@ td {
 						</h2>
 					</div>
 					<hr>
-					<form id="frm" action="${cp}/post/detail" method="post"	enctype="multipart/form-data">
-						<input type="hidden" class="post_id" id="post_id" name="post_id">
+					<form id="frm" action="${cp}/post/detail" method="post"
+						enctype="multipart/form-data">
 						<div class="table-responsive">
 							<table class="table center-aligned-table">
 								<tr class="text-primary">
@@ -276,10 +294,11 @@ td {
 											<tr class="Category" id="${post.post_id }"
 												data-post_id="${post.post_id }">
 												<%--<td class="CategoryId">${post.post_id }</td> --%>
-												<td class="CategoryId"><c:if test="${post.post_par eq 0}">
-														${postCnt }
-														${status.index }
-														${current }
+												<td class="CategoryId"><c:if
+														test="${post.post_par eq 0}">
+														<%-- 														postCnt:${postCnt } --%>
+														<%-- 														status.index:${status.index } --%>
+														<%-- 														current:${current } --%>
 														${((postCnt-status.index))-((current-1)*10)}
 													</c:if> <c:if test="${post.post_par ne 0 }">
 														<c:forEach var="i" begin="0" end="0">
@@ -287,19 +306,21 @@ td {
 														</c:forEach>
 													</c:if></td>
 												<%--${(postCnt - status.index)-((current-1)*10)} --%>
-												<td>${number}<c:if test="${post.level > 1 }">
+												<td><c:if test="${post.level > 1 }">
 														<c:forEach var="i" begin="1" end="${post.level+1 }"
 															step="1">
 															&nbsp;&nbsp;
 														</c:forEach>
-													</c:if> ${post.post_nm }
-												</td>
+													</c:if> ${post.post_nm } </td>
 												<td>${post.mem_id }</td>
 												<td><fmt:formatDate value="${post.post_time }"
 														pattern="yyyy-MM-dd" /></td>
+												<td class="post_id">${post.post_id }</td>
 											</tr>
+
 											<input type="hidden" name="cate_id" value="${cate_id }">
-											<input type="hidden" class="post_id" value="${post.post_id }">
+											<input type="hidden" id = "post_id" name="post_id" value="${post_id}">
+
 										</c:when>
 										<c:otherwise>
 											<c:forEach var="i" begin="0" end="0">
@@ -316,8 +337,9 @@ td {
 							</table>
 						</div>
 						<a href="${cp}/post/register?cate_id=${cate_id}"
-							class="btn btn-primary btn-sm pull-right">새글등록</a>
-						<div class="demo" style="position: absolute; right: 40%;">
+							class="btn btn-primary btn-sm pull-right" style="margin: 10px">새글등록</a>
+						<div class="demo"
+							style="position: absolute; right: 40%; margin: 10px;">
 							<ul class="pagination">
 								<c:choose>
 									<c:when test="${pageVo.page == 1 }">
@@ -366,6 +388,7 @@ td {
 				</div>
 			</div>
 		</div>
+		<input type="hidden" id=searchType value="${searchType}">
 	</div>
 </body>
 </html>

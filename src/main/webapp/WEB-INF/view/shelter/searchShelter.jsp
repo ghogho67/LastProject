@@ -28,7 +28,6 @@
 	color: #473fa0;
 }
 
-
 tr {
 	text-align: center;
 	font-weight: 500;
@@ -52,12 +51,104 @@ td {
 	width: 30px;
 	padding: 3px;
 	font-size: 9pt;
-	width: 30px;
 }
+
+.pagination-outer {
+	text-align: center;
+}
+
+.pagination {
+	font-family: 'Rubik', sans-serif;
+	padding: 0 30px;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination li a.page-link {
+	color: #909090;
+	background-color: transparent;
+	font-size: 15px;
+	line-height: 35px;
+	height: 45px;
+	width: 40px;
+	margin: 0 3px;
+	border: none;
+	border-radius: 0;
+	overflow: hidden;
+	position: relative;
+	transition: all 0.4s ease 0s;
+}
+
+.pagination li.active a.page-link, .pagination li a.page-link:hover,
+	.pagination li.active a.page-link:hover {
+	color: #5ab4dc;
+	background-color: transparent;
+}
+
+.pagination li a.page-link span {
+	display: block;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:hover span {
+	transform: rotateY(360deg);
+}
+
+.pagination li a.page-link:before, .pagination li a.page-link:after {
+	content: "";
+	background-color: #5ab4dc;
+	height: 3px;
+	width: 0;
+	opacity: 1;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: all 0.3s;
+}
+
+.pagination li a.page-link:before {
+	background: linear-gradient(135deg, transparent 49%, #5ab4dc 50%);
+	height: 15px;
+	width: 15px;
+	transform: translateX(-50%) rotate(45deg);
+	bottom: auto;
+	top: -20px;
+	left: 50%;
+}
+
+.pagination li a.page-link:hover:after {
+	width: 100%;
+}
+
+.pagination li a.page-link:hover:before {
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
+	{
+	top: -10px;
+}
+
+.pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
+	{
+	width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	.pagination {
+		display: block;
+	}
+	.pagination li {
+		margin-bottom: 10px;
+		display: inline-block;
+	}
+}
+
 .for {
 	position: relative;
 	width: 250px;
-	height: 30px;
+	height: 50px;
 	margin: 0 auto;
 }
 
@@ -65,13 +156,13 @@ td {
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 1%;
-	top: 75px;
+	right: 5%;
+	margin-top: 3%;
 }
 
 .d1 input {
-	width: 100%;
-	height: 30px;
+	width: 110%;
+	height: 20px;
 	padding-left: 90px;
 	border: 2px solid #5ab4dc;
 	border-radius: 5px;
@@ -84,9 +175,10 @@ td {
 .d1 button {
 	position: absolute;
 	top: 0;
-	right: 0px;
+	right: -25px;
+	/* 	left : 2px; */
 	width: 32px;
-	height: 30px;
+	height: 38px;
 	border: none;
 	background: #5ab4dc;
 	border-radius: 0 5px 5px 0;
@@ -101,16 +193,15 @@ td {
 }
 
 #searchType {
-	height: 30px;
-	width: 70px;
-	font-size: 11px;
+	height: 40px;
+	width: 90px;
+	font-size: 12px;
 	border-radius: 5px 0px 0px 5px;
 	border-top: 2px solid #5ab4dc;
 	border-bottom: 2px solid #5ab4dc;
 	border-left: 2px solid #5ab4dc;
 	border-right: 2px solid #5ab4dc;
 }
-
 </style>
 
 

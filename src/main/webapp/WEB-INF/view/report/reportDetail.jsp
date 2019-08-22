@@ -147,7 +147,7 @@ margin:5px;
 					<div class="titlee">
 						<h2 class="sub-header">보고서 상세조회 reportDetail.jsp</h2>
 	<pre>
-rep_id : ${rep_id } reportAttachList : ${reportAttachList } reportVo : ${reportVo }: mem_id : ${mem_id } cw_mem_id : ${cw_mem_id}
+mat_id : ${mat_id } reportAttachList : ${reportAttachList } reportVo : ${reportVo }: mem_id : ${mem_id } cw_mem_id : ${cw_mem_id} reportAttachVo : ${reportAttachVo }
 </pre>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
@@ -168,8 +168,8 @@ rep_id : ${rep_id } reportAttachList : ${reportAttachList } reportVo : ${reportV
 								<c:forEach items="${reportAttachList}" var="reportAttachVo">
 									<br>
 										<div>
-										${reportAttachVo.att_nm }
-										<a href="${cp}/attachment/download?rep_id=${rep_id }&att_id=${reportAttachVo.att_id }"
+										${reportAttachVo.rep_att_nm }
+										<a href="${cp}/reportAttach/download?mat_id=${mat_id }&rep_att_id=${reportAttachVo.rep_att_id }"
 										class="btn btn-primary btn-sm pull-right">다운로드</a>
 										</div>
 									<br>

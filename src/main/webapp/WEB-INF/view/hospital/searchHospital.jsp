@@ -419,6 +419,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 
 <body>
 
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 	
 	 <form id="pageForm" action="${cp}/hospital/searchHospital">
 	 	<input type="hidden" name = "page" id="page">

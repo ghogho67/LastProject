@@ -12,7 +12,7 @@
 		delete from reportattach where rep_att_id = #{rep_att_id}
 	</update>
 
-	<select id="getReportAttachList" parameterType="int" resultType="AttachmentVo">
+	<select id="getReportAttachList" parameterType="int" resultType="ReportAttachVo">
 		select*from reportattach where mat_id =#{mat_id}
 	</select>
 

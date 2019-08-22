@@ -42,7 +42,7 @@ public class NursingHomeController {
 	* Method 설명 : 요양시설 페이지 네이션
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String nursingHome(HttpSession session,@RequestParam(required = false) int cate_id,Model model, PageVo pageVo, int page, int pageSize) {
+	public String nursingHome(Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -81,11 +81,6 @@ public class NursingHomeController {
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
 		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		logger.debug("!!!!!!!!cate_id : {}",cate_id);
-		logger.debug("!!!!!!!!categoryList : {}",categoryList);
-		session.setAttribute("sideBar",categoryList);
 		
 		return "/nursingHome/nursingHomePagingList.tiles";
 	}
