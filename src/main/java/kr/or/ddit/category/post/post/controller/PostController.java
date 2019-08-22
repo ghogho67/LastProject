@@ -77,7 +77,7 @@ public class PostController {
 	}
 
 	@RequestMapping("/pagingList")
-	public String postPagingList(PageVo pageVo, int cate_id, Model model,
+	public String postPagingList(PageVo pageVo, @RequestParam(required = false)int cate_id, Model model,
 			HttpSession session, @RequestParam(required = false) String current, 
 			@RequestParam(required = false) String searchType, @RequestParam(required = false) String search) {
 
@@ -386,7 +386,7 @@ public class PostController {
 	}
 
 	@RequestMapping(path = "/searchPagingList", method = RequestMethod.POST)
-	public String titlePagingList(Model model, int cate_id, String search, HttpSession session, PageVo pageVo, int page,
+	public String titlePagingList(Model model,@RequestParam(required = false) int cate_id, String search, HttpSession session, PageVo pageVo, int page,
 			int pageSize, String searchType) {
 
 		pageVo.setPage(page);
@@ -446,7 +446,7 @@ public class PostController {
 //	}
 	
 	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-	public String ImageBoard2(HttpSession session, int cate_id) {
+	public String ImageBoard2(HttpSession session,@RequestParam(required = false) int cate_id) {
 		//사이드바 처리
 		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
 		session.setAttribute("sideBar",categoryList);

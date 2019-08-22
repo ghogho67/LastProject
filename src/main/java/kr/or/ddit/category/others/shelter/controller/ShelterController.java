@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.category.category.model.CategoryVo;
 import kr.or.ddit.category.category.service.ICategoryService;
@@ -42,7 +43,7 @@ public class ShelterController {
 	* Method 설명 : 무더위쉼터 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String shelter(HttpSession session, int cate_id, Model model, PageVo pageVo, int page, int pageSize) {
+	public String shelter(HttpSession session,@RequestParam(required = false) int cate_id, Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
