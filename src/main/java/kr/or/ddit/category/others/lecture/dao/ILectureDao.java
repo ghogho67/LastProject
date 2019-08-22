@@ -104,6 +104,8 @@ public interface ILectureDao {
 	 * Method 설명 : 강좌추가
 	 */
 	int  InsertLecture(LectureVo LectureVo);
+	List<LectureVo> LectuerSearchTeacher(String lec_tea);
+	List<LectureVo> LectuerSearchTitle(String lec_nm);
 	
 	
 	

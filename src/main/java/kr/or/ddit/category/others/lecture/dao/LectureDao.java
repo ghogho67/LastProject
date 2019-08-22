@@ -84,4 +84,19 @@ public class LectureDao implements ILectureDao {
 	public int lectureCnt(LPageVo pageVo) {
 		return sqlSession.selectOne("lecture.lectureCnt",pageVo);
 	}
+	
+	
+	
+	@Override
+	public List<LectureVo> LectuerSearchTitle(String lec_nm) {
+
+		return sqlSession.selectList("lecture.LectuerSearchTitle",lec_nm);
+	}
+	
+	@Override
+	public List<LectureVo> LectuerSearchTeacher(String lec_tea) {
+		
+		return sqlSession.selectList("lecture.LectuerSearchTeacher",lec_tea);
+	}
+	
 }
