@@ -186,7 +186,7 @@ public class MatchingController {
 	}
 
 	@RequestMapping(path = "/map")
-	public String showMap(Model model, @RequestParam(required = false)int cate_id,HttpSession session) {
+	public String showMap(Model model) {
 		List<MemberVo> cwList = memberService.getCwList();
 //		List<String> addrList = memberService.getCwaddr();
 //		List<String> list = new ArrayList<String>();
@@ -196,13 +196,6 @@ public class MatchingController {
 		model.addAttribute("cwList", cwList);
 //		model.addAttribute("addrList", addrList);
 //		model.addAttribute("list", list);
-		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
-		
-		logger.debug("!!!!!!!!cate_id : {}",cate_id);
-		logger.debug("!!!!!!!!categoryList : {}",categoryList);
 
 		return "/matching/maps.tiles";
 

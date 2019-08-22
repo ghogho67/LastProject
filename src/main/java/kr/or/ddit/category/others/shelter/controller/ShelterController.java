@@ -43,7 +43,7 @@ public class ShelterController {
 	* Method 설명 : 무더위쉼터 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String shelter(HttpSession session,@RequestParam(required = false) int cate_id, Model model, PageVo pageVo, int page, int pageSize) {
+	public String shelter( Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -82,12 +82,7 @@ public class ShelterController {
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
 		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
-		
-		logger.debug("!!!!!!!!cate_id : {}",cate_id);
-		logger.debug("!!!!!!!!categoryList : {}",categoryList);
+
 		
 		return "shelter/shelterPagingList";
 	}
