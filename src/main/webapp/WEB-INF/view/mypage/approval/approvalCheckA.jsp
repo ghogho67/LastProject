@@ -252,6 +252,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 
 <body>
 
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 	
 	 <form id="pageForm" action="${cp}/approval/approvalCheckA">
 	 	<input type="hidden" name = "page" id="page">
@@ -283,6 +285,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						
 						
 					<hr>
+					<div class="container">
+					<div class="row">
+					
 					<form id="searchList" class="for" action="${cp}/approval/approvalCheckA" method="get">
 						<input type="hidden" class="app_id" id="app_id" name="app_id">
 						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
@@ -412,10 +417,10 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</div>
 			
 		</div>
+		</div>
+		</div>
+		</div>
 		
-		
-	</div>
-	
 
 </body>
 </html>

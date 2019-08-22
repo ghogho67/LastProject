@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -232,9 +234,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 </head>
 
 <body>
-
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 	
 	 <form id="pageForm" action="${cp}/hospital/pagingList">
 	 	<input type="hidden" name = "page" id="page">
@@ -242,10 +241,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 	 </form>
 
 	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+		<div style="width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-					
 						
 						<div class="d1">
 							<form class="for" id="frm2" action="${cp }/nursingHome/searchNursing" method="post">
@@ -270,7 +268,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 							<thead>
-							<tr class="text-primary">
+							<tr>
 								<th>NO</th>
 <!-- 								<th>요양시설 아이디</th> -->
 								<th>요양시설 명</th>
