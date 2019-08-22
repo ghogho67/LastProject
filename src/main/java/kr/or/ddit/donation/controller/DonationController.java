@@ -62,6 +62,7 @@ public class DonationController {
 		approvalVo.setApp_type("3");
 		approvalVo.setApp_del("N");
 //      approvalVo.setMem_id("비회원");
+	
 
 		logger.debug("☞approvalVo:{}", approvalVo);
 
