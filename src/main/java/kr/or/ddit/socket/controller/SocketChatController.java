@@ -38,6 +38,8 @@ public class SocketChatController {
 		session.setAttribute("mem_id", mem_id);
 		session.setAttribute("chat_id", chat_id);
 		
+		
+		
 		List<ChatTextVo> chatTextList = chatTextService.getChatTextList(chat_id);
 		
 		
