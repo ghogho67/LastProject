@@ -10,7 +10,26 @@ public class CategoryDaoTest extends LogicTestEnv{
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+
+	/***Given***/
+	
+
+	/***When***/
+
+	/***Then***/
 	}
+	
+	
+	@Test
+	public void test() {
+
+	/***Given***/
+	
+
+	/***When***/
+
+	/***Then***/
+	}
+
 
 }
