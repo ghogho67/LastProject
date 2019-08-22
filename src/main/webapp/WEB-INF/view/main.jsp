@@ -209,7 +209,11 @@
 
 
    <section class="department-area doa-padding4">
-      <div class="container">
+      <div class="container2" style="width: 1500px;	
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto">
          <div class="row">
             <div class="col-lg-6 offset-lg-3">
                <div class="section-top text-center">

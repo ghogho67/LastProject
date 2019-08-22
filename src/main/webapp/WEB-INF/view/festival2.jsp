@@ -25,7 +25,7 @@
 }
 
 #titlee h2 {
-	padding: 25px 35px;
+	padding: 15px 25px;
 }
 
 #titlee h2 span {
@@ -224,9 +224,7 @@ right: 21%;
 #header{
     z-index: 2;
 }
-.left-sidebar{
-    z-index: 3 !important;
- }
+
  .container{
  	z-index: 1;
  	position: relative;
@@ -435,7 +433,6 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 					<div id="titlee">
 						<h2>
 							<span>2019 축제</span>
-							
 						</h2>
 						<p class="board-count"></p>
 					</div>
