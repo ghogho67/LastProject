@@ -19,7 +19,7 @@
 }
 
 #titlee h2 {
-	padding: 5px 5px;
+	padding: 15px 35px;
 }
 
 #titlee h2 span {
