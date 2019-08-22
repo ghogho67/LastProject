@@ -188,17 +188,6 @@ public class ApprovalService implements IApprovalService {
 		return approvalDao.memberApprovalAllList();
 	}
 
-	/**
-	* Method : totalApproval_admin
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @return
-	* Method 설명 :결산관리(관리자) - 매출 전체
-	*/
-	@Override
-	public int totalApproval_admin() {
-		return approvalDao.totalApproval_admin();
-	}
 
 	/**
 	* Method : totalApprovalType_admin

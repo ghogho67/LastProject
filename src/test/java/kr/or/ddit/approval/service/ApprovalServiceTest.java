@@ -124,22 +124,6 @@ public class ApprovalServiceTest extends LogicTestEnv {
 		assertEquals(4758, memberApprovalAllList.size());
 	}
 	
-	/**
-	* Method : totalApproval_admin
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 :결산관리(관리자) - 매출 전체
-	*/
-	@Test
-	public void totalApproval_admin() {
-		/***Given***/
-
-		/***When***/
-		int totalApproval_admin = approvalService.totalApproval_admin();
-		/***Then***/
-		assertEquals(954713, totalApproval_admin);
-
-	}
 	
 	/**
 	* Method : totalApprovalType_admin

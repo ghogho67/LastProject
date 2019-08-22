@@ -172,17 +172,6 @@ public class ApprovalDao implements IApprovalDao {
 		return sqlSession.selectList("memberApproval.memberApprovalAllList");
 	}
 
-	/**
-	* Method : totalApproval_admin
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @return
-	* Method 설명 :결산관리(관리자) - 매출 전체
-	*/
-	@Override
-	public int totalApproval_admin() {
-		return sqlSession.selectOne("memberApproval.totalApproval_admin");
-	}
 
 	/**
 	* Method : totalApprovalType_admin
