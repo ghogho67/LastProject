@@ -36,7 +36,7 @@ $( document ).ready(function() {
 <body>
 	<div class="container">
 								<h2 class="sub-header">
-									게시글 신규 등록<br> <br> postRegister.jsp<br> <br>
+									게시글 신규 등록<br> <br> WEB-INF/view/post/postRegister.jsp<br> <br>
 								</h2>
 								<pre>
 								cate_id : ${cate_id }<br><br>

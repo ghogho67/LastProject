@@ -55,7 +55,8 @@ public class ReplyController {
 		replyVo.setReply_cont(reply_cont);
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		replyVo.setMem_id(mvo.getMem_id());
-
+		
+		logger.debug("☞replyVo:{}",replyVo);
 		replyService.replyInsert(replyVo);
 
 		model.addAttribute("post_id", post_id);
