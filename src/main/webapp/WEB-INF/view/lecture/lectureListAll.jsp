@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>전체강좌목록</title>
 
 
 
@@ -159,8 +159,8 @@ td {
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 1%;
-	top: 75px;
+	right: 10%;
+	top: 175px;
 }
 
 .d1 input {
@@ -207,8 +207,6 @@ td {
 </style>
 
 
-
-
 </head>
 <body>
 
@@ -244,20 +242,17 @@ td {
 						</h2>
 					</div>
 
-<!-- 					<div class="d1"> -->
-<!-- 						<form class="for"> -->
-
-<!-- 							<select id="searchType" name="searchType" -->
-<!-- 								style="position: absolute; z-index: 999;"> -->
-<!-- 								<option value="all">전체</option> -->
-<!-- 								<option value="title">제목</option> -->
-<!-- 								<option value="content">내용</option> -->
-<!-- 								<option value="writer">작성자</option> -->
-<!-- 								<option value="tc">제목+내용</option> -->
-<!-- 							</select> <input type="text" placeholder="검색어 입력"> -->
-<!-- 							<button type="submit"></button> -->
-<!-- 						</form> -->
-<!-- 					</div> -->
+					<div class="d1">
+						<form class="for" id="form3" action="/lecture/searchIneLcture" method="post">
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+								<option value="title">강좌명</option>
+								<option value="teacher">강사</option>
+							</select> <input type="text"  id="keyword"
+										name="keyword" value="${keyword}" placeholder="검색어 입력">
+							<button type="submit" id="searchBtn" ></button>
+						</form>
+					</div>
 					<hr>
 
 					<div class="table-responsive">
@@ -433,6 +428,16 @@ td {
 			$("#pageForm").submit();
 			
 			}
+		
+		
+		$("#searchBtn").on("click", function() {
+			if ($('#keyword').val().length == 0) {
+				alert("검색어를 입력해주세요");
+				return;
+			} else {  
+				$("#form3").submit();
+			}
+		});
 		
 </script>
 

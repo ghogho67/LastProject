@@ -97,4 +97,16 @@ public class LectureService implements ILectureService {
 		return resultMap;
 	}
 	
+	
+	@Override
+	public List<LectureVo> LectuerSearchTeacher(String lec_tea) {
+		// TODO Auto-generated method stub
+		return lectureDao.LectuerSearchTeacher(lec_tea);
+	}
+	@Override
+	public List<LectureVo> LectuerSearchTitle(String lec_nm) {
+		// TODO Auto-generated method stub
+		return lectureDao.LectuerSearchTitle(lec_nm);
+	}
+	
 }

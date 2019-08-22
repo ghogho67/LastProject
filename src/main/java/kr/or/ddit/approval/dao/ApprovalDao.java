@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.approval.model.ApprovalVo;
@@ -14,6 +16,7 @@ import kr.or.ddit.page.model.PageVo;
 
 @Repository
 public class ApprovalDao implements IApprovalDao {
+	private static final Logger logger = LoggerFactory.getLogger(ApprovalDao.class);
 
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
@@ -61,6 +64,7 @@ public class ApprovalDao implements IApprovalDao {
 	*/
 	@Override
 	public int insertApproval_non(ApprovalVo approvalVo) {
+		logger.debug("☞approvalVo:{}",approvalVo);
 		return sqlSession.insert("approval.insertApproval_non",approvalVo);
 	}
 

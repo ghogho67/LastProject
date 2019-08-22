@@ -154,15 +154,15 @@ cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachment
 								<!-- 								<input type="text" class="form-control" id="mem_id" -->
 								<%-- 									name="mem_id" value="${postVo.post_nm}"> --%>
 							</div>
-							<hr>
 						</div>
+							<hr>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
 								<label class="control-label">${postVo.post_cont}</label>
 							</div>
 							<br><br><br><br><br><br><br><br><br><br><br><br><br>
-							<hr>
 						</div>
+							<hr>
 						<div class="form-group col-sm-8">
 							<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
 							<div class="col-sm-10">
@@ -178,8 +178,8 @@ cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachment
 								</c:forEach>
 							</div>
 						</div>
-						<div class="form-group col-sm-8">
 						<hr>
+						<div class="form-group col-sm-8">
 							<label for="userNm" class="col-sm-2 control-label">댓글</label>
 							<div>
 							<br>
@@ -189,10 +189,9 @@ cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachment
 											삭제된 댓글입니다
 										</c:when>
 											<c:otherwise>
-											<strong>${reply.mem_id } </strong> <fmt:formatDate	value="${reply.reply_time }" pattern="yyyy.MM.dd. hh:mm" /><br>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${reply.mem_id } </strong> <fmt:formatDate	value="${reply.reply_time }" pattern="yyyy.MM.dd. hh:mm" /><br>
 											<br>
-											${reply.reply_cont}
-											<hr>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.reply_cont}<br><br>
 											${attachment.att_id} 
 										</c:otherwise>
 										</c:choose> <c:if
@@ -202,14 +201,15 @@ cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachment
 							</div>
 							</div>
 						</div>
+											<hr>
 						<div class="form-group col-sm-8">
 							<label for="userNm" class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
-								<form id="replyfrm" method="post" action="${cp}/reply/register">
+								<form id="replyfrm" method="post" action="${cp}/reply/register" >
 									<div id="reply_box">
 									<div>
 										<textarea name="reply_cont" maxlength="500"></textarea>
-										<button id="replyBtn" type="submit" class="btn btn-primary btn-sm" name="button" style="float:right;">댓글 등록</button>
+										<button id="replyBtn" type="button" class="btn btn-primary btn-sm" name="button" style="float:right;">댓글 등록</button>
 									</div>
 										<input type="hidden" name="post_id" value="${post_id}">
 										<input type="hidden" name="cate_id" value="${cate_id }">
@@ -218,8 +218,8 @@ cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachment
 							</div>
 						</div>
 						
-						<div class="form-group col-sm-8 text-left">
 									<hr>
+						<div class="form-group col-sm-8 text-left">
 							<form style="float:left;" id="postModifyfrm" method="post" action="${cp}/post/modifyView">
 								<button id="postModifyBtn" type="button" class="btn btn-primary btn-sm" name="button">수정</button>
 								<input type="hidden" value="${post_id }" name="post_id">
@@ -237,7 +237,7 @@ cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachment
 								<input type="hidden" name="post_id" value="${post_id }" />
 								<button id="postReBtn" type="button" class="btn btn-primary btn-sm" name="button">답글</button>
 							</form>
-							<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
+							<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?searchType=${searchType}cate_id='${cate_id }'">
 								<input type="hidden" name="cate_id" value="${cate_id }" /> 
 								<input type="hidden" name="post_id" value="${post_id }" />
 								<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">

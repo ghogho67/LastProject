@@ -75,19 +75,19 @@ public class RedirectController {
 			//사이드바 처리
 			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
 			session.setAttribute("sideBar",categoryList);
-			return"redirect:/post/pagingList?cate_id=30011";
+			return"redirect:/post/pagingList?searchType=a&cate_id=30011";
 			
 		}else if(cate_id==30012) {
 			//사이드바 처리
 			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
 			session.setAttribute("sideBar",categoryList);
-			return"redirect:/post/pagingList?cate_id=30012";
+			return"redirect:/post/pagingList?searchType=a&cate_id=30012";
 			
 		}else if(cate_id==30013) {
 			//사이드바 처리
 			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
 			session.setAttribute("sideBar",categoryList);
-			return"redirect:/post/pagingList?cate_id=30013";
+			return"redirect:/post/pagingList?searchType=a&cate_id=30013";
 			
 		}else if(cate_id==30014) {
 			//사이드바 처리

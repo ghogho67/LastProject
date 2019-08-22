@@ -15,6 +15,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import kr.or.ddit.chat.chatMem.service.IChatMemService;
 import kr.or.ddit.chat.chatText.model.ChatTextVo;
 import kr.or.ddit.chat.chatText.service.IChatTextService;
 
@@ -24,8 +25,15 @@ public class SocketChatHandler extends TextWebSocketHandler {
 	@Resource(name = "chatTextService")
 	private IChatTextService chaTextService;
 	
+	@Resource(name = "chatMemService")
+	private IChatMemService chatMemService;
+	
 	
 	private List<WebSocketSession> sessionList;	// 소켓에 연결된 세션정보
+	
+	@Resource(name="chatAlramWebSocketSessionList")
+	private List<WebSocketSession> alramSessionList;	// 채팅방에 참여하지 않고 main.jsp에서 대기중인 세션 리스트
+	
 	public SocketChatHandler() {
 		sessionList = new ArrayList<>();
 		logger.debug("☞sessionList:{}",sessionList);
@@ -66,10 +74,62 @@ public class SocketChatHandler extends TextWebSocketHandler {
 				 logger.debug("☞map:{}",map);
 				int mapChat_id = (int) map.get("chat_id");
 				if(mapChat_id == chat_id) {
+					logger.debug("☞ chat message : ");
 					currentSession.sendMessage(new TextMessage(user + " : " + message.getPayload()));
 				}
 			logger.debug("☞sessionList:{}",sessionList);
 			}
+			
+			//해당 채팅방에 참여한 사람들 목록 조회(현재는 2명)
+			Map<String, Object> select = new HashMap<String, Object>();
+			select.put("mem_id",user);
+			select.put("chat_id",chat_id);
+			
+			String differenceMem_id = chatMemService.selectChatmemid(select); // 나아닌 다른 사람의 아이디를 갖고온다.
+			
+			
+			//다른사람이 채팅방에 있는지 없는지 확인
+			boolean notExistsInChatRoom = true;
+			for(WebSocketSession currentSession : sessionList) {
+				if(getUser(currentSession).equals(differenceMem_id)) {
+					notExistsInChatRoom = false;
+				}
+			}
+			
+			
+			
+				//채팅방에 접속하지 않은 사람에게 미열람 메세지가 있다고 표시
+				logger.debug("☞: alramSessionList.size {}", alramSessionList.size());
+				//for(WebSocketSession currentSession : alramSessionList) {
+					//chatMem 테이블에 안읽은 메세지 여부 업데이트
+					Map<String, Object> mu = new HashMap<String, Object>();
+					mu.put("mem_id", differenceMem_id);
+					mu.put("chat_id",chat_id);
+					if(notExistsInChatRoom)
+						mu.put("newmsgyn","Y");
+					else
+						mu.put("newmsgyn","N");
+					
+					int update = chatMemService.messageUpdate(mu);// 메세지 여부 업데이트 쿼리
+	//				int mapChat_id = (int) map.get("chat_id");
+	//				
+	//				Map<String, Object> m = currentSession.getAttributes();
+	//				logger.debug("☞alramSession : {}", m );
+	//				if(mapChat_id == chat_id){
+	//					currentSession.sendMessage(new TextMessage("NEW"));
+	//				}
+				
+			//}
+				
+				
+			
+			
+			// - chatMem 테이블에 안읽은 메세지 여부 업데이트
+			
+
+			
+			
+			
 		}
 		
 	
