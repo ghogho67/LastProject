@@ -1,6 +1,5 @@
 package kr.or.ddit.donation.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +19,6 @@ import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
-
 import kr.or.ddit.page.model.PageVo;
 
 @Controller
@@ -246,98 +244,5 @@ public class DonationController {
 		return "/mypage/donation/donationPagingList.mytiles";
 	}
 
-	/**
-	 * Method : searchDonation 작성자 : ADMIN 변경이력 :
-	 * 
-	 * @param model
-	 * @param app_id
-	 * @param pageVo
-	 * @return Method 설명 : 기부자 검색 - 회원:Y//비회원:N
-	 */
-	@RequestMapping(path = "/searchDonation", method = RequestMethod.POST)
-	public String searchDonation(Model model, int app_id, PageVo pageVo, String mem_yn,  int page, int pageSize) {
-
-//	   model.addAttribute("app_id", app_id);	
-//	   logger.debug("☞app_id:{}",app_id);
-//         List<DonationApprovalVo> getDoner_memYN = donationService.getDoner_memYN(mem_yn);
-//         if(mem_yn == "Y") {
-//            model.addAttribute("getDoner_memYN", getDoner_memYN);
-//            logger.debug("☞getDoner_memYN-회원:{}",getDoner_memYN);
-//         }else if(mem_yn == "N"){
-//            model.addAttribute("getDoner_memYN", getDoner_memYN);
-//            logger.debug("☞getDoner_memYN-비회원:{}",getDoner_memYN);
-//         }
-
-		pageVo = new PageVo();
-		pageVo.setPage(page);
-		pageVo.setPageSize(pageSize);
-		
-		if(mem_yn.equals("Y")) {
-			Map<String, Object> resultMap = donationService.donationPagingList_Y(pageVo);
-			logger.debug("☞resultMap:{}",resultMap);
-			
-			List<DonationApprovalVo> getDonationList_YN = (List<DonationApprovalVo>) resultMap.get("getDonationList_YN");
-			
-			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
-			if (pageVo.getPage() == 1) {
-				startPage = 1;
-			}
-			if (startPage >= 2) {
-				startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10) * 10) + 1;
-			}
-			int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
-
-			int lastpaginationSize = (int) resultMap.get("lastpaginationSize");
-
-			if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
-				paginationSize = lastpaginationSize;
-			}
-			
-			model.addAttribute("getDonationList_YN", getDonationList_YN);
-			model.addAttribute("startPage", startPage);
-			model.addAttribute("paginationSize",paginationSize);
-			model.addAttribute("lastpaginationSize",lastpaginationSize);
-			
-			logger.debug("☞getDonationList_YN:{}",getDonationList_YN);
-			logger.debug("☞startPage:{}",startPage);
-			logger.debug("☞paginationSize:{}",paginationSize);
-			logger.debug("☞lastpaginationSize:{}",lastpaginationSize);
-			
-			return "/mypage/donation/searchDonation.mytiles";
-		}else if(mem_yn.equals("N")) {
-			Map<String, Object> resultMap = donationService.donationPagingList_N(pageVo);
-			
-			List<DonationApprovalVo> getDonationList_YN = (List<DonationApprovalVo>) resultMap.get("getDonationList_YN");
-			
-			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
-			if (pageVo.getPage() == 1) {
-				startPage = 1;
-			}
-			if (startPage >= 2) {
-				startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10) * 10) + 1;
-			}
-			int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
-
-			int lastpaginationSize = (int) resultMap.get("lastpaginationSize");
-
-			if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
-				paginationSize = lastpaginationSize;
-			}
-			
-			model.addAttribute("getDonationList_YN", getDonationList_YN);
-			model.addAttribute("startPage", startPage);
-			model.addAttribute("paginationSize",paginationSize);
-			model.addAttribute("lastpaginationSize",lastpaginationSize);
-			
-			logger.debug("☞getDonationList_YN:{}",getDonationList_YN);
-			logger.debug("☞startPage:{}",startPage);
-			logger.debug("☞paginationSize:{}",paginationSize);
-			logger.debug("☞lastpaginationSize:{}",lastpaginationSize);
-			
-			return "/mypage/donation/searchDonation.mytiles";
-		}
-
-		return "/mypage/donation/searchDonation.mytiles";
-	}
 
 }

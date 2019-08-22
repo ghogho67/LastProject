@@ -243,6 +243,7 @@ td {
 								<th>매칭 종료시간</th>
 								<th>매칭 유형</th>
 								<th>매칭 대상자</th>
+								<th>요양보호사</th>
 								<th>보고서 작성</th>
 								<th>보고서 확인</th>
 							</tr>
@@ -264,6 +265,7 @@ td {
 										<td>${report.endTime }</td>
 										<td>${report.mat_type }</td>
 										<td>${report.mem_id }</td>
+										<td>${report.cw_mem_id }</td>
 										<td><a href="${cp}/report/reportWrite?mat_id=${report.mat_id }"	class="btn btn-primary btn-sm">보고서 작성</a></td>
 										<td>
 										<c:if test="${report.check eq 1 }">

@@ -26,8 +26,7 @@
 
 
 .lk{
-margin: 30px 10px 10px 0;
-height: 300px;
+height: 200px;
 width: 100%;
 }
 
@@ -44,16 +43,18 @@ width: 100%;
 <br>
 <br>
 
-
 	
 	<form id="frmSignin" name="frmSignin" role="form" class="form-signin"
 		action="/login" method="post">
 		<input type="hidden" id="status" name="status" value="">
+	
+	
+	
 		<div id="login">
 		
 		
 <div class="lk" style="background-image: url('/image/logosam.png');  
-background-position:center; background-size: 280px; background-repeat: no-repeat;">
+background-position:center; background-size: 200px; background-repeat: no-repeat;">
 			</div> 
 
 
@@ -67,18 +68,14 @@ background-position:center; background-size: 280px; background-repeat: no-repeat
 				<li class="log">
 				<button class="btn type1" id="btnLogin"
 					tabindex="3">로그인</button></li>
-				<li class="log">
-				<a class="btn type6" href="/regist/regist1" tabindex="3">회원가입</a></li>
-				
 					
 			</ul>
 			<br>
 			
 			<div class="both">
 				<div>
-					<input type="checkbox" value="remember"
-						name="remember"><label for="chk1">아이디
-						저장</label>
+					<a style="cursor: pointer;"  href="/regist/regist1"">
+					<span>회원가입</span></a>
 				</div>
 				<div style="padding-right: 5px;">
 					<a id="passwordSerch" style="cursor: pointer;" href="/find/idpwFind">
@@ -88,7 +85,7 @@ background-position:center; background-size: 280px; background-repeat: no-repeat
 		<div class="info"> 
 		
 		<a class="btn type12" 
- href="/donation/nonmemberDonation" tabindex="3"> <img src="/image/donation.png" style="width: 80px;"/>기부하기</a>
+ href="/donation/nonmemberDonation" tabindex="3"> <img src="/image/donation.png" style="width: 50px;"/>기부하기</a>
 		
 
  			</div> 

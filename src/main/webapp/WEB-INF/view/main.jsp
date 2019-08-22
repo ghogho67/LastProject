@@ -51,8 +51,10 @@
    }
 
    function popup() {
-      window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
-            "thisTok!", "width=400, height=700, left=100, top=50");
+//       window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
+//             "thisTok!", "width=400, height=700, left=100, top=50");
+	   window.open("/chat/thistok?mem_id=${mem_id}",
+	            "thisTok!", "width=400, height=700, left=100, top=50");
    }
 </script>
 <style>
@@ -175,15 +177,10 @@
                <h1>ThisCare</h1>
                <a href="${pageContext.request.contextPath}/main">Noincare,HowCare</a>
                <span>|</span> <a href="${pageContext.request.contextPath}/main">Home</a>
-               <form action="${cp }/chatbot">
-                  <button type="submit">챗봇</button>
-               </form>
-               
+              
               
                
-               <form action="${cp }/donation/memberDonation">
-                  <button type="submit">기부하기</button>
-               </form>
+            
             </div>
          </div>
       </div>
@@ -444,9 +441,12 @@ $(document).ready(function() {
 
 
 
+          <form action="${cp }/chatbot">
+                  <button type="submit"><img src="/image/bot.svg"  style="width: 50px;height: auto;"  id="fixedbtn2"></button>
 
+               </form>
+               
 	
-<img src="/image/bot.svg"  style="width: 50px;height: auto;"  id="fixedbtn2">
 
 
 

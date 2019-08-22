@@ -71,12 +71,22 @@ span.admin {
 			</div>
 			<a class="btn-logout" style="position: absolute; left: 90%;"
 				href="/logout">로그아웃 </a>
-			<c:if test="${MEM_INFO.mem_grade==1}">
+				
+				
+				<c:choose>
+				<c:when test="${MEM_INFO.mem_grade==1}">
 				<a class="btn-pri" data-toggle="modal" data-target="#myModalGrade"
 					style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
-
-			</c:if>
-
+				<a class="btn-pri2" href="${cp }/donation/memberDonation"
+					style="position: absolute; left: 76%;">기부하기</a>
+				</c:when>
+				<c:otherwise>
+				<a class="btn-pri2" href="${cp }/donation/memberDonation"
+					style="position: absolute; left: 85%;">기부하기</a>
+				</c:otherwise>
+				
+				</c:choose>
+			
 
 			<c:choose>
 				<c:when test="${goldvo.gold_del eq 'Y'}">
