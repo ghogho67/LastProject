@@ -497,7 +497,7 @@
 
 
 
-	<footer class="footer-area" style="height: 200px; padding: 50px 0;">
+	<footer class="footer-area" style="height: 150px; padding: 20px 0;">
 		<div class="row" style="width: 100%; padding-left: 490px;">
 			<div style="width: 30%;">
 				<div>
@@ -516,7 +516,6 @@
 					<p>
 						Email: hello@havoccreative.com </br>+971 (0)55 151 0491 or +971 (0)55
 						282 2114 </br>PO Box 769558, twofour54, Abu Dhabi
-							This website was design by us *pause for applause*</br> and built with
 						his bare hands by Michael Whitehead.</br> &copy Havoc Creative 2017
 					</p>
 				</div>
