@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.ddit.approval.dao.IApprovalDao;
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.joinVo.MemberApprovalVo;
 import kr.or.ddit.page.model.PageVo;
 
 @Service
@@ -152,26 +153,15 @@ public class ApprovalService implements IApprovalService {
 	public Map<String, Object> approvalAllPagingList(PageVo pageVo) {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("approvalAllList", approvalDao.approvalAllPagingList(pageVo));
+		resultMap.put("memberApprovalAllList", approvalDao.approvalAllPagingList(pageVo));
 		
-		int approvalAllCnt = approvalDao.approvalAllCnt();
-		int paginationSize = (int) Math.ceil((double)approvalAllCnt/pageVo.getPageSize());
+		int memberApprovalAllCnt = approvalDao.memberApprovalAllCnt();
+		int paginationSize = (int) Math.ceil((double)memberApprovalAllCnt/pageVo.getPageSize());
 		resultMap.put("lastpaginationSize", paginationSize);
 		
 		return resultMap;
 	}
 
-	/**
-	* Method : approvalAllList
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @return
-	* Method 설명 :결제자 전체 리스트
-	*/
-	@Override
-	public List<ApprovalVo> approvalAllList() {
-		return approvalDao.approvalAllList();
-	}
 
 	/**
 	* Method : gradeApproval
@@ -184,6 +174,18 @@ public class ApprovalService implements IApprovalService {
 	@Override
 	public int gradeApproval(String mem_grade) {
 		return approvalDao.gradeApproval(mem_grade);
+	}
+
+	/**
+	* Method : memberApprovalAllList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제 전체 리스트 - MemberApprovalVo 조인Vo사용
+	*/
+	@Override
+	public List<MemberApprovalVo> memberApprovalAllList() {
+		return approvalDao.memberApprovalAllList();
 	}
 	
 	

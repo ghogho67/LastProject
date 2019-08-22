@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.joinVo.MemberApprovalVo;
 import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
@@ -66,22 +67,7 @@ public class ApprovalServiceTest extends LogicTestEnv {
 		assertEquals(20000, appList.get(0).getApp_pay());
 	}
 	
-	/**
-	* Method : approvalAllListTest
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 : 결제자 리스트 조회
-	*/
-	@Test
-	public void approvalAllListTest() {
-		/***Given***/
 
-		/***When***/
-		List<ApprovalVo> approvalAllList = approvalService.approvalAllList();
-		/***Then***/
-		assertEquals(61, approvalAllList.size());
-
-	}
 	
 	/**
 	* Method : approlvalAllPagingList
@@ -93,17 +79,16 @@ public class ApprovalServiceTest extends LogicTestEnv {
 	public void approlvalAllPagingList() {
 		/***Given***/
 		PageVo pageVo = new PageVo(1, 10);
-		logger.debug("☞pageVo:{}",pageVo);
 		
 		/***When***/
 		Map<String, Object> resultMap = approvalService.approvalAllPagingList(pageVo);
 		logger.debug("☞resultMap:{}",resultMap);
-		List<ApprovalVo> approvalAllList = (List<ApprovalVo>) resultMap.get("approvalAllList");
-		logger.debug("☞approvalAllList:{}",approvalAllList);
+		List<MemberApprovalVo> memberApprovalAllList = (List<MemberApprovalVo>) resultMap.get("memberApprovalAllList");
+		logger.debug("☞memberApprovalAllList:{}",memberApprovalAllList);
 		int paginationSize = (Integer) resultMap.get("lastpaginationSize");
 		logger.debug("☞paginationSize:{}",paginationSize);
 		/***Then***/
-		assertEquals(7, paginationSize);
+		assertEquals(476, paginationSize);
 	}
 	
 	/**
@@ -121,6 +106,22 @@ public class ApprovalServiceTest extends LogicTestEnv {
 		/***Then***/
 		assertEquals(1600000, gradeApproval);
 
+	}
+	
+	/**
+	* Method : memberApprovalAllListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :결제 전체 리스트 - MemberApprovalVo 조인Vo사용
+	*/
+	@Test
+	public void memberApprovalAllListTest() {
+		/***Given***/
+
+		/***When***/
+		List<MemberApprovalVo> memberApprovalAllList = approvalService.memberApprovalAllList();
+		/***Then***/
+		assertEquals(4758, memberApprovalAllList.size());
 	}
 
 }

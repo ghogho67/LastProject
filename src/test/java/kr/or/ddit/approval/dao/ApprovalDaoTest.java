@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.joinVo.MemberApprovalVo;
 import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 
@@ -102,38 +103,23 @@ public class ApprovalDaoTest extends LogicTestEnv {
 	}
 	
 	/**
-	* Method : approvalCntTest
+	* Method : approvalCntmemberApprovalAllCntTest
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* Method 설명 : 결제자 전체 수 조회
 	*/
 	@Test
-	public void approvalCntTest() {
+	public void memberApprovalAllCntTest() {
 		/***Given***/
 
 		/***When***/
-		int approvalAllCnt = approvalDao.approvalAllCnt();
+		int memberApprovalAllCnt = approvalDao.memberApprovalAllCnt();
 		/***Then***/
-		assertEquals(61, approvalAllCnt);
+		assertEquals(4758, memberApprovalAllCnt);
 
 	}
 	
-	/**
-	* Method : approvalAllList
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 :결제 전체 리스트 조회
-	*/
-	@Test
-	public void approvalAllList() {
-		/***Given***/
 
-		/***When***/
-		List<ApprovalVo> approvalAllList = approvalDao.approvalAllList();
-		/***Then***/
-		assertEquals(61, approvalAllList.size());
-
-	}
 	
 	/**
 	* Method : approvalPagingListTest
@@ -167,6 +153,22 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		/***Then***/
 		assertEquals(1600000, gradeApproval);
 
+	}
+	
+	/**
+	* Method : memberApprovalAllListTest
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :결제 전체 리스트 - MemberApprovalVo 조인Vo사용
+	*/
+	@Test
+	public void memberApprovalAllListTest() {
+		/***Given***/
+
+		/***When***/
+		List<MemberApprovalVo> memberApprovalAllList = approvalDao.memberApprovalAllList();
+		/***Then***/
+		assertEquals(4758, memberApprovalAllList.size());
 	}
 	
 

@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.joinVo.MemberApprovalVo;
 import kr.or.ddit.page.model.PageVo;
 
 @Repository
@@ -126,32 +127,21 @@ public class ApprovalDao implements IApprovalDao {
 	*/
 	@Override
 	public List<ApprovalVo> approvalAllPagingList(PageVo pageVo) {
-		return sqlSession.selectList("approval.approvalAllPagingList",pageVo);
+		return sqlSession.selectList("memberApproval.approvalAllPagingList",pageVo);
 	}
 
 	/**
-	* Method : approvalCnt
+	* Method : memberApprovalAllCnt
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @return
-	* Method 설명 :결제자 전체 목록 가져오기
+	* Method 설명 :결제자 전체 수 가져오기
 	*/
 	@Override
-	public int approvalAllCnt() {
-		return sqlSession.selectOne("approval.approvalAllCnt");
+	public int memberApprovalAllCnt() {
+		return sqlSession.selectOne("memberApproval.memberApprovalAllCnt");
 	}
 
-	/**
-	* Method : approvalAllList
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @return
-	* Method 설명 :결제자 전체 리스트
-	*/
-	@Override
-	public List<ApprovalVo> approvalAllList() {
-		return sqlSession.selectList("approval.approvalAllList");
-	}
 
 	/**
 	* Method : gradeApproval
@@ -163,7 +153,19 @@ public class ApprovalDao implements IApprovalDao {
 	*/
 	@Override
 	public int gradeApproval(String mem_grade) {
-		return sqlSession.selectOne("approval.gradeApproval",mem_grade);
+		return sqlSession.selectOne("memberApproval.gradeApproval",mem_grade);
+	}
+
+	/**
+	* Method : memberApprovalAllList
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결제 전체 리스트 - MemberApprovalVo 조인Vo사용
+	*/
+	@Override
+	public List<MemberApprovalVo> memberApprovalAllList() {
+		return sqlSession.selectList("memberApproval.memberApprovalAllList");
 	}
 	
 	

@@ -1,8 +1,5 @@
 package kr.or.ddit.donation.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +19,6 @@ import kr.or.ddit.donation.model.DonationVo;
 import kr.or.ddit.donation.service.IDonationService;
 import kr.or.ddit.joinVo.DonationApprovalVo;
 import kr.or.ddit.member.member.model.MemberVo;
-
 import kr.or.ddit.page.model.PageVo;
 
 @Controller
