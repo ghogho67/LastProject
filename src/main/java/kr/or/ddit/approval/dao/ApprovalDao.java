@@ -171,6 +171,31 @@ public class ApprovalDao implements IApprovalDao {
 	public List<MemberApprovalVo> memberApprovalAllList() {
 		return sqlSession.selectList("memberApproval.memberApprovalAllList");
 	}
+
+	/**
+	* Method : totalApproval_admin
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @return
+	* Method 설명 :결산관리(관리자) - 매출 전체
+	*/
+	@Override
+	public int totalApproval_admin() {
+		return sqlSession.selectOne("memberApproval.totalApproval_admin");
+	}
+
+	/**
+	* Method : totalApprovalType_admin
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param app_type
+	* @return
+	* Method 설명 :결산관리(관리자 ) - 결제 타입별 매출
+	*/
+	@Override
+	public int totalApprovalType_admin(String app_type) {
+		return sqlSession.selectOne("memberApproval.totalApprovalType_admin",app_type);
+	}
 	
 	
 

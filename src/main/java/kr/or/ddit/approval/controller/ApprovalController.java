@@ -365,7 +365,7 @@ public class ApprovalController {
 		logger.debug("☞lastpaginationSize:{}",lastpaginationSize);
 		
 		
-		// 구글 pie chart API
+		// 구글 pie chart API - 회원별 매출 비율
 		model.addAttribute("nomalMember", approvalService.gradeApproval("1"));
 		model.addAttribute("goldMember", approvalService.gradeApproval("2"));
 		model.addAttribute("careWorker", approvalService.gradeApproval("3"));
@@ -373,6 +373,14 @@ public class ApprovalController {
 		logger.debug("☞nomalMember:{}",approvalService.gradeApproval("1"));
 		logger.debug("☞goldMember:{}",approvalService.gradeApproval("2"));
 		logger.debug("☞careWorker:{}",approvalService.gradeApproval("3"));
+		
+		logger.debug("☞nomalmember:{}",approvalService.totalApprovalType_admin("1"));
+		logger.debug("☞goldmember:{}",approvalService.totalApprovalType_admin("2"));
+		logger.debug("☞careworker:{}",approvalService.totalApprovalType_admin("3"));
+		//구글 pie chart API - (관리자) 회원등급별 매출비율
+		model.addAttribute("nomalmember", approvalService.totalApprovalType_admin("1"));
+		model.addAttribute("goldmember", approvalService.totalApprovalType_admin("2"));
+		model.addAttribute("careworker", approvalService.totalApprovalType_admin("3"));
 
 	
 		return "/mypage/approval/approvalCheckA.mytiles";

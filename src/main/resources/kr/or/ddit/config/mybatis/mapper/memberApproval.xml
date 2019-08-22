@@ -46,6 +46,21 @@
 		and mem_grade=#{mem_grade}
 	</select>
 	
+	<!-- 결산관리(관리자) - 매출 전체 -->
+	<select id="totalApproval_admin" resultType="int">
+		select sum(a.app_pay)
+		from member m full outer join  approval a on(m.mem_id = a.mem_id)
+		where a.app_obj = 'admin'
+	</select>
+	
+	<!-- 결산관리(관리자 ) - 결제 타입별 매출 -->
+	<select id="totalApprovalType_admin" resultType="int" parameterType="string">
+		select sum(a.app_pay)
+		from member m full outer join  approval a on(m.mem_id = a.mem_id)
+		where a.app_obj = 'admin'
+		and a.app_type = #{app_type}
+	</select>
+	
 	
 	
 
