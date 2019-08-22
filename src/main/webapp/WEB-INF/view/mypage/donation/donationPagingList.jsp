@@ -256,15 +256,15 @@ function boardPagingListAjaxHtml(page, pageSize) {
 				<div class="card-body">
 							
 						<!-- 검색 -->
-						<div class="d1">
-							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">
-								<select id="searchType" name="mem_yn"
-									style="position: absolute; z-index: 999;">
-									<option value="all">회원/비회원</option>
-								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add">
-								<button type="button" id="searchBtn"></button>
-							</form>
-						</div>
+<!-- 						<div class="d1"> -->
+<%-- 							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> --%>
+<!-- 								<select id="searchType" name="mem_yn" -->
+<!-- 									style="position: absolute; z-index: 999;"> -->
+<!-- 									<option value="all">회원/비회원</option> -->
+<!-- 								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add"> -->
+<!-- 								<button type="button" id="searchBtn"></button> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
 
 						
 						<div id="titlee">

@@ -122,7 +122,11 @@ public class LoginController {
 			
 			List<CategoryVo> categoryList = categoryService.getCategoryList();
 			session.setAttribute("categoryList", categoryList);
-			logger.debug("cate : {}",categoryList);
+//			List<CategoryVo> categoryList2 = categoryService.getCategoryList2();
+//			int maxLevel=categoryService.maxLevel();
+//			session.setAttribute("categoryList", categoryList2);
+//			session.setAttribute("maxLevel", maxLevel);
+//			logger.debug("cate : {}",categoryList2);
 
 			return "redirect:crawling";
 		}

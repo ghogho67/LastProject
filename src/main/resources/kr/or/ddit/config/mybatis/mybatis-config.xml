@@ -57,6 +57,7 @@
 		<typeAlias alias="diseaseNameVo" type="kr.or.ddit.member.diseaseName.model.DiseaseNameVo"/>
 		<typeAlias alias="reportWriteVo" type="kr.or.ddit.matching.report.model.ReportWriteVo"/>
 		<typeAlias alias="ReportPageVo" type="kr.or.ddit.matching.report.model.ReportPageVo"/>
+		<typeAlias alias="memberApprovalVo" type="kr.or.ddit.joinVo.MemberApprovalVo"/>
 		
 	</typeAliases>
 
@@ -93,6 +94,7 @@
 	   <mapper resource="kr/or/ddit/config/mybatis/mapper/location.xml"/>
 	   <mapper resource="kr/or/ddit/config/mybatis/mapper/report.xml"/>
 	   <mapper resource="kr/or/ddit/config/mybatis/mapper/reportAttach.xml"/>
+	   <mapper resource="kr/or/ddit/config/mybatis/mapper/memberApproval.xml"/>
 
    </mappers>
 </configuration>

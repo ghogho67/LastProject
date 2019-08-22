@@ -25,7 +25,7 @@
 }
 
 #titlee h2 {
-	padding: 25px 35px;
+	padding: 15px 25px;
 }
 
 #titlee h2 span {
@@ -224,9 +224,7 @@ right: 21%;
 #header{
     z-index: 2;
 }
-.left-sidebar{
-    z-index: 3 !important;
- }
+
  .container{
  	z-index: 1;
  	position: relative;
@@ -424,17 +422,17 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+		<div style="    padding-top: 50px;
+    padding-left: 358px;
+    width: 95%;">
 			<div class="card">
 				<div class="card-body">
 					<div id="titlee">
 						<h2>
 							<span>2019 축제</span>
-							
 						</h2>
 						<p class="board-count"></p>
 					</div>
@@ -480,7 +478,6 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 		                    <li id="39"><button type="button" class="btn"><span>#제주</span></button></li>
 		                </ul>
 		            </div>
-		            <!-- //태그 리스트 -->
 		        </div>
 				<div class="list_wrap default-tmplgroup type-best-tmpl col4">
 					<ul id="_dealList" class="list" data-reviewtype="A"
@@ -507,7 +504,6 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 		        	</ul>
 		    	</nav>
 			</div>
-	</div>
 
 
 </body>

@@ -50,7 +50,7 @@ public class MemberServiceTest extends LogicTestEnv {
 	* Method : getMemberVoServiceTest
 	* 작성자 : ADMIN
 	* 변경이력 :
-	* Method 설명 :회원 전체 페이징 리스트
+	* Method 설명 :특정회원 전체 페이징 리스트
 	*/
 	@Test
 	public void getMemberVoServiceTest() {
