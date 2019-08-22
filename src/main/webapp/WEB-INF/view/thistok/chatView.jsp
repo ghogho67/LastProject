@@ -64,6 +64,9 @@ function initSocket() {
    
    function sendMessage(){      
       //websocket으로 메시지를 보내겠다.
+      if($("#message").val() == ''){
+    	  return;
+      }
         socket.send($("#message").val());     
    }
    
@@ -131,7 +134,7 @@ function initSocket() {
          printHTML += "<p class='nt'>"+today+"</p>";
          printHTML += "</div>";
          printHTML += "</li>";
-         printHTML += "</li>"; 
+         printHTML += "</li>";
        
          
          $("#chatdata").append(printHTML);
@@ -167,7 +170,7 @@ $(document).ready(function() {
 });
 
 function back(){
-	window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
+	window.open("/chat/thistok?mem_id=${mem_id}", "thisTok!", "width=400, height=700, left=100, top=50");
 }
 </script>
 

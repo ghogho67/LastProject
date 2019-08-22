@@ -30,4 +30,6 @@ public class ChatDao implements IChatDao{
 	public int insertChat(ChatVo chatVo) {
 		return sqlSession.insert("chat.createChat",chatVo);
 	}
+
+	
 }

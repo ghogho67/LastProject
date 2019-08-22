@@ -398,7 +398,7 @@ public class PostController {
 //	public String ImageBoard1() {
 //		return "festival.tiles";
 //	}
-
+	@RequestMapping(path = "ImageBoard2")
 	public String ImageBoard2() {
 		return "festival2";
 	}

@@ -1,5 +1,7 @@
 package kr.or.ddit.chat.chatMem.dao;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,6 +18,16 @@ public class ChatMemDao implements IChatMemDao {
 	@Override
 	public int insertChatMem(ChatMemVo chatMemVo) {
 		return sqlSession.insert("chatMem.insertChatMem",chatMemVo);
+	}
+
+	@Override
+	public int messageUpdate(Map<String, Object> map) {
+		return sqlSession.update("chatMem.messageUpdate",map);
+	}
+
+	@Override
+	public String selectChatmemid(Map<String, Object> map) {
+		return sqlSession.selectOne("chatMem.selectChatmemid", map);
 	}
 
 	

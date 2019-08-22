@@ -92,7 +92,7 @@ public class DonationServiceTest extends LogicTestEnv {
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N");
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N", "admin");
 		/***When***/
 		int insertApproval_nonCnt = approvalService.insertApproval_non(approvalVo);
 		/***Then***/

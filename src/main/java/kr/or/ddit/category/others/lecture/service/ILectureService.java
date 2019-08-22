@@ -101,4 +101,8 @@ public interface ILectureService {
 	 */
 	int  InsertLecture(LectureVo LectureVo);
 	
+	List<LectureVo> LectuerSearchTeacher(String lec_tea);
+	List<LectureVo> LectuerSearchTitle(String lec_nm);
+
+	
 }

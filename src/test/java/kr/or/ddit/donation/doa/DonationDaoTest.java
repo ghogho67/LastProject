@@ -9,6 +9,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.approval.dao.IApprovalDao;
 import kr.or.ddit.approval.model.ApprovalVo;
@@ -20,6 +22,8 @@ import kr.or.ddit.testenv.LogicTestEnv;
 
 public class DonationDaoTest extends LogicTestEnv{
 
+	private static final Logger logger = LoggerFactory.getLogger(DonationDaoTest.class);
+	
 	@Resource(name = "donationDao")
 	private IDonationDao donationDao;
 	@Resource(name = "approvalDao")
@@ -34,7 +38,7 @@ public class DonationDaoTest extends LogicTestEnv{
 	@Test
 	public void insertDonation_nonTest() {
 		/***Given***/
-		DonationVo donationVo = new DonationVo(113, "brown", "010-3256-7895", "좋은일에 써주세요",144, "N");
+		DonationVo donationVo = new DonationVo(64, "brown", "010-3256-7895", "좋은일에 써주세요",144, "N");
 		/***When***/
 		int insertDonation_nonCnt = donationDao.insertDonation_non(donationVo);
 		
@@ -74,8 +78,9 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "brown", "N");
+		approvalVo = new ApprovalVo(69, 10000, sdf.parse("2019-08-22"), "3", "brown", "N", "admin");
 		/***When***/
+		logger.debug("☞approvalVo:{}",approvalVo);
 		int insertApproval_memCnt = approvalDao.insertApproval_mem(approvalVo);
 		/***Then***/
 		assertEquals(1, insertApproval_memCnt);
@@ -93,8 +98,9 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N");
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-22"), "3", "N", "admin");
 		/***When***/
+		logger.debug("☞approvalVo:{}",approvalVo);
 		int insertApproval_nonCnt = approvalDao.insertApproval_non(approvalVo);
 		/***Then***/
 		assertEquals(1, insertApproval_nonCnt);

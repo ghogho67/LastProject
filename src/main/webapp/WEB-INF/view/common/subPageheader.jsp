@@ -19,7 +19,7 @@
 		<div class="row">
 			<nav id="nav-menu-container" style="padding-left: 900px;">
 				<ul class="nav-menu">
-				<li class=""><a href="${cp}/crawling">Home</a></li>
+				<li class=""><a href="${cp}/crawling">Home</a></li> 
 					<c:forEach items="${categoryList}" var="category">
 			<c:if test="${category.cate_usage =='Y'}">
 				<c:if test="${category.cate_paerent_id==0}">
@@ -62,8 +62,6 @@
 					<ul>
 						<li><a href="${cp}/category/categoryList">카테고리 메뉴관리</a></li>
 						<li><a href="${cp}/lecture/lectureListManagement">강좌관리</a></li>
-						<li><a href="${cp}/recognition/semiTestStart">간이인지</a></li>
-						<li><a href="${cp}/recognitionImp/impStart">인지향상</a></li>
 
 
 					</ul>

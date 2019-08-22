@@ -22,7 +22,7 @@ import kr.or.ddit.handler.SocketChatHandler;
 public class SocketChatController {
 	@Resource(name = "chatTextService")
 	private IChatTextService chatTextService;
-	//
+	
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);
@@ -37,6 +37,8 @@ public class SocketChatController {
 		
 		session.setAttribute("mem_id", mem_id);
 		session.setAttribute("chat_id", chat_id);
+		
+		
 		
 		List<ChatTextVo> chatTextList = chatTextService.getChatTextList(chat_id);
 		
