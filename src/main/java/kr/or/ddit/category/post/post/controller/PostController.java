@@ -60,7 +60,7 @@ public class PostController {
 
 	@Resource(name = "attachmentService")
 	private IAttachmentService attachmentService;
-	
+
 	@Resource(name = "categoryService")
 	ICategoryService categoryService;
 
@@ -77,10 +77,12 @@ public class PostController {
 	}
 
 	@RequestMapping("/pagingList")
-	public String postPagingList(PageVo pageVo, int cate_id, Model model,
-			HttpSession session, @RequestParam(required = false) String current, 
-			@RequestParam(required = false) String searchType, @RequestParam(required = false) String search) {
+	public String postPagingList(PageVo pageVo, int cate_id, Model model, HttpSession session,
+			@RequestParam(required = false) String current, @RequestParam(required = false) String searchType,
+			@RequestParam(required = false) String search) {
 
+		logger.debug("☞pagingList");
+		logger.debug("☞searchType:{}", searchType);
 		pageVo.setPage(pageVo.getPage());
 		pageVo.setPageSize(pageVo.getPageSize());
 
@@ -92,6 +94,7 @@ public class PostController {
 		if (cate_id != 0)
 			map.put("cate_id", cate_id);
 		if (searchType != null) {
+
 			if (searchType.equals("title")) {
 				String post_nm = search;
 				map.put("post_nm", post_nm);
@@ -105,24 +108,33 @@ public class PostController {
 				map.put("mem_id", mem_id);
 				resultMap = postService.idPagingList(map);
 			} else {
+				logger.debug("☞map:{}", map);
 				resultMap = postService.postPagingList(map);
 			}
+		} else {
+			resultMap = postService.postPagingList(map);
+		}
+
+		if (current == null) {
+			current = "1";
 		}
 
 		model.addAttribute("search", search);
 		model.addAttribute("searchType", searchType);
 		model.addAttribute("cate_id", cate_id);
+		logger.debug("current:{}", current);
 		model.addAttribute("current", current);
+		logger.debug("☞postList:{}", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
-		
-		//사이드바 처리
+
+		// 사이드바 처리
 		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
+		session.setAttribute("sideBar", categoryList);
 
 		return "/post/postPagingList.tiles";
 	}
@@ -134,8 +146,6 @@ public class PostController {
 		return "/post/postReply.tiles";
 
 	}
-
-
 
 	@RequestMapping("delete")
 	public String postDelete(Model model, int cate_id, int post_id, PageVo pageVo) {
@@ -165,6 +175,8 @@ public class PostController {
 	@RequestMapping("detail")
 	public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
 
+
+		logger.debug("☞post_id:{}",post_id);
 		// cate_id
 		model.addAttribute("cate_id", cate_id);
 		// replyList
@@ -385,71 +397,71 @@ public class PostController {
 
 	}
 
-	@RequestMapping(path = "/searchPagingList", method = RequestMethod.POST)
-	public String titlePagingList(Model model, int cate_id, String search, HttpSession session, PageVo pageVo, int page,
-			int pageSize, String searchType) {
-
-		pageVo.setPage(page);
-		pageVo.setPageSize(pageSize);
-		logger.debug("searchType:{}", searchType);
-		logger.debug("search:{}", search);
-		logger.debug("cate_id:{}", cate_id);
-		logger.debug("page:{}", page);
-		logger.debug("pageSize:{}", pageSize);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		map.put("page", pageVo.getPage());
-		map.put("pageSize", pageVo.getPageSize());
-		logger.debug("☞map:{}", map);
-		if (cate_id != 0)
-			map.put("cate_id", cate_id);
-
-		if (searchType.equals("title")) {
-			String post_nm = search;
-			map.put("post_nm", post_nm);
-			resultMap = postService.titlePagingList(map);
-		}
-		if (searchType.equals("cont")) {
-			String post_cont = search;
-			map.put("post_cont", post_cont);
-			resultMap = postService.contPagingList(map);
-		}
-		if (searchType.equals("id")) {
-			String mem_id = search;
-			map.put("mem_id", mem_id);
-			resultMap = postService.idPagingList(map);
-		}
-
-		pageVo.setPage((int) map.get("page"));
-		pageVo.setPageSize((int) map.get("pageSize"));
-
-		int current = 1;
-		model.addAttribute("searchType", searchType);
-		model.addAttribute("search", search);
-		model.addAttribute("current", current);
-		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
-		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
-		model.addAttribute("cate_id", cate_id);
-		model.addAttribute("pageVo", pageVo);
-		logger.debug("paginationSize:{}", (Integer) resultMap.get("paginationSize"));
-		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
-		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
-		model.addAttribute("mem_id", mvo.getMem_id());
-
-		return "/post/postPagingList.tiles";
-	}
+//	@RequestMapping(path = "/searchPagingList", method = RequestMethod.POST)
+//	public String titlePagingList(Model model, int cate_id, String search, HttpSession session, PageVo pageVo, int page,
+//			int pageSize, String searchType) {
+//
+//		pageVo.setPage(page);
+//		pageVo.setPageSize(pageSize);
+//		logger.debug("searchType:{}", searchType);
+//		logger.debug("search:{}", search);
+//		logger.debug("cate_id:{}", cate_id);
+//		logger.debug("page:{}", page);
+//		logger.debug("pageSize:{}", pageSize);
+//
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		Map<String, Object> resultMap = new HashMap<String, Object>();
+//		map.put("page", pageVo.getPage());
+//		map.put("pageSize", pageVo.getPageSize());
+//		logger.debug("☞map:{}", map);
+//		if (cate_id != 0)
+//			map.put("cate_id", cate_id);
+//
+//		if (searchType.equals("title")) {
+//			String post_nm = search;
+//			map.put("post_nm", post_nm);
+//			resultMap = postService.titlePagingList(map);
+//		}
+//		if (searchType.equals("cont")) {
+//			String post_cont = search;
+//			map.put("post_cont", post_cont);
+//			resultMap = postService.contPagingList(map);
+//		}
+//		if (searchType.equals("id")) {
+//			String mem_id = search;
+//			map.put("mem_id", mem_id);
+//			resultMap = postService.idPagingList(map);
+//		}
+//
+//		pageVo.setPage((int) map.get("page"));
+//		pageVo.setPageSize((int) map.get("pageSize"));
+//
+//		int current = 1;
+//		model.addAttribute("searchType", searchType);
+//		model.addAttribute("search", search);
+//		model.addAttribute("current", current);
+//		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
+//		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
+//		model.addAttribute("cate_id", cate_id);
+//		model.addAttribute("pageVo", pageVo);
+//		logger.debug("paginationSize:{}", (Integer) resultMap.get("paginationSize"));
+//		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
+//		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+//		model.addAttribute("mem_id", mvo.getMem_id());
+//
+//		return "/post/postPagingList.tiles";
+//	}
 
 //	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 //	public String ImageBoard1() {
 //		return "festival.tiles";
 //	}
-	
+
 	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
 	public String ImageBoard2(HttpSession session, int cate_id) {
-		//사이드바 처리
+		// 사이드바 처리
 		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
+		session.setAttribute("sideBar", categoryList);
 		return "festival2";
 	}
 

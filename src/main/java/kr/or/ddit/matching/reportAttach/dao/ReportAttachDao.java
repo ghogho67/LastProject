@@ -15,16 +15,14 @@ public class ReportAttachDao implements IReportAttachDao {
 
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
-	
-	
-	
+
 	@Override
-	public ReportAttachVo FileDown (int rep_att_id) {
-		
-		ReportAttachVo reportAttachVo = sqlSession.selectOne("matchingReport.FileDown",rep_att_id);
+	public ReportAttachVo FileDown(int rep_att_id) {
+
+		ReportAttachVo reportAttachVo = sqlSession.selectOne("matchingReport.FileDown", rep_att_id);
 		return reportAttachVo;
 	}
-	
+
 	@Override
 	public int reportAttachInsert(ReportAttachVo reportAttachVo) {
 		return sqlSession.insert("reportAttach.reportAttachInsert", reportAttachVo);
@@ -46,6 +44,4 @@ public class ReportAttachDao implements IReportAttachDao {
 
 	}
 
-
-	
 }

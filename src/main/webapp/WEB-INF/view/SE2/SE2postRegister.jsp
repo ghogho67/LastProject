@@ -120,6 +120,7 @@ dif {
 		return true;
 	}
 </script>
+
 <div class="container">
 	<h2 class="sub-header">게시글 신규 등록 SE2postRegister.jsp</h2>
 	<pre>
@@ -140,21 +141,22 @@ cate_id : ${cate_id }
 		<div>
 			<div>
 				<br>
+			<label for="post_nm" class="col-sm-2 control-label">내용</label><br>
 				<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
 					style="width: 600px; height: 412px;"></textarea>
 			</div>
 		</div>
 		<div>
 			<input type="button"
-				class="btn btn-outline-danger btn-primary mr-2 pull-right"
-				id="savebutton" value="post/register" />
+				class="btn btn-primary btn-sm pull-right"
+				id="savebutton" value="글등록" />
 		</div>
 		<div>
 			<input id="postCont" type="button"
 				class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
 		</div>
 		<div id = "fileArea">
-			<input type="button" class="btn btn-outline-danger btn-primary mr-2" value="파일추가" id="addFileBtn"> 
+			<input type="button" class="btn btn-primary btn-sm" value="파일추가" id="addFileBtn"> 
 			<input type="file" name="file"><br>
 			<input type="hidden" name="cate_id" value="${cate_id }">
 		</div>

@@ -10,31 +10,21 @@ public class ApprovalVo {
 	private String app_type;
 	private String mem_id;
 	private String app_del;
-	
 	private int rn;
-	
-	public int getRn() {
-		return rn;
-	}
-
-	public void setRn(int rn) {
-		this.rn = rn;
-	}
-
-	public ApprovalVo() {
-		
-	}
-
-	public String getApp_del() {
-		return app_del;
-	}
-
-	public void setApp_del(String app_del) {
-		this.app_del = app_del;
-	}
 
 	public int getApp_id() {
 		return app_id;
+	}
+
+	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del, int rn) {
+		super();
+		this.app_id = app_id;
+		this.app_pay = app_pay;
+		this.app_time = app_time;
+		this.app_type = app_type;
+		this.mem_id = mem_id;
+		this.app_del = app_del;
+		this.rn = rn;
 	}
 
 	public void setApp_id(int app_id) {
@@ -73,27 +63,26 @@ public class ApprovalVo {
 		this.mem_id = mem_id;
 	}
 
+	public String getApp_del() {
+		return app_del;
+	}
+
+	public void setApp_del(String app_del) {
+		this.app_del = app_del;
+	}
+
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	@Override
 	public String toString() {
 		return "ApprovalVo [app_id=" + app_id + ", app_pay=" + app_pay + ", app_time=" + app_time + ", app_type="
-				+ app_type + ", mem_id=" + mem_id + "]";
-	}
-
-	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String mem_id, String app_del) {
-		this.app_id = app_id;
-		this.app_pay = app_pay;
-		this.app_time = app_time;
-		this.app_type = app_type;
-		this.mem_id = mem_id;
-		this.app_del = app_del;
-	}
-
-	public ApprovalVo(int app_id, int app_pay, Date app_time, String app_type, String app_del) {
-		this.app_id = app_id;
-		this.app_pay = app_pay;
-		this.app_time = app_time;
-		this.app_type = app_type;
-		this.app_del = app_del;
+				+ app_type + ", mem_id=" + mem_id + ", app_del=" + app_del + ", rn=" + rn + "]";
 	}
 
 }

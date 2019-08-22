@@ -55,13 +55,13 @@ public class RedirectController {
 			return"redirect:/nursingHome/pagingList?page=1&pageSize=10";
 			
 		}else if(cate_id==30011) {
-			return"redirect:/post/pagingList?cate_id=30011";
+			return"redirect:/post/pagingList?searchType=a&cate_id=30011";
 			
 		}else if(cate_id==30012) {
-			return"redirect:/post/pagingList?cate_id=30012";
+			return"redirect:/post/pagingList?searchType=a&cate_id=30012";
 			
 		}else if(cate_id==30013) {
-			return"redirect:/post/pagingList?cate_id=30013";
+			return"redirect:/post/pagingList?searchType=a&cate_id=30013";
 			
 		}else if(cate_id==30014) {
 			ra.addAttribute("cate_id", cate_id);

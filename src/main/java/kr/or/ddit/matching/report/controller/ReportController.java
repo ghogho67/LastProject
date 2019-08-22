@@ -356,8 +356,9 @@ public class ReportController {
 		}
 		
 		model.addAttribute("mat_id", mat_id);
-//		if (reportAttachService.getReportAttachList(mat_id) != null)
-//			model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
+		logger.debug("☞reportAttachService.getReportAttachList(mat_id):{}",reportAttachService.getReportAttachList(mat_id));
+		if (reportAttachService.getReportAttachList(mat_id) != null)
+			model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		model.addAttribute("cw_mem_id", matchingService.getMatchingVo(mat_id).getCw_mem_id());
 		model.addAttribute("reportVo", reportVo);
 		mvo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -434,9 +435,12 @@ public class ReportController {
 		}
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
 		logger.debug("☞mvo:{}",mvo);
+		model.addAttribute("reportAttachVo",reportAttachVo);
 		model.addAttribute("cw_mem_id",mvo.getCw_mem_id());
 		model.addAttribute("mat_id", mat_id);
-		model.addAttribute("attachmentList", reportAttachService.getReportAttachList(mat_id));
+		logger.debug("☞reportAttachList",reportAttachService.getReportAttachList(mat_id));
+		if (reportAttachService.getReportAttachList(mat_id) != null)
+			model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		model.addAttribute("reportVo", reportVo);
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
