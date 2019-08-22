@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.category.category.service.ICategoryService;
@@ -63,109 +64,106 @@ public class MatchingController {
 	}
 
 	public List<MemberVo> selMem_gender(List<MemberVo> cwList, String mem_gender) {
-
+		logger.debug("selMem_gender");
+		logger.debug("mem_gender:{}",mem_gender);
 		List<MemberVo> gList = new ArrayList<MemberVo>();
 
 		if (mem_gender.equals("M")) {
+			logger.debug("M");
 			for (MemberVo mvo : cwList) {
 				if (mvo.getMem_gender().equals("M"))
 					gList.add(mvo);
 			}
+			return gList;
 
-		} else {
+		} else if (mem_gender.equals("F")) {
+			logger.debug("Y");
 			for (MemberVo mvo : cwList) {
 				if (mvo.getMem_gender().equals("F"))
 					gList.add(mvo);
 			}
+			return gList;
 
 		}
-		return gList;
+		return cwList;
 	}
 
 	public List<MemberVo> selCw_driver(List<MemberVo> cwList, String cw_driver) {
-
+		logger.debug("selCw_driver");
+		logger.debug("cw_driver:{}",cw_driver);
 		List<MemberVo> gList = new ArrayList<MemberVo>();
 
 		if (cw_driver.equals("N")) {
+			logger.debug("N");
 			for (MemberVo mvo : cwList) {
 				if (mvo.getCw_driver().equals("N"))
 					gList.add(mvo);
 			}
-		} else {
+			return gList;
+		} else if (cw_driver.equals("Y")) {
+			logger.debug("Y");
 			for (MemberVo mvo : cwList) {
 				if (mvo.getCw_driver().equals("Y"))
 					gList.add(mvo);
 			}
+			return gList;
 		}
-		return gList;
+		return cwList;
 
 	}
 
 	public List<MemberVo> selMem_birth(List<MemberVo> cwList, String mem_birth) {
-		List<MemberVo> gList = new ArrayList<MemberVo>();
 
-		if (mem_birth.equals("40")) {
+		logger.debug("selMem_birth");
+		List<MemberVo> list50 = new ArrayList<MemberVo>();
+		List<MemberVo> list5060 = new ArrayList<MemberVo>();
+		List<MemberVo> list60 = new ArrayList<MemberVo>();
 
-			for (MemberVo mvo : gList) {
-				logger.debug("☞mvo:{}", mvo.getMem_birth());
-				logger.debug("☞mvo.getMem_birth():{}", mvo.getMem_birth());
-				int birthYear = 0;
-				int birthMonth = 0;
-				int birthDay = 0;
+		for (MemberVo mvo : cwList) {
+			logger.debug("☞mvo:{}", mvo.getMem_birth());
+			logger.debug("☞mvo.getMem_birth():{}", mvo.getMem_birth());
+			String StringBirthYear = mvo.getMem_birth().substring(0, 4);
+			String StringBirthMonth = mvo.getMem_birth().substring(5, 7);
+			String StringBirthDay = mvo.getMem_birth().substring(8, 10);
 
-				Calendar current = Calendar.getInstance();
-				int currentYear = current.get(Calendar.YEAR);
-				int currentMonth = current.get(Calendar.MONTH) + 1;
-				int currentDay = current.get(Calendar.DAY_OF_MONTH);
+			int birthYear = Integer.parseInt(StringBirthYear);
+			int birthMonth = Integer.parseInt(StringBirthMonth);
+			int birthDay = Integer.parseInt(StringBirthDay);
 
-				int age = currentYear - birthYear;
-				// 생일 안 지난 경우 -1
-				if (birthMonth * 100 + birthDay > currentMonth * 100 + currentDay)
-					age--;
-			}
-		} else if (mem_birth.equals("50")) {
+			Calendar current = Calendar.getInstance();
+			int currentYear = current.get(Calendar.YEAR);
+			int currentMonth = current.get(Calendar.MONTH) + 1;
+			int currentDay = current.get(Calendar.DAY_OF_MONTH);
 
-			for (MemberVo mvo : gList) {
-				logger.debug("☞mvo:{}", mvo.getMem_birth());
-				logger.debug("☞mvo.getMem_birth():{}", mvo.getMem_birth());
-				int birthYear = 0;
-				int birthMonth = 0;
-				int birthDay = 0;
+			int age = currentYear - birthYear;
+			// 생일 안 지난 경우 -1
+			if (birthMonth * 100 + birthDay > currentMonth * 100 + currentDay)
+				age--;
 
-				Calendar current = Calendar.getInstance();
-				int currentYear = current.get(Calendar.YEAR);
-				int currentMonth = current.get(Calendar.MONTH) + 1;
-				int currentDay = current.get(Calendar.DAY_OF_MONTH);
-
-				int age = currentYear - birthYear;
-				// 생일 안 지난 경우 -1
-				if (birthMonth * 100 + birthDay > currentMonth * 100 + currentDay)
-					age--;
-			}
-
-		} else {
-
-			for (MemberVo mvo : gList) {
-				logger.debug("☞mvo:{}", mvo.getMem_birth());
-				logger.debug("☞mvo.getMem_birth():{}", mvo.getMem_birth());
-				int birthYear = 0;
-				int birthMonth = 0;
-				int birthDay = 0;
-
-				Calendar current = Calendar.getInstance();
-				int currentYear = current.get(Calendar.YEAR);
-				int currentMonth = current.get(Calendar.MONTH) + 1;
-				int currentDay = current.get(Calendar.DAY_OF_MONTH);
-
-				int age = currentYear - birthYear;
-				// 생일 안 지난 경우 -1
-				if (birthMonth * 100 + birthDay > currentMonth * 100 + currentDay)
-					age--;
+			if (age < 50) {
+				list50.add(mvo);
+			} else if (age > 60) {
+				list60.add(mvo);
+			} else if (age == 50 || age == 60 || age > 50 && age < 60) {
+				list5060.add(mvo);
 			}
 
 		}
+		logger.debug("list50.size():{}", list50.size());
+		logger.debug("list50.size():{}", list50.size());
 
-		return gList;
+		logger.debug("list5060.size():{}", list5060.size());
+		logger.debug("list5060.size():{}", list5060.size());
+		logger.debug("list60.size():{}", list60.size());
+		logger.debug("list60.size():{}", list60.size());
+		if (mem_birth.equals("50")) {
+			return list50;
+		} else if (mem_birth.equals("60")) {
+			return list60;
+		} else if (mem_birth.equals("5060")) {
+			return list5060;
+		}
+		return cwList;
 	}
 
 	@RequestMapping(path = "/choose")
@@ -191,11 +189,11 @@ public class MatchingController {
 		logger.debug("☞currentDay:{}", currentDay);
 
 		List<MemberVo> cwList = memberService.getCwList();
-		logger.debug("list:{}", cwList);
-		if (mem_birth != "all")
-//			cwList = selMem_birth(cwList, mem_birth);
-			logger.debug("cwList.Size():{}", cwList.size());
 		logger.debug("cwList:{}", cwList);
+		if (mem_birth != "all")
+			cwList = selMem_birth(cwList, mem_birth);
+		logger.debug("selMem_birthcwList.Size():{}", cwList.size());
+		logger.debug("selMem_birthCwList:{}", cwList);
 		if (mem_gender != "all")
 			cwList = selMem_gender(cwList, mem_gender);
 		logger.debug("selMem_gender cwList.Size():{}", cwList.size());
@@ -210,7 +208,7 @@ public class MatchingController {
 		return "/matching/maps.tiles";
 	}
 
-	@RequestMapping(path = "/meet")
+	@RequestMapping(path = "/meet", method = RequestMethod.GET)
 	public String meeting(Model model, String cw_mem_id, String mem_id, HttpSession session) {
 
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -261,8 +259,9 @@ public class MatchingController {
 //			list.add(cwList.get(i).getMem_id() + ":" + cwList.get(i).getMem_nm() + ": " + cwList.get(i).getMem_add1());
 //		}
 		model.addAttribute("cwList", cwList);
-//		model.addAttribute("addrList", addrList);
-//		model.addAttribute("list", list);
+		model.addAttribute("mem_gender", "all");
+		model.addAttribute("mem_birth", "all");
+		model.addAttribute("cw_driver", "all");
 
 		return "/matching/maps.tiles";
 
@@ -462,12 +461,15 @@ public class MatchingController {
 
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, Integer.parseInt(((String) list.get(0).get("endDate")).substring(0, 4)));
-		logger.debug("☞(String) list.get(0).get(\"endDate\"):{}",(String) list.get(0).get("endDate"));
-		logger.debug("☞Integer.parseInt(((String) list.get(0).get(\"endDate\")).substring(0, 4)):{}",Integer.parseInt(((String) list.get(0).get("endDate")).substring(0, 4)));
+		logger.debug("☞(String) list.get(0).get(\"endDate\"):{}", (String) list.get(0).get("endDate"));
+		logger.debug("☞Integer.parseInt(((String) list.get(0).get(\"endDate\")).substring(0, 4)):{}",
+				Integer.parseInt(((String) list.get(0).get("endDate")).substring(0, 4)));
 		cal.set(Calendar.MONTH, Integer.parseInt(((String) list.get(0).get("endDate")).substring(5, 7)) - 1);
-		logger.debug("☞Integer.parseInt(((String) list.get(0).get(\"endDate\")).substring(5, 7)) - 1:{}",Integer.parseInt(((String) list.get(0).get("endDate")).substring(5, 7)) - 1);
+		logger.debug("☞Integer.parseInt(((String) list.get(0).get(\"endDate\")).substring(5, 7)) - 1:{}",
+				Integer.parseInt(((String) list.get(0).get("endDate")).substring(5, 7)) - 1);
 		cal.set(Calendar.DATE, Integer.parseInt(((String) list.get(0).get("endDate")).substring(8)));
-		logger.debug("☞((String) list.get(0).get(\"endDate\")).substring(8)):{}",((String) list.get(0).get("endDate")).substring(8));
+		logger.debug("☞((String) list.get(0).get(\"endDate\")).substring(8)):{}",
+				((String) list.get(0).get("endDate")).substring(8));
 		cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(endTime.substring(0, 2)));
 		logger.debug("☞Integer.parseInt(endTime.substring(0, 2)):{}", Integer.parseInt(endTime.substring(0, 2)));
 		cal.set(Calendar.MINUTE, Integer.parseInt(endTime.substring(3)));
