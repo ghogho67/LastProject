@@ -1,23 +1,19 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>BasicSubPage</title>
+<title>강좌상세</title>
+
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
 
 <style type="text/css">
-
-
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -25,7 +21,7 @@
 }
 
 #titlee h2 {
-	padding: 25px 35px;
+	padding: 5px 5px;
 }
 
 #titlee h2 span {
@@ -33,182 +29,16 @@
 	color: #473fa0;
 }
 
-tr {
-	text-align: center;
-	font-weight: 500;
-}
-
-td {
-	text-align: center;
-}
-
-.title {
-	background-color: transparent;
-	width: 180px;
-	padding: 3px;
-	font-size: 8pt;
-	text-align: center;
-}
-
-.kkk {
-	background-color: transparent;
-	border-color: transparent;
-	width: 30px;
-	padding: 3px;
-	font-size: 9pt;
-}
-
-.pagination-outer {
-	text-align: center;
-}
-
-.pagination {
-	font-family: 'Rubik', sans-serif;
-	padding: 0 30px;
-	display: inline-flex;
-	position: relative;
-}
-
-.pagination li a.page-link {
-	color: #909090;
-	background-color: transparent;
-	font-size: 15px;
-	line-height: 35px;
-	height: 45px;
-	width: 40px;
-	margin: 0 3px;
-	border: none;
-	border-radius: 0;
-	overflow: hidden;
-	position: relative;
-	transition: all 0.4s ease 0s;
-}
-
-.pagination li.active a.page-link, .pagination li a.page-link:hover,
-	.pagination li.active a.page-link:hover {
-	color: #5ab4dc;
-	background-color: transparent;
-}
-
-.pagination li a.page-link span {
-	display: block;
-	transition: all 0.3s;
-}
-
-.pagination li a.page-link:hover span {
-	transform: rotateY(360deg);
-}
-
-.pagination li a.page-link:before, .pagination li a.page-link:after {
-	content: "";
-	background-color: #5ab4dc;
-	height: 3px;
-	width: 0;
-	opacity: 1;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	z-index: -1;
-	transition: all 0.3s;
-}
-
-.pagination li a.page-link:before {
-	background: linear-gradient(135deg, transparent 49%, #5ab4dc 50%);
-	height: 15px;
-	width: 15px;
-	transform: translateX(-50%) rotate(45deg);
-	bottom: auto;
-	top: -20px;
-	left: 50%;
-}
-
-.pagination li a.page-link:hover:after {
-	width: 100%;
-}
-
-.pagination li a.page-link:hover:before {
-	top: -10px;
-}
-
-.pagination li a.page-link:hover:before, .pagination li.active a.page-link:before
-	{
-	top: -10px;
-}
-
-.pagination li a.page-link:hover:after, .pagination li.active a.page-link:after
-	{
-	width: 100%;
-}
-
-@media only screen and (max-width: 480px) {
-	.pagination {
-		display: block;
-	}
-	.pagination li {
-		margin-bottom: 10px;
-		display: inline-block;
-	}
-}
-
-.for {
-	position: relative;
-	width: 250px;
-	height: 50px;
-	margin: 0 auto;
-}
-
-.d1 {
-	height: 30px;
-	background: white;
-	position: absolute;
-	right: 5%;
-	margin-top: 3%;
-}
-
-.d1 input {
-	width: 110%;
-	height: 20px;
-	padding-left: 90px;
-	border: 2px solid #5ab4dc;
-	border-radius: 5px;
-	outline: none;
-	background: white;
-	color: #9E9C9C;
-	font-size: 13px;
-}
-
-.d1 button {
-	position: absolute;
-	top: 0;
-	right: -25px;
-/* 	left : 2px; */
-	width: 32px;
-	height: 38px;
-	border: none;
-	background: #5ab4dc;
-	border-radius: 0 5px 5px 0;
-	cursor: pointer;
-}
-
-.d1 button:before {
-	content: "\f002";
-	font-family: FontAwesome;
-	font-size: 16px;
-	color: #F9F0DA;
-}
-
-#searchType {
-	height: 40px;
-	width: 90px;
-	font-size: 12px;
-	border-radius: 5px 0px 0px 5px;
-	border-top: 2px solid #5ab4dc;
-	border-bottom: 2px solid #5ab4dc;
-	border-left: 2px solid #5ab4dc;
-	border-right: 2px solid #5ab4dc;
+p {
+font-family: 'Noto Sans KR', sans-serif;
+letter-spacing: 1px;
+line-height:1.6em
 }
 </style>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -247,48 +77,35 @@ function boardPagingListAjaxHtml(page, pageSize) {
 	}
 
 </script>
-
 </head>
-
 <body>
+
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
-	
-	 <form id="pageForm" action="${cp}/approval/approvalCheckA">
-	 	<input type="hidden" name = "page" id="page">
-	 	<input type="hidden" name = "pageSize" id="pageSize">
-	 </form>
 
 	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+		<div style="padding-top: 50px; width: 1350px;">
+
 			<div class="card">
 				<div class="card-body">
-							
-						<!-- 검색 -->
-<!-- 						<div class="d1"> -->
-<%-- 							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> --%>
-<!-- 								<select id="searchType" name="mem_yn" -->
-<!-- 									style="position: absolute; z-index: 999;"> -->
-<!-- 									<option value="all">회원/비회원</option> -->
-<!-- 								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add"> -->
-<!-- 								<button type="button" id="searchBtn"></button> -->
-<!-- 							</form> -->
-<!-- 						</div> -->
 
-						
-						<div id="titlee">
+					<div id="titlee">
 							<h2>
 								<span>결산 관리</span>&nbsp;
 							</h2>
 						</div>
-						
-						
 					<hr>
+
 					<div class="container">
-					<div class="row">
-					
-					<form id="searchList" class="for" action="${cp}/approval/approvalCheckA" method="get">
+						<div class="row">
+
+
+							<div class="col-lg-7">
+								<div class="blog_right_sidebar">
+						
+						
+								<form id="searchList" class="for" action="${cp}/approval/approvalCheckA" method="get">
 						<input type="hidden" class="app_id" id="app_id" name="app_id">
 						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
 					<div class="table-responsive">
@@ -322,19 +139,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						</table>
 					</div>
 					
-					<!-- 구글Chart API -->
-					<div id="piechart" style="width: 1000px; height: 500px;"></div>
-					<input type="hidden" name = "manager" id="manager">
-					<input type="hidden" name = "goldMember" id="goldMember">
-					<input type="hidden" name = "careWorker" id="careWorker">
-
-					</form>
 					
-					
-				</div>
-			</div>
-			
-			<div class="demo" style="position: absolute; right: 20%;">
+					<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
 									<c:choose>
@@ -415,12 +221,49 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
-			
+
+					</form>
+
+				</div>
+				
+				
+				
+			</div>
+
+
+
+
+							<div class="col-lg-5 posts-list">
+								<div class="single-post row">
+
+									<!-- 구글Chart API -->
+<!-- 									<div id="piechart" style="width: 1000px; height: 500px;"></div> -->
+									<div id="piechart" style="width: 470px; height: 500px;"></div>
+									<input type="hidden" name = "manager" id="manager">
+									<input type="hidden" name = "goldMember" id="goldMember">
+									<input type="hidden" name = "careWorker" id="careWorker">
+									
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+
+
+
+
+
+			</div>
 		</div>
-		</div>
-		</div>
-		</div>
-		
+	</div>
+
+
+
+
+
 
 </body>
 </html>
