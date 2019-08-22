@@ -325,7 +325,7 @@ td {
 	</div>
 
 			<!-- 페이지 네이션 -->
-			<div class="demo" style="position: absolute; right: 20%;">
+			<div class="demo" style="position: absolute; right: 35%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
 									<c:choose>

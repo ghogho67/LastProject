@@ -119,10 +119,6 @@ public class PostController {
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
-		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
 
 		return "/post/postPagingList.tiles";
 	}
@@ -446,10 +442,7 @@ public class PostController {
 //	}
 	
 	@RequestMapping(path = "ImageBoard2", method = RequestMethod.GET)
-	public String ImageBoard2(HttpSession session,@RequestParam(required = false) int cate_id) {
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
+	public String ImageBoard2() {
 		return "festival2";
 	}
 

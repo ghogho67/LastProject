@@ -44,7 +44,7 @@ public class HospitalController {
 	* Method 설명 : 병원 페이징 리스트
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String hospital(@RequestParam(required = false) int cate_id, HttpSession session,Model model, PageVo pageVo, int page, int pageSize) {
+	public String hospital(Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -83,9 +83,6 @@ public class HospitalController {
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
 		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
 		
 		return "/hospital/hospitalPagingList.tiles";
 	}
