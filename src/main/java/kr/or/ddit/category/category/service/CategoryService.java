@@ -71,5 +71,16 @@ public class CategoryService implements ICategoryService {
 	public List<CategoryVo> sideBarList(int cate_id) {
 		return categoryDao.sideBarList(cate_id);
 	}
+
+	@Override
+	public List<CategoryVo> getCategoryList2() {
+		return categoryDao.getCategoryList2();
+	}
+
+	@Override
+	public int maxLevel() {
+		// TODO Auto-generated method stub
+		return categoryDao.maxLevel();
+	}
 	
 }
