@@ -79,6 +79,11 @@ display:none;
 #chatTime{
 	font-size: 3px;
 }
+
+.alaramImg{
+	width: 80px;
+	height: 80px;
+}
 </style>
 
 
@@ -116,8 +121,17 @@ $(document).ready(function(){
 					<c:if test="${chat.chat_del eq 'N' }">
 					<tr class="detailTr">
 						<th><img id="profileimg" src="${cp }/chat/tokProfileView?mem_id=${chat.mem_id}"></th>
-						<th class="hidden">${chat.chat_id}</th>				
-						<th>${chat.mem_id }<br>${chat.chat_nm }</th>
+						<th class="hidden">${chat.chat_id}</th>
+						<c:choose>
+							<c:when test="${chat.newmsgyn eq 'Y'}">	
+								<th><img class="alaramImg" alt="" src="/image/alaram.gif"></th>
+								<th>[${chat.mem_id }]<br>${chat.chat_nm }</th>
+							</c:when>
+							<c:otherwise>
+								<th><img class="alaramImg" alt="" src="/image/alaramNo.jpg"></th>
+								<th>${chat.mem_id }<br>${chat.chat_nm }</th>
+							</c:otherwise>
+						</c:choose>
 						<th id="chatTime"><fmt:formatDate value="${chat.chat_dt }" pattern="yyyy-MM-dd"/></th>
 					</tr>
 					</c:if>
@@ -132,7 +146,7 @@ $(document).ready(function(){
 	
 		
 		
-	<form id="createChat" action="http://192.168.0.32/chat/createChatView" method="get">
+	<form id="createChat" action="/chat/createChatView" method="get">
 	</form>
 	
 	  

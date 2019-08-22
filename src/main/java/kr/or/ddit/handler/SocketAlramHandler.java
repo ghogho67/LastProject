@@ -24,10 +24,11 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 	@Resource(name = "chatTextService")
 	private IChatTextService chaTextService;
 	
-	
+	@Resource(name="chatAlramWebSocketSessionList")
 	private List<WebSocketSession> sessionList;	// 소켓에 연결된 세션정보
+	
 	public SocketAlramHandler() {
-		sessionList = new ArrayList<>();
+		//sessionList = new ArrayList<>();
 		
 		logger.debug("☞sessionList:{}",sessionList);
 	}
@@ -53,16 +54,19 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 		
 		String user = getUser(session);
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		for (WebSocketSession currentSession : sessionList) {
-			
-				map = currentSession.getAttributes();
-				String mapMem_id = (String) map.get("mem_id");
-				if(mapMem_id.equals(user)) {
-					int counter = chaTextService.chatAllCnt(user);
-						currentSession.sendMessage(new TextMessage(counter+message.getPayload()));
-				}
-			}
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		for (WebSocketSession currentSession : sessionList) {
+//			
+//				map = currentSession.getAttributes();
+//				String mapMem_id = (String) map.get("mem_id");
+//				if(mapMem_id.equals(user)) {
+//					int counter = chaTextService.chatAllCnt(user);
+//						currentSession.sendMessage(new TextMessage(counter+message.getPayload()));
+//				}
+//			}
+		
+		
+		
 		
 			
 //			Map<String, Object> map = new HashMap<String, Object>();
@@ -88,6 +92,8 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 			sessionList.remove(session);
 			logger.debug("☞연결 끊김:{}",user);
 			logger.debug("연결 끊김 : {}", user);
+			
+			logger.debug("☞: afterConnection sessionList{}", sessionList);
 		}
 	
 	

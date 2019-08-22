@@ -1,6 +1,10 @@
 package kr.or.ddit.config.spring;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.codehaus.plexus.component.annotations.Component;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +12,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.WebSocketSession;
 
 //@Service , @Rpository 두 이노테이션을 대상으로 스캔
 @Configuration
@@ -16,4 +21,8 @@ import org.springframework.stereotype.Service;
 //@ImportResource({"classpath:kr/or/ddit/config/spring/application-schedules.xml"})
 public class RootContext {
 
+	   @Bean
+	   public List<WebSocketSession> chatAlramWebSocketSessionList(){
+		   return new ArrayList<WebSocketSession>();
+	   }
 }

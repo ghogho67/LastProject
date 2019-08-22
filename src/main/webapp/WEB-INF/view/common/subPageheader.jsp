@@ -19,7 +19,7 @@
 		<div class="row">
 			<nav id="nav-menu-container" style="padding-left: 900px;">
 				<ul class="nav-menu">
-				<li class=""><a href="${cp}/crawling">Home</a></li>
+				<li class=""><a href="${cp}/crawling">Home</a></li> 
 					<c:forEach items="${categoryList}" var="category">
 			<c:if test="${category.cate_usage =='Y'}">
 				<c:if test="${category.cate_paerent_id==0}">
