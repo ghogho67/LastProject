@@ -7,7 +7,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>BasicSubPage</title>
+<title>병원 검색 페이지</title>
+<%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
+<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
 
 <style type="text/css">
@@ -417,8 +419,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 	
 	 <form id="pageForm" action="${cp}/hospital/searchHospital">
 	 	<input type="hidden" name = "page" id="page">
