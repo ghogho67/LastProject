@@ -62,11 +62,7 @@ public class recognitionController {
 
 	
 	@RequestMapping("/semiTestStart")
-	public String semiRecognitionTestStart(HttpSession session, int cate_id) {
-		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
+	public String semiRecognitionTestStart() {
 		return "recognitionActivites/semiRecognitionTestStart";
 	}
 	

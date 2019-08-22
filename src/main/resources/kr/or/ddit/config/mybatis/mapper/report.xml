@@ -206,8 +206,12 @@
 	</select>
 	
 	<insert id="reportWrite" parameterType="ReportVo">
-		insert into	report values	( #{mat_id}, sysdate,#{rep_title},#{rep_cont})
+		insert into	report values (#{mat_id}, sysdate,#{rep_title},#{rep_cont})
 	</insert>
+	
+	<select id="reportModify" parameterType="ReportVo">
+		update report set rep_title=#{rep_title},rep_cont=#{rep_cont} where mat_id = #{mat_id}
+	</select>
 
 </mapper>
 

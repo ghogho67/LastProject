@@ -219,11 +219,6 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 	
-// 	var manager = $("#manager").val()
-// 	var nomalMember = $("#nomalMember").val()
-// 	var goldMember = $("#goldMember").val()
-// 	var careWorker = $("#careWorker").val()
- 
 	var data = google.visualization.arrayToDataTable([
      ['member', 'mem_grade'],
 	 ['관리자',      parseInt("${manager}")],
@@ -421,7 +416,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
-			
 			
 		
 	</div>

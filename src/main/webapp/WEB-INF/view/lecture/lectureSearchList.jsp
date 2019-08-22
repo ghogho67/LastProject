@@ -2,11 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@page import="java.util.Date" %>
+    <%@page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>감좌 검색목록</title>
 
 
 
@@ -208,7 +210,9 @@ td {
 </head>
 <body>
 
-	<form id="pageForm" action="${cp}/lecture/lectureList">
+
+
+	<form id="pageForm" action="${cp}/lecture/lectureListALL">
 	 	<input type="hidden" name = "page" id="page">
 	 	<input type="hidden" name = "pageSize" id="pageSize">
 	 </form>
@@ -218,36 +222,25 @@ td {
 
 
 
-
-	<form id="frm" action="${cp}/lecture/lecture" method="get">
+<form id="frm" action="${cp}/lecture/lecture" method="get">
 		<input type="hidden" id="lectureId" name="lectureId">
 	</form>
 
+
 	<div class="container">
+
 		<div style="padding-top: 50px; width: 1350px;">
+
+
+
 			<div class="card">
 				<div class="card-body">
 
 					<div id="titlee">
 						<h2>
-							<span>학습.문화</span> 프로그램
+							강좌[<span>${keyword}</span>] 검색결과
 						</h2>
 					</div>
-
-					<div class="d1">
-						<form class="for">
-							<select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
-								<option value="all">전체</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="writer">작성자</option>
-								<option value="tc">제목+내용</option>
-							</select> <input type="text" placeholder="검색어 입력">
-							<button type="submit"></button>
-						</form>
-					</div>
-					<hr>
 
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
@@ -261,13 +254,12 @@ td {
 									<th>학습 종료일</th>
 									<th>학습 시간</th>
 									<th>수강인원</th>
-									<th>&nbsp;&nbsp;상태&nbsp;&nbsp;</th>
 								</tr>
 							</thead>
 
 
 							<tbody>
-								<c:forEach items="${LTList}" var="LTList">
+								<c:forEach items="${LList}" var="LTList">
 									<tr class="lectureTr" data-userid="${LTList.lec_id}">
 										<td class="lectureId" id="lectureId" name="lectureId">${LTList.lec_id}</td>
 										<td>${LTList.lec_nm}</td>
@@ -277,119 +269,42 @@ td {
 												pattern="yyyy-MM-dd" /></td>
 										<td><fmt:formatDate value="${LTList.lec_end_dt}"
 												pattern="yyyy-MM-dd" /></td>
-											<td>${LTList.lec_time}</td>
+										<td>${LTList.lec_time}</td>
 										<td>${LTList.lec_amount}</td>
+										
+										
 
-										<td><a class="btn btn-info btn-sm">&nbsp;&nbsp;접수
-												중&nbsp;&nbsp;</a></td>
+									
+									
 									</tr>
 
 								</c:forEach>
+
 							</tbody>
+
+
 						</table>
+						
+						
+						<c:if test="${memgrade==0}">
+						<div style="text-align: right;">
+							<a class="btn btn-warning btn-sm" href="${cp}/lecture/lectureListManagement">강좌관리
+									</a>
+							
+</div>
+
+						</c:if>
+						
+						
+
+
+
 
 					</div>
 				</div>
 			</div>
-						<a href="${cp}/lecture/lectureMain"><img  src="/image/backButton.svg" style="width: 30px;"></a>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-                       <div class="demo" style="position: absolute; right: 38%;">
-							<nav class="pagination-outer" aria-label="Page navigation">
-								<ul class="pagination">
-									<c:choose>
-										<c:when test="${pageVo.page==1}">
-											<li class="page-item prev disabled"><a href="#"
-												class="page-link" aria-label="Previous"> <span
-													aria-hidden="true">«</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-hidden="Previous"
-												href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
-													aria-hidden="true">«</span></a></li>
-
-										</c:otherwise>
-									</c:choose>
-
-									<c:choose>
-										<c:when test="${pageVo.page==1}">
-											<li class="page-item prev disabled"><a href="#"
-												class="page-link" aria-label="Previous"> <span
-													aria-hidden="true">‹</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-label="Previous"
-												href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
-													aria-hidden="true">‹</span></a></li>
-										</c:otherwise>
-									</c:choose>
-
-									<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
-										<c:choose>
-											<c:when test="${pageVo.page == i}">
-												<li class="page-item active"><a class="page-link"
-													href="#">${i}</a></li>
-											</c:when>
-											<c:otherwise>
-												<li><a class="page-link"
-													href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
-											</c:otherwise>
-										</c:choose>
-
-									</c:forEach>
-
-									<c:choose>
-										<c:when test="${pageVo.page == lastpaginationSize}">
-											<li class="page-item next disabled"><a href="#"
-												class="page-link" aria-label="Next"> <span
-													aria-hidden="true">›</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-label="Next"
-												href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
-													aria-hidden="true">›</span></a></li>
-										</c:otherwise>
-									</c:choose>
-
-
-									<c:choose>
-										<c:when test="${pageVo.page == lastpaginationSize}">
-											<li class="page-item next disabled"><a href="#"
-												class="page-link" aria-label="Next"><span
-													aria-hidden="true">»</span></a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-label="Next"
-												href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
-													aria-hidden="true">»</span></a></li>
-										</c:otherwise>
-									</c:choose>
-
-								</ul>
-							</nav>
-						</div>
-			
-			
-
-
-
-
-
 
 
 
@@ -406,7 +321,6 @@ td {
 
 	
 		
-
 		function boardPagingListAjaxHtml(page, pageSize) {
 			$("#page").val(page);
 			$("#pageSize").val(pageSize);
@@ -414,7 +328,18 @@ td {
 			
 			}
 		
+		
+		$("#searchBtn").on("click", function() {
+			if ($('#keyword').val().length == 0) {
+				alert("검색어를 입력해주세요");
+				return;
+			} else {  
+				$("#form3").submit();
+			}
+		});
+		
 </script>
+
 
 
 </body>

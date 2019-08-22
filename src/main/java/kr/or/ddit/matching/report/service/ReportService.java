@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.dao.IReportDao;
@@ -70,6 +71,10 @@ public class ReportService implements IReportService {
 		
 	}
 
+	@Override
+	public int reportModify(ReportVo reportVo) {
+		return reportDao.reportModify(reportVo);
+	}
 //	@Override
 //	public ReportVo getReport(int rep_id) {
 //		

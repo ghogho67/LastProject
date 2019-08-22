@@ -46,14 +46,9 @@ public class LectureController {
 	
 	
 	@RequestMapping(path = "/lectureMain", method = RequestMethod.GET)
-	public String categoryList( int cate_id, Model model, HttpSession session) {
+	public String categoryList( Model model) {
 		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		session.setAttribute("sideBar",categoryList);
-		
-		logger.debug("!!!!!!!!cate_id : {}",cate_id);
-		logger.debug("!!!!!!!!categoryList : {}",categoryList);
+
 		return "lecture/lectureMain";
 	}
 	
@@ -454,6 +449,53 @@ public class LectureController {
 		
 	}
 	
+
+	
+	@RequestMapping(path = "/searchIneLcture", method = RequestMethod.POST)
+	public String searchInBoard( 
+			Model model,HttpSession session,
+			@RequestParam(name = "keyword")String keyword,
+			@RequestParam(name = "searchType")String searchType
+		) {
+
+		logger.debug("@@@@ Search @@@@{}", "가나요");
+		logger.debug("@@@@ Search @@@@ keyword:{}",keyword);
+		logger.debug("@@@@ Search @@@@ keyword:{}",keyword.isEmpty());
+		logger.debug("@@@@ Search @@@@ keyword:{}",keyword.length());
+		logger.debug("@@@@ Search @@@@ select:{}",searchType);
+	
+		String viewName="";
+		if(keyword.isEmpty()== true) {
+			viewName = "redirect:/lecture/lectureListALL?page=1&pageSize=10";
+		}else {
+		
+	if(searchType.equals("title")) {
+		String lec_nm = keyword;
+		List<LectureVo> LectureList = lectureService.LectuerSearchTitle(lec_nm);
+		logger.debug("@@@@ Search @@@@ LectureList:{}",LectureList);
+		model.addAttribute("LList", LectureList);
+		model.addAttribute("keyword", keyword);
+		viewName = "lecture/lectureSearchList";
+		}else if(searchType.equals("teacher")) {
+			String lec_tea = keyword;
+			List<LectureVo> LectureList = lectureService.LectuerSearchTeacher(lec_tea);
+			logger.debug("@@@@ Search @@@@ LectureList:{}",LectureList);
+			model.addAttribute("LList", LectureList);
+			model.addAttribute("keyword", keyword);
+			viewName = "lecture/lectureSearchList";
+		
+		}else{
+			model.addAttribute("msg", "검색타입을 설정하세요"); 
+			viewName = "redirect:/lecture/lectureListALL?page=1&pageSize=10";
+		}
+	
+	}
+	
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String memgrade=memvo.getMem_grade();
+		model.addAttribute("memgrade", memgrade);
+		return viewName;
+	}
 	
 	
 	

@@ -9,6 +9,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.approval.dao.IApprovalDao;
 import kr.or.ddit.approval.model.ApprovalVo;
@@ -20,6 +22,8 @@ import kr.or.ddit.testenv.LogicTestEnv;
 
 public class DonationDaoTest extends LogicTestEnv{
 
+	private static final Logger logger = LoggerFactory.getLogger(DonationDaoTest.class);
+	
 	@Resource(name = "donationDao")
 	private IDonationDao donationDao;
 	@Resource(name = "approvalDao")
@@ -34,7 +38,7 @@ public class DonationDaoTest extends LogicTestEnv{
 	@Test
 	public void insertDonation_nonTest() {
 		/***Given***/
-		DonationVo donationVo = new DonationVo(113, "brown", "010-3256-7895", "좋은일에 써주세요",144, "N");
+		DonationVo donationVo = new DonationVo(64, "brown", "010-3256-7895", "좋은일에 써주세요",144, "N");
 		/***When***/
 		int insertDonation_nonCnt = donationDao.insertDonation_non(donationVo);
 		
@@ -74,8 +78,9 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "brown", "N");
+		approvalVo = new ApprovalVo(69, 10000, sdf.parse("2019-08-22"), "3", "brown", "N", "admin");
 		/***When***/
+		logger.debug("☞approvalVo:{}",approvalVo);
 		int insertApproval_memCnt = approvalDao.insertApproval_mem(approvalVo);
 		/***Then***/
 		assertEquals(1, insertApproval_memCnt);
@@ -93,8 +98,9 @@ public class DonationDaoTest extends LogicTestEnv{
 		/***Given***/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ApprovalVo approvalVo = null;
-		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-08"), "3", "N");
+		approvalVo = new ApprovalVo(48, 10000, sdf.parse("2019-08-22"), "3", "N", "admin");
 		/***When***/
+		logger.debug("☞approvalVo:{}",approvalVo);
 		int insertApproval_nonCnt = approvalDao.insertApproval_non(approvalVo);
 		/***Then***/
 		assertEquals(1, insertApproval_nonCnt);
@@ -221,105 +227,7 @@ public class DonationDaoTest extends LogicTestEnv{
 		assertEquals(10, donationPagingList.size());
 	}
 	
-	/**
-	* Method : doantionCnt_YTest
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 : 회원기부자 수 조회
-	*/
-	@Test
-	public void donationCnt_YTest() {
-		/***Given***/
 
-		/***When***/
-		int donationCnt_Y = donationDao.donationCnt_Y();
-		/***Then***/
-		assertEquals(25, donationCnt_Y);
-	}
-	
-	/**
-	 * Method : doantionCnt_YNTest
-	 * 작성자 : ADMIN
-	 * 변경이력 :
-	 * Method 설명 : 비회원 기부자 수 조회
-	 */
-	@Test
-	public void donationCnt_NTest() {
-		/***Given***/
-		
-		/***When***/
-		int donationCnt_N = donationDao.donationCnt_N();
-		/***Then***/
-		assertEquals(32, donationCnt_N);
-	}
-	
-	/**
-	* Method : getDonationList_YTest
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 :회원 기부자 리스트 조회
-	*/
-	@Test
-	public void getDonationList_YTest() {
-		/***Given***/
-
-		/***When***/
-		List<DonationApprovalVo> getDonationList_Y = donationDao.getDonationList_Y();  
-		/***Then***/
-		assertEquals(25, getDonationList_Y.size());
-	}
-	
-	/**
-	 * Method : getDonationList_NTest
-	 * 작성자 : ADMIN
-	 * 변경이력 :
-	 * Method 설명 :비회원 기부자 리스트 조회
-	 */
-	@Test
-	public void getDonationList_NTest() {
-		/***Given***/
-		
-		/***When***/
-		List<DonationApprovalVo> getDonationList_N = donationDao.getDonationList_N();  
-		/***Then***/
-		assertEquals(32, getDonationList_N.size());
-	}
-	
-	/**
-	* Method : donationPagingList_YTest
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 :회원 기부자 페이징 리스트
-	*/
-	@Test
-	public void donationPagingList_YTest() {
-		/***Given***/
-		PageVo pageVo = new PageVo(1, 10);
-		/***When***/
-		List<DonationApprovalVo> donationPagingList_Y = donationDao.donationPagingList_Y(pageVo);
-		/***Then***/
-		assertEquals(10, donationPagingList_Y.size());
-
-	}
-
-	
-	
-	/**
-	* Method : donationPagingList_NTest
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* Method 설명 :회원 기부자 페이징 리스트
-	*/
-	@Test
-	public void donationPagingList_NTest() {
-		/***Given***/
-		PageVo pageVo = new PageVo(1, 10);
-		/***When***/
-		List<DonationApprovalVo> donationPagingList_N = donationDao.donationPagingList_N(pageVo);
-		/***Then***/
-		assertEquals(10, donationPagingList_N.size());
-	}
-	
 	
 
 }

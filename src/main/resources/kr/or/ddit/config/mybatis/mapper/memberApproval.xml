@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberApproval">
+
+	<!-- 전체 결제 정보 페이지네이션 -->
+	<select id="approvalAllPagingList" parameterType="pageVo" resultType="memberApprovalVo">
+		<![CDATA[
+		select *
+		from
+		(select a.*, rownum rn
+		from
+		(select a.app_id
+		      ,m.mem_id
+		      ,m.mem_nm
+		      ,m.mem_grade
+		      ,a.app_pay
+		      ,to_char(app_time,'YYYY-MM-DD HH24:MI:SS')app_time
+		      ,a.app_type
+		      ,a.app_del
+		      ,a.app_obj
+		from  approval a,  member m 
+		order by a.app_time desc) a)
+		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
+	</select>
+	
+	<!-- 결제자 전체 수 조회- MemberApprovalVo 조인Vo사용 -->
+	<select id="memberApprovalAllCnt" resultType="int">
+		select count(*) 
+		from member, approval	
+	</select>
+	
+	<!-- 결제 전체 리스트 - MemberApprovalVo 조인Vo사용 -->
+	<select id="memberApprovalAllList" resultType="memberApprovalVo">
+		select * 
+		from member, approval
+	</select>
+	
+	<!-- 결산관리 - 등급별 결제액 -->
+	<select id="gradeApproval" parameterType="string" resultType="int">
+		select sum(app_pay)
+		from member, approval 
+		where (app_type ='1' or app_type='2') 
+		and mem_grade=#{mem_grade}
+	</select>
+	
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

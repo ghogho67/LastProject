@@ -1,16 +1,25 @@
 package kr.or.ddit.category.category.controller;
 
+import java.util.List;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.category.category.model.CategoryVo;
+import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.member.member.model.MemberVo;
 
 @RequestMapping("/re")
 @Controller
 public class RedirectController {
+	@Resource(name = "categoryService")
+	ICategoryService categoryService;
+	
+	
 	@RequestMapping("/cate")
 	private String Cate(int cate_id, RedirectAttributes ra, HttpSession session ) {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -19,7 +28,6 @@ public class RedirectController {
 			return"";
 			
 		}else if(cate_id==30002) {
-			ra.addAttribute("cate_id", cate_id);
 			//마이페이지
 			if(memberVo.getMem_grade().equals("0")) {
 				return"redirect:/mypage/Admin_Info";
@@ -43,55 +51,87 @@ public class RedirectController {
 			
 		}else if(cate_id==30008) {
 			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/matching/map";
 			
 			
 		}else if(cate_id==30009) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
+			
 			return"redirect:/hospital/pagingList?page=1&pageSize=10";
 			
 		}else if(cate_id==30010) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/nursingHome/pagingList?page=1&pageSize=10";
 			
 		}else if(cate_id==30011) {
-			return"redirect:/post/pagingList?cate_id=30011";
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
+			return"redirect:/post/pagingList?searchType=a&cate_id=30011";
 			
 		}else if(cate_id==30012) {
-			return"redirect:/post/pagingList?cate_id=30012";
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
+			return"redirect:/post/pagingList?searchType=a&cate_id=30012";
 			
 		}else if(cate_id==30013) {
-			return"redirect:/post/pagingList?cate_id=30013";
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
+			return"redirect:/post/pagingList?searchType=a&cate_id=30013";
 			
 		}else if(cate_id==30014) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/recognitionImp/impStart";
 			
 			
 		}else if(cate_id==30015) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);;
 			return"redirect:/recognition/semiTestStart";
 			
 		}else if(cate_id==30016) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/mypage/stress?mem_id="+memberVo.getMem_id();
 			
 		}else if(cate_id==30017) {
 			
 		}else if(cate_id==30018) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/mypage/gpxMap?mem_id="+memberVo.getMem_id();
 			
 		}else if(cate_id==30019) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/shelter/pagingList?page=1&pageSize=10";
 			
 		}else if(cate_id==30020) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/lecture/lectureMain";
 			
 		}else if(cate_id==30021) {
-			ra.addAttribute("cate_id", cate_id);
+			//사이드바 처리
+			List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
+			session.setAttribute("sideBar",categoryList);
 			return"redirect:/post/ImageBoard2";
 			
 		}

@@ -58,7 +58,7 @@
                                           조회</span></a></li>
                                  <li><a href="${cp}/report/writeView"><span>급여명세서
                                           작성</span></a></li>
-                                 <li class='last'><a href="${cp}/report/getMatInfo"><span>보고서
+                                 <li class='last'><a href="${cp}/report/pagingList"><span>보고서
                                           작성</span></a></li>
                               </ul></li>
 

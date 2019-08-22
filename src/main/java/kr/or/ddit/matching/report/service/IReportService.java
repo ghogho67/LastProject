@@ -29,5 +29,7 @@ ReportVo getReportVo(int mat_id);
 	
 	ReportVo getLatestReport();
 	
+	int reportModify(ReportVo reportVo);
+	
 //	ReportVo getReport(int rep_id);
 }

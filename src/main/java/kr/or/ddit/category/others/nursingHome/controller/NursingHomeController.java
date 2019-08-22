@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.category.category.model.CategoryVo;
 import kr.or.ddit.category.category.service.ICategoryService;
@@ -41,7 +42,7 @@ public class NursingHomeController {
 	* Method 설명 : 요양시설 페이지 네이션
 	*/
 	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
-	public String nursingHome(HttpSession session, int cate_id,Model model, PageVo pageVo, int page, int pageSize) {
+	public String nursingHome(Model model, PageVo pageVo, int page, int pageSize) {
 		
 		pageVo = new PageVo();
 		pageVo.setPage(page);
@@ -80,11 +81,6 @@ public class NursingHomeController {
 		logger.debug("☞paginationSize:{}",paginationSize);
 		logger.debug("☞pageVo:{}",pageVo);
 		
-		//사이드바 처리
-		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);
-		logger.debug("!!!!!!!!cate_id : {}",cate_id);
-		logger.debug("!!!!!!!!categoryList : {}",categoryList);
-		session.setAttribute("sideBar",categoryList);
 		
 		return "/nursingHome/nursingHomePagingList.tiles";
 	}

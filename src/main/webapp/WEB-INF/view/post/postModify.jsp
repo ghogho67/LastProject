@@ -71,13 +71,10 @@
 
 										// 이부분에 에디터 validation 검증
 										if (validation()) {
-											alert($("#rep_title").val());
-											var rep_title = $("#rep_title").val().replace(/</gi,"&lt;");
+											var rep_title = $("#post_nm").val().replace(/</gi,"&lt;");
 											var text = rep_title.replace(/>/gi,"&gt;");
-											alert(text);
-											$("#rep_title").val(text);
-											$("#rep_title").val();
-											alert($("#rep_title").val());
+											$("#post_nm").val(text);
+											$("#post_nm").val();
 											$("#saveFrm").submit();
 										}
 									}
@@ -141,11 +138,11 @@
 
 
 	<div class="container">
-		<h2 class="sub-header">게시글 수정 postModify.jsp</h2>
+		<h2 class="sub-header">게시글 수정 WEB-INF/view/post/postModify.jsp</h2>
 									<pre>
 									cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList }  postVo : ${postVo}
 									</pre>
-		<form id="frm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
+		<form id="saveFrm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="post_id" value="${post_id }"> 
 				<input type="hidden" name="cate_id" value="${cate_id }">
 			<div>
@@ -155,7 +152,10 @@
 			<div>
 				<label for="mem_id" class="col-sm-2 control-label">글내용</label>
 				<div>
-					<%@include file="../../../SE2/SE2postModify.jsp"%>
+					<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
+					<input type="button" id="savebutton" value="글등록"  class="btn btn-primary btn-sm" style="float:right;"/>
+					<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+
 				</div>
 			</div>
 			<div>

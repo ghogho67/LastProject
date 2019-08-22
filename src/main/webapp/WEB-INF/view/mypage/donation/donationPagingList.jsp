@@ -226,23 +226,6 @@ $(document).ready(function() {
 		
 		$("#frm2").submit();
 	});
-	
-	//selectBox사용
-// 	$("#searchType").val("${mem_yn}");
-// 	$("#searchType").on("change", function(){
-// 		$("#frm2").submit();	
-// 	});
-	
-// 	$(".donTr").on("click", function(){
-// 	      console.log("donTr click");
-	      
-// 	      var app_id = $(this).find(".app_id").text();
-// 	      $("#app_id").val(app_id);
-// 	      $("#frm").attr("action", "${cp}/donation/detailDonation");
-// 	      $("#frm").attr("method", "get");
-// 	      $("#frm").submit();
-// 	   });
-
 
 });
 
@@ -273,15 +256,15 @@ function boardPagingListAjaxHtml(page, pageSize) {
 				<div class="card-body">
 							
 						<!-- 검색 -->
-						<div class="d1">
-							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post">
-								<select id="searchType" name="mem_yn"
-									style="position: absolute; z-index: 999;">
-									<option value="all">회원/비회원</option>
-								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add">
-								<button type="button" id="searchBtn"></button>
-							</form>
-						</div>
+<!-- 						<div class="d1"> -->
+<%-- 							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> --%>
+<!-- 								<select id="searchType" name="mem_yn" -->
+<!-- 									style="position: absolute; z-index: 999;"> -->
+<!-- 									<option value="all">회원/비회원</option> -->
+<!-- 								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add"> -->
+<!-- 								<button type="button" id="searchBtn"></button> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
 
 						
 						<div id="titlee">

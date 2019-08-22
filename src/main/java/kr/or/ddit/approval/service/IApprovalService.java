@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.approval.model.ApprovalVo;
+import kr.or.ddit.joinVo.MemberApprovalVo;
 import kr.or.ddit.page.model.PageVo;
 
 public interface IApprovalService {
@@ -89,13 +90,24 @@ public interface IApprovalService {
 	*/
 	Map<String, Object> approvalAllPagingList(PageVo pageVo);
 	
+	
 	/**
-	* Method : approvalAllList
+	* Method : gradeApproval
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* @param mem_grade
+	* @return
+	* Method 설명 :결산관리 - 등급별 결제액 
+	*/
+	int gradeApproval(String mem_grade);
+	
+	/**
+	* Method : memberApprovalAllList
 	* 작성자 : ADMIN
 	* 변경이력 :
 	* @return
-	* Method 설명 :결제자 전체 리스트
+	* Method 설명 :결제 전체 리스트 - MemberApprovalVo 조인Vo사용
 	*/
-	List<ApprovalVo> approvalAllList();
+	List<MemberApprovalVo> memberApprovalAllList();
 
 }
