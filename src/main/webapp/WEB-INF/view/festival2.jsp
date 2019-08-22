@@ -424,11 +424,12 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+		<div style="    padding-top: 50px;
+    padding-left: 358px;
+    width: 95%;">
 			<div class="card">
 				<div class="card-body">
 					<div id="titlee">
@@ -480,7 +481,6 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 		                    <li id="39"><button type="button" class="btn"><span>#제주</span></button></li>
 		                </ul>
 		            </div>
-		            <!-- //태그 리스트 -->
 		        </div>
 				<div class="list_wrap default-tmplgroup type-best-tmpl col4">
 					<ul id="_dealList" class="list" data-reviewtype="A"
@@ -507,7 +507,6 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 		        	</ul>
 		    	</nav>
 			</div>
-	</div>
 
 
 </body>
