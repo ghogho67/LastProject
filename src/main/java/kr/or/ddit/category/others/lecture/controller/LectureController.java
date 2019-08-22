@@ -46,7 +46,7 @@ public class LectureController {
 	
 	
 	@RequestMapping(path = "/lectureMain", method = RequestMethod.GET)
-	public String categoryList( int cate_id, Model model, HttpSession session) {
+	public String categoryList(@RequestParam(required = false) int cate_id, Model model, HttpSession session) {
 		
 		//사이드바 처리
 		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);

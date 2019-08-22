@@ -57,7 +57,7 @@ public class impProgramController {
 	private static final Logger logger = LoggerFactory.getLogger(impProgramController.class);
 
 	@RequestMapping("/impStart")
-	public String impStart(int cate_id,HttpSession session) {
+	public String impStart(@RequestParam(required = false)int cate_id,HttpSession session) {
 		
 		//사이드바 처리
 		List<CategoryVo> categoryList = categoryService.sideBarList(cate_id);

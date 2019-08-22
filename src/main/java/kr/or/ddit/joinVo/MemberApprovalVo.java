@@ -31,10 +31,26 @@ public class MemberApprovalVo {
 	private String mem_id;
 	private String app_del;
 	
+	private int rn;
+	
 	public MemberApprovalVo() {
 		
 	}
 	
+	
+	
+	public int getRn() {
+		return rn;
+	}
+
+
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
+
+
 	public String getMem_id_fk() {
 		return mem_id_fk;
 	}

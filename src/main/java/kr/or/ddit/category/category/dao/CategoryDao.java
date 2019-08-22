@@ -81,6 +81,16 @@ public class CategoryDao implements ICategoryDao {
 		return sqlSession.selectList("category.sideBarList",cate_id);
 	}
 
+	@Override
+	public List<CategoryVo> getCategoryList2() {
+		return sqlSession.selectList("category.getCategoryList2");
+	}
+
+	@Override
+	public int maxLevel() {
+		return sqlSession.selectOne("category.maxLevel");
+	}
+
 	
 	
 }

@@ -159,45 +159,6 @@
                 </if>
 	</select>
 	
-	<!-- 전체 결제 정보 페이지네이션 -->
-	<select id="approvalAllPagingList" parameterType="pageVo" resultType="approvalVo">
-		<![CDATA[
-		select *
-		from
-		(select a.*, rownum rn
-		from
-		(select app_id
-		      ,app_pay
-		      ,to_char(app_time,'YYYY-MM-DD HH24:MI:SS')app_time
-		      ,app_type
-		      ,mem_id
-		      ,app_del
-		from  approval a
-		order by app_time desc) a)
-		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
-		]]>
-	</select>
-	
-	<!-- 결제자 전체 수 조회 -->
-	<select id="approvalAllCnt" resultType="int">
-		select count(*)
-		from approval
-	</select>
-	
-	<!-- 결제 전체 리스트 -->
-	<select id="approvalAllList" resultType="approvalVo">
-		select * 
-		from approval
-	</select>
-	
-	<!-- 결산관리 - 등급별 결제액 -->
-	<select id="gradeApproval" parameterType="string" resultType="int">
-		select sum(app_pay)
-		from member, approval 
-		where (app_type ='1' or app_type='2') 
-		and mem_grade=#{mem_grade}
-	</select>
-	
 
 </mapper>
 

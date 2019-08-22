@@ -51,5 +51,9 @@ public interface ICategoryDao {
 	
 	List<CategoryVo> sideBarList(int cate_id);
 	
+	List<CategoryVo> getCategoryList2();
+	
+	int maxLevel();
+	
 	
 }

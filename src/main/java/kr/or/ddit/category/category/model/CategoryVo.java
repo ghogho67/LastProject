@@ -10,11 +10,24 @@ public class CategoryVo {
 	private int cate_sortnum;
 	private Date cate_date;
 	private String mem_id;
+	private int level;
 
 	
 
 	
 	
+	public int getLevel() {
+		return level;
+	}
+
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+
+
 	public CategoryVo() {
 		// TODO Auto-generated constructor stub
 	}

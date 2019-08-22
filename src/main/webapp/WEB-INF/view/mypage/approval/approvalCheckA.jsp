@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -209,7 +210,6 @@ td {
 </style>
 
 
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
@@ -219,10 +219,6 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 	
-// 	var manager = $("#manager").val()
-// 	var nomalMember = $("#nomalMember").val()
-// 	var goldMember = $("#goldMember").val()
-// 	var careWorker = $("#careWorker").val()
  
 	var data = google.visualization.arrayToDataTable([
 		['member', 'mem_grade'],
@@ -256,10 +252,8 @@ function boardPagingListAjaxHtml(page, pageSize) {
 
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
-
-	<form id="pageForm" action="${cp}/approval/approvalCheckA">
+	
+	 <form id="pageForm" action="${cp}/approval/approvalCheckA">
 	 	<input type="hidden" name = "page" id="page">
 	 	<input type="hidden" name = "pageSize" id="pageSize">
 	 </form>
@@ -268,55 +262,55 @@ function boardPagingListAjaxHtml(page, pageSize) {
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-					
-						
+							
 						<!-- 검색 -->
 <!-- 						<div class="d1"> -->
-<%-- 							<form class="frm2" id="frm2" action="${cp}/mypage/pagingList" method="post"> --%>
-<!-- 								<select id="searchType" name="searchType" -->
+<%-- 							<form class="for" id="frm2" action="${cp}/donation/searchDonation" method="post"> --%>
+<!-- 								<select id="searchType" name="mem_yn" -->
 <!-- 									style="position: absolute; z-index: 999;"> -->
-<!-- 									<option value="all">동 검색</option> -->
-<!-- 								</select> <input type="text" placeholder="동을 입력해 주세요" name="hos_add" id="hos_add"> -->
+<!-- 									<option value="all">회원/비회원</option> -->
+<!-- 								</select> <input type="text" placeholder="회원:Y, 비회원:N" name="hos_add" id="hos_add"> -->
 <!-- 								<button type="button" id="searchBtn"></button> -->
 <!-- 							</form> -->
 <!-- 						</div> -->
-						
+
 						
 						<div id="titlee">
 							<h2>
 								<span>결산 관리</span>&nbsp;
 							</h2>
 						</div>
+						
+						
 					<hr>
-					
-					<div class="container">
-						<div class="row">
-					
-					
-					<form id="searchList" class="for"
-										action="${cp}/approval/approvalCheckA">
+					<form id="searchList" class="for" action="${cp}/approval/approvalCheckA" method="get">
 						<input type="hidden" class="app_id" id="app_id" name="app_id">
+						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 							<thead>
-							<tr class="text-primary">
-												<th>NO.</th>
-												<th>결제구분</th>
-												<th>결제금액</th>
-												<th>결제시간</th>
-												<th>결제자</th>
-											</tr>
+							<tr>
+								<th>NO.</th>
+								<th>결제자 아이디</th>
+								<th>결제자 이름</th>
+								<th>결제금액</th>
+								<th>회원등급</th>
+								<th>결제시간</th>
+								<th>결제구분</th>
+							</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${approvalAllList }" var="vo" varStatus="status">
+							<c:forEach items="${memberApprovalAllList }" var="vo" varStatus="status">
 								<tr>
-													<td>${vo.rn}</td>
-													<td>${vo.app_type}</td>
-													<td>${vo.app_pay}</td>
-													<td><fmt:formatDate value="${vo.app_time }"
-															pattern="yyyy.MM.dd HH:mm:ss" /></td>
-													<td>${vo.mem_id }</td>
-												</tr>
+									<td>${vo.rn}</td>
+									<td>${vo.mem_id }</td>
+									<td>${vo.mem_nm }</td>
+									<td>${vo.app_pay}</td>
+									<td>${vo.mem_grade}</td>
+									<td><fmt:formatDate value="${vo.app_time }"
+											pattern="yyyy.MM.dd HH:mm:ss" /></td>
+									<td>${vo.app_type}</td>
+								</tr>
 							</c:forEach>
 							</tbody>
 							
@@ -325,14 +319,15 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					
 					<!-- 구글Chart API -->
 					<div id="piechart" style="width: 1000px; height: 500px;"></div>
-							<input type="hidden" name = "manager" id="manager">
-							<input type="hidden" name = "goldMember" id="goldMember">
-							<input type="hidden" name = "careWorker" id="careWorker">
+					<input type="hidden" name = "manager" id="manager">
+					<input type="hidden" name = "goldMember" id="goldMember">
+					<input type="hidden" name = "careWorker" id="careWorker">
+
 					</form>
+					
 					
 				</div>
 			</div>
-			
 			
 			<div class="demo" style="position: absolute; right: 20%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
@@ -415,11 +410,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
+			
+		</div>
+		
+		
 	</div>
-	</div>
-	</div>
-	</div>
-
+	
 
 </body>
 </html>

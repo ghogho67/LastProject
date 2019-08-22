@@ -91,6 +91,35 @@ insert into category (cate_id, cate_paerent_id, cate_title, cate_usage, cate_sor
 select * from category where (CATE_PAERENT_ID =(select CATE_PAERENT_ID from category where cate_id =#{cate_id}) or CATE_ID =(select CATE_PAERENT_ID from category where cate_id =#{cate_id})) and CATE_USAGE ='Y' ORDER BY CATE_SORTNUM
 
 	</select>
+	
+		<select id="getCategoryList2" resultType="CategoryVo">
+	
+			SELECT b.*
+			FROM
+			(select a.*, rownum rn
+			from
+			(select category.cate_id, category.CATE_PAERENT_ID
+			,category.cate_title, category.CATE_USAGE 
+			,level  from category where category.CATE_USAGE='Y' 
+
+			START WITH CATE_PAERENT_ID IS NULL
+			CONNECT BY PRIOR cate_id = CATE_PAERENT_ID
+			ORDER SIBLINGS BY  category.CATE_SORTNUM ,  cate_id )a) b
+	
+	</select>
+	
+		<select id="maxLevel" resultType="int">
+			SELECT b.*
+			FROM
+			(select a.*
+			from
+			(select  max(level)  from category where category.CATE_USAGE='Y' 
+
+			START WITH CATE_PAERENT_ID IS NULL
+			CONNECT BY PRIOR cate_id = CATE_PAERENT_ID
+			ORDER SIBLINGS BY  category.CATE_SORTNUM ,  cate_id )a) b;
+	
+	</select>
 
 
 
