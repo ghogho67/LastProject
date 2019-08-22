@@ -54,59 +54,6 @@ textarea {
     resize: none
 }
 
-.btn,
-.btn-group.open .dropdown-toggle,
-.btn:active,
-.btn:focus,
-.btn:hover,
-.btn:visited,
-a,
-a:active,
-a:checked,
-a:focus,
-a:hover,
-a:visited,
-body,
-button,
-button:active,
-button:hover,
-button:visited,
-div,
-input,
-input:active,
-input:focus,
-input:hover,
-input:visited,
-select,
-select:active,
-select:focus,
-select:visited,
-textarea,
-textarea:active,
-textarea:focus,
-textarea:hover,
-textarea:visited {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none
-}
-
-.btn.active.focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn:active:focus,
-.btn:focus,
-button,
-button:active,
-button:checked,
-button:focus,
-button:hover,
-button:visited {
-    outline: 0;
-    outline-offset: 0
-}
-
 .bootstrap-select .dropdown-toggle:focus {
     outline: 0 !important;
     outline-offset: 0

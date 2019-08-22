@@ -88,7 +88,7 @@ public class ShelterController {
 		logger.debug("!!!!!!!!cate_id : {}",cate_id);
 		logger.debug("!!!!!!!!categoryList : {}",categoryList);
 		
-		return "/shelter/shelterPagingList.tiles";
+		return "shelter/shelterPagingList";
 	}
 	
 	
