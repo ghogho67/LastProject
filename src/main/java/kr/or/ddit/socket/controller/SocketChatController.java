@@ -22,7 +22,7 @@ import kr.or.ddit.handler.SocketChatHandler;
 public class SocketChatController {
 	@Resource(name = "chatTextService")
 	private IChatTextService chatTextService;
-	//
+	
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(SocketChatController.class);

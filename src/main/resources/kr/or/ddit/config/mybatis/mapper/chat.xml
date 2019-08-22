@@ -6,8 +6,14 @@
 
 <select id="chatList" parameterType="String" resultType="chatMemListVo">
 
-select * from (select * from chatMem where chat_id IN (select chat_id from chatMem where mem_id=#{mem_id}) and Mem_Id!=#{mem_id}) cm, chat c
-where cm.Chat_Id = c.chat_id
+select * from 
+(select Cm.Chat_Id, cm.mem_id from chat c, chatMem cm 
+where  c.chat_id = cm.chat_id
+and cm.chat_id in (select chat_id from chatmem where mem_id =#{mem_id} ) and mem_id !=#{mem_id} order by cm.Newmsgyn desc) a,
+(select  c.chat_id, c.chat_nm,chat_dt, c.chat_del, cm.NEWMSGYN from chat c, chatMem cm 
+where  c.chat_id = cm.chat_id
+and cm.chat_id in (select chat_id from chatmem where mem_id =#{mem_id}) and mem_id =#{mem_id} order by cm.Newmsgyn desc)b 
+where a.chat_id = b.chat_id  order by b.Newmsgyn desc, b.chat_id
 </select>
 
 <update id="deletChat" parameterType="int">
@@ -30,6 +36,8 @@ update chat
   	</selectKey>
 
 </insert>
+
+
 
 
 

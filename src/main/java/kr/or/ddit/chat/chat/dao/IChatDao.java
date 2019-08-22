@@ -11,4 +11,6 @@ public interface IChatDao {
 	int deletChat(int chat_id);
 	
 	int insertChat(ChatVo chatVo);
+	
+	
 }

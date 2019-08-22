@@ -5,14 +5,27 @@
 <mapper namespace="chatMem">
 
 
-
-
-
 <insert id="insertChatMem" parameterType="chatMemVo">
   insert into ChatMem 
-  values(#{mem_id},#{chat_id})
+  values(#{mem_id},#{chat_id},'N')
 </insert>
 
+<update id="messageUpdate" parameterType="map">
+
+	update ChatMem 
+	
+	set newmsgyn = #{newmsgyn}
+	
+	where chat_id = #{chat_id}
+	and mem_id = #{mem_id}
+
+</update>
+
+<select id="selectChatmemid" parameterType="map" resultType="String">
+	select mem_id from chatMem 
+	where chat_id =#{chat_id}
+	and mem_id != #{mem_id}
+</select>
 
 
 	

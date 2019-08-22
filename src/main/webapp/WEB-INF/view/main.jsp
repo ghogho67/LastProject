@@ -51,8 +51,11 @@
    }
 
    function popup() {
-      window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
+//       window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
+//             "thisTok!", "width=400, height=700, left=100, top=50");
+      window.open("/chat/thistok?mem_id=${mem_id}",
             "thisTok!", "width=400, height=700, left=100, top=50");
+
    }
 </script>
 <style>
@@ -144,9 +147,14 @@
 	border-radius: 50%;
 	width: 25px;
 	height: 25px;
-/* 	display: none; */
+ 	display: none;
 		 
 }
+
+.display{
+	display: block;
+}
+
 #alramCount{
 	color: white;
 	font-size: 7px;
@@ -388,25 +396,32 @@ function initSocket() {
    socket.onclose = function(evt){
 	   onClose(evt);
    }
-   
-  
-   
    function onOpen(evt) {
 // 	   setInterval(function(){
 	   	socket.send($("${mem_id}")); 
 // 	   },1000)
    }
-   
    function sendMessage(){      
-      
    }
-   
    //evt 파라미터는 websocket이 보내준 데이터다.
    function onMessage(evt){  //변수 안에 function자체를 넣음.
+	   
 	   var data = evt.data;
+	   console.log("data : " + data);
+	   
+	   if(data == "NEW"){
+		   console.log("if");
+			$(".fixalram").addClass("display");   
+	   }
+	   else{
+		   console.log("else");
+		   $(".fixalram").removeClass("display");
+	   }
+	   
 	   var strArray = data.split('[');
        $('#alramCount').html(strArray[0]);
        console.log(strArray[0]);
+       
 	      
    }
        
