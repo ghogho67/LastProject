@@ -8,51 +8,46 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
 <script>
-	window.onload = function() {
-		var a_href1 = $('dl:nth-child(1) dt a').attr("href");
-		var a_href2 = $('dl:nth-child(2) dt a').attr("href");
-		var a_href3 = $('dl:nth-child(3) dt a').attr("href");
-		var a_href4 = $('dl:nth-child(4) dt a').attr("href");
-		var a_href5 = $('dl:nth-child(5) dt a').attr("href");
-		var a_href6 = $('dl:nth-child(6) dt a').attr("href");
-		var title1 = $('dl:nth-child(1) dt a').attr("title");
-		var title2 = $('dl:nth-child(2) dt a').attr("title");
-		var title3 = $('dl:nth-child(3) dt a').attr("title");
-		var title4 = $('dl:nth-child(4) dt a').attr("title");
-		var title5 = $('dl:nth-child(5) dt a').attr("title");
-		var title6 = $('dl:nth-child(6) dt a').attr("title");
-		var p1 = $('dl:nth-child(1) dd:nth-child(3)').text();
-		var p2 = $('dl:nth-child(2) dd:nth-child(3)').text();
-		var p3 = $('dl:nth-child(3) dd:nth-child(3)').text();
-		var p4 = $('dl:nth-child(4) dd:nth-child(3)').text();
-		var p5 = $('dl:nth-child(5) dd:nth-child(3)').text();
-		var p6 = $('dl:nth-child(6) dd:nth-child(3)').text();
-		$(".cr1").attr("href", a_href1);
-		$(".cr2").attr("href", a_href2);
-		$(".cr3").attr("href", a_href3);
-		$(".cr4").attr("href", a_href4);
-		$(".cr5").attr("href", a_href5);
-		$(".cr6").attr("href", a_href6);
-		$(".name1").html(title1);
-		$(".name2").html(title2);
-		$(".name3").html(title3);
-		$(".name4").html(title4);
-		$(".name5").html(title5);
-		$(".name6").html(title6);
-		$(".p1").html(p1);
-		$(".p2").html(p2);
-		$(".p3").html(p3);
-		$(".p4").html(p4);
-		$(".p5").html(p5);
-		$(".p6").html(p6);
-	}
+   window.onload = function() {
+      var a_href1 = $('dl:nth-child(1) dt a').attr("href");
+      var a_href2 = $('dl:nth-child(2) dt a').attr("href");
+      var a_href3 = $('dl:nth-child(3) dt a').attr("href");
+      var a_href4 = $('dl:nth-child(4) dt a').attr("href");
+      var a_href5 = $('dl:nth-child(5) dt a').attr("href");
+      var a_href6 = $('dl:nth-child(6) dt a').attr("href");
+      var title1 = $('dl:nth-child(1) dt a').attr("title");
+      var title2 = $('dl:nth-child(2) dt a').attr("title");
+      var title3 = $('dl:nth-child(3) dt a').attr("title");
+      var title4 = $('dl:nth-child(4) dt a').attr("title");
+      var title5 = $('dl:nth-child(5) dt a').attr("title");
+      var title6 = $('dl:nth-child(6) dt a').attr("title");
+      var p1 = $('dl:nth-child(1) dd:nth-child(3)').text();
+      var p2 = $('dl:nth-child(2) dd:nth-child(3)').text();
+      var p3 = $('dl:nth-child(3) dd:nth-child(3)').text();
+      var p4 = $('dl:nth-child(4) dd:nth-child(3)').text();
+      var p5 = $('dl:nth-child(5) dd:nth-child(3)').text();
+      var p6 = $('dl:nth-child(6) dd:nth-child(3)').text();
+      $(".cr1").attr("href", a_href1);
+      $(".cr2").attr("href", a_href2);
+      $(".cr3").attr("href", a_href3);
+      $(".cr4").attr("href", a_href4);
+      $(".cr5").attr("href", a_href5);
+      $(".cr6").attr("href", a_href6);
+      $(".name1").html(title1);
+      $(".name2").html(title2);
+      $(".name3").html(title3);
+      $(".name4").html(title4);
+      $(".name5").html(title5);
+      $(".name6").html(title6);
+      $(".p1").html(p1);
+      $(".p2").html(p2);
+      $(".p3").html(p3);
+      $(".p4").html(p4);
+      $(".p5").html(p5);
+      $(".p6").html(p6);
+   }
 
-	function popup() {
-		//       window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
-		//             "thisTok!", "width=400, height=700, left=100, top=50");
-		window.open("/chat/thistok?mem_id=${mem_id}", "thisTok!",
-				"width=400, height=700, left=100, top=50");
-	}
+
 </script>
 <style>
 
@@ -308,94 +303,21 @@ height: 70px;
 	</section>
 
 
-	<script type="text/javascript">
-		//  $(document).ready(function() { 
-		// 		 setInterval(function(){
-		// 				$.ajax({
-		// 					type: "POST",
-		// 					url : "${cp}/chatText/chatAllCnt",
-		// 					success : function(data){
-		// 						if(data.cnt != null){
-		// 							$(".fixalram").css("display","inline");
-		// 							$("#alramCount").html(data.cnt);
-		// 						}else{
+	
 
-		// 						}
 
-		// 					},
-		// 				error : function(xhr){
 
-		// 				}
-		// 				});
-		// 		},1000)
-		//  });
-
-		var socket;
-
-		function initSocket() {
-
-			socket = new SockJS("/alram");
-
-			socket.onopen = function(evt) {
-				onOpen(evt);
-			}
-			socket.onmessage = function(evt) {
-				onMessage(evt);
-			}
-			socket.onclose = function(evt) {
-				onClose(evt);
-			}
-
-			function onOpen(evt) {
-				// 	   setInterval(function(){
-				socket.send($("${mem_id}"));
-				// 	   },1000)
-			}
-
-			function sendMessage() {
-
-			}
-
-			//evt 파라미터는 websocket이 보내준 데이터다.
-			function onMessage(evt) { //변수 안에 function자체를 넣음.
-				var data = evt.data;
-				var strArray = data.split('[');
-				$('#alramCount').html(strArray[0]);
-				console.log(strArray[0]);
-
-			}
-
-			function onClose(evt) {
-
-			}
-
-		}
-
-		$(document).ready(function() {
-			initSocket(); //websocket 연결
-
-		});
-	</script>
+	<%@include file="/resource/chat/chatAlram.jsp" %>
 	<div>
-		<form id="chatCnt" action="">
+	<form action="${cp }/chatbot">
 
-			<div class="fixalram">
-				<p id="alramCount"></p>
-				<input type="hidden" id="chatCounter">
-			</div>
-			<img src="/image/1419496.svg" style="width: 50px; height: auto;"
-				id="fixedbtn" onclick="popup()">
-		</form>
-		
-		<form action="${cp }/chatbot">
 		<button type="submit">
 			<img src="/image/bot.svg" style="width: 50px; height: auto;"
 				id="fixedbtn2">
 		</button>
 
 	</form>
-		
-		
+			
 	</div>
 
 

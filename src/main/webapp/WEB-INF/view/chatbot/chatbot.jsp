@@ -76,7 +76,6 @@
 
 $(document).ready(function(){
 	$("#sendBtn").on("click", function(){
-		
 		var userquestion= $("#user").val();
 		console.log("userquestion");
 
@@ -255,10 +254,34 @@ function start(){
 		}
 		result = final_transcript.replace(/(\s*)/g,"");  // 음성 데이터를 result에 넣고 출력함
 		document.getElementById('result').innerHTML = result;  
+
+		//-----
+// 		var stt = document.createElement("div")[1];
+// 		stt.innerText = result;
+// 		document.body.appendChild(stt);
+
+		//-----
+// 		$("#result").html(result);
+		
+		//--
+		if(result == '매칭' || result == '요양보호사' || result == '요양보호사선택' || 
+				result == '요양사' || result =='보호사'){
+			$("#result").append("<div id='userSay'> user :"+ result+"</div><br>");
+		
+		}
+		
 	};
 }
 function end(){
 	annyang.abort(); // 음성요청을 중지시킴
+	
+	//---
+	$("#result").append("<div id='chatBotSay'> 매칭 : chatbot "+"</div><br>"); 
+	$("#frm").attr("action", "${cp}/matching/map");
+	$("#result").scrollTop($("#result")[0].scrollHeight);
+	$("#user").val("");
+	$("#user").focus();
+	$("#frm").submit();
 }
 
 </script>

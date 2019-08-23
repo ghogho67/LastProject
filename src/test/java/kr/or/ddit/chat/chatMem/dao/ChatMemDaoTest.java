@@ -3,6 +3,7 @@ package kr.or.ddit.chat.chatMem.dao;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -66,5 +67,18 @@ public class ChatMemDaoTest extends LogicTestEnv {
 		String test = chaMemtDao.selectChatmemid(map);
 		/***Then***/
 		assertEquals("brown", test);
+	}
+	
+	@Test
+	public void selectChatmemVoListTest() {
+		/***Given***/
+		String mem_id = "sona";
+		
+		
+		
+		/***When***/
+		List<ChatMemVo>test = chaMemtDao.selectChatmemVoList(mem_id);
+		/***Then***/
+		assertEquals(5, test.size());
 	}
 }

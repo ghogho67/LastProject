@@ -48,7 +48,7 @@ public class ChatbotController {
 	@RequestMapping(path = "/speechToText")
 	public String speechToText() {
 		
-		return "/chatbot/speechToText";
+		return "/chatbot/speechToText2";
 	}
 	
 }

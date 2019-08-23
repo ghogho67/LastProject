@@ -1,5 +1,6 @@
 package kr.or.ddit.chat.chatMem.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -28,6 +29,11 @@ public class ChatMemDao implements IChatMemDao {
 	@Override
 	public String selectChatmemid(Map<String, Object> map) {
 		return sqlSession.selectOne("chatMem.selectChatmemid", map);
+	}
+
+	@Override
+	public List<ChatMemVo> selectChatmemVoList(String mem_id) {
+		return sqlSession.selectList("chatMem.selectChatmemVoList", mem_id);
 	}
 
 	
