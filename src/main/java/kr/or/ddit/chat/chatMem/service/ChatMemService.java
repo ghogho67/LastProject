@@ -69,6 +69,12 @@ public class ChatMemService implements IChatMemService {
 	}
 
 
+	@Override
+	public List<ChatMemVo> selectChatmemVoList(String mem_id) {
+		return chatMemDao.selectChatmemVoList(mem_id);
+	}
+
+
 	
 	
 }

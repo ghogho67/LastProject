@@ -105,14 +105,26 @@ table.cw td {
 </script>
 
 <script>
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-		$("#videochat").on("click", function() {
+				$("#videochat").on("click", function() {
 
-			window.open("${cp}/matching/webRtc")
-		});
-
-	});
+					window.open("${cp}/matching/webRtc")
+				});
+				var myDate = new Date();
+// 				alert("myDate : " + myDate);
+// 				alert("$('#edit-startDate').val() : "
+// 						+ $('#edit-startDate').val());
+				$('#edit-startDate').val(myDate);
+// 				alert("$('#edit-startDate').val() : "
+// 						+ $('#edit-startDate').val());
+				// 		$("#edit-startDate").datepicker().datepicker("setDate", new Date());
+				$('#edit-startDate').val(
+						$.datepicker.formatDate('YYYY-MM-DD', new Date()));
+// 				alert("$.datepicker.formatDate('YYYY-MM-DD', new Date()) : "
+// 						+ $.datepicker.formatDate('YYYY-MM-DD', new Date()));
+			});
 	// import결제 함수
 	function requestPay() {
 		var app_pay;
@@ -178,7 +190,13 @@ table.cw td {
 			}
 		});
 	}
+	
+	 function popup() {
+	      window.open("/chat/createChat?chatmem_id=${memVo.mem_id }&&chat_nm=${memVo.mem_id }님과 채팅", 
+	    		  "thisTok!","width=400, height=700, left=100, top=50");
+	 }
 </script>
+
 </head>
 
 <body>
@@ -198,9 +216,8 @@ table.cw td {
 			<input type="hidden" class="btn"><br> <br> <input
 				type="button" id="app" class="M_btn" value="매칭신청"><br>
 			<br> <input type="button" class="M_btn" value="화상채팅"
-				id="videochat"><br> <br> <input type="button"
-				class="M_btn" value="채팅"> <input type="hidden" name="mem_id"
-				value="${mem_id}">
+				id="videochat"><br> <br> 
+				<input id="chatPlay" type="button"class="M_btn" value="채팅" onclick="popup()"> 
 		</div>
 	</div>
 	<div class="container style="width: 1000px; height: 1000px;">
@@ -297,9 +314,9 @@ table.cw td {
 							<div class="col-xs-12">
 								<label class="col-xs-4" id="Ledit-startTime"></label><br>
 							</div>
-							<div class="col-xs-12">
-								<label class="col-xs-4" id="Ledit-endTime"></label><br>
-							</div>
+							<!-- 							<div class="col-xs-12"> -->
+							<!-- 								<label class="col-xs-4" id="Ledit-endTime"></label><br> -->
+							<!-- 							</div> -->
 							<div class="col-xs-12">
 								<label class="col-xs-4" id="Ledit-type"></label><br>
 							</div>
@@ -310,8 +327,7 @@ table.cw td {
 					</div>
 					<div class="modal-footer modalBtnContainer-addEvent">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary" id="save-event"
-							onclick="requestPay()">결제</button>
+						<button type="button" class="btn btn-primary" id="save-event">결제</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -333,12 +349,12 @@ table.cw td {
 					</div>
 					<div class="modal-body">
 
-<!-- 						<div class="row"> -->
-<!-- 							<div class="col-xs-12"> -->
-<!-- 								<label hidden="true" class="col-xs-4" for="edit-allDay">하루종일</label> -->
-<!-- 								<input class='allDayNewEvent' id="edit-allDay" type="checkbox" /> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
+						<!-- 						<div class="row"> -->
+						<!-- 							<div class="col-xs-12"> -->
+						<!-- 								<label hidden="true" class="col-xs-4" for="edit-allDay">하루종일</label> -->
+						<!-- 								<input class='allDayNewEvent' id="edit-allDay" type="checkbox" /> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
 
 						<div class="row">
 							<div class="col-xs-12">
@@ -361,21 +377,20 @@ table.cw td {
 									id="edit-endDate" />
 							</div>
 						</div>
-<!-- 						<div class="row"> -->
-<!-- 							<div class="col-xs-12"> -->
-<!-- 								<label class="col-xs-4" for="edit-StartTime">시작시간</label> <input -->
-<!-- 									class="inputModal" type="text" name="edit-startTime" -->
-<!-- 									id="edit-startTime" /> -->
-<!-- 							</div> -->
-
-<!-- 						</div> -->
-<!-- 						<div class="row"> -->
-<!-- 							<div class="col-xs-12"> -->
-<!-- 								<label class="col-xs-4" for="edit-endTime">종료시간</label> <input -->
-<!-- 									class="inputModal" type="text" name="edit-endTime" -->
-<!-- 									id="edit-endTime" /> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
+						<!-- 						<div class="row"> -->
+						<!-- 							<div class="col-xs-12"> -->
+						<!-- 								<label class="col-xs-4" for="edit-StartTime">시작시간</label> <input -->
+						<!-- 									class="inputModal" type="text" name="edit-startTime" -->
+						<!-- 									id="edit-startTime" /> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
+						<!-- 						<div class="row"> -->
+						<!-- 							<div class="col-xs-12"> -->
+						<!-- 								<label class="col-xs-4" for="edit-endTime">종료시간</label> <input -->
+						<!-- 									class="inputModal" type="text" name="edit-endTime" -->
+						<!-- 									id="edit-endTime" /> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
 
 						<div class="row" id="timeInfo">
 							<div class="col-xs-12">
@@ -453,13 +468,14 @@ table.cw td {
 					</div>
 					<div class="modal-footer modalBtnContainer-addEvent">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary" id="save-event2">저장</button>
+						<button type="button" class="btn btn-primary" id="save-event2"
+							onclick="dateCheck">저장</button>
 					</div>
-<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->
-<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> -->
-<!-- 						<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button> -->
-<!-- 						<button type="button" class="btn btn-primary" id="updateEvent">저장</button> -->
-<!-- 					</div> -->
+					<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->
+					<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> -->
+					<!-- 						<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button> -->
+					<!-- 						<button type="button" class="btn btn-primary" id="updateEvent">저장</button> -->
+					<!-- 					</div> -->
 				</div>
 				<!-- /.modal-content -->
 			</div>

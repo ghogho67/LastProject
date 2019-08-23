@@ -85,7 +85,7 @@ public class ChatController {
 		return "thistok/creattok";
 	}
 	
-	@RequestMapping(path = "/createChat", method = RequestMethod.POST)
+	@RequestMapping(path = "/createChat")
 	public String createChat(Model model, HttpSession session, String chatmem_id, String chat_nm, RedirectAttributes ra) {
 		
 		

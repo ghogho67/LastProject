@@ -76,14 +76,12 @@
 
 $(document).ready(function(){
 	$("#sendBtn").on("click", function(){
-		//지울것
 		var userquestion= $("#user").val();
 		console.log("userquestion");
 
 		if(userquestion == '매칭' || userquestion == '요양보호사' || userquestion == '요양보호사선택' || 
 				userquestion == '요양사' || userquestion =='보호사'){
 			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>");
-			
 			$("#result").append("<div id='chatBotSay'> 매칭 : chatbot "+"</div><br>"); 
 			$("#frm").attr("action", "${cp}/matching/map");
 			$("#result").scrollTop($("#result")[0].scrollHeight);
@@ -222,7 +220,7 @@ $(document).ready(function(){
 			$("#result").scrollTop($("#result")[0].scrollHeight);
 			$("#user").val("");
 			$("#user").focus();
-		} 					
+		} 	
 		
 	});
 	
@@ -236,12 +234,8 @@ $(document).ready(function(){
 		end();
 		
 	});
-
-
-
 	
 });
-
 
 function start(){
 	annyang.start({autoRestart:false, continuous:true})  // 음성요청을 시작 자동시작 끄고 계속적으로 동작할수 있게 함.
@@ -260,10 +254,34 @@ function start(){
 		}
 		result = final_transcript.replace(/(\s*)/g,"");  // 음성 데이터를 result에 넣고 출력함
 		document.getElementById('result').innerHTML = result;  
+
+		//-----
+// 		var stt = document.createElement("div")[1];
+// 		stt.innerText = result;
+// 		document.body.appendChild(stt);
+
+		//-----
+// 		$("#result").html(result);
+		
+		//--
+		if(result == '매칭' || result == '요양보호사' || result == '요양보호사선택' || 
+				result == '요양사' || result =='보호사'){
+			$("#result").append("<div id='userSay'> user :"+ result+"</div><br>");
+		
+		}
+		
 	};
 }
 function end(){
 	annyang.abort(); // 음성요청을 중지시킴
+	
+	//---
+	$("#result").append("<div id='chatBotSay'> 매칭 : chatbot "+"</div><br>"); 
+	$("#frm").attr("action", "${cp}/matching/map");
+	$("#result").scrollTop($("#result")[0].scrollHeight);
+	$("#user").val("");
+	$("#user").focus();
+	$("#frm").submit();
 }
 
 </script>

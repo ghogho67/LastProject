@@ -4,6 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<style>
+
+.btn-logout:hover {
+    color: #fff;
+    background-color: #d3d1da;
+    border-color: #f0f2fb;
+}
+</style>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -74,6 +84,25 @@
 
 		</c:choose>
 
+<li style=" position: absolute;
+    left: 93%;"><a class="btn-logout" href="/logout"  style="
+display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 3px solid transparent;
+    padding: .175rem .95rem;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out;
+    background-color: #ffffff00;
+    border-color: #8094ab82;
+    color: gray;
+   
+">로그아웃 </a>
+				 </li>
 
 
 				</ul>

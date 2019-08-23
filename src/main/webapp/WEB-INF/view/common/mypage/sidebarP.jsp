@@ -50,10 +50,8 @@
 <div id='cssmenu'>
 <ul>
    <li><a href="${cp}/mypage/Patient_Info"><span>회원정보</span></a></li>
-   <li><a href="${cp}/mypage/approval/approvalCheckA?page=1&pageSize=10"><span>결산관리</span></a></li>
    
-   <li class='active has-sub'><a><span>나의건강정보<i
-									class="fa fa-sort-down"></i></span></a>
+   <li class='active has-sub'><a><span>나의건강정보<i class="fa fa-sort-down"></i></span></a>
       <ul>
          <li ><a  href="${cp}/mypage/stress?mem_id=${MEM_INFO.mem_id}"><span>스트레스 지수</span></a></li>
          <li ><a href="${cp}/mypage/gpxMap?mem_id=${MEM_INFO.mem_id}"><span>GPS 정보</span></a></li>

@@ -14,7 +14,7 @@
 		<nav class="sidebar-nav" style="text-align: center;">
 		<c:forEach items="${sideBar}" var="sideBar">
 			<c:if test="${sideBar.cate_paerent_id eq 0}">
-<%-- 				<h2 >${sideBar.cate_title}</h2> --%>
+	<h2 >${sideBar.cate_title}</h2> 
 			</c:if>
 		</c:forEach>
 				
