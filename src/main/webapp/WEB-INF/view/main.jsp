@@ -51,7 +51,7 @@
 //       window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
 //             "thisTok!", "width=400, height=700, left=100, top=50");
       window.open("/chat/thistok?mem_id=${mem_id}",
-            "thisTok!", "width=400, height=700, left=100, top=50");
+            "thisTok!", "width=500, height=700, left=100, top=50");
 
    }
 </script>
@@ -656,75 +656,7 @@ function initSocket() {
 		// 		},1000)
 		//  });
 
-		var socket;
-
-		function initSocket() {
-
-			socket = new SockJS("/alram");
-
-			socket.onopen = function(evt) {
-				onOpen(evt);
-			}
-			socket.onmessage = function(evt) {
-				onMessage(evt);
-			}
-			socket.onclose = function(evt) {
-				onClose(evt);
-			}
-
-			function onOpen(evt) {
-				// 	   setInterval(function(){
-				socket.send($("${mem_id}"));
-				// 	   },1000)
-			}
-
-			function sendMessage() {
-
-			}
-
-			//evt 파라미터는 websocket이 보내준 데이터다.
-			function onMessage(evt) { //변수 안에 function자체를 넣음.
-				var data = evt.data;
-				var strArray = data.split('[');
-				$('#alramCount').html(strArray[0]);
-				console.log(strArray[0]);
-
-			}
-
-			function onClose(evt) {
-
-			}
-
-		}
-
-		$(document).ready(function() {
-			initSocket(); //websocket 연결
-
-		});
-	</script>
-	<div>
-		<form id="chatCnt" action="">
-
-			<div class="fixalram">
-				<p id="alramCount"></p>
-				<input type="hidden" id="chatCounter">
-			</div>
-			<img src="/image/1419496.svg" style="width: 50px; height: auto;"
-				id="fixedbtn" onclick="popup()">
-		</form>
-	</div>
-
-
-
-
-
-	<form action="${cp }/chatbot">
-		<button type="submit">
-			<img src="/image/bot.svg" style="width: 50px; height: auto;"
-				id="fixedbtn2">
-		</button>
-
-	</form>
+	
 
 
 	<div class="slidebanner">

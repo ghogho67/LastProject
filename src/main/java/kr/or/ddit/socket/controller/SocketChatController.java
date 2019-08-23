@@ -1,7 +1,9 @@
 package kr.or.ddit.socket.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.ddit.chat.chatMem.service.IChatMemService;
 import kr.or.ddit.chat.chatText.model.ChatTextVo;
 import kr.or.ddit.chat.chatText.service.IChatTextService;
 import kr.or.ddit.handler.SocketChatHandler;
@@ -22,6 +25,9 @@ import kr.or.ddit.handler.SocketChatHandler;
 public class SocketChatController {
 	@Resource(name = "chatTextService")
 	private IChatTextService chatTextService;
+	
+	@Resource(name = "chatMemService")
+	private IChatMemService chatMemService;
 	
 	
 	
@@ -38,6 +44,13 @@ public class SocketChatController {
 		session.setAttribute("mem_id", mem_id);
 		session.setAttribute("chat_id", chat_id);
 		
+		
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("mem_id", mem_id);
+		map.put("chat_id", chat_id);
+		map.put("newmsgyn", "N");
+		
+//		chatMemService.messageUpdate(map);
 		
 		
 		List<ChatTextVo> chatTextList = chatTextService.getChatTextList(chat_id);
