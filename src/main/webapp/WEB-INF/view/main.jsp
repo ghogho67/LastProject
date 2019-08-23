@@ -83,36 +83,9 @@ height: 70px;
 }
 
 
-.fixalram {
-	position: fixed;
-	right: 45px;
-	bottom: 79px;
-	z-index: 1000;
-	background: red;
-	border-radius: 50%;
-	width: 25px;
-	height: 25px;
-	/* 	display: none; */
-}
-
-#alramCount {
-	color: white;
-	font-size: 7px;
-	font-style: italic;
-	text-align: center;
-	margin-top: 3px;
-}
-
-#fixedbtn {
-	position: fixed;
-	right: 50px;
-	bottom: 50px;
-	z-index: 999
-}
-
 #fixedbtn2 {
 	position: fixed;
-	right: 50px;
+	right: 10px;
 	bottom: 120px;
 	z-index: 998
 }

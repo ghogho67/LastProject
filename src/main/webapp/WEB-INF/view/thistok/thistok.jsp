@@ -11,8 +11,8 @@
 <style type="text/css">
 
 #logo{
-	height: 70px;
-	width: 200px;
+	height: 90px;
+	width: 250px;
 }
 
 body {
@@ -28,7 +28,6 @@ body {
   
     th, td {
     border-bottom: 2px solid #e5e5e5;
-    padding: 10px;
   
   }
   
@@ -81,8 +80,12 @@ display:none;
 }
 
 .alaramImg{
-	width: 80px;
-	height: 80px;
+	width: 110px;
+	height: 90px;
+}
+
+.chatmemid{
+	font-size: 8px;
 }
 </style>
 
@@ -125,11 +128,11 @@ $(document).ready(function(){
 						<c:choose>
 							<c:when test="${chat.newmsgyn eq 'Y'}">	
 								<th><img class="alaramImg" alt="" src="/image/alaram.gif"></th>
-								<th>[${chat.mem_id }]<br>${chat.chat_nm }</th>
+								<th>${chat.mem_nm }<a class="chatmemid">(${chat.mem_id })</a><br>${chat.chat_nm }</th>
 							</c:when>
 							<c:otherwise>
 								<th><img class="alaramImg" alt="" src="/image/alaramNo.jpg"></th>
-								<th>${chat.mem_id }<br>${chat.chat_nm }</th>
+								<th>${chat.mem_nm }<a class="chatmemid">(${chat.mem_id })</a><br>${chat.chat_nm }</th>
 							</c:otherwise>
 						</c:choose>
 						<th id="chatTime"><fmt:formatDate value="${chat.chat_dt }" pattern="yyyy-MM-dd"/></th>

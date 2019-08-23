@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
@@ -42,13 +43,24 @@ public class SocketChatHandler extends TextWebSocketHandler {
 	// 클라이언트가 웹소켓에 접속하여 연결이 맺어진 후에 호출
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		String user = getUser(session);
+		
 		sessionList.add(session);
+		List<String> id = new ArrayList<String>();
+		//사용자 리스트 문자열만드는 반복문
+//		for (WebSocketSession currentSession : sessionList) {
+//				id.add(getUser(currentSession));
+			
+//		}
+		
+		//채팅방 접속한 사용자에게 위에서 만든 문자열 전송
+		
+//		for (WebSocketSession currentSession : sessionList) {
+
+//		}
 		
 		
-		logger.debug("☞채팅 접속 : {}", user);
+//		logger.debug("☞채팅 접속 : {}", user);
 		logger.debug("☞채팅 접속session : {}", session);
-		logger.debug("☞sessionList:{}",sessionList);
 	}
 	
 	
@@ -75,7 +87,7 @@ public class SocketChatHandler extends TextWebSocketHandler {
 				int mapChat_id = (int) map.get("chat_id");
 				if(mapChat_id == chat_id) {
 					logger.debug("☞ chat message : ");
-					currentSession.sendMessage(new TextMessage(user + " : " + message.getPayload()));
+					currentSession.sendMessage(new TextMessage("msg" + ":" +user + ":" + message.getPayload()));
 				}
 			logger.debug("☞sessionList:{}",sessionList);
 			}
