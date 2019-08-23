@@ -6,10 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>BasicSubPage</title>
+<title>2019축제</title>
 
 
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Rubik&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${cp}/common/festival.css" />
 <link rel="stylesheet" href="${cp}/common/content.css" />
 
@@ -25,7 +24,7 @@
 }
 
 #titlee h2 {
-	padding: 15px 25px;
+	padding: 0px 25px;
 }
 
 #titlee h2 span {
@@ -424,6 +423,7 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 <%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+<hr>
 
 		<div style="    padding-top: 50px;
     padding-left: 358px;
@@ -434,6 +434,7 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 						<h2>
 							<span>2019 축제</span>
 						</h2>
+						<hr>
 						<p class="board-count"></p>
 					</div>
 					<hr>
