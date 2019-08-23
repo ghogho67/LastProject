@@ -15,8 +15,6 @@
 
 
 <style type="text/css">
-
-
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -180,7 +178,7 @@ td {
 	position: absolute;
 	top: 0;
 	right: -25px;
-/* 	left : 2px; */
+	/* 	left : 2px; */
 	width: 32px;
 	height: 38px;
 	border: none;
@@ -210,132 +208,114 @@ td {
 
 
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+	//구글 chart API
+	google.charts.load('current', {
+		'packages' : [ 'corechart' ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
 
-//구글 chart API
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
 
-function drawChart() {
-	
-	var data = google.visualization.arrayToDataTable([
-     ['member', 'mem_grade'],
-	 ['관리자',      parseInt("${manager}")],
-	 ['일반회원',  parseInt("${nomalMember}")],
-	 ['골드회원', parseInt("${goldMember}")],
-	 ['요양보호사',    parseInt("${careWorker}")]
-	]
-  );
+		var data = google.visualization.arrayToDataTable([
+				[ 'member', 'mem_grade' ], [ '관리자', parseInt("${manager}") ],
+				[ '일반회원', parseInt("${nomalMember}") ],
+				[ '골드회원', parseInt("${goldMember}") ],
+				[ '요양보호사', parseInt("${careWorker}") ] ]);
 
-  var options = {
-    title: '회원 분류 pie Chart'
-  };
+		var options = {
+			title : '회원 분류 pie Chart'
+		};
 
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		var chart = new google.visualization.PieChart(document
+				.getElementById('piechart'));
 
-  chart.draw(data, options);
-}
-
-
-//pagenation
-function boardPagingListAjaxHtml(page, pageSize) {
-	$("#page").val(page);
-	$("#pageSize").val(pageSize);
-	$("#pageForm").submit();
-	
+		chart.draw(data, options);
 	}
 
+	//pagenation
+	function boardPagingListAjaxHtml(page, pageSize) {
+		$("#page").val(page);
+		$("#pageSize").val(pageSize);
+		$("#pageForm").submit();
+
+	}
 </script>
 
 </head>
 
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
-
 	<form id="pageForm" action="${cp}/mypage/pagingList">
-	 	<input type="hidden" name = "page" id="page">
-	 	<input type="hidden" name = "pageSize" id="pageSize">
-	 </form>
+		<input type="hidden" name="page" id="page"> <input
+			type="hidden" name="pageSize" id="pageSize">
+	</form>
 
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+
+	<div class="content-wrapper">
+		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-body">
-					
-						
-						<!-- 검색 -->
-<!-- 						<div class="d1"> -->
-<%-- 							<form class="frm2" id="frm2" action="${cp}/mypage/pagingList" method="post"> --%>
-<!-- 								<select id="searchType" name="searchType" -->
-<!-- 									style="position: absolute; z-index: 999;"> -->
-<!-- 									<option value="all">동 검색</option> -->
-<!-- 								</select> <input type="text" placeholder="동을 입력해 주세요" name="hos_add" id="hos_add"> -->
-<!-- 								<button type="button" id="searchBtn"></button> -->
-<!-- 							</form> -->
-<!-- 						</div> -->
-						
-						
-						<div id="titlee">
+
+					<div id="titlee">
 						<h2>
-							<span>회원관리</span>
+							<span>회원관리</span>&nbsp;
 						</h2>
 					</div>
 					<hr>
-					
-					<div class="container">
-						<div class="row">
-					
-					
-					<form id="frm" action="${cp}/mypage/pagingList" method="get">
-						<input type="hidden" class="mem_id" id="mem_id" name="mem_id">
-					<div class="table-responsive">
-						<table class="table center-aligned-table">
-							<thead>
-							<tr>
-								<th>NO</th>
-								<th>회원아이디</th>
-								<th>회원이름</th>
-								<th>생년월일</th>
-								<th>성별</th>
-								<th>연락처</th>
-								<th>회원등급</th>
-								<th>탈퇴여부</th>
-							</tr>
-							</thead>
-							<tbody>
-							<c:forEach items="${getMemList }" var="vo" varStatus="status">
-								<tr class="memTr" data-mem_id="${vo.mem_id }">
-									<th>${vo.rn }</th>
-									<td class="mem_id">${vo.mem_id }</td>
-									<td>${vo.mem_nm }</td>
-									<td>${vo.mem_birth }</td>
-									<td>${vo.mem_gender }</td>
-									<td>${vo.mem_phone }</td>
-									<td>${vo.mem_grade }</td>
-									<td>${vo.mem_del}</td>
-								</tr>
-							</c:forEach>
-							</tbody>
-							
-						</table>
-					</div>
-					
-					<!-- 구글Chart API -->
-					<div id="piechart" style="width: 1000px; height: 500px;"></div>
-					<input type="hidden" name = "manager" id="manager">
-					<input type="hidden" name = "nomalMember" id="nomalMember">
-					<input type="hidden" name = "goldMember" id="goldMember">
-					<input type="hidden" name = "careWorker" id="careWorker">
-					</form>
-					
-				</div>
-			</div>
-			
-			
-			<div class="demo" style="position: absolute; right: 20%;">
+
+					<div class="row">
+
+						<div class="col-lg-7" style="margin-left: 10px;">
+
+
+							<div class="table-responsive">
+								<table class="table center-aligned-table">
+									<thead>
+										<tr>
+											<th>NO</th>
+											<th>회원아이디</th>
+											<th>회원이름</th>
+											<th>생년월일</th>
+											<th>성별</th>
+											<th>연락처</th>
+											<th>회원등급</th>
+											<th>탈퇴여부</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${getMemList }" var="vo" varStatus="status">
+											<tr class="memTr" data-mem_id="${vo.mem_id }">
+												<th>${vo.rn }</th>
+												<td class="mem_id">${vo.mem_id }</td>
+												<td>${vo.mem_nm }</td>
+												<td>${vo.mem_birth }</td>
+												<td>${vo.mem_gender }</td>
+												<td>${vo.mem_phone }</td>
+												<td>${vo.mem_grade }</td>
+												<td>${vo.mem_del}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+						<div class="col-lg-4 posts-list">
+							<div id="piechart" style="width: 1000px; height: 500px;">
+								<input type="hidden" name="manager" id="manager"> <input
+									type="hidden" name="nomalMember" id="nomalMember"> <input
+									type="hidden" name="goldMember" id="goldMember"> <input
+									type="hidden" name="careWorker" id="careWorker">
+
+							</div>
+						</div>
+
+
+						<div class="demo" style="position: absolute;     right: 30%;
+    top: 91%">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
 									<c:choose>
@@ -416,10 +396,9 @@ function boardPagingListAjaxHtml(page, pageSize) {
 								</ul>
 							</nav>
 						</div>
-			
-		
-	</div>
 
-
+					</div>
+				</div>
+			</div>
 </body>
 </html>

@@ -6,19 +6,7 @@
 <nav id="nav-menu-container">
 	<ul class="nav-menu">
 		<li class="menu-active"><a href="${cp}/crawling">Home</a></li>
-<!-- 		<li><a href="departments.html">회사소개</a></li> -->
-<%-- 		<c:choose> --%>
-<%-- 			<c:when test="${MEM_INFO.mem_grade==0}"> --%>
-<%-- 				<li><a href="${cp}mypage/Admin_Info">마이페이지</a></li> --%>
-<%-- 			</c:when> --%>
-<%-- 			<c:when test="${MEM_INFO.mem_grade==1 || MEM_INFO.mem_grade==2}"> --%>
-<%-- 				<li><a href="${cp}mypage/Patient_Info">마이페이지</a></li> --%>
-<%-- 			</c:when> --%>
-<%-- 			<c:otherwise> --%>
-<%-- 				<li><a href="${cp}mypage/Worker_Info">마이페이지</a></li> --%>
-<%-- 			</c:otherwise> --%>
-		
-<%-- 		</c:choose> --%>
+
 	
 		<c:forEach items="${categoryList}" var="category">
 			<c:if test="${category.cate_usage =='Y'}">
@@ -80,10 +68,6 @@
 
 
 		</c:choose>
-
-
-
-
 
 
 
