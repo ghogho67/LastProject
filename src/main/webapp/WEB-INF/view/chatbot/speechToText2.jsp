@@ -12,7 +12,6 @@
 		var recognition = annyang.getSpeechRecognizer();
 		var final_transcript = '';
 		var result = '';
-		recognition.lang = 'ko';	//한국어
 		recognition.interimResults = true;
 		recognition.onresult = function(event){  // 음성 데이터의 결과를 리턴받음.
 			var interim_transcript = '';
