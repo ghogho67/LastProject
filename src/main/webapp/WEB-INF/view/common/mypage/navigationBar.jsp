@@ -17,14 +17,18 @@
 
 	<nav
 		class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		
 		<div class="navbar-menu-wrapper d-flex align-items-center">
+	
 			<button class=" navbar-toggler   navbar-dark align-self-center mr-5"
 				type="button" data-toggle="minimize">
+				
 
 				<div id="header" class="header-scrolled2">
 					<div class="container">
 						<div class="row  justify-content-between d-flex">
 							<div id="logo">
+							
 								<a href="index.html"></a>
 
 							</div>
@@ -65,6 +69,7 @@
 																	</c:if>
 																</c:forEach>
 															</ul>
+															</li>
 													</c:otherwise>
 												</c:choose>
 
@@ -92,8 +97,8 @@
 
 									</c:choose>
 
-									<li><a class="ko" style="position: absolute; left: 80%;"
-										href="/logout">로그아웃</a></li>
+									<li>
+									<a class="ko" style="position: absolute; left: 80%;" href="/logout">로그아웃</a></li>
 
 								</ul>
 							</nav>

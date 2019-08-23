@@ -61,7 +61,7 @@
     height: 50px;
     width: 95%;
     overflow: hidden;
-    left: 4%;
+    left: 6%;
     top: 85%;
 }
 
