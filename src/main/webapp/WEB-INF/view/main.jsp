@@ -83,7 +83,7 @@
 
 .bannerli img{
 width:150px;
-height: 50px; 
+height: 70px; 
 
 }
 
