@@ -1,7 +1,6 @@
 package kr.or.ddit.handler;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import kr.or.ddit.chat.chatText.model.ChatTextVo;
+import kr.or.ddit.chat.chatMem.model.ChatMemVo;
+import kr.or.ddit.chat.chatMem.service.IChatMemService;
 import kr.or.ddit.chat.chatText.service.IChatTextService;
 
 public class SocketAlramHandler extends TextWebSocketHandler {
@@ -23,6 +23,9 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 
 	@Resource(name = "chatTextService")
 	private IChatTextService chaTextService;
+	
+	@Resource(name = "chatMemService")
+	private IChatMemService chatmemService;
 	
 	@Resource(name="chatAlramWebSocketSessionList")
 	private List<WebSocketSession> sessionList;	// 소켓에 연결된 세션정보
@@ -53,17 +56,25 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 	throws Exception {
 		
 		String user = getUser(session);
+		List<ChatMemVo> chatMemList = chatmemService.selectChatmemVoList(user);
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		for (WebSocketSession currentSession : sessionList) {
-//			
-//				map = currentSession.getAttributes();
-//				String mapMem_id = (String) map.get("mem_id");
-//				if(mapMem_id.equals(user)) {
-//					int counter = chaTextService.chatAllCnt(user);
-//						currentSession.sendMessage(new TextMessage(counter+message.getPayload()));
-//				}
-//			}
+		for (WebSocketSession currentSession : sessionList) {
+			
+				map = currentSession.getAttributes();
+				String mapMem_id = (String) map.get("mem_id");
+				if(mapMem_id.equals(user)) {
+				int count=0;
+					
+					for(ChatMemVo chat : chatMemList) {
+						if(chat.getNewmsgyn().equals("Y")) {
+							count=count+1;
+						}
+					}
+					if(count>0)
+						currentSession.sendMessage(new TextMessage("NEW"));
+				}
+			}
 		
 		
 		

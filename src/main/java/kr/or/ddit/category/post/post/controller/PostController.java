@@ -545,11 +545,12 @@ public class PostController {
 		logger.debug("!!! vo : {}", vo);
 		logger.debug("!!! startDate : {}", startDate);
 		logger.debug("!!! endDate : {}", endDate);
-
+		//
 		model.addAttribute("vo", vo);
 		model.addAttribute("startDate", startDate);
 		model.addAttribute("endDate", endDate);
 		return "festivalpost";
+		
 
 	}
 

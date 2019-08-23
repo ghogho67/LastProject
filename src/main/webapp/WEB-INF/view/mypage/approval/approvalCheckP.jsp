@@ -53,8 +53,6 @@ td {
 	font-size: 9pt;
 }
 
-
-
 .pagination-outer {
 	text-align: center;
 }
@@ -262,80 +260,78 @@ td {
 	<!-- 	 </form> -->
 	<div class="content-wrapper">
 
-			<div class="col-lg-12">
+		<div class="col-lg-12">
 
-						<div class="card">
-							<div class="card-body">
+			<div class="card">
+				<div class="card-body">
 
-								<div class="d1">
-									<form id="searchList" class="for"
-										action="${cp}/approval/approvalCheck">
+					<div class="d1">
+						<form id="searchList" class="for"
+							action="${cp}/approval/approvalCheck">
 
-										<select id="searchType" name="searchType"
-											style="position: absolute; z-index: 999;">
-											<option value="day">날짜</option>
-											<option value="type">결제구분</option>
-										</select> <input id="searchVal" name="searchVal" type="text"
-											placeholder="날짜검색 형식 Ex)19/07/30"><br> <input
-											type="hidden" name="page" id="page" value="1"> <input
-											type="hidden" name="pageSize" id="pageSize" value="10">
-										<button id="searchBtn" name="searchBtn" type="button"></button>
-									</form>
-								</div>
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+								<option value="day">날짜</option>
+								<option value="type">결제구분</option>
+							</select> <input id="searchVal" name="searchVal" type="text"
+								placeholder="날짜검색 형식 Ex)19/07/30"><br> <input
+								type="hidden" name="page" id="page" value="1"> <input
+								type="hidden" name="pageSize" id="pageSize" value="10">
+							<button id="searchBtn" name="searchBtn" type="button"></button>
+						</form>
+					</div>
 
-								<div id="titlee">
-									<h2>
-										<span>결재내역</span>&nbsp;골드회원 및 일반회원
-									</h2>
-								</div>
-								<hr>
-								<div class="table-responsive">
-									<table class="table center-aligned-table">
-										<thead>
-											<tr class="text-primary">
-												<th>NO.</th>
-												<th>결제구분</th>
-												<th>결제금액</th>
-												<th>결제시간</th>
-												<th>결제자</th>
-											</tr>
-										</thead>
+					<div id="titlee">
+						<h2>
+							<span>결재내역</span>&nbsp;골드회원 및 일반회원
+						</h2>
+					</div>
+					<hr>
+					<div class="table-responsive">
+						<table class="table center-aligned-table">
+							<thead>
+								<tr class="text-primary">
+									<th>NO.</th>
+									<th>결제구분</th>
+									<th>결제금액</th>
+									<th>결제시간</th>
+									<th>결제자</th>
+								</tr>
+							</thead>
 
-										<tbody>
-											<c:forEach items="${appVo }" var="vo" varStatus="status">
-												<tr>
-													<td>${vo.rn}</td>
-													<td><c:choose>
-															<c:when test="${vo.app_type eq 1}">
+							<tbody>
+								<c:forEach items="${appVo }" var="vo" varStatus="status">
+									<tr>
+										<td>${vo.rn}</td>
+										<td><c:choose>
+												<c:when test="${vo.app_type eq 1}">
 													매칭
 												</c:when>
-															<c:when test="${vo.app_type eq 2}">
+												<c:when test="${vo.app_type eq 2}">
 												 	골드가입
 												</c:when>
-															<c:when test="${vo.app_type eq 3}">
+												<c:when test="${vo.app_type eq 3}">
 												 	기부
 												</c:when>
 
-														</c:choose></td>
-													<td>${vo.app_pay}</td>
-													<td><fmt:formatDate value="${vo.app_time }"
-															pattern="yyyy.MM.dd HH:mm:ss" /></td>
-													<td>${vo.mem_id }</td>
-												</tr>
-											</c:forEach>
+											</c:choose></td>
+										<td>${vo.app_pay}</td>
+										<td><fmt:formatDate value="${vo.app_time }"
+												pattern="yyyy.MM.dd HH:mm:ss" /></td>
+										<td>${vo.mem_id }</td>
+									</tr>
+								</c:forEach>
 
 
-										</tbody>
-									</table>
+							</tbody>
+						</table>
 
 
-								</div>
-							</div>
-						</div>
 
 
-			</div>
-		</div>
+					</div>
+				</div>
+				</div>
 
 		<div class="demo" style="position: absolute; right: 38%;">
 			<nav class="pagination-outer" aria-label="Page navigation">
@@ -414,10 +410,7 @@ td {
 				</ul>
 			</nav>
 		</div>
-
-
-
-
-
+			</div>
+		</div>
 </body>
 </html>
