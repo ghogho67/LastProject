@@ -76,14 +76,13 @@
 
 $(document).ready(function(){
 	$("#sendBtn").on("click", function(){
-		//지울것
+		
 		var userquestion= $("#user").val();
 		console.log("userquestion");
 
 		if(userquestion == '매칭' || userquestion == '요양보호사' || userquestion == '요양보호사선택' || 
 				userquestion == '요양사' || userquestion =='보호사'){
 			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>");
-			
 			$("#result").append("<div id='chatBotSay'> 매칭 : chatbot "+"</div><br>"); 
 			$("#frm").attr("action", "${cp}/matching/map");
 			$("#result").scrollTop($("#result")[0].scrollHeight);
@@ -222,7 +221,7 @@ $(document).ready(function(){
 			$("#result").scrollTop($("#result")[0].scrollHeight);
 			$("#user").val("");
 			$("#user").focus();
-		} 					
+		} 	
 		
 	});
 	
@@ -236,12 +235,8 @@ $(document).ready(function(){
 		end();
 		
 	});
-
-
-
 	
 });
-
 
 function start(){
 	annyang.start({autoRestart:false, continuous:true})  // 음성요청을 시작 자동시작 끄고 계속적으로 동작할수 있게 함.

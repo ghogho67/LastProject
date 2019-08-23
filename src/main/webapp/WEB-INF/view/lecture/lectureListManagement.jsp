@@ -18,7 +18,7 @@
 }
 
 #titlee h2 {
-	padding: 5px 5px;
+	padding: 20px 20px 1px 30px;
 }
 
 #titlee h2 span {
@@ -236,8 +236,6 @@ td {
 	<div class="container">
 
 
-
-
 		<div style="padding-top: 50px; width: 1350px;">
 
 
@@ -250,7 +248,7 @@ td {
 							<span>학습.문화</span> 프로그램_관리
 						</h2>
 					</div>
-					<div style="text-align: right;">
+					<div style="text-align: right;     padding-right: 10px;">
 						<a class="btn btn-warning btn-sm"
 							href="${cp}/lecture/Insertlecture">강좌추가</a>&nbsp;
 						<button type="button" class="btn btn-warning btn-sm"

@@ -83,42 +83,95 @@ var newEvent = function (startDate, endDate, eventType) {
 
     
     $('#save-event2').on('click',function(){
+    	
+    	var myDate = new Date();
+		var startDate = new Date(editStartDate.val());
+		var endDate = new Date(editEndDate.val());
+		alert("myDate :" +myDate);
+		alert("startDate : " + startDate);
+		alert("myDate.getTime() : " + myDate.getTime());
+		myGetTime = myDate.getTime();
+		startGetTime =startDate.getTime();
+		alert("startDate.getTime() : " + startDate.getTime());
+		alert("myGetTime - startGetTime : "+(myGetTime - startGetTime));
+		if (myDate.getTime() - startDate.getTime() > 0) {
+			alert("오늘 날짜 이후로 선택해주세요");
+			return;
+		}
+		dif = startDate.getTime() - endDate.getTime();
+		alert("dif: "+dif);
+		if (dif > 0) {
+			alert("종료 날짜가 시작 날짜보다 앞섭니다 다시 선택해 주세요");
+			return;
+		}
+		
+    	 
     	  eventModal.modal('hide');
-    	  
-    	  //두 날짜 사이의 요일 수를 출력해준다 (금요일, 토요일, 일요일)
-    	  //parm d1 : 20170101
-    	  //parm d2 : 20171003
-    	  //getSatSun(d1, d2)
-//    	  	    var sDate =new Date(d1.substr(0,4),Number(d1.substr(4,2))-1,Number(d1.substr(6)));
+    	  alert(dayInfo);
+    	  // 두 날짜 사이의 요일 수를 출력해준다 (금요일, 토요일, 일요일)
+    	  // parm d1 : 20170101
+    	  // parm d2 : 20171003
+    	  // getSatSun(d1, d2)
+// var sDate =new
+// Date(d1.substr(0,4),Number(d1.substr(4,2))-1,Number(d1.substr(6)));
     	  var sDate = new Date(editStartDate.val());
-//    	      var eDate =new Date(d2.substr(0,4),Number(d2.substr(4,2))-1,Number(d2.substr(6)));
+    	  alert(sDate);
+// var eDate =new
+// Date(d2.substr(0,4),Number(d2.substr(4,2))-1,Number(d2.substr(6)));
     	  var eDate = new Date(editEndDate.val());
-    	  //alert(lcDateCountDay(sDate,eDate));
+    	  // alert(lcDateCountDay(sDate,eDate));
     	  var count=0;
     	  var tmp;
     	  for (var i=0; i<=(eDate-sDate)/1000/60/60/24; i++) {
     		  tmp=new Date(sDate);
     		  tmp.setDate(tmp.getDate()+i);
-    		  //0(일요일), 5(금요일), 6(토요일)
+    		  // 0(일요일), 5(금요일), 6(토요일)
     		  for(j=0; j<dayInfo.length; j++){
     			  if(tmp.getDay() == dayInfo[j]){
     				  count++;
     			  }
     		  }
     		  
-//    	        if (tmp.getDay()==0 || tmp.getDay()==5 || tmp.getDay()==6) {
-//    	          count++;
-//    	        }
+// if (tmp.getDay()==0 || tmp.getDay()==5 || tmp.getDay()==6) {
+// count++;
+// }
     	  }
     	  alert(count);
     	  alert(count*timeInfo.length);
-    	 
+    	  var time =" ";
+    	  for(k=0; k<dayInfo.length; k++){
+    		  if(dayInfo[k]==1){
+    			  time+= " 09:00~10:00";
+    			  alert(time);
+    		  } 
+    		  if(dayInfo[k]==2){
+    			  time+= " 10:30~11:30";
+    			  alert(time);
+    		  } 
+    		  if(dayInfo[k]==3){
+    			  time+= " 12:00~13:00";
+    			  alert(time);
+    		  } 
+    		  if(dayInfo[k]==4){
+    			  time+= " 13:30~14:30";
+    			  alert(time);
+    		  } 
+    		  if(dayInfo[k]==5){
+    			  time+= " 15:00~16:00";
+    			  alert(time);
+    		  } 
+    		  if(dayInfo[k]==6){
+    			  time+= " 16:30~17:30";
+    			  alert(time);
+    		  } 
+    		  
+    	  }
+    	  
+    	  $("#Ledit-startTime").text("서비스 시간 :"+time);
     	  $("#Ledit-title").text("매칭 이름 :"+editTitle.val());
     	  $("#Ledit-cont").text("매칭 내용 :"+editDesc.val());
     	  $("#Ledit-startDate").text("매칭 시작일 :"+editStartDate.val());
     	  $("#Ledit-endDate").text("매칭 종료일 :"+editEndDate.val());
-    	  $("#Ledit-startTime").text("서비스 시작 시간 :"+editStartTime.val());
-    	  $("#Ledit-endTime").text("서비스 종료 시간 :"+editEndTime.val());
     	  $("#Ledit-type").text("매칭 서비스 타입 :"+editType.val());
     	  $("#Ledit-cost").text("매칭 비용 :"+count*timeInfo.length*10000);
     	  
