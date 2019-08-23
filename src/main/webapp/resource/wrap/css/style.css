@@ -1635,9 +1635,12 @@ Other comon js for all pages
 
 .table-responsive {
   display: block;
-  width: 100%;
+  width: 95%;
   overflow-x: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar; }
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  	min-height: 500px;
+padding: 10px;
+   }
 
 .single-column .left-sidebar {
   display: none; }

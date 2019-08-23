@@ -1177,7 +1177,7 @@ background-color:white;
 .blog_right_sidebar {
 	border: 1px solid #f9f9f9;
 	background: #f9f9fd;
-	padding: 30px
+	padding: 40px 30px 30px 30px;
 }
 
 .blog_right_sidebar .widget_title {

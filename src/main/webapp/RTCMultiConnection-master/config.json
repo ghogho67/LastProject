@@ -1,6 +1,6 @@
 {
   "socketURL": "/",
-  "dirPath": ""
+  "dirPath": "",
   "homePage": "./dashboard/index.html",
   "socketMessageEvent": "RTCMultiConnection-Message",
   "socketCustomEvent": "RTCMultiConnection-Custom-Message",
@@ -8,7 +8,7 @@
   "enableLogs": "false",
   "autoRebootServerOnFailure": "false",
   "isUseHTTPs": "true",
-  "sslKey": "./fake-keys/privatekey.pem"",
+  "sslKey": "./fake-keys/privatekey.pem",
   "sslCert": "./fake-keys/certificate.pem",
   "sslCabundle": "",
   "enableAdmin": "false",

@@ -9,9 +9,17 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 
+<link rel="stylesheet" type="text/css" href="${cp}/resource/bootstrap/js/datepicker3.css" />
+<script type="text/javascript" src="${cp}/resource/bootstrap/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="${cp}/resource/bootstrap/js/bootstrap-datepicker.kr.js"></script>
 <script>
 $(document).ready(function() {
 	getLocation();
+	
+	$('#dateRangePicker').datepicker({
+		 format: "yyyy-mm-dd",
+		 language: "kr"
+		 });
 	
 	
 	$('#date1').change(function() {
@@ -146,6 +154,7 @@ function startDataLayer(xmlDoc) {
 							<form id="frm" action="${cp}/mypage/stress">
 								<input type="hidden" id="mem_id" value="${MEM_INFO.mem_id}" name="mem_id">
 								<input type="date" id="date1" name="gps_time">
+								<div class="input-group input-append date" id="dateRangePicker"> </div>
 							</form>
 
 						</div>

@@ -92,7 +92,7 @@ public class MatchingServiceTest extends LogicTestEnv {
 		mvo.setMat_end("2019-08-05T17:04");
 		mvo.setMat_bc("#D25565");
 		mvo.setMat_tc("#ffffff");
-		mvo.setMat_allDay(false);
+//		mvo.setMat_allDay(false);
 		mvo.setMat_type("방문간호");
 		mvo.setMem_id("brown");
 		/*** When ***/
