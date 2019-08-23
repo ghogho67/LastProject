@@ -52,8 +52,7 @@ public class CategoryDaoTest extends LogicTestEnv{
 	public void getMinorCategoryList() {
 		
 		/***Given***/
-		
-		int cate_paerent_id;p
+		int cate_paerent_id;
 		/***When***/
 		
 		/***Then***/
