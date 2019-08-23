@@ -25,6 +25,10 @@
 }
 </style>
 <script>
+
+
+
+
 var socket;
 
 function initSocket() {

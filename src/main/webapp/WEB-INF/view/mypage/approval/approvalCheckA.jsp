@@ -276,7 +276,6 @@ p {
 							<div class="single-post row">
 
 								<!-- 구글Chart API - 회원별 비중-->
-								<!-- 									<div id="piechart" style="width: 1000px; height: 500px;"></div> -->
 								<div id="piechart" style="width: 470px; height: 350px;"></div>
 								<input type="hidden" name="manager" id="manager"> <input
 									type="hidden" name="nomalMember" id="nomalMember"> <input

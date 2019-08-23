@@ -18,16 +18,9 @@
 <body>
 
    <tiles:insertAttribute name="header" />
-   <div class="container-fluid">
-      <div class="row">
          <tiles:insertAttribute name="left" />
-      </div>
-         <br> <br> <br>
-         <div>
             <tiles:insertAttribute name="body" />
-         </div>
       
-   </div>
 
 </body>
 </html>
