@@ -241,7 +241,7 @@ public class MatchingController {
 		model.addAttribute("memVo", memberService.getMemVo(cw_mem_id));
 		model.addAttribute("mem_id", mem_id);
 //		model.addAttribute("list", matchingService.getCWMatchingList(cw_mem_id));
-		return "/matching/meeting.tiles";
+		return "/matching/meeting";
 	}
 
 	@RequestMapping(path = "/meetjson")

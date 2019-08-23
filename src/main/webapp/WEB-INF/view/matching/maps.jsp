@@ -121,6 +121,21 @@ img {
 .change_color {
 	background-color: #d9d9d9;
 }
+
+#titlee h2, #pzone h2 {
+	font-size: 40px;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+#titlee h2 {
+	padding: 25px 35px;
+}
+
+#titlee h2 span {
+	font-weight: bold;
+	color: #473fa0;
+}
 </style>
 
 <meta charset="UTF-8">
@@ -469,54 +484,71 @@ img {
 </script>
 </head>
 <body>
-	<!--  style="width: 100%; height: auto; float:left;" -->
+
+
+
+
+
 	<div class="container">
-		<pre>
-view/maps.jsp 		mem_gender: ${mem_gender }	cw_driver : ${cw_driver } mem_birth : ${mem_birth }
-</pre>
-		<div id="map" style="width: 75%; height: 700px; float: left;"></div>
-		<div>
-			<ul id="cwUl">
-				<c:forEach items="${cwList }" var="cw">
-					<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
-					<input type="hidden" name="add" value="${cw.mem_add1 }">
-					<input type="hidden" name="cw_driver" value="${cw.cw_driver }">
-				</c:forEach>
-			</ul>
+		<div id="titlee">
+			<h2>
+				<span>요양보호사 찾기</span>
+			</h2>
+		</div>
+
+		<div style="width: 1250px;">
+			<div class="card">
+				<div class="card-body">
+
+					<div id="map" style="width: 75%; height: 700px; float: left;"></div>
+					<div>
+						<ul id="cwUl">
+							<c:forEach items="${cwList }" var="cw">
+								<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
+								<input type="hidden" name="add" value="${cw.mem_add1 }">
+								<input type="hidden" name="cw_driver" value="${cw.cw_driver }">
+							</c:forEach>
+						</ul>
+					</div>
+					<div id="ch"
+						style="width: 25%; height: auto; padding-bottom: 20px; float: left; background-color: #f0f1f3;">
+						<input type="button" id="GA" value="전체" class="mem_gender">
+						<input type="button" id="GM" value="남자" class="mem_gender">
+						<input type="button" id="GF" value="여자" class="mem_gender">
+						<br> <input type="button" id="DA" value="전체"
+							class="cw_driver"> <input type="button" id="DY"
+							value="운전가능" class="cw_driver"> <input type="button"
+							id="DN" value="운전불가" class="cw_driver"><br> <input
+							type="button" id="BA" value="전체" class="mem_birth"> <input
+							type="button" id="B50" value="50세↓" class="mem_birth"> <input
+							type="button" id="B5060" value="50~60세" class="mem_birth">
+						<input type="button" id="B60" value="60세↑" class="mem_birth"><br>
+						<!-- 				<input type="button"  value="전체" class="career">  -->
+						<!-- 				<input type="button" value="3년이하" class="career">  -->
+						<!-- 				<input type="button" value="3~5년" class="career"> -->
+						<!-- 				<input type="button" value="5년 이상" class="career"> -->
+
+
+						<form id="choose" class="form-horizontal" role="form"
+							action="${cp}/matching/choose" method="post"
+							enctype="multipart/form-data">
+							<input type="hidden" id="mem_gender" name="mem_gender"
+								value="${mem_gender }"> <input type="hidden"
+								id="cw_driver" name="cw_driver" value="${cw_driver }"> <input
+								type="hidden" id="mem_birth" name="mem_birth"
+								value="${mem_birth}">
+							<!-- 				<input type = "hidden" id="career" name="career" value = "all"> -->
+						</form>
+					</div>
+					<form>
+						<div id="htmltest"
+							style="overflow-y: scroll; float: left; width: 25%; height: 580px; background-color: #f0f1f3;"></div>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div id="ch"
-		style="width: 25%; height: 170px; float: left; background-color: #f0f1f3;">
-		<input type="button" id="GA" value="전체" class="mem_gender"> <input
-			type="button" id="GM" value="남자" class="mem_gender"> <input
-			type="button" id="GF" value="여자" class="mem_gender"> <br>
-		<input type="button" id="DA" value="전체" class="cw_driver"> <input
-			type="button" id="DY" value="운전가능" class="cw_driver"> <input
-			type="button" id="DN" value="운전불가" class="cw_driver"><br>
-		<input type="button" id="BA" value="전체" class="mem_birth"> <input
-			type="button" id="B50" value="50세↓" class="mem_birth"> <input
-			type="button" id="B5060" value="50~60세" class="mem_birth"> <input
-			type="button" id="B60" value="60세↑" class="mem_birth"><br>
-		<!-- 				<input type="button"  value="전체" class="career">  -->
-		<!-- 				<input type="button" value="3년이하" class="career">  -->
-		<!-- 				<input type="button" value="3~5년" class="career"> -->
-		<!-- 				<input type="button" value="5년 이상" class="career"> -->
 
 
-		<form id="choose" class="form-horizontal" role="form"
-			action="${cp}/matching/choose" method="post"
-			enctype="multipart/form-data">
-			<input type="hidden" id="mem_gender" name="mem_gender"
-				value="${mem_gender }"> <input type="hidden" id="cw_driver"
-				name="cw_driver" value="${cw_driver }"> <input type="hidden"
-				id="mem_birth" name="mem_birth" value="${mem_birth}">
-			<!-- 				<input type = "hidden" id="career" name="career" value = "all"> -->
-		</form>
-	</div>
-	<form>
-		<div id="htmltest"
-			style="overflow-y: scroll; float: left; width: 25%; height: 530px; background-color: #f0f1f3;"></div>
-	</form>
-	</div>
 </body>
 </html>
