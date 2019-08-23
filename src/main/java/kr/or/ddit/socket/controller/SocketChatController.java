@@ -50,7 +50,7 @@ public class SocketChatController {
 		map.put("chat_id", chat_id);
 		map.put("newmsgyn", "N");
 		
-//		chatMemService.messageUpdate(map);
+		chatMemService.messageUpdate(map);
 		
 		
 		List<ChatTextVo> chatTextList = chatTextService.getChatTextList(chat_id);

@@ -111,6 +111,8 @@ public class SocketChatHandler extends TextWebSocketHandler {
 						mu.put("newmsgyn","N");
 					
 					int update = chatMemService.messageUpdate(mu);// 메세지 여부 업데이트 쿼리
+					
+					
 	//				int mapChat_id = (int) map.get("chat_id");
 	//				
 	//				Map<String, Object> m = currentSession.getAttributes();
