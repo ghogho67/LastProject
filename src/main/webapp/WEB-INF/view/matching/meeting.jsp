@@ -171,7 +171,6 @@ table.cw td {
 					// if ( everythings_fine ) {
 					var msg = '결제가 완료되었습니다.';
 					location.href = "/mypage/scheduleView";
-					alert(data);
 					// msg += '\n고유ID : ' + rsp.imp_uid;
 					// msg += '\n상점 거래ID : ' + rsp.merchant_uid;
 					// msg += '\결제 금액 : ' + rsp.paid_amount;
@@ -190,6 +189,7 @@ table.cw td {
 			}
 		});
 	}
+	
 </script>
 </head>
 
@@ -197,6 +197,7 @@ table.cw td {
 
 
 	<div class="container style="width: 1000px; height: 1000px;">
+	<pre>${list }</pre>
 		<div style="width: 50%; float: left; height: 350px;">
 			<label for="userNm" class="col-sm-2 control-label">${path }</label> <img
 				id="img" src="${cp }/matching/photo?mem_id=anni"
@@ -464,7 +465,7 @@ table.cw td {
 					<div class="modal-footer modalBtnContainer-addEvent">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 						<button type="button" class="btn btn-primary" id="save-event2"
-							onclick="dateCheck">저장</button>
+							>저장</button>
 					</div>
 					<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->
 					<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> -->

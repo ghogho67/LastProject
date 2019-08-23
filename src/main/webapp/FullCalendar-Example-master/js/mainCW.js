@@ -6,7 +6,6 @@ function getDisplayEventDate(event) {
 
   var displayEventDate;
 
-  console.log(event);
   if (event.allDay == false) {
 	  
     var startTimeEventInfo = moment(event.start).format('HH:mm');
