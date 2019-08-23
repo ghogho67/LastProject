@@ -422,7 +422,7 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 <body>
 
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
 <%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
 
 		<div style="    padding-top: 50px;

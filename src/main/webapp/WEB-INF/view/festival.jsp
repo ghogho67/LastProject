@@ -363,13 +363,13 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 	
 
         <div class="container">
-	 <span style="font-size:30px;">자유게시판</span>
-	 <br>
-            <div class="row">
+<!-- 		 <span style="font-size:30px;">자유게시판</span> -->
+		 <br>
+	            <div class="row">
            
 
 	
-           <section class="board-list">
+<!--            <section class="board-list"> -->
 
 		<div class="board-list-in">
 			<div class="board-top">
@@ -460,7 +460,7 @@ var lastDate = new Date(now.getFullYear(), 12,0).format("yyyyMMdd");
 
 
 
-	</section>
+<!-- 	</section> -->
               
 
 

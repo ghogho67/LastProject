@@ -27,6 +27,11 @@
 	and mem_id != #{mem_id}
 </select>
 
+<select id="selectChatmemVoList" parameterType="String" resultType="chatMemVo">
+ select* from chatmem where mem_id = #{mem_id}
+
+</select>
+
 
 	
 	
