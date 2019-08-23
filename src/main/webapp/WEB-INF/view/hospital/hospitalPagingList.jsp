@@ -244,7 +244,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 	 </form>
 
 	<div class="container">
-		<div style="width: 1250px;">
+		<div style=" padding-top:100px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
 							
@@ -300,7 +300,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 				</div>
 			</div>
 			
-			<div class="demo" style="position: absolute; right: 20%;">
+			<div class="demo" style="position: absolute; right: 30%;">
 				<nav class="pagination-outer" aria-label="Page navigation">
 					<ul class="pagination">
 						<c:choose>

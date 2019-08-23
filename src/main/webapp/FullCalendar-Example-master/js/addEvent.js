@@ -22,6 +22,8 @@ var editColor = $('#edit-color');
 var editDesc = $('#edit-desc');
 
 
+
+
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
 
@@ -87,27 +89,20 @@ var newEvent = function (startDate, endDate, eventType) {
     	var myDate = new Date();
 		var startDate = new Date(editStartDate.val());
 		var endDate = new Date(editEndDate.val());
-		alert("myDate :" +myDate);
-		alert("startDate : " + startDate);
-		alert("myDate.getTime() : " + myDate.getTime());
 		myGetTime = myDate.getTime();
 		startGetTime =startDate.getTime();
-		alert("startDate.getTime() : " + startDate.getTime());
-		alert("myGetTime - startGetTime : "+(myGetTime - startGetTime));
 		if (myDate.getTime() - startDate.getTime() > 0) {
 			alert("오늘 날짜 이후로 선택해주세요");
 			return;
 		}
 		dif = startDate.getTime() - endDate.getTime();
-		alert("dif: "+dif);
 		if (dif > 0) {
 			alert("종료 날짜가 시작 날짜보다 앞섭니다 다시 선택해 주세요");
 			return;
 		}
 		
     	 
-    	  eventModal.modal('hide');
-    	  alert(dayInfo);
+    	  
     	  // 두 날짜 사이의 요일 수를 출력해준다 (금요일, 토요일, 일요일)
     	  // parm d1 : 20170101
     	  // parm d2 : 20171003
@@ -115,7 +110,6 @@ var newEvent = function (startDate, endDate, eventType) {
 // var sDate =new
 // Date(d1.substr(0,4),Number(d1.substr(4,2))-1,Number(d1.substr(6)));
     	  var sDate = new Date(editStartDate.val());
-    	  alert(sDate);
 // var eDate =new
 // Date(d2.substr(0,4),Number(d2.substr(4,2))-1,Number(d2.substr(6)));
     	  var eDate = new Date(editEndDate.val());
@@ -123,8 +117,13 @@ var newEvent = function (startDate, endDate, eventType) {
     	  var count=0;
     	  var tmp;
     	  for (var i=0; i<=(eDate-sDate)/1000/60/60/24; i++) {
+// alert("i : "+ i);
+// alert("(eDate-sDate)/1000/60/60/24 : "+(eDate-sDate)/1000/60/60/24);
     		  tmp=new Date(sDate);
+// alert("tmp.getDate() : "+tmp.getDate());
+    		  
     		  tmp.setDate(tmp.getDate()+i);
+// alert("tmp.getDate(): "+tmp.getDate())
     		  // 0(일요일), 5(금요일), 6(토요일)
     		  for(j=0; j<dayInfo.length; j++){
     			  if(tmp.getDay() == dayInfo[j]){
@@ -136,35 +135,128 @@ var newEvent = function (startDate, endDate, eventType) {
 // count++;
 // }
     	  }
-    	  alert(count);
-    	  alert(count*timeInfo.length);
-    	  var time =" ";
-    	  for(k=0; k<dayInfo.length; k++){
-    		  if(dayInfo[k]==1){
-    			  time+= " 09:00~10:00";
-    			  alert(time);
-    		  } 
-    		  if(dayInfo[k]==2){
-    			  time+= " 10:30~11:30";
-    			  alert(time);
-    		  } 
-    		  if(dayInfo[k]==3){
-    			  time+= " 12:00~13:00";
-    			  alert(time);
-    		  } 
-    		  if(dayInfo[k]==4){
-    			  time+= " 13:30~14:30";
-    			  alert(time);
-    		  } 
-    		  if(dayInfo[k]==5){
-    			  time+= " 15:00~16:00";
-    			  alert(time);
-    		  } 
-    		  if(dayInfo[k]==6){
-    			  time+= " 16:30~17:30";
-    			  alert(time);
-    		  } 
+    	  
+// alert("'${list}'"+'${list}');
+    	  alert("cw_mem_id: " +$("td#mem_id").text());
+    	  
+    	  var ajaxlist;
+    	  $.ajax({
+    		  type : "post",
+              url: "/matching/dateCheck",
+              data : {
+            	  cw_mem_id : $("td#mem_id").text()
+              },
+              success: function (response) {
+            	  ajaxlist = response.list;
+            	  alert(ajaxlist);
+              },
+              error:function(request,status,error){
+                  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+              }
+
+          });
+// $.ajax({
+// type : "POST",
+// url: "/matching/dateCheck?cw_mem_id='ahri'",
+// dataType : "json",
+// contentType: "application/json",
+// success: function (data) {
+// alert(data);
+// },
+// error:function(request,status,error){
+// alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+// }
+//
+// });
+    	  
+    	  
+    	  alert("ajaxlist.length"+ajaxlist.length);
+    	  chooseStDate = new Date(editStartDate.val());
+    	  chooseEndDate = new Date(editEndDate.val());
+    	  
+      	  for(i=0; i<ajaxlist.length; i++){
+    		  listDateString = ajaxlist[i].c_start;
+    		  listTimeString = ajaxlist[i].c_end;
     		  
+    		  listDateDate = new Date(listDateString);
+    		  console.log("chooseStDate : "+chooseStDate);
+// for(j=0; j<)
+// console.log("i : "+i);
+// var string = [];
+    		  chooseStDate.setDate(chooseStDate.getDate()+1);
+    		  chooseStDate.getTime();
+    		  console.log("선택날짜+1일 한 getTime : "+chooseStDate.getTime());
+    		  console.log("선택날짜+1일 date : "+chooseStDate);
+    		  console.log("가져온 list getTime() : "+listDateDate.getTime());
+
+    		  if(chooseStDate.getTime() == listDateDate.getTime()){
+    			  alert("same");
+    			  alert("선택날짜+1일 date : "+chooseStDate);
+    			  alert("가져온 date : "+listDateDate);
+    			  alert(timeInfo);
+    			  alert("시간 비교 돌입");
+    			  alert("가져온 시간"+listTimeString);
+        			  for(k=0; k<timeInfo.length; k++){
+        				  alert("timeInfo[k] : "+timeInfo[k]);
+        			  if(listTimeString == "09:00" && timeInfo[k]==1){
+        				  console.log("timeInfo[k] : "+timeInfo[k]);
+        				  alert("요양보호사의 기존 일정과 겹칩니다. 일정을 확인해주세요");
+        				  return;
+        			  }
+        			  if(listTimeString == "10:30" && timeInfo[k]==2){
+        				  alert("timeInfo[k] : "+timeInfo[k]);
+        				  alert("요양보호사의 기존 일정과 겹칩니다. 일정을 확인해주세요");
+        				  return;
+        			  }
+        			  if(listTimeString == "12:00" && timeInfo[k]==3){
+        				  alert("timeInfo[k] : "+timeInfo[k]);
+        				  alert("요양보호사의 기존 일정과 겹칩니다. 일정을 확인해주세요");
+        				  return;
+        			  }
+        			  if(listTimeString == "13:30" && timeInfo[k]==4){
+        				  alert("timeInfo[k] : "+timeInfo[k]);
+        				  alert("요양보호사의 기존 일정과 겹칩니다. 일정을 확인해주세요");
+        				  return;
+        			  }
+        			  if(listTimeString == "15:00" && timeInfo[k]==5){
+        				  alert("timeInfo[k] : "+timeInfo[k]);
+        				  alert("요양보호사의 기존 일정과 겹칩니다. 일정을 확인해주세요");
+        				  return;
+        			  }
+        			  if(listTimeString == "16:30" && timeInfo[k]==6){
+        				  alert("timeInfo[k] : "+timeInfo[k]);
+        				  alert("요양보호사의 기존 일정과 겹칩니다. 일정을 확인해주세요");
+        				  return;
+        			  }
+        			  }
+    		  }
+// var chooseDate = new Date(editStartDate.val());
+// var startDate = new Date(startString);
+    	  }
+    	  
+    	  eventModal.modal('hide');
+    	  var sDate = new Date(editStartDate.val());
+    	  
+    	  var time =" ";
+    	  for(k=0; k<timeInfo.length; k++){
+    		  if(timeInfo[k]==1){
+    			  time+= " 09:00~10:00";
+    		  } 
+    		  if(timeInfo[k]==2){
+    			  time+= " 10:30~11:30";
+    		  } 
+    		  if(timeInfo[k]==3){
+    			  time+= " 12:00~13:00";
+    		  } 
+    		  if(timeInfo[k]==4){
+    			  time+= " 13:30~14:30";
+    		  } 
+    		  if(timeInfo[k]==5){
+    			  time+= " 15:00~16:00";
+    		  } 
+    		  if(timeInfo[k]==6){http:// localhost/matching/meet?cw_mem_id=a!1$m#
+    			  time+= " 16:30~17:30";
+    		  } 
     	  }
     	  
     	  $("#Ledit-startTime").text("서비스 시간 :"+time);
@@ -183,9 +275,7 @@ var newEvent = function (startDate, endDate, eventType) {
     
     $('#save-event').on('click', function () {
     	approvalModal.modal('hide');
-    	alert(dayInfo);
         var eventData = [{
-
         	title: editTitle.val(),
             description: editDesc.val(),
 			startTime: editStartTime.val(),
@@ -200,7 +290,6 @@ var newEvent = function (startDate, endDate, eventType) {
             textColor: '#ffffff',
             allDay: false,
             c_worker:$("td#mem_id").text()
-
         }];
 
 

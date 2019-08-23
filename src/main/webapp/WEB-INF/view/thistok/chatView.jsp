@@ -24,6 +24,8 @@
 	margin: 0 auto;
 }
 
+
+
 #logo {
 	height: 90px;
 	width: 250px;

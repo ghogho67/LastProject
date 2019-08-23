@@ -14,8 +14,6 @@
 
 
 <style type="text/css">
-
-
 #titlee h2, #pzone h2 {
 	font-size: 40px;
 	font-weight: normal;
@@ -179,7 +177,7 @@ td {
 	position: absolute;
 	top: 0;
 	right: -25px;
-/* 	left : 2px; */
+	/* 	left : 2px; */
 	width: 32px;
 	height: 38px;
 	border: none;
@@ -210,182 +208,182 @@ td {
 
 
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 
-	$("#searchBtn").on("click", function() {
-		console.log("searchBtn click");
-		console.log($("#nh_add").val());
-		$("#frm2").submit();
+		$("#searchBtn").on("click", function() {
+			console.log("searchBtn click");
+			console.log($("#nh_add").val());
+			$("#frm2").submit();
+		});
+
 	});
 
-});
+	function boardPagingListAjaxHtml(page, pageSize) {
+		$("#page").val(page);
+		$("#pageSize").val(pageSize);
+		$("#pageForm").submit();
 
-function boardPagingListAjaxHtml(page, pageSize) {
-	$("#page").val(page);
-	$("#pageSize").val(pageSize);
-	$("#pageForm").submit();
-	
 	}
-
-
 </script>
 
 
 </head>
 
 <body>
-	
-	 <form id="pageForm" action="${cp}/hospital/pagingList">
-	 	<input type="hidden" name = "page" id="page">
-	 	<input type="hidden" name = "pageSize" id="pageSize">
-	 </form>
+
+	<form id="pageForm" action="${cp}/hospital/pagingList">
+		<input type="hidden" name="page" id="page"> <input
+			type="hidden" name="pageSize" id="pageSize">
+	</form>
 
 	<div class="container">
-		<div style="width: 1250px;">
+		<div style="  padding-top:100px;width: 1250px;">
 			<div class="card">
 				<div class="card-body">
-						
-						<div class="d1">
-							<form class="for" id="frm2" action="${cp }/nursingHome/searchNursing" method="post">
-								<select id="searchType" name="searchType"
-									style="position: absolute; z-index: 999;">
-									<option value="all">동 검색</option>
-								</select> <input type="text" placeholder="동을 입력해 주세요" name="nh_add" id="nh_add">
-								<button type="button" id="searchBtn"></button>
-							</form>
-						</div>
-						
-						<div id="titlee">
-							<h2>
-								<span>요양시설 평점조회</span> 대분류
-							</h2>
-						</div>
-						
-						
-					<hr>
-					<form id="frm" action="${cp }/nursingHome/searchPagingList" method="get">
-					<input type="hidden" class="nh_id" id="nh_id" name="nh_id">
-					<div class="table-responsive">
-						<table class="table center-aligned-table">
-							<thead>
-							<tr>
-								<th>NO</th>
-<!-- 								<th>요양시설 아이디</th> -->
-								<th>요양시설 명</th>
-								<th>주소</th>
-								<th>전화번호</th>
-								<th>평점</th>
-							</tr>
-							</thead>
-							<tbody>
-							<c:forEach items="${nursingList }" var="vo" varStatus="status">
-								<tr class="nurTr" data-nh_id="${vo.nh_id }">
-									<td>${vo.rn }</td>
-<%-- 									<td class="nh_id">${vo.nh_id }</td> --%>
-									<td>${vo.nh_nm }</td>
-									<td>${vo.nh_add }</td>
-									<td>${vo.nh_phone }</td>
-									<td>${vo.nh_grade }</td>
-								</tr>
-							</c:forEach>
-							</tbody>
-							
-						</table>
+
+					<div class="d1">
+						<form class="for" id="frm2"
+							action="${cp }/nursingHome/searchNursing" method="post">
+							<select id="searchType" name="searchType"
+								style="position: absolute; z-index: 999;">
+								<option value="all">동 검색</option>
+							</select> <input type="text" placeholder="동을 입력해 주세요" name="nh_add"
+								id="nh_add">
+							<button type="button" id="searchBtn"></button>
+						</form>
 					</div>
-					
-					
+
+					<div id="titlee">
+						<h2>
+							<span>요양시설 평점조회</span> 대분류
+						</h2>
+					</div>
+
+
+					<hr>
+					<form id="frm" action="${cp }/nursingHome/searchPagingList"
+						method="get">
+						<input type="hidden" class="nh_id" id="nh_id" name="nh_id">
+						<div class="table-responsive">
+							<table class="table center-aligned-table">
+								<thead>
+									<tr>
+										<th>NO</th>
+										<!-- 								<th>요양시설 아이디</th> -->
+										<th>요양시설 명</th>
+										<th>주소</th>
+										<th>전화번호</th>
+										<th>평점</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${nursingList }" var="vo" varStatus="status">
+										<tr class="nurTr" data-nh_id="${vo.nh_id }">
+											<td>${vo.rn }</td>
+											<%-- 									<td class="nh_id">${vo.nh_id }</td> --%>
+											<td>${vo.nh_nm }</td>
+											<td>${vo.nh_add }</td>
+											<td>${vo.nh_phone }</td>
+											<td>${vo.nh_grade }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+
+							</table>
+						</div>
+
+
 					</form>
-		
-					
+
+
 				</div>
 			</div>
-			
-			<div class="demo" style="position: absolute; right: 20%;">
-							<nav class="pagination-outer" aria-label="Page navigation">
-								<ul class="pagination">
-									<c:choose>
-										<c:when test="${pageVo.page==1}">
-											<li class="page-item prev disabled"><a href="#"
-												class="page-link" aria-label="Previous"> <span
-													aria-hidden="true">«</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-hidden="Previous"
-												href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
-													aria-hidden="true">«</span></a></li>
 
-										</c:otherwise>
-									</c:choose>
+			<div class="demo" style="position: absolute; right: 25%;">
+				<nav class="pagination-outer" aria-label="Page navigation">
+					<ul class="pagination">
+						<c:choose>
+							<c:when test="${pageVo.page==1}">
+								<li class="page-item prev disabled"><a href="#"
+									class="page-link" aria-label="Previous"> <span
+										aria-hidden="true">«</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									aria-hidden="Previous"
+									href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
+										aria-hidden="true">«</span></a></li>
 
-									<c:choose>
-										<c:when test="${pageVo.page==1}">
-											<li class="page-item prev disabled"><a href="#"
-												class="page-link" aria-label="Previous"> <span
-													aria-hidden="true">‹</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-label="Previous"
-												href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
-													aria-hidden="true">‹</span></a></li>
-										</c:otherwise>
-									</c:choose>
+							</c:otherwise>
+						</c:choose>
 
-									<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
-										<c:choose>
-											<c:when test="${pageVo.page == i}">
-												<li class="page-item active"><a class="page-link"
-													href="#">${i}</a></li>
-											</c:when>
-											<c:otherwise>
-												<li><a class="page-link"
-													href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
-											</c:otherwise>
-										</c:choose>
+						<c:choose>
+							<c:when test="${pageVo.page==1}">
+								<li class="page-item prev disabled"><a href="#"
+									class="page-link" aria-label="Previous"> <span
+										aria-hidden="true">‹</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									aria-label="Previous"
+									href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
+										aria-hidden="true">‹</span></a></li>
+							</c:otherwise>
+						</c:choose>
 
-									</c:forEach>
+						<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
+							<c:choose>
+								<c:when test="${pageVo.page == i}">
+									<li class="page-item active"><a class="page-link" href="#">${i}</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a class="page-link"
+										href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
+								</c:otherwise>
+							</c:choose>
 
-									<c:choose>
-										<c:when test="${pageVo.page == lastpaginationSize}">
-											<li class="page-item next disabled"><a href="#"
-												class="page-link" aria-label="Next"> <span
-													aria-hidden="true">›</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-label="Next"
-												href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
-													aria-hidden="true">›</span></a></li>
-										</c:otherwise>
-									</c:choose>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pageVo.page == lastpaginationSize}">
+								<li class="page-item next disabled"><a href="#"
+									class="page-link" aria-label="Next"> <span
+										aria-hidden="true">›</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									aria-label="Next"
+									href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
+										aria-hidden="true">›</span></a></li>
+							</c:otherwise>
+						</c:choose>
 
 
-									<c:choose>
-										<c:when test="${pageVo.page == lastpaginationSize}">
-											<li class="page-item next disabled"><a href="#"
-												class="page-link" aria-label="Next"><span
-													aria-hidden="true">»</span></a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												aria-label="Next"
-												href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
-													aria-hidden="true">»</span></a></li>
-										</c:otherwise>
-									</c:choose>
+						<c:choose>
+							<c:when test="${pageVo.page == lastpaginationSize}">
+								<li class="page-item next disabled"><a href="#"
+									class="page-link" aria-label="Next"><span
+										aria-hidden="true">»</span></a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									aria-label="Next"
+									href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
+										aria-hidden="true">»</span></a></li>
+							</c:otherwise>
+						</c:choose>
 
-								</ul>
-							</nav>
-						</div>
-			
+					</ul>
+				</nav>
+			</div>
+
 		</div>
 	</div>
-	
-	
+
+
 
 
 </body>

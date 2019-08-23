@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.matching.matching.model.CalendarVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
@@ -65,7 +68,7 @@ public class MatchingController {
 
 	public List<MemberVo> selMem_gender(List<MemberVo> cwList, String mem_gender) {
 		logger.debug("selMem_gender");
-		logger.debug("mem_gender:{}",mem_gender);
+		logger.debug("mem_gender:{}", mem_gender);
 		List<MemberVo> gList = new ArrayList<MemberVo>();
 
 		if (mem_gender.equals("M")) {
@@ -90,7 +93,7 @@ public class MatchingController {
 
 	public List<MemberVo> selCw_driver(List<MemberVo> cwList, String cw_driver) {
 		logger.debug("selCw_driver");
-		logger.debug("cw_driver:{}",cw_driver);
+		logger.debug("cw_driver:{}", cw_driver);
 		List<MemberVo> gList = new ArrayList<MemberVo>();
 
 		if (cw_driver.equals("N")) {
@@ -208,8 +211,41 @@ public class MatchingController {
 		return "/matching/maps.tiles";
 	}
 
+	@RequestMapping(path = "/dateCheck", method = RequestMethod.POST)
+	public String dateCheck(Model model, String cw_mem_id, String mem_id, HttpSession session)
+			throws JsonProcessingException {
+
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		mem_id = memberVo.getMem_id();
+
+		
+		logger.debug("☞cw_mem_id:{}",cw_mem_id);
+		List<MatchingVo> mlist = matchingService.getCWMatchingList(cw_mem_id);
+		logger.debug("☞mlist:{}",mlist);
+		logger.debug("☞mlist.size():{}",mlist.size());
+		List<CalendarVo> list = new ArrayList<CalendarVo>();
+
+			for (int i = 0; i < mlist.size(); i++) {
+			CalendarVo vo = new CalendarVo();
+			
+			vo.setC_start(mlist.get(i).getMat_st().substring(0, 10));
+			vo.setC_end(mlist.get(i).getMat_st().substring(11, 16));
+			
+			list.add(vo);
+		}
+
+//		ObjectMapper mapper = new ObjectMapper();
+//		String jsonText = mapper.writeValueAsString(list);
+//		model.addAttribute("json", jsonText);
+		logger.debug("☞list:{}",list);
+		model.addAttribute("list", list);
+//		model.addAttribute("list", matchingService.getCWMatchingList(cw_mem_id));
+		return "jsonView";
+	}
+
 	@RequestMapping(path = "/meet", method = RequestMethod.GET)
-	public String meeting(Model model, String cw_mem_id, String mem_id, HttpSession session) {
+	public String meeting(Model model, String cw_mem_id, String mem_id, HttpSession session)
+			throws JsonProcessingException {
 
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		mem_id = memberVo.getMem_id();
@@ -235,13 +271,17 @@ public class MatchingController {
 			list.add(vo);
 		}
 
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonText = mapper.writeValueAsString(list);
+		model.addAttribute("json", jsonText);
+
 		model.addAttribute("carList", carList);
 		model.addAttribute("loList", loList);
 		model.addAttribute("list", list);
 		model.addAttribute("memVo", memberService.getMemVo(cw_mem_id));
 		model.addAttribute("mem_id", mem_id);
 //		model.addAttribute("list", matchingService.getCWMatchingList(cw_mem_id));
-		return "/matching/meeting.tiles";
+		return "/matching/meeting";
 	}
 
 	@RequestMapping(path = "/meetjson")
