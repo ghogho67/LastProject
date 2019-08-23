@@ -53,7 +53,7 @@ public class CategoryDaoTest extends LogicTestEnv{
 		
 		/***Given***/
 		
-		int cate_paerent_id;p
+		int cate_paerent_id;
 		/***When***/
 		
 		/***Then***/

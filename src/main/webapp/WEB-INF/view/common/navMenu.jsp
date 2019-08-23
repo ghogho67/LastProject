@@ -48,6 +48,7 @@
 						 </c:if>
 					</c:forEach>
 							</ul>
+							</li>
 					
 					</c:otherwise>
 				</c:choose>
