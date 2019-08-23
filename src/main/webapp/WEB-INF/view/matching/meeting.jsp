@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
@@ -16,10 +16,19 @@
 
 <style>
 .M_btn {
-	left: 0px;
-	bottom: 0px;
-	width: 200px;
-	height: 50px;
+	min-width: 150px;
+	padding: 0 25px;
+	width: 100%;
+	height: 48px;
+	line-height: 44px;
+	text-align: center;
+	background: #78d3f5;
+	box-sizing: border-box;
+	border-radius: 50px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	border: 2px solid #78d3f5;
 }
 
 #button {
@@ -96,14 +105,14 @@ table.cw td {
 </script>
 
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 
-	$("#videochat").on("click", function() {
-	
-		window.open("${cp}/matching/webRtc")
+		$("#videochat").on("click", function() {
+
+			window.open("${cp}/matching/webRtc")
+		});
+
 	});
-
-});
 	// import결제 함수
 	function requestPay() {
 		var app_pay;
@@ -188,9 +197,10 @@ $(document).ready(function() {
 		<div id="button" style="width: 40%; float: right; height: 400px;">
 			<input type="hidden" class="btn"><br> <br> <input
 				type="button" id="app" class="M_btn" value="매칭신청"><br>
-			<br> <input type="button" class="M_btn" value="화상채팅" id="videochat"><br>
-			<br> <input type="button" class="M_btn" value="채팅"> <input
-				type="hidden" name="mem_id" value="${mem_id}">
+			<br> <input type="button" class="M_btn" value="화상채팅"
+				id="videochat"><br> <br> <input type="button"
+				class="M_btn" value="채팅"> <input type="hidden" name="mem_id"
+				value="${mem_id}">
 		</div>
 	</div>
 	<div class="container style="width: 1000px; height: 1000px;">
@@ -235,19 +245,19 @@ $(document).ready(function() {
 						</tr>
 						<tr>
 							<th>서비스 가능 지역</th>
-							<td>
-							<c:forEach items="${loList }" var= "lo">
+							<td><c:forEach items="${loList }" var="lo">
 							${lo.loc_dong },							
-							</c:forEach>
-							</td>
+							</c:forEach></td>
 						</tr>
-							
-							<c:forEach items="${carList }" var= "car" begin="1">
+
+						<c:forEach items="${carList }" var="car" begin="1">
 							<tr>
-							<th>경력</th>
-							<td>내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 : ${car.career_end_dt } 소속 기관 : ${car.career_hos }</td></tr>
-							</c:forEach>
-							
+								<th>경력</th>
+								<td>내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일
+									: ${car.career_end_dt } 소속 기관 : ${car.career_hos }</td>
+							</tr>
+						</c:forEach>
+
 						<tr>
 							<th>요양보호사 아이디</th>
 							<td id="mem_id">${memVo.mem_id }</td>
@@ -323,12 +333,12 @@ $(document).ready(function() {
 					</div>
 					<div class="modal-body">
 
-						<div class="row">
-							<div class="col-xs-12">
-								<label hidden="true" class="col-xs-4" for="edit-allDay">하루종일</label>
-								<input class='allDayNewEvent' id="edit-allDay" type="checkbox" />
-							</div>
-						</div>
+<!-- 						<div class="row"> -->
+<!-- 							<div class="col-xs-12"> -->
+<!-- 								<label hidden="true" class="col-xs-4" for="edit-allDay">하루종일</label> -->
+<!-- 								<input class='allDayNewEvent' id="edit-allDay" type="checkbox" /> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 
 						<div class="row">
 							<div class="col-xs-12">
@@ -351,43 +361,36 @@ $(document).ready(function() {
 									id="edit-endDate" />
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<label class="col-xs-4" for="edit-StartTime">시작시간</label> <input
-									class="inputModal" type="text" name="edit-startTime"
-									id="edit-startTime" />
-							</div>
+<!-- 						<div class="row"> -->
+<!-- 							<div class="col-xs-12"> -->
+<!-- 								<label class="col-xs-4" for="edit-StartTime">시작시간</label> <input -->
+<!-- 									class="inputModal" type="text" name="edit-startTime" -->
+<!-- 									id="edit-startTime" /> -->
+<!-- 							</div> -->
 
-						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<label class="col-xs-4" for="edit-endTime">종료시간</label> <input
-									class="inputModal" type="text" name="edit-endTime"
-									id="edit-endTime" />
-							</div>
-						</div>
+<!-- 						</div> -->
+<!-- 						<div class="row"> -->
+<!-- 							<div class="col-xs-12"> -->
+<!-- 								<label class="col-xs-4" for="edit-endTime">종료시간</label> <input -->
+<!-- 									class="inputModal" type="text" name="edit-endTime" -->
+<!-- 									id="edit-endTime" /> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 
 						<div class="row" id="timeInfo">
 							<div class="col-xs-12">
-								<label class="col-xs-4" for="timeInfo">시간 선택</label> 
-								<label
-									class="checkbox-inline"> 
-									<input type="checkbox"
+								<label class="col-xs-4" for="timeInfo">시간 선택</label> <label
+									class="checkbox-inline"> <input type="checkbox"
 									name="timeInfo[]" value="1">09:00~10:00
-								</label> <label class="checkbox-inline"> 
-								<input type="checkbox"
+								</label> <label class="checkbox-inline"> <input type="checkbox"
 									name="timeInfo[]" value="2">10:30~11:30
-								</label> <label class="checkbox-inline"> 
-								<input type="checkbox"
+								</label> <label class="checkbox-inline"> <input type="checkbox"
 									name="timeInfo[]" value="3">12:00~13:00
-								</label> <label class="checkbox-inline"> 
-								<input type="checkbox"
+								</label> <label class="checkbox-inline"> <input type="checkbox"
 									name="timeInfo[]" value="4">13:30~14:30
-								</label> <label class="checkbox-inline"> 
-								<input type="checkbox"
+								</label> <label class="checkbox-inline"> <input type="checkbox"
 									name="timeInfo[]" value="5">15:00~16:00
-								</label> <label class="checkbox-inline"> 
-								<input type="checkbox"
+								</label> <label class="checkbox-inline"> <input type="checkbox"
 									name="timeInfo[]" value="6">16:30~17:00
 								</label>
 							</div>
@@ -395,35 +398,22 @@ $(document).ready(function() {
 
 						<div class="row" id="dayInfo">
 							<div class="col-xs-12">
-								<label class="col-xs-4" for="dayInfo[]">요일 선택</label> 
-								<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="1">일요일</label> 
-									<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="2">월요일</label> 
-									<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="3">화요일</label> 
-									<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="4">수요일</label> 
-									<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="5">목요일</label> 
-									<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="6">금요일</label> 
-									<label
-									class="checkbox-inline">
-									<input type="checkbox"
-									name="dayInfo[]" value="7">토요일</label>
+								<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label
+									class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="1">일요일
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="2">월요일
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="3">화요일
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="4">수요일
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="5">목요일
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="6">금요일
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									name="dayInfo[]" value="7">토요일
+								</label>
 							</div>
 						</div>
 
@@ -465,11 +455,11 @@ $(document).ready(function() {
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 						<button type="button" class="btn btn-primary" id="save-event2">저장</button>
 					</div>
-					<div class="modal-footer modalBtnContainer-modifyEvent">
-						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
-						<button type="button" class="btn btn-primary" id="updateEvent">저장</button>
-					</div>
+<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->
+<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> -->
+<!-- 						<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button> -->
+<!-- 						<button type="button" class="btn btn-primary" id="updateEvent">저장</button> -->
+<!-- 					</div> -->
 				</div>
 				<!-- /.modal-content -->
 			</div>
