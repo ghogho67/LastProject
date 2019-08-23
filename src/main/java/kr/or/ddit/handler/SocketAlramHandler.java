@@ -42,7 +42,7 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 		sessionList.add(session);
 		
 		
-		logger.debug("☞알람 접속 : {}", user);
+		logger.debug("☞아아알람 메인 접속!!알람 접속 : {}", user);
 		logger.debug("☞알람 접속session : {}", session);
 	}
 	

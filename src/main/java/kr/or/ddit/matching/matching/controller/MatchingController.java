@@ -491,7 +491,7 @@ public class MatchingController {
 				if (cal2.get(cal2.DAY_OF_WEEK) == dow[i]) {
 					startDate2 = startDate2.substring(0, 10) + "T" + startDate2.substring(11, startDate2.length());
 					endDate2 = startDate2.substring(0, 10) + "T" + endDate2.substring(11, endDate2.length());
-
+//
 					CalendarVo vo = new CalendarVo();
 					vo.setC_allDay("false");
 					vo.setC_backgroundColor(((String) list.get(0).get("backgroundColor")));
