@@ -65,7 +65,41 @@ function drawChart() {
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
   chart.draw(data, options);
+  
 }
+  
+  
+  //-----------------------
+  
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart1);
+
+ function drawChart1() {
+  
+  var data1 = google.visualization.arrayToDataTable([
+		 ['totalCount', 'mem_grade'],
+		 ['일반회원',  parseInt("${nomalmember}")],
+		 ['골드회원', parseInt("${goldmember}")],
+		 ['요양보호사',    parseInt("${careworker}")]
+	]
+	);
+	
+	var options1 = {
+			  title: '전체 매출중 등급별 비율 pie Chart'
+	};
+	
+	var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
+	
+	chart1.draw(data1, options1);
+  
+  
+}
+
+
+
+
+
+
 
 
 //pagenation
@@ -101,7 +135,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 						<div class="row">
 
 
-							<div class="col-lg-8">
+							<div class="col-lg-7">
 								<div class="blog_right_sidebar">
 						
 						
@@ -140,6 +174,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 							
 						</table>
 					</div>
+					
 					
 					
 					<div class="demo" style="position: absolute; right: 20%;">
@@ -235,15 +270,23 @@ function boardPagingListAjaxHtml(page, pageSize) {
 
 
 
-							<div class="col-lg-4 posts-list">
+							<div class="col-lg-5 posts-list">
 								<div class="single-post row">
 
-									<!-- 구글Chart API -->
+									<!-- 구글Chart API - 회원별 비중-->
 <!-- 									<div id="piechart" style="width: 1000px; height: 500px;"></div> -->
-									<div id="piechart" style="width: 470px; height: 500px;"></div>
+									<div id="piechart" style="width: 470px; height: 350px;"></div>
 									<input type="hidden" name = "manager" id="manager">
+									<input type="hidden" name = "nomalMember" id="nomalMember">
 									<input type="hidden" name = "goldMember" id="goldMember">
 									<input type="hidden" name = "careWorker" id="careWorker">
+									
+									
+									<!-- 구글Chart API 매출중 회원별 비율(관리자)-->
+									<div id="piechart1" style="width: 470px; height: 350px;"></div>
+									<input type="hidden" name = "nomalmember" id="nomalmember">
+									<input type="hidden" name = "goldMember" id="goldmember">
+									<input type="hidden" name = "careWorker" id="careworker">
 									
 								</div>
 							</div>

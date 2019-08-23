@@ -1,5 +1,7 @@
 package kr.or.ddit.config.spring;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.springframework.context.MessageSource;
@@ -27,6 +29,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
@@ -234,11 +237,7 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    public HttpSessionHandshakeInterceptor handshaker() {
    return new HttpSessionHandshakeInterceptor();
    }
-   
-
-   
-   
-   
+      
    /*
    @Autowired
    private ServletContext servletContext;

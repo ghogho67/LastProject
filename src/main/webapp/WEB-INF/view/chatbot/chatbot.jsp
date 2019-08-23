@@ -113,7 +113,7 @@ $(document).ready(function(){
 			$("#result").scrollTop($("#result")[0].scrollHeight);
 			$("#user").val("");
 			$("#user").focus();
-			$("#frm").attr("action", "${cp}/shelter/pagingList");
+			$("#frm").attr("action", "${cp}/shelter/pagingList?page=1&pageSize=10");
 			$("#frm").submit();
 		}else if(userquestion == '문화센터' || userquestion == '강좌' || userquestion =='강의' || 
 				userquestion == '교육' || userquestion =='문화' || userquestion =='수업'){
@@ -124,10 +124,90 @@ $(document).ready(function(){
 			$("#user").val("");
 			$("#user").focus();
 			$("#frm").submit();
-		}else if(userquestion == '메신저' || userquestion == '메세지' || userquestion == '쪽지'){
+		}else if(userquestion == '전국 행사 정보' || userquestion == '전국 행사정보' || userquestion == '전국행사 정보' || userquestion == '전국행사정보' ||
+				userquestion == '문화정보' || userquestion == '문화 정보' || userquestion == '문화 게시판' || userquestion == '문화게시판' || 
+				userquestion == '행사' | userquestion == '행사 정보' || userquestion == '축제' || userquestion == '축제 정보' || userquestion == '축제 게시판'){
 			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
-			$("#result").append("<div id='chatBotSay'> 메신저 : chatbot"+"</div><br>");
-// 			$("#frm").attr("action", "/chat/thistok?mem_id=${mem_id}");
+			$("#result").append("<div id='chatBotSay'> 전국행사정보  : chatbot "+"</div><br>");
+			$("#frm").attr("action", "${cp}/post/ImageBoard2");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '기부' || userquestion == '기부 하기' || userquestion == '도네이션' || userquestion == '도내이션' ||
+				userquestion == '도네' || userquestion == '도네'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 기부하기  : chatbot "+"</div><br>");
+			$("#frm").attr("action", "${cp}/donation/memberDonation");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '메신저' || userquestion == '메세지' || userquestion == '쪽지' || userquestion == 'thistolk' || 
+				userquestion == 'thistok' || userquestion == 'THISTOLK' || userquestion == 'THISTOK' || userquestion == '디스톡'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> thisTok : chatbot"+"</div><br>");
+			$("#frm").attr("action", "chat/thistok?mem_id=${mem_id}");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '병원' || userquestion == '요양원' || userquestion == '요양병원' || userquestion == '요양 병원'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 요양원/요양병원 찾기 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/hospital/pagingList?page=1&pageSize=10");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '간이테스트' || userquestion == '간이 테스트' || userquestion == '인지능력테스트' || userquestion == '인지능력 테스트'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 인지능력테스트 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/recognition/semiTestStart");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '인지능력향상' || userquestion == '인지능력 향상' || userquestion == '인지 능력 향상' || userquestion == '치매' ||
+				userquestion == '치매검사' || userquestion == '치매 검사' || userquestion == '인지능력 향상 프로그램' || userquestion == '인지능력향상프로그램' ||
+				userquestion == '인지능력향상 프로그램' || userquestion == '인지 능력향상 프로그램' ){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 인지능력향상프로그램 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/recognitionImp/impStart");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '공지' || userquestion == '공지 사항' || userquestion == '공지사항게시판' || userquestion == '공지사항 게시판'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 공지사항 게시판 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/post/pagingList?searchType=a&cate_id=30011");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '자유' || userquestion == '자유 게시판' || userquestion == '자유게시판'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 자유 게시판 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/post/pagingList?searchType=a&cate_id=30012");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == 'QnA' || userquestion == 'Q&A' || userquestion == 'qna' || userquestion == 'q&a' ||
+				userquestion == '질문' || userquestion == '질문게시판' || userquestion == '질문 게시판'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 자유 게시판 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/post/pagingList?searchType=a&cate_id=30013");
+			$("#result").scrollTop($("#result")[0].scrollHeight);
+			$("#user").val("");
+			$("#user").focus();
+			$("#frm").submit();
+		}else if(userquestion == '홈' || userquestion == '메인' || userquestion =='메인화면' || userquestion == '메인 화면' || userquestion == '홈 화면' ||
+				userquestion == '홈화면' || userquestion == '시작화면' || userquestion == '시작 화면' || userquestion == '처음' || userquestion == '처음화면'){
+			$("#result").append("<div id='userSay'> user :"+ userquestion+"</div><br>"); 
+			$("#result").append("<div id='chatBotSay'> 자유 게시판 : chatbot"+"</div><br>");
+			$("#frm").attr("action", "${cp}/main");
 			$("#result").scrollTop($("#result")[0].scrollHeight);
 			$("#user").val("");
 			$("#user").focus();

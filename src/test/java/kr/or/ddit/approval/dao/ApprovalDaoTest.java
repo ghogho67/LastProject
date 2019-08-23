@@ -172,4 +172,21 @@ public class ApprovalDaoTest extends LogicTestEnv {
 	}
 	
 
+	/**
+	* Method : totalApprovalType_admin
+	* 작성자 : ADMIN
+	* 변경이력 :
+	* Method 설명 :결산관리(관리자 ) - 결제 타입별 매출
+	*/
+	@Test
+	public void totalApprovalType_adminTest() {
+		/***Given***/
+		String app_type = "1";
+		/***When***/
+		int totalApprovalType_admin = approvalDao.totalApprovalType_admin(app_type);
+		/***Then***/
+		assertEquals(240006, totalApprovalType_admin);
+	}
+	
+
 }
