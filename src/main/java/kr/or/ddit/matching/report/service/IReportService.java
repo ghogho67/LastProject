@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
+import kr.or.ddit.matching.report.model.CoReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
 import kr.or.ddit.matching.report.model.ReportWriteVo;
 
@@ -31,6 +32,10 @@ ReportVo getReportVo(int mat_id);
 	ReportVo getLatestReport();
 	
 	int reportModify(ReportVo reportVo);
+
+	int coReportInsert(CoReportVo crv);
+	
+	CoReportVo getLatestCoReport();
 	
 //	ReportVo getReport(int rep_id);
 }

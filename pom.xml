@@ -223,7 +223,7 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-websocket</artifactId>
@@ -275,7 +275,7 @@
 			<artifactId>jpx</artifactId>
 			<version>1.5.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>io.pebbletemplates</groupId>
 			<artifactId>pebble-spring4</artifactId>
@@ -284,9 +284,9 @@
 
 		<!-- https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket -->
 		<dependency>
-		    <groupId>org.java-websocket</groupId>
-		    <artifactId>Java-WebSocket</artifactId>
-		    <version>1.4.0</version>
+			<groupId>org.java-websocket</groupId>
+			<artifactId>Java-WebSocket</artifactId>
+			<version>1.4.0</version>
 		</dependency>
 
 
@@ -299,18 +299,26 @@
 
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
-		    <groupId>org.jsoup</groupId>
-		    <artifactId>jsoup</artifactId>
-		    <version>1.12.1</version>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.12.1</version>
 		</dependency>
-		
-		
+
+
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
 		<dependency>
-		    <groupId>net.coobird</groupId>
-		    <artifactId>thumbnailator</artifactId>
-		    <version>0.4.8</version>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.9.0</version>
+		</dependency>
+
 
 	</dependencies>
 

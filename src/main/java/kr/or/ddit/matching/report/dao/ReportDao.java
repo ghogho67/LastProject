@@ -9,8 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
+import kr.or.ddit.matching.report.model.CoReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
 import kr.or.ddit.matching.report.model.ReportWriteVo;
 
@@ -61,6 +63,10 @@ public class ReportDao implements IReportDao {
 	public int reportInsert(ReportWriteVo rwv) {
 		return sqlSession.insert("report.insert", rwv);
 	}
+	@Override
+	public int coReportInsert(CoReportVo crv) {
+		return sqlSession.insert("report.coinsert", crv);
+	}
 
 	@Override
 	public ReportVo getReportVo(int mat_id) {
@@ -85,6 +91,13 @@ public class ReportDao implements IReportDao {
 	@Override
 	public int reportModify(ReportVo reportVo) {
 		return sqlSession.update("report.reportModify", reportVo);
+	}
+
+	@Override
+	public CoReportVo getLatestCoReport() {
+
+		return sqlSession.selectOne("report.getLatestCoReport");
+
 	}
 
 //	@Override

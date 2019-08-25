@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
+import kr.or.ddit.matching.report.model.CoReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
 import kr.or.ddit.matching.report.model.ReportWriteVo;
 
@@ -33,6 +34,10 @@ public interface IReportDao {
 	int reportWrite(ReportVo reportVo);
 
 	int reportModify(ReportVo reportVo);
+
+	int coReportInsert(CoReportVo crv);
+
+	CoReportVo getLatestCoReport();
 
 //	ReportVo getReport(int rep_id);
 }
