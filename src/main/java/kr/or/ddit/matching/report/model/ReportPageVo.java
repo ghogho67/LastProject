@@ -11,10 +11,12 @@ public class ReportPageVo {
 	private String mat_type;
 	private String mem_id;
 	private String cw_mem_id;
+	private String mem_nm;
+	private String cw_mem_nm;
 	private int check;
 
 	public ReportPageVo(int mat_id, String mat_title, String mat_cont, String day, String stTime, String endTime,
-			String mat_type, String mem_id, String cw_mem_id, int check) {
+			String mat_type, String mem_id, String cw_mem_id, String mem_nm, String cw_mem_nm, int check) {
 		super();
 		this.mat_id = mat_id;
 		this.mat_title = mat_title;
@@ -25,6 +27,8 @@ public class ReportPageVo {
 		this.mat_type = mat_type;
 		this.mem_id = mem_id;
 		this.cw_mem_id = cw_mem_id;
+		this.mem_nm = mem_nm;
+		this.cw_mem_nm = cw_mem_nm;
 		this.check = check;
 	}
 
@@ -100,6 +104,22 @@ public class ReportPageVo {
 		this.cw_mem_id = cw_mem_id;
 	}
 
+	public String getMem_nm() {
+		return mem_nm;
+	}
+
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
+
+	public String getCw_mem_nm() {
+		return cw_mem_nm;
+	}
+
+	public void setCw_mem_nm(String cw_mem_nm) {
+		this.cw_mem_nm = cw_mem_nm;
+	}
+
 	public int getCheck() {
 		return check;
 	}
@@ -112,7 +132,8 @@ public class ReportPageVo {
 	public String toString() {
 		return "ReportPageVo [mat_id=" + mat_id + ", mat_title=" + mat_title + ", mat_cont=" + mat_cont + ", day=" + day
 				+ ", stTime=" + stTime + ", endTime=" + endTime + ", mat_type=" + mat_type + ", mem_id=" + mem_id
-				+ ", cw_mem_id=" + cw_mem_id + ", check=" + check + "]";
+				+ ", cw_mem_id=" + cw_mem_id + ", mem_nm=" + mem_nm + ", cw_mem_nm=" + cw_mem_nm + ", check=" + check
+				+ "]";
 	}
 
 }
