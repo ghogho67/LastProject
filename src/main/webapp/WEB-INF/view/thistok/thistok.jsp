@@ -103,6 +103,7 @@ $(document).ready(function(){
 		$("#for").submit();
 	});
 	
+	
 	$("#myBtn").on("click",function(){
 		$("#createChat").submit();
 	});

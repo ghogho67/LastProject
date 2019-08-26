@@ -73,14 +73,30 @@ display:none;
   border-radius: 20px;
 }
 
+#creatBtn{
+background: #4A8CF6;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;  
+  font-size: 13px;
+  height: 30px;
+  line-height: 20px;
+  min-width: 100px;
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 20px;
+}
+
 
 .leftmargin{
-   margin-left: 20px;
+   margin-left: 100px;
 }
 
 #backBtn{
-   margin-left: 130px;
-   margin-top: 20px;
+   margin-left: 200px;
+   margin-top: 100px;
 }
 
 </style>

@@ -120,5 +120,27 @@ public interface IApprovalService {
 	* Method 설명 :결산관리(관리자 ) - 결제 타입별 매출
 	*/
 	int totalApprovalType_admin(String app_type);
+	
+	
+	/**
+	* Method : daySaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 날짜별로 검색하여 리스트 갖고오기
+	*/
+	public Map<String, Object> daySaerchListW(Map<String, Object> resultMap); 
+	
+	
+	/**
+	* Method : typeSaerchList
+	* 작성자 : PC21
+	* 변경이력 :
+	* @param resultMap
+	* @return
+	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
+	*/
+	public Map<String, Object> typeSaerchListW(Map<String, Object> resultMap); 
 
 }

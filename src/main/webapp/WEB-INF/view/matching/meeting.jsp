@@ -128,6 +128,13 @@ table.cw td {
 	// import결제 함수
 	
 </script>
+<script type="text/javascript">
+ function popup3() {
+      window.open("http://192.168.0.32/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅", 
+    		  "thisTok!","width=400, height=700, left=100, top=50");
+ }
+
+</script>
 </head>
 
 <body>
@@ -148,9 +155,9 @@ table.cw td {
 			<input type="hidden" class="btn"><br> <br> <input
 				type="button" id="app" class="M_btn" value="매칭신청"><br>
 			<br> <input type="button" class="M_btn" value="화상채팅"
-				id="videochat"><br> <br> <input type="button"
-				class="M_btn" value="채팅"> <input type="hidden" name="mem_id"
-				value="${mem_id}">
+				id="videochat"><br> <br> 
+				<input id="chatPlay" type="button"class="M_btn" value="채팅" onclick="popup3()">  
+				<input type="hidden" name="mem_id"	value="${mem_id}">
 		</div>
 	</div>
 	<!-- 일자 클릭시 메뉴오픈 -->
