@@ -11,8 +11,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.8.0"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+// red: 'rgb(255, 99, 132)'
 var chartColors = {
-		red: 'rgb(255, 99, 132)',
+		red: 'rgb(255, 0, 0)',
 		orange: 'rgb(255, 159, 64)',
 		yellow: 'rgb(255, 205, 86)',
 		green: 'rgb(75, 192, 192)',
@@ -23,7 +24,8 @@ var chartColors = {
 
 	function getData(){
 		var bpm=0;
-		var mem_id= "brown";
+		
+		var mem_id= "${MEM_INFO.mem_id}";
 		$.ajax({
 			url: "${pageContext.request.contextPath}/gps/getCardiac",
 			data : "mem_id="+mem_id,
@@ -52,7 +54,7 @@ var chartColors = {
 		type: 'line',
 		data: {
 			datasets: [{
-				label: 'Dataset 1 (linear interpolation)',
+				label: '${MEM_INFO.mem_id}의 심박데이터',
 				backgroundColor: color(chartColors.red).alpha(0.5).rgbString(),
 				borderColor: chartColors.red,
 				fill: false,
@@ -66,7 +68,7 @@ var chartColors = {
 		options: {
 			title: {
 				display: true,
-				text: 'Line chart (hotizontal scroll) sample'
+				text: '실시간 심박데이터 차트'
 			},
 			scales: {
 				xAxes: [{

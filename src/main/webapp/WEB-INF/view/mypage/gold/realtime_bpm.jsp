@@ -59,7 +59,7 @@
 		type : 'line',
 		data : {
 			datasets : [ {
-				label : 'Dataset 1 (linear interpolation)',
+				label : '${MEM_INFO.mem_id}의 심박데이터',
 				backgroundColor : color(chartColors.red).alpha(0.5).rgbString(),
 				borderColor : chartColors.red,
 				fill : false,
@@ -73,7 +73,7 @@
 		options : {
 			title : {
 				display : true,
-				text : 'Line chart (hotizontal scroll) sample'
+				text : '실시간 심박데이터 차트'
 			},
 			scales : {
 				xAxes : [ {

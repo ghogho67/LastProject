@@ -50,28 +50,43 @@ dif {
 								});
 
 						// 전송버튼 클릭이벤트
-						$("#savebutton").click(
-								function() {
-									if (confirm("저장하시겠습니까?")) {
-										// id가 smarteditor인 textarea에 에디터에서 대입
-										oEditors.getById["smarteditor"].exec(
-												"UPDATE_CONTENTS_FIELD", []);
+						$("#savebutton")
+								.click(
+										function() {
+											if ($("#text").val() === '<p>&nbsp;</p>'
+													|| $("#text").val() === '') {
+												alert("내용을 입력해주세요")
+												return;
+											} else {
+												if (confirm("저장하시겠습니까?")) {
+													// id가 smarteditor인 textarea에 에디터에서 대입
+													oEditors.getById["smarteditor"]
+															.exec(
+																	"UPDATE_CONTENTS_FIELD",
+																	[]);
 
-										// 이부분에 에디터 validation 검증
-										if (validation()) {
-											var text = $("#text").val().replace(/</gi,"&lt;");
-											$("#text").val(text);
-											var text = $("#text").val().replace(/>/gi,"&gt;");
-											$("#text").val(text);
-											$("#frm1").submit();
-										}
-									}
-								})
+													// 이부분에 에디터 validation 검증
+													if (validation()) {
+														var text = $("#text")
+																.val().replace(
+																		/</gi,
+																		"&lt;");
+														$("#text").val(text);
+														var text = $("#text")
+																.val().replace(
+																		/>/gi,
+																		"&gt;");
+														$("#text").val(text);
+														$("#frm1").submit();
+													}
+												}
+											}
+										})
 
 						$("#postCont").click(function() {
 							$("#postContFrm").submit();
 						})
-						
+
 						var form = document.forms[0];
 						var addFileBtn = document.getElementById("addFileBtn");
 						var delFileBtn = document.getElementById("delFileBtn");
@@ -82,7 +97,7 @@ dif {
 							event.preventDefault();
 						};
 						addFileBtn.onclick = function() {
-							
+
 							if (cnt <= 5) {
 								var element = document.createElement("input");
 								element.type = "file";
@@ -122,7 +137,7 @@ dif {
 </script>
 
 <div class="container">
-	<h2 class="sub-header">게시글 신규 등록 SE2postRegister.jsp</h2>
+	<h2 class="sub-header">게시글 신규 등록 WEB-INF- SE2postRegister.jsp</h2>
 	<pre>
 cate_id : ${cate_id }
 </pre>
@@ -134,35 +149,34 @@ cate_id : ${cate_id }
 		<div>
 			<label for="post_nm" class="col-sm-2 control-label">제목</label>
 			<div>
-				<input type="text" id = "text" class="form-control" name="post_nm">
+				<input type="text" id="text" class="form-control" name="post_nm">
 			</div>
 		</div>
 
 		<div>
 			<div>
-				<br>
-			<label for="post_nm" class="col-sm-2 control-label">내용</label><br>
+				<br> <label for="post_nm" class="col-sm-2 control-label">내용</label><br>
 				<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
 					style="width: 600px; height: 412px;"></textarea>
 			</div>
 		</div>
 		<div>
-			<input type="button"
-				class="btn btn-primary btn-sm pull-right"
+			<input type="button" class="btn btn-primary btn-sm pull-right"
 				id="savebutton" value="글등록" />
 		</div>
 		<div>
 			<input id="postCont" type="button"
 				class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
 		</div>
-		<div id = "fileArea">
-			<input type="button" class="btn btn-primary btn-sm" value="파일추가" id="addFileBtn"> 
-			<input type="file" name="file"><br>
+		<div id="fileArea">
+			<input type="button" class="btn btn-primary btn-sm" value="파일추가"
+				id="addFileBtn"> <input type="file" name="file"><br>
 			<input type="hidden" name="cate_id" value="${cate_id }">
 		</div>
 	</form>
-	<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
-		<input type="hidden" name="cate_id" value="${cate_id }" /> 
-		<input type="hidden" name="post_id" value="${post_id }" />
+	<form id="postContFrm" method="get" style="float: left;"
+		action="${cp}/post/pagingList?cate_id='${cate_id }'">
+		<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+			type="hidden" name="post_id" value="${post_id }" />
 	</form>
 </div>

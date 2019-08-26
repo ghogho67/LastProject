@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -464,6 +466,16 @@ public class PostController {
 		int boardCnt2 = (int) boardCnt;
 
 		model.addAttribute("list", list);
+		
+		Collections.sort(list, new Comparator<ImageBoardVo>() {
+
+			@Override
+			public int compare(ImageBoardVo o1, ImageBoardVo o2) {
+				return o1.getEventstartdate().compareTo(o2.getEventstartdate());
+			}
+		});
+
+		
 		model.addAttribute("boardCnt", boardCnt2);
 //        logger.debug("!!!!! list:{}",list);
 		int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;

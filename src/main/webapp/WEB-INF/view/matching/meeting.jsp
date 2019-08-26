@@ -208,7 +208,7 @@ table.cw td {
 					</c:forEach>
 
 					<tr>
-						<th>요양보호사 아이디</th>
+						<th>요양보호사 이름</th>
 						<td>${memVo.mem_id }</td>
 						<%-- 						<td id="cw_mem_id">${memVo.mem_id }</td> --%>
 					</tr>
