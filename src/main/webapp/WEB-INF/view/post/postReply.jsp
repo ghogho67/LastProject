@@ -36,7 +36,7 @@
 
 	<div class="container">
 						<h2 class="sub-header">
-							게시글 답글 등록 postReply.jsp<br>
+							게시글 답글 등록 WEB-INF/view/post/postReply.jsp<br>
 						</h2>
 <pre>
 cate_id : ${cate_id } post_id : ${post_id }

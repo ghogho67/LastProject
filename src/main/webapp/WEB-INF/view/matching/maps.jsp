@@ -169,6 +169,11 @@ img {
 			listData2.push($(this).val());
 		});
 
+		mem_nm = [];
+		$("input[name='mem_nm']").each(function(i) {
+			mem_nm.push($(this).val());
+		});
+
 		var mem_gender = $("#mem_gender").val();
 		var cw_driver = $("#cw_driver").val();
 		var mem_birth = $("#mem_birth").val();
@@ -507,6 +512,7 @@ img {
 								<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
 								<input type="hidden" name="add" value="${cw.mem_add1 }">
 								<input type="hidden" name="cw_driver" value="${cw.cw_driver }">
+								<input type="hidden" name="mem_nm" value="${cw.mem_nm }">
 							</c:forEach>
 						</ul>
 					</div>

@@ -255,6 +255,7 @@ public class MatchingController {
 		mem_id = memberVo.getMem_id();
 
 		List<MatchingVo> mlist = matchingService.getCWMatchingList(cw_mem_id);
+		logger.debug("☞mlist:{}",mlist);
 		List<LocationVo> loList = locationService.getLocationList(cw_mem_id);
 		logger.debug("loList:{}", loList);
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
