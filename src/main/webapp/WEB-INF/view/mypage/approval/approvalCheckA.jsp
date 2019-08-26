@@ -13,7 +13,7 @@
 
 
 <style type="text/css">
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 font-family: 'Noto Sans KR ', sans-serif ; #titlee h2, #pzone h2 {
 	font-size: 40px;
@@ -198,7 +198,10 @@ p {
 </head>
 <body>
 
-
+	<form id="pageForm" action="${cp}/approval/approvalCheckA">
+		<input type="hidden" name="page" id="page"> <input
+			type="hidden" name="pageSize" id="pageSize">
+	</form>
 
 	<div class="content-wrapper">
 		<div class="col-lg-12">

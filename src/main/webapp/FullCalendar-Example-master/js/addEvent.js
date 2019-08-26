@@ -354,7 +354,7 @@ var newEvent = function (startDate, endDate, eventType) {
     				data : {
     					imp_uid : rsp.imp_uid,
     					app_type : editType.val(),
-    					app_pay : 1,
+    					app_pay : count*timeInfo.length*10000,
     					mem_id : $("#mem_id").val(),
     					app_obj : $("#cw_mem_id").val()
     					

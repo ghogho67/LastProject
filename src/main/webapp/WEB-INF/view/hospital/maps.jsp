@@ -85,7 +85,7 @@
 									return alert('Something wrong!');
 								}
 
-								var result = response.result, // 검색 결과의 컨테이너
+								var result = response.result; // 검색 결과의 컨테이너
 								items = result.items; // 검색 결과의 배열
 								console.log(items);
 								console.log(result);

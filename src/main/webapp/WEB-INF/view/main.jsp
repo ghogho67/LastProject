@@ -284,9 +284,6 @@ height: 70px;
 	<%@include file="/resource/chatbot/chatbotView.jsp" %>
 	
 
-
-
-
 	
 
 	<div class="slidebanner">
