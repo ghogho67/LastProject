@@ -51,6 +51,8 @@ public class ApprovalController {
 			avo.setApp_type("3");
 		}
 
+		//
+		
 		ApprovalVo adminVo = avo;
 
 		int pay = avo.getApp_pay();
