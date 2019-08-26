@@ -315,7 +315,7 @@ ul, li, dl, dd {
 							
 							</p>
 
-							<a href="#">처음으로 돌아가기</a>
+							<a href="${cp}/recognitionImp/impStart">처음으로 돌아가기</a>
 						</div>
 					</div>
 				</div>

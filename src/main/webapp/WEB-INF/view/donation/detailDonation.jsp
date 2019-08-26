@@ -9,7 +9,7 @@
 <title>기부</title>
 
 <style type="text/css">
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css); font-family: 'Noto Sans KR', sans-serif;
 #titlee h2, #pzone h2 {
    font-size: 40px;
    font-weight: normal;
@@ -158,7 +158,7 @@ $(document).ready(function(){
                <br><br>
                
                <form action="${cp }/login" >
-                     <button type="submit" id="loginBtn" class="btn btn-default btn-md">로그인 화면 가기</button>
+                     <button type="submit" id="loginBtn" class="btn btn-default btn-md">처음화면으로 가기</button>
                </form>
                
                

@@ -66,7 +66,7 @@ public class JasperController {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		int a = coReportVo.getReport_id();
 //		reportService.getReportVo(mat_id)
-		param.put("report_id",Integer.toString(a));
+		param.put("report_id", Integer.toString(a));
 
 //		JRBeanCollectionDataSource datasource = new JRBeanCollectionDataSource(param);
 		String report = "C:/Users/juenf/git/0819 1111/src/main/resources/matching.jrxml";

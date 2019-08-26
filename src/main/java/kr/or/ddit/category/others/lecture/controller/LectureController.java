@@ -219,6 +219,58 @@ public class LectureController {
 	
 	
 	
+	
+
+	//문화센터 관리	
+		@RequestMapping(path = "/cultureListManagement", method = RequestMethod.GET)
+		public String cultureListManagement(Model model) {
+			
+
+			List<CultureVo> cultureList = lectureService.getCultureList();
+			
+			logger.debug("@@@@LectureList : {} ", cultureList);
+
+			model.addAttribute("LList", cultureList);
+			return "lecture/cultureListManagement";
+		
+		
+		}
+		
+	
+		
+		
+		
+		
+
+		//문화센터 삭제
+		
+		@RequestMapping(path = "/cultureDelete", method = RequestMethod.GET)
+		public String cultureDelete(Model model,
+				@RequestParam(name = "culture_id")int culture_id) {
+		
+			
+			logger.debug("@@@@culture_id{}",culture_id);
+			
+			String viewName =null;
+			 int deleteCnt = lectureService.deleteCulture(culture_id);
+			
+			 if(deleteCnt>=1) {
+				 viewName="redirect:/lecture/cultureListManagement";
+			 }else {
+				 viewName="redirect:/login";
+			 }
+			 
+				return viewName;
+		
+		
+		}
+		
+		
+		
+	
+	
+	
+	
 	//강의 삭제
 	
 	@RequestMapping(path = "/lectureDelete", method = RequestMethod.GET)
@@ -308,7 +360,6 @@ public class LectureController {
 	@RequestMapping(path = "/modifyLecture", method = RequestMethod.POST)
 	public String lectureupdate(Model model,
 			@RequestParam(name = "lec_id")int lec_id,
-			@RequestParam(name = "culture_id")int culture_id,
 			@RequestParam(name = "lec_nm")String lec_nm,
 			@RequestParam(name = "lec_tea")String lec_tea,
 			@RequestParam(name = "lec_st_dt") @DateTimeFormat(pattern="yyyy-MM-dd")  Date lec_st_dt,
@@ -323,9 +374,10 @@ public class LectureController {
 		logger.debug("@@@@modifyLecture {}" ,"modifyLecture");
 		logger.debug("@@@@lec_id {}" ,lec_id);
 		
+		int culture_id=0;
 		String lec_use ="Y";
 		LectureVo lectureVo= new LectureVo(lec_id, culture_id, lec_nm, lec_tea, lec_st_dt, lec_end_dt, lec_time, lec_fee, lec_day, lec_type, lec_amount, lec_use, lec_cont);
-		String viewName =null;
+		String viewName;
 		
 		int updatelecture = lectureService.updateLecture(lectureVo);
 		
@@ -440,7 +492,7 @@ public class LectureController {
 		
 		
 		if(insertleCulture==1) {
-			 viewName="redirect:/lecture/lectureListManagement";
+			 viewName="redirect:/lecture/cultureListManagement";
 		}else {
 			viewName="redirect:/login";
 		}

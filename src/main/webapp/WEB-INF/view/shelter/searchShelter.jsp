@@ -426,6 +426,19 @@ function boardPagingListAjaxHtml(page, pageSize) {
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
+				
+<!-- 				<div class="d1"> -->
+<%-- 						<form class="for" id="frm2" action="${cp}/shelter/searchShelter" --%>
+<!-- 							method="post"> -->
+<!-- 							<select id="searchType" name="searchType" -->
+<!-- 								style="position: absolute; z-index: 999;"> -->
+<!-- 								<option value="all">동 검색</option> -->
+<!-- 							</select> <input type="text" placeholder="동을 입력해 주세요" name="sh_add" -->
+<!-- 								id="sh_add"> -->
+<!-- 							<button type="button" id="searchBtn"></button> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+				
 							<div id="titlee">
 						<h2>
 							<span>무더위 쉼터</span> 지역검색

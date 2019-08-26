@@ -17,9 +17,14 @@
 	
 	
 		<select id="getCultureList" resultType="cultureVo">
-		select * from culture order by culture_type
+		select * from culture order by culture_id
 	</select>
-	
+
+	<delete id="deleteCulture" parameterType="int">
+		delete from culture
+		where culture_id =#{culture_id}
+
+	</delete>
 	
 	
 	<select id="AllLectureCnt" resultType="int">
@@ -70,6 +75,30 @@
 	 
 	
 	
+	
+	
+		
+		
+<!-- 		강사명으로 강사검색 --> 
+<!-- 	<select id="certainLectuerSearchTeacher" resultType="LectureVo" parameterType="String"> -->
+<!-- 		select * from lecture -->
+<!-- 	where  (lec_tea like '%' || #{lec_tea} || '%') and lec_type = #{lec_type} -->
+<!-- 	</select> -->
+	
+	
+	
+		
+<!-- 	 	강좌명으로 강좌 검색 -->
+<!-- 	<select id="certainLectuerSearchTitle" resultType="LectureVo" parameterType="String"> -->
+<!-- 		select * from lecture -->
+<!-- 	   where  (lec_nm like '%' || #{lec_nm} || '%') and lec_type = #{lec_type} -->
+<!-- 	</select> -->
+	
+	 
+	
+	
+	
+	
 		<select id="AlllecturePagingList" parameterType="pageVo" resultType="LectureVo">
 		<![CDATA[
 			select *
@@ -78,6 +107,7 @@
 			from
 			(select a.*
 			from lecture a
+			where lec_use like 'Y'
 			order by lec_nm asc) a)
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
@@ -91,7 +121,7 @@
 			(select a.*, rownum rn
 			from
 			(select a.*
-			from lecture a where lec_type = #{lec_type} 
+			from lecture a where lec_type = #{lec_type} and lec_use like 'Y'
 			order by lec_nm asc) a)
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>

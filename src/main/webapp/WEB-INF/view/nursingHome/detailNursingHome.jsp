@@ -133,7 +133,7 @@ td {
 					<hr>
 					
 					<form id="frm" class="form-horizontal" role="form" action="${cp }/nursingHome/detailNursing" method="get">
-                           <input type="hidden" class="form-control" id="nh_id" name="nh_id" placeholder="무더위쉼터 아이디" value="${nursingHomeVo.nh_id}">
+                           <input type="hidden" class="form-control" id="nh_id" name="nh_id" placeholder="요양시설 아이디" value="${nursingHomeVo.nh_id}">
       
       
                      <div class="form-group">

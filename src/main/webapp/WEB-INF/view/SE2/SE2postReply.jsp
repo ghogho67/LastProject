@@ -43,18 +43,43 @@
 								});
 
 						// 전송버튼 클릭이벤트
-						$("#savebutton").click(function() {
-									if (confirm("저장하시겠습니까?")) {
-										// id가 smarteditor인 textarea에 에디터에서 대입
-										oEditors.getById["smarteditor"].exec(
-												"UPDATE_CONTENTS_FIELD", []);
+						$("#savebutton")
+								.click(
+										function() {
+											alert($("#smarteditor").val());
+											if ($("#text").val() === '<p>&nbsp;</p>'
+													|| $("#text").val() === '') {
+												alert("내용을 입력해주세요")
+												return;
+											} else {
 
-										// 이부분에 에디터 validation 검증
-										if (validation()) {
-											$("#frm").submit();
-										}
-									}
-								})
+												if (confirm("저장하시겠습니까?")) {
+													// id가 smarteditor인 textarea에 에디터에서 대입
+													oEditors.getById["smarteditor"]
+															.exec(
+																	"UPDATE_CONTENTS_FIELD",
+																	[]);
+
+													// 이부분에 에디터 validation 검증
+													if (validation()) {
+														var text = $("#text")
+																.val().replace(
+																		/</gi,
+																		"&lt;");
+														$("#text").val(text);
+														var text = $("#text")
+																.val().replace(
+																		/>/gi,
+																		"&gt;");
+														$("#text").val(text);
+														$("#frm1").submit();
+														$("#frm").submit();
+													}
+												}
+
+											}
+
+										})
 						$("#postCont").click(function() {
 							$("#postContFrm").submit();
 						})
@@ -75,8 +100,11 @@
 </head>
 <body>
 
-	<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;"></textarea>
-	<input type="button" id="savebutton" class="btn btn-primary btn-sm full-right" value="글등록" style="float: right;" />
-	
+	<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
+		style="width: 600px; height: 412px;"></textarea>
+	<input type="button" id="savebutton"
+		class="btn btn-primary btn-sm full-right" value="글등록"
+		style="float: right;" />
+
 </body>
 </html>

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>강좌관리</title>
+<title>문화센터관리</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style type="text/css">
 #titlee h2, #pzone h2 {
@@ -210,12 +210,10 @@ td {
 	font-size: 8pt;
 	text-align: center;
 	color: black;
-    font-weight: 700;
-    min-height: 40px;
-    border-radius: 6px;
-	
+	font-weight: 700;
+	min-height: 40px;
+	border-radius: 6px;
 }
-
 </style>
 
 
@@ -249,11 +247,10 @@ td {
 						</h2>
 					</div>
 					<div style="text-align: right; padding-right: 10px;">
-						<a class="btn btn-warning btn-sm"
-							href="${cp}/lecture/Insertlecture">강좌추가</a>&nbsp;
-<!-- 						<button type="button" class="btn btn-warning btn-sm" -->
-<!-- 							data-toggle="modal" data-target="#myModalCulture">문화센터 -->
-<!-- 							추가</button> -->
+
+						<button type="button" class="btn btn-warning btn-sm"
+							data-toggle="modal" data-target="#myModalCulture">문화센터
+							추가</button>
 
 					</div>
 
@@ -264,16 +261,10 @@ td {
 						<table class="table center-aligned-table">
 							<thead>
 								<tr class="text-primary">
-									<th>강좌코드</th>
-									<th>강좌 명</th>
-									<th>강사명</th>
-									<th>수강료</th>
-									<th>학습 시작일</th>
-									<th>학습 종료일</th>
-									<th>학습 시간</th>
-									<th>수강인원</th>
-									<th>&nbsp;&nbsp;사용상태&nbsp;&nbsp;</th>
-									<th>&nbsp;&nbsp;관리&nbsp;&nbsp;</th>
+									<th>문화센터 코드</th>
+									<th>문화센터 명</th>
+									<th>문화센터 주소</th>
+									<th>번호</th>
 									<th>&nbsp;&nbsp;사용여부변경&nbsp;&nbsp;</th>
 								</tr>
 							</thead>
@@ -281,44 +272,17 @@ td {
 
 							<tbody>
 								<c:forEach items="${LList}" var="LTList">
-									<tr class="Lecture" data-userid="lectureId">
+									<tr class="culture" data-userid="cultureId">
 
-										<td class="LectureId" id="LectureId" name="LectureId">${LTList.lec_id}</td>
-										<td>${LTList.lec_nm}</td>
-										<td>${LTList.lec_tea}</td>
-										<td>${LTList.lec_fee}</td>
-										<td><fmt:formatDate value="${LTList.lec_st_dt}"
-												pattern="yyyy-MM-dd" /></td>
-										<td><fmt:formatDate value="${LTList.lec_end_dt}"
-												pattern="yyyy-MM-dd" /></td>
-										<td>${LTList.lec_time}</td>
-										<td>${LTList.lec_amount}</td>
-
-										<c:choose>
-											<c:when test="${LTList.lec_use=='Y'}">
-												<td><label class="badge badge-success">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</label></td>
-											</c:when>
-											<c:otherwise>
-												<td><label class="badge badge-danger">사용안함</label></td>
-											</c:otherwise>
-										</c:choose>
+										<td class="cultureId" id="LectureId" name="cultureId">${LTList.culture_id}</td>
+										<td>${LTList.culture_type}</td>
+										<td>${LTList.culture_add}</td>
+										<td>${LTList.culture_phone}</td>
 										<td><a
-											href="${cp}/lecture/modifyLecture?lec_id=${LTList.lec_id}"
-											class="btn btn-primary btn-sm">강좌수정</a></td>
-										<c:choose>
-											<c:when test="${LTList.lec_use=='Y'}">
-												<td><a
-													href="${cp}/lecture/lectureDelete?lec_id=${LTList.lec_id}"
-													onclick="return confirm('해당강좌를  사용하지 않으시겠습니까?')"
-													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td>
-											</c:when>
-											<c:otherwise>
-												<td><a
-													href="${cp}/lecture/lectureUse?lec_id=${LTList.lec_id}"
-													onclick="return confirm('해당강좌를 사용 하시겠습니까?')"
-													class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
-											</c:otherwise>
-										</c:choose>
+											href="${cp}/lecture/cultureDelete?culture_id=${LTList.culture_id}"
+											onclick="return confirm('해당 문화센터를 삭제하시겠습니까? 삭제하시면 절대 복구가 불가능 합니다')"
+											class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</a></td>
+
 
 									</tr>
 
@@ -341,25 +305,6 @@ td {
 	</div>
 
 
-	<!-- 	<div class="demo" style="position: absolute; right: 40%;"> -->
-	<!-- 		<nav class="pagination-outer" aria-label="Page navigation"> -->
-	<!-- 			<ul class="pagination"> -->
-	<!-- 				<li class="page-item"><a href="#" class="page-link" -->
-	<!-- 					aria-label="Previous"> <span aria-hidden="true">«</span> -->
-	<!-- 				</a></li> -->
-	<!-- 				<li class="page-item  active"><a class="page-link" href="#">1</a></li> -->
-	<!-- 				<li class="page-item"><a class="page-link" href="#">2</a></li> -->
-	<!-- 				<li class="page-item"><a class="page-link" href="#">3</a></li> -->
-	<!-- 				<li class="page-item"><a class="page-link" href="#">4</a></li> -->
-	<!-- 				<li class="page-item"><a class="page-link" href="#">5</a></li> -->
-	<!-- 				<li class="page-item"><a href="#" class="page-link" -->
-	<!-- 					aria-label="Next"> <span aria-hidden="true">»</span> -->
-	<!-- 				</a></li> -->
-	<!-- 			</ul> -->
-	<!-- 		</nav> -->
-	<!-- 	</div> -->
-
-
 
 
 	<!-- Modal -->
@@ -369,7 +314,7 @@ td {
 			role="dialog" aria-labelledby="myModalLabel"
 			style="padding: 50px; z-index: 1400">
 			<div class="modal-dialog" role="document">
-				<div class="modal-content2">
+				<div class="modal-content3">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabel">문화센터 추가</h4>
 						<button type="button" class="close" data-dismiss="modal"
@@ -377,19 +322,26 @@ td {
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					
+
 
 					<div style="padding: 0 20px 0 20px;">
-						<span>문화센터명</span> <input type="text" id="culture_type"
-							class="title" name="culture_type"> <br> <span>문화센터
-							번호</span> <input class="title" type="text" id="culture_phone"
-							name="culture_phone"> <br> <span>문화센터주소</span> <input
-							class="title" type="text" id="cultureadd" name="cultureadd" readonly="readonly">
-
-						<div class="col-sm-2">
+						<div>
+							<span>문화센터명</span> <input type="text" id="culture_type"
+								class="title" name="culture_type"> <br>
+						</div>
+						<div>
+							<span>문화센터 번호</span> <input class="title" type="text"
+								id="culture_phone" name="culture_phone">
+						</div>
+						<br>
+						<div>
+							<span>문화센터주소</span> <input class="title" type="text"
+								id="cultureadd" name="cultureadd" readonly="readonly">
 							<button type="button" id="addrSearchbtn"
 								class="btn btn-default pull-right">주소 검색</button>
 						</div>
+
+						<div class="col-sm-2"></div>
 
 					</div>
 

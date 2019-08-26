@@ -108,5 +108,10 @@ public class LectureService implements ILectureService {
 		// TODO Auto-generated method stub
 		return lectureDao.LectuerSearchTitle(lec_nm);
 	}
+	@Override
+	public int deleteCulture(int culture_id) {
+		// TODO Auto-generated method stub
+		return lectureDao.deleteCulture(culture_id);
+	}
 	
 }

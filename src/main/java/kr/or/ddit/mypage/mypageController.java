@@ -292,7 +292,7 @@ public class mypageController {
 		String mem_id = memvo.getMem_id();
 		model.addAttribute("mem_id", mem_id);
 
-		return "/mypage/schedule.tiles";
+		return "/mypage/schedule.mytiles";
 	}
 
 	@RequestMapping("/schedule")
@@ -658,6 +658,11 @@ public class mypageController {
 		String mem_id = memvo.getMem_id();
 
 		return "mypage/gold/recognitionActResult2";
+	}
+	
+	@RequestMapping("cctv")
+	public String CCTV() {
+		return"";
 	}
 
 
