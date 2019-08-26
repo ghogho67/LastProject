@@ -15,11 +15,15 @@
 </style>
 
 <style>
+img {
+	border-radius:3%;
+}
+
 .M_btn {
 	min-width: 150px;
 	padding: 0 25px;
-	width: 100%;
-	height: 48px;
+	width: 250px;
+	height: 40px;
 	line-height: 44px;
 	text-align: center;
 	background: #78d3f5;
@@ -33,6 +37,7 @@
 
 #button {
 	vertical-align: middle;
+	width: 300px;
 }
 
 table.cw {
@@ -126,7 +131,6 @@ table.cw td {
 				// 						+ $.datepicker.formatDate('YYYY-MM-DD', new Date()));
 			});
 	// import결제 함수
-	
 </script>
 </head>
 
@@ -136,9 +140,13 @@ table.cw td {
 	<div class="container style="width: 1000px; height: 1000px;">
 		<pre>${list }</pre>
 		<div style="width: 50%; float: left; height: 350px;">
-			<label for="userNm" class="col-sm-2 control-label">${path }</label> <img
-				id="img" src="${cp }/matching/photo?mem_id=anni"
-				style="float: right; width: 400px; height: 400px;" />
+			<label for="userNm" class="col-sm-2 control-label">${path }</label>
+			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
+			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
+			<img id="img"
+				src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
+				style="float: right; width: 400px; height: 300px;"
+				alt="${cp}/image/cw.png" />
 		</div>
 		<!-- 		<div> -->
 		<!-- 		<input type="button" class="btn" width="50px" value="매칭신청" style="float:left"> -->
@@ -208,7 +216,7 @@ table.cw td {
 					</c:forEach>
 
 					<tr>
-						<th>요양보호사 이름</th>
+						<th>요양보호사 아이디</th>
 						<td>${memVo.mem_id }</td>
 						<%-- 						<td id="cw_mem_id">${memVo.mem_id }</td> --%>
 					</tr>

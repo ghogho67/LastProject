@@ -39,6 +39,7 @@ import kr.or.ddit.handler.SocketAlramHandler;
 import kr.or.ddit.handler.SocketChatHandler;
 import kr.or.ddit.view.ExcelDownloadView;
 import kr.or.ddit.view.ProfileView;
+import kr.or.ddit.view.ProfileView2;
 
 /*
 <context:component-scan base-package="kr.or.ddit" use-default-filters="false">
@@ -139,6 +140,10 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    @Bean
    public View profileView() {
       return new ProfileView();
+   }
+   @Bean
+   public View profileView2() {
+	   return new ProfileView2();
    }
    
    
