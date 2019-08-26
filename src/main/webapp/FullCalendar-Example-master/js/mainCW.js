@@ -173,11 +173,11 @@ var calendar = $('#calendar').fullCalendar({
 	 * 일정 받아옴 **************
 	 */
   events: function (start, end, timezone, callback) {
-	  alert($("td#mem_id").text());
+	  alert($("#cw_mem_id").val());
 	  $.ajax({
 // type: "post",
 // url: "/boardProject2/FullCalendar-Example-master/data.json",
-	      url: "/matching/getCWCalendar?cw_mem_id="+$("td#mem_id").text(),
+	      url: "/matching/getCWCalendar?cw_mem_id="+$("#cw_mem_id").val(),
 	      success: function (response) {
 	    	  str = JSON.stringify(response);
 	    	  console.log(str);

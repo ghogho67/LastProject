@@ -104,7 +104,7 @@ public class NursingHomeController {
 		model.addAttribute("searchNursingHome",searchNursingHome);
 		logger.debug("☞searchNursingHome:{}",searchNursingHome);
 		
-		return "/nursingHome/searchNursingHome.tiles";
+		return "/nursingHome/searchNursingHome";
 	}
 	
 	/**

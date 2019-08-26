@@ -53,29 +53,35 @@
 
 	<div class="scroll-sidebar" style="text-align: center;">
 		<nav class="sidebar-nav" style="text-align: center;">
-			<c:forEach items="${sideBar}" var="sideBar">
-				<c:if test="${sideBar.cate_paerent_id eq 0}">
-					<h2 class="sidebarTitle">${sideBar.cate_title}</h2>
-				</c:if>
-			</c:forEach>
+			
+					<h2 class="sidebarTitle">관리자 메뉴</h2>
 
 			<ul id="sidebarnav" style="text-align: center;">
 
 
 
 				<br>
-				<c:forEach items="${sideBar}" var="sideBar">
-					<c:if test="${sideBar.cate_paerent_id ne 0}">
-						<li style="text-align: center;"><a
-							href="${cp}/re/cate?cate_id=${sideBar.cate_id}"><span
-								class="hide-menu">${sideBar.cate_title}</span></a></li>
-					</c:if>
-				</c:forEach>
 
+
+
+
+				<li style="text-align: center;"><a
+					href="${cp}/category/categoryList"> <span
+						class="hide-menu">카테고리관리</span></a></li>
+
+
+				<li style="text-align: center;"><a
+					href="${cp}/lecture/lectureListManagement"> <span
+						class="hide-menu">강좌관리</span></a></li>
+
+
+				<li style="text-align: center;"><a
+					href="${cp}/lecture/cultureListManagement"> <span
+						class="hide-menu">문화센터 관리</span></a></li>
 
 
 			</ul>
-			
+
 
 		</nav>
 		<br> <br> <br> <br> <br> <br> <br>

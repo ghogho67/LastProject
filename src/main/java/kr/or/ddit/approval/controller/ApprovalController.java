@@ -29,20 +29,45 @@ public class ApprovalController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ApprovalController.class);
 
-
 	@RequestMapping(path = "/show")
 	public String show() {
 		return "/approval/post.tiles";
 	}
 
 	@RequestMapping(path = "/matching")
-	public String approval(String imp_uid, ApprovalVo avo, HttpSession session,Model model) {
-		
+	public String approval(String imp_uid, ApprovalVo avo, HttpSession session, Model model) {
+
 		logger.debug("☞matching");
 
 		logger.debug("☞ApprovalVo:{}", avo);
-		
-		int insertCnt = approvalService.approvalInsert(avo);
+
+		logger.debug("☞app_type:{}", avo.getApp_type());
+
+		if (avo.getApp_type().equals("방문간병")) {
+			avo.setApp_type("1");
+		} else if (avo.getApp_type().equals("운동도움")) {
+			avo.setApp_type("2");
+		} else if (avo.getApp_type().equals("병원간병")) {
+			avo.setApp_type("3");
+		}
+
+		ApprovalVo adminVo = avo;
+
+		int pay = avo.getApp_pay();
+		int cw_pay = pay * 9 / 10;
+		logger.debug("☞cw_pay:{}",cw_pay);
+		int admin_pay = pay * 1 / 10;
+		logger.debug("☞admin_pay:{}",admin_pay);
+		avo.setApp_pay(cw_pay);
+		logger.debug("☞avo:{}",avo);
+		int cwInsertCnt = approvalService.approvalInsert(avo);
+		adminVo.setApp_pay(admin_pay);
+		logger.debug("☞adminVo:{}",adminVo);
+		int adminInsertCnt = approvalService.approvalInsert(adminVo);
+		int insertCnt = 0;
+		if (cwInsertCnt == 1 && adminInsertCnt == 1) {
+			insertCnt = 1;
+		}
 
 		model.addAttribute("insertCnt", String.valueOf(insertCnt));
 
@@ -50,8 +75,8 @@ public class ApprovalController {
 	}
 
 	@RequestMapping(path = "/approvalCheck")
-	public String approvalCheck(HttpSession session, Model model,MemberApprovalVo memberapprovalVo, int page, int pageSize, String searchType,
-			@RequestParam(required = false) String searchVal) {
+	public String approvalCheck(HttpSession session, Model model, MemberApprovalVo memberapprovalVo, int page,
+			int pageSize, String searchType, @RequestParam(required = false) String searchVal) {
 		PageVo pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
@@ -274,29 +299,26 @@ public class ApprovalController {
 	}
 
 	
-	
-	
 	/**
-	* Method : approvalCheckA
-	* 작성자 : ADMIN
-	* 변경이력 :
-	* @param model
-	* @param pageVo
-	* @param page
-	* @param pageSize
-	* @return
-	* Method 설명 : 관리자 결산관리 - 등급별 pie chart
-	*/
+	 * Method : approvalCheckA 작성자 : ADMIN 변경이력 :
+	 * 
+	 * @param model
+	 * @param pageVo
+	 * @param page
+	 * @param pageSize
+	 * @return Method 설명 : 관리자 결산관리 - 등급별 pie chart
+	 */
 	@RequestMapping("/approvalCheckA")
-	public String approvalCheckA(Model model,PageVo pageVo, int page, int pageSize, MemberApprovalVo memberApprovalVo) {
-		
+	public String approvalCheckA(Model model, PageVo pageVo, int page, int pageSize,
+			MemberApprovalVo memberApprovalVo) {
+
 		pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
-		
+
 		Map<String, Object> resultMap = approvalService.approvalAllPagingList(pageVo);
 		logger.debug("☞resultMap:{}", resultMap);
-		
+
 		List<MemberApprovalVo> memberApprovalAllList = (List<MemberApprovalVo>) resultMap.get("memberApprovalAllList");
 		int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
 		if (pageVo.getPage() == 1) {
@@ -312,47 +334,38 @@ public class ApprovalController {
 		if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
 			paginationSize = lastpaginationSize;
 		}
-		
+
 		model.addAttribute("memberApprovalAllList", memberApprovalAllList);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo", pageVo);
-		
+
 		logger.debug("☞memberApprovalAllList:{}", memberApprovalAllList);
 		logger.debug("☞paginationSize:{}", paginationSize);
 		logger.debug("☞pageVo:{}", pageVo);
-		logger.debug("☞startPage:{}",startPage);
-		logger.debug("☞lastpaginationSize:{}",lastpaginationSize);
-		
-		
+		logger.debug("☞startPage:{}", startPage);
+		logger.debug("☞lastpaginationSize:{}", lastpaginationSize);
+
 		// 구글 pie chart API - 회원별 매출 비율
 		model.addAttribute("nomalMember", approvalService.gradeApproval("1"));
 		model.addAttribute("goldMember", approvalService.gradeApproval("2"));
 		model.addAttribute("careWorker", approvalService.gradeApproval("3"));
-		
-		logger.debug("☞nomalMember:{}",approvalService.gradeApproval("1"));
-		logger.debug("☞goldMember:{}",approvalService.gradeApproval("2"));
-		logger.debug("☞careWorker:{}",approvalService.gradeApproval("3"));
-		
-		logger.debug("☞nomalmember:{}",approvalService.totalApprovalType_admin("1"));
-		logger.debug("☞goldmember:{}",approvalService.totalApprovalType_admin("2"));
-		logger.debug("☞careworker:{}",approvalService.totalApprovalType_admin("3"));
-		//구글 pie chart API - (관리자) 회원등급별 매출비율
+
+		logger.debug("☞nomalMember:{}", approvalService.gradeApproval("1"));
+		logger.debug("☞goldMember:{}", approvalService.gradeApproval("2"));
+		logger.debug("☞careWorker:{}", approvalService.gradeApproval("3"));
+
+		logger.debug("☞nomalmember:{}", approvalService.totalApprovalType_admin("1"));
+		logger.debug("☞goldmember:{}", approvalService.totalApprovalType_admin("2"));
+		logger.debug("☞careworker:{}", approvalService.totalApprovalType_admin("3"));
+		// 구글 pie chart API - (관리자) 회원등급별 매출비율
 		model.addAttribute("nomalmember", approvalService.totalApprovalType_admin("1"));
 		model.addAttribute("goldmember", approvalService.totalApprovalType_admin("2"));
 		model.addAttribute("careworker", approvalService.totalApprovalType_admin("3"));
 
-	
 		return "/mypage/approval/approvalCheckA.mytiles";
 
 	}
-	
-	
 
 }
-
-
-
-
-

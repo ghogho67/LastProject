@@ -189,7 +189,7 @@ public class HospitalController {
 //		model.addAttribute("lastpaginationSize", lastpaginationSize);
 //		model.addAttribute("pageVo",pageVo);
 		
-		return "/hospital/searchHospital.tiles";
+		return "/hospital/searchHospital";
 	}
 	
 	@RequestMapping(path = "/map")

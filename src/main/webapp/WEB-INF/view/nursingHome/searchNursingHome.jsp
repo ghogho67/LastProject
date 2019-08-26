@@ -206,27 +206,25 @@ td {
 </style>
 
 <script>
-$(document).ready(function(){
-// 	$(".nurTr").on("click", function(){
-// 		console.log("nurTr click");
-		
-// 		var nh_id = $(this).find(".nh_id").text();
-// 		$("#nh_id").val(nh_id);
-// 		$("#frm").attr("action", "${cp}/nursingHome/detailNursing");
-// 		$("#frm").attr("method", "get");
-// 		$("#frm").submit();
-// 	});
+	$(document).ready(function() {
+		// 	$(".nurTr").on("click", function(){
+		// 		console.log("nurTr click");
 
-	
-});
+		// 		var nh_id = $(this).find(".nh_id").text();
+		// 		$("#nh_id").val(nh_id);
+		// 		$("#frm").attr("action", "${cp}/nursingHome/detailNursing");
+		// 		$("#frm").attr("method", "get");
+		// 		$("#frm").submit();
+		// 	});
 
-function boardPagingListAjaxHtml(page, pageSize) {
-	$("#page").val(page);
-	$("#pageSize").val(pageSize);
-	$("#pageForm").submit();
-	
+	});
+
+	function boardPagingListAjaxHtml(page, pageSize) {
+		$("#page").val(page);
+		$("#pageSize").val(pageSize);
+		$("#pageForm").submit();
+
 	}
-
 </script>
 
 
@@ -234,150 +232,91 @@ function boardPagingListAjaxHtml(page, pageSize) {
 </head>
 
 <body>
-	
+
+
+	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+
+
+
 	<form id="pageForm" action="${cp}/nursingHome/searchNursing">
-	 	<input type="hidden" name = "page" id="page">
-	 	<input type="hidden" name = "pageSize" id="pageSize">
-	 </form>
+		<input type="hidden" name="page" id="page"> <input
+			type="hidden" name="pageSize" id="pageSize">
+	</form>
 
 	<div class="container">
-		<div style="width: 1250px;">
+		<div style="padding-top: 50px; width: 1250px;">
+
 			<div class="card">
 				<div class="card-body">
-							<div id="titlee">
+				
+<!-- 				<div class="d1"> -->
+<!-- 						<form class="for" id="frm2" -->
+<%-- 							action="${cp }/nursingHome/searchNursing" method="post"> --%>
+<!-- 							<select id="searchType" name="searchType" -->
+<!-- 								style="position: absolute; z-index: 999;"> -->
+<!-- 								<option value="all">동 검색</option> -->
+<!-- 							</select> <input type="text" placeholder="동을 입력해 주세요" name="nh_add" -->
+<!-- 								id="nh_add"> -->
+<!-- 							<button type="button" id="searchBtn"></button> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+				
+					<div id="titlee">
 						<h2>
-							<span>요양시설 평점조회</span> 대분류
+							<span>요양시설 평점조회</span>
 						</h2>
-						</div>
-					
-						
-					<hr>
-					<form id="frm" action="${cp }/nursingHome/searchPagingList?nh_add=${nh_add}" method="post">
-					<input type="hidden" class="form-control" id="nh_add" name="nh_add" value="${nh_add}">
-					<input type="hidden" id="nh_id" name="nh_id" value="${nh_id}">
-					<div class="table-responsive">
-						<table class="table center-aligned-table">
-						<thead>
-							<tr>
-							<!-- <th>요양시설 아이디</th> -->
-								<th>NO</th>
-								<th>요양시설 명</th>
-								<th>주소</th>
-								<th>전화번호</th>
-								<th>평점</th>
-							</tr>
-							</thead>
-							<tbody>
-							<c:forEach items="${searchNursingHome }" var="vo" varStatus="status">
-								<tr class="nurTr" data-nh_id="${vo.nh_id }">
-<%-- 									<td>${vo.nh_id }</td> --%>
-									<td>${vo.rn }</td>
-									<td>${vo.nh_nm }</td>
-									<td>${vo.nh_add }</td>
-									<td>${vo.nh_phone }</td>
-									<td>${vo.nh_grade }</td>
-								</tr>
-							</c:forEach>
-							</tbody>
-						</table>
 					</div>
-					
+
+
+					<hr>
+					<form id="frm"
+						action="${cp }/nursingHome/searchPagingList?nh_add=${nh_add}"
+						method="post">
+						<input type="hidden" class="form-control" id="nh_add"
+							name="nh_add" value="${nh_add}"> <input type="hidden"
+							id="nh_id" name="nh_id" value="${nh_id}">
+						<div
+							style="display: block; width: 95%; overflow-x: auto; -ms-overflow-style: -ms-autohiding-scrollbar; min-height: 210px; padding: 10px;">
+							<table class="table center-aligned-table">
+								<thead>
+									<tr>
+										<!-- <th>요양시설 아이디</th> -->
+										<th>NO</th>
+										<th>요양시설 명</th>
+										<th>주소</th>
+										<th>전화번호</th>
+										<th>평점</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${searchNursingHome }" var="vo"
+										varStatus="status">
+										<tr class="nurTr" data-nh_id="${vo.nh_id }">
+											<%-- 									<td>${vo.nh_id }</td> --%>
+											<td>${vo.rn }</td>
+											<td>${vo.nh_nm }</td>
+											<td>${vo.nh_add }</td>
+											<td>${vo.nh_phone }</td>
+											<td>${vo.nh_grade }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
 					</form>
-					
 					<!-- 뒤로가기 -->
-					<a href="${cp}/nursingHome/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
-					
-					
+					<a href="${cp}/nursingHome/pagingList?page=1&pageSize=10"><img
+						src="/image/backButton.svg" style="width: 35px;"></a>
+					<!-- 뒤로가기 -->
 				</div>
+
 			</div>
-			
-			<!-- 페이지네이션 -->
-			<div class="demo" style="position: absolute; right: 20%;">
-				<nav class="pagination-outer" aria-label="Page navigation">
-					<ul class="pagination">
-						<c:choose>
-							<c:when test="${pageVo.page==1}">
-								<li class="page-item prev disabled"><a href="#"
-									class="page-link" aria-label="Previous"> <span
-										aria-hidden="true">«</span>
-								</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									aria-hidden="Previous"
-									href="javascript:boardPagingListAjaxHtml(1, ${pageVo.pageSize});"><span
-										aria-hidden="true">«</span></a></li>
-
-							</c:otherwise>
-						</c:choose>
-
-						<c:choose>
-							<c:when test="${pageVo.page==1}">
-								<li class="page-item prev disabled"><a href="#"
-									class="page-link" aria-label="Previous"> <span
-										aria-hidden="true">‹</span>
-								</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									aria-label="Previous"
-									href="javascript:boardPagingListAjaxHtml(${pageVo.page-1}, ${pageVo.pageSize});"><span
-										aria-hidden="true">‹</span></a></li>
-							</c:otherwise>
-						</c:choose>
-
-						<c:forEach begin="${startPage}" end="${paginationSize}" var="i">
-							<c:choose>
-								<c:when test="${pageVo.page == i}">
-									<li class="page-item active"><a class="page-link"
-										href="#">${i}</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a class="page-link"
-										href="javascript:boardPagingListAjaxHtml(${i}, ${pageVo.pageSize});">${i}</a></li>
-								</c:otherwise>
-							</c:choose>
-
-						</c:forEach>
-
-						<c:choose>
-							<c:when test="${pageVo.page == lastpaginationSize}">
-								<li class="page-item next disabled"><a href="#"
-									class="page-link" aria-label="Next"> <span
-										aria-hidden="true">›</span>
-								</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									aria-label="Next"
-									href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
-										aria-hidden="true">›</span></a></li>
-							</c:otherwise>
-						</c:choose>
 
 
-						<c:choose>
-							<c:when test="${pageVo.page == lastpaginationSize}">
-								<li class="page-item next disabled"><a href="#"
-									class="page-link" aria-label="Next"><span
-										aria-hidden="true">»</span></a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									aria-label="Next"
-									href="javascript:boardPagingListAjaxHtml(${lastpaginationSize}, ${pageVo.pageSize});"><span
-										aria-hidden="true">»</span></a></li>
-							</c:otherwise>
-						</c:choose>
-
-					</ul>
-				</nav>
-			</div>
-			
 		</div>
 	</div>
-	
-	
 
 
 </body>

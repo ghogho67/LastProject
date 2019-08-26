@@ -98,5 +98,10 @@ public class LectureDao implements ILectureDao {
 		
 		return sqlSession.selectList("lecture.LectuerSearchTeacher",lec_tea);
 	}
+	@Override
+	public int deleteCulture(int culture_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("lecture.deleteCulture",culture_id);
+	}
 	
 }

@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>This Care</title>
+
+<link rel="shortcut icon" href="${cp}/image/Htes3.png">
+
 <link rel="stylesheet" type="text/css"
 	href="${cp}/resource/wrap/css/login/default.css" />
 <link rel="stylesheet" type="text/css"

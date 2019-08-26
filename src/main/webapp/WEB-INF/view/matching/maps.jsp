@@ -7,14 +7,14 @@
 <html>
 <head>
 <style>
-img {
+.imgLOGO {
 	float: left;
 	width: 100px;
-	height: 100px;
+	height: 80px;
 	vertical-align: middle;
 }
 
-.img {
+.img5 {
 	float: left;
 	width: 70px;
 	height: 30px;
@@ -169,6 +169,11 @@ img {
 			listData2.push($(this).val());
 		});
 
+		mem_nm = [];
+		$("input[name='mem_nm']").each(function(i) {
+			mem_nm.push($(this).val());
+		});
+
 		var mem_gender = $("#mem_gender").val();
 		var cw_driver = $("#cw_driver").val();
 		var mem_birth = $("#mem_birth").val();
@@ -318,7 +323,9 @@ img {
 						},
 						function(status, response) {
 							if (status == naver.maps.Service.Status.OK) {
-								var result = response.result, items = result.items;
+								var result = response.result;
+								var items = result.items;
+								console.log(items);
 								position = new naver.maps.LatLng(
 										items[0].point.y, items[0].point.x);
 								callback({
@@ -331,6 +338,7 @@ img {
 									position : position,
 									title : listData1[i],
 									title1 : listData2[i],
+									mem_nm : mem_nm[i],
 									icon : {
 										url : '/image/map_icon02.png',
 										size : new naver.maps.Size(50, 52),
@@ -342,8 +350,12 @@ img {
 								});
 								var infoWindow = new naver.maps.InfoWindow(
 										{
-											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
+											content : '<div style="width:150px;text-align:center;padding:10px;">요양보호사 <b>"'
+													+ '<a href="/matching/meet?cw_mem_id='
 													+ listData1[i]
+													+ '">'
+													+ listData1[i]
+													+ '</a>'
 													+ '"</b>.</div>'
 										});
 								markers.push(marker);
@@ -397,24 +409,28 @@ img {
 
 				showMarker(map, marker);
 				var img = $("<img>");
-				img.attr("src", "/image/Test1.png");
+				// 				img.attr("src", "/image/Test1.png");
+				img.attr("src", "${cp }/matching/photo?mem_id=" + marker.title);
+				img.attr("class", "imgLOGO");
 				img.attr("alt", "이미지가 없습니다");
+				img.attr("style", "border-radius:50%;")
+
 				var img2 = $("<img>");
 				img2.attr("src", "/image/cw.png");
-				img2.attr("class", "img");
+				img2.attr("class", "img5");
 				img2.attr("style", "vertical-align : bottom");
 
 				var p = $("<p>");
-				p.text(marker.title);
-				p.attr("style", "float:left;")
+				p.text(marker.mem_nm);
+				p.attr("style", "float:left; margin-left : 10px;")
 
 				var p1 = $("<p>");
-				p1.attr("style", "float:left;")
+				p1.attr("style", "float:left; margin-left : 10px;")
 				p1.text(marker.title1);
 
 				var p2 = $("<p>");
 				p2.append(img2);
-				p2.attr("style", "float:left;")
+				p2.attr("style", "float:left; margin-left : 10px;")
 
 				var br = $("<br>");
 				var br1 = $("<br>");
@@ -463,13 +479,21 @@ img {
 	//해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
 	function getClickHandler(seq) {
 		return function(e) {
+			// 			var marker = markers[seq], infoWindow = infoWindows[seq];
+			// 			location.href = "/matching/meet?cw_mem_id=" + marker.title
+			// 						if (infoWindow.getMap()) {
+			// 							infoWindow.close();
+			// 						} else {
+			// 							infoWindow.open(map, marker);
+			// 						}
+
 			var marker = markers[seq], infoWindow = infoWindows[seq];
-			location.href = "/matching/meet?cw_mem_id=" + marker.title
-			// 			if (infoWindow.getMap()) {
-			// 				infoWindow.close();
-			// 			} else {
-			// 				infoWindow.open(map, marker);
-			// 			}
+
+			if (infoWindow.getMap()) {
+				infoWindow.close();
+			} else {
+				infoWindow.open(map, marker);
+			}
 		}
 	}
 
@@ -484,8 +508,7 @@ img {
 </script>
 </head>
 <body>
-
-
+	<a href="/matching/meet?cw_mem_id="></a>
 
 
 
@@ -507,6 +530,7 @@ img {
 								<input type="hidden" name="cw_mem_id" value="${cw.mem_id }">
 								<input type="hidden" name="add" value="${cw.mem_add1 }">
 								<input type="hidden" name="cw_driver" value="${cw.cw_driver }">
+								<input type="hidden" name="mem_nm" value="${cw.mem_nm }">
 							</c:forEach>
 						</ul>
 					</div>

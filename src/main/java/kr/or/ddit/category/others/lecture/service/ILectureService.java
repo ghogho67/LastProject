@@ -103,6 +103,7 @@ public interface ILectureService {
 	
 	List<LectureVo> LectuerSearchTeacher(String lec_tea);
 	List<LectureVo> LectuerSearchTitle(String lec_nm);
+	int deleteCulture(int culture_id);
 
 	
 }
