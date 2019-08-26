@@ -43,7 +43,7 @@
                   <ul>
                      <li><a href="${cp}/mypage/Worker_Info"><span>회원정보</span></a></li>
                      <li><a
-                        href="${cp}/mypage/approval/approvalCheckA?page=1&pageSize=10"><span>결산관리</span></a></li>
+                        href="${cp}/approval/approvalCheckW?page=1&pageSize=10&searchType=type&searchVal="><span>결산관리</span></a></li>
                      <li class='active has-sub'><a><span>회원관리<i
                               class="fa fa-sort-down"></i></span></a>
                         <ul>

@@ -74,55 +74,6 @@ public class ApprovalController {
 		return "jsonView";
 	}
 
-	//
-
-//	@RequestMapping(path = "/approvalCheck")
-//	public String approvalCheck(HttpSession session, Model model, int page, int pageSize) {
-//		PageVo pageVo = new PageVo();
-//		pageVo.setPage(page);
-//		pageVo.setPageSize(pageSize);
-//			
-//		
-//		
-//		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
-//		String mem_id = memberVo.getMem_id();
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("mem_id", mem_id);
-//		map.put("page", pageVo.getPage());
-//		map.put("pageSize", pageVo.getPageSize());
-//		logger.debug("☞ mem_id:{}",mem_id);
-//		logger.debug("☞pageVo.getPage() : {}", pageVo.getPage());
-//		logger.debug("☞ pageVo.getPageSize():{}",pageVo.getPageSize());
-//		Map<String, Object> resultMap = approvalService.approvalPageList(map);
-////		logger.debug("☞!!!!!!!!:{}",(List<ApprovalVo>) resultMap.get("approvalPageList"));
-//		List<ApprovalVo> appVo = (List<ApprovalVo>) resultMap.get("approvalPageList");
-//		
-//	        int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
-//	        if(pageVo.getPage()==1) {
-//	        	startPage =1;
-//	        }
-//	        if(startPage>=2) {
-//	        	startPage =((int)Math.floor((pageVo.getPage()-1)/10)*10) + 1;
-//	        }
-//	        int paginationSize = ((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10;
-//	        
-//	        int lastpaginationSize= (int) resultMap.get("lastpaginationSize");
-//	        
-//	        if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
-//	        	paginationSize= lastpaginationSize;
-//	        }
-//	        model.addAttribute("startPage", startPage);
-//			model.addAttribute("paginationSize", paginationSize);
-//			model.addAttribute("lastpaginationSize", lastpaginationSize);
-//			model.addAttribute("pageVo",pageVo);
-//			
-//
-//		model.addAttribute("appVo",appVo);
-//		
-//
-//		return"/mypage/approval/approvalCheckP.mytiles";
-//	}
-
 	@RequestMapping(path = "/approvalCheck")
 	public String approvalCheck(HttpSession session, Model model, MemberApprovalVo memberapprovalVo, int page,
 			int pageSize, String searchType, @RequestParam(required = false) String searchVal) {
@@ -234,41 +185,44 @@ public class ApprovalController {
 
 	}
 
-	@RequestMapping(path = "/search")
-	public String saerchList(Model model, String searchType, String searchVal, HttpSession session, int page,
-			int pageSize) {
-		logger.debug("☞ 서치리스트 여기들어오니?");
-		logger.debug("☞ searchType : {} ", searchType);
-		logger.debug("☞ searchVal : {}", searchVal);
-		logger.debug("☞  page : {}", page);
-		logger.debug("☞ pageSize : {}", pageSize);
+	
+	
+	@RequestMapping(path = "/approvalCheckW")
+	public String approvalCheckW(HttpSession session, Model model,MemberApprovalVo memberapprovalVo, int page, int pageSize, String searchType,
+			@RequestParam(required = false) String searchVal) {
 		PageVo pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
 
-		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
-		String mem_id = memvo.getMem_id();
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memberVo.getMem_id();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("mem_id", mem_id);
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
+		logger.debug("☞ mem_id:{}", mem_id);
+		logger.debug("☞pageVo.getPage() : {}", pageVo.getPage());
+		logger.debug("☞ pageVo.getPageSize():{}", pageVo.getPageSize());
+		logger.debug("☞ searchType:{}", searchType);
+		logger.debug("☞ searchVal:{}", searchVal);
 
-		if (searchType.equals("type") && !searchVal.equals("")) {
-			String typeName = searchVal;
+		if (searchType.equals("type")) {
+
 			int type = 0;
-			if (typeName.equals("매칭")) {
+			if (searchVal == null) {
+				type = 0;
+			} else if (searchVal.equals("매칭")) {
 				type = 1;
-			} else if (typeName.equals("골드")) {
+			} else if (searchVal.equals("골드")) {
 				type = 2;
-			} else if (typeName.equals("기부")) {
+			} else if (searchVal.equals("기부")) {
 				type = 3;
 			}
 			map.put("app_type", type);
 			logger.debug("☞map:{}", map);
-			logger.debug("☞typeName:{}", typeName);
 			logger.debug("☞type:{}", type);
-			Map<String, Object> resultMap = approvalService.typeSaerchList(map);
-			List<ApprovalVo> typeSaerchList = (List<ApprovalVo>) resultMap.get("typeSaerchList");
+			Map<String, Object> resultMap = approvalService.typeSaerchListW(map);
+			List<ApprovalVo> typeSaerchList = (List<ApprovalVo>) resultMap.get("typeSaerchListW");
 
 			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
 			if (pageVo.getPage() == 1) {
@@ -292,14 +246,19 @@ public class ApprovalController {
 			model.addAttribute("page", pageVo.getPage());
 			model.addAttribute("pageSize", pageVo.getPageSize());
 
+			model.addAttribute("searchType", searchType);
+			model.addAttribute("searchVal", searchVal);
+
 //			return "jsonView";
-			return "/mypage/approval/approvalCheckP.mytiles";
+			return "/mypage/approval/approvalCheckW.mytiles";
 
 		} else if (searchType.equals("day") && !searchVal.equals("")) {
 			String day = searchVal;
 			map.put("app_time", day);
-			Map<String, Object> resultMap = approvalService.daySaerchList(map);
-			List<ApprovalVo> daySaerchList = (List<ApprovalVo>) resultMap.get("daySaerchList");
+			logger.debug("☞dayMap:{}", map);
+			Map<String, Object> resultMap = approvalService.daySaerchListW(map);
+			List<ApprovalVo> daySaerchList = (List<ApprovalVo>) resultMap.get("daySaerchListW");
+			logger.debug("☞daySaerchList:{}", daySaerchList);
 			model.addAttribute("appVo", daySaerchList);
 
 			int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
@@ -322,20 +281,24 @@ public class ApprovalController {
 			model.addAttribute("pageVo", pageVo);
 			model.addAttribute("page", pageVo.getPage());
 			model.addAttribute("pageSize", pageVo.getPageSize());
+			model.addAttribute("searchType", searchType);
+			model.addAttribute("searchVal", searchVal);
 
 //			return "jsonView";
-			return "/mypage/approval/approvalCheckP.mytiles";
+			return "/mypage/approval/approvalCheckW.mytiles";
 
 		} else if (searchType.equals("memid") && searchVal.equals("")) {
-			return "redirect:/approval/approvalCheck";
+			return "redirect:/approval/approvalCheckW";
 		} else if ((searchType.equals("day") && searchVal.equals(""))) {
-			return "redirect:/approval/approvalCheck";
+			return "redirect:/approval/approvalCheckW";
 		} else {
-			return "redirect:/approval/approvalCheck";
+			return "redirect:/approval/approvalCheckW";
 
 		}
+
 	}
 
+	
 	/**
 	 * Method : approvalCheckA 작성자 : ADMIN 변경이력 :
 	 * 

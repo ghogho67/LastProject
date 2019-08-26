@@ -187,5 +187,27 @@ public class ApprovalDao implements IApprovalDao {
 	}
 	
 	
-
+	
+	//==========================================================================================================
+	//==========================================검색 요양보호사회원 =================================================
+		@Override
+		public List<ApprovalVo> daySaerchListW(Map<String, Object> resultMap) {
+			return sqlSession.selectList("approval.dayPageListW", resultMap);
+		}
+		@Override
+		public int daySaerchCntW(Map<String, Object> day) {
+			return sqlSession.selectOne("approval.dayCntW", day);
+		}
+		@Override
+		public List<ApprovalVo> typeSaerchListW(Map<String, Object> resultMap) {
+			return sqlSession.selectList("approval.typePageListW", resultMap);
+		}
+		@Override
+		public int typeSaerchCntW(Map<String, Object> type) {
+			return sqlSession.selectOne("approval.typeCntW", type);
+		}
+	//==========================================================================================================
+		
+		
+		
 }

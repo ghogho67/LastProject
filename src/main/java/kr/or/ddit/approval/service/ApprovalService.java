@@ -96,6 +96,7 @@ public class ApprovalService implements IApprovalService {
 		
 		return resultMap;
 	}
+	
 	@Override
 	public Map<String, Object> typeSaerchList(Map<String, Object> map) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -200,6 +201,52 @@ public class ApprovalService implements IApprovalService {
 	@Override
 	public int totalApprovalType_admin(String app_type) {
 		return approvalDao.totalApprovalType_admin(app_type);
+	}
+
+
+	@Override
+	public Map<String, Object> daySaerchListW(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("daySaerchListW", approvalDao.daySaerchListW(map));
+
+		
+		String mem_id = (String) map.get("mem_id");
+		String app_time = (String) map.get("app_time");
+		Map<String, Object> cnttMap = new HashMap<String, Object>();
+		cnttMap.put("mem_id", mem_id);
+		cnttMap.put("app_time", app_time);
+		int memAllCnt = approvalDao.daySaerchCntW(cnttMap);
+		int pageSize = (int)map.get("pageSize");
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("lastpaginationSize", paginationSize);
+		
+		return resultMap;
+	}
+
+	
+	
+	@Override
+	public Map<String, Object> typeSaerchListW(Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		logger.debug("☞map:{}",map);
+		List<ApprovalVo> list = approvalDao.typeSaerchListW(map);
+		resultMap.put("typeSaerchListW", list);
+		
+		logger.debug("☞list:{}",list);
+
+		
+		String mem_id = (String) map.get("mem_id");
+		int app_type = (int) map.get("app_type");
+		Map<String, Object> cnttMap = new HashMap<String, Object>();
+		cnttMap.put("mem_id", mem_id);
+		cnttMap.put("app_type", app_type);
+		int memAllCnt = approvalDao.typeSaerchCntW(cnttMap);
+		int pageSize = (int)map.get("pageSize");
+		
+		int paginationSize = (int) Math.ceil((double)memAllCnt/pageSize);
+		resultMap.put("lastpaginationSize", paginationSize);
+		return resultMap;
 	}
 	
 	
