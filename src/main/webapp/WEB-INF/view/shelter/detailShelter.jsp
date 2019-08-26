@@ -59,7 +59,7 @@ $(document).ready(function(){
 
          <div class="card">
             <div class="card-body">
-
+            
                <div id="titlee">
                   <h2>
                      <span>무더위 쉼터</span> 상세보기

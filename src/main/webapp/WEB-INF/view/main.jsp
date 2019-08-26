@@ -283,11 +283,6 @@ height: 70px;
 	<%@include file="/resource/chat/chatAlram.jsp" %>
 	<%@include file="/resource/chatbot/chatbotView.jsp" %>
 	
-	<!-- chatbot ifram -->
-	<iframe id="chatbot1" src="chatbot.jsp"></iframe>
-
-
-
 	
 
 	<div class="slidebanner">

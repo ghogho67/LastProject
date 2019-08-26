@@ -244,6 +244,19 @@ function boardPagingListAjaxHtml(page, pageSize) {
 		<div style="width: 1250px;">
 			<div class="card">
 				<div class="card-body">
+				
+<!-- 				<div class="d1"> -->
+<!-- 						<form class="for" id="frm2" -->
+<%-- 							action="${cp }/nursingHome/searchNursing" method="post"> --%>
+<!-- 							<select id="searchType" name="searchType" -->
+<!-- 								style="position: absolute; z-index: 999;"> -->
+<!-- 								<option value="all">동 검색</option> -->
+<!-- 							</select> <input type="text" placeholder="동을 입력해 주세요" name="nh_add" -->
+<!-- 								id="nh_add"> -->
+<!-- 							<button type="button" id="searchBtn"></button> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+				
 							<div id="titlee">
 						<h2>
 							<span>요양시설 평점조회</span> 대분류
