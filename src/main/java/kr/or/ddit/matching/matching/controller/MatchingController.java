@@ -63,7 +63,7 @@ public class MatchingController {
 	public String profile(Model model, String mem_id) throws IOException {
 		MemberVo memVo = memberService.getMemVo(mem_id);
 		model.addAttribute("memberVo", memVo);
-		return "profileView";
+		return "profileView2";
 	}
 
 	public List<MemberVo> selMem_gender(List<MemberVo> cwList, String mem_gender) {
@@ -216,20 +216,19 @@ public class MatchingController {
 			throws JsonProcessingException {
 
 		logger.debug("☞dateCheck");
-		
+
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		mem_id = memberVo.getMem_id();
 
-		
-		logger.debug("☞cw_mem_id:{}",cw_mem_id);
+		logger.debug("☞cw_mem_id:{}", cw_mem_id);
 		List<MatchingVo> mlist = matchingService.getCWMatchingList(cw_mem_id);
-		logger.debug("☞mlist:{}",mlist);
-		logger.debug("☞mlist.size():{}",mlist.size());
+		logger.debug("☞mlist:{}", mlist);
+		logger.debug("☞mlist.size():{}", mlist.size());
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
 
-			for (int i = 0; i < mlist.size(); i++) {
+		for (int i = 0; i < mlist.size(); i++) {
 			CalendarVo vo = new CalendarVo();
-			
+
 			vo.setC_start(mlist.get(i).getMat_st().substring(0, 10));
 			vo.setC_end(mlist.get(i).getMat_st().substring(11, 16));
 
@@ -239,7 +238,7 @@ public class MatchingController {
 //		ObjectMapper mapper = new ObjectMapper();
 //		String jsonText = mapper.writeValueAsString(list);
 //		model.addAttribute("json", jsonText);
-		logger.debug("☞list:{}",list);
+		logger.debug("☞list:{}", list);
 		model.addAttribute("list", list);
 //		model.addAttribute("list", matchingService.getCWMatchingList(cw_mem_id));
 		return "jsonView";
@@ -248,14 +247,14 @@ public class MatchingController {
 	@RequestMapping(path = "/meet", method = RequestMethod.GET)
 	public String meeting(Model model, String cw_mem_id, String mem_id, HttpSession session)
 			throws JsonProcessingException {
-		
+
 		logger.debug("☞meet");
-		
+
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		mem_id = memberVo.getMem_id();
 
 		List<MatchingVo> mlist = matchingService.getCWMatchingList(cw_mem_id);
-		logger.debug("☞mlist:{}",mlist);
+		logger.debug("☞mlist:{}", mlist);
 		List<LocationVo> loList = locationService.getLocationList(cw_mem_id);
 		logger.debug("loList:{}", loList);
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
@@ -283,10 +282,24 @@ public class MatchingController {
 		model.addAttribute("carList", carList);
 		model.addAttribute("loList", loList);
 		model.addAttribute("list", list);
-		model.addAttribute("memVo", memberService.getMemVo(cw_mem_id));
 		model.addAttribute("mem_id", mem_id);
+
+		MemberVo mvo = memberService.getMemVo(cw_mem_id);
+		if (mvo.getMem_gender().equals("M")) {
+			mvo.setMem_gender("남자");
+		} else {
+			mvo.setMem_gender("여자");
+		}
+
+		if (mvo.getMem_gender().equals("Y")) {
+			mvo.setCw_driver("운전 가능");
+		} else {
+			mvo.setCw_driver("운전 불가능");
+		}
+
+		model.addAttribute("memVo", mvo);
 //		model.addAttribute("list", matchingService.getCWMatchingList(cw_mem_id));
-		return "matching/meeting";
+		return "/matching/meeting.tiles";
 	}
 
 	@RequestMapping(path = "/meetjson")
@@ -351,9 +364,9 @@ public class MatchingController {
 	@RequestMapping(path = "/insertCalendar")
 	public String insertData(Model model, @RequestBody List<Map<String, Object>> list, RedirectAttributes redirect,
 			String mem_id, HttpSession session, String endTime, String startTime) {
-		
+
 		logger.debug("☞insertCalendar");
-		
+
 		logger.debug("☞insertCalendar");
 		logger.debug("☞list:{}", list);
 
@@ -503,12 +516,10 @@ public class MatchingController {
 
 	public void changeDate(String endTime, String startTime, int[] dow, @RequestBody List<Map<String, Object>> list,
 			String mem_id) {
-		
+
 		logger.debug("☞changeDate");
-		
+
 		SimpleDateFormat dateFormat;
-		
-		
 
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm"); // 년월일 표시
 
@@ -592,8 +603,7 @@ public class MatchingController {
 	public String updateCalendar(Model model, @RequestBody List<Map<String, Object>> list) {
 
 		logger.debug("☞updateCalendar");
-		
-		
+
 		SimpleDateFormat dateFormat;
 
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -648,9 +658,9 @@ public class MatchingController {
 
 	@RequestMapping(path = "/deleteCalendar")
 	public String deleteCalendar(Model model, int c_id) {
-		
+
 		logger.debug("☞deleteCalendar");
-		
+
 		matchingService.matchingDelete(c_id);
 		return "redirect:/getCalendar";
 	}
