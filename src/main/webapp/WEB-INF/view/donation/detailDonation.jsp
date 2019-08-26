@@ -158,7 +158,7 @@ $(document).ready(function(){
                <br><br>
                
                <form action="${cp }/login" >
-                     <button type="submit" id="loginBtn" class="btn btn-default btn-md">로그인 화면 가기</button>
+                     <button type="submit" id="loginBtn" class="btn btn-default btn-md">처음화면으로 가기</button>
                </form>
                
                

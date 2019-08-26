@@ -231,7 +231,7 @@ td {
 
 <body>
 
-	<form id="pageForm" action="${cp}/hospital/pagingList">
+	<form id="pageForm" action="${cp}/nursingHome/pagingList">
 		<input type="hidden" name="page" id="page"> <input
 			type="hidden" name="pageSize" id="pageSize">
 	</form>

@@ -191,26 +191,76 @@
 		#{patsign2,jdbcType=VARCHAR},
 		#{patsign1,jdbcType=VARCHAR})
 	</insert>
+	<insert id="coinsert" parameterType="CoReportVo">
+		insert into coreport
+		(REPORT_ID, MEM_ID, NAME,FACNM,REG,GRADE,CWNUM,FACNUM,YEAR,TT, sh,EH,
+		PHYSUP,
+		COGSUR,
+		LIFE,TALK,
+		CLEAN, PHY,
+		FOOD, COG,
+		LN, SN,
+		FT,FC,
+		SIGN,
+		PATSIGN,time
+		) values
+		(report_id.nextval,
+		#{mem_id,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{facnm,jdbcType=VARCHAR},
+		#{reg,jdbcType=INTEGER},
+		#{grade,jdbcType=INTEGER},
+		#{cwnum,jdbcType=INTEGER},
+		#{facnum,jdbcType=VARCHAR},
+		#{year,jdbcType=VARCHAR },
+		#{tt,jdbcType=INTEGER },
+		#{sh,jdbcType=VARCHAR },
+		#{eh,jdbcType=VARCHAR },
+		#{physup,jdbcType=INTEGER },
+		#{cogsur,jdbcType=INTEGER },
+		#{life,jdbcType=INTEGER },
+		#{talk,jdbcType=INTEGER },
+		#{clean,jdbcType=INTEGER },
+		#{phy,jdbcType=INTEGER },
+		#{food,jdbcType=INTEGER },
+		#{cog,jdbcType=INTEGER },
+		#{ln,jdbcType=INTEGER },
+		#{sn,jdbcType=INTEGER },
+		#{ft,jdbcType=VARCHAR},
+		#{fc,jdbcType=VARCHAR},
+		#{sign,jdbcType=VARCHAR},
+		#{patsign,jdbcType=VARCHAR},sysdate)
+	</insert>
 
 	<!-- // 리포트 아이디로 해당 보고서를 불러온다 -->
-	<select id="getReportVo" resultType="ReportVo" parameterType="int">
+	<select id="getReportVo" resultType="ReportVo"
+		parameterType="int">
 		select * from report where mat_id = #{mat_id}
 	</select>
 
 	<select id="getReport" resultType="ReportVo" parameterType="int">
 		select * from report where mat_id = #{mat_id}
 	</select>
-	
+
 	<select id="getLatestReport" resultType="ReportVo">
-		select * from (select * from report order by rep_time desc) where rownum = 1
+		select * from (select *
+		from report order by rep_time desc) where rownum = 1
+	</select>
+
+	<insert id="reportWrite" parameterType="ReportVo">
+		insert into report values
+		(#{mat_id}, sysdate,#{rep_title},#{rep_cont})
+	</insert>
+
+	<select id="reportModify" parameterType="ReportVo">
+		update report set
+		rep_title=#{rep_title},rep_cont=#{rep_cont} where mat_id = #{mat_id}
 	</select>
 	
-	<insert id="reportWrite" parameterType="ReportVo">
-		insert into	report values (#{mat_id}, sysdate,#{rep_title},#{rep_cont})
-	</insert>
-	
-	<select id="reportModify" parameterType="ReportVo">
-		update report set rep_title=#{rep_title},rep_cont=#{rep_cont} where mat_id = #{mat_id}
+	<select id="getLatestCoReport" resultType="CoReportVo">
+		select * from (select *
+		from coreport order by time desc )
+		where rownum = 1
 	</select>
 
 </mapper>

@@ -41,7 +41,7 @@ public class ChatbotController {
 // 			$("#chat").append("<div id='chatBotSay1'> 다시 입력해 주세요 : chatbot"+"</div><br>");
 // 		} 					
 		
-		return "/chatbot/chatbot";
+		return "chatbot/chatbot";
 	}
 	
 	

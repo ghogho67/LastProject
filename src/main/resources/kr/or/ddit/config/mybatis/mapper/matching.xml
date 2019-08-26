@@ -26,17 +26,20 @@
 		where mat_id = 1
 	</select>
 
-	<select id="getMatchingList" parameterType="string" resultType="MatchingVo">
+	<select id="getMatchingList" parameterType="string"
+		resultType="MatchingVo">
 		select * from matching
 		where cw_mem_id = #{cw_mem_id}
 	</select>
 
-	<select id="getCWMatchingList" parameterType="string" resultType="MatchingVo">
+	<select id="getCWMatchingList" parameterType="string"
+		resultType="MatchingVo">
 		select * from matching
 		where cw_mem_id = #{cw_mem_id}
 	</select>
 
-	<select id="getMemMatchingList" parameterType="string" resultType="MatchingVo">
+	<select id="getMemMatchingList" parameterType="string"
+		resultType="MatchingVo">
 		select * from
 		matching
 		where mem_id = #{mem_id}
@@ -68,7 +71,8 @@
 		mem_grade = 3
 	</select>
 
-	<select id="cwMatchingPagingList" parameterType="map" resultType="MatchingVo">
+	<select id="cwMatchingPagingList" parameterType="map"
+		resultType="MatchingVo">
 		<![CDATA[
 		SELECT *
 		FROM
@@ -79,15 +83,15 @@
 		SUBSTR (REPLACE(MAT_END,'T',' '),1) MAT_END,
 		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
 		FROM MATCHING
-		WHERE CW_MEM_ID =
-		#{cw_mem_id}
+		WHERE CW_MEM_ID = #{cw_mem_id} 
 		ORDER BY MAT_ST DESC)A)B
 		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
 		AND 	B.RN <= #{page} * #{pageSize}	
 		]]>
 	</select>
 
-	<select id="memMatchingPagingList" parameterType="map" resultType="MatchingVo">
+	<select id="memMatchingPagingList" parameterType="map"
+		resultType="MatchingVo">
 		<![CDATA[
 		SELECT *
 		FROM
@@ -106,19 +110,23 @@
 		]]>
 	</select>
 
-	<select id="cwMatchingCnt" parameterType="string" resultType = "int">
+	<select id="cwMatchingCnt" parameterType="string"
+		resultType="int">
 
 		select
 		count(*) from matching where
-		cw_mem_id=#{cw_mem_id} and mat_del='N'
+		cw_mem_id=#{cw_mem_id}
+		and mat_del='N'
 
 	</select>
-	
-	<select id="memMatchingCnt" parameterType="string" resultType = "int">
+
+	<select id="memMatchingCnt" parameterType="string"
+		resultType="int">
 
 		select
 		count(*) from matching where
-		cw_mem_id=#{cw_mem_id} and mat_del='N'
+		mem_id=#{mem_id}
+		and mat_del='N'
 
 	</select>
 

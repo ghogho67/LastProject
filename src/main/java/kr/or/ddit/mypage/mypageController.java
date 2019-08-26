@@ -292,7 +292,7 @@ public class mypageController {
 		String mem_id = memvo.getMem_id();
 		model.addAttribute("mem_id", mem_id);
 
-		return "/mypage/schedule.mytiles";
+		return "/mypage/schedule.tiles";
 	}
 
 	@RequestMapping("/schedule")

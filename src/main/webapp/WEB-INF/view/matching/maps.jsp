@@ -7,14 +7,14 @@
 <html>
 <head>
 <style>
-img {
+.imgLOGO {
 	float: left;
-	width: 100px;
-	height: 100px;
+	width: 70px;
+	height: auto;
 	vertical-align: middle;
 }
 
-.img {
+.img5 {
 	float: left;
 	width: 70px;
 	height: 30px;
@@ -400,10 +400,11 @@ img {
 				showMarker(map, marker);
 				var img = $("<img>");
 				img.attr("src", "/image/Test1.png");
+				img.attr("class", "imgLOGO");
 				img.attr("alt", "이미지가 없습니다");
 				var img2 = $("<img>");
 				img2.attr("src", "/image/cw.png");
-				img2.attr("class", "img");
+				img2.attr("class", "img5");
 				img2.attr("style", "vertical-align : bottom");
 
 				var p = $("<p>");

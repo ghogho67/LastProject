@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.matching.matching.dao.IMatchingDao;
@@ -13,6 +15,8 @@ import kr.or.ddit.matching.matching.model.MatchingVo;
 
 @Service
 public class MatchingService implements IMatchingService {
+
+	private static final Logger logger = LoggerFactory.getLogger(MatchingService.class);
 
 	@Resource(name = "matchingDao")
 	private IMatchingDao matchingDao;
@@ -87,16 +91,22 @@ public class MatchingService implements IMatchingService {
 	@Override
 	public Map<String, Object> matchingPagingList(Map<String, Object> map) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-
+			
+		logger.debug("☞matchingService/matchingPagingList");
+		
 		if (map.get("mem_id") != null) {
 			String mem_id = (String) map.get("mem_id");
 			List<MatchingVo> matchingList = matchingDao.memMatchingPagingList(map);
 			resultMap.put("matchingList", matchingList);
-			int matchingCnt = matchingDao.cwMatchingCnt(mem_id);
+			logger.debug("☞mem_id:{}", mem_id);
+			int matchingCnt = matchingDao.memMatchingCnt(mem_id);
 			resultMap.put("matchingCnt", matchingCnt);
+			logger.debug("☞matchingCnt:{}", matchingCnt);
 			int pageSize = (int) map.get("pageSize");
+			logger.debug("☞pageSize:{}", pageSize);
 			int paginationSize = (int) Math.ceil((double) matchingCnt / pageSize);
 			resultMap.put("paginationSize", paginationSize);
+			logger.debug("☞resultMap:{}", resultMap);
 
 		} else if (map.get("cw_mem_id") != null) {
 
@@ -104,13 +114,18 @@ public class MatchingService implements IMatchingService {
 			map.put("cw_mem_id", cw_mem_id);
 			List<MatchingVo> matchingList = matchingDao.cwMatchingPagingList(map);
 			resultMap.put("matchingList", matchingList);
+			logger.debug("☞cw_mem_id:{}", cw_mem_id);
 			int matchingCnt = matchingDao.cwMatchingCnt(cw_mem_id);
 			resultMap.put("matchingCnt", matchingCnt);
+			logger.debug("☞matchingCnt:{}", matchingCnt);
 			int pageSize = (int) map.get("pageSize");
+			logger.debug("☞pageSize:{}", pageSize);
 			int paginationSize = (int) Math.ceil((double) matchingCnt / pageSize);
 			resultMap.put("paginationSize", paginationSize);
+			logger.debug("☞resultMap:{}", resultMap);
 		}
 
+		logger.debug("☞resultMap:{}", resultMap);
 		return resultMap;
 	}
 
