@@ -659,6 +659,11 @@ public class mypageController {
 
 		return "mypage/gold/recognitionActResult2";
 	}
+	
+	@RequestMapping("cctv")
+	public String CCTV() {
+		return"";
+	}
 
 
 }

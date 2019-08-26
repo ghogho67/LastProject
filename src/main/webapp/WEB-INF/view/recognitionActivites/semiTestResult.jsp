@@ -292,7 +292,7 @@ ul, li, dl, dd {
 							
 							</p>
 
-							<a href="${cp}/main">처음으로 돌아가기</a>
+							<a href="${cp}/recognition/semiTestStart">처음으로 돌아가기</a>
 						</div>
 					</div>
 				</div>

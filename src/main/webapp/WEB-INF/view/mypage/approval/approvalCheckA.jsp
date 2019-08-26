@@ -13,7 +13,7 @@
 
 
 <style type="text/css">
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 font-family: 'Noto Sans KR ', sans-serif ; #titlee h2, #pzone h2 {
 	font-size: 40px;
