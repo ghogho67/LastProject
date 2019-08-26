@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko">
-<head>
 <meta charset="utf-8" />
 <head>
 
@@ -16,7 +15,7 @@
 
 <style>
 img {
-	border-radius:3%;
+	border-radius: 3%;
 }
 
 .M_btn {
@@ -84,10 +83,6 @@ table.cw td {
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>FullCalendar Example</title>
-
 <link rel="stylesheet"
 	href="/FullCalendar-Example-master/vendor/css/fullcalendar.min.css" />
 <link rel="stylesheet"
@@ -132,33 +127,37 @@ table.cw td {
 			});
 	// import결제 함수
 </script>
+<script type="text/javascript">
+ function popup3() {
+      window.open("http://192.168.0.32/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅", 
+    		  "thisTok!","width=400, height=700, left=100, top=50");
+ }
+
+</script>
+
+
 </head>
 
 <body>
 
 
-	<div class="container style="width: 1000px; height: 1000px;">
+	<div class="container" style="width: 1000px;">
 		<pre>${list }</pre>
 		<div style="width: 50%; float: left; height: 350px;">
 			<label for="userNm" class="col-sm-2 control-label">${path }</label>
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
 			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
-			<img id="img"
-				src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
+			<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
 				style="float: right; width: 400px; height: 300px;"
 				alt="${cp}/image/cw.png" />
 		</div>
-		<!-- 		<div> -->
-		<!-- 		<input type="button" class="btn" width="50px" value="매칭신청" style="float:left"> -->
-		<%-- 		<input type="hidden" name="mem_id" value="${mem_id}"> --%>
-		<!-- 	</div> -->
 		<div id="button" style="width: 40%; float: right; height: 400px;">
 			<input type="hidden" class="btn"><br> <br> <input
 				type="button" id="app" class="M_btn" value="매칭신청"><br>
 			<br> <input type="button" class="M_btn" value="화상채팅"
-				id="videochat"><br> <br> <input type="button"
-				class="M_btn" value="채팅"> <input type="hidden" name="mem_id"
-				value="${mem_id}">
+				id="videochat"><br> <br> 
+				<input id="chatPlay" type="button"class="M_btn" value="채팅" onclick="popup3()">  
+				<input type="hidden" name="mem_id"	value="${mem_id}">
 		</div>
 	</div>
 	<!-- 일자 클릭시 메뉴오픈 -->
@@ -335,40 +334,46 @@ table.cw td {
 
 					<div class="row" id="timeInfo">
 						<div class="col-xs-12">
-							<label class="col-xs-4" for="timeInfo">시간 선택</label> <label
-								class="checkbox-inline"> <input type="checkbox"
-								name="timeInfo[]" value="1">09:00~10:00
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="timeInfo[]" value="2">10:30~11:30
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="timeInfo[]" value="3">12:00~13:00
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="timeInfo[]" value="4">13:30~14:30
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="timeInfo[]" value="5">15:00~16:00
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="timeInfo[]" value="6">16:30~17:00
-							</label>
+							<label class="col-xs-4" for="timeInfo">시간 선택</label>
+
+
+
+							<div class="col-xs-7">
+								<label> <input type="checkbox"
+									name="timeInfo[]" value="1">09:00~10:00
+								</label> <label> <input type="checkbox" name="timeInfo[]"
+									value="2">10:30~11:30
+								</label> <label> <input type="checkbox" name="timeInfo[]"
+									value="3">12:00~13:00
+								</label> <label> <input type="checkbox" name="timeInfo[]"
+									value="4">13:30~14:30
+								</label> <label> <input type="checkbox" name="timeInfo[]"
+									value="5">15:00~16:00
+								</label> <label> <input type="checkbox" name="timeInfo[]"
+									value="6">16:30~17:00
+								</label>
+
+							</div>
+
 						</div>
 					</div>
 
 					<div class="row" id="dayInfo">
 						<div class="col-xs-12">
-							<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label
-								class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="1">일요일
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="2">월요일
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="3">화요일
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="4">수요일
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="5">목요일
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="6">금요일
-							</label> <label class="checkbox-inline"> <input type="checkbox"
-								name="dayInfo[]" value="7">토요일
+							<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label>
+								<input type="checkbox" name="dayInfo[]" value="1">일요일
+							</label> <label> <input type="checkbox" name="dayInfo[]"
+								value="2">월요일
+							</label> <label> <input type="checkbox" name="dayInfo[]"
+								value="3">화요일
+							</label> <label> <input type="checkbox" name="dayInfo[]"
+								value="4">수요일
+							</label> <label> <input type="checkbox" name="dayInfo[]"
+								value="5">목요일
+							</label> <label> <input type="checkbox" name="dayInfo[]"
+								value="6">금요일
+							</label> <label> <input type="checkbox" name="dayInfo[]"
+								value="7">토요일
 							</label>
 						</div>
 					</div>
