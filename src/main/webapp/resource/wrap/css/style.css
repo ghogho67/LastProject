@@ -2736,7 +2736,7 @@ form p {
 form p:last-child {
   margin-bottom: 0; }
 
-/* Remove default checkbox */
+Remove default checkbox
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
