@@ -308,19 +308,10 @@ height: 70px;
 
 
 	<%@include file="/resource/chat/chatAlram.jsp" %>
-	<div>
-	<form action="${cp }/chatbot">
-
-		<button type="submit">
-			<img src="/image/bot.svg" style="width: 50px; height: auto;"
-				id="fixedbtn2">
-		</button>
-
-	</form>
-			
-	</div>
-
-
+	<%@include file="/resource/chatbot/chatbotView.jsp" %>
+	
+	<!-- chatbot ifram -->
+	<iframe id="chatbot1" src="chatbot.jsp"></iframe>
 
 
 
