@@ -65,7 +65,7 @@
 
 #fixedbtn2 {
 	position: fixed;
-	right: 50px;
+	right: 10px;
 	bottom: 120px;
 	z-index: 998
 }

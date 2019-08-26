@@ -354,7 +354,7 @@
 										<label for="email1">생년월일</label>
 											<div class="input-group p-has-icon">
 												<input type="text" id="mem_birth" name="mem_birth"
-													placeholder="생년월일을 입력해 주세요" class="form-control"> <span
+													placeholder="YYYY/MM/DD형식으로 입력해 주세요" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
