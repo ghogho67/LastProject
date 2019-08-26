@@ -10,6 +10,7 @@ import kr.or.ddit.category.post.post.model.PostVo;
 import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.report.dao.IReportDao;
+import kr.or.ddit.matching.report.model.CoReportVo;
 import kr.or.ddit.matching.report.model.ReportVo;
 import kr.or.ddit.matching.report.model.ReportWriteVo;
 
@@ -28,7 +29,7 @@ public class ReportService implements IReportService {
 //	public ReportVo getReport(String rep_id) {
 //		return reportDao.getReport(rep_id);
 //	}
-	
+
 	@Override
 	public List<MatchingReportVo> getAllReportList(String mem_id) {
 		return reportDao.getAllReportList(mem_id);
@@ -38,7 +39,7 @@ public class ReportService implements IReportService {
 	public MatchingReportAttachmentVo getCertainReportWA(MatchingReportAttachmentVo matchingReportAttachmentVo) {
 		return reportDao.getCertainReportWA(matchingReportAttachmentVo);
 	}
-	
+
 	@Override
 	public List<MatchingReportVo> getWorkerReportList(String cw_mem_id) {
 		return reportDao.getWorkerReportList(cw_mem_id);
@@ -55,6 +56,11 @@ public class ReportService implements IReportService {
 	}
 
 	@Override
+	public int coReportInsert(CoReportVo crv) {
+		return reportDao.coReportInsert(crv);
+	}
+
+	@Override
 	public ReportVo getReportVo(int mat_id) {
 		return reportDao.getReportVo(mat_id);
 	}
@@ -66,9 +72,9 @@ public class ReportService implements IReportService {
 
 	@Override
 	public ReportVo getLatestReport() {
-		
+
 		return reportDao.getLatestReport();
-		
+
 	}
 
 	@Override
@@ -80,4 +86,10 @@ public class ReportService implements IReportService {
 //		
 //		return reportDao.getReport(rep_id);
 //	}
+
+	@Override
+	public CoReportVo getLatestCoReport() {
+		// TODO Auto-generated method stub
+		return reportDao.getLatestCoReport();
+	}
 }

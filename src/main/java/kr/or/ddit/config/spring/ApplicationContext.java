@@ -231,6 +231,7 @@ public class ApplicationContext extends WebMvcConfigurerAdapter implements WebSo
    public SocketAlramHandler socetAlramHandler() {
       return new SocketAlramHandler();   // socketHandler
    }
+   
 
    
    @Bean

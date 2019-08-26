@@ -175,7 +175,7 @@
 
 		select
 		count(*) from post where
-		cate_id=#{cate_id} mem_id like '%'||#{mem_id}||'%' and post_del='N'
+		cate_id=#{cate_id} and mem_id like '%'||#{mem_id}||'%' and post_del='N'
 
 	</select>
 

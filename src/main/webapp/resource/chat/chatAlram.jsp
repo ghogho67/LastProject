@@ -35,17 +35,11 @@
 
 #fixedbtn {
 	position: fixed;
-	right: 50px;
+	right: 10px;
 	bottom: 50px;
 	z-index: 999
 }
 
-#fixedbtn2 {
-	position: fixed;
-	right: 50px;
-	bottom: 120px;
-	z-index: 998
-}
 
 </style>
 	<script type="text/javascript">
@@ -107,8 +101,8 @@ function initSocket() {
    function popup() {
 	      //       window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}",
 	      //             "thisTok!", "width=400, height=700, left=100, top=50");
-	      window.open("/chat/thistok?mem_id=${mem_id}", "thisTok!",
-	            "width=400, height=700, left=100, top=50");
+	      window.open("http://192.168.0.32/chat/thistok?mem_id=${mem_id}", "thisTok!",
+	            "width=550, height=700, left=100, top=50");
 	   }
 	</script>
 
@@ -117,7 +111,7 @@ function initSocket() {
 <title>Insert title here</title>
 </head>
 <body>
-<div>
+	<div>
 		<form id="chatCnt" action="">
 
 			<div class="fixalram">

@@ -36,14 +36,12 @@ public class ApprovalController {
 	}
 
 	@RequestMapping(path = "/matching")
-	public String approval(String imp_uid, String app_type, int app_pay, HttpSession session, Model model) {
+	public String approval(String imp_uid, ApprovalVo avo, HttpSession session,Model model) {
+		
+		logger.debug("☞matching");
 
-		ApprovalVo avo = new ApprovalVo();
-
-		avo.setApp_pay(app_pay);
-		avo.setApp_type("1");
-		avo.setMem_id("brown");
-
+		logger.debug("☞ApprovalVo:{}", avo);
+		
 		int insertCnt = approvalService.approvalInsert(avo);
 
 		model.addAttribute("insertCnt", String.valueOf(insertCnt));

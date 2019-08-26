@@ -77,8 +77,8 @@ public class PostController {
 	}
 
 	@RequestMapping("/pagingList")
-	public String postPagingList(PageVo pageVo, @RequestParam(required = false)int cate_id, Model model,
-			HttpSession session, @RequestParam(required = false) String current, 
+	public String postPagingList(PageVo pageVo, @RequestParam(required = false) int cate_id, Model model,
+			HttpSession session, @RequestParam(required = false) String current,
 			@RequestParam(required = false) String searchType, @RequestParam(required = false) String search) {
 
 		logger.debug("☞pagingList");
@@ -171,8 +171,7 @@ public class PostController {
 	@RequestMapping("detail")
 	public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
 
-
-		logger.debug("☞post_id:{}",post_id);
+		logger.debug("☞post_id:{}", post_id);
 		// cate_id
 		model.addAttribute("cate_id", cate_id);
 		// replyList
@@ -393,7 +392,6 @@ public class PostController {
 
 	}
 
-
 //	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
 //	public String ImageBoard1() {
 //		return "festival.tiles";
@@ -550,7 +548,6 @@ public class PostController {
 		model.addAttribute("startDate", startDate);
 		model.addAttribute("endDate", endDate);
 		return "festivalpost";
-		
 
 	}
 

@@ -8,7 +8,7 @@
 		insert into
 		approval values
 		(app_id.nextval,#{app_pay},sysdate,#{app_type},#{mem_id,
-		jdbcType=VARCHAR},'N', #{)
+		jdbcType=VARCHAR},'N', #{app_obj})
 	</insert>
 
 	<update id="delete" parameterType="int">
