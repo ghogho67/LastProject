@@ -12,6 +12,7 @@
 	color: white !important;
 }
 </style>
+<%@include file="/resource/chat/chatAlram.jsp" %>
 </head>
 <body>
 

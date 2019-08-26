@@ -9,10 +9,20 @@ public class ChatMemListVo {
 	private Date chat_dt;
 	private String chat_mem_id;
 	private String chat_del;
+	private String mem_nm;
 	
 	private String mem_id;
 	private int cm_chat_id;
 	private String newmsgyn;
+	
+	
+	
+	public String getMem_nm() {
+		return mem_nm;
+	}
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
 	public int getChat_id() {
 		return chat_id;
 	}
@@ -61,28 +71,29 @@ public class ChatMemListVo {
 	public void setNewmsgyn(String newmsgyn) {
 		this.newmsgyn = newmsgyn;
 	}
-	public ChatMemListVo(int chat_id, String chat_nm, Date chat_dt, String chat_mem_id, String chat_del, String mem_id,
-			int cm_chat_id, String newmsgyn) {
+	@Override
+	public String toString() {
+		return "ChatMemListVo [chat_id=" + chat_id + ", chat_nm=" + chat_nm + ", chat_dt=" + chat_dt + ", chat_mem_id="
+				+ chat_mem_id + ", chat_del=" + chat_del + ", mem_nm=" + mem_nm + ", mem_id=" + mem_id + ", cm_chat_id="
+				+ cm_chat_id + ", newmsgyn=" + newmsgyn + "]";
+	}
+	public ChatMemListVo(int chat_id, String chat_nm, Date chat_dt, String chat_mem_id, String chat_del, String mem_nm,
+			String mem_id, int cm_chat_id, String newmsgyn) {
 		super();
 		this.chat_id = chat_id;
 		this.chat_nm = chat_nm;
 		this.chat_dt = chat_dt;
 		this.chat_mem_id = chat_mem_id;
 		this.chat_del = chat_del;
+		this.mem_nm = mem_nm;
 		this.mem_id = mem_id;
 		this.cm_chat_id = cm_chat_id;
 		this.newmsgyn = newmsgyn;
 	}
-
 	public ChatMemListVo() {
-
 	}
-	@Override
-	public String toString() {
-		return "ChatMemListVo [chat_id=" + chat_id + ", chat_nm=" + chat_nm + ", chat_dt=" + chat_dt + ", chat_mem_id="
-				+ chat_mem_id + ", chat_del=" + chat_del + ", mem_id=" + mem_id + ", cm_chat_id=" + cm_chat_id
-				+ ", newmsgyn=" + newmsgyn + "]";
-	}
+	
+	
 	
 	
 

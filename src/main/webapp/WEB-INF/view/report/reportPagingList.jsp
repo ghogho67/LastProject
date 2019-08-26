@@ -168,13 +168,13 @@ td {
 	height: 30px;
 	background: white;
 	position: absolute;
-	right: 5%;
-	margin-top: 3%;
+	right: 17%;
+	top: 228px;
 }
 
 .d1 input {
 	width: 110%;
-	height: 40px;
+	height: 30px;
 	padding-left: 90px;
 	border: 2px solid #5ab4dc;
 	border-radius: 5px;
@@ -190,7 +190,7 @@ td {
 	right: -25px;
 	/* 	left : 2px; */
 	width: 32px;
-	height: 38px;
+	height: 30px;
 	border: none;
 	background: #5ab4dc;
 	border-radius: 0 5px 5px 0;
@@ -205,7 +205,7 @@ td {
 }
 
 #searchType {
-	height: 40px;
+	height: 30px;
 	width: 90px;
 	font-size: 12px;
 	border-radius: 5px 0px 0px 5px;
@@ -222,13 +222,14 @@ td {
 </head>
 
 <body>
-	<pre>pageVo.page:{pageVo.page}pageVo.pageSize:{pageVo.pageSize}</pre>
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
 			<div class="card">
 				<div class="card-body">
+
 					<pre>${cate_id}</pre>
 					<div id="titlee">
+						<pre>pageVo.page : ${pageVo.page}pageVo.pageSize : ${pageVo.pageSize} paginationSize : ${paginationSize}</pre>
 						<h2>
 							<span>reportPagingList.jsp</span>
 						</h2>
@@ -244,85 +245,87 @@ td {
 								<th>매칭 유형</th>
 								<th>매칭 대상자</th>
 								<th>요양보호사</th>
-								<th>보고서 작성</th>
+								<c:if test="${mem_grade eq 3}">
+									<th>보고서 작성</th>
+								</c:if>
 								<th>보고서 확인</th>
 							</tr>
 							<c:set var="number" value="0" />
-							<c:forEach items="${reportList }" var="report"
-								varStatus="status">
-									<tr class="Category" id="${report.mat_id }"
-										data-post_id="${report.mat_id }">
-										<%--<td class="CategoryId">${post.post_id }</td> --%>
-										<td class="CategoryId">
-<%-- 														${matchingCnt } --%>
-<%-- 														${status.index } --%>
-<%-- 														${current } --%>
-													${((matchingCnt-status.index+1))-((current-1)*10)}
-										</td>
-										<%--${(postCnt - status.index)-((current-1)*10)} --%>
-										<td>${report.day }</td>
-										<td>${report.stTime }</td>
-										<td>${report.endTime }</td>
-										<td>${report.mat_type }</td>
-										<td>${report.mem_id }</td>
-										<td>${report.cw_mem_id }</td>
-										<td><a href="${cp}/report/reportWrite?mat_id=${report.mat_id }"	class="btn btn-primary btn-sm">보고서 작성</a></td>
-										<td>
-										<c:if test="${report.check eq 1 }">
-										<a href="${cp}/report/detail?mat_id=${report.mat_id }" class="btn btn-primary btn-sm">보고서 확인</a>
-										</c:if>
-										</td>
-									</tr>
-									<input type="hidden" class="mat_id" value="${report.mat_id }">
+							<c:forEach items="${reportList }" var="report" varStatus="status">
+								<tr class="Category" id="${report.mat_id }"
+									data-post_id="${report.mat_id }">
+									<%--<td class="CategoryId">${post.post_id }</td> --%>
+									<td class="CategoryId">
+										<%-- 														${matchingCnt } --%> <%-- 														${status.index } --%>
+										<%-- 														${current } --%>
+										${((matchingCnt-status.index+1))-((current-1)*10)}
+									</td>
+									<%--${(postCnt - status.index)-((current-1)*10)} --%>
+									<td>${report.day }</td>
+									<td>${report.stTime }</td>
+									<td>${report.endTime }</td>
+									<td>${report.mat_type }</td>
+									<td>${report.mem_nm }</td>
+									<td>${report.cw_mem_nm }</td>
+									<c:if test="${mem_grade eq 3}">
+										<td><a
+											href="${cp}/report/reportWrite?mat_id=${report.mat_id }"
+											class="btn btn-primary btn-sm">보고서 작성</a></td>
+									</c:if>
+									<td><c:if test="${report.check eq 1 }">
+											<a href="${cp}/report/detail?mat_id=${report.mat_id }"
+												class="btn btn-primary btn-sm">보고서 확인</a>
+										</c:if></td>
+								</tr>
+								<input type="hidden" class="mat_id" value="${report.mat_id }">
 							</c:forEach>
 						</table>
 					</div>
 				</div>
 			</div>
-					<div class="demo" style="position: absolute; right: 40%;">
-						<ul class="pagination">
-							<c:choose>
-								<c:when test="${pageVo.page == 1 }">
-									<li class="page-item prev disabled"><a href="#"
-										class="page-link" aria-label="Previous"><span
-											aria-hidden="true">«</span> </a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item"><a class="page-link"
-										aria-label="Next"
-										href="${cp}/report/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}"><span
-											aria-hidden="true">«</span></a></li>
-								</c:otherwise>
-							</c:choose>
+			<div class="demo" style="position: absolute; right: 40%;">
+				<ul class="pagination">
+					<c:choose>
+						<c:when test="${pageVo.page == 1 }">
+							<li class="page-item prev disabled"><a href="#"
+								class="page-link" aria-label="Previous"><span
+									aria-hidden="true">«</span> </a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link" aria-label="Next"
+								href="${cp}/report/pagingList?page=${pageVo.page-1}&pageSize=${pageVo.pageSize}"><span
+									aria-hidden="true">«</span></a></li>
+						</c:otherwise>
+					</c:choose>
 
-							<c:forEach begin="1" end="${paginationSize}" var="i">
-								<c:choose>
-									<c:when test="${pageVo.page == i}">
-										<li class="page-item active"><a class="page-link"
-											href="#">${i}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link"
-											href="${cp}/report/pagingList?page=${i}&pageSize=${pageVo.pageSize}&current=${i}&matchingCnt=${matchingCnt}">${i}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
+					<c:forEach begin="1" end="${paginationSize}" var="i">
+						<c:choose>
+							<c:when test="${pageVo.page == i}">
+								<li class="page-item active"><a class="page-link" href="#">${i}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									href="${cp}/report/pagingList?page=${i}&pageSize=${pageVo.pageSize}&current=${i}&matchingCnt=${matchingCnt}">${i}</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
 
-							<c:choose>
-								<c:when test="${pageVo.page == paginationSize}">
-									<li class="page-item next disabled">
-									<a href="#" class="page-link" aria-label="Next">
-									<span aria-hidden="true">»</span></a></li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item">
-									<a class="page-link" aria-label="Next" href="${cp}/report/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">
-									<span aria-hidden="true">»</span></a></li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-					</div>
+					<c:choose>
+						<c:when test="${pageVo.page == paginationSize}">
+							<li class="page-item next disabled"><a href="#"
+								class="page-link" aria-label="Next"> <span
+									aria-hidden="true">»</span></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link" aria-label="Next"
+								href="${cp}/report/pagingList?page=${pageVo.page+1}&pageSize=${pageVo.pageSize}">
+									<span aria-hidden="true">»</span>
+							</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>
 		</div>
 	</div>
 </body>

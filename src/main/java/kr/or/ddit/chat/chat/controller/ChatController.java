@@ -114,8 +114,16 @@ public class ChatController {
 	@RequestMapping(path = "/searchId", method = RequestMethod.GET)
 	public String SearchId(Model model, HttpSession session, String chatmem_id, @RequestParam(required = false)String chat_nm) {
 		logger.debug("☞SearchId까지오니? 그리고 chatmem_id 받니?:{}",chatmem_id);
-		int cm_id = registerService.idCheck(chatmem_id);
-		model.addAttribute("cm_id",cm_id);
+		int cm_id = 0;
+		if(!chatmem_id.equals(null) || !chatmem_id.equals("")) {
+			cm_id = registerService.idCheck(chatmem_id);
+			model.addAttribute("cm_id",cm_id);
+		}else{
+			model.addAttribute("cm_id",0);
+			
+		}
+		
+	
 		
 		return "jsonView";
 	}

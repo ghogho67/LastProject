@@ -168,7 +168,7 @@ td {
 	background: white;
 	position: absolute;
 	right: 13%;
-    top: 228px;
+	top: 228px;
 }
 
 .d1 input {
@@ -220,12 +220,10 @@ td {
 	font-size: 8pt;
 	text-align: center;
 	color: black;
-    font-weight: 700;
-    min-height: 40px;
-    border-radius: 6px;
-	
+	font-weight: 700;
+	min-height: 40px;
+	border-radius: 6px;
 }
-
 </style>
 
 
@@ -262,15 +260,10 @@ td {
 
 <div class="container">
 
-
-	<div style="width: 1350px;">
-
-
+	<div style="padding-top: 100px; width: 1350px;">
 
 		<div class="card">
 			<div class="card-body">
-
-
 				<div class="d1">
 					<form class="for" id="frm2" action="${cp}/post/pagingList"
 						method="post">
@@ -304,60 +297,59 @@ td {
 				<div class="table-responsive">
 					<form id="frm" action="${cp}/post/detail" method="post"
 						enctype="multipart/form-data">
-							<table class="table center-aligned-table">
-								<tr class="text-primary">
-									<th>게시글 번호</th>
-									<th>제목</th>
-									<th>작성자 아이디</th>
-									<th>작성일시</th>
-								</tr>
-								<c:set var="number" value="0" />
-								<c:forEach items="${postList }" var="post" varStatus="status">
-									<c:choose>
-										<c:when test="${post.post_del eq 'N' }">
-											<tr class="Category" id="${post.post_id }"
-												data-post_id="${post.post_id }">
-												<td class="CategoryId"><c:if
-														test="${post.post_par eq 0}">
-																										current:${current } --%>
+						<table class="table center-aligned-table">
+							<tr class="text-primary">
+								<th>게시글 번호</th>
+								<th>제목</th>
+								<th>작성자 아이디</th>
+								<th>작성일시</th>
+							</tr>
+							<c:set var="number" value="0" />
+							<c:forEach items="${postList }" var="post" varStatus="status">
+								<c:choose>
+									<c:when test="${post.post_del eq 'N' }">
+										<tr class="Category" id="${post.post_id }"
+											data-post_id="${post.post_id }">
+											<td class="CategoryId"><c:if
+													test="${post.post_par eq 0}">
 														${((postCnt-status.index))-((current-1)*10)}
 													</c:if> <c:if test="${post.post_par ne 0 }">
-														<c:forEach var="i" begin="0" end="0">
-															<c:set var="number" value="${number+1 }" />
-														</c:forEach>
-													</c:if></td>
-												<td><c:if test="${post.level > 1 }">
-														<c:forEach var="i" begin="1" end="${post.level+1 }"
-															step="1">
+													<c:forEach var="i" begin="0" end="0">
+														<c:set var="number" value="${number+1 }" />
+													</c:forEach>
+												</c:if></td>
+											<td><c:if test="${post.level > 1 }">
+													<c:forEach var="i" begin="1" end="${post.level+1 }"
+														step="1">
 															&nbsp;&nbsp;
 														</c:forEach>
-													</c:if> ${post.post_nm }</td>
-												<td>${post.mem_id }</td>
-												<td><fmt:formatDate value="${post.post_time }"
-														pattern="yyyy-MM-dd" /></td>
-												<td class="post_id">${post.post_id }</td>
-											</tr>
+												</c:if> ${post.post_nm }</td>
+											<td>${post.mem_id }</td>
+											<td><fmt:formatDate value="${post.post_time }"
+													pattern="yyyy-MM-dd" /></td>
+											<td class="post_id" style = "display:none;">${post.post_id }</td>
+										</tr>
 
-											<input type="hidden" name="cate_id" value="${cate_id }">
-											<input type="hidden" id="post_id" name="post_id"
-												value="${post_id}">
+										<input type="hidden" name="cate_id" value="${cate_id }">
+										<input type="hidden" id="post_id" name="post_id"
+											value="${post_id}">
 
-										</c:when>
-										<c:otherwise>
-											<c:forEach var="i" begin="0" end="0">
-												<c:set var="number" value="${number+1 }" />
-											</c:forEach>
-											<tr>
-												<td></td>
-												<%-- <td>${post.post_id }</td> --%>
-												<td colspan="3">삭제된 게시글입니다.</td>
-											</tr>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</table>
-							
-		<input type="hidden" id=searchType value="${searchType}">
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="i" begin="0" end="0">
+											<c:set var="number" value="${number+1 }" />
+										</c:forEach>
+										<tr>
+											<td></td>
+											<%-- <td>${post.post_id }</td> --%>
+											<td colspan="3">삭제된 게시글입니다.</td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</table>
+
+						<input type="hidden" id=searchType value="${searchType}">
 					</form>
 
 

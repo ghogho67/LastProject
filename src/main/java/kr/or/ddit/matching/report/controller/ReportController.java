@@ -25,9 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.or.ddit.category.post.attachment.model.AttachmentVo;
-import kr.or.ddit.category.post.post.model.PostVo;
-import kr.or.ddit.joinVo.MatchingReportAttachmentVo;
 import kr.or.ddit.joinVo.MatchingReportVo;
 import kr.or.ddit.matching.matching.model.MatchingVo;
 import kr.or.ddit.matching.matching.service.IMatchingService;
@@ -38,6 +35,7 @@ import kr.or.ddit.matching.report.service.IReportService;
 import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
 import kr.or.ddit.matching.reportAttach.service.IReportAttachService;
 import kr.or.ddit.member.member.model.MemberVo;
+import kr.or.ddit.member.member.service.IMemberService;
 import kr.or.ddit.page.model.PageVo;
 import kr.or.ddit.util.PartUtil;
 
@@ -54,37 +52,24 @@ public class ReportController {
 	@Resource(name = "reportAttachService")
 	private IReportAttachService reportAttachService;
 
-	
-	
-	
-	
-	
+	@Resource(name = "memberService")
+	private IMemberService memberService;
+
 	/**
-	 * Method : reportList
-	 * 작성자 : 오도아
-	 * 변경이력 :
+	 * Method : reportList 작성자 : 오도아 변경이력 :
+	 * 
 	 * @param model
 	 * @param session
 	 * @param redirectAttributes
 	 * @param request
 	 * @param mem_id
 	 * @param mem_grade
-	 * @return
-	 * Method 설명 :  리포트 목록 출력
+	 * @return Method 설명 : 리포트 목록 출력
 	 */
 	@RequestMapping(path = "/reportList", method = RequestMethod.GET)
 	public String reportList(Model model, HttpSession session, RedirectAttributes redirectAttributes,
 			HttpServletRequest request, @RequestParam(name = "memid") String mem_id,
-			@RequestParam(name = "memgrade") String mem_grade
-			) {
-		
-		
-		
-	
-		
-		
-		
-		
+			@RequestParam(name = "memgrade") String mem_grade) {
 
 		logger.debug("@@@@mem_id : {} ", mem_id);
 		logger.debug("@@@@mem_grade : {} ", mem_grade);
@@ -98,34 +83,20 @@ public class ReportController {
 			logger.debug("@@@@reportlist : {} ", reportlist);
 			model.addAttribute("reportlist", reportlist);
 
-			
-			
-			
-			
-			
-			
 		} else {
 
 			List<MatchingReportVo> reportlist = reportService.getAllReportList(mem_id);
 			logger.debug("@@@@reportlist : {} ", reportlist);
 			model.addAttribute("reportlist", reportlist);
-			
-			
-			
-			
+
 		}
 
 		return "mypage/report/reportList";
 	}
 
-	
-	
-	
-	
 	/**
-	 * Method : report
-	 * 작성자 : 오도아
-	 * 변경이력 :
+	 * Method : report 작성자 : 오도아 변경이력 :
+	 * 
 	 * @param model
 	 * @param session
 	 * @param redirectAttributes
@@ -133,8 +104,7 @@ public class ReportController {
 	 * @param rep_id
 	 * @param mem_id
 	 * @param mem_grade
-	 * @return
-	 * Method 설명 : 리포트 세부 내용출력
+	 * @return Method 설명 : 리포트 세부 내용출력
 	 */
 //	@RequestMapping(path = "/report", method = RequestMethod.GET)
 //	public String report(Model model, HttpSession session, RedirectAttributes redirectAttributes,
@@ -174,18 +144,13 @@ public class ReportController {
 //	}
 //
 //	
-	
-	
-	
-	
+
 	/**
-	 * Method : fileDownload
-	 * 작성자 : 오도아
-	 * 변경이력 :
+	 * Method : fileDownload 작성자 : 오도아 변경이력 :
+	 * 
 	 * @param response
 	 * @param rep_att_id
-	 * @throws IOException
-	 * Method 설명 :  리포트에 첨부도니 첨부 파일 출력 
+	 * @throws IOException Method 설명 : 리포트에 첨부도니 첨부 파일 출력
 	 */
 	@RequestMapping(path = "/DownGOGO", method = RequestMethod.GET)
 	public void fileDownload(HttpServletResponse response, @RequestParam("repattid") int rep_att_id)
@@ -213,64 +178,73 @@ public class ReportController {
 	}
 
 	@RequestMapping(path = "/writeView")
-	public String writeView(Model model,  ReportWriteVo rwv) throws IOException {
+	public String writeView(Model model, ReportWriteVo rwv) throws IOException {
 		return "matching/report";
 	}
 
-	@RequestMapping(path = "/write", method  = RequestMethod.POST)
-	public String write(Model model,  ReportWriteVo rwv, HttpSession session) throws IOException {
+	@RequestMapping(path = "/write", method = RequestMethod.POST)
+	public String write(Model model, ReportWriteVo rwv, HttpSession session) throws IOException {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id = memberVo.getMem_id();
-		
+
 		rwv.setMem_id(mem_id);
-		
+
 		logger.debug("insertCntrwv:{}", rwv);
 		int insertCnt = reportService.reportInsert(rwv);
 		logger.debug("insertCnt:{}", insertCnt);
-		
+
 		return "matching/report";
 	}
-	
+
 	@RequestMapping(path = "/reportWrite")
-	public String reportWrite(Model model,  ReportWriteVo rwv) throws IOException {
+	public String reportWrite(Model model, ReportWriteVo rwv) throws IOException {
 		return "/report/reportWrite.tiles";
 	}
 
 	@RequestMapping(path = "/pagingList")
-	public String getMatInfo(PageVo pageVo, Model model,  ReportWriteVo rwv,  @RequestParam(required = false) String current, HttpSession session) throws IOException {
-	
+	public String getMatInfo(PageVo pageVo, Model model, ReportWriteVo rwv,
+			@RequestParam(required = false) String current, @RequestParam(required = false) String searchType,
+			@RequestParam(required = false) String search, HttpSession session) throws IOException {
+		logger.debug("☞/reportcontroller/pagingList");
+
 		pageVo.setPage(pageVo.getPage());
 		pageVo.setPageSize(pageVo.getPageSize());
-		
+
+		logger.debug("☞searchType:{}", searchType);
+
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id = memberVo.getMem_id();
 		String mem_grade = memberVo.getMem_grade();
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+
+		map.put("page", pageVo.getPage());
+		map.put("pageSize", pageVo.getPageSize());
 		
-		if(mem_grade.equals("1")||mem_grade.contentEquals("2")) {
+		logger.debug("☞map:{}", map);
+		
+		if(mem_grade.equals("1")||mem_grade.equals("2")) {
 			map.put("mem_id", mem_id);
 			map.put("page", pageVo.getPage());
 			map.put("pageSize", pageVo.getPageSize());
 			
 			resultMap = matchingService.matchingPagingList(map);
+			logger.debug("☞resultMap:{}",resultMap);
 			
 		} else if(mem_grade.equals("3")) {
 			map.put("cw_mem_id", mem_id);
 			map.put("page", pageVo.getPage());
 			map.put("pageSize", pageVo.getPageSize());
-			
 			resultMap = matchingService.matchingPagingList(map);
+			logger.debug("☞resultMap:{}",resultMap);
 			
 		}
-		
+
 		List<ReportPageVo> reportList = new ArrayList<ReportPageVo>();
 		List<MatchingVo> matchingList = (List<MatchingVo>) resultMap.get("matchingList");
-		logger.debug("☞mvl:{}",matchingList);
-		
-		for(MatchingVo mv : matchingList ) {
-			logger.debug("☞mv.getMat_id():{}",mv.getMat_id());
+
+		for (MatchingVo mv : matchingList) {
 //			ReportVo rv = reportService.getReportVo(mv.getMat_id());
 //			logger.debug("☞rv:{}",rv);
 			String st = mv.getMat_st();
@@ -281,58 +255,58 @@ public class ReportController {
 			String end = mv.getMat_end();
 			String endTime = end.substring(idx + 1);
 
-			
 			ReportVo checkReportVo = reportService.getReportVo(mv.getMat_id());
-			
-			int check =1;
-			if(checkReportVo == null) {
+
+			int check = 1;
+			if (checkReportVo == null) {
 				check = 0;
 			} else {
 				check = 1;
 			}
-			
+
+			MemberVo memVo = memberService.getMemVo(mv.getMem_id());
+			MemberVo cwMemVo = memberService.getMemVo(mv.getCw_mem_id());
+
 			ReportPageVo rpv = new ReportPageVo(mv.getMat_id(), mv.getMat_title(), mv.getMat_cont(), day, stTime,
-					endTime, mv.getMat_type(), mv.getMem_id(), mv.getCw_mem_id(), check);
-			
-			logger.debug("☞mv.getMat_id():{}",mv.getMat_id());
+					endTime, mv.getMat_type(), mv.getMem_id(), mv.getCw_mem_id(), memVo.getMem_nm(),
+					cwMemVo.getMem_nm(), check);
+
 			ReportVo rvo = reportService.getReportVo(mv.getMat_id());
-			
-			logger.debug("rpv:{}", rpv);
+
 			reportList.add(rpv);
 		}
 		logger.debug("rpl:{}", reportList);
-		
+
+		model.addAttribute("mem_grade", mem_grade);
 		model.addAttribute("current", current);
 		model.addAttribute("mem_id", memberVo.getMem_id());
-		model.addAttribute("matchingCnt", (Integer)resultMap.get("matchingCnt"));
-		model.addAttribute("paginationSize", (Integer)resultMap.get("paginationSize"));
+		model.addAttribute("matchingCnt", (Integer) resultMap.get("matchingCnt"));
+		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		model.addAttribute("reportList", reportList);
-		
+
 		return "/report/reportPagingList.tiles";
 	}
-	
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String postRegister(ReportVo reportVo, int mat_id, String rep_title, String rep_cont, Model model,
 			@RequestParam("file") MultipartFile[] files, ReportAttachVo reportAttachVo, HttpSession session) {
 
-		logger.debug("☞reportVo:{}",reportVo);
-		
+		logger.debug("☞reportVo:{}", reportVo);
+
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		reportVo.setRep_title(rep_title);
 		reportVo.setRep_cont(rep_cont);
 		reportVo.setMat_id(mat_id);
 
 		// 게시글등록---------------------------------------------------------------------------------------
-		
+
 		ReportVo checkReportVo = reportService.getReportVo(mat_id);
-		if(checkReportVo == null) {
+		if (checkReportVo == null) {
 			int insertCnt = reportService.reportWrite(reportVo);
 		} else {
-			logger.debug("☞이미 저장한 내용이 있습니다:{}"," 이미 저장한 내용이 있습니다");
+			logger.debug("☞이미 저장한 내용이 있습니다:{}", " 이미 저장한 내용이 있습니다");
 		}
-		
-		
+
 		reportVo = reportService.getLatestReport();
 
 		String savePath = PartUtil.getUploadPath();
@@ -350,13 +324,15 @@ public class ReportController {
 				}
 				reportAttachVo.setRep_att_nm(file.getOriginalFilename());
 				reportAttachVo.setRep_att_path(savePath + File.separator + fileName + ext);
-				reportAttachVo.setMat_id(mat_id);;
+				reportAttachVo.setMat_id(mat_id);
+				;
 				reportAttachService.reportAttachInsert(reportAttachVo);
 			}
 		}
-		
+
 		model.addAttribute("mat_id", mat_id);
-		logger.debug("☞reportAttachService.getReportAttachList(mat_id):{}",reportAttachService.getReportAttachList(mat_id));
+		logger.debug("☞reportAttachService.getReportAttachList(mat_id):{}",
+				reportAttachService.getReportAttachList(mat_id));
 		if (reportAttachService.getReportAttachList(mat_id) != null)
 			model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		model.addAttribute("cw_mem_id", matchingService.getMatchingVo(mat_id).getCw_mem_id());
@@ -367,7 +343,7 @@ public class ReportController {
 		return "/report/reportDetail.tiles";
 
 	}
-	
+
 	@RequestMapping(path = "modifyView")
 	public String reportModifyView(int mat_id, ReportVo reportVo, Model model) {
 
@@ -378,26 +354,25 @@ public class ReportController {
 
 		return "/report/reportModify.tiles";
 	}
-	
+
 	@RequestMapping("detail")
 	public String postDetail(int mat_id, Model model, HttpSession session) {
 
 		model.addAttribute("reportVo", reportService.getReportVo(mat_id));
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
-		
+
 		model.addAttribute("mat_id", mat_id);
-		model.addAttribute("cw_mem_id",mvo.getCw_mem_id());
+		model.addAttribute("cw_mem_id", mvo.getCw_mem_id());
 		model.addAttribute("reportAttachList", reportAttachService.getReportAttach(mat_id));
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 		// 페이지 이동
 		return "/report/reportDetail.tiles";
 	}
-	
+
 	@RequestMapping(path = "/modify", method = RequestMethod.POST)
 	public String postModify(Model model, int mat_id, @RequestParam("file") MultipartFile[] files, ReportVo reportVo,
-			String rep_title, String rep_cont, String mem_id, ReportAttachVo reportAttachVo,
-			HttpSession session) {
+			String rep_title, String rep_cont, String mem_id, ReportAttachVo reportAttachVo, HttpSession session) {
 
 		reportVo.setRep_title(rep_title);
 		reportVo.setRep_cont(rep_cont);
@@ -428,17 +403,18 @@ public class ReportController {
 				}
 				reportAttachVo.setRep_att_nm(file.getOriginalFilename());
 				reportAttachVo.setRep_att_path(savePath + File.separator + fileName + ext);
-				reportAttachVo.setMat_id(mat_id);;
+				reportAttachVo.setMat_id(mat_id);
+				;
 
 				reportAttachService.reportAttachInsert(reportAttachVo);
 			}
 		}
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
-		logger.debug("☞mvo:{}",mvo);
-		model.addAttribute("reportAttachVo",reportAttachVo);
-		model.addAttribute("cw_mem_id",mvo.getCw_mem_id());
+		logger.debug("☞mvo:{}", mvo);
+		model.addAttribute("reportAttachVo", reportAttachVo);
+		model.addAttribute("cw_mem_id", mvo.getCw_mem_id());
 		model.addAttribute("mat_id", mat_id);
-		logger.debug("☞reportAttachList",reportAttachService.getReportAttachList(mat_id));
+		logger.debug("☞reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		if (reportAttachService.getReportAttachList(mat_id) != null)
 			model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		model.addAttribute("reportVo", reportVo);
