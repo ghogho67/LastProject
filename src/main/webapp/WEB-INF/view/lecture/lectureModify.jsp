@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<title>강좌 수정</title>
 
 <style type="text/css">
 #titlee h2, #pzone h2 {
@@ -15,7 +15,7 @@
 }
 
 #titlee h2 {
-	padding: 5px 5px;
+	padding: 15px 5px;
 }
 
 #titlee h2 span {
@@ -71,7 +71,7 @@ td {
 
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBarADMIN.jsp"%>
 
 	<form action="${cp}/lecture/modifyLecture" method="post">
 
@@ -81,11 +81,11 @@ td {
 			<div style="padding-top: 50px; width: 1350px;">
 
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body" style="margin: 20px;">
 
 						<div id="titlee">
 							<h2>
-								<span>학습.문화</span> 프로그램_등록
+								<span>학습.문화</span> 프로그램_수정
 							</h2>
 						</div>
 						<hr>
@@ -145,7 +145,8 @@ td {
 											<div class="form-group">
 												<label class="col-md-12">강좌 시작일</label>
 												<div class="col-md-12">
-													<input type="date" value="<fmt:formatDate value="${lecture.lec_st_dt}"  pattern="yyyy-MM-dd" />"
+													<input type="date"
+														value="<fmt:formatDate value="${lecture.lec_st_dt}"  pattern="yyyy-MM-dd" />"
 														class="form-control form-control-line" name="lec_st_dt"
 														id="lec_st_dt">
 												</div>
@@ -224,11 +225,45 @@ td {
 
 
 
+											<div class="form-group">
+												<label class="col-md-12">강좌분류</label>
+												<div class="col-md-12" style="text-align: right;">
+
+
+
+
+
+
+													<select id="lec_type" name="lec_type">
+														<option value="601"
+															<c:if test="${lecture.lec_type==601}">selected='selected'</c:if>>순수학문</option>
+														<option value="602"
+															<c:if test="${lecture.lec_type==602}">selected='selected'</c:if>>외국어</option>
+														<option value="603"
+															<c:if test="${lecture.lec_type==603}">selected='selected'</c:if>>생활기술</option>
+														<option value="604"
+															<c:if test="${lecture.lec_type==604}">selected='selected'</c:if>>요리</option>
+														<option value="605"
+															<c:if test="${lecture.lec_type==605}">selected='selected'</c:if>>미술
+															음악</option>
+														<option value="606"
+															<c:if test="${lecture.lec_type==606}">selected='selected'</c:if>>검강생활체육</option>
+													</select>
+
+
+
+
+												</div>
+											</div>
+
+
+
 
 
 											<div class="form-group">
 												<label class="col-md-12"></label>
-												<div class="col-md-12" style="padding-left: 170px;">문화센터정보는 부가제공 사항이며 수정이 불가합니다</div>
+												<div class="col-md-12" style="padding-left: 170px;">문화센터정보는
+													부가제공 사항이며 수정이 불가합니다</div>
 											</div>
 
 
@@ -236,7 +271,7 @@ td {
 											<div class="form-group">
 												<label for="birth" class="col-md-12">문화센터명</label>
 												<div class="col-md-12">
-													<input type="text" value="${culture.culture_id}"
+													<input type="text" placeholder="${culture.culture_type}"
 														class="form-control form-control-line" readonly="readonly"
 														name="culture_id" id="culture_id">
 												</div>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38185153-7b5c-4b22-a15e-7121577d5067">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="matching" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5690fb36-002b-4438-a548-c28030a6b6ac">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -30,207 +30,134 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<parameter name="report_id" class="java.lang.String"/>
-	<parameter name="mem_id" class="java.lang.String"/>
-	<parameter name="name" class="java.lang.String"/>
+	<subDataset name="Dataset1" uuid="5769540f-dc61-4aae-b224-d87a600e12ba">
+		<property name="com.jaspersoft.studio.data.sql.tables" value="Ik1BVENISU5HIiAsMTUsMTUsODhhOGE5NjAtOGExOC00MGExLTk1NmEtN2NmYmFlNzcwYzliOw=="/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+		<parameter name="mat_id" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT *
+FROM "MATCHING"
+WHERE 
+	 "MATCHING"."MAT_ID" = $P{mat_id}]]>
+		</queryString>
+		<field name="MAT_ID" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_ID"/>
+		</field>
+		<field name="MAT_TITLE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_TITLE"/>
+		</field>
+		<field name="MAT_CONT" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_CONT"/>
+		</field>
+		<field name="MAT_ST" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_ST"/>
+		</field>
+		<field name="MAT_END" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_END"/>
+		</field>
+		<field name="MAT_BC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_BC"/>
+		</field>
+		<field name="MAT_TC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_TC"/>
+		</field>
+		<field name="MAT_ALLDAY" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_ALLDAY"/>
+		</field>
+		<field name="MAT_TYPE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_TYPE"/>
+		</field>
+		<field name="MEM_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MEM_ID"/>
+		</field>
+		<field name="CW_MEM_ID" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="CW_MEM_ID"/>
+		</field>
+		<field name="MAT_DEL" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MAT_DEL"/>
+		</field>
+	</subDataset>
+	<parameter name="mat_id" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT * 
-FROM "COREPORT" where report_id = $P{report_id}]]>
+		<![CDATA[SELECT *
+FROM MATCHING where mat_id = 1]]>
 	</queryString>
-	<field name="REPORT_ID" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="REPORT_ID"/>
+	<field name="MAT_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_ID"/>
+	</field>
+	<field name="MAT_TITLE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_TITLE"/>
+	</field>
+	<field name="MAT_CONT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_CONT"/>
+	</field>
+	<field name="MAT_ST" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_ST"/>
+	</field>
+	<field name="MAT_END" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_END"/>
+	</field>
+	<field name="MAT_BC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_BC"/>
+	</field>
+	<field name="MAT_TC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_TC"/>
+	</field>
+	<field name="MAT_ALLDAY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_ALLDAY"/>
+	</field>
+	<field name="MAT_TYPE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_TYPE"/>
 	</field>
 	<field name="MEM_ID" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="MEM_ID"/>
 	</field>
-	<field name="NAME" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	<field name="CW_MEM_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CW_MEM_ID"/>
 	</field>
-	<field name="FACNM" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="FACNM"/>
-	</field>
-	<field name="REG" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="REG"/>
-	</field>
-	<field name="GRADE" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="GRADE"/>
-	</field>
-	<field name="CWNUM" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="CWNUM"/>
-	</field>
-	<field name="FACNUM" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="FACNUM"/>
-	</field>
-	<field name="YEAR" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="YEAR"/>
-	</field>
-	<field name="TT" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="TT"/>
-	</field>
-	<field name="SH" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="SH"/>
-	</field>
-	<field name="EH" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="EH"/>
-	</field>
-	<field name="PHYSUP" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PHYSUP"/>
-	</field>
-	<field name="COGSUR" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="COGSUR"/>
-	</field>
-	<field name="LIFE" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="LIFE"/>
-	</field>
-	<field name="TALK" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="TALK"/>
-	</field>
-	<field name="CLEAN" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="CLEAN"/>
-	</field>
-	<field name="PHY" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PHY"/>
-	</field>
-	<field name="FOOD" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="FOOD"/>
-	</field>
-	<field name="COG" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="COG"/>
-	</field>
-	<field name="LN" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="LN"/>
-	</field>
-	<field name="SN" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="SN"/>
-	</field>
-	<field name="FT" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="FT"/>
-	</field>
-	<field name="FC" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="FC"/>
-	</field>
-	<field name="SIGN" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="SIGN"/>
-	</field>
-	<field name="PATSIGN" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="PATSIGN"/>
+	<field name="MAT_DEL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MAT_DEL"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
 	<detail>
-		<band height="130" splitType="Stretch">
+		<band height="236" splitType="Stretch">
+			<componentElement>
+				<reportElement x="200" y="46" width="175" height="200" uuid="a52d6b8a-98af-4508-9834-c539b67b4232">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="f044bf3b-6d62-4aed-9b43-0de9a477bf55">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+				</jr:table>
+			</componentElement>
 			<textField>
-				<reportElement x="0" y="-10" width="185" height="30" uuid="96c227f7-248b-4618-9352-971b3bd1e6a7"/>
-				<textFieldExpression><![CDATA[$P{report_id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="5" y="17" width="30" height="30" uuid="eadef60e-41aa-44b3-8a22-9d1aedf2f94b"/>
-				<textFieldExpression><![CDATA[$F{REPORT_ID}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="35" y="17" width="21" height="30" uuid="a95f4522-990b-4e96-aa00-b2f3ebba6aa0"/>
-				<textFieldExpression><![CDATA[$F{MEM_ID}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="56" y="17" width="21" height="30" uuid="5ba18a41-69bb-410a-b24c-97727b960b94"/>
-				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="77" y="17" width="21" height="30" uuid="f0d56165-a2ba-425d-bb8d-dc80ad0c9251"/>
-				<textFieldExpression><![CDATA[$F{FACNM}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="98" y="17" width="21" height="30" uuid="e78c4db9-8e44-450b-94ee-424dae33e3ff"/>
-				<textFieldExpression><![CDATA[$F{REG}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="119" y="17" width="21" height="30" uuid="209011d3-d25d-4155-bbae-feebb97aa510"/>
-				<textFieldExpression><![CDATA[$F{GRADE}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="140" y="17" width="21" height="30" uuid="ea919000-d057-4a13-8294-ca2ac6e6562c"/>
-				<textFieldExpression><![CDATA[$F{CWNUM}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="161" y="17" width="21" height="30" uuid="39e64a92-d9bd-4d61-9cd3-17ecef817c5c"/>
-				<textFieldExpression><![CDATA[$F{FACNUM}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="182" y="17" width="21" height="30" uuid="fc7c0a88-8e1b-4e48-bf4c-553565141e15"/>
-				<textFieldExpression><![CDATA[$F{YEAR}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="203" y="17" width="21" height="30" uuid="b7cb94fd-3a0e-4a1f-b9b6-dd698138e659"/>
-				<textFieldExpression><![CDATA[$F{TT}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="224" y="17" width="21" height="30" uuid="862c43df-ab40-44c7-b61c-894cbd53dae2"/>
-				<textFieldExpression><![CDATA[$F{SH}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="245" y="17" width="21" height="30" uuid="7277c00c-9d40-4724-bcc9-c50046fb8e6b"/>
-				<textFieldExpression><![CDATA[$F{EH}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="266" y="17" width="21" height="30" uuid="6525d79d-d2a3-49ef-8205-af637a9a0374"/>
-				<textFieldExpression><![CDATA[$F{PHYSUP}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="287" y="17" width="21" height="30" uuid="9aa5d051-5023-45c8-b1b3-f86d5578e5ca"/>
-				<textFieldExpression><![CDATA[$F{COGSUR}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="308" y="17" width="21" height="30" uuid="3585acbb-2062-4a4f-bbbe-d64147a14440"/>
-				<textFieldExpression><![CDATA[$F{LIFE}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="329" y="17" width="21" height="30" uuid="7b99b2b8-d2ec-4e05-aa9e-4716bbfbe63c"/>
-				<textFieldExpression><![CDATA[$F{TALK}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="350" y="17" width="21" height="30" uuid="3d5ccf2d-5bd1-4d6d-8199-c8b4ed75645e"/>
-				<textFieldExpression><![CDATA[$F{CLEAN}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="371" y="17" width="21" height="30" uuid="cdedc742-f18b-434d-badd-02ca1d5fee20"/>
-				<textFieldExpression><![CDATA[$F{PHY}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="392" y="17" width="21" height="30" uuid="ff930113-4acd-4eff-bad7-0d702f559127"/>
-				<textFieldExpression><![CDATA[$F{FOOD}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="413" y="17" width="21" height="30" uuid="09174b02-4a40-482b-b1f5-46700febe265"/>
-				<textFieldExpression><![CDATA[$F{COG}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="434" y="17" width="21" height="30" uuid="1df8e138-3fd9-4f94-a8a3-0689fc9aa001"/>
-				<textFieldExpression><![CDATA[$F{LN}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="455" y="17" width="21" height="30" uuid="ee790e02-b98a-4236-8bfe-0c38e202cc40"/>
-				<textFieldExpression><![CDATA[$F{SN}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="476" y="17" width="21" height="30" uuid="3dc13b31-ea2e-49e1-a766-05b732cad4a4"/>
-				<textFieldExpression><![CDATA[$F{FT}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="497" y="17" width="21" height="30" uuid="2603fa7d-e034-4a3e-aac2-b67f957429f0"/>
-				<textFieldExpression><![CDATA[$F{FC}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="518" y="17" width="21" height="30" uuid="3a1f4bc3-5007-465d-b5a9-3158b1d8f120"/>
-				<textFieldExpression><![CDATA[$F{SIGN}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="539" y="17" width="21" height="30" uuid="19566169-4699-4174-a93c-04fe4046a4eb"/>
-				<textFieldExpression><![CDATA[$F{PATSIGN}]]></textFieldExpression>
+				<reportElement x="62" y="202" width="100" height="30" uuid="bb5782ea-02c6-40e4-abc3-b7d9e3b7d6aa"/>
+				<textFieldExpression><![CDATA[$P{mat_id}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="65" splitType="Stretch"/>
+		<band height="45" splitType="Stretch"/>
 	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>

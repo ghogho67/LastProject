@@ -283,6 +283,7 @@ height: 70px;
 	<%@include file="/resource/chat/chatAlram.jsp" %>
 	<%@include file="/resource/chatbot/chatbotView.jsp" %>
 	
+
 	
 
 	<div class="slidebanner">
@@ -314,7 +315,7 @@ height: 70px;
 
 	<footer class="footer-area" style="height: 150px; padding: 20px 0;">
 		<div class="row" style="width: 100%; padding-left: 490px;">
-			<div style="width: 30%;">
+			<div style="width: 40%;">
 				<div>
 					<a href="#" class="icon-button twitter"><i
 						class="fa fa-twitter"></i><span></span></a> <a href="#"
@@ -328,10 +329,9 @@ height: 70px;
 			</div>
 			<div style="width: 60%;">
 				<div>
-					<p>
-						Email: hello@havoccreative.com </br>+971 (0)55 151 0491 or +971 (0)55
-						282 2114 </br>PO Box 769558, twofour54, Abu Dhabi
-						his bare hands by Michael Whitehead.</br> &copy Havoc Creative 2017
+				<p>
+						Email: THISCARE@gmail.com </br>042-888-8988</br>
+						@ 대전 중구 대덕인재 개발원 TEAM3
 					</p>
 </div> 
 			</div>

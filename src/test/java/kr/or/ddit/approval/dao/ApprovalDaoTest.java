@@ -188,5 +188,7 @@ public class ApprovalDaoTest extends LogicTestEnv {
 		assertEquals(240006, totalApprovalType_admin);
 	}
 	
+	
+	
 
 }
