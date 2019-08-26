@@ -99,7 +99,7 @@ td {
 									<th>생성자</th>
 									<th>&nbsp;&nbsp;상태&nbsp;&nbsp;</th>
 									<th>&nbsp;&nbsp;관리&nbsp;&nbsp;</th>
-									<th>&nbsp;&nbsp;사용여부변경&nbsp;&nbsp;</th>
+<!-- 									<th>&nbsp;&nbsp;사용여부확인&nbsp;&nbsp;</th> -->
 								</tr>
 							</thead>
 
@@ -132,25 +132,22 @@ td {
 										<td><a
 											href="${cp}/category/categoryManagement?cate_id=${Category.cate_id}"
 											class="btn btn-primary btn-sm">소분류관리</a></td>
-										<c:choose>
-											<c:when test="${Category.cate_usage=='Y'}">
-												<td><a
-													href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}"
-													onclick="return confirm('해당카테고리를 사용하지 않으시겠습니까?')"
-													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td>
-											</c:when>
-											<c:otherwise>
-												<td><a
-													href="${cp}/category/categoryUse?cate_id=${Category.cate_id}"
-													onclick="return confirm('해당카테고리를 사용 하시겠습니까?')"
-													class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td>
-											</c:otherwise>
-										</c:choose>
+<%-- 										<c:choose> --%>
+<%-- 											<c:when test="${Category.cate_usage=='Y'}"> --%>
+<!-- 												<td><a -->
+<%-- 													href="${cp}/category/categoryDelete?cate_id=${Category.cate_id}" --%>
+<!-- 													onclick="return confirm('해당카테고리를 사용하지 않으시겠습니까?')" -->
+<!-- 													class="btn btn-outline-danger btn-sm">&nbsp;&nbsp;&nbsp;사용안함&nbsp;&nbsp;&nbsp;</a></td> -->
+<%-- 											</c:when> --%>
+<%-- 											<c:otherwise> --%>
+<!-- 												<td><a -->
+<%-- 													href="${cp}/category/categoryUse?cate_id=${Category.cate_id}" --%>
+<!-- 													onclick="return confirm('해당카테고리를 사용 하시겠습니까?')" -->
+<!-- 													class="btn btn-outline-primary btn-sm">&nbsp;&nbsp;&nbsp;사용&nbsp;&nbsp;&nbsp;</a></td> -->
+<%-- 											</c:otherwise> --%>
+<%-- 										</c:choose> --%>
 									</tr>
 								</c:forEach>
-							</tbody>
-
-
 						</table>
 					</div>
 				</div>

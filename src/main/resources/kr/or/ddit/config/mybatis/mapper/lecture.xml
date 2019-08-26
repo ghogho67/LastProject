@@ -17,9 +17,14 @@
 	
 	
 		<select id="getCultureList" resultType="cultureVo">
-		select * from culture order by culture_type
+		select * from culture order by culture_id
 	</select>
-	
+
+	<delete id="deleteCulture" parameterType="int">
+		delete from culture
+		where culture_id =#{culture_id}
+
+	</delete>
 	
 	
 	<select id="AllLectureCnt" resultType="int">
@@ -78,6 +83,7 @@
 			from
 			(select a.*
 			from lecture a
+			where lec_use like 'Y'
 			order by lec_nm asc) a)
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
@@ -91,7 +97,7 @@
 			(select a.*, rownum rn
 			from
 			(select a.*
-			from lecture a where lec_type = #{lec_type} 
+			from lecture a where lec_type = #{lec_type} and lec_use like 'Y'
 			order by lec_nm asc) a)
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
