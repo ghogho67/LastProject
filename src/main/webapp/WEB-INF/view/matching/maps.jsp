@@ -318,7 +318,9 @@ img {
 						},
 						function(status, response) {
 							if (status == naver.maps.Service.Status.OK) {
-								var result = response.result, items = result.items;
+								var result = response.result;
+								var items = result.items;
+								console.log(items);
 								position = new naver.maps.LatLng(
 										items[0].point.y, items[0].point.x);
 								callback({
@@ -342,8 +344,8 @@ img {
 								});
 								var infoWindow = new naver.maps.InfoWindow(
 										{
-											content : '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'
-													+ listData1[i]
+											content : '<div style="width:150px;text-align:center;padding:10px;">요양보호사 <b>"'
+													+ '<a href="/matching/meet?cw_mem_id='+listData1[i]+'">'+listData1[i]+'</a>'
 													+ '"</b>.</div>'
 										});
 								markers.push(marker);
@@ -463,13 +465,22 @@ img {
 	//해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
 	function getClickHandler(seq) {
 		return function(e) {
-			var marker = markers[seq], infoWindow = infoWindows[seq];
-			location.href = "/matching/meet?cw_mem_id=" + marker.title
-			// 			if (infoWindow.getMap()) {
-			// 				infoWindow.close();
-			// 			} else {
-			// 				infoWindow.open(map, marker);
-			// 			}
+// 			var marker = markers[seq], infoWindow = infoWindows[seq];
+// 			location.href = "/matching/meet?cw_mem_id=" + marker.title
+// 						if (infoWindow.getMap()) {
+// 							infoWindow.close();
+// 						} else {
+// 							infoWindow.open(map, marker);
+// 						}
+
+		 var marker = markers[seq],
+           infoWindow = infoWindows[seq];
+
+        if (infoWindow.getMap()) {
+            infoWindow.close();
+        } else {
+            infoWindow.open(map, marker);
+        }
 		}
 	}
 
@@ -484,8 +495,7 @@ img {
 </script>
 </head>
 <body>
-
-
+<a href="/matching/meet?cw_mem_id="></a>
 
 
 
