@@ -71,7 +71,7 @@ td {
 
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBarADMIN.jsp"%>
 
 	<form action="${cp}/lecture/modifyLecture" method="post">
 

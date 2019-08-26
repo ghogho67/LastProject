@@ -225,7 +225,7 @@ td {
 
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBarADMIN.jsp"%>
 
 
 	<form id="frm" action="${cp}/lecture/lecture" method="get">
