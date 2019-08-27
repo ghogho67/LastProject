@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id="getCardiac" parameterType="String" resultType="int">
-		SELECT * FROM gps where gps_id =(SELECT max(GPS_ID) FROM  GPS WHERE MEM_ID=#{mem_id})
+		SELECT car_bpm FROM gps where gps_id =(SELECT max(GPS_ID) FROM  GPS WHERE MEM_ID=#{mem_id})
 	</select>
 	
 	
