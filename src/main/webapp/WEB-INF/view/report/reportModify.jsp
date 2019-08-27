@@ -52,28 +52,48 @@
 								});
 
 						// 전송버튼 클릭이벤트
-						$("#savebutton").click(
-								function() {
-									if (confirm("저장하시겠습니까?")) {
-										// id가 smarteditor인 textarea에 에디터에서 대입
-										oEditors.getById["smarteditor"].exec(
-												"UPDATE_CONTENTS_FIELD", []);
+						$("#savebutton")
+								.click(
+										function() {
+											if ($("#rep_title").val() === '<p>&nbsp;</p>'
+													|| $("#rep_title").val() === '') {
+												alert("제목을 입력해주세요")
+												return;
+											} else {
 
-										// 이부분에 에디터 validation 검증
-										if (validation()) {
-											var rep_title = $("#rep_title").val().replace(/</gi,"&lt;");
-											var text = rep_title.replace(/>/gi,"&gt;");
-											$("#rep_title").val(text);
-											$("#rep_title").val();
-											$("#frm").submit();
-										}
-									}
-								})
+												if (confirm("저장하시겠습니까?")) {
+
+													// id가 smarteditor인 textarea에 에디터에서 대입
+													oEditors.getById["smarteditor"]
+															.exec(
+																	"UPDATE_CONTENTS_FIELD",
+																	[]);
+
+													// 이부분에 에디터 validation 검증
+													if (validation()) {
+														var rep_title = $(
+																"#rep_title")
+																.val().replace(
+																		/</gi,
+																		"&lt;");
+														var text = rep_title
+																.replace(/>/gi,
+																		"&gt;");
+														$("#rep_title").val(
+																text);
+														$("#rep_title").val();
+														$("#frm").submit();
+													}
+												}
+
+											}
+
+										})
 
 						$("#postCont").click(function() {
 							$("#postContFrm").submit();
 						})
-						
+
 						var form = document.forms[0];
 						var addFileBtn = document.getElementById("addFileBtn");
 						var delFileBtn = document.getElementById("delFileBtn");
@@ -84,7 +104,7 @@
 							event.preventDefault();
 						};
 						addFileBtn.onclick = function() {
-							
+
 							if (cnt <= 5) {
 								var element = document.createElement("input");
 								element.type = "file";
@@ -103,7 +123,8 @@
 								cnt--;
 								var inputs = fileArea
 										.getElementsByTagName('input');
-								fileArea.removeChild(inputs[cnt].nextElementSibling);
+								fileArea
+										.removeChild(inputs[cnt].nextElementSibling);
 								fileArea.removeChild(inputs[cnt]);
 							}
 						}
@@ -137,47 +158,56 @@
 
 
 	<div class="container">
-									<h2 class="sub-header">게시글 수정 reportModify.jsp</h2>
-									<pre>
+		<h2 class="sub-header">게시글 수정 reportModify.jsp</h2>
+		<pre>
 									reportAttachList : ${reportAttachList}  reportVo : ${reportVo} 	mat_id:${mat_id }
 									</pre>
-		<form id="frm" class="form-horizontal" role="form" action="${cp}/report/modify" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="mat_id" value="${mat_id }"> 
+		<form id="frm" class="form-horizontal" role="form"
+			action="${cp}/report/modify" method="post"
+			enctype="multipart/form-data">
+			<input type="hidden" name="mat_id" value="${mat_id }">
 			<div>
-				<label for="filename" class="col-sm-2 control-label">제목</label>
-				<input type="text" class="form-control" id="rep_title" name="rep_title" value="${reportVo.rep_title}">
+				<label for="filename" class="col-sm-2 control-label">제목</label> <input
+					type="text" class="form-control" id="rep_title" name="rep_title"
+					value="${reportVo.rep_title}">
 			</div>
 			<div>
 				<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-			<div>
 				<div>
-				<br>
-					<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"	style="width: 1110px; height: 412px;">
+					<div>
+						<br>
+						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
+							style="width: 1110px; height: 412px;">
 					${reportVo.rep_cont}
 					</textarea>
-				</div>
-					<input type="button" id="savebutton" value="수정완료" class="btn btn-primary btn-sm" style="float:right;"/>
-					<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm pull-right">매칭목록</a>
+					</div>
+					<input type="button" id="savebutton" value="수정완료"
+						class="btn btn-primary btn-sm" style="float: right;" /> <a
+						href="${cp}/report/pagingList"
+						class="btn btn-primary btn-sm pull-right">매칭목록</a>
 				</div>
 			</div>
 			<div>
 				<div>
 					<c:forEach items="${reportAttachList}" var="attach">
 						<label for="reportAttach" class="col-sm-5 control-label">${attach.rep_att_nm }</label>
-						<a id="a" href="${cp}/report/delete?mat_id=${reportVo.mat_id}" class="btn btn-primary btn-sm">X</a>
+						<a id="a" href="${cp}/report/delete?mat_id=${reportVo.mat_id}"
+							class="btn btn-primary btn-sm">X</a>
 					</c:forEach>
 				</div>
 				<div id="fileArea">
-					<input type="button" value="파일추가" class="btn btn-primary btn-sm"	id="addFileBtn"> <br> 
-					<input type="file" name="file" multiple> 
+					<input type="button" value="파일추가" class="btn btn-primary btn-sm"
+						id="addFileBtn"> <br> <input type="file" name="file"
+						multiple>
 				</div>
 			</div>
 		</form>
 	</div>
-	<form id="reportContFrm" method="get" style="float: left;" action="${cp}/report/pagingList">
-		<input type="hidden" name="mat_id" value="${reportVo.mat_id }" /> 
+	<form id="reportContFrm" method="get" style="float: left;"
+		action="${cp}/report/pagingList">
+		<input type="hidden" name="mat_id" value="${reportVo.mat_id }" />
 	</form>
-		
+
 </body>
 <script>
 	var form = document.forms[0];

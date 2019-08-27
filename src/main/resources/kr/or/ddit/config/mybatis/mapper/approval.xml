@@ -91,11 +91,70 @@
 		]]>
 	</select>
 	
-	<select id="approvalCnt" parameterType="String" resultType="int">
-	 select count(*) from approval
-                where MEM_ID = #{mem_id}
+	
+		<select id="dayPageListW" parameterType="map" resultType="approvalVo">
+		<![CDATA[
+		select * 
+			from
+			(select a.*, rownum rn
+			from
+				(select 
+				app_id, 
+				app_pay,
+				to_char(app_time,'YYYY-MM-DD HH24:MI:SS')app_time, 
+				app_type,
+				mem_id
+				
+                from approval
+                where APP_OBJ =#{mem_id}
+                and app_time like '%'||#{app_time}||'%' 
+                order by app_time desc)a )b
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
 	</select>
 	
+	<select id="dayCntW" parameterType="map" resultType="int">
+	 select count(*) from approval
+                where APP_OBJ = #{mem_id}
+                and app_time like '%'||#{app_time}||'%'
+	</select>
+	
+	
+	
+		<select id="typePageListW" parameterType="map" resultType="approvalVo">
+		<![CDATA[
+		select * 
+			from
+			(select a.*, rownum rn
+			from
+				(select 
+				app_id, 
+				app_pay,
+				to_char(app_time,'YYYY-MM-DD HH24:MI:SS')app_time, 
+				app_type,
+				mem_id
+		]]>
+				
+                from approval
+                where APP_OBJ =#{mem_id}
+		 	    <if test="app_type!=0">
+		 	    <![CDATA[
+		    	and app_type =#{app_type} 
+		    	]]>
+   				</if>
+		<![CDATA[
+                order by app_time desc)a )b
+			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
+		]]>
+	</select>
+	
+	<select id="typeCntW" parameterType="map" resultType="int">
+	 select count(*) from approval
+                where APP_OBJ = #{mem_id}
+                <if test="app_type!=0">
+		    	and app_type =#{app_type} 
+                </if>
+	</select>
 	
 	
 	

@@ -43,24 +43,39 @@
 								});
 
 						// 전송버튼 클릭이벤트
-						$("#savebutton").click(
-								function() {
-									if (confirm("저장하시겠습니까?")) {
-										// id가 smarteditor인 textarea에 에디터에서 대입
-										oEditors.getById["smarteditor"].exec(
-												"UPDATE_CONTENTS_FIELD", []);
+						$("#savebutton")
+								.click(
+										function() {
 
-										// 이부분에 에디터 validation 검증
-										if (validation()) {
-											$("#frm").submit();
-										}
-									}
-								})
+											alert($("#mem_id").val());
+											alert($("#smarteditor").text());
+											if ($("#mem_id").val() === '<p>&nbsp;</p>'
+													|| $("#mem_id").val() === '') {
+												alert("제목을 입력해주세요")
+												return;
+											}
+
+											else {
+												if (confirm("저장하시겠습니까?")) {
+													// id가 smarteditor인 textarea에 에디터에서 대입
+													oEditors.getById["smarteditor"]
+															.exec(
+																	"UPDATE_CONTENTS_FIELD",
+																	[]);
+
+													// 이부분에 에디터 validation 검증
+													if (validation()) {
+														$("#frm").submit();
+													}
+
+												}
+
+											}
+										})
 						$("#postCont").click(function() {
 							$("#postContFrm").submit();
 						})
 					});
-	
 
 	// 필수값 Check
 	function validation() {
@@ -77,11 +92,14 @@
 </head>
 <body>
 	<div>
-		<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;"></textarea>
+		<textarea name="post_cont" class="post_cont" id="smarteditor"
+			rows="10" cols="100" style="width: 600px; height: 412px;"></textarea>
 	</div>
 	<div>
-		<input type="button" class="btn btn-primary btn-sm full-right" id="savebutton" value="글등록" style="float:right;"/>
-		<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
+		<input type="button" class="btn btn-primary btn-sm full-right"
+			id="savebutton" value="글등록" style="float: right;" /> <input
+			id="postCont" type="button" class="btn btn-primary btn-sm pull-right"
+			name="button" value="글목록">
 	</div>
 </body>
 </html>

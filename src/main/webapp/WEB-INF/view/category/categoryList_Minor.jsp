@@ -82,7 +82,7 @@ td {
 <body>
 
 	<%@include file="/WEB-INF/view/common/subPageheader.jsp"%>
-	<%@include file="/WEB-INF/view/common/subPagesideBar.jsp"%>
+	<%@include file="/WEB-INF/view/common/subPagesideBarADMIN.jsp"%>
 
 
 	<div class="container">

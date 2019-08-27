@@ -51,7 +51,7 @@ span.admin {
 			<div>
 				<ul>
 
-					<li>${MEM_INFO.mem_nm}님 환영합니다 <c:choose>
+					<li>${MEM_INFO.mem_nm}님환영합니다 <c:choose>
 							<c:when test="${MEM_INFO.mem_grade==0}">
 								<span class="admin">관리자 </span>
 							</c:when>
@@ -71,30 +71,32 @@ span.admin {
 			</div>
 			<a class="btn-logout" style="position: absolute; left: 90%;"
 				href="/logout">로그아웃 </a>
-				
-				
-				<c:choose>
+
+
+			<c:choose>
 				<c:when test="${MEM_INFO.mem_grade==1}">
-				<a class="btn-pri" data-toggle="modal" data-target="#myModalGrade"
-					style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
-				<a class="btn-pri2" href="${cp }/donation/memberDonation"
-					style="position: absolute; left: 76%;">기부하기</a>
+					<a class="btn-pri" data-toggle="modal" data-target="#myModalGrade"
+						style="position: absolute; left: 81%;">프리미엄 서비스 이용</a>
+					<a class="btn-pri2" href="${cp }/donation/memberDonation"
+						style="position: absolute; left: 76%;">기부하기</a>
 				</c:when>
 				<c:otherwise>
-				<a class="btn-pri2" href="${cp }/donation/memberDonation"
-					style="position: absolute; left: 85%;">기부하기</a>
+					<a class="btn-pri2" href="${cp }/donation/memberDonation"
+						style="position: absolute; left: 81%;">기부하기</a>
 				</c:otherwise>
-				
-				</c:choose>
-			
+
+			</c:choose>
+
 
 			<c:choose>
 				<c:when test="${goldvo.gold_del eq 'Y'}">
 					<div class="modal-dialog" role="document" id="modalpp">
 						<div class="modal-content2"
 							style="background-image: url('/image/Serviceextend.png'); background-size: 700px; background-repeat: no-repeat;">
-			
-<button class="btn" id="trans" type="button" onclick="requestPay()" style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 78%; background-color: transparent;" ></button>
+
+							<button class="btn" id="trans" type="button"
+								onclick="requestPay()"
+								style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 78%; background-color: transparent;"></button>
 							<button style="width: 10px; position: absolute; left: 95%;"
 								type="button" class="close" data-dismiss="modal"
 								aria-label="Close" id="btnClose">
@@ -120,7 +122,6 @@ span.admin {
 
 <script>
 	$(".modal-content2").on("click", "#btnClose", function() {
-		//$('#modalpp').modal("hide");
 		$('#modalpp').hide();
 
 	})
@@ -129,20 +130,13 @@ span.admin {
 
 
 
-<script>
-$(document).ready(function(){
-	$(document).ready(function() {
-		IMP.init("imp21318637");
-	})
-	
-});
-
-</script>
 
 <script>
-
 	// import결제 함수
 	function requestPay() {
+
+		IMP.init("imp21318637");
+
 		var app_pay;
 		var app_type;
 		var mem_id;
@@ -161,7 +155,7 @@ $(document).ready(function(){
 		}, function(rsp) {
 			if (rsp.success) {
 				jQuery.ajax({
-					url : "/gradeChangeToGold", 
+					url : "/gradeChangeToGold",
 					type : 'GET',
 					data : {
 
@@ -172,7 +166,6 @@ $(document).ready(function(){
 					alert(msg);
 					$('#modalpp').hide();
 
-	
 				});
 			} else {
 				var msg = '결제에 실패하였습니다.';

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>분류별 강좌목록</title>
 
 
 
@@ -234,19 +234,19 @@ td {
 						</h2>
 					</div>
 
-					<div class="d1">
-						<form class="for">
-							<select id="searchType" name="searchType"
-								style="position: absolute; z-index: 999;">
-								<option value="all">전체</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="writer">작성자</option>
-								<option value="tc">제목+내용</option>
-							</select> <input type="text" placeholder="검색어 입력">
-							<button type="submit"></button>
-						</form>
-					</div>
+<!-- 					<div class="d1"> -->
+<!-- 						<form class="for"> -->
+<!-- 							<select id="searchType" name="searchType" -->
+<!-- 								style="position: absolute; z-index: 999;"> -->
+<!-- 								<option value="all">전체</option> -->
+<!-- 								<option value="title">제목</option> -->
+<!-- 								<option value="content">내용</option> -->
+<!-- 								<option value="writer">작성자</option> -->
+<!-- 								<option value="tc">제목+내용</option> -->
+<!-- 							</select> <input type="text" placeholder="검색어 입력"> -->
+<!-- 							<button type="submit"></button> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
 					<hr>
 
 					<div class="table-responsive">

@@ -284,7 +284,7 @@ public class ReportController {
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		model.addAttribute("reportList", reportList);
 
-		return "/report/reportPagingList.tiles";
+		return "/report/reportPagingList.mytiles";
 	}
 
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
