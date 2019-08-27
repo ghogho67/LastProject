@@ -49,7 +49,7 @@
 											alert($("#smarteditor").val());
 											if ($("#text").val() === '<p>&nbsp;</p>'
 													|| $("#text").val() === '') {
-												alert("내용을 입력해주세요")
+												alert("제목을 입력해주세요")
 												return;
 											} else {
 

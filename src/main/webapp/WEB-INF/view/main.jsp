@@ -266,6 +266,88 @@ height: 70px;
 									무엇이 있을까?</p>
 							</div>
 						</div>
+						
+						
+						
+						
+						
+
+						<div class="single-slide">
+							<div class="slide-img">
+								<img
+									src="${pageContext.request.contextPath}/resource/medino/images/aa.gif"
+									alt="" class="img-fluid">
+								<div class="hover-state">
+									<a class="cr2" href="departments.html"><i
+										class="fa fa-stethoscope"></i></a>
+								</div>
+							</div>
+							<div class="single-department item-padding text-center">
+								<h3 class="name2">술이 술술? 비만 위험이 술술</h3>
+								<p class="p2">당뇨병은 인슐린의 분비량이 부족하거나 포도당의 대사에 이상이 생겨 일어나는 대사
+									질환의 일종으로 혈중 포도당, 즉 혈당이 높은 것이 특징이다</p>
+							</div>
+						</div>
+
+
+
+						<div class="single-slide">
+							<div class="slide-img">
+								<img
+									src="${pageContext.request.contextPath}/resource/medino/images/10.jpg"
+									alt="" class="img-fluid">
+								<div class="hover-state">
+									<a class="cr3" href="departments.html"><i
+										class="fa fa-stethoscope"></i></a>
+								</div>
+							</div>
+							<div class="single-department item-padding text-center">
+								<h3 class="name3">노인비만 예반 10계명</h3>
+								<p class="p3">건강한 노후를 위한 습관</p>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="single-slide">
+							<div class="slide-img">
+								<img
+									src="${pageContext.request.contextPath}/resource/medino/images/2.jpg"
+									alt="" class="img-fluid">
+								<div class="hover-state">
+									<a class="cr4" href="departments.html"><i
+										class="fa fa-stethoscope"></i></a>
+								</div>
+							</div>
+							<div class="single-department item-padding text-center">
+								<h3 class="name4">젋을때와 달라 달라~</h3>
+								<p class="p4">백세시대 건강한 노후</p>
+							</div>
+						</div>
+
+
+						<div class="single-slide">
+							<div class="slide-img">
+								<img
+									src="${pageContext.request.contextPath}/resource/medino/images/11.jpg"
+									alt="" class="img-fluid">
+								<div class="hover-state">
+									<a class="cr5" href="departments.html"><i
+										class="fa fa-stethoscope"></i></a>
+								</div>
+							</div>
+							<div class="single-department item-padding text-center">
+								<h3 class="name5">사상체질별 건강관리 비법</h3>
+								<p class="p5">노인 비만은 지방에 비해 근육량이 현저히 감소하는 근감소성 비만이 많다. 노인
+									비만, 어떻게 탈출할 수 있을까?</p>
+							</div>
+						</div>
+
+						
+						
+						
 					</div>
 				</div>
 			</div>

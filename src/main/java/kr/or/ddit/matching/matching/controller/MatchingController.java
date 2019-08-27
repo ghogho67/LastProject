@@ -762,7 +762,8 @@ public class MatchingController {
 	@RequestMapping(path = "/webRtc")
 	public String webRtc(Model model) {
 //		return "RTCMultiConnection-master/demos/dashboard/webrtc";
-		return "redirect:/RTCMultiConnection-master/demos/dashboard/index.html";
+//		return "redirect:/RTCMultiConnection-master/demos/dashboard/index.html";
+		return	"RTCMultiConnection-master/demos/dashboard/index";
 	}
 	//
 
