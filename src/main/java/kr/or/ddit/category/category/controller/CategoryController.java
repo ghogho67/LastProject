@@ -57,6 +57,8 @@ public class CategoryController {
 		 int updateCnt = categoryService.deleteMajorCategory(cate_id);
 		
 		 if(updateCnt>=1) {
+			 List<CategoryVo> categoryList = categoryService.getCategoryList();
+				session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryList";
 		 }else {
 			 viewName="redirect:/login";
@@ -82,6 +84,8 @@ public class CategoryController {
 		 int updateCnt = categoryService.deleteMajorCategory(cate_id);
 		
 		 if(updateCnt==1) {
+			 List<CategoryVo> categoryList = categoryService.getCategoryList();
+				session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryManagement?cate_id="+cate_paerent_id;
 		 }else {
 			 viewName="redirect:/login";
@@ -106,6 +110,8 @@ public class CategoryController {
 		 int updateCnt = categoryService.useMajorCategory(cate_id);
 		
 		 if(updateCnt==1) {
+			 List<CategoryVo> categoryList = categoryService.getCategoryList();
+				session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryList";
 		 }else {
 			 viewName="redirect:/category/categoryList";
@@ -131,6 +137,8 @@ public class CategoryController {
 		int updateCnt = categoryService.useMajorCategory(cate_id);
 		
 		if(updateCnt==1) {
+			List<CategoryVo> categoryList = categoryService.getCategoryList();
+			session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryManagement?cate_id="+cate_paerent_id;
 		}else {
 			viewName="redirect:/login";
@@ -181,6 +189,8 @@ public class CategoryController {
 		int updateTitle = categoryService.updateCategoryTitle(categoryVo);
 		
 		if(updateTitle==1) {
+			List<CategoryVo> categoryList = categoryService.getCategoryList();
+			session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryList";
 		}else {
 			 viewName="redirect:/category/categoryList";
@@ -216,6 +226,8 @@ public class CategoryController {
 		int updateTitle = categoryService.updateCategoryTitle(categoryVo);
 		
 		if(updateTitle==1) {
+			List<CategoryVo> categoryList = categoryService.getCategoryList();
+			session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryManagement?cate_id="+cate_paerent_id;
 		}else {
 			viewName="redirect:/login";
@@ -284,6 +296,8 @@ public class CategoryController {
 		int insertCategory = categoryService.InsertCategory(categoryVo);
 		
 		if(insertCategory==1) {
+			List<CategoryVo> categoryList = categoryService.getCategoryList();
+			session.setAttribute("categoryList", categoryList);
 			 viewName="redirect:/category/categoryManagement?cate_id="+cate_paerent_id;
 		}else {
 			viewName="redirect:/login";

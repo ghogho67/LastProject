@@ -156,55 +156,63 @@
 
 <body>
 
+	<div class="content-wrapper">
 
-	<div class="container">
-		<h2 class="sub-header">게시글 수정 reportModify.jsp</h2>
-		<form id="frm" class="form-horizontal" role="form"
-			action="${cp}/report/modify" method="post"
-			enctype="multipart/form-data">
-			<input type="hidden" name="mat_id" value="${mat_id }">
-			<div>
-				<label for="filename" class="col-sm-2 control-label">제목</label> <input
-					type="text" class="form-control" id="rep_title" name="rep_title"
-					value="${reportVo.rep_title}">
-			</div>
-			<div>
-				<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-				<div>
-					<div>
-						<br>
-						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
-							style="width: 1110px; height: 412px;">
+		<div class="col-lg-12">
+
+			<div class="card">
+				<div class="card-body">
+					<div class="titlee">
+						<h2 class="sub-header">게시글 수정 reportModify.jsp</h2>
+						<form id="frm" class="form-horizontal" role="form"
+							action="${cp}/report/modify" method="post"
+							enctype="multipart/form-data">
+							<input type="hidden" name="mat_id" value="${mat_id }">
+							<div>
+								<label for="filename" class="col-sm-2 control-label">제목</label>
+								<input type="text" class="form-control" id="rep_title"
+									name="rep_title" value="${reportVo.rep_title}">
+							</div>
+							<div>
+								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
+								<div>
+									<div>
+										<br>
+										<textarea name="rep_cont" id="smarteditor" rows="10"
+											cols="100" style="width: 1110px; height: 412px;">
 					${reportVo.rep_cont}
 					</textarea>
+									</div>
+									<input type="button" id="savebutton" value="수정완료"
+										class="btn btn-primary btn-sm" style="float: right;" /> <a
+										href="${cp}/report/pagingList"
+										class="btn btn-primary btn-sm pull-right">매칭목록</a>
+								</div>
+							</div>
+							<div>
+								<div>
+									<c:forEach items="${reportAttachList}" var="attach">
+										<label for="reportAttach" class="col-sm-5 control-label">${attach.rep_att_nm }</label>
+										<a id="a" href="${cp}/report/delete?mat_id=${reportVo.mat_id}"
+											class="btn btn-primary btn-sm">X</a>
+									</c:forEach>
+								</div>
+								<div id="fileArea">
+									<input type="button" value="파일추가"
+										class="btn btn-primary btn-sm" id="addFileBtn"> <br>
+									<input type="file" name="file" multiple>
+								</div>
+							</div>
+						</form>
 					</div>
-					<input type="button" id="savebutton" value="수정완료"
-						class="btn btn-primary btn-sm" style="float: right;" /> <a
-						href="${cp}/report/pagingList"
-						class="btn btn-primary btn-sm pull-right">매칭목록</a>
 				</div>
 			</div>
-			<div>
-				<div>
-					<c:forEach items="${reportAttachList}" var="attach">
-						<label for="reportAttach" class="col-sm-5 control-label">${attach.rep_att_nm }</label>
-						<a id="a" href="${cp}/report/delete?mat_id=${reportVo.mat_id}"
-							class="btn btn-primary btn-sm">X</a>
-					</c:forEach>
-				</div>
-				<div id="fileArea">
-					<input type="button" value="파일추가" class="btn btn-primary btn-sm"
-						id="addFileBtn"> <br> <input type="file" name="file"
-						multiple>
-				</div>
-			</div>
-		</form>
+		</div>
 	</div>
 	<form id="reportContFrm" method="get" style="float: left;"
 		action="${cp}/report/pagingList">
 		<input type="hidden" name="mat_id" value="${reportVo.mat_id }" />
 	</form>
-
 </body>
 <script>
 	var form = document.forms[0];

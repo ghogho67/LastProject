@@ -15,13 +15,13 @@ dif {
 	width: 500px;
 	height: 200px;
 }
-.card{
-	margin-top: 100px;
-}
-#saveButton {
-	width: 60.55;
-	width: 27.19;
-}
+/* .card{ */
+/* 	margin-top: 100px; */
+/* } */
+/* #saveButton { */
+/* 	width: 60.55; */
+/* 	width: 27.19; */
+/* } */
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -143,11 +143,10 @@ dif {
 	}
 </script>
 
-<div class="container">
-
+<div class="container" style="margin-top: 100px;">
 	<div class="card">
-		<div class="card-body">
-			<!-- 	<h2 class="sub-header">게시글 신규 등록 WEB-INF- SE2postRegister.jsp</h2> -->
+		<div class="card-body" style="padding: 50px;">
+			<h2 class="sub-header">게시글 작성</h2>
 			<form id="frm1" class="form-horizontal" role="form"
 				action="${cp}/post/register" method="post"
 				enctype="multipart/form-data">

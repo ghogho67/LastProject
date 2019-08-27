@@ -71,8 +71,10 @@
 
 										// 이부분에 에디터 validation 검증
 										if (validation()) {
-											var rep_title = $("#post_nm").val().replace(/</gi,"&lt;");
-											var text = rep_title.replace(/>/gi,"&gt;");
+											var rep_title = $("#post_nm").val()
+													.replace(/</gi, "&lt;");
+											var text = rep_title.replace(/>/gi,
+													"&gt;");
 											$("#post_nm").val(text);
 											$("#post_nm").val();
 											$("#saveFrm").submit();
@@ -83,7 +85,7 @@
 						$("#postCont").click(function() {
 							$("#postContFrm").submit();
 						})
-						
+
 						var form = document.forms[0];
 						var addFileBtn = document.getElementById("addFileBtn");
 						var delFileBtn = document.getElementById("delFileBtn");
@@ -94,7 +96,7 @@
 							event.preventDefault();
 						};
 						addFileBtn.onclick = function() {
-							
+
 							if (cnt <= 5) {
 								var element = document.createElement("input");
 								element.type = "file";
@@ -113,7 +115,8 @@
 								cnt--;
 								var inputs = fileArea
 										.getElementsByTagName('input');
-								fileArea.removeChild(inputs[cnt].nextElementSibling);
+								fileArea
+										.removeChild(inputs[cnt].nextElementSibling);
 								fileArea.removeChild(inputs[cnt]);
 							}
 						}
@@ -136,44 +139,58 @@
 
 <body>
 
-
-	<div class="container">
-		<h2 class="sub-header">게시글 수정 WEB-INF/view/post/postModify.jsp</h2>
-		<form id="saveFrm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="post_id" value="${post_id }"> 
-				<input type="hidden" name="cate_id" value="${cate_id }">
-			<div>
-				<label for="filename" class="col-sm-2 control-label">제목</label>
-				<input type="text" class="form-control" id="post_nm" name="post_nm" value="${postVo.post_nm}">
+	<div class="container" style="margin-top: 100px;">
+		<div class="card">
+			<div class="card-body" style="padding: 50px;">
+				<h2 class="sub-header">게시글 수정 WEB-INF/view/post/postModify.jsp</h2>
+				<form id="saveFrm" class="form-horizontal" role="form"
+					action="${cp}/post/modify" method="post"
+					enctype="multipart/form-data">
+					<input type="hidden" name="post_id" value="${post_id }"> <input
+						type="hidden" name="cate_id" value="${cate_id }">
+					<div>
+						<label for="filename" class="col-sm-2 control-label">제목</label> <input
+							type="text" class="form-control" id="post_nm" name="post_nm"
+							value="${postVo.post_nm}">
+					</div>
+					<div>
+						<label for="mem_id" class="col-sm-2 control-label">글내용</label>
+						<div>
+							<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
+								style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
+							<input type="button" id="savebutton" value="글등록"
+								class="btn btn-primary btn-sm" style="float: right;" /> <input
+								id="postCont" type="button"
+								class="btn btn-primary btn-sm pull-right" name="button"
+								value="글목록">
+						</div>
+					</div>
+					<div>
+						<div>
+							<c:forEach items="${attachmentList}" var="attachment">
+								<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>${attachment.att_id}
+						<a id="a"
+									href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }"
+									class="btn btn-primary btn-sm">X</a>
+							</c:forEach>
+						</div>
+						<div id="fileArea">
+							<input type="button" value="파일추가" class="btn btn-primary btn-sm"
+								id="addFileBtn"> <br> <input type="file"
+								name="file" multiple> <input type="hidden"
+								name="cate_id" value="${cate_id }">
+						</div>
+					</div>
+				</form>
 			</div>
-			<div>
-				<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-				<div>
-					<textarea name="post_cont" id="smarteditor" rows="10" cols="100" style="width: 600px; height: 412px;">${postVo.post_cont}</textarea>
-					<input type="button" id="savebutton" value="글등록"  class="btn btn-primary btn-sm" style="float:right;"/>
-					<input id="postCont" type="button" class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
-
-				</div>
-			</div>
-			<div>
-				<div>
-					<c:forEach items="${attachmentList}" var="attachment">
-						<label for="attachmentName" class="col-sm-5 control-label">${attachment.att_nm }</label>${attachment.att_id}
-						<a id="a" href="${cp}/attachment/delete?att_id=${attachment.att_id}&post_id=${post_id }&cate_id=${cate_id }" class="btn btn-primary btn-sm">X</a>
-					</c:forEach>
-				</div>
-				<div id="fileArea">
-					<input type="button" value="파일추가" class="btn btn-primary btn-sm"	id="addFileBtn"> <br> <input type="file" name="file" multiple> 
-					<input type="hidden" name="cate_id" value="${cate_id }">
-				</div>
-			</div>
-		</form>
+			<form id="postContFrm" method="get" style="float: left;"
+				action="${cp}/post/pagingList?cate_id='${cate_id }'">
+				<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+					type="hidden" name="post_id" value="${post_id }" />
+			</form>
+		</div>
 	</div>
-	<form id="postContFrm" method="get" style="float: left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
-		<input type="hidden" name="cate_id" value="${cate_id }" /> 
-		<input type="hidden" name="post_id" value="${post_id }" /> 
-	</form>
-		
+
 </body>
 <script>
 	var form = document.forms[0];
