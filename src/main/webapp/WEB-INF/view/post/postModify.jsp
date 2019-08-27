@@ -139,9 +139,6 @@
 
 	<div class="container">
 		<h2 class="sub-header">게시글 수정 WEB-INF/view/post/postModify.jsp</h2>
-									<pre>
-									cate_id : ${cate_id }  post_id : ${post_id }  attachmentList : ${attachmentList }  postVo : ${postVo}
-									</pre>
 		<form id="saveFrm" class="form-horizontal" role="form" action="${cp}/post/modify" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="post_id" value="${post_id }"> 
 				<input type="hidden" name="cate_id" value="${cate_id }">

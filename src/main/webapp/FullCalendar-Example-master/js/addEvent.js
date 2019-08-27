@@ -164,7 +164,7 @@ var newEvent = function (startDate, endDate, eventType) {
             			  console.log("listDateDate",listDateDate);
             			  if(chooseStDate.getTime() == listDateDate.getTime()){
             				  for(k=0; k<timeInfo.length; k++){
-            					  alert("timeInfo[k] : "+timeInfo[k]);
+//            					  alert("timeInfo[k] : "+timeInfo[k]);
             					  if(listTimeString == "09:00" && timeInfo[k]==1){
             						  alert("요양보호사의 09:00~10:00시간대는 일정이 겹칩니다. 일정을 확인해주세요");
             						  return;

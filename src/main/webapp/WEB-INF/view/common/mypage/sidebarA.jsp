@@ -41,39 +41,39 @@
    <li><a href='${cp}/mypage/Patient_Info'><span>회원정보</span></a></li>
    <li><a href="${cp}/approval/approvalCheckA?page=1&pageSize=10"><span>결산관리</span></a></li>
    
-   <li class='active has-sub'><a><span>회원관리</span></a>
+   <li class='active has-sub'><a href="${cp }/mypage/pagingList?page=1&pageSize=10"><span>회원관리</span></a>
       <ul>
-         <li class='has-sub'><a href='#'><span>보고서</span></a>
-            <ul>
-               <li><a href='#'><span>보고서 조회</span></a></li>
-               <li class='last'><a href='#'><span>보고서 관리</span></a></li>
-            </ul>
-         </li>
-         <li class='has-sub'><a href='#'><span>회원관리</span></a>
-            <ul>
-               <li><a href="${cp }/mypage/pagingList?page=1&pageSize=10"><span>회원목록</span></a></li>
-               <li class='last'><a href='#'><span>탈퇴회원</span></a></li>
-            </ul>
-         </li>
+<!--          <li class='has-sub'><a href='#'><span>보고서</span></a> -->
+<!--             <ul> -->
+<!--                <li><a href='#'><span>보고서 조회</span></a></li> -->
+<!--                <li class='last'><a href='#'><span>보고서 관리</span></a></li> -->
+<!--             </ul> -->
+<!--          </li> -->
+<!--          <li class='has-sub'><a href='#'><span>회원관리</span></a> -->
+<!--             <ul> -->
+<%--                <li><a href="${cp }/mypage/pagingList?page=1&pageSize=10"><span>회원목록</span></a></li> --%>
+<!--                <li class='last'><a href='#'><span>탈퇴회원</span></a></li> -->
+<!--             </ul> -->
+<!--          </li> -->
       </ul>
    </li>
-      <li class='active has-sub'><a href='#'><span>회원 일정</span></a>
+      <li class='active has-sub'><a href="/attendance/adminSaerch?page=1&pageSize=10&searchType=memid&searchVal="><span>출퇴근 관리</span></a>
       <ul>
-         <li class='has-sub'><a href='#'><span>일정관리</span></a>
-            <ul>
-               <li><a href="/attendance/adminSaerch?page=1&pageSize=10&searchType=memid&searchVal="><span>출퇴근 관리</span></a></li>
-               <li><a href='#'><span>스케쥴 관리</span></a></li>
-               <li class='last'><a href='#'><span>일정조율</span></a></li>
-            </ul>
+<!--          <li class='has-sub'><a href='#'><span>일정관리</span></a> -->
+<!--             <ul> -->
+<!--                <li><a href="/attendance/adminSaerch?page=1&pageSize=10&searchType=memid&searchVal="><span>출퇴근 관리</span></a></li> -->
+<!--                <li><a href='#'><span>스케쥴 관리</span></a></li> -->
+<!--                <li class='last'><a href='#'><span>일정조율</span></a></li> -->
+<!--             </ul> -->
             
-         </li>
-         <li class='has-sub'><a href='#'><span>전체일정</span></a>
+<!--          </li> -->
+<!--          <li class='has-sub'><a href='#'><span>전체일정</span></a> -->
         
-         </li>
+<!--          </li> -->
       </ul>
    </li>
    <li><a href="${cp}/donation/pagingList?page=1&pageSize=10"><span>기부관리</span></a></li>
-   <li class='last'><a href='#'><span>회원탈퇴</span></a></li>
+<!--    <li class='last'><a href='#'><span>회원탈퇴</span></a></li> -->
 </ul>
 </div>
                

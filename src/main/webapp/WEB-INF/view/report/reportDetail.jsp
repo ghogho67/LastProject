@@ -146,9 +146,6 @@ margin:5px;
 				<div class="card-body">
 					<div class="titlee">
 						<h2 class="sub-header">보고서 상세조회 reportDetail.jsp</h2>
-	<pre>
-mat_id : ${mat_id } reportAttachList : ${reportAttachList } reportVo : ${reportVo }: mem_id : ${mem_id } cw_mem_id : ${cw_mem_id} reportAttachVo : ${reportAttachVo }
-</pre>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
 								<h4>${reportVo.rep_title}</h4>

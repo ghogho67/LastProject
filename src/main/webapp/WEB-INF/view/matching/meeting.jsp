@@ -22,8 +22,7 @@ img {
 	min-width: 150px;
 	padding: 0 25px;
 	width: 250px;
-	height: 40px;
-	line-height: 44px;
+	height: 44px;
 	text-align: center;
 	background: #78d3f5;
 	box-sizing: border-box;
@@ -140,7 +139,6 @@ table.cw td {
 
 
 	<div class="container" style="width: 1000px;">
-		<pre>${list }</pre>
 		<div style="width: 50%; float: left; height: 350px;">
 			<label for="userNm" class="col-sm-2 control-label">${path }</label>
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
