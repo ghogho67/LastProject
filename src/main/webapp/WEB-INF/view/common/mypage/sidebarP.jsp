@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
    <link href="${cp}/resource/wrap/css/mypageSide.css" rel="stylesheet">
-   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
    <script src="script.js"></script>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
