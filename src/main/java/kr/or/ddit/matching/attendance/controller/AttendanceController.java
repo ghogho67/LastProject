@@ -241,8 +241,6 @@ public class AttendanceController {
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
 		
-		
-		
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String cw_mem_id = memberVo.getMem_id();
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -260,6 +258,7 @@ public class AttendanceController {
 			Map<String, Object> resultMap = attendanceService.cwMatchingList(map);
 			List<AttendanceMatchingVo>attendanceList = (List<AttendanceMatchingVo>) resultMap.get("cwMatchingList");
 			logger.debug("☞searchVal.equals()attendanceList:{}",attendanceList);
+			logger.debug("☞searchVal.equals(\"\")&&searchType.equals(\"memid\")");
 			
 			  int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
 		        if(pageVo.getPage()==1) {
@@ -291,6 +290,7 @@ public class AttendanceController {
 		}
 		
 		else if(searchType.equals("memid")&&!searchVal.equals("")) {
+			logger.debug("☞searchType.equals(\"memid\")&&!searchVal.equals(\"\")");
 			String mem_id = searchVal;
 			map.put("mem_id", mem_id);
 			Map<String, Object> resultMap = attendanceService.memidSaerchList(map);

@@ -222,8 +222,8 @@ td {
 </head>
 
 <body>
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+	<div class="content-wrapper">
+<!-- 		<div style="padding-top: 50px; width: 1250px;"> -->
 			<div class="card">
 				<div class="card-body">
 
@@ -327,6 +327,5 @@ td {
 				</ul>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
