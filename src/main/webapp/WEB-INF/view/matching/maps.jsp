@@ -325,7 +325,7 @@
 							if (status == naver.maps.Service.Status.OK) {
 								var result = response.result;
 								var items = result.items;
-								console.log(items);
+// 								console.log(items);
 								position = new naver.maps.LatLng(
 										items[0].point.y, items[0].point.x);
 								callback({

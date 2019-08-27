@@ -1,10 +1,11 @@
 package kr.or.ddit.gold.gps.model;
 
+import java.util.Date;
 
 public class GpsVo {
 	private int gps_id;
 	private String mem_id;
-	private String gold_st;
+	private Date gold_st;
 	private String gps_time;
 	private double gps_lo;
 	private double gps_la;
@@ -31,12 +32,12 @@ public class GpsVo {
 	}
 
 
-	public String getGold_st() {
+	public Date getGold_st() {
 		return gold_st;
 	}
 
 
-	public void setGold_st(String gold_st) {
+	public void setGold_st(Date gold_st) {
 		this.gold_st = gold_st;
 	}
 
