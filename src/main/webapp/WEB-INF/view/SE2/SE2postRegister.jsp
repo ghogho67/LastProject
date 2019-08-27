@@ -55,7 +55,7 @@ dif {
 										function() {
 											if ($("#text").val() === '<p>&nbsp;</p>'
 													|| $("#text").val() === '') {
-												alert("내용을 입력해주세요")
+												alert("제목을 입력해주세요")
 												return;
 											} else {
 												if (confirm("저장하시겠습니까?")) {

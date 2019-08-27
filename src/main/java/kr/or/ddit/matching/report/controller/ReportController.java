@@ -193,12 +193,12 @@ public class ReportController {
 		int insertCnt = reportService.reportInsert(rwv);
 		logger.debug("insertCnt:{}", insertCnt);
 
-		return "matching/report";
+		return "/matching/mytiles";
 	}
 
 	@RequestMapping(path = "/reportWrite")
 	public String reportWrite(Model model, ReportWriteVo rwv) throws IOException {
-		return "/report/reportWrite.tiles";
+		return "/report/reportWrite.mytiles";
 	}
 
 	@RequestMapping(path = "/pagingList")
@@ -340,7 +340,7 @@ public class ReportController {
 		mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
 
-		return "/report/reportDetail.tiles";
+		return "/report/reportDetail.mytiles";
 
 	}
 
@@ -352,7 +352,7 @@ public class ReportController {
 		model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		model.addAttribute("reportVo", reportVo);
 
-		return "/report/reportModify.tiles";
+		return "/report/reportModify.mytiles";
 	}
 
 	@RequestMapping("detail")
@@ -367,7 +367,7 @@ public class ReportController {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 		// 페이지 이동
-		return "/report/reportDetail.tiles";
+		return "/report/reportDetail.mytiles";
 	}
 
 	@RequestMapping(path = "/modify", method = RequestMethod.POST)
@@ -421,7 +421,7 @@ public class ReportController {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 
-		return "/report/reportDetail.tiles";
+		return "/report/reportDetail.mytiles";
 
 	}
 
