@@ -135,6 +135,7 @@ table.cw td {
 
 	<div class="container" style="width: 1000px;">
 		<div style="width: 50%; float: left; height: 350px;">
+		
 			<label for="userNm" class="col-sm-2 control-label">${path }</label>
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
 			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
@@ -149,7 +150,6 @@ table.cw td {
 				class="M_btn" value="채팅"> <input type="hidden" name="mem_id"
 				value="${mem_id}">
 		</div>
-	</div>
 	<!-- 일자 클릭시 메뉴오픈 -->
 	<div id="contextMenu" class="dropdown clearfix">
 		<ul class="dropdown-menu dropNewEvent" role="menu"
@@ -418,7 +418,6 @@ table.cw td {
 	</div>
 	<!-- /.modal -->
 
-	</div>
 	<!-- /.container -->
 	<input id="mem_id" type="hidden" value="${mem_id }">
 	<input id="cw_mem_id" type="hidden" value="${memVo.mem_id }">

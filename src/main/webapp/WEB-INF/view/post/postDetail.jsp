@@ -151,126 +151,125 @@ textarea {
 </head>
 <body>
 	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
-			<div class="card">
-				<div class="card-body">
-					<div class="titlee">
-<!-- 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2> -->
-						<hr>
-						
-						<div class="form-group col-sm-8">
-							<div class="col-sm-10">
-								<p><h4>${postVo.post_nm}</h4></p>
-								<!-- 								<input type="text" class="form-control" id="mem_id" -->
-								<%-- 									name="mem_id" value="${postVo.post_nm}"> --%>
-							</div>
-						</div>
-						<hr>
-						<div class="form-group col-sm-8">
-							<div class="col-sm-10">
-								<label class="control-label">${postVo.post_cont}</label>
-							</div>
-							<br> <br> <br> <br> <br> <br> <br>
-							<br> <br> <br> <br> <br> <br>
-						</div>
-						<hr>
-						<div class="form-group col-sm-8">
-							<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-							<div class="col-sm-10">
-								<c:forEach items="${attachmentList}" var="attachment">
-									<br>
-									<div>
-										${attachment.att_nm } <a
-											href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&att_id=${attachment.att_id }"
-											class="btn btn-primary btn-sm pull-right">다운로드</a>
-									</div>
+		<div class="card">
+			<div class="card-body">
+				<div class="titlee">
+					<!-- 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2> -->
+					<hr>
 
-									<br>
-								</c:forEach>
-							</div>
-						</div>
-						<hr>
-						<div class="form-group col-sm-8">
-							<label for="userNm" class="col-sm-2 control-label">댓글</label>
-							<div>
-								<br>
-								<c:forEach items="${replyList}" var="reply">
-									<c:choose>
-										<c:when test="${reply.reply_del eq 'Y'}">
-											삭제된 댓글입니다
-										</c:when>
-										<c:otherwise>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${reply.mem_id }
-											</strong>
-											<fmt:formatDate value="${reply.reply_time }"
-												pattern="yyyy.MM.dd. hh:mm" />
-											<br>
-											<br>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.reply_cont}<br>
-											<br>
-											${attachment.att_id} 
-										</c:otherwise>
-									</c:choose>
-									<c:if
-										test="${reply.mem_id eq mem_id && reply.reply_del eq 'N'}">
-									</c:if>
-								</c:forEach>
-							</div>
+					<div class="form-group col-sm-8">
+						<div class="col-sm-10">
+							<p>
+							<h4>${postVo.post_nm}</h4>
+							</p>
+							<!-- 								<input type="text" class="form-control" id="mem_id" -->
+							<%-- 									name="mem_id" value="${postVo.post_nm}"> --%>
 						</div>
 					</div>
 					<hr>
 					<div class="form-group col-sm-8">
-						<label for="userNm" class="col-sm-2 control-label"></label>
 						<div class="col-sm-10">
-							<form id="replyfrm" method="post" action="${cp}/reply/register">
-								<div id="reply_box">
-									<div>
-										<textarea name="reply_cont" id="reply_cont" maxlength="500"></textarea>
-										<button id="replyBtn" type="button"
-											class="btn btn-primary btn-sm" name="button"
-											style="float: right;">댓글 등록</button>
-									</div>
-									<input type="hidden" name="post_id" value="${post_id}">
-									<input type="hidden" name="cate_id" value="${cate_id }">
+							<label class="control-label">${postVo.post_cont}</label>
+						</div>
+						<br> <br> <br> <br> <br> <br> <br>
+						<br> <br> <br> <br> <br> <br>
+					</div>
+					<hr>
+					<div class="form-group col-sm-8">
+						<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
+						<div class="col-sm-10">
+							<c:forEach items="${attachmentList}" var="attachment">
+								<br>
+								<div>
+									${attachment.att_nm } <a
+										href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&att_id=${attachment.att_id }"
+										class="btn btn-primary btn-sm pull-right">다운로드</a>
 								</div>
-							</form>
+
+								<br>
+							</c:forEach>
 						</div>
 					</div>
-
 					<hr>
-					<div class="form-group col-sm-8 text-left">
-						<form style="float: left;" id="postModifyfrm" method="post"
-							action="${cp}/post/modifyView">
-							<button id="postModifyBtn" type="button"
-								class="btn btn-primary btn-sm" name="button">수정</button>
+					<div class="form-group col-sm-8">
+						<label for="userNm" class="col-sm-2 control-label">댓글</label>
+						<div>
+							<br>
+							<c:forEach items="${replyList}" var="reply">
+								<c:choose>
+									<c:when test="${reply.reply_del eq 'Y'}">
+											삭제된 댓글입니다
+										</c:when>
+									<c:otherwise>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>${reply.mem_id }
+										</strong>
+										<fmt:formatDate value="${reply.reply_time }"
+											pattern="yyyy.MM.dd. hh:mm" />
+										<br>
+										<br>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.reply_cont}<br>
+										<br>
+											${attachment.att_id} 
+										</c:otherwise>
+								</c:choose>
+								<c:if test="${reply.mem_id eq mem_id && reply.reply_del eq 'N'}">
+								</c:if>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group col-sm-8">
+					<label for="userNm" class="col-sm-2 control-label"></label>
+					<div class="col-sm-10">
+						<form id="replyfrm" method="post" action="${cp}/reply/register">
+							<div id="reply_box">
+								<div>
+									<textarea name="reply_cont" id="reply_cont" maxlength="500"></textarea>
+									<button id="replyBtn" type="button"
+										class="btn btn-primary btn-sm" name="button"
+										style="float: right;">댓글 등록</button>
+								</div>
+								<input type="hidden" name="post_id" value="${post_id}">
+								<input type="hidden" name="cate_id" value="${cate_id }">
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<hr>
+				<div class="form-group col-sm-8 text-left">
+					<form style="float: left;" id="postModifyfrm" method="post"
+						action="${cp}/post/modifyView">
+						<button id="postModifyBtn" type="button"
+							class="btn btn-primary btn-sm" name="button">수정</button>
+						<input type="hidden" value="${post_id }" name="post_id"> <input
+							type="hidden" value="${cate_id }" name="cate_id">
+					</form>
+					<c:if test="${postVo.mem_id eq mem_id }">
+						<form style="float: left;" id="postDeletefrm" method="post"
+							action="${cp}/post/delete?cate_id=${cate_id}">
+							<button id="postDeleteBtn" type="button"
+								class="btn btn-primary btn-sm" name="button">삭제</button>
 							<input type="hidden" value="${post_id }" name="post_id">
 							<input type="hidden" value="${cate_id }" name="cate_id">
 						</form>
-						<c:if test="${postVo.mem_id eq mem_id }">
-							<form style="float: left;" id="postDeletefrm" method="post"
-								action="${cp}/post/delete?cate_id=${cate_id}">
-								<button id="postDeleteBtn" type="button"
-									class="btn btn-primary btn-sm" name="button">삭제</button>
-								<input type="hidden" value="${post_id }" name="post_id">
-								<input type="hidden" value="${cate_id }" name="cate_id">
-							</form>
-						</c:if>
-						<form id="postRefrm" method="get" style="float: left;"
-							action="${cp}/post/reply?cate_id='${cate_id }'">
-							<input type="hidden" name="cate_id" value="${cate_id }" /> <input
-								type="hidden" name="post_id" value="${post_id }" />
-							<button id="postReBtn" type="button"
-								class="btn btn-primary btn-sm" name="button">답글</button>
-						</form>
-						<form id="postContFrm" method="get" style="float: left;"
-							action="${cp}/post/pagingList?searchType=${searchType}cate_id='${cate_id }'">
-							<input type="hidden" name="cate_id" value="${cate_id }" /> <input
-								type="hidden" name="post_id" value="${post_id }" /> <input
-								id="postCont" type="button"
-								class="btn btn-primary btn-sm pull-right" name="button"
-								value="글목록">
-						</form>
-					</div>
+					</c:if>
+					<form id="postRefrm" method="get" style="float: left;"
+						action="${cp}/post/reply?cate_id='${cate_id }'">
+						<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+							type="hidden" name="post_id" value="${post_id }" />
+						<button id="postReBtn" type="button"
+							class="btn btn-primary btn-sm" name="button">답글</button>
+					</form>
+					<form id="postContFrm" method="get" style="float: left;"
+						action="${cp}/post/pagingList?searchType=${searchType}cate_id='${cate_id }'">
+						<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+							type="hidden" name="post_id" value="${post_id }" /> <input
+							id="postCont" type="button"
+							class="btn btn-primary btn-sm pull-right" name="button"
+							value="글목록">
+					</form>
 				</div>
 			</div>
 		</div>
