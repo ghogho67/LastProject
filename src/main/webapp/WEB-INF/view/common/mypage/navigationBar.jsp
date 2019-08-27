@@ -25,7 +25,7 @@
 
 
 
-         <ul class="nav-menu" style="color:#441a1a;">
+         <ul class="nav-menu" style="color:black">
 
 
             <li><a href="${cp}/crawling">Home</a></li>

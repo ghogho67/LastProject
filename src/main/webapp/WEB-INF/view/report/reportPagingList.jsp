@@ -32,7 +32,7 @@ style type ="text /css">#titlee h2, #pzone h2 {
 }
 
 #titlee h2 {
-	padding: 25px 35px;
+	padding: 5px 35px;
 }
 
 #titlee h2 span {
@@ -226,14 +226,12 @@ td {
 		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-body">
-
 					<div id="titlee">
 						<h2>
-							<span>결산 관리</span>&nbsp;
+							보고서 확인&nbsp;
 						</h2>
 					</div>
 					<hr>
-
 					<div class="row">
 
 						<div class="table-responsive">
@@ -274,10 +272,26 @@ td {
 												href="${cp}/report/reportWrite?mat_id=${report.mat_id }"
 												class="btn btn-primary btn-sm">보고서 작성</a></td>
 										</c:if>
-										<td><c:if test="${report.check eq 1 }">
-												<a href="${cp}/report/detail?mat_id=${report.mat_id }"
-													class="btn btn-primary btn-sm">보고서 확인</a>
-											</c:if></td>
+										<td>
+										
+										<c:choose>
+										
+										<c:when test="${report.check eq 1 }">
+										<a href="${cp}/report/detail?mat_id=${report.mat_id }"
+													class="btn btn-success btn-sm">보고서 확인</a>
+										</c:when>
+										
+										
+										<c:otherwise>
+											<a class="btn btn-secondary btn-sm">보고서 미작성</a>
+										</c:otherwise>
+										</c:choose>
+										
+									
+											
+											
+											
+											</td>
 									</tr>
 									<input type="hidden" class="mat_id" value="${report.mat_id }">
 								</c:forEach>
@@ -286,7 +300,7 @@ td {
 
 
 
-						<div class="demo" style=" right: 35%;">
+						<div class="demo" style=" position: relative; left: 30%">
 							<ul class="pagination">
 								<c:choose>
 									<c:when test="${pageVo.page == 1 }">
