@@ -71,6 +71,8 @@ public class CrawlingController {
 			src = imgs.outerHtml();
 		}
 		
+		logger.debug("☞src:{}",src);
+		
 		
 		//해당회원의  골드테이블정보를 가져온다 
 		GoldVo goldvo = memberService.downGradeMember(mem_id);

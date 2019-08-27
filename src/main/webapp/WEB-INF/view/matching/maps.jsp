@@ -354,7 +354,7 @@
 													+ '<a href="/matching/meet?cw_mem_id='
 													+ listData1[i]
 													+ '">'
-													+ listData1[i]
+													+ mem_nm[i]
 													+ '</a>'
 													+ '"</b>.</div>'
 										});
