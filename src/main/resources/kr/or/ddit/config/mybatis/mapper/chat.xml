@@ -16,7 +16,7 @@ where m.mem_id(+)=d.mem_id)a,
 (select  c.chat_id, c.chat_nm,chat_dt, c.chat_del, cm.NEWMSGYN from chat c, chatMem cm 
 where  c.chat_id = cm.chat_id
 and cm.chat_id in (select chat_id from chatmem where mem_id =#{mem_id}) and mem_id = #{mem_id} order by cm.Newmsgyn desc)b 
-where a.chat_id = b.chat_id  order by b.Newmsgyn desc, b.chat_id
+where a.chat_id = b.chat_id  order by b.Newmsgyn desc, b.chat_dt desc
 </select>
 
 <update id="deletChat" parameterType="int">

@@ -20,7 +20,7 @@
    <nav
       class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 
-      <div style="padding: 1px 15px; width: 1000px; margin-left: 1000px">
+      <div style="padding: 1px 15px; width: 1000px; margin-left: 850px">
 
 
 
