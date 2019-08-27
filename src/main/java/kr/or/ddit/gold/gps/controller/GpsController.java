@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.SMS.SMS;
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.gold.gps.model.GpsVo;
 import kr.or.ddit.gold.gps.service.IGpsService;
 import kr.or.ddit.gold.sos.service.ISosService;
@@ -47,7 +48,7 @@ public class GpsController {
       logger.debug("!!!!!!!gps_la :{}",gps_la);
       logger.debug("!!!!!!!mem_id :{}",mem_id);
       SMS sms = new SMS();
-      GpsVo getMemberVo  = gpsService.getGoldMember(mem_id); 
+      GoldVo getMemberVo  = gpsService.getGoldMember(mem_id); 
       
       GpsVo gpsVo =  new GpsVo();
       gpsVo.setCar_bpm(car_bpm);
@@ -60,11 +61,12 @@ public class GpsController {
       gpsVo.setMem_id(mem_id);
       gpsVo.setGold_st(getMemberVo.getGold_st());
       if(car_bpm == 0) {
+    	  i++;
     	  insertnum++;
       }
-      if(insertnum==1||insertnum==(i*300)) {
+      if(i==1||insertnum==(i*100)) {
     	  
-    	  i++;
+    	 
     	  logger.debug("!!!!!!!!!mem_id : {}", mem_id);
     	  int gps_id = sosService.recentData(mem_id);
     	  sosService.insertSOS(gps_id);

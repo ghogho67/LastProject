@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.gold.gps.dao.IGpsDao;
 import kr.or.ddit.gold.gps.model.GpsVo;
 
@@ -20,7 +21,7 @@ public class GpsService implements IGpsService {
 	}
 
 	@Override
-	public GpsVo getGoldMember(String mem_id) {
+	public GoldVo getGoldMember(String mem_id) {
 		return gpsDao.getGoldMember(mem_id);
 	}
 

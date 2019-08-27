@@ -16,7 +16,7 @@
   <link href="${cp}/RTCMultiConnection-master/demos/css/bootstrap.min.css" rel="stylesheet">
   <script src="${cp}/RTCMultiConnection-master/demos/js/adapter.js"></script>
   <script src="${cp}/RTCMultiConnection-master/dist/RTCMultiConnection.min.js"></script>
-  <script src="http://192.168.0.64:9001/socket.io/socket.io.js"></script>
+  <script src="https://192.168.0.64:9001/socket.io/socket.io.js"></script>
   <script src="https://cdn.webrtc-experiment.com/FileBufferReader.js"></script>
 
   <script src="${cp}/RTCMultiConnection-master/demos/js/webrtc-handler.js"></script>
@@ -225,7 +225,7 @@ hr {
 
 var connection = new RTCMultiConnection();
 
-connection.socketURL = 'http://192.168.0.64:9001/';
+connection.socketURL = 'https://192.168.0.64:9001/';
 //connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 
 connection.extra.userFullName = params.userFullName;

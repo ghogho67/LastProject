@@ -14,12 +14,12 @@
 							   ,#{car_bpm}
 							   )
 	</insert>
-	<select id="getGoldMember" parameterType="String" resultType="gpsVo">
+	<select id="getGoldMember" parameterType="String" resultType="goldVo">
 		SELECT * FROM GOLD WHERE MEM_ID = #{mem_id}
 	</select>
 	
 	<select id="getCardiac" parameterType="String" resultType="int">
-		SELECT * FROM (SELECT CAR_BPM FROM  GPS WHERE MEM_ID=#{mem_id} ORDER BY ROWNUM DESC) WHERE ROWNUM = 1
+		SELECT * FROM gps where gps_id =(SELECT max(GPS_ID) FROM  GPS WHERE MEM_ID=#{mem_id})
 	</select>
 	
 	
