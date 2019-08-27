@@ -264,10 +264,7 @@ td {
 
 <body>
 
-	<%-- 	 <form id="pageForm" action="${cp}/approval/approvalCheck"> --%>
-	<!-- 	 	<input type="hidden" name = "page" id="page"> -->
-	<!-- 	 	<input type="hidden" name = "pageSize" id="pageSize"> -->
-	<!-- 	 </form> -->
+
 	<div class="content-wrapper">
 
 		<div class="col-lg-12">
