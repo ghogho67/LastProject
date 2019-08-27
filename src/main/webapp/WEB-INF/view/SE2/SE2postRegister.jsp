@@ -15,6 +15,13 @@ dif {
 	width: 500px;
 	height: 200px;
 }
+.card{
+	margin-top: 100px;
+}
+#saveButton {
+	width: 60.55;
+	width: 27.19;
+}
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -137,46 +144,49 @@ dif {
 </script>
 
 <div class="container">
-	<h2 class="sub-header">게시글 신규 등록 WEB-INF- SE2postRegister.jsp</h2>
-	<pre>
-cate_id : ${cate_id }
-</pre>
-	<form id="frm1" class="form-horizontal" role="form"
-		action="${cp}/post/register" method="post"
-		enctype="multipart/form-data">
 
-		<input type="hidden" name="cate_id" value="${cate_id }" />
-		<div>
-			<label for="post_nm" class="col-sm-2 control-label">제목</label>
-			<div>
-				<input type="text" id="text" class="form-control" name="post_nm">
-			</div>
-		</div>
+	<div class="card">
+		<div class="card-body">
+			<!-- 	<h2 class="sub-header">게시글 신규 등록 WEB-INF- SE2postRegister.jsp</h2> -->
+			<form id="frm1" class="form-horizontal" role="form"
+				action="${cp}/post/register" method="post"
+				enctype="multipart/form-data">
 
-		<div>
-			<div>
-				<br> <label for="post_nm" class="col-sm-2 control-label">내용</label><br>
-				<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
-					style="width: 600px; height: 412px;"></textarea>
-			</div>
+				<input type="hidden" name="cate_id" value="${cate_id }" />
+				<div>
+					<label for="post_nm" class="col-sm-2 control-label">제목</label>
+					<div>
+						<input type="text" id="text" class="form-control" name="post_nm">
+					</div>
+				</div>
+
+				<div>
+					<div>
+						<br> <label for="post_nm" class="col-sm-2 control-label">내용</label><br>
+						<textarea name="post_cont" id="smarteditor" rows="10" cols="100"
+							style="width: 600px; height: 412px;"></textarea>
+					</div>
+				</div>
+				<div>
+					<input type="button" class="btn btn-primary btn-sm pull-right"
+						id="savebutton" value="글등록" />
+				</div>
+				<div>
+					<input id="postCont" type="button"
+						class="btn btn-primary btn-sm pull-right" name="button"
+						value="글목록">
+				</div>
+				<div id="fileArea">
+					<input type="button" class="btn btn-primary btn-sm" value="파일추가"
+						id="addFileBtn"> <input type="file" name="file"><br>
+					<input type="hidden" name="cate_id" value="${cate_id }">
+				</div>
+			</form>
+			<form id="postContFrm" method="get" style="float: left;"
+				action="${cp}/post/pagingList?cate_id='${cate_id }'">
+				<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+					type="hidden" name="post_id" value="${post_id }" />
+			</form>
 		</div>
-		<div>
-			<input type="button" class="btn btn-primary btn-sm pull-right"
-				id="savebutton" value="글등록" />
-		</div>
-		<div>
-			<input id="postCont" type="button"
-				class="btn btn-primary btn-sm pull-right" name="button" value="글목록">
-		</div>
-		<div id="fileArea">
-			<input type="button" class="btn btn-primary btn-sm" value="파일추가"
-				id="addFileBtn"> <input type="file" name="file"><br>
-			<input type="hidden" name="cate_id" value="${cate_id }">
-		</div>
-	</form>
-	<form id="postContFrm" method="get" style="float: left;"
-		action="${cp}/post/pagingList?cate_id='${cate_id }'">
-		<input type="hidden" name="cate_id" value="${cate_id }" /> <input
-			type="hidden" name="post_id" value="${post_id }" />
-	</form>
+	</div>
 </div>

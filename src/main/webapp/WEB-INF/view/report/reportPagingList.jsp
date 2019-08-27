@@ -227,9 +227,7 @@ td {
 			<div class="card">
 				<div class="card-body">
 					<div id="titlee">
-						<h2>
-							보고서 확인&nbsp;
-						</h2>
+						<h2>보고서 확인&nbsp;</h2>
 					</div>
 					<hr>
 					<div class="row">
@@ -272,26 +270,18 @@ td {
 												href="${cp}/report/reportWrite?mat_id=${report.mat_id }"
 												class="btn btn-primary btn-sm">보고서 작성</a></td>
 										</c:if>
-										<td>
-										
-										<c:choose>
-										
-										<c:when test="${report.check eq 1 }">
-										<a href="${cp}/report/detail?mat_id=${report.mat_id }"
-													class="btn btn-success btn-sm">보고서 확인</a>
-										</c:when>
-										
-										
-										<c:otherwise>
-											<a class="btn btn-secondary btn-sm">보고서 미작성</a>
-										</c:otherwise>
-										</c:choose>
-										
-									
-											
-											
-											
-											</td>
+										<td><c:choose>
+
+												<c:when test="${report.check eq 1 }">
+													<a href="${cp}/report/detail?mat_id=${report.mat_id }"
+														class="btn btn-success btn-sm">보고서 확인</a>
+												</c:when>
+
+
+												<c:otherwise>
+													<a class="btn btn-secondary btn-sm">보고서 미작성</a>
+												</c:otherwise>
+											</c:choose></td>
 									</tr>
 									<input type="hidden" class="mat_id" value="${report.mat_id }">
 								</c:forEach>
@@ -300,7 +290,7 @@ td {
 
 
 
-						<div class="demo" style=" position: relative; left: 30%">
+						<div class="demo" style="position: relative; left: 30%">
 							<ul class="pagination">
 								<c:choose>
 									<c:when test="${pageVo.page == 1 }">

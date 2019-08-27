@@ -174,7 +174,7 @@ var calendar = $('#calendar').fullCalendar({
 	 * 일정 받아옴 **************
 	 */
   events: function (start, end, timezone, callback) {
-	  alert($("td#mem_id").text());
+//	  alert($("td#mem_id").text());
 	  $.ajax({
 // type: "post",
 // url: "/boardProject2/FullCalendar-Example-master/data.json",

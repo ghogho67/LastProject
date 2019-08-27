@@ -100,9 +100,6 @@
 						<h2 class="sub-header">
 							게시글 신규 등록<br> <br> postRegister.jsp<br> <br>
 						</h2>
-						<pre>
-cate_id : ${cate_id }<br><br>
-</pre>
 						<form id="frm1" class="form-horizontal" role="form"
 							action="${cp}/post/register" method="post"
 							enctype="multipart/form-data">

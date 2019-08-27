@@ -231,7 +231,7 @@ td {
 	$(document).ready(function() {
 		$(".Category").on("click", function() {
 			var post_id = $(this).find(".post_id").text();
-			alert(post_id);
+// 			alert(post_id);
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
@@ -281,17 +281,51 @@ td {
 
 
 				<div id="titlee">
-					<h2>
-						<span>학습.문화</span> 프로그램_관리
-					</h2>
+
+
+					<!-- 					<h2> -->
+					<%-- 						<c:choose> --%>
+					<%-- 							<c:when test="${cate_id eq 30011"> --%>
+					<!-- 								<span>공지사항</span> -->
+					<%-- 							</c:when> --%>
+					<%-- 							<c:when test="${cate_id eq 30012"> --%>
+					<!-- 								<span>자유게시판</span> -->
+					<%-- 							</c:when> --%>
+					<%-- 							<c:otherwise> --%>
+					<!-- 								<span>QNA</span> -->
+					<%-- 							</c:otherwise> --%>
+					<%-- 						</c:choose> --%>
+					<!-- 					</h2> -->
+					<c:if test="${cate_id eq 30011 }">
+
+						<h2>
+							<span>공지사항</span> 
+<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
+						</h2>
+
+					</c:if>
+					<c:if test="${cate_id eq 30012 }">
+
+						<h2>
+							<span>자유게시판</span> 
+<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
+						</h2>
+
+					</c:if>
+					<c:if test="${cate_id eq 30013 }">
+
+						<h2>
+							<span>QNA</span> 
+<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
+						</h2>
+
+					</c:if>
 				</div>
 				<div style="text-align: right; padding-right: 10px;">
 					<a class="btn btn-primary btn-sm"
 						href="${cp}/post/register?cate_id=${cate_id}">글쓰기</a>&nbsp;
 
 				</div>
-
-
 				<hr>
 
 				<div class="table-responsive">
@@ -327,7 +361,7 @@ td {
 											<td>${post.mem_id }</td>
 											<td><fmt:formatDate value="${post.post_time }"
 													pattern="yyyy-MM-dd" /></td>
-											<td class="post_id" style = "display:none;">${post.post_id }</td>
+											<td class="post_id" style="display: none;">${post.post_id }</td>
 										</tr>
 
 										<input type="hidden" name="cate_id" value="${cate_id }">

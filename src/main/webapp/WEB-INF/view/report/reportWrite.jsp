@@ -19,7 +19,13 @@ dif {
 	width: 500px;
 	height: 200px;
 }
+
+#savebutton {
+	width: 60px;
+	height: 27px;
+}
 </style>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -145,11 +151,7 @@ dif {
 	}
 </script>
 
-</head>
 <body>
-
-
-
 
 	<div class="content-wrapper">
 
@@ -163,9 +165,6 @@ dif {
 						<h2>보고서 작성</h2>
 					</div>
 					<hr>
-
-
-
 
 					<!-- 				<pre> -->
 					<%-- mat_id : ${param.mat_id} --%>

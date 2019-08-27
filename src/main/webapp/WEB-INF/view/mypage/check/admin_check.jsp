@@ -222,9 +222,16 @@ $( document ).ready(function() {
 		 });
 		});
 	   
-	 
-
-	
+		 $("#searchType").change(function(){
+			 var type = this.value
+			 if(type == 'memid'){
+				 $("#searchVal").attr('placeholder','Ex)brown');
+			 }else{
+				 $("#searchVal").attr('placeholder','Ex)19/07/30');
+			 }
+			 
+			 
+		 });
 });
 $(document).ready(function() {
 //	   $("#searchType").change("on", function(){
@@ -280,7 +287,7 @@ function boardPagingListAjaxHtml(page, pageSize) {
 	                                <option value="memid">회원아이디</option>
 	                                <option value="day">날짜</option>
 	                             </select> 
-	                            <input id="searchVal" name="searchVal" type="text" placeholder="날짜검색 형식 Ex)19/07/30"><br>
+	                            <input id="searchVal" name="searchVal" type="text" placeholder="Ex)brown"><br>
 	                            <input type="hidden"  name = "page" id="page" value="1">
 	 							<input type="hidden" name = "pageSize" id="pageSize" value="10">
 	                           <button id="searchBtn" name="searchBtn" type="button"></button>
