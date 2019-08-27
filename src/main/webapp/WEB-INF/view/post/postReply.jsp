@@ -8,7 +8,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,8 +18,6 @@
 <meta name="author" content="">
 
 <title>사용자 등록</title>
-
-<!-- css, js -->
 
 <script>
 	$(document).ready(function() {
@@ -32,39 +31,46 @@
 </head>
 
 <body>
-	<!-- header -->
 
-	<div class="container">
-						<h2 class="sub-header">
-							게시글 답글 등록 WEB-INF/view/post/postReply.jsp<br>
-						</h2>
-						<form id="frm" class="form-horizontal" role="form" action="${cp }/post/reply" method="post" enctype="multipart/form-data">
-							<input type="hidden" name="cate_id" value="${cate_id }">
-							<input type="hidden" name="post_id" value="${post_id }">
-							<div>
-								<label for="filename" class="col-sm-2 control-label">제목</label>
-								<div>
-									<input type="text" class="form-control" id="mem_id"
-										name="post_nm">
-								</div>
-							</div>
-							<div>
-								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
-									<%@include file="../../../SE2/SE2postReply.jsp"%>
-							</div>
-							<div>
-							<input type="button" class = "btn btn-primary btn-sm" value="파일추가" id="addFileBtn">
-								<div id="fileArea">
-									<input type="file" name="file" multiple><br> 
-									<input type="hidden" name="cate_id" value="${cate_id }">
-								</div>
-							</div>
-						</form>
-						<form id="postContFrm" method="get" style="float:left;" action="${cp}/post/pagingList?cate_id='${cate_id }'">
-							<input type="hidden" name="cate_id" value="${cate_id }" /> 
-							<input type="hidden" name="post_id" value="${post_id }" />
-						</form>
+	<div class="container" style="margin-top: 100px;">
+		<div class="card">
+			<div class="card-body" style="padding: 50px;">
+				<h2 class="sub-header">
+					게시글 답글 등록<br>
+				</h2>
+				<form id="frm" class="form-horizontal" role="form"
+					action="${cp }/post/reply" method="post"
+					enctype="multipart/form-data">
+					<input type="hidden" name="cate_id" value="${cate_id }"> <input
+						type="hidden" name="post_id" value="${post_id }">
+					<div>
+						<label for="filename" class="col-sm-2 control-label">제목</label>
+						<div>
+							<input type="text" class="form-control" id="mem_id"
+								name="post_nm">
+						</div>
 					</div>
+					<div>
+						<label for="mem_id" class="col-sm-2 control-label">글내용</label>
+						<%@include file="../../../SE2/SE2postReply.jsp"%>
+					</div>
+					<div>
+						<input type="button" class="btn btn-primary btn-sm" value="파일추가"
+							id="addFileBtn">
+						<div id="fileArea">
+							<input type="file" name="file" multiple><br> <input
+								type="hidden" name="cate_id" value="${cate_id }">
+						</div>
+					</div>
+				</form>
+				<form id="postContFrm" method="get" style="float: left;"
+					action="${cp}/post/pagingList?cate_id='${cate_id }'">
+					<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+						type="hidden" name="post_id" value="${post_id }" />
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 <script>
 	var form = document.forms[0];
