@@ -227,9 +227,7 @@ td {
 		<div class="card">
 			<div class="card-body">
 
-				<pre>${cate_id}</pre>
 				<div id="titlee">
-					<pre>pageVo.page : ${pageVo.page}pageVo.pageSize : ${pageVo.pageSize} paginationSize : ${paginationSize}</pre>
 					<h2>
 						<span>reportPagingList.jsp</span>
 					</h2>

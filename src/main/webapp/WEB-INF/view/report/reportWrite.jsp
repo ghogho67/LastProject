@@ -15,7 +15,13 @@ dif {
 	width: 500px;
 	height: 200px;
 }
+
+#savebutton {
+	width: 60px;
+	height: 27px;
+}
 </style>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -144,11 +150,7 @@ dif {
 	<!-- 		<div style="padding-top: 50px; width: 1250px;"> -->
 	<div class="card">
 		<div class="card-body">
-
-			<h2 class="sub-header">보고서 작성 reportWrite.jsp</h2>
-			<pre>
-mat_id : ${param.mat_id}
-</pre>
+			<h2 class="sub-header">보고서 작성</h2>
 			<form id="saveFrm" class="form-horizontal" role="form"
 				action="${cp}/report/register" method="post"
 				enctype="multipart/form-data">
@@ -156,35 +158,38 @@ mat_id : ${param.mat_id}
 					<label for="rep_title" class="col-sm-2 control-label">제목</label>
 					<div>
 						<input type="text" id="rep_title" class="form-control"
-							name="rep_title">
+							name="rep_title" style="width: 74%">
 					</div>
 				</div>
-				<div>
+				<div style="width: 74%">
 					<div>
-						<br>
-						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
-							style="width: 600px; height: 412px;"></textarea>
+						<div>
+							<label for="rep_title" class="col-sm-2 control-label">내용</label>
+							<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
+								style="width: 600px; height: 412px;"></textarea>
+						</div>
 					</div>
-				</div>
-				<div>
-					<input type="button" class="btn btn-primary btn-sm pull-right"
-						id="savebutton" value="작성완료" />
-				</div>
-				<div>
-					<a href="${cp}/report/pagingList"
-						class="btn btn-primary btn-sm pull-right">매칭목록</a>
-				</div>
-				<div id="fileArea">
-					<input type="button" class="btn btn-primary btn-sm" value="파일추가"
-						id="addFileBtn"> <input type="file" name="file"><br>
-					<input type="hidden" name="mat_id" value="${param.mat_id }">
+					<div>
+						<input type="button" class="btn btn-primary btn-sm pull-right"
+							id="savebutton" value="작성완료" />
+					</div>
+					<div>
+						<a href="${cp}/report/pagingList"
+							class="btn btn-primary btn-sm pull-right
+							">매칭목록</a>
+					</div>
+					<div id="fileArea">
+						<input type="button" class="btn btn-primary btn-sm" value="파일추가"
+							id="addFileBtn" style="width: 60.55px; height: 27.19px;">
+						<input type="file" name="file"><br> <input
+							type="hidden" name="mat_id" value="${param.mat_id }">
+					</div>
 				</div>
 			</form>
 			<form id="postContFrm" method="get" style="float: left;"
 				action="${cp}/report/pagingList">
 				<input type="hidden" name="mat_id" value="${param.mat_id }" />
 			</form>
-
 		</div>
 	</div>
 </div>
