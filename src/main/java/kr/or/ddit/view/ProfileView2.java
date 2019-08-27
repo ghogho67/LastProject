@@ -30,10 +30,18 @@ public class ProfileView2 implements View {
 		logger.debug("☞profileView.render()");
 
 		MemberVo memberVo = (MemberVo) model.get("memberVo");
+		logger.debug("☞memberVo:{}",memberVo);
 
 		ServletOutputStream sos = response.getOutputStream();
 		FileInputStream fis = null;
-		String filePath = memberVo.getMem_photo_path();
+		
+		String filePath = null;
+		
+		if (memberVo==null) {
+			filePath = null;
+		}else {
+			filePath=memberVo.getMem_photo_path();
+		}
 		// 사용자가 업로드한 파일이 존재할 경우 : path
 
 		if (filePath != null) {

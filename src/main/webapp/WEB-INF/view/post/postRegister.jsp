@@ -27,37 +27,44 @@ div {
 }
 </style>
 <script>
-$( document ).ready(function() {
-	$("#text") = str_replace("<", "&lt", $("#text"));
-	$("#text") = str_replace(">", "&lt", $("#text"));
-})
+	$(document).ready(function() {
+		$("#text") = str_replace("<", "&lt", $("#text"));
+		$("#text") = str_replace(">", "&lt", $("#text"));
+	})
 </script>
 </head>
 <body>
-	<div class="container">
-								<h2 class="sub-header">
-									게시글 신규 등록<br> <br> WEB-INF/view/post/postRegister.jsp<br> <br>
-								</h2>
-				<form id="frm1" role="form" action="${cp}/post/register" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="cate_id" value="${cate_id }" />
-			<div class="card">
+
+	<div class="container" style="margin-top: 100px;">
+		<div class="card">
+			<div class="card-body" style="padding: 50px;">
+				<h2 class="sub-header">
+					게시글 작성<br> <br>
+				</h2>
+				<form id="frm1" role="form" action="${cp}/post/register"
+					method="post" enctype="multipart/form-data">
+					<input type="hidden" name="cate_id" value="${cate_id }" />
+					<div class="card">
 						<label for="post_nm" class="col-sm-2 control-label">제목</label>
-				<div>
-					<input type="text" id = "text" class="form-control" name="post_nm">
-				</div>
-			</div>
-			<div>
+						<div>
+							<input type="text" id="text" class="form-control" name="post_nm">
+						</div>
+					</div>
+					<div>
 						<label for="post_cont" class="col-sm-2 control-label">글내용</label>
-				<div>
-					<%@include file="../../../SE2/SE2postRegister.jsp"%>
-				</div>
-			</div>
-			<div id="fileArea">
-				<input type="button" value="파일추가" class="btn btn-primary btn-sm" id="addFileBtn"> <br> 
-				<input type="file" name="file"	multiple> 
-				<input type="hidden" name="cate_id"	value="${cate_id }">
-			</div>
+						<div>
+							<%@include file="../../../SE2/SE2postRegister.jsp"%>
+						</div>
+					</div>
+					<div id="fileArea">
+						<input type="button" value="파일추가" class="btn btn-primary btn-sm"
+							id="addFileBtn"> <br> <input type="file" name="file"
+							multiple> <input type="hidden" name="cate_id"
+							value="${cate_id }">
+					</div>
 				</form>
+			</div>
+		</div>
 	</div>
 </body>
 

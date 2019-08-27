@@ -9,7 +9,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,28 +58,29 @@ td {
 	font-size: 9pt;
 	width: 30px;
 }
+
 .btn {
-vertical-align: center;
-padding: 10px;
-margin: 10px;
+	vertical-align: center;
+	padding: 10px;
+	margin: 10px;
 }
 
-textarea{
-height: 100px;
-width: 500px;
-vertical-align: center;
+textarea {
+	height: 100px;
+	width: 500px;
+	vertical-align: center;
 }
 
-#reply_box{
-vertical-align: center;
-margin: 5px;
-padding: 5px;
+#reply_box {
+	vertical-align: center;
+	margin: 5px;
+	padding: 5px;
 }
 
-.div{
-vertical-align: center;
-padding:5px;
-margin:5px;
+.div {
+	vertical-align: center;
+	padding: 5px;
+	margin: 5px;
 }
 </style>
 
@@ -139,13 +141,15 @@ margin:5px;
 </script>
 </head>
 <body>
+	<div class="content-wrapper">
 
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
+		<div class="col-lg-12">
+
 			<div class="card">
 				<div class="card-body">
-					<div class="titlee">
-						<h2 class="sub-header">보고서 상세조회 reportDetail.jsp</h2>
+
+				
+						<h2 class="sub-header">보고서 조회</h2>
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
 								<h4>${reportVo.rep_title}</h4>
@@ -156,7 +160,19 @@ margin:5px;
 							<div class="col-sm-10">
 								<label class="control-label">${reportVo.rep_cont}</label>
 							</div>
-							<br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
 							<hr>
 						</div>
 						<div class="form-group col-sm-8">
@@ -164,31 +180,34 @@ margin:5px;
 							<div class="col-sm-10">
 								<c:forEach items="${reportAttachList}" var="reportAttachVo">
 									<br>
-										<div>
-										${reportAttachVo.rep_att_nm }
-										<a href="${cp}/reportAttach/download?mat_id=${mat_id }&rep_att_id=${reportAttachVo.rep_att_id }"
-										class="btn btn-primary btn-sm pull-right">다운로드</a>
-										</div>
+									<div>
+										${reportAttachVo.rep_att_nm } <a
+											href="${cp}/reportAttach/download?mat_id=${mat_id }&rep_att_id=${reportAttachVo.rep_att_id }"
+											class="btn btn-primary btn-sm pull-right">다운로드</a>
+									</div>
 									<br>
 								</c:forEach>
 							</div>
 						</div>
-						</div>
-												
-						<div class="form-group col-sm-8 text-left">
-									<hr>
-							<c:if test="${cw_mem_id eq mem_id }">
-							<form style="float:left;" id="reportModifyfrm" method="post" action="${cp}/report/modifyView">
-								<button id="reportModifyBtn" type="button" class="btn btn-primary btn-sm" name="button">수정</button>
+					</div>
+
+					<div class="form-group col-sm-8 text-left">
+						<hr>
+						<c:if test="${cw_mem_id eq mem_id }">
+							<form style="float: left;" id="reportModifyfrm" method="post"
+								action="${cp}/report/modifyView">
+								<button id="reportModifyBtn" type="button"
+									class="btn btn-primary btn-sm" name="button">수정</button>
 								<input type="hidden" value="${mat_id }" name="mat_id">
 							</form>
-							</c:if>
-							<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm pull-right">매칭목록</a>
-						</div>
+						</c:if>
+						<a href="${cp}/report/pagingList"
+							class="btn btn-primary btn-sm pull-right">매칭목록</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
 
