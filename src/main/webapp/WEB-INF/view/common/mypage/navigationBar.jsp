@@ -15,6 +15,7 @@
 }
 </style>
 <%@include file="/resource/chat/chatAlram.jsp" %>
+<%@include file="/resource/chatbot/chatbotView.jsp" %>
 </head>
 <body>
 
