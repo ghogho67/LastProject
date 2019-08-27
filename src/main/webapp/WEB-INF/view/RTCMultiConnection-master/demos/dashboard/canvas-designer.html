@@ -1,4 +1,4 @@
-<!-- Demo version: 2018.12.11 -->
+﻿<!-- Demo version: 2018.12.11 -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -79,9 +79,17 @@ input[disabled], button[disabled] {
     border-radius: 3px;
 }
 
+#txt-chat-message {
+    width: 100%;
+    resize: vertical;
+    margin: 5px;
+    margin-right: 0;
+    min-height: 30px;
+}
 
-
-
+#btn-chat-message {
+    margin: 5px;
+}
 
 #conversation-panel {
     margin-bottom: 20px;
@@ -101,14 +109,14 @@ input[disabled], button[disabled] {
     max-width: 100%;
 }
 
-/* #main-video { */
-/*     width: 100%; */
-/*     margin-top: -9px; */
-/*     border-bottom: 1px solid #121010; */
-/*     display: none; */
-/*     padding-bottom: 1px; */
-/*     display: none; */
-/* } */
+#main-video {
+    width: 100%;
+    margin-top: -9px;
+    border-bottom: 1px solid #121010;
+    display: none;
+    padding-bottom: 1px;
+    display: none;
+}
 
 hr {
     height: 1px;
@@ -116,9 +124,19 @@ hr {
     background: #E5E5E5;
 }
 
+#btn-attach-file {
+    width: 25px;
+    vertical-align: middle;
+    cursor: pointer;
+    display: none;
+}
 
-
-
+#btn-share-screen {
+    width: 25px;
+    vertical-align: middle;
+    cursor: pointer;
+    display: none;
+}
 
 .checkmark {
     display:none;
@@ -135,30 +153,38 @@ hr {
     z-index: 9999999999999;
     display: none;
 }
-#widget-container {
-    display: none;
-}
 </style>
 
 <article>
 
-<div id="widget-container" style="position: fixed;bottom: 0;right: 0;left: 20%;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;" ></div>
+<div id="widget-container" style="position: fixed;bottom: 0;right: 0;left: 20%;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;"></div>
 <video id="screen-viewer" controls playsinline autoplay></video>
 
-<div style="width: 100%; height: 100%; position: absolute;left:0;">
-<!--     <video id="main-video" controls playsinline autoplay></video> -->
+<div style="width: 20%; height: 100%; position: absolute;left:0;">
+    <video id="main-video" controls playsinline autoplay></video>
     <div id="other-videos"></div>
+    <hr>
+    <div style="padding: 5px 10px;">
+        <div id="onUserStatusChanged"></div>
+    </div>
 
-
-
+    <div style="margin-top: 20px;position: absolute;bottom: 0;background: white; padding-bottom: 20px; width: 94%">
+        <div id="conversation-panel"></div>
+        <div id="key-press" style="text-align: right; display: none; font-size: 11px;">
+            <span style="vertical-align: middle;"></span>
+            <img src="../image/key-press.gif" style="height: 12px; vertical-align: middle;">
+        </div>
+        <textarea id="txt-chat-message"></textarea>
+        <button class="btn btn-primary" id="btn-chat-message" disabled>Send</button>
+        <img id="btn-attach-file" src="../image/attach.png" title="Attach a File">
+        <img id="btn-share-screen" src="../image/share.jpg" title="Share Your Screen">
+    </div>
 
     <canvas id="temp-stream-canvas" style="display: none;"></canvas>
 </div>
 </article>
 
 <script>
-console.log("${MEM_INFO.mem_id}");
-alert("${MEM_INFO.mem_id}");
 (function() {
     var params = {},
         r = /([^&=]+)=?([^&]*)/g;
@@ -203,7 +229,30 @@ designer.addSyncListener(function(data) {
     connection.send(data);
 });
 
+designer.setSelected('pencil');
 
+designer.setTools({
+    pencil: true,
+    text: true,
+    image: true,
+    pdf: true,
+    eraser: true,
+    line: true,
+    arrow: true,
+    dragSingle: true,
+    dragMultiple: true,
+    arc: true,
+    rectangle: true,
+    quadratic: false,
+    bezier: true,
+    marker: true,
+    zoom: false,
+    lineWidth: false,
+    colorsPicker: false,
+    extraOptions: false,
+    code: false,
+    undo: true
+});
 
 // here goes RTCMultiConnection
 
@@ -221,7 +270,7 @@ connection.sdpConstraints.mandatory = {
 };
 
 connection.onUserStatusChanged = function(event) {
-//     var infoBar = document.getElementById('onUserStatusChanged');
+    var infoBar = document.getElementById('onUserStatusChanged');
     var names = [];
     connection.getAllParticipants().forEach(function(pid) {
         names.push(getFullName(pid));
@@ -233,7 +282,7 @@ connection.onUserStatusChanged = function(event) {
         names = [connection.extra.userFullName || 'You'].concat(names);
     }
 
-//     infoBar.innerHTML = '<b>Active users:</b> ' + names.join(', ');
+    infoBar.innerHTML = '<b>참여한 사람:</b> ' + names.join(', ');
 };
 
 connection.onopen = function(event) {
@@ -245,6 +294,10 @@ connection.onopen = function(event) {
             connection.send('plz-sync-points');
         }, 1000);
     }
+
+    document.getElementById('btn-chat-message').disabled = false;
+    document.getElementById('btn-attach-file').style.display = 'inline-block';
+    document.getElementById('btn-share-screen').style.display = 'inline-block';
 };
 
 connection.onclose = connection.onerror = connection.onleave = function(event) {
@@ -254,13 +307,13 @@ connection.onclose = connection.onerror = connection.onleave = function(event) {
 connection.onmessage = function(event) {
     if(event.data.showMainVideo) {
         // $('#main-video').show();
-//         $('#screen-viewer').css({
-//             top: $('#widget-container').offset().top,
-//             left: $('#widget-container').offset().left,
-//             width: $('#widget-container').width(),
-//             height: $('#widget-container').height()
-//         });
-//         $('#screen-viewer').show();
+        $('#screen-viewer').css({
+            top: $('#widget-container').offset().top,
+            left: $('#widget-container').offset().left,
+            width: $('#widget-container').width(),
+            height: $('#widget-container').height()
+        });
+        $('#screen-viewer').show();
         return;
     }
 
@@ -271,10 +324,12 @@ connection.onmessage = function(event) {
     }
 
     if(event.data.typing === true) {
+        $('#key-press').show().find('span').html(event.extra.userFullName + ' is typing');
         return;
     }
 
     if(event.data.typing === false) {
+        $('#key-press').hide().find('span').html('');
         return;
     }
 
@@ -307,7 +362,6 @@ connection.onstream = function(event) {
         $('#screen-viewer').hide();
     }
     else if (event.extra.roomOwner === true) {
-    	/*
         var video = document.getElementById('main-video');
         video.setAttribute('data-streamid', event.streamid);
         // video.style.display = 'none';
@@ -316,8 +370,7 @@ connection.onstream = function(event) {
             video.volume = 0;
         }
         video.srcObject = event.stream;
-        $('#main-video').hide();
-        */
+        $('#main-video').show();
     } else {
         event.mediaElement.controls = false;
 
@@ -372,17 +425,91 @@ function appendChatMessage(event, checkmark_id) {
 
 var keyPressTimer;
 var numberOfKeys = 0;
+$('#txt-chat-message').emojioneArea({
+    pickerPosition: "top",
+    filtersPosition: "bottom",
+    tones: false,
+    autocomplete: true,
+    inline: true,
+    hidePickerOnBlur: true,
+    events: {
+        focus: function() {
+            $('.emojionearea-category').unbind('click').bind('click', function() {
+                $('.emojionearea-button-close').click();
+            });
+        },
+        keyup: function(e) {
+            var chatMessage = $('.emojionearea-editor').html();
+            if (!chatMessage || !chatMessage.replace(/ /g, '').length) {
+                connection.send({
+                    typing: false
+                });
+            }
 
+
+            clearTimeout(keyPressTimer);
+            numberOfKeys++;
+
+            if (numberOfKeys % 3 === 0) {
+                connection.send({
+                    typing: true
+                });
+            }
+
+            keyPressTimer = setTimeout(function() {
+                connection.send({
+                    typing: false
+                });
+            }, 1200);
+        },
+        blur: function() {
+            // $('#btn-chat-message').click();
+            connection.send({
+                typing: false
+            });
+        }
+    }
+});
 
 window.onkeyup = function(e) {
     var code = e.keyCode || e.which;
     if (code == 13) {
+        $('#btn-chat-message').click();
     }
 };
 
+document.getElementById('btn-chat-message').onclick = function() {
+    var chatMessage = $('.emojionearea-editor').html();
+    $('.emojionearea-editor').html('');
 
+    if (!chatMessage || !chatMessage.replace(/ /g, '').length) return;
+
+    var checkmark_id = connection.userid + connection.token();
+
+    appendChatMessage(chatMessage, checkmark_id);
+
+    connection.send({
+        chatMessage: chatMessage,
+        checkmark_id: checkmark_id
+    });
+
+    connection.send({
+        typing: false
+    });
+};
 
 var recentFile;
+document.getElementById('btn-attach-file').onclick = function() {
+    var file = new FileSelector();
+    file.selectSingleFile(function(file) {
+        recentFile = file;
+
+        if(connection.getAllParticipants().length >= 1) {
+            recentFile.userIndex = 0;
+            connection.send(file, connection.getAllParticipants()[recentFile.userIndex]);
+        }
+    });
+};
 
 function getFileHTML(file) {
     var url = file.url || URL.createObjectURL(file);
@@ -492,10 +619,6 @@ designer.appendTo(document.getElementById('widget-container'), function() {
             window.tempStream = tempStream;
 
             connection.extra.roomOwner = true;
-       		console.log(connection.session);
-            connection.session.audio=false;
-            connection.session.video=false;
-            connection.session.data=true;
             connection.open(params.sessionid, function(isRoomOpened, roomid, error) {
                 if (error) {
                     if (error === connection.errors.ROOM_NOT_AVAILABLE) {
@@ -510,12 +633,6 @@ designer.appendTo(document.getElementById('widget-container'), function() {
                 });
             });
     } else {
-    	console.log(connection.extra.userFullName);
-    	if(connection.extra.userFullName=='aha'){
-            connection.session.audio=false;
-            connection.session.video=false;
-            connection.session.data=true;
-    	}
         connection.join(params.sessionid, function(isRoomJoined, roomid, error) {
             if (error) {
                 if (error === connection.errors.ROOM_NOT_AVAILABLE) {
@@ -623,6 +740,7 @@ function replaceScreenTrack(stream) {
 
         // $('#main-video').hide();
         $('#screen-viewer').hide();
+        $('#btn-share-screen').show();
         replaceTrack(tempStream.getTracks()[0], screenTrackId);
     });
 
@@ -646,7 +764,36 @@ function replaceScreenTrack(stream) {
     $('#screen-viewer').show();
 }
 
+$('#btn-share-screen').click(function() {
+    if(!window.tempStream) {
+        alert('멘티는 사용할수 없는 기능입니다.');
+        return;
+    }
 
+    $('#btn-share-screen').hide();
+
+    getScreenId(function (error, sourceId, screen_constraints) {
+        if(navigator.userAgent.indexOf('Edge') !== -1 && (!!navigator.msSaveOrOpenBlob || !!navigator.msSaveBlob)) {
+            navigator.getDisplayMedia(screen_constraints).then(stream => {
+                replaceScreenTrack(stream);
+            }, error => {
+                alert('Please make sure to use Edge 17 or higher.');
+            });
+            return;
+        }
+
+        if(error == 'not-installed') {
+          alert('Please install Chrome extension.');
+          return;
+        }
+
+        navigator.mediaDevices.getUserMedia(screen_constraints).then(function (stream) {
+            replaceScreenTrack(stream);
+        }).catch(function (error) {
+          alert('Failed to capture your screen. Please check Chrome console logs for further information.');
+        });
+    });
+});
 </script>
 </body>
 </html>

@@ -1,28 +1,33 @@
-<!-- Demo version: 2018.12.11 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SACCO VIDEO REFERENCE | OH~DOA조</title>
+  <title>CCTV</title>
   <meta name="description" content="WebRTC Dashboard including support for canvas drawing, canvas data syncing, video conferencing, screen sharing and video conferencing. Including chat and file sharing.">
 
-  <link rel="shortcut icon" href="../logo.png">
-  <link rel="stylesheet" type="text/css" href="../css/emojionearea.min.css">
+  <link rel="shortcut icon" href="${cp}/RTCMultiConnection-master/demos/logo.png">
+  <link rel="stylesheet" type="text/css" href="${cp}/RTCMultiConnection-master/demos/css/emojionearea.min.css">
 
-  <script src="../js/jquery.min.js"></script>
-  <link href="../css/bootstrap.min.css" rel="stylesheet">
-  <script src="../js/adapter.js"></script>
-  <script src="../../dist/RTCMultiConnection.min.js"></script>
+  <script src="${cp}/RTCMultiConnection-master/demos/js/jquery.min.js"></script>
+  <link href="${cp}/RTCMultiConnection-master/demos/css/bootstrap.min.css" rel="stylesheet">
+  <script src="${cp}/RTCMultiConnection-master/demos/js/adapter.js"></script>
+  <script src="${cp}/RTCMultiConnection-master/dist/RTCMultiConnection.min.js"></script>
   <script src="http://192.168.0.64:9001/socket.io/socket.io.js"></script>
   <script src="https://cdn.webrtc-experiment.com/FileBufferReader.js"></script>
 
-  <script src="../js/webrtc-handler.js"></script>
-  <script src="../js/canvas-designer-widget.js"></script>
-  <script src="../js/emojionearea.min.js"></script>
-  <script src="../js/getScreenId.js"></script>
+  <script src="${cp}/RTCMultiConnection-master/demos/js/webrtc-handler.js"></script>
+  <script src="${cp}/RTCMultiConnection-master/demos/js/canvas-designer-widget.js"></script>
+  <script src="${cp}/RTCMultiConnection-master/demos/js/emojionearea.min.js"></script>
+  <script src="${cp}/RTCMultiConnection-master/demos/js/getScreenId.js"></script>
   <!-- <script src="/node_modules/multistreamsmixer/MultiStreamsMixer.js"></script> -->
+  
+  
+ <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
+<%@include file="/WEB-INF/view/common/LibForWebpage2.jsp"%>
 
 <style type="text/css">
 html, body, section, ul, li, nav, a, h1, h2 {
@@ -53,7 +58,7 @@ input[disabled], button[disabled] {
 }
 </style>
 </head>
-<body>
+
 <style>
 .extra-controls {
     position: absolute;
@@ -139,26 +144,72 @@ hr {
     display: none;
 }
 </style>
+<body>
 
-<article>
-
-<div id="widget-container" style="position: fixed;bottom: 0;right: 0;left: 20%;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;" ></div>
-<video id="screen-viewer" controls playsinline autoplay></video>
-
-<div style="width: 100%; height: 100%; position: absolute;left:0;">
-<!--     <video id="main-video" controls playsinline autoplay></video> -->
-    <div id="other-videos"></div>
+	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
 
 
 
+	<c:choose>
 
-    <canvas id="temp-stream-canvas" style="display: none;"></canvas>
-</div>
-</article>
+		<c:when test="${MEM_INFO.mem_grade==0}">
+			<%@include file="/WEB-INF/view/common/mypage/sidebarA.jsp"%>
+
+		</c:when>
+
+		<c:when test="${MEM_INFO.mem_grade==3}">
+			<%@include file="/WEB-INF/view/common/mypage/sidebarW.jsp"%>
+
+		</c:when>
+
+		<c:otherwise>
+			<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
+
+		</c:otherwise>
+
+	</c:choose>
+
+
+	<div class="content-wrapper">
+
+		<div class="row mb-4">
+
+
+			<div class="col-lg-12" style="padding: 0 60px 0 60px;">
+				<div class="card">
+
+
+
+<!-- 					<div class="card-body"> -->
+						<article>
+
+						<div id="widget-container" style="position: fixed;bottom: 0;right: 0;left: 20%;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;" ></div>
+						<video id="screen-viewer" controls playsinlins autoplay></video>
+						
+						<div style="width: 100%; height: 100%; position: absolute;left:0;">
+						<!--     <video id="main-video" controls playsinline autoplay></video> -->
+						    <div id="other-videos"></div>
+						
+						
+						
+						
+						    <canvas id="temp-stream-canvas" style="display: none;"></canvas>
+						</div>
+						</article>
+						
+					
+<!-- 					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+					
+
+
 
 <script>
-console.log("${MEM_INFO.mem_id}");
-alert("${MEM_INFO.mem_id}");
+// console.log("${MEM_INFO.mem_id}");
+// alert("${MEM_INFO.mem_id}");
 (function() {
     var params = {},
         r = /([^&=]+)=?([^&]*)/g;
@@ -511,7 +562,7 @@ designer.appendTo(document.getElementById('widget-container'), function() {
             });
     } else {
     	console.log(connection.extra.userFullName);
-    	if(connection.extra.userFullName=='aha'){
+    	if(connection.extra.userFullName=='${MEM_INFO.mem_id}'){
             connection.session.audio=false;
             connection.session.video=false;
             connection.session.data=true;
@@ -519,7 +570,7 @@ designer.appendTo(document.getElementById('widget-container'), function() {
         connection.join(params.sessionid, function(isRoomJoined, roomid, error) {
             if (error) {
                 if (error === connection.errors.ROOM_NOT_AVAILABLE) {
-                    alert('This room does not exist. Please either create it or wait for moderator to enter in the room.');
+                    alert('CCTV 서비스 신청을 안하셨습니다! 신청시 대표전화로 문의 주세요');
                     return;
                 }
                 if (error === connection.errors.ROOM_FULL) {
