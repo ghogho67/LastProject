@@ -196,13 +196,13 @@ dif {
 					</form>
 
 
-
+<div style="position: relative; left: 25%;">
 
 					<button type="button" class="btn btn-primary btn-sm "
 						id="savebutton">작성완료</button>
 
 					<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm ">매칭목록</a>
-
+</div>
 
 
 					<form id="postContFrm" method="get" style="float: left;"
