@@ -110,10 +110,10 @@
         });
 
         // Date Picker
-        jQuery('#datepicker').datetimepicker({
+        /*jQuery('#datepicker').datetimepicker({
             timepicker:false,
             format:'d.m.Y',
-        });
+        });*/
 //
 //        // // Nice Select
 //        $('select').niceSelect();

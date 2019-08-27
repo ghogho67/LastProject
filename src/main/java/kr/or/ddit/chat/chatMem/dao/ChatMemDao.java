@@ -36,5 +36,10 @@ public class ChatMemDao implements IChatMemDao {
 		return sqlSession.selectList("chatMem.selectChatmemVoList", mem_id);
 	}
 
+	@Override
+	public int messageUpdateN(int chat_id) {
+		return sqlSession.update("chatMem.messageUpdateN", chat_id);
+	}
+
 	
 }

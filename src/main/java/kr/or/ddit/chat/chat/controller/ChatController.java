@@ -1,7 +1,9 @@
 package kr.or.ddit.chat.chat.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -71,7 +73,11 @@ public class ChatController {
 		int chat_id = (int) session.getAttribute("chat_id");
 		String mem_id =(String)session.getAttribute("mem_id");
 		logger.debug("☞deleteChat mem_id:{}",mem_id);
+		
 		chatService.deletChat(chat_id);
+		chatMemService.messageUpdateN(chat_id);
+		
+		
 		
 	
 		return "redirect: /chat/thistok?mem_id="+mem_id;
