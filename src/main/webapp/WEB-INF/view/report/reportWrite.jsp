@@ -150,15 +150,14 @@ dif {
 		return true;
 	}
 </script>
-
 <body>
 
-	<div class="content-wrapper">
+	<div class="content-wrapper" style="margin-top: 100px;">
 
-		<div class="col-lg-12">
+<!-- 		<div class="col-lg-12"> -->
 
 			<div class="card">
-				<div class="card-body">
+				<div class="card-body" style="padding: 50px;">
 
 
 					<div id="titlee">
@@ -180,8 +179,7 @@ dif {
 							</div>
 						</div>
 						<br>
-						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
-						></textarea>
+						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"></textarea>
 
 
 
@@ -195,13 +193,13 @@ dif {
 					</form>
 
 
-<div style="position: relative; left: 25%;">
+					<div style="position: relative; left: 25%;">
 
-					<button type="button" class="btn btn-primary btn-sm "
-						id="savebutton">작성완료</button>
+						<button type="button" class="btn btn-primary btn-sm "
+							id="savebutton">작성완료</button>
 
-					<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm ">매칭목록</a>
-</div>
+						<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm ">매칭목록</a>
+					</div>
 
 
 					<form id="postContFrm" method="get" style="float: left;"
@@ -212,7 +210,7 @@ dif {
 				</div>
 			</div>
 		</div>
-	</div>
+<!-- 	</div> -->
 
 </body>
 </html>
