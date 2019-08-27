@@ -392,7 +392,7 @@ public class mypageController {
 	 * 
 	 * @return Method 설명 : 요양보호사 회원탈퇴
 	 */
-	@RequestMapping(path = "/Worker_ Wd", method = RequestMethod.GET)
+	@RequestMapping(path = "/Worker_Wd", method = RequestMethod.GET)
 	public String Worker_Wd() {
 		return "mypage/Worker_Wd";
 	}
@@ -661,8 +661,8 @@ public class mypageController {
 	}
 	
 	@RequestMapping("cctv")
-	public String CCTV() {
-		return"";
+	public String CCTV(String open, String sessionid, String publicRoomIdentifier, String userFullName) {
+		return"RTCMultiConnection-master/demos/dashboard/cctv";
 	}
 
 

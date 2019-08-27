@@ -379,10 +379,10 @@ function captcha() {
 
 								<div class="col-sm-6">
 									<div class="form-group">
-										<label for="email1">주민번호 앞자리</label>
+										<label for="email1">생년월일</label>
 										<div class="input-group p-has-icon">
 											<input type="text" id="mem_birth" name="mem_birth" value="${mem_birth }"
-												placeholder="연연/월/일 입력해 주세요" class="form-control">
+												placeholder="YYYY/MM/DD형식으로 입력해 주세요" class="form-control">
 											<span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
@@ -653,10 +653,10 @@ function captcha() {
 								<div class="row">
 										<div class="col-sm-6">
 										<div class="form-group">
-										<label for="email1">시작날자</label>
+										<label for="email1">시작날짜</label>
 											<div class="input-group p-has-icon">
 												<input type="text" id="career_st_dt" name="career_st_dt" value="${career_st_dt }"
-													placeholder="YYYY-MM-DD형식으로 입력해 주세요" class="form-control"> <span
+													placeholder="YYYY/MM/DD형식으로 입력해 주세요" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -671,10 +671,10 @@ function captcha() {
 
 									<div class="col-sm-6">
 										<div class="form-group">
-										<label for="email1">종료날자</label>
+										<label for="email1">종료날짜</label>
 											<div class="input-group p-has-icon">
 												<input type="text" id="career_end_dt" name="career_end_dt" value="${career_end_dt }"
-													placeholder="YYYY-MM-DD형식으로 입력해 주세요" class="form-control"> <span
+													placeholder="YYYY/MM/DD형식으로 입력해 주세요" class="form-control"> <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
 																class="fa fa-check"></i></span> <span class="p-error-text"><i

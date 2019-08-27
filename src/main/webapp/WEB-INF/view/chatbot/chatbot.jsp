@@ -17,7 +17,7 @@
   background-color: #E1F6FA;
 /*   text-align: center; */
   width: 433px;
-  height: 460px;
+  height: 440px;
 }
 
 /* 채팅 영역 */

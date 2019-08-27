@@ -224,9 +224,6 @@ tbody {
 
 	<div class="container-fluid"></div>
 
-	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
-
-
 
 	<c:choose>
 
