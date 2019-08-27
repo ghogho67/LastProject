@@ -67,12 +67,7 @@
       </ul>
    </li>
    
-        <li class='active has-sub'><a><span>나의 스케쥴<i class="fa fa-sort-down"></i></span></a>
-      <ul>
-         <li class='has-sub'><a href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}"><span>전체 일정<span></a> </li>
-         <li class='has-sub'><a href="/mypage/scheduleView"><span>스케쥴 관리 <span></a> </li>
-         <li class='has-sub'><a href="${cp}/approval/approvalCheck?page=1&pageSize=10&searchType=type&searchVal="><span>일정 조율</span></a></li>
-      </ul>
+        <li class='active has-sub'><a href="/mypage/scheduleView"><span>나의 스케쥴</span></a>
    </li>
    
    <li class='last'><a href="${cp}/mypage/Patient_Wd"><span>회원탈퇴</span></a></li>

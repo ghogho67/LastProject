@@ -2,14 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<head>
 
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Smart Editor</title>
+<title>보고서 작성</title>
+
 <style>
 dif {
 	width: 500px;
@@ -146,50 +150,69 @@ dif {
 		return true;
 	}
 </script>
-<div class="content-wrapper">
-	<!-- 		<div style="padding-top: 50px; width: 1250px;"> -->
-	<div class="card">
-		<div class="card-body">
-			<h2 class="sub-header">보고서 작성</h2>
-			<form id="saveFrm" class="form-horizontal" role="form"
-				action="${cp}/report/register" method="post"
-				enctype="multipart/form-data">
-				<div>
-					<label for="rep_title" class="col-sm-2 control-label">제목</label>
-					<div>
-						<input type="text" id="rep_title" class="form-control"
-							name="rep_title" style="width: 74%">
+
+<body>
+
+	<div class="content-wrapper">
+
+		<div class="col-lg-12">
+
+			<div class="card">
+				<div class="card-body">
+
+
+					<div id="titlee">
+						<h2>보고서 작성</h2>
 					</div>
-				</div>
-				<div style="width: 74%">
-					<div>
+					<hr>
+
+					<!-- 				<pre> -->
+					<%-- mat_id : ${param.mat_id} --%>
+					<!-- </pre> -->
+					<form id="saveFrm" class="form-horizontal" role="form"
+						action="${cp}/report/register" method="post"
+						enctype="multipart/form-data">
 						<div>
-							<label for="rep_title" class="col-sm-2 control-label">내용</label>
-							<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
-								style="width: 600px; height: 412px;"></textarea>
+							<label for="rep_title" class="col-sm-2 control-label">제목</label>
+							<div>
+								<input type="text" id="rep_title" class="form-control"
+									name="rep_title">
+							</div>
 						</div>
-					</div>
-					<div>
-						<input type="button" class="btn btn-primary btn-sm pull-right"
-							id="savebutton" value="작성완료" />
-					</div>
-					<div>
-						<a href="${cp}/report/pagingList"
-							class="btn btn-primary btn-sm pull-right
-							">매칭목록</a>
-					</div>
-					<div id="fileArea">
-						<input type="button" class="btn btn-primary btn-sm" value="파일추가"
-							id="addFileBtn" style="width: 60.55px; height: 27.19px;">
+						<br>
+						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
+						></textarea>
+
+
+
+
+
+						<button type="button" class="btn btn-primary btn-sm" value="파일추가"
+							id="addFileBtn">파일추가</button>
+
 						<input type="file" name="file"><br> <input
 							type="hidden" name="mat_id" value="${param.mat_id }">
-					</div>
+					</form>
+
+
+
+
+					<button type="button" class="btn btn-primary btn-sm "
+						id="savebutton">작성완료</button>
+
+					<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm ">매칭목록</a>
+
+
+
+					<form id="postContFrm" method="get" style="float: left;"
+						action="${cp}/report/pagingList">
+						<input type="hidden" name="mat_id" value="${param.mat_id }" />
+					</form>
+
 				</div>
-			</form>
-			<form id="postContFrm" method="get" style="float: left;"
-				action="${cp}/report/pagingList">
-				<input type="hidden" name="mat_id" value="${param.mat_id }" />
-			</form>
+			</div>
 		</div>
 	</div>
-</div>
+
+</body>
+</html>

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>BasicSubPage</title>
+<title>결산관리</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
@@ -236,7 +236,17 @@ td {
 			$("#searchList").submit();
 
 		});
+		
+		 $("#searchType").change(function(){
+			
+			 var a = this.value;
+			 if(a == 'type'){
+				 $("#searchVal").attr('placeholder','Ex)매칭,기부,골드(가입)');
+			 }else{
+				 $("#searchVal").attr('placeholder','Ex)19/07/30');
+			 }
 
+		});
 	});
 
 	function boardPagingListAjaxHtml(page, pageSize) {
@@ -273,8 +283,9 @@ td {
 								style="position: absolute; z-index: 999;">
 								<option value="day">날짜</option>
 								<option value="type">결제구분</option>
-							</select> <input id="searchVal" name="searchVal" type="text"
-								placeholder="날짜검색 형식 Ex)19/07/30"><br> <input
+							</select> 
+							<input id="searchVal" name="searchVal" type="text"
+								placeholder="Ex)매칭,기부,골드(가입)"><br> <input
 								type="hidden" name="page" id="page" value="1"> <input
 								type="hidden" name="pageSize" id="pageSize" value="10">
 							<button id="searchBtn" name="searchBtn" type="button"></button>
@@ -283,7 +294,7 @@ td {
 
 					<div id="titlee">
 						<h2>
-							<span>결재내역</span>&nbsp;골드회원 및 일반회원
+							<span>결산관리</span>&nbsp;요양보호사
 						</h2>
 					</div>
 					<hr>
@@ -330,10 +341,7 @@ td {
 
 
 					</div>
-				</div>
-				</div>
-
-		<div class="demo" style="position: absolute; right: 38%;">
+		<div class="demo" style="position:relative; left: 2%;">
 			<nav class="pagination-outer" aria-label="Page navigation">
 				<ul class="pagination">
 					<c:choose>
@@ -397,7 +405,7 @@ td {
 
 					<c:choose>
 						<c:when test="${pageVo.page == lastpaginationSize}">
-							<li class="page-item next disabled"><a href="#"
+							<li class="page-item next disabled"><a 
 								class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</c:when>
 						<c:otherwise>
@@ -410,6 +418,9 @@ td {
 				</ul>
 			</nav>
 		</div>
+				</div>
+				</div>
+
 			</div>
 		</div>
 </body>

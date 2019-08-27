@@ -236,6 +236,16 @@ td {
 			$("#searchList").submit();
 
 		});
+		$("#searchType").change(function(){
+			
+			 var a = this.value;
+			 if(a == 'type'){
+				 $("#searchVal").attr('placeholder','Ex)매칭,기부,골드(가입)');
+			 }else{
+				 $("#searchVal").attr('placeholder','Ex)19/07/30');
+			 }
+
+		});
 
 	});
 
@@ -254,10 +264,7 @@ td {
 
 <body>
 
-	<%-- 	 <form id="pageForm" action="${cp}/approval/approvalCheck"> --%>
-	<!-- 	 	<input type="hidden" name = "page" id="page"> -->
-	<!-- 	 	<input type="hidden" name = "pageSize" id="pageSize"> -->
-	<!-- 	 </form> -->
+
 	<div class="content-wrapper">
 
 		<div class="col-lg-12">
@@ -274,7 +281,7 @@ td {
 								<option value="day">날짜</option>
 								<option value="type">결제구분</option>
 							</select> <input id="searchVal" name="searchVal" type="text"
-								placeholder="날짜검색 형식 Ex)19/07/30"><br> <input
+								placeholder="Ex)매칭,기부,골드(가입)"><br> <input
 								type="hidden" name="page" id="page" value="1"> <input
 								type="hidden" name="pageSize" id="pageSize" value="10">
 							<button id="searchBtn" name="searchBtn" type="button"></button>

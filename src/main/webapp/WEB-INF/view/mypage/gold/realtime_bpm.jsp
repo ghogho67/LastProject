@@ -63,7 +63,8 @@
 				backgroundColor : color(chartColors.red).alpha(0.5).rgbString(),
 				borderColor : chartColors.red,
 				fill : false,
-				cubicInterpolationMode : 'monotone',
+// 				cubicInterpolationMode : 'monotone',
+lineTension: 0,
 				data : [],
 				radius : 0,
 				borderWidth : 0.5
