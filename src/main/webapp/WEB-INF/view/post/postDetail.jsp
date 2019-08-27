@@ -155,13 +155,12 @@ textarea {
 			<div class="card">
 				<div class="card-body">
 					<div class="titlee">
-						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2>
-						<pre>
-cate_id : ${cate_id } post_id : ${post_id } replyList : ${replyList } attachmentList : ${attachmentList } postVo : ${postVo }mem_id : ${mem_id } cw_mem_id:${cw_mem_id }
-</pre>
+<!-- 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2> -->
+						<hr>
+						
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
-								<h4>${postVo.post_nm}</h4>
+								<p><h4>${postVo.post_nm}</h4></p>
 								<!-- 								<input type="text" class="form-control" id="mem_id" -->
 								<%-- 									name="mem_id" value="${postVo.post_nm}"> --%>
 							</div>

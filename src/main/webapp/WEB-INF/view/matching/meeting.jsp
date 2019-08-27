@@ -22,8 +22,7 @@ img {
 	min-width: 150px;
 	padding: 0 25px;
 	width: 250px;
-	height: 40px;
-	line-height: 44px;
+	height: 44px;
 	text-align: center;
 	background: #78d3f5;
 	box-sizing: border-box;
@@ -126,6 +125,11 @@ table.cw td {
 				// 						+ $.datepicker.formatDate('YYYY-MM-DD', new Date()));
 			});
 	// import결제 함수
+	
+ function popup3() {
+      window.open("/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅", 
+    		  "thisTok!","width=400, height=700, left=100, top=50");
+ }
 </script>
 
 
@@ -135,7 +139,6 @@ table.cw td {
 
 
 	<div class="container" style="width: 1000px;">
-		<pre>${list }</pre>
 		<div style="width: 50%; float: left; height: 350px;">
 			<label for="userNm" class="col-sm-2 control-label">${path }</label>
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
@@ -148,7 +151,7 @@ table.cw td {
 				type="button" id="app" class="M_btn" value="매칭신청"><br>
 			<br> <input type="button" class="M_btn" value="화상채팅"
 				id="videochat"><br> <br> <input type="button"
-				class="M_btn" value="채팅"> <input type="hidden" name="mem_id"
+				class="M_btn" value="채팅" onclick="popup3()"> <input type="hidden" name="mem_id"
 				value="${mem_id}">
 		</div>
 	</div>

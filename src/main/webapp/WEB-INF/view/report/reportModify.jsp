@@ -159,9 +159,6 @@
 
 	<div class="container">
 		<h2 class="sub-header">게시글 수정 reportModify.jsp</h2>
-		<pre>
-									reportAttachList : ${reportAttachList}  reportVo : ${reportVo} 	mat_id:${mat_id }
-									</pre>
 		<form id="frm" class="form-horizontal" role="form"
 			action="${cp}/report/modify" method="post"
 			enctype="multipart/form-data">
