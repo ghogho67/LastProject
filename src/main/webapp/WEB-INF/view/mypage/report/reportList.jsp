@@ -129,9 +129,6 @@ td {
 	}
 }
 
-
-
-
 .for {
 	position: relative;
 	width: 250px;
@@ -270,20 +267,20 @@ tbody {
 				<div class="card">
 
 
-<!-- 					<div class="d1"> -->
-<!-- 						<form class="for"> -->
+					<!-- 					<div class="d1"> -->
+					<!-- 						<form class="for"> -->
 
-<!-- 							<select id="searchType" name="searchType" -->
-<!-- 								style="position: absolute; z-index: 999;"> -->
-<!-- 								<option value="all">전체</option> -->
-<!-- 								<option value="title">제목</option> -->
-<!-- 								<option value="content">내용</option> -->
-<!-- 								<option value="writer">작성자</option> -->
-<!-- 								<option value="tc">제목+내용</option> -->
-<!-- 							</select> <input type="text" placeholder="검색어 입력"> -->
-<!-- 							<button type="submit"></button> -->
-<!-- 						</form> -->
-<!-- 					</div> -->
+					<!-- 							<select id="searchType" name="searchType" -->
+					<!-- 								style="position: absolute; z-index: 999;"> -->
+					<!-- 								<option value="all">전체</option> -->
+					<!-- 								<option value="title">제목</option> -->
+					<!-- 								<option value="content">내용</option> -->
+					<!-- 								<option value="writer">작성자</option> -->
+					<!-- 								<option value="tc">제목+내용</option> -->
+					<!-- 							</select> <input type="text" placeholder="검색어 입력"> -->
+					<!-- 							<button type="submit"></button> -->
+					<!-- 						</form> -->
+					<!-- 					</div> -->
 
 					<div class="card-body">
 						<div id="titlee">
@@ -320,7 +317,8 @@ tbody {
 											<td>${report.rep_title}</td>
 											<td>${report.cw_mem_id}</td>
 											<td>${report.mat_st}</td>
-											<td><fmt:formatDate value="${report.rep_time}" pattern="yyyy-MM-dd" /></td>
+											<td><fmt:formatDate value="${report.rep_time}"
+													pattern="yyyy-MM-dd" /></td>
 										</tr>
 									</c:forEach>
 
@@ -334,7 +332,7 @@ tbody {
 
 			</div>
 		</div>
-
+	</div>
 
 
 
