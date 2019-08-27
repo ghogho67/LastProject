@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ddit.gold.gold.model.GoldVo;
 import kr.or.ddit.gold.gps.model.GpsVo;
 
 @Repository
@@ -26,7 +27,7 @@ public class GpsDao implements IGpsDao {
 	}
 
 	@Override
-	public GpsVo getGoldMember(String mem_id) {
+	public GoldVo getGoldMember(String mem_id) {
 		return sqlSession.selectOne("gps.getGoldMember",mem_id);
 	}
 

@@ -661,8 +661,8 @@ public class mypageController {
 	}
 	
 	@RequestMapping("cctv")
-	public String CCTV() {
-		return"";
+	public String CCTV(String open, String sessionid, String publicRoomIdentifier, String userFullName) {
+		return"RTCMultiConnection-master/demos/dashboard/cctv";
 	}
 
 

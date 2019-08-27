@@ -238,6 +238,15 @@ td {
 	   $("#searchList").submit();
 	
 	   });
+	 
+	 $("#searchType").change(function(){
+		
+		 
+		 
+	 });	 
+	 
+	 
+	 
 	});
    
    function boardPagingListAjaxHtml(page, pageSize) {
