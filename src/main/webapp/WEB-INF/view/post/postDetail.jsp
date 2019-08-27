@@ -149,6 +149,9 @@ textarea {
 	}
 </script>
 </head>
+
+
+
 <body>
 	<div class="container">
 		<div style="padding-top: 50px; width: 1250px;">
@@ -161,8 +164,6 @@ textarea {
 						<div class="form-group col-sm-8">
 							<div class="col-sm-10">
 								<p><h4>${postVo.post_nm}</h4></p>
-								<!-- 								<input type="text" class="form-control" id="mem_id" -->
-								<%-- 									name="mem_id" value="${postVo.post_nm}"> --%>
 							</div>
 						</div>
 						<hr>
@@ -171,7 +172,6 @@ textarea {
 								<label class="control-label">${postVo.post_cont}</label>
 							</div>
 							<br> <br> <br> <br> <br> <br> <br>
-							<br> <br> <br> <br> <br> <br>
 						</div>
 						<hr>
 						<div class="form-group col-sm-8">
@@ -218,8 +218,7 @@ textarea {
 							</div>
 						</div>
 					</div>
-					<hr>
-					<div class="form-group col-sm-8">
+<!-- 					<div class="form-group col-sm-8"> -->
 						<label for="userNm" class="col-sm-2 control-label"></label>
 						<div class="col-sm-10">
 							<form id="replyfrm" method="post" action="${cp}/reply/register">
@@ -235,10 +234,9 @@ textarea {
 								</div>
 							</form>
 						</div>
-					</div>
-
-					<hr>
-					<div class="form-group col-sm-8 text-left">
+						
+						
+						<div>
 						<form style="float: left;" id="postModifyfrm" method="post"
 							action="${cp}/post/modifyView">
 							<button id="postModifyBtn" type="button"
@@ -271,10 +269,12 @@ textarea {
 								value="글목록">
 						</form>
 					</div>
+					</div>
+
+					
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
 
