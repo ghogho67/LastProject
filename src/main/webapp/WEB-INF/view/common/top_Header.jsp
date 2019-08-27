@@ -51,7 +51,7 @@ span.admin {
 			<div>
 				<ul>
 
-					<li>${MEM_INFO.mem_nm}님환영합니다 <c:choose>
+					<li>${MEM_INFO.mem_nm}님환영합니다<c:choose>
 							<c:when test="${MEM_INFO.mem_grade==0}">
 								<span class="admin">관리자 </span>
 							</c:when>
@@ -97,6 +97,9 @@ span.admin {
 							<button class="btn" id="trans" type="button"
 								onclick="requestPay()"
 								style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 78%; background-color: transparent;"></button>
+							<a href=""
+								style="position: absolute; left: 3%; top: 93%; color: black;">오늘하루
+								보지않기</a>
 							<button style="width: 10px; position: absolute; left: 95%;"
 								type="button" class="close" data-dismiss="modal"
 								aria-label="Close" id="btnClose">
