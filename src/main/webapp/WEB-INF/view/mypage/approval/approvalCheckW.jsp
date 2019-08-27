@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>BasicSubPage</title>
+<title>결산관리</title>
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 
@@ -341,10 +341,7 @@ td {
 
 
 					</div>
-				</div>
-				</div>
-
-		<div class="demo" style="position: absolute; right: 38%;">
+		<div class="demo" style="position:relative; left: 2%;">
 			<nav class="pagination-outer" aria-label="Page navigation">
 				<ul class="pagination">
 					<c:choose>
@@ -408,7 +405,7 @@ td {
 
 					<c:choose>
 						<c:when test="${pageVo.page == lastpaginationSize}">
-							<li class="page-item next disabled"><a href="#"
+							<li class="page-item next disabled"><a 
 								class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</c:when>
 						<c:otherwise>
@@ -421,6 +418,9 @@ td {
 				</ul>
 			</nav>
 		</div>
+				</div>
+				</div>
+
 			</div>
 		</div>
 </body>

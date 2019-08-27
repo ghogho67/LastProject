@@ -215,15 +215,15 @@ td {
 			$("#frm2").submit();
 		});
 
-		$(".shTr").on("click", function() {
-			console.log("shTr click");
+// 		$(".shTr").on("click", function() {
+// 			console.log("shTr click");
 
-			var sh_id = $(this).find(".sh_id").text();
-			$("#sh_id").val(sh_id);
-			$("#frm").attr("action", "${cp}/shelter/detailShelter");
-			$("#frm").attr("method", "get");
-			$("#frm").submit();
-		});
+// 			var sh_id = $(this).find(".sh_id").text();
+// 			$("#sh_id").val(sh_id);
+// 			$("#frm").attr("action", "${cp}/shelter/detailShelter");
+// 			$("#frm").attr("method", "get");
+// 			$("#frm").submit();
+// 		});
 
 	});
 
