@@ -392,7 +392,7 @@ public class mypageController {
 	 * 
 	 * @return Method 설명 : 요양보호사 회원탈퇴
 	 */
-	@RequestMapping(path = "/Worker_ Wd", method = RequestMethod.GET)
+	@RequestMapping(path = "/Worker_Wd", method = RequestMethod.GET)
 	public String Worker_Wd() {
 		return "mypage/Worker_Wd";
 	}
