@@ -93,7 +93,7 @@ $(document).ready(function(){
 					// if ( everythings_fine ) {
 					var msg = '결제가 완료되었습니다.';
 					location.href = "/donation/detailDonation";
-					alert(data);
+					alert(msg);
 					// msg += '\n고유ID : ' + rsp.imp_uid;
 					// msg += '\n상점 거래ID : ' + rsp.merchant_uid;
 					// msg += '\결제 금액 : ' + rsp.paid_amount;

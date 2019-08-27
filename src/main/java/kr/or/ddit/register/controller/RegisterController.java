@@ -555,6 +555,7 @@ public class RegisterController {
 		careerVo.setCareer_cont(registerVo.getCareer_cont());
 		careerVo.setCw_career_id(registerVo.getCw_career_id());
 		careerVo.setMem_id(registerVo.getMem_id());
+		logger.debug("☞registerVo.getMem_id():{}",registerVo.getMem_id());
 		careerVo.setCareer_hos(registerVo.getHos_nm());
 
 		logger.debug("careerVo:{}", careerVo);
