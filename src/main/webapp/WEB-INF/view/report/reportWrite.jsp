@@ -15,6 +15,7 @@ dif {
 	width: 500px;
 	height: 200px;
 }
+
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -126,6 +127,10 @@ dif {
 								fileArea.removeChild(inputs[cnt]);
 							}
 						}
+						
+						
+						$("")
+						
 					});
 
 	// 필수값 Check
@@ -173,6 +178,7 @@ mat_id : ${param.mat_id}
 				<div>
 					<a href="${cp}/report/pagingList"
 						class="btn btn-primary btn-sm pull-right">매칭목록</a>
+						
 				</div>
 				<div id="fileArea">
 					<input type="button" class="btn btn-primary btn-sm" value="파일추가"
