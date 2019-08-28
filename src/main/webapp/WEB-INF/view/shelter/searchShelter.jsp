@@ -202,6 +202,10 @@ td {
 	border-left: 2px solid #5ab4dc;
 	border-right: 2px solid #5ab4dc;
 }
+
+.shTr:hover{
+		cursor:pointer;
+}
 </style>
 
 
@@ -449,6 +453,12 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					<hr>
 					<form id="frm" action="${cp }/shelter/searchShelter?sh_add=${sh_add}" method="post">
 					<input type="hidden" id="sh_id" class="sh_id" name="sh_id" value="${sh_id }">
+					
+					<!-- 지도API -->
+					<div id="map" style="width: 90%; height: 400px; margin-left: 5%;"></div>
+					<!-- 뒤로가기 -->
+						<a href="${cp}/shelter/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
+					
 					<div class="table-responsive">
 						<table class="table center-aligned-table">
 						<thead>
@@ -479,17 +489,11 @@ function boardPagingListAjaxHtml(page, pageSize) {
 					</div>
 					
 					
-					
-					
-					<div id="map" style="width: 100%; height: 400px;"></div>
-					
 					</form>
 					
-					<!-- 뒤로가기 -->
-						<a href="${cp}/shelter/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 50px;"></a>
 					
 					<!-- 페이지 네이션 -->
-					<div class="demo" style="position: absolute; right: 20%;">
+					<div class="demo" style="position: absolute; right: 37%;">
 							<nav class="pagination-outer" aria-label="Page navigation">
 								<ul class="pagination">
 									<c:choose>
