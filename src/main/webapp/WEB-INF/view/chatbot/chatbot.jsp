@@ -16,14 +16,14 @@
   border-radius: 10px;
   background-color: #c8c8c8;
 /*   text-align: center; */
-  width: 433px;
-  height: 450px;
+  width: 440px;
+  height: 420px;
 }
 
 /* 채팅 영역 */
 #result {
-  height: 90%;
-  width: 100%;
+  height: 60%;
+  width: 90%;
   overflow-y: auto;
   -ms-overflow-style: none; 
 }
@@ -43,11 +43,7 @@
 
  } 
  
-/*  버튼 */
-/* #sendBtn{ */
-/*  	width: 10%; */
-/*  	margin: 5px; */
-/*  } */
+
 .btn{
   background: #787878;
   border: 0;
@@ -57,9 +53,11 @@
   font-size: 13px;
   height: 30px;
   line-height: 20px;
-  min-width: 100px;
+  min-width: 110px;
   text-align: center;
-  margin-top: 5px;
+/*   margin-top: 5px; */
+  margin: 7px;
+  
 }
 
 
@@ -78,7 +76,10 @@
 	margin-right: 15px;
 }
 
-
+#logo{
+	height: 70px;
+	width: 200px;
+}
 
 
 </style>
@@ -433,27 +434,28 @@
 	}
 	
 	
-	
 </script>
 	
 	
 </head>
 <body class = "" id = "grid">
 
+<img id="logo" alt="" src="/image/logosam2.png">
 
- <br/><br/>
-<div id="comment" class="comment">
-<h3>이동하고 싶은 메뉴를 입력하세요</h3>
-</div>
  <form id=frm action="${cp}/chatbot">
  <div id = 'result'>
 	<!-- 음성영역 -->
  </div>
  </form>
- <input type="text" id="user" name="user">
- <button type="button" class="btn" id="sendBtn" name="sendBtn">전송</button><br>
  
-음성인식 : <input type = "button" class="btn" value = "시작" id = "start" onclick="start();"/>
+ <div id="comment" class="comment">
+<a><span>이동하고 싶은 메뉴를 입력하세요</span></a>
+</div>
+ 
+ <input type="text" id="user" name="user">
+ <button type="button" class="btn" id="sendBtn" name="sendBtn">텍스트전송</button>
+ 
+<input type = "button" class="btn" value = "음성인식" id = "start" onclick="start();"/>
 <!--  <input type = "submit" class="btn" value = "멈춤" id = "end"  onclick="end();"/><br/> -->
  
 </body>
