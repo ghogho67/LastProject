@@ -42,6 +42,33 @@ span.admin {
 	font-size: 10.5px;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function () {
+	
+
+//     $(".modal-content2 #modal2_close").click(function () {
+//         setCookieMobile( "todayCookie", "${MEM_INFO.mem_id}" , 1);
+//         $("#modalpp").hide();
+//     });
+// });
+ 
+// function setCookieMobile ( name, value, expiredays ) {
+//     var todayDate = new Date();
+//     todayDate.setDate( todayDate.getDate() + expiredays );
+//     document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+// }
+// function getCookieMobile () {
+//     var cookiedata = document.cookie;
+//     if ( cookiedata.indexOf("todayCookie=${MEM_INFO.mem_id}") < 0 ){
+//          $("#modalpp").show();
+//     }
+//     else {
+//         $("#modalpp").hide();
+//     }
+// }
+
+// getCookieMobile();
+</script>
 
 
 </head>
@@ -82,7 +109,7 @@ span.admin {
 				</c:when>
 				<c:otherwise>
 					<a class="btn-pri2" href="${cp }/donation/memberDonation"
-						style="position: absolute; left: 81%;">기부하기</a>
+						style="position: absolute; left: 85%;">기부하기</a>
 				</c:otherwise>
 
 			</c:choose>
@@ -90,14 +117,14 @@ span.admin {
 
 			<c:choose>
 				<c:when test="${goldvo.gold_del eq 'Y'}">
-					<div class="modal-dialog" role="document" id="modalpp">
+					<div class="modal-dialog"  role="document" id="modalpp">
 						<div class="modal-content2"
 							style="background-image: url('/image/Serviceextend.png'); background-size: 700px; background-repeat: no-repeat;">
 
 							<button class="btn" id="trans" type="button"
 								onclick="requestPay()"
 								style="margin-left: 151px; height: 52px; width: 58%; position: absolute; top: 78%; background-color: transparent;"></button>
-							<a href=""
+							<a id="modal2_close" href="javascript:;"
 								style="position: absolute; left: 3%; top: 93%; color: black;">오늘하루
 								보지않기</a>
 							<button style="width: 10px; position: absolute; left: 95%;"
@@ -124,10 +151,39 @@ span.admin {
 
 
 <script>
+$(document).ready(function () {
+	
+
+    $(".modal-content2 #modal2_close").click(function () {
+        setCookieMobile( "todayCookie", "${MEM_INFO.mem_id}" , 1);
+        $("#modalpp").hide();
+    });
+});
+ 
+function setCookieMobile ( name, value, expiredays ) {
+    var todayDate = new Date();
+    todayDate.setDate( todayDate.getDate() + expiredays );
+    document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+function getCookieMobile () {
+    var cookiedata = document.cookie;
+    if ( cookiedata.indexOf("todayCookie=${MEM_INFO.mem_id}") < 0 ){
+         $("#modalpp").show();
+    }
+    else {
+        $("#modalpp").hide();
+    }
+}
+
+getCookieMobile();
+
 	$(".modal-content2").on("click", "#btnClose", function() {
 		$('#modalpp').hide();
 
 	})
+	
+	
+	
 </script>
 
 

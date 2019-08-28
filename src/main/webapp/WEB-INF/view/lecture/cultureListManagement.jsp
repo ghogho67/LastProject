@@ -324,21 +324,43 @@ td {
 					</div>
 
 
-					<div style="padding: 0 20px 0 20px;">
+					<div >
 						<div>
-							<span>문화센터명</span> <input type="text" id="culture_type"
-								class="title" name="culture_type"> <br>
-						</div>
-						<div>
-							<span>문화센터 번호</span> <input class="title" type="text"
-								id="culture_phone" name="culture_phone">
-						</div>
-						<br>
-						<div>
-							<span>문화센터주소</span> <input class="title" type="text"
-								id="cultureadd" name="cultureadd" readonly="readonly">
-							<button type="button" id="addrSearchbtn"
-								class="btn btn-default pull-right">주소 검색</button>
+							<table>
+
+								<tr>
+									<td><span>문화센터명</span></td>
+									<td><input type="text" id="culture_type" class="title"
+										name="culture_type"> <br></td>
+
+
+								</tr>
+								<tr>
+									<td><span>문화센터 번호</span></td>
+									<td><input class="title" type="text" id="culture_phone"
+										name="culture_phone"> <br></td>
+
+
+
+								</tr>
+								<tr>
+									<td><span>문화센터주소</span></td>
+									<td><input class="title" type="text" id="cultureadd"
+										name="cultureadd" readonly="readonly"></td>
+									<td>
+										<button type="button" id="addrSearchbtn"
+											class="btn btn-default pull-right">주소 검색</button>
+									</td>
+
+
+								</tr>
+
+							</table>
+
+
+
+
+
 						</div>
 
 						<div class="col-sm-2"></div>
@@ -346,8 +368,7 @@ td {
 					</div>
 
 					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger" id="inserBtn"
-							data-dismiss="modal">추가</button>
+						<button type="button" class="btn btn-outline-danger" id="inserBtn" data-dismiss="modal">추가</button>
 					</div>
 				</div>
 			</div>
