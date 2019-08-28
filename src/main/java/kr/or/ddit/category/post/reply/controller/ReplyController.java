@@ -66,7 +66,7 @@ public class ReplyController {
 		model.addAttribute("replyList", replyService.replyList(post_id));
 		model.addAttribute("mem_id", mvo.getMem_id());
 
-		return "/post/postDetail.tiles";
+		return "redirect: /post/detail";
 	}
 
 	@RequestMapping(path = "/modify", method = RequestMethod.GET)

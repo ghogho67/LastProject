@@ -201,7 +201,7 @@
 	<table class="container-fluid" style="width: 80%;">
 		<tr>
 			<td>
-				<div class=chat-header style="width: 100%;">
+				<div class=chat-header style="width: 530px;">
 					<h2 id="chat-header__name">ThisTok! (id: ${mem_id})</h2>
 				</div>
 				<div>
@@ -276,9 +276,9 @@
 				</div>
 			</td>
 
-			<td id="connectionDiv">
-				<div id="connection"></div>
-			</td>
+<!-- 			<td id="connectionDiv"> -->
+<!-- 				<div id="connection"></div> -->
+<!-- 			</td> -->
 
 
 		</tr>

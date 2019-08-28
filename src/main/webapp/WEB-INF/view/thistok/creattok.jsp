@@ -196,6 +196,8 @@ function back(){
 	<br>
 <!-- 	action="/chat/searchId" -->
 	<form id="searchId" action="${cp}/chat/createChat" method="POST">
+	<img id="logo" alt="" src="/image/logosam2.png">
+		<br>
 		<div class="leftmargin" >
 			<p>대상자 아이디 :</p><input id="createId"  type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
 			<p id="idresult1" class="idpw-txt">채팅을 같이 하실 회원의 아이디를 입력하세요</p>
