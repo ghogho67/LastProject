@@ -117,7 +117,7 @@ $(document).ready(function () {
 
 			<c:choose>
 				<c:when test="${goldvo.gold_del eq 'Y'}">
-					<div class="modal-dialog"  role="document" id="modalpp">
+					<div class="modal-dialog" role="document" id="modalpp">
 						<div class="modal-content2"
 							style="background-image: url('/image/Serviceextend.png'); background-size: 700px; background-repeat: no-repeat;">
 
