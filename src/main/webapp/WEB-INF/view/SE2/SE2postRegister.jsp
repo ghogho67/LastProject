@@ -151,7 +151,7 @@ dif {
 				action="${cp}/post/register" method="post"
 				enctype="multipart/form-data">
 
-				<input type="hidden" name="cate_id" value="${cate_id }" />
+				<input type="hidden" name="cate_id" value="${cate_id }"/>
 				<div>
 					<label for="post_nm" class="col-sm-2 control-label">제목</label>
 					<div>

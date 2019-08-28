@@ -151,66 +151,46 @@ dif {
 	}
 </script>
 <body>
-
-	<div class="content-wrapper" style="margin-top: 100px;">
-
-<!-- 		<div class="col-lg-12"> -->
-
-			<div class="card">
-				<div class="card-body" style="padding: 50px;">
-
-
-					<div id="titlee">
-						<h2>보고서 작성</h2>
-					</div>
-					<hr>
-
-					<!-- 				<pre> -->
-					<%-- mat_id : ${param.mat_id} --%>
-					<!-- </pre> -->
-					<form id="saveFrm" class="form-horizontal" role="form"
-						action="${cp}/report/register" method="post"
-						enctype="multipart/form-data">
+	<div class="content-wrapper"
+		style="width: 1160px; margin-top: 50px; margin-left: 400px">
+		<div class="card" style="width: 1110px;">
+			<div class="card-body" style="padding: 50px;">
+				<div id="titlee">
+					<h2>보고서 작성</h2>
+				</div>
+				<hr>
+				<form id="saveFrm" class="form-horizontal" role="form"
+					action="${cp}/report/register" method="post"
+					enctype="multipart/form-data">
+					<div>
+						<label for="rep_title" class="col-sm-2 control-label">제목</label>
 						<div>
-							<label for="rep_title" class="col-sm-2 control-label">제목</label>
-							<div>
-								<input type="text" id="rep_title" class="form-control"
-									name="rep_title">
-							</div>
+							<input type="text" id="rep_title" class="form-control"
+								name="rep_title" style="width: 100%">
 						</div>
-						<br>
-						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"></textarea>
-
-
-
-
-
+					</div>
+					<br>
+					<div>
+						<textarea name="rep_cont" id="smarteditor" rows="10" cols="100"
+							style="width: 600px; height: 412px;"></textarea>
+					</div>
+					<div id="fileArea">
 						<button type="button" class="btn btn-primary btn-sm" value="파일추가"
 							id="addFileBtn">파일추가</button>
-
-						<input type="file" name="file"><br> <input
+						<input type="file" name="file"><input
 							type="hidden" name="mat_id" value="${param.mat_id }">
-					</form>
-
-
-					<div style="position: relative; left: 25%;">
-
 						<button type="button" class="btn btn-primary btn-sm "
-							id="savebutton">작성완료</button>
-
-						<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm ">매칭목록</a>
+							id="savebutton" style="float: right">작성완료</button>
+						<a href="${cp}/report/pagingList" class="btn btn-primary btn-sm "
+							style="float: right">매칭목록</a>
 					</div>
-
-
-					<form id="postContFrm" method="get" style="float: left;"
-						action="${cp}/report/pagingList">
-						<input type="hidden" name="mat_id" value="${param.mat_id }" />
-					</form>
-
-				</div>
+				</form>
+				<form id="postContFrm" method="get" style="float: left;"
+					action="${cp}/report/pagingList">
+					<input type="hidden" name="mat_id" value="${param.mat_id }" />
+				</form>
 			</div>
 		</div>
-<!-- 	</div> -->
-
+	</div>
 </body>
 </html>

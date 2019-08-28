@@ -87,6 +87,18 @@ textarea {
 	border-radius: 5px;
 	padding: 3px 10px;
 	margin: 5px;
+	height: 29px;
+}
+
+#re {
+	background-color: #f2f3f5;
+	border-radius: 18px;
+	color: #1c1e21;
+	line-height: 16px;
+	width: 80%;
+	float: left;
+	margin-top: 18px;
+	margin-left: 3px;
 }
 </style>
 
@@ -159,115 +171,141 @@ textarea {
 
 
 <body>
-	<div class="container">
-		<div style="padding-top: 50px; width: 1250px;">
-			<div class="card">
-				<div class="card-body">
-					<div class="titlee">
-						<!-- 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2> -->
+	<div class="container" style="margin-top: 100px;">
+		<div class="card">
+			<div class="card-body" style="padding: 20px;">
+				<div class="titlee">
+					<!-- 						<h2 class="sub-header">게시글 상세조회 postDetail.jsp</h2> -->
+					<div>
+						<div style="width: 8%; float: left;">
+							<img id="img"
+								src="${cp }/matching/photo?mem_id=${reply.mem_id } "
+								style="width: 100px; height: 100px;" alt="${cp}/image/cw.png" />
+						</div>
+						<div class=" col-sm-12">
+							<h2>${postVo.post_nm}</h2>
+							<span> <fmt:formatDate value="${postVo.post_time}"
+									pattern="yyyy.MM.dd. hh:mm" />
+							</span> <span style="color: #c8967f"> ${postVo.mem_id} </span><br>
+							<br>
+						</div>
+					</div>
+					<div>
 						<hr>
+					</div>
+					<div class=" col-sm-12">
+						<label class="control-label">${postVo.post_cont}</label> <br>
+						<br> <br> <br> <br> <br> <br> <br>
+						<br> <br> <br> <br>
+						<hr>
+					</div>
+					<!-- 					<div class=" col-sm-12"> -->
+					<!-- 						<label for="userNm" class="col-sm-2 control-label">첨부파일</label> -->
+					<%-- 						<c:forEach items="${attachmentList}" var="attachment"> --%>
+					<!-- 							<div> -->
+					<%-- 								${attachment.att_nm } <a --%>
+					<%-- 									href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&att_id=${attachment.att_id }" --%>
+					<!-- 									class="btn postbtn btn-primary  ">다운로드</a> -->
+					<!-- 							</div> -->
 
+					<%-- 						</c:forEach> --%>
+					<!-- 					</div> -->
+					<c:forEach items="${attachmentList}" var="attachment">
 						<div class=" col-sm-12">
-								<h4>${postVo.post_nm}</h4>
+							<hr>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${attachment.att_nm } <a
+								href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&att_id=${attachment.att_id }"><img
+								id="img" src="${cp}/image/down.png"
+								style="width: 20px; height: 20px;" alt="${cp}/image/down.png" /></a>
 						</div>
-						<hr>
-						<div class=" col-sm-12">
-								<label class="control-label">${postVo.post_cont}</label>
-						</div>
-						<hr>
-						<div class=" col-sm-12">
-							<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-								<c:forEach items="${attachmentList}" var="attachment">
-									<div>
-										${attachment.att_nm } <a
-											href="${cp}/attachment/download?cate_id=${cate_id}&post_id=${post_id }&att_id=${attachment.att_id }"
-											class="btn postbtn btn-primary  ">다운로드</a>
-									</div>
+					</c:forEach>
+					<div class=" col-sm-12">
+						<label for="userNm" class="col-sm-2 control-label">댓글</label>
+						<div>
+							<c:forEach items="${replyList}" var="reply">
+								<c:choose>
+									<c:when test="${reply.reply_del eq 'Y'}">
+										<div>삭제된 댓글입니다</div>
+									</c:when>
+									<c:otherwise>
+										<div style="clear: both">
+											<div style="width: 8%; float: left;">
+												<img id="img"
+													src="${cp }/matching/photo?mem_id=${reply.mem_id } "
+													style="width: 100px; height: 100px;"
+													alt="${cp}/image/cw.png" />
+											</div>
+											<div style="width: 90%; float: left;" id="re">
+												<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${reply.mem_id }
+												</strong>
 
-								</c:forEach>
-						</div>
-						<hr>
-						<div class=" col-sm-12">
-							<label for="userNm" class="col-sm-2 control-label">댓글</label>
-							<div>
-								<br>
-								<c:forEach items="${replyList}" var="reply">
-									<c:choose>
-										<c:when test="${reply.reply_del eq 'Y'}">
-											삭제된 댓글입니다
-										</c:when>
-										<c:otherwise>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<strong>${reply.mem_id }
-											</strong>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.reply_cont} &nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.reply_cont}
+												<br> <br>
+											</div>
+											&nbsp;&nbsp;&nbsp;&nbsp;
 											<fmt:formatDate value="${reply.reply_time }"
 												pattern="yyyy.MM.dd. hh:mm" />
 											<br>
-											<br>
-											
-											${attachment.att_id} 
-										</c:otherwise>
-									</c:choose>
-									<c:if
-										test="${reply.mem_id eq mem_id && reply.reply_del eq 'N'}">
-									</c:if>
-								</c:forEach>
-							</div>
+										</div>
+									</c:otherwise>
+								</c:choose>
+								<c:if test="${reply.mem_id eq mem_id && reply.reply_del eq 'N'}">
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
-					<label for="userNm" class="col-sm-2 control-label"></label>
+				</div>
+				<label for="userNm" class="col-sm-2 control-label"></label>
 
 
-					<form id="replyfrm" method="post" action="${cp}/reply/register">
-						<div id="reply_box">
-							<textarea name="reply_cont" id="reply_cont"
-								style="height: 50px; width: 100%; "></textarea>
-							<button id="replyBtn" type="button" class="postbtn btn-primary "
-								name="button" style="position: relative; left: 93%;">댓글
-								등록</button>
-							<input type="hidden" name="post_id" value="${post_id}"> <input
-								type="hidden" name="cate_id" value="${cate_id }">
-						</div>
+
+				<form id="replyfrm" method="post" action="${cp}/reply/register">
+					<div id="reply_box">
+						<textarea name="reply_cont" id="reply_cont" class="form-control"
+							style="height: 100px; width: 100%;"></textarea>
+
+
+
+						<button id="replyBtn" type="button" class="postbtn btn-primary "
+							name="button" style="position: relative; left: 93%;">댓글
+							등록</button>
+						<input type="hidden" name="post_id" value="${post_id}"> <input
+							type="hidden" name="cate_id" value="${cate_id }">
+					</div>
+				</form>
+
+				<div style="height: 40px;">
+					<form style="float: left;" id="postModifyfrm" method="post"
+						action="${cp}/post/modifyView">
+						<button id="postModifyBtn" type="button"
+							class="postbtn btn-primary " name="button">수정</button>
+						<input type="hidden" value="${post_id }" name="post_id"> <input
+							type="hidden" value="${cate_id }" name="cate_id">
 					</form>
-
-					<div style="margin-bottom: -20px;">
-						<form style="float: left;" id="postModifyfrm" method="post"
-							action="${cp}/post/modifyView">
-							<button id="postModifyBtn" type="button"
-								class="postbtn btn-primary " name="button">수정</button>
+					<c:if test="${postVo.mem_id eq mem_id }">
+						<form style="float: left;" id="postDeletefrm" method="post"
+							action="${cp}/post/delete?cate_id=${cate_id}">
+							<button id="postDeleteBtn" type="button"
+								class="postbtn btn-primary " name="button">삭제</button>
 							<input type="hidden" value="${post_id }" name="post_id">
 							<input type="hidden" value="${cate_id }" name="cate_id">
 						</form>
-						<c:if test="${postVo.mem_id eq mem_id }">
-							<form style="float: left;" id="postDeletefrm" method="post"
-								action="${cp}/post/delete?cate_id=${cate_id}">
-								<button id="postDeleteBtn" type="button"
-									class="postbtn btn-primary " name="button">삭제</button>
-								<input type="hidden" value="${post_id }" name="post_id">
-								<input type="hidden" value="${cate_id }" name="cate_id">
-							</form>
-						</c:if>
-						<form id="postRefrm" method="get" style="float: left;"
-							action="${cp}/post/reply?cate_id='${cate_id }'">
-							<input type="hidden" name="cate_id" value="${cate_id }" /> <input
-								type="hidden" name="post_id" value="${post_id }" />
-							<button id="postReBtn" type="button"
-								class=" postbtn btn-primary " name="button">답글</button>
-						</form>
-						<form id="postContFrm" method="get" style="float: left;"
-							action="${cp}/post/pagingList?searchType=${searchType}cate_id='${cate_id }'">
-							<input type="hidden" name="cate_id" value="${cate_id }" /> <input
-								type="hidden" name="post_id" value="${post_id }" /> <input
-								id="postCont" type="button" class="postbtn btn-primary  "
-								name="button" value="글목록">
-						</form>
-					</div>
-
-
+					</c:if>
+					<form id="postRefrm" method="get" style="float: left;"
+						action="${cp}/post/reply?cate_id='${cate_id }'">
+						<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+							type="hidden" name="post_id" value="${post_id }" />
+						<button id="postReBtn" type="button" class=" postbtn btn-primary "
+							name="button">답글</button>
+					</form>
+					<form id="postContFrm" method="get" style="float: left;"
+						action="${cp}/post/pagingList?searchType=${searchType}cate_id='${cate_id }'">
+						<input type="hidden" name="cate_id" value="${cate_id }" /> <input
+							type="hidden" name="post_id" value="${post_id }" /> <input
+							id="postCont" type="button" class="postbtn btn-primary  "
+							name="button" value="글목록">
+					</form>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
