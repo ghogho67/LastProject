@@ -450,6 +450,11 @@ td {
 						method="post">
 						<input type="hidden" class="form-control" id="hos_add"
 							name="hos_add" value="${hos_add}">
+							
+						<div id="map" style="width: 90%; height: 400px; margin-left: 5%;"></div>
+						<!-- 뒤로가기 -->
+						<a href="${cp}/hospital/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 30px;"></a>
+							
 						<div
 							style="display: block; width: 95%; overflow-x: auto; -ms-overflow-style: -ms-autohiding-scrollbar; min-height: 210px; padding: 10px;">
 							<table class="table center-aligned-table">
@@ -478,10 +483,6 @@ td {
 						</div>
 
 
-
-	<!-- 뒤로가기 -->
-						<a href="${cp}/hospital/pagingList?page=1&pageSize=10"><img  src="/image/backButton.svg" style="width: 30px;"></a>
-						<div id="map" style="width: 100%; height: 400px;"></div>
 
 					</form>
 

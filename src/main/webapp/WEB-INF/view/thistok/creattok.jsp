@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,6 +100,14 @@ background: #4A8CF6;
    margin-top: 100px;
 }
 
+
+#creatBtn {
+	visibility: hidden;
+}
+
+
+}
+
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -114,10 +123,13 @@ $(document).ready(function(){
                
                $("#idresult1").css("color", "red");
                $("#idresult1").html("기입하신 ID가 없습니다.");
+               $("#creatBtn").css("visibility","hidden");
+                
                
             }else{
                $("#idresult1").css("color", "blue");
                $("#idresult1").html("ID가 있습니다.");
+               $("#creatBtn").css("visibility","visible");
                
             }
                         
@@ -132,8 +144,43 @@ $(document).ready(function(){
    
    
    $("#creatBtn").on("click",function(){
+	   if($("#createId").val() == ""){
+		   alert("아이디가 누락되었습니다.");
+	   }else if($("#chatname").val() == ""){
+		   alert("채팅방 아이디가 누락되었습니다.");
+	   }else if($("#createId").val() == "" && $("#chatname").val() == ""){
+	   	   alert("채팅방이름과 아이디가 누락되었습니다.");
+  	  }else{
+  		 var data = $("#searchId").serialize();
+  	      $.ajax({
+  	         type: "GET",
+  	         url : "${cp}/chat/searchId",
+  	         data : data,
+  	         success : function(data){
+//  	             console.log(data);
+  	            if(data.cm_id == 0){
+  	               
+  	               $("#idresult1").css("color", "red");
+  	               $("#idresult1").html("기입하신 ID가 없습니다.");
+  	               
+  	               
+  	            }else{
+  	            	$("#searchId").submit(); 
+  	               
+  	            }
+  	                        
+  	         },
+  	      error : function(xhr){
+  	            alert(xhr.status);
+  	      }
+  	      });
+		 
+  	 }
+	   
+	   
+	   
       
-      $("#searchId").submit();
+   
       
    });
    
@@ -149,17 +196,26 @@ function back(){
 	<br>
 <!-- 	action="/chat/searchId" -->
 	<form id="searchId" action="${cp}/chat/createChat" method="POST">
+	<img id="logo" alt="" src="/image/logosam2.png">
+		<br>
 		<div class="leftmargin" >
-			<p>대상자 아이디 :</p><input type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
+			<p>대상자 아이디 :</p><input id="createId"  type="text" name="chatmem_id"><button id="myBtn" type="button">대상자확인</button>
 			<p id="idresult1" class="idpw-txt">채팅을 같이 하실 회원의 아이디를 입력하세요</p>
-			<p>채팅방 이름 :</p><input type="text" name="chat_nm">
+			<p>채팅방 이름 :</p><input id="chatname" type="text" name="chat_nm">
 			
-			<button id="creatBtn" type="button">채팅방 개설</button>
+			<button id="creatBtn" type="button" class="display">채팅방 개설</button>
+			<c:choose>
+			 	<c:when test="${empty2 eq 1 }">
+				<p id="idresult2" class="idpw-txt">아이디, 채팅방이름이 누락되었습니다.</p>
+				</c:when>
+			</c:choose>	
 		</div>
 	</form>
 		
 		<div>
+			
 			 <input class="btn" type="button" id="backBtn" value="Back" onclick="back()" />
+			
 		</div>
 		
 			

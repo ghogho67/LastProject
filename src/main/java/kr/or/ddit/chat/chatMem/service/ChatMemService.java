@@ -75,6 +75,12 @@ public class ChatMemService implements IChatMemService {
 	}
 
 
+	@Override
+	public int messageUpdateN(int chat_id) {
+		return chatMemDao.messageUpdateN(chat_id);
+	}
+
+
 	
 	
 }

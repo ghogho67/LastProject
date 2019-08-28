@@ -67,6 +67,7 @@ public class SocketAlramHandler extends TextWebSocketHandler {
 				int count=0;
 					
 					for(ChatMemVo chat : chatMemList) {
+						logger.debug("☞chat.getNewmsgyn()", chat.getNewmsgyn());
 						if(chat.getNewmsgyn().equals("Y")) {
 							count=count+1;
 						}

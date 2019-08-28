@@ -1,7 +1,9 @@
 package kr.or.ddit.chat.chat.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -71,7 +73,11 @@ public class ChatController {
 		int chat_id = (int) session.getAttribute("chat_id");
 		String mem_id =(String)session.getAttribute("mem_id");
 		logger.debug("☞deleteChat mem_id:{}",mem_id);
+		
 		chatService.deletChat(chat_id);
+		chatMemService.messageUpdateN(chat_id);
+		
+		
 		
 	
 		return "redirect: /chat/thistok?mem_id="+mem_id;
@@ -79,8 +85,9 @@ public class ChatController {
 	
 	
 	@RequestMapping(path = "/createChatView", method = RequestMethod.GET)
-	public String createChatView(Model model, HttpSession session, String chatmem_id) {
+	public String createChatView(Model model, HttpSession session, String chatmem_id ) {
 		String mem_id =(String)session.getAttribute("mem_id");
+		
 		model.addAttribute("mem_id",mem_id);
 		return "thistok/creattok";
 	}
@@ -88,26 +95,28 @@ public class ChatController {
 	@RequestMapping(path = "/createChat")
 	public String createChat(Model model, HttpSession session, String chatmem_id, String chat_nm, RedirectAttributes ra) {
 		
-		String mem_id =(String)session.getAttribute("mem_id");
-		logger.debug("☞mem_id:{}",mem_id);
-		logger.debug("☞mem_id:{}",chat_nm);
-		logger.debug("☞mem_id:{}",chatmem_id);
-		String chat_mem_id = mem_id;
-		ChatVo chatVo = new ChatVo(chat_nm, chat_mem_id);
-		chatService.insertChat(chatVo);
-		int chat_id = chatVo.getChat_id();
-		
-		ChatMemVo chatMemVo1 = new ChatMemVo(chat_id, mem_id);
-		chatMemService.insertChatMem(chatMemVo1);
-
-		ChatMemVo chatMemVo2 = new ChatMemVo(chat_id, chatmem_id);
-		chatMemService.insertChatMem(chatMemVo2);
-		
-		
-		ra.addAttribute("mem_id",mem_id);
-		ra.addAttribute("chat_id",chat_id);
-		return "redirect: /socket/view";
+			
+			String mem_id =(String)session.getAttribute("mem_id");
+			logger.debug("☞mem_id:{}",mem_id);
+			logger.debug("☞mem_id:{}",chat_nm);
+			logger.debug("☞mem_id:{}",chatmem_id);
+			String chat_mem_id = mem_id;
+			ChatVo chatVo = new ChatVo(chat_nm, chat_mem_id);
+			chatService.insertChat(chatVo);
+			int chat_id = chatVo.getChat_id();
+			
+			ChatMemVo chatMemVo1 = new ChatMemVo(chat_id, mem_id);
+			chatMemService.insertChatMem(chatMemVo1);
+			
+			ChatMemVo chatMemVo2 = new ChatMemVo(chat_id, chatmem_id);
+			chatMemService.insertChatMem(chatMemVo2);
+			
+			
+			ra.addAttribute("mem_id",mem_id);
+			ra.addAttribute("chat_id",chat_id);
+			return "redirect: /socket/view";
 	}
+		
 	
 	
 	

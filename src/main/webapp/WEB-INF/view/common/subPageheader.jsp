@@ -23,6 +23,7 @@
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/gradeChange.jsp"%>
 <%@include file="/resource/chat/chatAlram.jsp" %>
+<%@include file="/resource/chatbot/chatbotView.jsp" %>
 </head>
 
 
@@ -32,7 +33,7 @@
 		<div class="row">
 			<nav id="nav-menu-container" style="padding-left: 900px;">
 				<ul class="nav-menu">
-				<li class=""><a href="${cp}/crawling">Home</a></li> 
+				<li class=""><a href="${cp}/crawling?mem_id=${MEM_INFO.mem_id}">Home</a></li> 
 					<c:forEach items="${categoryList}" var="category">
 			<c:if test="${category.cate_usage =='Y'}">
 				<c:if test="${category.cate_paerent_id==0}">

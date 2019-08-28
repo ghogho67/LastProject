@@ -79,15 +79,33 @@
 				alert("패스워드를 넣어주세요");
 				return;
 			} else if($("#mem_nm").val()==''||$("#mem_nm").val()==null){
-				alert("입력값을 넣어주세요");
+				alert("이름을 넣어주세요");
 				return;
 			}else if($("#mem_phone").val()==''||$("#mem_phone").val()==null){
-				alert("입력값을 넣어주세요");
+				alert("전화번호를 넣어주세요");
 				return;
 			}else if($("#mem_mail").val()==''||$("#mem_mail").val()==null){
-				alert("입력값을 넣어주세요");
+				alert("이메일을 넣어주세요");
 				return;
 			}
+			
+			//null 처리
+			else if($("#mem_birth").val()==''||$("#mem_birth")==null){
+				alert("생년월일을 넣어주세요");
+				return;
+			}else if($("#mem_add2").val()==''||$("#mem_add2").val()==null){
+				alert("상세주소를 넣어주세요");
+				return
+			}else if($("input[name=dis_id]:checked").val()==''||$("input[name=dis_id]:checked").val()==null){
+				alert("질병을 넣어주세요");
+				return
+			}else if($("input[name=mem_gender]:checked").val()==''||$("input[name=mem_gender]:checked").val()==null){
+				alert("성별을 넣어주세요");
+				return
+			}
+			
+			
+			
 			console.log(frmData);
 			$.ajax({
 				url : "${cp}/regist/regist3",
@@ -225,6 +243,24 @@
 		});
 		
 	}
+	
+	function fileTypeCheck(obj) {
+        pathpoint = obj.value.lastIndexOf('.');
+        filepoint = obj.value.substring(pathpoint+1,obj.length);
+        filetype = filepoint.toLowerCase();
+        if(filetype=='jpg' || filetype=='gif' || filetype=='png' || filetype=='jpeg' || filetype=='bmp') {
+        document.getElementById('fileupload1-fake').value = obj.value
+        } else {
+           alert('이미지 파일만 넣어주세요!');
+           parentObj  = obj.parentNode
+           node = parentObj.replaceChild(obj.cloneNode(true),obj);
+           $("#profile").val("")
+           return false;
+        }
+     }
+	
+	
+	
 </script>
 </head>
 <body>
@@ -390,9 +426,9 @@
 									<div class="form-group">
 										<label for="email1">상세주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr2" name="mem_add2"
+											<input type="text" id="mem_add2" name="mem_add2"
 												placeholder="상세주소" class="form-control"
-												value="${mem_addr2 }"> <span
+												> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i
@@ -513,7 +549,8 @@
 										<div class="p-file-wrap">
 											<input type="file" id="profile" name="profile"
 												placeholder="select file..."
-												onchange="document.getElementById('fileupload1-fake').value = this.value">
+												onchange="fileTypeCheck(this)" accept=".jpg, .jpeg, .png">
+<!-- 												onchange="document.getElementById('fileupload1-fake').value = this.value" > -->
 											<div class="input-group">
 												<span class="input-group-btn"><button type="button"
 														class="btn">browse</button></span> <input type="text"

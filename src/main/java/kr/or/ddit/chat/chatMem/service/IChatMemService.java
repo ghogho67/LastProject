@@ -14,4 +14,6 @@ public interface IChatMemService {
 	String selectChatmemid(Map<String, Object> map);
 	
 	List<ChatMemVo> selectChatmemVoList(String mem_id);
+	
+	int messageUpdateN(int chat_id);
 }

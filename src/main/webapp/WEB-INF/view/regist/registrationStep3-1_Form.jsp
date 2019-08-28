@@ -102,7 +102,31 @@ $(document).ready(function() {
 			alert("입력값을 넣어주세요");
 			return;
 		}
+		
+		//null 처리  
+		else if($("#mem_birth").val()==''||$("#mem_birth")==null){
+			alert("생년월일을 넣어주세요");
+			return;
+		}else if($("#mem_add2").val()==''||$("#mem_add2").val()==null){
+			alert("상세주소를 넣어주세요");
+			return
+		}else if($("input[name=ser_type_id]:checked").val()==''||$("input[name=ser_type_id]:checked").val()==null){
+			alert("서비스종류를 넣어주세요");
+			return
+		}else if($("input[name=mem_gender]:checked").val()==''||$("input[name=mem_gender]:checked").val()==null){
+			alert("성별을 넣어주세요");
+			return
+		}else if($("#loc_dong").val()==''||$("#loc_dong").val()==null){
+			alert("서비스 가능지역을 넣어주세요");
+			return
+		}else if($("input[name=cw_day]:checked").val()==''||$("input[name=cw_day]:checked").val()==null){
+			alert("서비스가능요일을 넣어주세요");
+			return
+		}
 
+		
+		
+		
 		$.ajax({
 			url : "${cp}/regist/regist3-1",
 			data : frmData,
@@ -233,6 +257,24 @@ function captcha() {
 	});
 	
 }
+
+function fileTypeCheck(obj) {
+    pathpoint = obj.value.lastIndexOf('.');
+    filepoint = obj.value.substring(pathpoint+1,obj.length);
+    filetype = filepoint.toLowerCase();
+    if(filetype=='jpg' || filetype=='gif' || filetype=='png' || filetype=='jpeg' || filetype=='bmp') {
+    document.getElementById('fileupload1-fake').value = obj.value
+    } else {
+       alert('이미지 파일만 넣어주세요!');
+       parentObj  = obj.parentNode
+       node = parentObj.replaceChild(obj.cloneNode(true),obj);
+       $("#profile").val("")
+       return false;
+    }
+ }
+
+
+
 </script>
 </head>
 <body>
@@ -280,7 +322,8 @@ function captcha() {
 									<div class="p-file-wrap">
 										<input type="file" id="profile" name="profile"
 											placeholder="select file..."
-											onchange="document.getElementById('fileupload1-fake').value = this.value">
+											onchange="fileTypeCheck(this)" accept=".jpg, .jpeg, .png">
+<!-- 											onchange="document.getElementById('fileupload1-fake').value = this.value"> -->
 										<div class="input-group">
 											<span class="input-group-btn"><button type="button"
 													class="btn">browse</button></span> <input type="text"

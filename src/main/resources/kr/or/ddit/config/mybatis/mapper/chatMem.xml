@@ -21,6 +21,16 @@
 
 </update>
 
+<update id="messageUpdateN" parameterType="int">
+
+	update ChatMem 
+	
+	set newmsgyn = 'N'
+	
+	where chat_id = #{chat_id}
+
+</update>
+
 <select id="selectChatmemid" parameterType="map" resultType="String">
 	select mem_id from chatMem 
 	where chat_id =#{chat_id}
@@ -31,6 +41,8 @@
  select* from chatmem where mem_id = #{mem_id}
 
 </select>
+
+
 
 
 	
