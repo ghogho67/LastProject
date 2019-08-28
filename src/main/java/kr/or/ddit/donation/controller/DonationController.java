@@ -103,8 +103,11 @@ public class DonationController {
 	 * @return Method 설명 : 회원 기부 요청
 	 */
 	@RequestMapping(path = "/memberDonation", method = RequestMethod.GET)
-	public String memberInsertDonation() {
-
+	public String memberInsertDonation(Model model, HttpSession session) {
+		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("memberVo",memberVo);
+		logger.debug("☞!!!!!:123456{}",memberVo);
+		
 		return "donation/memberDonation";
 	}
 
@@ -141,9 +144,15 @@ public class DonationController {
 
 		donationVo.setApp_id(approvalService.currentApproval());
 		donationVo.setDon_id(donationApprovalVo.getDon_id());
-		donationVo.setDoner(donationApprovalVo.getDoner());
+//		donationVo.setDoner(donationApprovalVo.getDoner());
+		donationVo.setDoner(memberVo.getMem_nm());
+		logger.debug("☞memberVo.getMem_nm():{}",memberVo.getMem_nm());
+
+//		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
+		donationVo.setDoner_phone(memberVo.getMem_phone());
+		logger.debug("☞memberVo.getMem_phone():{}",memberVo.getMem_phone());
+		
 		donationVo.setDoner_comment(donationApprovalVo.getDoner_comment());
-		donationVo.setDoner_phone(donationApprovalVo.getDoner_phone());
 		donationVo.setMem_yn("Y");
 
 		logger.debug("☞donationVo:{}", donationVo);
@@ -153,13 +162,15 @@ public class DonationController {
 		int insertDonation_memCnt = donationService.insertDonation_mem(donationVo);
 
 		logger.debug("☞insertDonation_memCnt:{}", insertDonation_memCnt);
-
+		
+		
+		
 		if (insertApproval_memCnt == 1 && insertDonation_memCnt == 1) {
 
 			model.addAttribute("donationApprovalVo", donationApprovalVo);
 			model.addAttribute("donationVo", donationVo);
 			model.addAttribute("approvalVo", approvalVo);
-
+		
 			logger.debug("☞donationApprovalVo:{}", donationApprovalVo);
 			logger.debug("☞donationVo:{}", donationVo);
 			logger.debug("☞approvalVo:{}", approvalVo);

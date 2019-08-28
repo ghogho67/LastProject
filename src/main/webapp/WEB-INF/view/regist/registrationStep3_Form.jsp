@@ -90,16 +90,19 @@
 			}
 			
 			//null 처리
-// 			else if($("#mem_birth").val()==''||$("#mem_birth")==null){
-// 				alert("생년월일을 넣어주세요");
-// 				return;
-// 			}else if($("#mem_zipcd").val()==''||$("#mem_add2").val()==null){
-// 				alert("상세주소를 넣어주세요");
-// 				return
-// 			}else if($(".dis_id").val()==''||$("dis_id").val()==null){
-// 				alert("질병을 넣어주세요");
-// 				return
-// 			}
+			else if($("#mem_birth").val()==''||$("#mem_birth")==null){
+				alert("생년월일을 넣어주세요");
+				return;
+			}else if($("#mem_add2").val()==''||$("#mem_add2").val()==null){
+				alert("상세주소를 넣어주세요");
+				return
+			}else if($("input[name=dis_id]:checked").val()==''||$("input[name=dis_id]:checked").val()==null){
+				alert("질병을 넣어주세요");
+				return
+			}else if($("input[name=mem_gender]:checked").val()==''||$("input[name=mem_gender]:checked").val()==null){
+				alert("성별을 넣어주세요");
+				return
+			}
 			
 			
 			
@@ -423,9 +426,9 @@
 									<div class="form-group">
 										<label for="email1">상세주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr2" name="mem_add2"
+											<input type="text" id="mem_add2" name="mem_add2"
 												placeholder="상세주소" class="form-control"
-												value="${mem_addr2 }"> <span
+												> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
 															class="fa fa-check"></i></span> <span class="p-error-text"><i

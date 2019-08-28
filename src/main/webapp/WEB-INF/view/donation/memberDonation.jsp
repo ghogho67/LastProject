@@ -111,6 +111,10 @@ $(document).ready(function(){
 				alert(msg);
 			}
 		});
+		
+// 		$('input[doner]').attr('value','$(memberVo.mem_nm)');
+// 		$('input[doner_phone]').attr('value','$(memberVo.mem_phone');
+		
 	}
 </script>
 
@@ -144,7 +148,7 @@ $(document).ready(function(){
 										<label for="email1">기부자 이름</label>
 										<div class="input-group p-has-icon">
 											<input type="text" id="doner" name="doner"
-												value="${doner }" placeholder="이름을 입력하세요 "
+												value="${memberVo.mem_nm }" placeholder="이름을 입력하세요 "
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i
@@ -160,7 +164,7 @@ $(document).ready(function(){
 										<label for="email1">핸드폰 번호</label>
 										<div class="input-group p-has-icon">
 											<input type="tel" id="doner_phone" name="doner_phone"
-												value="${doner_phone }" placeholder="000-0000-0000형식으로 입력하세요"
+												value= "${memberVo.mem_phone}" placeholder="000-0000-0000형식으로 입력하세요"
 												class="form-control"> <span
 												class="input-group-state"><span class="p-position"><span
 													class="p-text"><span class="p-valid-text"><i

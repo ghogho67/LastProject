@@ -206,7 +206,7 @@ p {
 	<div class="content-wrapper">
 		<div class="col-lg-12">
 			<div class="card">
-				>
+				
 				<div class="card-body">
 
 					<div id="titlee">

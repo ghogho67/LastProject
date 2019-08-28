@@ -23,6 +23,7 @@
 <%@include file="/WEB-INF/view/common/LibForWebpage.jsp"%>
 <%@include file="/WEB-INF/view/common/gradeChange.jsp"%>
 <%@include file="/resource/chat/chatAlram.jsp" %>
+<%@include file="/resource/chatbot/chatbotView.jsp" %>
 </head>
 
 
