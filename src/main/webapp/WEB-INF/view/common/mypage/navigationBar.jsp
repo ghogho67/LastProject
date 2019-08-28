@@ -28,7 +28,7 @@
          <ul class="nav-menu" style="color:black">
 
 
-            <li><a href="${cp}/crawling">Home</a></li>
+            <li><a href="${cp}/crawling?mem_id=${MEM_INFO.mem_id}">Home</a></li>
             <c:forEach items="${categoryList}" var="category">
                <c:if test="${category.cate_usage =='Y'}">
                   <c:if test="${category.cate_paerent_id==0}">

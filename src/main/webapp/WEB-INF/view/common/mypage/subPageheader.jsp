@@ -16,7 +16,7 @@
 		<div class="row">
 			<nav id="nav-menu-container" style="padding-left: 900px;">
 				<ul class="nav-menu">
-					<li class=""><a href="${cp}/crawling">Home</a></li>
+					<li class=""><a href="${cp}/crawling?mem_id=${MEM_INFO.mem_id}">Home</a></li>
 					<li><a href="">회사소개</a></li>
 					<li><a href="">마이페이지</a></li>
 					<li><a href="">요양 정보</a>

@@ -5,7 +5,7 @@
 
 <nav id="nav-menu-container">
 	<ul class="nav-menu">
-		<li class="menu-active"><a href="${cp}/crawling">Home</a></li>
+		<li class="menu-active"><a href="${cp}/crawling?mem_id=${MEM_INFO.mem_id}">Home</a></li>
 
 	
 		<c:forEach items="${categoryList}" var="category">
