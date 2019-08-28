@@ -577,8 +577,6 @@ function boardPagingListAjaxHtml(page, pageSize) {
 		</div>
 	</div>
 	
-	
-
 
 </body>
 </html>

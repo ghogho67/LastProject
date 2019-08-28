@@ -17,7 +17,7 @@
 
 <script
 	src="${pageContext.request.contextPath}/SE2/js/HuskyEZCreator.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script type="text/javascript" charset="utf-8"
 	src="${pageContext.request.contextPath }/se2/js/HuskyEZCreator.js"></script>

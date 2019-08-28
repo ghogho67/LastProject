@@ -14,10 +14,10 @@
 /*   margin: auto; */
 /*   margin-top: 100px;  */
   border-radius: 10px;
-  background-color: #E1F6FA;
+  background-color: #c8c8c8;
 /*   text-align: center; */
   width: 433px;
-  height: 440px;
+  height: 450px;
 }
 
 /* 채팅 영역 */
@@ -49,7 +49,7 @@
 /*  	margin: 5px; */
 /*  } */
 .btn{
-  background: #4A8CF6;
+  background: #787878;
   border: 0;
   color: #fff;
   cursor: pointer;
@@ -77,6 +77,7 @@
 	text-align : right;
 	margin-right: 15px;
 }
+
 
 
 
@@ -441,17 +442,19 @@
 
 
  <br/><br/>
-
+<div id="comment" class="comment">
+<h3>이동하고 싶은 메뉴를 입력하세요</h3>
+</div>
  <form id=frm action="${cp}/chatbot">
  <div id = 'result'>
 	<!-- 음성영역 -->
  </div>
  </form>
- 
- 음성챗봇 : <input type = "button" class="btn" value = "시작" id = "start" onclick="start();"/>
- <input type = "submit" class="btn" value = "멈춤" id = "end"  onclick="end();"/><br/>
- 
  <input type="text" id="user" name="user">
  <button type="button" class="btn" id="sendBtn" name="sendBtn">전송</button><br>
+ 
+음성인식 : <input type = "button" class="btn" value = "시작" id = "start" onclick="start();"/>
+<!--  <input type = "submit" class="btn" value = "멈춤" id = "end"  onclick="end();"/><br/> -->
+ 
 </body>
 </html>

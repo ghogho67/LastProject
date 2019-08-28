@@ -58,7 +58,7 @@ $(document).ready(function(){
 			// 주문명
 			name : '주문명:결제테스트',
 			// 가격 -> 게시글 가격으로 넣을 졔정
-			amount : 1,
+			amount : $("#app_pay").val(),
 			// 구매자 이메일-> MemberVo값으로 넣을 예정
 			buyer_email : 'alsckd123@naver.com',
 			// 구매자 이름 -> MemberVo값으로 넣을 예정

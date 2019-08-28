@@ -233,6 +233,24 @@ function captcha() {
 	});
 	
 }
+
+function fileTypeCheck(obj) {
+    pathpoint = obj.value.lastIndexOf('.');
+    filepoint = obj.value.substring(pathpoint+1,obj.length);
+    filetype = filepoint.toLowerCase();
+    if(filetype=='jpg' || filetype=='gif' || filetype=='png' || filetype=='jpeg' || filetype=='bmp') {
+    document.getElementById('fileupload1-fake').value = obj.value
+    } else {
+       alert('이미지 파일만 넣어주세요!');
+       parentObj  = obj.parentNode
+       node = parentObj.replaceChild(obj.cloneNode(true),obj);
+       $("#profile").val("")
+       return false;
+    }
+ }
+
+
+
 </script>
 </head>
 <body>
@@ -280,7 +298,8 @@ function captcha() {
 									<div class="p-file-wrap">
 										<input type="file" id="profile" name="profile"
 											placeholder="select file..."
-											onchange="document.getElementById('fileupload1-fake').value = this.value">
+											onchange="fileTypeCheck(this)" accept=".jpg, .jpeg, .png">
+<!-- 											onchange="document.getElementById('fileupload1-fake').value = this.value"> -->
 										<div class="input-group">
 											<span class="input-group-btn"><button type="button"
 													class="btn">browse</button></span> <input type="text"
