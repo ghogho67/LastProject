@@ -109,7 +109,7 @@ $(document).ready(function () {
 				</c:when>
 				<c:otherwise>
 					<a class="btn-pri2" href="${cp }/donation/memberDonation"
-						style="position: absolute; left: 81%;">기부하기</a>
+						style="position: absolute; left: 85%;">기부하기</a>
 				</c:otherwise>
 
 			</c:choose>
