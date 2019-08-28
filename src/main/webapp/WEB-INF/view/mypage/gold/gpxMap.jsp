@@ -9,24 +9,26 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dnxk8c7baj&submodules=geocoder"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 
 <script>
-$.datepicker.setDefaults({
-    dateFormat: 'yymmdd',
-    prevText: '이전 달',
-    nextText: '다음 달',
-    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-    showMonthAfterYear: true,
-    yearSuffix: '년'
-});
+
 
 $(document).ready(function() {
+	$.datepicker.setDefaults({
+	    dateFormat: 'yymmdd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
+	
+	
 	getLocation();
 	  $(function() {
 	        $("#datepicker1").datepicker();
@@ -36,13 +38,13 @@ $(document).ready(function() {
 
 
 	
-	$('#date1').change(function() {
-		console.log($('#date1').val());
-		var time = $('#date1').val();
+	$('#datepicker1').change(function() {
+		console.log($('#datepicker1').val());
+		var time = $('#datepicker1').val();
 		time=time.replace(/-/gi, "");
 		
 		var mem_id = '${MEM_INFO.mem_id}';
-		
+		console.log(time);
 // 		var position = new naver.maps.LatLng(nLat, nLng);
 // 		showPosition(position)
 		getLocation();
@@ -142,6 +144,7 @@ function startDataLayer(xmlDoc) {
 <body>
 	<%@include file="/WEB-INF/view/common/mypage/navigationBar.jsp"%>
 	<%@include file="/WEB-INF/view/common/mypage/sidebarP.jsp"%>
+	
 
 
 	<!-- partial -->
@@ -167,13 +170,13 @@ function startDataLayer(xmlDoc) {
 							<div id="map" style="width:100%;height:400px;"></div>
 							<form id="frm" action="${cp}/mypage/stress">
 								<input type="hidden" id="mem_id" value="${MEM_INFO.mem_id}" name="mem_id">
-								<input type="date" id="date1" name="gps_time">
+<!-- 								<input type="date" id="date1" name="gps_time"> -->
 <!-- 								        <div class="input-group date"> -->
 
 <!--             <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> -->
 
 <!--         </div> -->
-<input type="text" id="datepicker1">
+								<input type="text" id="datepicker1">
 
 
 							</form>
@@ -191,4 +194,9 @@ function startDataLayer(xmlDoc) {
 
 
 </body>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+
 </html>

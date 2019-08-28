@@ -41,7 +41,7 @@
 						<canvas id="canvas"></canvas>
 						<form id="frm" action="${cp}/mypage/stress">
 							<input type="hidden" id="mem_id" value="${MEM_INFO.mem_id}" name="mem_id">
-							<input type="date" id="date1" name="gps_time">
+							<input type="text" id="datepicker1" name="gps_time">
 						</form>
 					</div> 
 					<div>
@@ -58,6 +58,47 @@
 	
 	
 	<script>
+	$(document).ready(function() {
+		$.datepicker.setDefaults({
+		    dateFormat: 'yymmdd',
+		    prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		    showMonthAfterYear: true,
+		    yearSuffix: '년'
+		});
+		  $(function() {
+		        $("#datepicker1").datepicker();
+		    });
+		  
+			$('#datepicker1').change(function() {
+				console.log($('#datepicker1').val());
+				var frmData = $("#frm").serialize();
+				console.log(frmData);
+				$.ajax({
+					url: "${pageContext.request.contextPath}/mypage/reChart",
+					data : frmData,
+					async:false,
+					success :  function(data){
+						console.log(data.list)
+						reData(data.list);
+					}
+				});
+				
+//	 			$('#frm').submit();
+				
+				
+//	 			window.myScatter.update();
+			});
+		
+	});
+	
+	
+	
 	var chartColors = {
 			red: 'rgb(255, 99, 132)',
 			orange: 'rgb(255, 159, 64)',
@@ -255,29 +296,14 @@
 
 		};
 		
-		$('#date1').change(function() {
-			console.log($('#date1').val());
-			var frmData = $("#frm").serialize();
-			console.log(frmData);
-			$.ajax({
-				url: "${pageContext.request.contextPath}/mypage/reChart",
-				data : frmData,
-				async:false,
-				success :  function(data){
-					console.log(data.list)
-					reData(data.list);
-				}
-			});
-			
-// 			$('#frm').submit();
-			
-			
-// 			window.myScatter.update();
-		});
+
 		
 
 	</script>
 
 
 </body>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </html>
