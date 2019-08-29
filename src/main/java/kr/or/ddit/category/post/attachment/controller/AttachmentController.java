@@ -2,6 +2,7 @@ package kr.or.ddit.category.post.attachment.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.annotation.Resource;
@@ -38,7 +39,7 @@ public class AttachmentController {
 	@Resource(name = "replyService")
 	private IReplyService replyService;
 
-	//0725
+	// 0725
 	@RequestMapping(path = "/download")
 	public void attachmentDownload(int cate_id, int post_id, int att_id, AttachmentVo attachmentVo,
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -49,9 +50,13 @@ public class AttachmentController {
 
 		String fileName = attachmentVo.getAtt_nm();
 		String path = attachmentVo.getAtt_path();
-
+		FileInputStream fis = null;
 		byte[] b = new byte[4096];
-		FileInputStream fis = new FileInputStream(path);
+		try {
+			fis = new FileInputStream(path);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 
 		File file = new File(path);
 
@@ -75,12 +80,13 @@ public class AttachmentController {
 		fis.close();
 	}
 
-	//0725
+	// 0725
 	@RequestMapping(path = "/delete")
-	public String attachmentDelete(int att_id, int post_id, int cate_id, Model model, PostVo postVo, HttpSession session) {
-		
-		logger.debug("☞post_id:{}",post_id);
-		logger.debug("☞cate_id:{}",cate_id);
+	public String attachmentDelete(int att_id, int post_id, int cate_id, Model model, PostVo postVo,
+			HttpSession session) {
+
+		logger.debug("☞post_id:{}", post_id);
+		logger.debug("☞cate_id:{}", cate_id);
 		attachmentService.attchmentDelete(att_id);
 
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
@@ -90,8 +96,8 @@ public class AttachmentController {
 		model.addAttribute("replyList", replyService.replyList(post_id));
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("post_id", post_id);
-		MemberVo mvo = (MemberVo)session.getAttribute("MEM_INFO");
-		model.addAttribute("mem_id",mvo.getMem_id());
+		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", mvo.getMem_id());
 		return "/post/postDetail.tiles";
 
 	}

@@ -85,9 +85,10 @@
 			<c:if test="${MEM_INFO.mem_grade==1}">
 
 
-				<a data-toggle="modal" data-target="#myModalGrade"><img
-					src="/image/membershipjoin2.png"
-					style="width: 200px; height: auto;" /> </a>
+				<a data-toggle="modal" data-target="#myModalGrade">
+				<img src="/image/membershipjoin2.png"
+					style="width: 200px; height: auto;" /> 
+					</a>
 			</c:if>
 
 

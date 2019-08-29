@@ -180,6 +180,7 @@ public class PostController {
 		model.addAttribute("replyList", replyService.replyList(post_id));
 		// postVo
 		model.addAttribute("postVo", postService.getPost(post_id));
+
 		// post_id
 		model.addAttribute("post_id", post_id);
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
@@ -242,7 +243,7 @@ public class PostController {
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
 
-		return "/post/postDetail.tiles";
+		return "redirect:/post/detail";
 
 	}
 
@@ -466,7 +467,7 @@ public class PostController {
 		int boardCnt2 = (int) boardCnt;
 
 		model.addAttribute("list", list);
-		
+
 		Collections.sort(list, new Comparator<ImageBoardVo>() {
 
 			@Override
@@ -475,7 +476,6 @@ public class PostController {
 			}
 		});
 
-		
 		model.addAttribute("boardCnt", boardCnt2);
 //        logger.debug("!!!!! list:{}",list);
 		int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
