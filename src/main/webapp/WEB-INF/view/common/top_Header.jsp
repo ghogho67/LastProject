@@ -205,7 +205,7 @@ getCookieMobile();
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
 			name : '주문명:결제테스트',
-			amount : 1,
+			amount : 100000,
 			buyer_email : 'alsckd123@naver.com',
 			buyer_name : '구매자이름',
 			buyer_tel : '010-1234-5678',
