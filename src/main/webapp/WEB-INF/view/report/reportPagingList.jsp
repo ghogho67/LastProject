@@ -255,8 +255,10 @@ td {
 										<%--<td class="CategoryId">${post.post_id }</td> --%>
 										<td class="CategoryId">
 											<%-- 														${matchingCnt } --%> <%-- 														${status.index } --%>
-											<%-- 														${current } --%>
-											${((matchingCnt-status.index+1))-((current-1)*10)}
+											<%-- 
+											${current } --%>
+<%-- 											${(((matchingCnt-1)-status.index+1))-((current-1)*10)} --%>
+										${report.rn }
 										</td>
 										<%--${(postCnt - status.index)-((current-1)*10)} --%>
 										<td>${report.day }</td>

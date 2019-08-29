@@ -74,9 +74,11 @@
 	<select id="cwMatchingPagingList" parameterType="map"
 		resultType="MatchingVo">
 		<![CDATA[
-		SELECT *
+		
+		select * from(
+        SELECT B.*, rownum rn2
 		FROM
-		(SELECT A.*, ROWNUM RN
+		(SELECT A.*, ROW_NUMBER() OVER (ORDER BY MAT_ST) AS rn 
 		FROM
 		(SELECT
 		MAT_ID,MAT_TITLE,MAT_CONT,SUBSTR (REPLACE(MAT_ST,'T',' '),1) MAT_ST,
@@ -84,50 +86,62 @@
 		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
 		FROM MATCHING
 		WHERE CW_MEM_ID = #{cw_mem_id} 
-		ORDER BY MAT_ST DESC)A)B
-		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
-		AND 	B.RN <= #{page} * #{pageSize}	
+		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
+		ORDER BY MAT_ST DESC )A order by rn desc )B )c
+		WHERE   RN2 >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	RN2<= #{page} * #{pageSize}	
+		order by rn2
+			
+		
 		]]>
 	</select>
 
 	<select id="memMatchingPagingList" parameterType="map"
 		resultType="MatchingVo">
 		<![CDATA[
-		SELECT *
+				
+		select * from(
+        SELECT B.*, rownum rn2
 		FROM
-		(SELECT A.*, ROWNUM RN
+		(SELECT A.*, ROW_NUMBER() OVER (ORDER BY MAT_ST) AS rn 
 		FROM
 		(SELECT
 		MAT_ID,MAT_TITLE,MAT_CONT,SUBSTR (REPLACE(MAT_ST,'T',' '),1) MAT_ST,
 		SUBSTR (REPLACE(MAT_END,'T',' '),1) MAT_END,
 		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
 		FROM MATCHING
-		WHERE mem_id =
-		#{mem_id}
-		ORDER BY MAT_ST DESC)A)B
-		WHERE   B.RN >= ( #{page} - 1) * #{pageSize} + 1 
-		AND 	B.RN <= #{page} * #{pageSize}	
+		WHERE mem_id = #{mem_id} 
+		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
+		ORDER BY MAT_ST DESC )A order by rn desc )B )c
+		WHERE   RN2 >= ( #{page} - 1) * #{pageSize} + 1 
+		AND 	RN2<= #{page} * #{pageSize}	
+		order by rn2
+		
+		
+		
 		]]>
 	</select>
 
 	<select id="cwMatchingCnt" parameterType="string"
 		resultType="int">
-
+<![CDATA[
 		select
 		count(*) from matching where
 		cw_mem_id=#{cw_mem_id}
+		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
 		and mat_del='N'
-
+	]]>
 	</select>
 
 	<select id="memMatchingCnt" parameterType="string"
 		resultType="int">
-
+<![CDATA[
 		select
 		count(*) from matching where
 		mem_id=#{mem_id}
+		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
 		and mat_del='N'
-
+]]>
 	</select>
 
 </mapper>
