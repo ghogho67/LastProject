@@ -117,7 +117,6 @@ textarea {
 				$("#replyBtn").on(
 						"click",
 						function() {
-							alert($("#reply_cont").val());
 							if ($("#reply_cont").val() === '<p>&nbsp;</p>'
 									|| $("#reply_cont").val() === '') {
 								alert("내용을 입력해주세요")
@@ -180,7 +179,7 @@ textarea {
 						<div style="width: 8%; float: left;">
 							<img id="img"
 								src="${cp }/matching/photo?mem_id=${reply.mem_id } "
-								style="width: 100px; height: 100px;" alt="${cp}/image/cw.png" />
+								style="width: 100px; height: 100px;" alt="${cp}/image/tes.png" />
 						</div>
 						<div class=" col-sm-12">
 							<h2>${postVo.post_nm}</h2>
@@ -232,9 +231,10 @@ textarea {
 											<div style="width: 8%; float: left;">
 												<img id="img"
 													src="${cp }/matching/photo?mem_id=${reply.mem_id } "
-													style="width: 100px; height: 100px;"
-													alt="${cp}/image/cw.png" />
+													style="width: 80px; height: 80px;"
+													alt="${cp}/image/tes.png" />
 											</div>
+											
 											<div style="width: 90%; float: left;" id="re">
 												<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${reply.mem_id }
 												</strong>

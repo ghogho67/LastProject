@@ -231,7 +231,6 @@ td {
 	$(document).ready(function() {
 		$(".Category").on("click", function() {
 			var post_id = $(this).find(".post_id").text();
-// 			alert(post_id);
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
