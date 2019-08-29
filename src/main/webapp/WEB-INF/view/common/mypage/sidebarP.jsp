@@ -59,7 +59,7 @@
 				 <li ><a  data-toggle="modal" data-target="#myModalGradeSu"><span>스트레스 지수</span></a></li>
 			 <li ><a data-toggle="modal" data-target="#myModalGradeSu"><span>GPS 정보</span></a></li>
          <li ><a data-toggle="modal" data-target="#myModalGradeSu"><span>심박 정보</span></a></li>
-         <li ><a data-toggle="modal" data-target="#myModalGradeSu"><span>인지활동내역</span></a></li>
+               <li ><a href="${cp}/mypage/recognitionActResult"><span>인지활동내역</span></a></li>
            <li><a data-toggle="modal" data-target="#myModalGradeSu"><span>HOME CCTV</span></a></li>
          
 				 
