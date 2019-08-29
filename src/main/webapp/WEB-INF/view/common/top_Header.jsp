@@ -236,4 +236,5 @@ getCookieMobile();
 			}
 		});
 	}
+	
 </script>

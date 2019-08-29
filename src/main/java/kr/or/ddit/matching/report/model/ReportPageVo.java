@@ -14,6 +14,7 @@ public class ReportPageVo {
 	private String mem_nm;
 	private String cw_mem_nm;
 	private int check;
+	private int rn;
 
 	public ReportPageVo(int mat_id, String mat_title, String mat_cont, String day, String stTime, String endTime,
 			String mat_type, String mem_id, String cw_mem_id, String mem_nm, String cw_mem_nm, int check) {
@@ -128,12 +129,40 @@ public class ReportPageVo {
 		this.check = check;
 	}
 
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	@Override
 	public String toString() {
 		return "ReportPageVo [mat_id=" + mat_id + ", mat_title=" + mat_title + ", mat_cont=" + mat_cont + ", day=" + day
 				+ ", stTime=" + stTime + ", endTime=" + endTime + ", mat_type=" + mat_type + ", mem_id=" + mem_id
 				+ ", cw_mem_id=" + cw_mem_id + ", mem_nm=" + mem_nm + ", cw_mem_nm=" + cw_mem_nm + ", check=" + check
-				+ "]";
+				+ ", rn=" + rn + "]";
 	}
+
+	public ReportPageVo(int mat_id, String mat_title, String mat_cont, String day, String stTime, String endTime,
+			String mat_type, String mem_id, String cw_mem_id, String mem_nm, String cw_mem_nm, int check, int rn) {
+		super();
+		this.mat_id = mat_id;
+		this.mat_title = mat_title;
+		this.mat_cont = mat_cont;
+		this.day = day;
+		this.stTime = stTime;
+		this.endTime = endTime;
+		this.mat_type = mat_type;
+		this.mem_id = mem_id;
+		this.cw_mem_id = cw_mem_id;
+		this.mem_nm = mem_nm;
+		this.cw_mem_nm = cw_mem_nm;
+		this.check = check;
+		this.rn = rn;
+	}
+	
+	
 
 }

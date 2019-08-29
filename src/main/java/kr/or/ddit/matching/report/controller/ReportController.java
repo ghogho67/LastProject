@@ -244,6 +244,8 @@ public class ReportController {
 		List<ReportPageVo> reportList = new ArrayList<ReportPageVo>();
 		List<MatchingVo> matchingList = (List<MatchingVo>) resultMap.get("matchingList");
 
+		logger.debug("☞matchingList:{}", matchingList);
+
 		for (MatchingVo mv : matchingList) {
 //			ReportVo rv = reportService.getReportVo(mv.getMat_id());
 //			logger.debug("☞rv:{}",rv);
@@ -264,8 +266,10 @@ public class ReportController {
 			MemberVo cwMemVo = memberService.getMemVo(mv.getCw_mem_id());
 			ReportPageVo rpv = new ReportPageVo(mv.getMat_id(), mv.getMat_title(), mv.getMat_cont(), day, stTime,
 					endTime, mv.getMat_type(), mv.getMem_id(), mv.getCw_mem_id(), memVo.getMem_nm(),
-					cwMemVo.getMem_nm(), check);
+					cwMemVo.getMem_nm(), check, mv.getRn());
+
 			ReportVo rvo = reportService.getReportVo(mv.getMat_id());
+
 			reportList.add(rpv);
 		}
 		logger.debug("rpl:{}", reportList);
@@ -276,6 +280,7 @@ public class ReportController {
 		model.addAttribute("matchingCnt", (Integer) resultMap.get("matchingCnt"));
 		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		model.addAttribute("reportList", reportList);
+		logger.debug("☞reportList:{}", reportList);
 
 		return "/report/reportPagingList.mytiles";
 	}

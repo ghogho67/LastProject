@@ -374,7 +374,8 @@ public class mypageController {
 			logger.debug("@@@@updateCnt", updateCnt);
 
 			if (updateCnt == 1) {
-				session.setAttribute("MEM_INFO", memberVo);
+//				session.setAttribute("MEM_INFO", memberVo);
+				session.invalidate();
 				viewName = "redirect:/login";
 
 			} else {
@@ -443,7 +444,8 @@ public class mypageController {
 			logger.debug("@@@@updateCnt", updateCnt);
 
 			if (updateCnt == 1) {
-				session.setAttribute("MEM_INFO", memberVo);
+//				session.setAttribute("MEM_INFO", memberVo);
+				session.invalidate();
 				viewName = "redirect:/login";
 
 			} else {
