@@ -85,7 +85,7 @@ var newEvent = function (startDate, endDate, eventType) {
     /** ****** 임시 RAMDON ID - 실제 DB 연동시 삭제 ********* */
 
     
-    $('#save-event2').on('click',function(){
+    $('#save-event2').off().on('click',function(){
     	
     	var myDate = new Date();
 		var startDate = new Date(editStartDate.val());
@@ -237,7 +237,7 @@ var newEvent = function (startDate, endDate, eventType) {
               }
 
           });
-    })
+    });
     
     $('#save-event').unbind();
     
