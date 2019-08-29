@@ -76,7 +76,7 @@ display:none;
 }
 
 #chatTime{
-	font-size: 3px;
+	font-size: 5px;
 }
 
 .alaramImg{

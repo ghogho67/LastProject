@@ -141,70 +141,59 @@ textarea {
 </script>
 </head>
 <body>
-	<div class="content-wrapper">
+	<div class="content-wrapper"
+		style="width: 70%; margin-left: 350px; height: 683px; padding: 50px; min-height: 50vh; margin-top: 50px;">
 
-		<div class="col-lg-12">
+		<!-- 		<div class="col-lg-12"> -->
 
-			<div class="card">
-				<div class="card-body">
+		<div class="card" style="width: 100%; height: 600px;">
+			<div class="card-body">
+				<h2 class="sub-header">보고서 조회</h2>
+<!-- 				<div> -->
+<!-- 					<hr> -->
+<!-- 					<div>asf</div> -->
+<!-- 					<div class="col-sm-10"> -->
+<%-- 						<h4>${reportVo.rep_title}</h4> --%>
+<!-- 					</div> -->
 
-				
-						<h2 class="sub-header">보고서 조회</h2>
-						<div class="form-group col-sm-8">
-							<div class="col-sm-10">
-								<h4>${reportVo.rep_title}</h4>
-							</div>
-							<hr>
-						</div>
-						<div class="form-group col-sm-8">
-							<div class="col-sm-10">
-								<label class="control-label">${reportVo.rep_cont}</label>
-							</div>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<hr>
-						</div>
-						<div class="form-group col-sm-8">
-							<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-							<div class="col-sm-10">
-								<c:forEach items="${reportAttachList}" var="reportAttachVo">
-									<br>
-									<div>
-										${reportAttachVo.rep_att_nm } <a
-											href="${cp}/reportAttach/download?mat_id=${mat_id }&rep_att_id=${reportAttachVo.rep_att_id }"
-											class="btn btn-primary btn-sm pull-right">다운로드</a>
-									</div>
-									<br>
-								</c:forEach>
-							</div>
-						</div>
+<!-- 					<hr> -->
+<!-- 				</div> -->
+
+				<div class="form-group col-sm-8">
+					<div class="col-sm-10">
+						<label class="control-label">${reportVo.rep_cont}</label>
 					</div>
-
-					<div class="form-group col-sm-8 text-left">
-						<hr>
-						<c:if test="${cw_mem_id eq mem_id }">
-							<form style="float: left;" id="reportModifyfrm" method="post"
-								action="${cp}/report/modifyView">
-								<button id="reportModifyBtn" type="button"
-									class="btn btn-primary btn-sm" name="button">수정</button>
-								<input type="hidden" value="${mat_id }" name="mat_id">
-							</form>
-						</c:if>
-						<a href="${cp}/report/pagingList"
-							class="btn btn-primary btn-sm pull-right">매칭목록</a>
+					<br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br>
+					<hr>
+				</div>
+				<div>
+					<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
+					<div class="col-sm-10">
+						<c:forEach items="${reportAttachList}" var="reportAttachVo">
+							<br>
+							<div>
+								${reportAttachVo.rep_att_nm } <a
+									href="${cp}/reportAttach/download?mat_id=${mat_id }&rep_att_id=${reportAttachVo.rep_att_id }"
+									class="btn btn-primary btn-sm pull-right">다운로드</a>
+							</div>
+							<br>
+						</c:forEach>
 					</div>
 				</div>
+			</div>
+			<div class="form-group col-sm-8 text-left">
+				<hr>
+				<c:if test="${cw_mem_id eq mem_id }">
+					<form style="float: left;" id="reportModifyfrm" method="post"
+						action="${cp}/report/modifyView">
+						<button id="reportModifyBtn" type="button"
+							class="btn btn-primary btn-sm" name="button">수정</button>
+						<input type="hidden" value="${mat_id }" name="mat_id">
+					</form>
+				</c:if>
+				<a href="${cp}/report/pagingList"
+					class="btn btn-primary btn-sm pull-right">매칭목록</a>
 			</div>
 		</div>
 	</div>

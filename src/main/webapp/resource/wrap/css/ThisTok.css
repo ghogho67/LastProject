@@ -6,11 +6,12 @@ body {
 
 #message{
 	 margin-top: 10px;
+	 margin-left: 75px;
 	
 }
 
 #buttonCol{
-	margin-left: 35px;
+	margin-left: 110px;
 }
 
 
@@ -118,7 +119,7 @@ margin-left:10px;
 }
 .self{
 	text-align: left;
-    margin-left: 200px;
+    margin-left: 300px;
 }
 
 .other .msg {
@@ -141,7 +142,7 @@ margin-left:10px;
 
 .msg {
     background: #eef8ff;
-    min-width: 140px !important;
+    min-width: 170px !important;
     padding: 10px;
     border-radius: 10px;
     word-break: break-all;
@@ -178,7 +179,7 @@ margin-left:10px;
     transition: all .2s ease;
 }
 .msg .nt{
-	font-size : 12px;
+	font-size : 16px;
 }
 .msg img {
     position: relative;

@@ -125,7 +125,7 @@ td {
 	transform: translateX(-50%) rotate(45deg);
 	bottom: auto;
 	top: -20px;
-	left: 50%;
+	left: 40%;
 }
 
 .pagination li a.page-link:hover:after {

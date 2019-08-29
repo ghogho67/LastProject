@@ -1,5 +1,7 @@
 package kr.or.ddit.category.post.reply.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -50,23 +52,24 @@ public class ReplyController {
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String replyRegister(String reply_cont, int post_id, ReplyVo replyVo, Model model, int cate_id,
 			HttpSession session) {
-		logger.debug("☞cate_id:{}",cate_id);
+		logger.debug("☞cate_id:{}", cate_id);
+		logger.debug("☞replyVo:{}", replyVo);
 		replyVo.setPost_id(post_id);
 		replyVo.setReply_cont(reply_cont);
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		replyVo.setMem_id(mvo.getMem_id());
-		
-		logger.debug("☞replyVo:{}",replyVo);
+
 		replyService.replyInsert(replyVo);
 
 		model.addAttribute("post_id", post_id);
 		model.addAttribute("cate_id", cate_id);
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
 		model.addAttribute("postVo", postService.getPost(post_id));
+
 		model.addAttribute("replyList", replyService.replyList(post_id));
 		model.addAttribute("mem_id", mvo.getMem_id());
 
-		return "/post/postDetail.tiles";
+		return "redirect:/post/detail";
 	}
 
 	@RequestMapping(path = "/modify", method = RequestMethod.GET)
