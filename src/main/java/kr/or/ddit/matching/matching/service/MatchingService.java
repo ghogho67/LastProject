@@ -116,7 +116,7 @@ public class MatchingService implements IMatchingService {
 			resultMap.put("matchingList", matchingList);
 			logger.debug("☞cw_mem_id:{}", cw_mem_id);
 			int matchingCnt = matchingDao.cwMatchingCnt(cw_mem_id);
-			resultMap.put("matchingCnt", matchingCnt);
+			resultMap.put("matchingCnt", matchingCnt+1);
 			logger.debug("☞matchingCnt:{}", matchingCnt);
 			int pageSize = (int) map.get("pageSize");
 			logger.debug("☞pageSize:{}", pageSize);

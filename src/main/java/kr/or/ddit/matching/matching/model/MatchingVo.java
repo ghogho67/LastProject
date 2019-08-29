@@ -13,6 +13,7 @@ public class MatchingVo {
 	private String cw_mem_id;
 	private String mem_id;
 	private String mat_del;
+	private int rn;
 
 	public String getMat_del() {
 		return mat_del;
@@ -110,11 +111,20 @@ public class MatchingVo {
 		this.mem_id = mem_id;
 	}
 
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	@Override
 	public String toString() {
 		return "MatchingVo [mat_id=" + mat_id + ", mat_title=" + mat_title + ", mat_cont=" + mat_cont + ", mat_st="
 				+ mat_st + ", mat_end=" + mat_end + ", mat_type=" + mat_type + ", mat_bc=" + mat_bc + ", mat_tc="
-				+ mat_tc + ", mat_allDay=" + mat_allDay + ", cw_mem_id=" + cw_mem_id + ", mem_id=" + mem_id + "]";
+				+ mat_tc + ", mat_allDay=" + mat_allDay + ", cw_mem_id=" + cw_mem_id + ", mem_id=" + mem_id
+				+ ", mat_del=" + mat_del + ", rn=" + rn + "]";
 	}
 
 }
