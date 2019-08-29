@@ -86,7 +86,7 @@
    </li>
       <li class='active has-sub'><a href='#'><span>서비스 이용내역<i class="fa fa-sort-down"></i></span></a>
       <ul>
-         <li class='has-sub'><a href="${cp}/report/pagingList"><span>보고서 조회<span></a> </li>
+         <li class='has-sub'><a href="${cp}/report/pagingList"><span>보고서 조회</span></a> </li>
          <li class='has-sub'><a href="${cp}/approval/approvalCheck?page=1&pageSize=10&searchType=type&searchVal="><span>결재내역</span></a></li>
       </ul>
    </li>
