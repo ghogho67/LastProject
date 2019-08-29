@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class PartUtil {
 
-	private static final String UPLOAD_PATH = "d:\\springUpload\\";
+	private static final String UPLOAD_PATH = "c:\\springUpload\\";
 	private static final Logger logger = LoggerFactory
 			.getLogger(PartUtil.class);
 	
