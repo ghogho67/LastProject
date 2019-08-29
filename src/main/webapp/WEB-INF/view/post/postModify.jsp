@@ -142,7 +142,7 @@
 	<div class="container" style="margin-top: 100px;">
 		<div class="card">
 			<div class="card-body" style="padding: 50px;">
-				<h2 class="sub-header">게시글 수정 WEB-INF/view/post/postModify.jsp</h2>
+				<h2 class="sub-header">게시글 수정</h2>
 				<form id="saveFrm" class="form-horizontal" role="form"
 					action="${cp}/post/modify" method="post"
 					enctype="multipart/form-data">

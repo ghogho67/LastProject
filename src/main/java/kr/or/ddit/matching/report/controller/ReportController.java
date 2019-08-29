@@ -221,24 +221,24 @@ public class ReportController {
 
 		map.put("page", pageVo.getPage());
 		map.put("pageSize", pageVo.getPageSize());
-		
+
 		logger.debug("☞map:{}", map);
-		
-		if(mem_grade.equals("1")||mem_grade.equals("2")) {
+
+		if (mem_grade.equals("1") || mem_grade.equals("2")) {
 			map.put("mem_id", mem_id);
 			map.put("page", pageVo.getPage());
 			map.put("pageSize", pageVo.getPageSize());
-			
+
 			resultMap = matchingService.matchingPagingList(map);
-			logger.debug("☞resultMap:{}",resultMap);
-			
-		} else if(mem_grade.equals("3")) {
+			logger.debug("☞resultMap:{}", resultMap);
+
+		} else if (mem_grade.equals("3")) {
 			map.put("cw_mem_id", mem_id);
 			map.put("page", pageVo.getPage());
 			map.put("pageSize", pageVo.getPageSize());
 			resultMap = matchingService.matchingPagingList(map);
-			logger.debug("☞resultMap:{}",resultMap);
-			
+			logger.debug("☞resultMap:{}", resultMap);
+
 		}
 
 		List<ReportPageVo> reportList = new ArrayList<ReportPageVo>();
@@ -251,28 +251,21 @@ public class ReportController {
 			int idx = mv.getMat_st().indexOf(" ");
 			String day = st.substring(0, idx);
 			String stTime = st.substring(idx + 1);
-
 			String end = mv.getMat_end();
 			String endTime = end.substring(idx + 1);
-
 			ReportVo checkReportVo = reportService.getReportVo(mv.getMat_id());
-
 			int check = 1;
 			if (checkReportVo == null) {
 				check = 0;
 			} else {
 				check = 1;
 			}
-
 			MemberVo memVo = memberService.getMemVo(mv.getMem_id());
 			MemberVo cwMemVo = memberService.getMemVo(mv.getCw_mem_id());
-
 			ReportPageVo rpv = new ReportPageVo(mv.getMat_id(), mv.getMat_title(), mv.getMat_cont(), day, stTime,
 					endTime, mv.getMat_type(), mv.getMem_id(), mv.getCw_mem_id(), memVo.getMem_nm(),
 					cwMemVo.getMem_nm(), check);
-
 			ReportVo rvo = reportService.getReportVo(mv.getMat_id());
-
 			reportList.add(rpv);
 		}
 		logger.debug("rpl:{}", reportList);
@@ -367,6 +360,21 @@ public class ReportController {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 		// 페이지 이동
+		return "/report/reportDetail.mytiles";
+	}
+
+	@RequestMapping(path = "/modify", method = RequestMethod.GET)
+	public String postModify(Model model, int mat_id, HttpSession session) {
+		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
+		model.addAttribute("cw_mem_id", mvo.getCw_mem_id());
+		model.addAttribute("mat_id", mat_id);
+		logger.debug("☞reportAttachList", reportAttachService.getReportAttachList(mat_id));
+		if (reportAttachService.getReportAttachList(mat_id) != null)
+			model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
+		model.addAttribute("reportVo", reportService.getReportVo(mat_id));
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		model.addAttribute("mem_id", memvo.getMem_id());
+
 		return "/report/reportDetail.mytiles";
 	}
 

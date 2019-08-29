@@ -265,19 +265,29 @@ td {
 										<td>${report.mat_type }</td>
 										<td>${report.mem_nm }</td>
 										<td>${report.cw_mem_nm }</td>
-										<c:if test="${mem_grade eq 3}">
-											<td><a
-												href="${cp}/report/reportWrite?mat_id=${report.mat_id }"
-												class="btn btn-primary btn-sm">보고서 작성</a></td>
-										</c:if>
-										<td><c:choose>
 
+
+										<c:choose>
+											<c:when test="${report.check eq 1 && mem_grade eq 3}">
+												<td><a
+													href="${cp}/report/modifyView?mat_id=${report.mat_id }"
+													class="btn btn-primary btn-sm">보고서 수정</a></td>
+											</c:when>
+											<c:otherwise>
+												<c:if test="${mem_grade eq 3}">
+													<td><a
+														href="${cp}/report/reportWrite?mat_id=${report.mat_id }"
+														class="btn btn-primary btn-sm">보고서 작성</a></td>
+												</c:if>
+
+											</c:otherwise>
+										</c:choose>
+
+										<td><c:choose>
 												<c:when test="${report.check eq 1 }">
 													<a href="${cp}/report/detail?mat_id=${report.mat_id }"
 														class="btn btn-success btn-sm">보고서 확인</a>
 												</c:when>
-
-
 												<c:otherwise>
 													<a class="btn btn-secondary btn-sm">보고서 미작성</a>
 												</c:otherwise>

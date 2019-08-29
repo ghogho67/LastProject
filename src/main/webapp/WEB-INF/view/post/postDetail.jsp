@@ -197,7 +197,6 @@ textarea {
 						<label class="control-label">${postVo.post_cont}</label> <br>
 						<br> <br> <br> <br> <br> <br> <br>
 						<br> <br> <br> <br>
-						<hr>
 					</div>
 					<!-- 					<div class=" col-sm-12"> -->
 					<!-- 						<label for="userNm" class="col-sm-2 control-label">첨부파일</label> -->
@@ -220,6 +219,7 @@ textarea {
 						</div>
 					</c:forEach>
 					<div class=" col-sm-12">
+						<hr>
 						<label for="userNm" class="col-sm-2 control-label">댓글</label>
 						<div>
 							<c:forEach items="${replyList}" var="reply">
