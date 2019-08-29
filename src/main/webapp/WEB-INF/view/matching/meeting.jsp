@@ -26,7 +26,7 @@ img {
 	text-align: center;
 	background: #78d3f5;
 	box-sizing: border-box;
-	border-radius: 50px;
+	border-radius: 10px;
 	color: #fff;
 	font-size: 18px;
 	font-weight: bold;
