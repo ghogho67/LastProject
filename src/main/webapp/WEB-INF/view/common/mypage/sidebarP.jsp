@@ -57,6 +57,7 @@
          <li ><a href="${cp}/mypage/gpxMap?mem_id=${MEM_INFO.mem_id}"><span>GPS 정보</span></a></li>
          <li ><a href="${cp}/mypage/realBpm?mem_id=${MEM_INFO.mem_id}"><span>심박 정보</span></a></li>
          <li ><a href="${cp}/mypage/recognitionActResult"><span>인지활동내역</span></a></li>
+         <li><a href="${cp}/mypage/cctv?open=false&sessionid=${MEM_INFO.mem_id}_cctv&publicRoomIdentifier=&userFullName=${MEM_INFO.mem_id}"><span>HOME CCTV</span></a></li>
          
       </ul>
    </li>
