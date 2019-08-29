@@ -40,41 +40,184 @@ img {
 
 table.cw {
 	width: 1000px;
-	border-collapse: collapse;
 	text-align: left;
 	line-height: 1.5;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	margin: 0 auto;
+	border-collapse: collapse;
+	border-left: 1px solid #f8f6ff;
+	border-right: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
 }
 
 table.cw thead {
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	background: #e7708d;
+	border-right: 1px solid #f8f6ff;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
+	/* 	background: #e7708d; */
+	background: #6c7ae0;
+	padding-left: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	height: 53px;
 }
 
 table.cw thead th {
+	border-right: 1px solid #f8f6ff;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
+	width: 100px;
+	height: 53px;
 	padding: 10px;
 	font-weight: bold;
 	vertical-align: top;
 	color: #fff;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	padding-left: 40px;
 }
 
-table.cw tbody th {
+table.cw thead th:nth-child(1) {
+	border-top-left-radius: 15px;
+}
+
+table.cw thead th:nth-child(2) {
+	border-top-right-radius: 15px;
+}
+
+table.cw tbody th:nth-child(even) {
+	border-right: 1px solid #f8f6ff;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
 	width: 150px;
 	padding: 10px;
 	font-weight: bold;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
-	background: #fcf1f4;
+	background: #f8f6ff;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	padding-left: 40px;
+}
+
+table.cw tbody tr:nth-child(even) {
+	border-right: 1px solid #f8f6ff;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
+	background-color: #f8f6ff;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	padding-left: 40px;
+}
+
+table.cw tbody tr th {
+	border-right: 1px solid #f8f6ff;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 40px;
+	color: #808080;
 }
 
 table.cw td {
+	height: 53px;
 	width: 350px;
-	padding: 10px;
 	vertical-align: top;
-	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #f8f6ff;
+	padding-top: 16px;
+	padding-bottom: 5px;
+	padding-left: 40px;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
+	color: #808080;
+}
+
+table.cw tbody td:last-child {
+	border-bottom-right-radius: 15px;
+}
+table.cw tbody td:last-child {
+	border-bottom-left-radius: 15px;
+}
+</style>
+
+
+<style>
+.table100-head {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+.table100.ver1 th {
+	font-family: Lato-Bold;
+	font-size: 18px;
+	color: #fff;
+	line-height: 1.4;
+	background-color: #6c7ae0;
+}
+
+.table100-head th {
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+
+.column1 {
+	width: 33%;
+	padding-left: 40px;
+}
+
+th, td {
+	font-weight: unset;
+	padding-right: 10px;
+}
+
+table100.ver1 th {
+	font-family: Lato-Bold;
+	font-size: 18px;
+	color: #fff;
+	line-height: 1.4;
+	background-color: #6c7ae0;
+}
+
+.table100-head th {
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+
+.wrap-table100 {
+	width: 1170px;
+}
+
+.column2 {
+	width: 13%;
+}
+
+.table100.ver1 th {
+	font-family: Lato-Bold;
+	font-size: 18px;
+	color: #fff;
+	line-height: 1.4;
+	background-color: #6c7ae0;
+}
+
+.table100-head th {
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+
+.column1 {
+	width: 33%;
+	padding-left: 40px;
 }
 </style>
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
@@ -125,11 +268,13 @@ table.cw td {
 				// 						+ $.datepicker.formatDate('YYYY-MM-DD', new Date()));
 			});
 	// import결제 함수
-	
- function popup3() {
-      window.open("/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅", 
-    		  "thisTok!","width=400, height=700, left=100, top=50");
- }
+
+	function popup3() {
+		window
+				.open(
+						"/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅",
+						"thisTok!", "width=400, height=700, left=100, top=50");
+	}
 </script>
 
 
@@ -140,7 +285,7 @@ table.cw td {
 
 	<div class="container" style="width: 1000px;">
 		<div style="width: 50%; float: left; height: 350px;">
-		
+
 			<label for="userNm" class="col-sm-2 control-label">${path }</label>
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
 			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
@@ -148,13 +293,13 @@ table.cw td {
 				style="float: right; width: 400px; height: 300px;"
 				alt="${cp}/image/cw.png" />
 		</div>
-			<input type="hidden" class="btn"><br> <br> <input
-				type="button" id="app" class="M_btn" value="매칭신청"><br>
-			<br> <input type="button" class="M_btn" value="화상채팅"
-				id="videochat"><br> <br> <input type="button"
-				class="M_btn" value="채팅" onclick="popup3()"> <input type="hidden" name="mem_id"
-				value="${mem_id}">
-		</div>
+		<input type="hidden" class="btn"><br> <br> <input
+			type="button" id="app" class="M_btn" value="매칭신청"><br> <br>
+		<input type="button" class="M_btn" value="화상채팅" id="videochat"><br>
+		<br> <input type="button" class="M_btn" value="채팅"
+			onclick="popup3()"> <input type="hidden" name="mem_id"
+			value="${mem_id}">
+	</div>
 	<!-- 일자 클릭시 메뉴오픈 -->
 	<div id="contextMenu" class="dropdown clearfix">
 		<ul class="dropdown-menu dropNewEvent" role="menu"
@@ -218,56 +363,59 @@ table.cw td {
 			</table>
 		</div>
 		<div id="loading"></div>
-		<div id="calendar"></div>
+		<div
+			style="float: center; padding: 30px; width: 1000px; height: 740px; background-color: #f8f6ff; margin-top: 50px; margin-left: 430px; border-radius: 10px;">
+			<div id="calendar" style="width: 800px; background-color: #f8f6ff"></div>
+		</div>
 	</div>
 
 	<!-- 일정 추가 MODAL -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="approvalModal">
 		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">결제하기</h4>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-title"></label><br>
-						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-cont"></label><br>
-						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-startDate"></label><br>
-						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-endDate"></label><br>
-						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-startTime"></label><br>
-						</div>
-						<!-- 							<div class="col-xs-12"> -->
-						<!-- 								<label class="col-xs-4" id="Ledit-endTime"></label><br> -->
-						<!-- 							</div> -->
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-type"></label><br>
-						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-cost"></label><br>
-						</div>
+			<!-- 			<div class="modal-content"> -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">결제하기</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-title"></label><br>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-cont"></label><br>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-startDate"></label><br>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-endDate"></label><br>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-startTime"></label><br>
+					</div>
+					<!-- 							<div class="col-xs-12"> -->
+					<!-- 								<label class="col-xs-4" id="Ledit-endTime"></label><br> -->
+					<!-- 							</div> -->
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-type"></label><br>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-4" id="Ledit-cost"></label><br>
 					</div>
 				</div>
-				<div class="modal-footer modalBtnContainer-addEvent">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary" id="save-event">결제</button>
-				</div>
 			</div>
-			<!-- /.modal-content -->
+			<div class="modal-footer modalBtnContainer-addEvent">
+				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" id="save-event">결제</button>
+			</div>
 		</div>
-		<!-- /.modal-dialog -->
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
 
@@ -334,8 +482,8 @@ table.cw td {
 
 
 							<div class="col-xs-7">
-								<label> <input type="checkbox"
-									name="timeInfo[]" value="1">09:00~10:00
+								<label> <input type="checkbox" name="timeInfo[]"
+									value="1">09:00~10:00
 								</label> <label> <input type="checkbox" name="timeInfo[]"
 									value="2">10:30~11:30
 								</label> <label> <input type="checkbox" name="timeInfo[]"
