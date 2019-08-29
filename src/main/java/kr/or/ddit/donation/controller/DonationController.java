@@ -106,7 +106,6 @@ public class DonationController {
 	public String memberInsertDonation(Model model, HttpSession session) {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("memberVo",memberVo);
-		logger.debug("☞!!!!!:123456{}",memberVo);
 		
 		return "donation/memberDonation";
 	}
