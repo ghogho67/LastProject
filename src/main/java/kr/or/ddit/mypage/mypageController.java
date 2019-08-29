@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.gold.gps.model.GpsVo;
 import kr.or.ddit.gold.gps.service.IGpsService;
 import kr.or.ddit.gold.sos.service.ISosService;
@@ -107,6 +108,11 @@ public class mypageController {
 			@RequestParam(name = "pro_relation") String pro_relation, @RequestParam(name = "pro_nm") String pro_nm,
 			@RequestParam(name = "pro_phone") String pro_phone) throws IllegalStateException, IOException {
 
+		
+		
+		
+		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
+		
 		String viewName;
 
 		String mem_nm = "";
@@ -149,7 +155,7 @@ public class mypageController {
 
 		if (grade.equals("3") == false) {
 
-			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, mem_pass, mem_phone, mem_add1, mem_add2,
+			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
 
@@ -214,6 +220,10 @@ public class mypageController {
 			@RequestParam(name = "addr1") String mem_add1, @RequestParam(name = "addr2") String mem_add2)
 			throws IllegalStateException, IOException {
 
+		
+		
+		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
+		
 		String viewName;
 
 		String mem_nm = "";
@@ -256,7 +266,7 @@ public class mypageController {
 
 		if (grade.equals("3")) {
 
-			updateMember = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, mem_pass, mem_phone, mem_add1, mem_add2,
+			updateMember = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
 

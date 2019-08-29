@@ -21,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.member.member.service.IMemberService;
 @RequestMapping("/find")
@@ -57,6 +58,7 @@ public class IdpwFinding {
 	@RequestMapping(path = "/passFind", method = RequestMethod.POST)
 	public String passFind2(String mem_mail, String mem_id, Model model) {
 		int mem_pass = (int)(Math.random()*10000)+999;
+		
 		Map<String, String> memInfo = new HashMap<String, String>();
 		logger.debug("☞:패스값이 값이 들어왔나요?");
 		logger.debug("☞mem_mail:{}",mem_mail);
@@ -69,7 +71,8 @@ public class IdpwFinding {
 		
 		
 		if(mem_mail.equals(memVo.getMem_mail() )) {
-			memInfo.put("mem_pass", Integer.toString(mem_pass));
+			String mem_pass2 = KISA_SHA256.encrypt(Integer.toString(mem_pass));
+			memInfo.put("mem_pass", mem_pass2);
 			memInfo.put("mem_id", mem_id);
 			memberService.passUpdate(memInfo);
 			

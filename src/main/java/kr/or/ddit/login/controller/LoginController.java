@@ -66,7 +66,9 @@ public class LoginController {
 	public String loginProcess(String mem_id, String mem_pass, String remember
 								,HttpServletResponse response, HttpSession session, Model model) {
 		String fail = "탈퇴회원이시거나 아이디,비밀번호가 틀렸습니다."; 
+	
 		String encyptPassword = KISA_SHA256.encrypt(mem_pass); /*mem_pass;*/
+
 		MemberVo memVo = memberService.getMemVo(mem_id);
 		
 		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
