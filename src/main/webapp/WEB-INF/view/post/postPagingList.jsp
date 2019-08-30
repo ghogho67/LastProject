@@ -351,7 +351,7 @@ th {
 											<td class="CategoryId"
 												style="text-align: center; width: 200px;"><c:if
 													test="${post.post_par eq 0}">
-														${((postCnt-status.index))-((current-1)*10)}
+														${((postCnt-status.index+1))-((current-1)*10)}
 													</c:if> <c:if test="${post.post_par ne 0 }">
 													<c:forEach var="i" begin="0" end="0">
 														<c:set var="number" value="${number+1 }" />
