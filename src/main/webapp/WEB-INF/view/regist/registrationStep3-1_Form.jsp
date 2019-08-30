@@ -761,7 +761,7 @@ function fileTypeCheck(obj) {
 											<div class="input-group p-has-icon">
 <%-- 												<input type="text" id="career_cont" name="career_cont" value="${career_cont }" --%>
 <!-- 													placeholder="이력 내용을 간단히 적어주세요" class="form-control"> -->
-													<textarea rows="1" cols="1" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" ></textarea>
+													<textarea rows="1" cols="1" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" maxlength="100"></textarea>
 													 <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
