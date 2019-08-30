@@ -340,7 +340,7 @@ th {
 								<th>게시글 번호</th>
 								<th style="text-align: left;">제목</th>
 								<th>작성자 아이디</th>
-<!-- 								<th>작성일시</th> -->
+								<th>작성일시</th>
 							</tr>
 							<c:set var="number" value="0" />
 							<c:forEach items="${postList }" var="post" varStatus="status">

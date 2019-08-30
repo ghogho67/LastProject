@@ -186,26 +186,13 @@ table.cw td {
 </script>
 
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 
-				$("#videochat").on("click", function() {
+		$("#videochat").on("click", function() {
 
-					window.open("${cp}/matching/webRtc")
-				});
-				var myDate = new Date();
-				// 				alert("myDate : " + myDate);
-				// 				alert("$('#edit-startDate').val() : "
-				// 						+ $('#edit-startDate').val());
-				$('#edit-startDate').val(myDate);
-				// 				alert("$('#edit-startDate').val() : "
-				// 						+ $('#edit-startDate').val());
-				// 		$("#edit-startDate").datepicker().datepicker("setDate", new Date());
-				$('#edit-startDate').val(
-						$.datepicker.formatDate('YYYY-MM-DD', new Date()));
-				// 				alert("$.datepicker.formatDate('YYYY-MM-DD', new Date()) : "
-				// 						+ $.datepicker.formatDate('YYYY-MM-DD', new Date()));
-			});
+			window.open("${cp}/matching/webRtc")
+		});
+	});
 	// import결제 함수
 
 	function popup3() {
@@ -215,7 +202,6 @@ table.cw td {
 						"thisTok!", "width=400, height=700, left=100, top=50");
 	}
 </script>
-
 
 </head>
 
@@ -309,15 +295,16 @@ table.cw td {
 	</div>
 
 	<!-- 일정 추가 MODAL -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="approvalModal">
+	<div class="modal fade" tabindex="-1" role="dialog" id="approvalModal"
+		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">결제하기</h4>
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-label="Close"> -->
+<!-- 						<span aria-hidden="true">&times;</span> -->
+<!-- 					</button> -->
+<!-- 					<h4 class="modal-title">결제하기</h4> -->
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -348,7 +335,8 @@ table.cw td {
 					</div>
 				</div>
 				<div class="modal-footer modalBtnContainer-addEvent">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="cancel2">취소</button>
 					<button type="button" class="btn btn-primary" id="save-event">결제</button>
 				</div>
 			</div>
@@ -359,14 +347,15 @@ table.cw td {
 	<!-- /.modal -->
 
 	<!-- 일정 추가 MODAL -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
+	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal"
+		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-label="Close"> -->
+<!-- 						<span aria-hidden="true">&times;</span> -->
+<!-- 					</button> -->
 					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
@@ -495,7 +484,8 @@ table.cw td {
 					</div>
 				</div>
 				<div class="modal-footer modalBtnContainer-addEvent">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-default" id="cancel1"
+						data-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-primary" id="save-event2">저장</button>
 				</div>
 				<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->
