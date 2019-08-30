@@ -344,7 +344,7 @@ td {
 			<nav class="pagination-outer" aria-label="Page navigation">
 				<ul class="pagination">
 					<c:choose>
-						<c:when test="${pageVo.page==1}">
+						<c:when test="${pageVo.page==1 || pageVo.page==0}">
 							<li class="page-item prev disabled"><a href="#"
 								class="page-link" aria-label="Previous"> <span
 									aria-hidden="true">«</span>
@@ -388,22 +388,22 @@ td {
 					</c:forEach>
 
 					<c:choose>
-						<c:when test="${pageVo.page == lastpaginationSize}">
+						<c:when test="${pageVo.page == lastpaginationSize || lastpaginationSize==0}">
 							<li class="page-item next disabled"><a href="#"
 								class="page-link" aria-label="Next"> <span
-									aria-hidden="true">›</span>
+									aria-hidden="true">›  !!!!!!!!!${lastpaginationSize}</span>
 							</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link" aria-label="Next"
 								href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
-									aria-hidden="true">›</span></a></li>
+									aria-hidden="true">› </span></a></li>
 						</c:otherwise>
 					</c:choose>
 
 
 					<c:choose>
-						<c:when test="${pageVo.page == lastpaginationSize}">
+						<c:when test="${pageVo.page == lastpaginationSize || lastpaginationSize==0}">
 							<li class="page-item next disabled"><a href="#"
 								class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</c:when>
