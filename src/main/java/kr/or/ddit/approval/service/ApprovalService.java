@@ -248,6 +248,11 @@ public class ApprovalService implements IApprovalService {
 		resultMap.put("lastpaginationSize", paginationSize);
 		return resultMap;
 	}
+
+	@Override
+	public int insertApproval_memGOLD(String mem_id) {
+		return approvalDao.insertApproval_memGOLD(mem_id);
+	}
 	
 	
 	
