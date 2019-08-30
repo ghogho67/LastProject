@@ -235,7 +235,6 @@ public class MatchingController {
 			list.add(vo);
 		}
 
-//		ObjectMapper mapper = new ObjectMapper();
 //		String jsonText = mapper.writeValueAsString(list);
 //		model.addAttribute("json", jsonText);
 		logger.debug("☞list:{}", list);
@@ -289,7 +288,7 @@ public class MatchingController {
 			mvo.setMem_gender("여자");
 		}
 
-		if (mvo.getMem_gender().equals("Y")) {
+		if (mvo.getCw_driver().equals("Y")) {
 			mvo.setCw_driver("운전 가능");
 		} else {
 			mvo.setCw_driver("운전 불가능");
@@ -365,7 +364,6 @@ public class MatchingController {
 
 		logger.debug("☞insertCalendar");
 
-		logger.debug("☞insertCalendar");
 		logger.debug("☞list:{}", list);
 
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
