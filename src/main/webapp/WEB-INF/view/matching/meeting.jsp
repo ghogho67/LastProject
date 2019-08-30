@@ -199,7 +199,7 @@ table.cw td {
 		window
 				.open(
 						"/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅",
-						"thisTok!", "width=400, height=700, left=100, top=50");
+						"thisTok!", "width=550, height=700, left=100, top=50");
 	}
 </script>
 
@@ -215,7 +215,7 @@ table.cw td {
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
 			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
 			<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
-				style="width: 400px; height: auto; position: absolute; left: 26%; top: 83px;"
+				style="width: 300px; height: 350px; position: absolute; left: 25%; top: 100px;"
 				alt="${cp}/image/logosam.png" />
 		</div>
 		<input type="hidden" class="btn"><br> <br> <input

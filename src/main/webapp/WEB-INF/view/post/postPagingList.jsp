@@ -229,6 +229,12 @@ th {
 	min-height: 40px;
 	border-radius: 6px;
 }
+
+#write{
+	    margin-top: -18px;
+	    margin-right: 5px;
+	
+}
 </style>
 
 
@@ -326,7 +332,7 @@ th {
 					</c:if>
 				</div>
 				<div style="text-align: right; padding-right: 10px;">
-					<a class="btn btn-primary btn-sm"
+					<a id="write" class="btn btn-primary btn-sm"
 						href="${cp}/post/register?cate_id=${cate_id}">글쓰기</a>&nbsp;
 
 				</div>
