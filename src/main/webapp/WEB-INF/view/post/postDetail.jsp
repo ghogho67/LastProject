@@ -233,7 +233,7 @@ img {
 									</c:when>
 									<c:otherwise>
 										<div>
-											<div style="width: 5%; height: 70px; display: inline-block;">
+											<div style="width: 5%; height: 50px; display: inline-block;">
 												<img id="img"
 													src="${cp }/matching/photo?mem_id=${reply.mem_id }"
 													style="width: 40px; height: 40px; border-radius: 100%;"
