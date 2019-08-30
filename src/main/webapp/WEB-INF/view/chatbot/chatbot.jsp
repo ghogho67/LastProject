@@ -38,6 +38,7 @@ input {
      min-height: 20px;
     border-radius: 6px;
      padding: 1px 1px;
+     border: 1px gray;    background-color: #f3f3f3;
 }
 
 
