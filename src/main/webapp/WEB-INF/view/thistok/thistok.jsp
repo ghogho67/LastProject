@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Exo', "Open Sans";
+font-family: 'Noto Sans KR', sans-serif;
   background: #e5e5e5;
 }
 
