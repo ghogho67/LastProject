@@ -72,7 +72,6 @@ input[type="text"]::-webkit-input-value {
 		var msg = '${msg}';
 		if (msg != '')
 			alert(msg);
-		
 
 		$('#addrSearchbtn').on('click', function() {
 			new daum.Postcode({
@@ -121,14 +120,12 @@ input[type="text"]::-webkit-input-value {
 												<div class="form-group">
 													<label class="col-md-12">프로필사진</label>
 													<div class="col-md-12">
-
-
 														<div class="file_input" style="text-align: right;">
 															<label>파일첨부<input type="file"
 																onchange="javascript:document.getElementById('file_route').value=this.value"
 																id="profile" name="profile">
 															</label> <input type="text" readonly="readonly"
-																title="File Route" id="file_route">
+																title="File Route" id="file_route" value="${MEM_INFO.mem_photo_path}">
 														</div>
 
 
@@ -225,7 +222,7 @@ input[type="text"]::-webkit-input-value {
 													<div class="col-md-10">
 														<input type="text" value="${MEM_INFO.mem_zipcd}"
 															class="form-control form-control-line" name="zipcd"
-															id="zipcd"  readonly="readonly">
+															id="zipcd" readonly="readonly">
 													</div>
 
 													<button style="position: absolute; left: 85%; top: 30px;"
@@ -242,7 +239,7 @@ input[type="text"]::-webkit-input-value {
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.mem_add1}"
 															class="form-control form-control-line" name="addr1"
-															id="addr1"  readonly="readonly">
+															id="addr1" readonly="readonly">
 													</div>
 												</div>
 
@@ -253,7 +250,7 @@ input[type="text"]::-webkit-input-value {
 													<div class="col-md-12">
 														<input type="text" value="${MEM_INFO.mem_add2}"
 															class="form-control form-control-line" name="addr2"
-															id="addr2" >
+															id="addr2">
 													</div>
 												</div>
 

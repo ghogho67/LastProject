@@ -114,7 +114,6 @@ public class mypageController {
 		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
 		
 		String viewName;
-
 		String mem_nm = "";
 		String mem_birth = "";
 		String mem_gender = "";
@@ -135,17 +134,15 @@ public class mypageController {
 		logger.debug("@@@@pro_relation : {} ", pro_relation);
 		logger.debug("@@@@pro_nm : {} ", pro_nm);
 		logger.debug("@@@@pro_phone : {} ", pro_phone);
+		logger.debug("@@@@profile : {} ", profile);
 
 		MemberVo memberVo = null;
 
 		if (profile.getSize() > 0) {
 			String fileName = profile.getOriginalFilename();
 			String ext = PartUtil.getExt(fileName);
-
 			String uploadPath = PartUtil.getUploadPath();
-
 			String filePath = uploadPath + File.separator + UUID.randomUUID().toString() + ext;
-
 			mem_photo_path = filePath;
 			mem_photo_nm = fileName;
 
@@ -154,18 +151,31 @@ public class mypageController {
 		}
 
 		if (grade.equals("3") == false) {
-
 			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
+		if(profile.getOriginalFilename().isEmpty()){
+			logger.debug("@@@@updatePMemberNoPro : {} ", mem_id);
+			
+				int updateCnt = memberService.updatePMemberNoPro(memberVo);
+				logger.debug("@@@@updateCnt : {} ", updateCnt);
+
+				if (updateCnt != 1) {
+					viewName = "redirect:/login";
+				}
+
+		}else {
+			logger.debug("@@@@updatePMember : {} ", mem_id);
 
 			int updateCnt = memberService.updatePMember(memberVo);
-
 			logger.debug("@@@@updateCnt : {} ", updateCnt);
 
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
+		}
+
+			
 			memberVo = memberService.getMemVo(mem_id);
 			session.setAttribute("MEM_INFO", memberVo);
 
@@ -217,21 +227,20 @@ public class mypageController {
 			@RequestParam(name = "memid") String mem_id, @RequestParam(name = "grade") String grade,
 			@RequestParam(name = "pass") String mem_pass, @RequestParam(name = "email") String mem_mail,
 			@RequestParam(name = "phone") String mem_phone, @RequestParam(name = "zipcd") String mem_zipcd,
+			@RequestParam(name = "searchType")String searchType,
 			@RequestParam(name = "addr1") String mem_add1, @RequestParam(name = "addr2") String mem_add2)
 			throws IllegalStateException, IOException {
 
-		
-		
-		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
-		
-		String viewName;
+		logger.debug("@@@@ Search @@@@ select:{}",searchType);
+		String cw_driver = searchType;
 
+		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
+		String viewName;
 		String mem_nm = "";
 		String mem_birth = "";
 		String mem_gender = "";
 		String mem_del = "";
 		String mem_grade = "";
-		String cw_driver = "";
 		String cw_lic = "";
 		String mem_photo_path = "";
 		String mem_photo_nm = "";
@@ -265,16 +274,31 @@ public class mypageController {
 		}
 
 		if (grade.equals("3")) {
-
 			updateMember = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
+			
+			if(profile.getOriginalFilename().isEmpty()){
+				
+
+				int updateCnt = memberService.updateMemberNoPro(updateMember);
+
+				if (updateCnt != 1) {
+					viewName = "redirect:/login";
+				}
+
+		}else {
+			
 
 			int updateCnt = memberService.updateMember(updateMember);
 
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
+		}
+			
+			
+			
 			MemberVo memberVo = memberService.getMemVo(mem_id);
 
 			session.setAttribute("MEM_INFO", memberVo);

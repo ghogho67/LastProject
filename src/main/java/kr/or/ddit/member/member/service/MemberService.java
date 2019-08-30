@@ -183,4 +183,18 @@ public class MemberService implements IMemberService {
 
 
 
+	@Override
+	public int updatePMemberNoPro(MemberVo memberVo) {
+		return memberDao.updatePMemberNoPro(memberVo);
+	}
+
+
+
+	@Override
+	public int updateMemberNoPro(MemberVo updateMember) {
+		return memberDao.updateMemberNoPro(updateMember);
+	}
+
+
+
 }

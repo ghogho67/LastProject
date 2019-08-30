@@ -24,6 +24,17 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+.rBtn{
+	border: 1px solid #098cd985;
+	border-radius: 5px;
+ 	background-color: #098cd985; 
+ 	color: white; 
+	padding: 2px;
+}
+</style>
+
 <script>
 $(document).ready(function() {
 
@@ -182,7 +193,7 @@ $(document).ready(function() {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				//주소 input value에 설정data.roadAddress
-				$("#mem_addr1").val(data.jibunAddress);
+				$("#mem_add1").val(data.jibunAddress);
 				//우편번호 input value에 설정data.zonecode
 				$("#mem_zipcd").val(data.zonecode);
 
@@ -479,8 +490,8 @@ function fileTypeCheck(obj) {
 									<div class="form-group">
 										<label for="email1">주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr1" name="mem_add1"
-												placeholder="주소" class="form-control" value="${mem_addr1 }"
+											<input type="text" id="mem_add1" name="mem_add1"
+												placeholder="주소" class="form-control" value="${mem_add1 }"
 												readonly> <span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
@@ -489,7 +500,7 @@ function fileTypeCheck(obj) {
 												class="fa fa-check"></i></span>
 										</div>
 										<div>
-											<button id="addrSearchBtn" type="button">주소검색</button>
+											<button id="addrSearchBtn" type="button" class="rBtn">주소검색</button>
 										</div>
 
 									</div>
@@ -750,7 +761,7 @@ function fileTypeCheck(obj) {
 											<div class="input-group p-has-icon">
 <%-- 												<input type="text" id="career_cont" name="career_cont" value="${career_cont }" --%>
 <!-- 													placeholder="이력 내용을 간단히 적어주세요" class="form-control"> -->
-													<textarea rows="1" cols="1" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" ></textarea>
+													<textarea rows="1" cols="1" id="career_cont" name="career_cont" placeholder="이력 내용을 간당히 적어주세요" class="form-control" maxlength="100"></textarea>
 													 <span
 													class="input-group-state"><span class="p-position"><span
 														class="p-text"><span class="p-valid-text"><i
@@ -773,10 +784,10 @@ function fileTypeCheck(obj) {
 
 							<div id="div01">
 							</div>
-							<button type="button" id="refresh">새로고침</button><br>
+							<button type="button" id="refresh" class="rBtn">새로고침</button><br>
 								<input type="hidden" id="key" name="key">
 								<input type="text" name="value" id="value">
-								<button type="button" id="btn01">전송</button>
+								<button type="button" id="btn01" class="rBtn">전송</button>
 
 
 								<div class="preview-btn text-left p-buttons">
