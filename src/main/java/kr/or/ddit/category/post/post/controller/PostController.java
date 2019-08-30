@@ -466,15 +466,16 @@ public class PostController {
 				.get("totalCount").getAsDouble();
 		int boardCnt2 = (int) boardCnt;
 
-		model.addAttribute("list", list);
-
-		Collections.sort(list, new Comparator<ImageBoardVo>() {
-
-			@Override
-			public int compare(ImageBoardVo o1, ImageBoardVo o2) {
-				return o1.getEventstartdate().compareTo(o2.getEventstartdate());
-			}
-		});
+		
+		if(list!=null) {
+			Collections.sort(list, new Comparator<ImageBoardVo>() {
+				
+				@Override
+				public int compare(ImageBoardVo o1, ImageBoardVo o2) {
+					return o1.getEventstartdate().compareTo(o2.getEventstartdate());
+				}
+			});
+		}
 
 		model.addAttribute("boardCnt", boardCnt2);
 //        logger.debug("!!!!! list:{}",list);
@@ -495,6 +496,8 @@ public class PostController {
 		if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
 			paginationSize = lastpaginationSize;
 		}
+		
+		model.addAttribute("list", list);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("lastpaginationSize", lastpaginationSize);

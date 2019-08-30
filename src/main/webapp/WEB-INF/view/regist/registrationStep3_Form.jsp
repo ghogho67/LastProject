@@ -19,6 +19,17 @@
 	
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+.rBtn{
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+ 	background-color: #aaaaaa; 
+ 	color: white; 
+	padding: 2px;
+}
+</style>
+
 <script>
 	$(document).ready(function() {
 
@@ -102,6 +113,8 @@
 			}else if($("input[name=mem_gender]:checked").val()==''||$("input[name=mem_gender]:checked").val()==null){
 				alert("성별을 넣어주세요");
 				return
+			}else if($('#capcha_check').val()=='N'){
+				alert("캡차 인증을 완료해주세요");
 			}
 			
 			
@@ -167,7 +180,7 @@
 				oncomplete : function(data) {
 					//주소 input value에 설정data.roadAddress
 					console.log(data);
-					$("#mem_addr1").val(data.jibunAddress);
+					$("#mem_add1").val(data.jibunAddress);
 					//우편번호 input value에 설정data.zonecode
 					$("#mem_zipcd").val(data.zonecode);
 
@@ -203,8 +216,10 @@
 					console.log(data);
 					if(data.result==1){
 						alert("인증성공");
+						$('#capcha_check').val("Y");
 					}else{
 						alert("실패");
+						$('#capcha_check').val("N");
 					}
 				}
 			});
@@ -212,6 +227,7 @@
 		
 		$("#refresh").on("click",function(){
 			captcha();
+			$('#capcha_check').val("N");
 		});
 	});
 	
@@ -406,8 +422,8 @@
 									<div class="form-group">
 										<label for="email1">주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr1" name="mem_add1"
-												placeholder="주소" class="form-control" value="${mem_addr1 }"
+											<input type="text" id="mem_add1" name="mem_add1"
+												placeholder="주소" class="form-control" value="${mem_add1 }"
 												readonly> <span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
@@ -416,7 +432,7 @@
 												class="fa fa-check"></i></span>
 										</div>
 										<div>
-											<button id="addrSearchBtn" type="button">주소검색</button>
+											<button id="addrSearchBtn" type="button" class="rBtn">주소검색</button>
 										</div>
 
 									</div>
@@ -650,10 +666,12 @@
 
 					<div id="div01">
 					</div>
-					<button type="button" id="refresh">새로고침</button><br>
+					<button type="button" id="refresh" class="rBtn">새로고침</button><br>
 						<input type="hidden" id="key" name="key">
 						<input type="text" name="value" id="value">
+						<input type="hidden" id="capcha_check" name="capcha_check" value="N">
 						<button type="button" id="btn01">전송</button>
+
 
 
 

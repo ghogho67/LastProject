@@ -42,6 +42,11 @@ tr {
 }
 
 td {
+	width: 25%;
+}
+
+th {
+	width: 25%;
 	text-align: center;
 }
 
@@ -231,7 +236,6 @@ td {
 	$(document).ready(function() {
 		$(".Category").on("click", function() {
 			var post_id = $(this).find(".post_id").text();
-// 			alert(post_id);
 			$("#post_id").val(post_id);
 			$("#frm").submit();
 		});
@@ -299,24 +303,24 @@ td {
 					<c:if test="${cate_id eq 30011 }">
 
 						<h2>
-							<span>공지사항</span> 
-<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
+							<span>공지사항</span>
+							<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
 						</h2>
 
 					</c:if>
 					<c:if test="${cate_id eq 30012 }">
 
 						<h2>
-							<span>자유게시판</span> 
-<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
+							<span>자유게시판</span>
+							<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
 						</h2>
 
 					</c:if>
 					<c:if test="${cate_id eq 30013 }">
 
 						<h2>
-							<span>QNA</span> 
-<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
+							<span>QNA</span>
+							<%-- 							프로그램_관리 cate_id : ${cate_id } --%>
 						</h2>
 
 					</c:if>
@@ -334,7 +338,7 @@ td {
 						<table class="table center-aligned-table">
 							<tr class="text-primary">
 								<th>게시글 번호</th>
-								<th>제목</th>
+								<th style="text-align: left;">제목</th>
 								<th>작성자 아이디</th>
 								<th>작성일시</th>
 							</tr>
@@ -343,8 +347,9 @@ td {
 								<c:choose>
 									<c:when test="${post.post_del eq 'N' }">
 										<tr class="Category" id="${post.post_id }"
-											data-post_id="${post.post_id }">
-											<td class="CategoryId"><c:if
+											data-post_id="${post.post_id }" style="text-align: center">
+											<td class="CategoryId"
+												style="text-align: center; width: 200px;"><c:if
 													test="${post.post_par eq 0}">
 														${((postCnt-status.index))-((current-1)*10)}
 													</c:if> <c:if test="${post.post_par ne 0 }">
@@ -352,13 +357,14 @@ td {
 														<c:set var="number" value="${number+1 }" />
 													</c:forEach>
 												</c:if></td>
-											<td><c:if test="${post.level > 1 }">
+											<td style="text-align: left;"><c:if
+													test="${post.level > 1 }">
 													<c:forEach var="i" begin="1" end="${post.level+1 }"
 														step="1">
 															&nbsp;&nbsp;
 														</c:forEach>
-												</c:if> ${post.post_nm }</td>
-											<td>${post.mem_id }</td>
+												</c:if>${post.post_nm }</td>
+											<td style="text-align: center;">${post.mem_id }</td>
 											<td><fmt:formatDate value="${post.post_time }"
 													pattern="yyyy-MM-dd" /></td>
 											<td class="post_id" style="display: none;">${post.post_id }</td>

@@ -26,7 +26,7 @@ img {
 	text-align: center;
 	background: #78d3f5;
 	box-sizing: border-box;
-	border-radius: 50px;
+	border-radius: 10px;
 	color: #fff;
 	font-size: 18px;
 	font-weight: bold;
@@ -79,14 +79,17 @@ table.cw thead th {
 	padding-top: 16px;
 	padding-bottom: 16px;
 	padding-left: 40px;
+	width: 100px;
 }
 
 table.cw thead th:nth-child(1) {
-	border-top-left-radius: 15px;
+	border-top-left-radius: 10px;
+	border-right: 1px solid #6c7ae0;
 }
 
 table.cw thead th:nth-child(2) {
-	border-top-right-radius: 15px;
+	border-top-right-radius: 10px;
+	border-left: 1px solid #6c7ae0;
 }
 
 table.cw tbody th:nth-child(even) {
@@ -105,6 +108,13 @@ table.cw tbody th:nth-child(even) {
 	padding-left: 40px;
 }
 
+table.cw tbody th:nth-child(odd) {
+	border-right: 1px solid white;
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
 table.cw tbody tr:nth-child(even) {
 	border-right: 1px solid #f8f6ff;
 	border-left: 1px solid #f8f6ff;
@@ -114,6 +124,13 @@ table.cw tbody tr:nth-child(even) {
 	padding-top: 16px;
 	padding-bottom: 16px;
 	padding-left: 40px;
+}
+
+table.cw tbody tr:nth-child(odd) {
+	border-right: 1px solid #f8f6ff;
+	border-left: 1px solid #f8f6ff;
+	border-top: 1px solid #f8f6ff;
+	border-bottom: 1px solid #f8f6ff;
 }
 
 table.cw tbody tr th {
@@ -140,86 +157,8 @@ table.cw td {
 	border-bottom: 1px solid #f8f6ff;
 	color: #808080;
 }
-
-table.cw tbody td:last-child {
-	border-bottom-right-radius: 15px;
-}
-table.cw tbody td:last-child {
-	border-bottom-left-radius: 15px;
-}
 </style>
 
-
-<style>
-.table100-head {
-	position: absolute;
-	width: 100%;
-	top: 0;
-	left: 0;
-}
-
-.table100.ver1 th {
-	font-family: Lato-Bold;
-	font-size: 18px;
-	color: #fff;
-	line-height: 1.4;
-	background-color: #6c7ae0;
-}
-
-.table100-head th {
-	padding-top: 18px;
-	padding-bottom: 18px;
-}
-
-.column1 {
-	width: 33%;
-	padding-left: 40px;
-}
-
-th, td {
-	font-weight: unset;
-	padding-right: 10px;
-}
-
-table100.ver1 th {
-	font-family: Lato-Bold;
-	font-size: 18px;
-	color: #fff;
-	line-height: 1.4;
-	background-color: #6c7ae0;
-}
-
-.table100-head th {
-	padding-top: 18px;
-	padding-bottom: 18px;
-}
-
-.wrap-table100 {
-	width: 1170px;
-}
-
-.column2 {
-	width: 13%;
-}
-
-.table100.ver1 th {
-	font-family: Lato-Bold;
-	font-size: 18px;
-	color: #fff;
-	line-height: 1.4;
-	background-color: #6c7ae0;
-}
-
-.table100-head th {
-	padding-top: 18px;
-	padding-bottom: 18px;
-}
-
-.column1 {
-	width: 33%;
-	padding-left: 40px;
-}
-</style>
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
 	type="text/javascript"></script>
 <script
@@ -247,26 +186,13 @@ table100.ver1 th {
 </script>
 
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 
-				$("#videochat").on("click", function() {
+		$("#videochat").on("click", function() {
 
-					window.open("${cp}/matching/webRtc")
-				});
-				var myDate = new Date();
-				// 				alert("myDate : " + myDate);
-				// 				alert("$('#edit-startDate').val() : "
-				// 						+ $('#edit-startDate').val());
-				$('#edit-startDate').val(myDate);
-				// 				alert("$('#edit-startDate').val() : "
-				// 						+ $('#edit-startDate').val());
-				// 		$("#edit-startDate").datepicker().datepicker("setDate", new Date());
-				$('#edit-startDate').val(
-						$.datepicker.formatDate('YYYY-MM-DD', new Date()));
-				// 				alert("$.datepicker.formatDate('YYYY-MM-DD', new Date()) : "
-				// 						+ $.datepicker.formatDate('YYYY-MM-DD', new Date()));
-			});
+			window.open("${cp}/matching/webRtc")
+		});
+	});
 	// import결제 함수
 
 	function popup3() {
@@ -276,7 +202,6 @@ table100.ver1 th {
 						"thisTok!", "width=400, height=700, left=100, top=50");
 	}
 </script>
-
 
 </head>
 
@@ -290,8 +215,8 @@ table100.ver1 th {
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
 			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
 			<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
-				style="float: right; width: 400px; height: 300px;"
-				alt="${cp}/image/cw.png" />
+				style="width: 400px; height: auto; position: absolute; left: 26%; top: 83px;"
+				alt="${cp}/image/logosam.png" />
 		</div>
 		<input type="hidden" class="btn"><br> <br> <input
 			type="button" id="app" class="M_btn" value="매칭신청"><br> <br>
@@ -364,70 +289,73 @@ table100.ver1 th {
 		</div>
 		<div id="loading"></div>
 		<div
-			style="float: center; padding: 30px; width: 1000px; height: 740px; background-color: #f8f6ff; margin-top: 50px; margin-left: 430px; border-radius: 10px;">
-			<div id="calendar" style="width: 800px; background-color: #f8f6ff"></div>
+			style="float: center; padding: 10px; width: 1000px; height: 820px; background-color: #f8f6ff; margin-top: 50px; margin-left: 430px; border-radius: 10px;">
+			<div id="calendar" style="width: 900px; background-color: #f8f6ff"></div>
 		</div>
 	</div>
 
 	<!-- 일정 추가 MODAL -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="approvalModal">
+	<div class="modal fade" tabindex="-1" role="dialog" id="approvalModal"
+		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" role="document">
-			<!-- 			<div class="modal-content"> -->
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title">결제하기</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-title"></label><br>
-					</div>
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-cont"></label><br>
-					</div>
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-startDate"></label><br>
-					</div>
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-endDate"></label><br>
-					</div>
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-startTime"></label><br>
-					</div>
-					<!-- 							<div class="col-xs-12"> -->
-					<!-- 								<label class="col-xs-4" id="Ledit-endTime"></label><br> -->
-					<!-- 							</div> -->
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-type"></label><br>
-					</div>
-					<div class="col-xs-12">
-						<label class="col-xs-4" id="Ledit-cost"></label><br>
+			<div class="modal-content">
+				<div class="modal-header">
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-label="Close"> -->
+<!-- 						<span aria-hidden="true">&times;</span> -->
+<!-- 					</button> -->
+<!-- 					<h4 class="modal-title">결제하기</h4> -->
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-title"></label><br>
+						</div>
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-cont"></label><br>
+						</div>
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-startDate"></label><br>
+						</div>
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-endDate"></label><br>
+						</div>
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-startTime"></label><br>
+						</div>
+						<!-- 							<div class="col-xs-12"> -->
+						<!-- 								<label class="col-xs-4" id="Ledit-endTime"></label><br> -->
+						<!-- 							</div> -->
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-type"></label><br>
+						</div>
+						<div class="col-xs-12">
+							<label class="col-xs-4" id="Ledit-cost"></label><br>
+						</div>
 					</div>
 				</div>
+				<div class="modal-footer modalBtnContainer-addEvent">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="cancel2">취소</button>
+					<button type="button" class="btn btn-primary" id="save-event">결제</button>
+				</div>
 			</div>
-			<div class="modal-footer modalBtnContainer-addEvent">
-				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary" id="save-event">결제</button>
-			</div>
+			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
+		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
 
 	<!-- 일정 추가 MODAL -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
+	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal"
+		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-label="Close"> -->
+<!-- 						<span aria-hidden="true">&times;</span> -->
+<!-- 					</button> -->
 					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
@@ -556,7 +484,8 @@ table100.ver1 th {
 					</div>
 				</div>
 				<div class="modal-footer modalBtnContainer-addEvent">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-default" id="cancel1"
+						data-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-primary" id="save-event2">저장</button>
 				</div>
 				<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->

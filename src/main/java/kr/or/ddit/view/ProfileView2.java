@@ -47,7 +47,7 @@ public class ProfileView2 implements View {
 		if (filePath != null) {
 			filePath = memberVo.getMem_photo_path();
 		} else {
-			filePath = request.getServletContext().getRealPath("/image/Test1.png");
+			filePath = request.getServletContext().getRealPath("/image/tes.png");
 			// webapp/image/no_image.gif
 		}
 		// path정보로 file을 읽어 드여서
@@ -57,7 +57,7 @@ public class ProfileView2 implements View {
 			file = new File(filePath);
 			fis = new FileInputStream(file);
 		} catch (FileNotFoundException e) {
-			filePath = request.getServletContext().getRealPath("/image/Test1.png");
+			filePath = request.getServletContext().getRealPath("/image/tes.png");
 			file = new File(filePath);
 			fis = new FileInputStream(file);
 			// TODO: handle exception

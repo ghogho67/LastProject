@@ -96,9 +96,12 @@ textarea {
 	color: #1c1e21;
 	line-height: 16px;
 	width: 80%;
-	float: left;
-	margin-top: 18px;
 	margin-left: 3px;
+	margin-top: 10px;
+}
+
+img {
+	vertical-align: none;
 }
 </style>
 
@@ -117,7 +120,6 @@ textarea {
 				$("#replyBtn").on(
 						"click",
 						function() {
-							alert($("#reply_cont").val());
 							if ($("#reply_cont").val() === '<p>&nbsp;</p>'
 									|| $("#reply_cont").val() === '') {
 								alert("내용을 입력해주세요")
@@ -180,7 +182,7 @@ textarea {
 						<div style="width: 8%; float: left;">
 							<img id="img"
 								src="${cp }/matching/photo?mem_id=${reply.mem_id } "
-								style="width: 100px; height: 100px;" alt="${cp}/image/cw.png" />
+								style="width: 100px; height: 100px;" alt="${cp}/image/tes.png" />
 						</div>
 						<div class=" col-sm-12">
 							<h2>${postVo.post_nm}</h2>
@@ -220,31 +222,36 @@ textarea {
 					</c:forEach>
 					<div class=" col-sm-12">
 						<hr>
-						<label for="userNm" class="col-sm-2 control-label">댓글</label>
+						<label for="userNm" class="col-sm-2 control-label">댓글</label> <br>
+						<br>
 						<div>
+
 							<c:forEach items="${replyList}" var="reply">
 								<c:choose>
 									<c:when test="${reply.reply_del eq 'Y'}">
 										<div>삭제된 댓글입니다</div>
 									</c:when>
 									<c:otherwise>
-										<div style="clear: both">
-											<div style="width: 8%; float: left;">
+										<div>
+											<div style="width: 5%; height: 50px; display: inline-block;">
 												<img id="img"
-													src="${cp }/matching/photo?mem_id=${reply.mem_id } "
-													style="width: 100px; height: 100px;"
-													alt="${cp}/image/cw.png" />
+													src="${cp }/matching/photo?mem_id=${reply.mem_id }"
+													style="width: 40px; height: 40px; border-radius: 100%;"
+													alt="${cp}/image/tes.png" />
 											</div>
-											<div style="width: 90%; float: left;" id="re">
+											<div
+												style="width: 90%; height: 50px; display: inline-block; vertical-align: middle;"
+												id="re">
 												<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>${reply.mem_id }
 												</strong>
-
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.reply_cont}
 												<br> <br>
 											</div>
-											&nbsp;&nbsp;&nbsp;&nbsp;
-											<fmt:formatDate value="${reply.reply_time }"
-												pattern="yyyy.MM.dd. hh:mm" />
+											<div>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<fmt:formatDate value="${reply.reply_time }"
+													pattern="yyyy.MM.dd. hh:mm" />
+											</div>
 											<br>
 										</div>
 									</c:otherwise>
@@ -262,9 +269,7 @@ textarea {
 				<form id="replyfrm" method="post" action="${cp}/reply/register">
 					<div id="reply_box">
 						<textarea name="reply_cont" id="reply_cont" class="form-control"
-							style="height: 100px; width: 100%;"></textarea>
-
-
+							style="height: 100px; width: 100%;" maxlength="100"></textarea>
 
 						<button id="replyBtn" type="button" class="postbtn btn-primary "
 							name="button" style="position: relative; left: 93%;">댓글
