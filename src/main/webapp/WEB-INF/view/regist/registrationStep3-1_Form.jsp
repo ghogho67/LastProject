@@ -133,6 +133,8 @@ $(document).ready(function() {
 		}else if($("input[name=cw_day]:checked").val()==''||$("input[name=cw_day]:checked").val()==null){
 			alert("서비스가능요일을 넣어주세요");
 			return
+		}else if($('#capcha_check').val()=='N'){
+			alert("캡차 인증을 완료해주세요");
 		}
 
 		
@@ -228,8 +230,10 @@ $(document).ready(function() {
 				console.log(data);
 				if(data.result==1){
 					alert("인증성공");
+					$('#capcha_check').val("Y");
 				}else{
 					alert("실패");
+					$('#capcha_check').val("N");
 				}
 			}
 		});
@@ -237,6 +241,7 @@ $(document).ready(function() {
 	
 	$("#refresh").on("click",function(){
 		captcha();
+		$('#capcha_check').val("N");
 	});
 });
 
@@ -787,6 +792,7 @@ function fileTypeCheck(obj) {
 							<button type="button" id="refresh" class="rBtn">새로고침</button><br>
 								<input type="hidden" id="key" name="key">
 								<input type="text" name="value" id="value">
+								<input type="hidden" id="capcha_check" name="capcha_check" value="N">
 								<button type="button" id="btn01" class="rBtn">전송</button>
 
 
