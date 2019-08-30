@@ -178,7 +178,7 @@
 				oncomplete : function(data) {
 					//주소 input value에 설정data.roadAddress
 					console.log(data);
-					$("#mem_addr1").val(data.jibunAddress);
+					$("#mem_add1").val(data.jibunAddress);
 					//우편번호 input value에 설정data.zonecode
 					$("#mem_zipcd").val(data.zonecode);
 
@@ -417,8 +417,8 @@
 									<div class="form-group">
 										<label for="email1">주소</label>
 										<div class="input-group p-has-icon">
-											<input type="text" id="mem_addr1" name="mem_add1"
-												placeholder="주소" class="form-control" value="${mem_addr1 }"
+											<input type="text" id="mem_add1" name="mem_add1"
+												placeholder="주소" class="form-control" value="${mem_add1 }"
 												readonly> <span class="input-group-state"><span
 												class="p-position"><span class="p-text"><span
 														class="p-valid-text"><i class="fa fa-check"></i></span> <span
