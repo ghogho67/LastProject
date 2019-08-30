@@ -165,5 +165,13 @@ public interface IMemberDao {
 	* Method 설명 :전체 회원 페이징 리스트
 	*/
 	List<MemberVo> getAllMemberList(PageVo pageVo);
+
+
+
+	int updatePMemberNoPro(MemberVo memberVo);
+
+
+
+	int updateMemberNoPro(MemberVo updateMember);
 	
 }

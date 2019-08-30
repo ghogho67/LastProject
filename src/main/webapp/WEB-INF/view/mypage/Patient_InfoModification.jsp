@@ -123,8 +123,7 @@ input[type="text"]::-webkit-input-value {
 														<div class="file_input" style="text-align: right;">
 															<label>파일첨부<input type="file"
 																onchange="javascript:document.getElementById('file_route').value=this.value"
-																id="profile" name="profile"
-																value="${MEM_INFO.mem_photo_path}">
+																id="profile" name="profile">
 															</label> <input type="text" readonly="readonly"
 																title="File Route" id="file_route" value="${MEM_INFO.mem_photo_path}">
 														</div>
