@@ -65,7 +65,7 @@ var newEvent = function(startDate, endDate, eventType) {
 	/** ****** 임시 RAMDON ID - 실제 DB 연동시 삭제 ********* */
 
 // 새로운 일정 저장버튼 클릭
-	 $('#save-event').unbind();
+// $('#save-event').unbind();
 	 
 	 $('#save-event').on('click', function () {
 	 var eventData = [{
@@ -85,16 +85,16 @@ var newEvent = function(startDate, endDate, eventType) {
 	 cw_mem_id:'ahri'
 	 }];
 	
-	 if (eventData.start > eventData.end) {
-	 alert('끝나는 날짜가 앞설 수 없습니다.');
-	 return false;
-	 }
-	
-	 if (eventData.title === '') {
-	 alert('일정명은 필수입니다.');
-	 return false;
-	 }
-	
+// if (eventData.start > eventData.end) {
+// alert('끝나는 날짜가 앞설 수 없습니다.');
+// return false;
+// }
+//	
+// if (eventData.title === '') {
+// alert('일정명은 필수입니다.');
+// return false;
+// }
+//	
 	 var realEndDay;
 	
 	 if (editAllDay.is(':checked')) {
@@ -133,16 +133,17 @@ $('#cancel2').on('click', function(){
 
     
     $('#save-event2').off().on('click',function(){
-    	
         
         var dayInfo = [];
         $('input:checkbox[name="dayInfo[]"]:checked').each(function () {
         	dayInfo.push(parseInt($(this).val()));
+        	alert("dayInfo:"+parseInt($(this).val()));
         });
 
         var timeInfo = [];
         $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
         	timeInfo.push(parseInt($(this).val()));
+        	alert(parseInt($(this).val()));
         });  
         
         $('input:checkbox[name="dayInfo[]"]').on('click', function() {
@@ -333,9 +334,22 @@ $('#cancel2').on('click', function(){
     });
     
     
-$('#save-event').unbind();
+// $('#save-event').unbind();
     $('#save-event').off().on('click', function () {
     	approvalModal.modal('hide');
+    	
+    	   
+        var dayInfo = [];
+        $('input:checkbox[name="dayInfo[]"]:checked').each(function () {
+        	dayInfo.push(parseInt($(this).val()));
+        	alert("dayInfo:"+parseInt($(this).val()));
+        });
+
+        var timeInfo = [];
+        $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
+        	timeInfo.push(parseInt($(this).val()));
+        	alert(parseInt($(this).val()));
+        });  
     	
         eventData = [{
         	title: editTitle.val(),
@@ -386,7 +400,7 @@ $('#save-event').unbind();
 
         console.log(dayInfo.class);
         console.log(dayInfo.class);
-        
+        requestPay();
 // var eDate = new Date(editEndDate.val());
 // alert(editEndDate.val());
 // var sDate = new Date(editStartDate.val());
@@ -407,12 +421,11 @@ $('#save-event').unbind();
 // // count++;
 // // }
 // }
-        requestPay();
+     
   	    	
 // requestPay("requestPayPrice : "+price);
     });
     function requestPay() {
-    	 
     	var timeInfo = [];
          $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
          	timeInfo.push(parseInt($(this).val()));

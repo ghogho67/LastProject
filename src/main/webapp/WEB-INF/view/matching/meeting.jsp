@@ -201,7 +201,6 @@ table.cw td {
 						"/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅",
 						"thisTok!", "width=400, height=700, left=100, top=50");
 	}
-	
 </script>
 
 </head>
@@ -269,9 +268,10 @@ table.cw td {
 						<th>서비스 가능 지역</th>
 						<td><c:forEach items="${loList }" var="lo">
 							${lo.loc_dong },							
-							</c:forEach></td>
+							</c:forEach>${carList }</td>
 					</tr>
 
+										
 					<c:forEach items="${carList }" var="car" begin="1">
 						<tr>
 							<th>경력</th>

@@ -254,11 +254,9 @@ public class MatchingController {
 		mem_id = memberVo.getMem_id();
 
 		List<MatchingVo> mlist = matchingService.getCWMatchingList(cw_mem_id);
-		logger.debug("☞mlist:{}", mlist);
 		List<LocationVo> loList = locationService.getLocationList(cw_mem_id);
-		logger.debug("loList:{}", loList);
 		List<CalendarVo> list = new ArrayList<CalendarVo>();
-		List<CareerVo> carList = careerService.careerList(mem_id);
+		List<CareerVo> carList = careerService.careerList(cw_mem_id);
 
 		for (int i = 0; i < mlist.size(); i++) {
 			CalendarVo vo = new CalendarVo();
@@ -763,7 +761,7 @@ public class MatchingController {
 	public String webRtc(Model model) {
 //		return "RTCMultiConnection-master/demos/dashboard/webrtc";
 //		return "redirect:/RTCMultiConnection-master/demos/dashboard/index.html";
-		return	"RTCMultiConnection-master/demos/dashboard/index";
+		return "RTCMultiConnection-master/demos/dashboard/index";
 	}
 	//
 
