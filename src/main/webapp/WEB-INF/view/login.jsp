@@ -87,8 +87,9 @@ background-position:center; background-size: 200px; background-repeat: no-repeat
 			</div>
 		<div class="info"> 
 		
-		<a class="btn type12" 
- href="/donation/nonmemberDonation" tabindex="3"> <img src="/image/donation.png" style="width: 50px;"/>기부하기</a>
+		<a class="btn type12"  href="/donation/nonmemberDonation" tabindex="3">
+<!--   <img src="/image/donation.png" style="width: 50px;"/> -->
+  기부하기</a>
 		
 
  			</div> 

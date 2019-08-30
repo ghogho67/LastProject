@@ -268,9 +268,10 @@ table.cw td {
 						<th>서비스 가능 지역</th>
 						<td><c:forEach items="${loList }" var="lo">
 							${lo.loc_dong },							
-							</c:forEach></td>
+							</c:forEach>${carList }</td>
 					</tr>
 
+										
 					<c:forEach items="${carList }" var="car" begin="1">
 						<tr>
 							<th>경력</th>
@@ -300,11 +301,11 @@ table.cw td {
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-<!-- 					<button type="button" class="close" data-dismiss="modal" -->
-<!-- 						aria-label="Close"> -->
-<!-- 						<span aria-hidden="true">&times;</span> -->
-<!-- 					</button> -->
-<!-- 					<h4 class="modal-title">결제하기</h4> -->
+					<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+					<!-- 						aria-label="Close"> -->
+					<!-- 						<span aria-hidden="true">&times;</span> -->
+					<!-- 					</button> -->
+					<!-- 					<h4 class="modal-title">결제하기</h4> -->
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -352,10 +353,10 @@ table.cw td {
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-<!-- 					<button type="button" class="close" data-dismiss="modal" -->
-<!-- 						aria-label="Close"> -->
-<!-- 						<span aria-hidden="true">&times;</span> -->
-<!-- 					</button> -->
+					<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+					<!-- 						aria-label="Close"> -->
+					<!-- 						<span aria-hidden="true">&times;</span> -->
+					<!-- 					</button> -->
 					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
@@ -432,19 +433,19 @@ table.cw td {
 					<div class="row" id="dayInfo">
 						<div class="col-xs-12">
 							<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label>
-								<input type="checkbox" name="dayInfo[]" value="1">일요일
+								<input type="checkbox" name="dayInfo[]" value="0">일요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="2">월요일
+								value="1">월요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="3">화요일
+								value="2">화요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="4">수요일
+								value="3">수요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="5">목요일
+								value="4">목요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="6">금요일
+								value="5">금요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="7">토요일
+								value="6">토요일
 							</label>
 						</div>
 					</div>

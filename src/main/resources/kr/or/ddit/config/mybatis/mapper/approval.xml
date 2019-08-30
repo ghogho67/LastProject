@@ -29,6 +29,27 @@
 		'N'
 	</select>
 	
+	
+	
+<!-- 	골드등록 -->
+		<insert id="insertApproval_memGOLD" parameterType="String">
+		insert into approval(app_id
+		                    ,app_pay
+		                    ,app_time
+		                    ,app_type
+		                    ,mem_id
+		                    ,app_del
+		                    ,app_obj)
+		             values(app_id.nextval
+		                   ,'100000'
+		                   ,sysdate
+		                   ,'2'
+		                   ,#{mem_id}
+		                   ,'N'
+		                   ,'admin')
+     </insert>
+	
+	
 	<!-- 기부등록 member - approval -->
 	<insert id="insertApproval_mem" parameterType="approvalVo">
 		insert into approval(app_id

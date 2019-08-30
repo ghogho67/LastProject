@@ -1,20 +1,13 @@
 package kr.or.ddit.survey.controller;
 
-
-import java.sql.Date;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import kr.or.ddit.category.category.model.CategoryVo;
 import kr.or.ddit.category.category.service.ICategoryService;
 import kr.or.ddit.member.member.model.MemberVo;
 import kr.or.ddit.survey.model.SurveyAnswerVo;
@@ -54,6 +47,7 @@ public class recognitionController {
 
 	@Resource(name = "videoService")
 	private IVideoService videoService;
+	
 	@Resource(name = "categoryService")
 	ICategoryService categoryService;
 
@@ -225,23 +219,13 @@ public class recognitionController {
 			int checkScore =surveyPartService.checkScore(surveypartVo);
 			
 			//결과를 저장한다
-			
-			
 			String surresult_id ="";
 			String sur_result = String.valueOf(checkScore);
 			
 			SurveyResultVo SurveyResultVo = new kr.or.ddit.survey.model.SurveyResultVo(surresult_id, sur_part_id, sur_result);
 			int insertTestResult=surveyResultService.InsertTestResult(SurveyResultVo);
-			
-			if(insertTestResult==0){
-				
-			}
-			
-			
-		 	logger.debug("@@@@checkScore {}",checkScore);
+			logger.debug("@@@@checkScore {}",checkScore);
 			model.addAttribute("checkScore", checkScore);
-			
-			
 			String viewName;
 	if(insertTestResult==0){
 		viewName="main";

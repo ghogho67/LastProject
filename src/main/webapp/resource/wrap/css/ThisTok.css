@@ -1,6 +1,6 @@
-/* M E S S A G E S */
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css); 
 body {
-  font-family: 'Exo', "Open Sans";
+ font-family: 'Noto Sans KR', sans-serif;
   background: #e5e5e5;
 }
 
@@ -209,7 +209,7 @@ margin-left:10px;
 .msg time:before{
     content:"\f017";
     color: #ddd;
-    font-family: FontAwesome;
+   font-family: 'Noto Sans KR', sans-serif;
     display: inline-block;
     margin-right: 4px;
 }

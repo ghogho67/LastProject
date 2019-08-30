@@ -73,11 +73,9 @@ public class LectureController {
 		
 
 		Map<String, Object> resultMap = lectureService.lecturePagingList(pageVo);
-		
 		List<LectureVo> CertainLectureList = (List<LectureVo>) resultMap.get("lectureList");
 	    
-		
-		
+
 		int startPage = ((int)Math.floor((pageVo.getPage()-1)/10)) + 1;
         if(pageVo.getPage()==1) {
         	startPage =1;
@@ -92,8 +90,6 @@ public class LectureController {
         if(((int)Math.floor((pageVo.getPage()-1)/10 + 1))*10>lastpaginationSize) {
         	paginationSize= lastpaginationSize;
         }
-		
-		
 
 		model.addAttribute("LTList", CertainLectureList);
 		model.addAttribute("paginationSize", paginationSize);
