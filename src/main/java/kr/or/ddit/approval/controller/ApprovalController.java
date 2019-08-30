@@ -64,6 +64,7 @@ public class ApprovalController {
 		logger.debug("☞avo:{}",avo);
 		int cwInsertCnt = approvalService.approvalInsert(avo);
 		adminVo.setApp_pay(admin_pay);
+		adminVo.setApp_obj("admin");
 		logger.debug("☞adminVo:{}",adminVo);
 		int adminInsertCnt = approvalService.approvalInsert(adminVo);
 		int insertCnt = 0;

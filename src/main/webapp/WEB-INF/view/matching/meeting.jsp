@@ -268,14 +268,12 @@ table.cw td {
 						<th>서비스 가능 지역</th>
 						<td><c:forEach items="${loList }" var="lo">
 							${lo.loc_dong },							
-							</c:forEach>${carList }</td>
+							</c:forEach></td>
 					</tr>
-
-										
-					<c:forEach items="${carList }" var="car" begin="1">
+					<c:forEach items="${carList }" var="car">
 						<tr>
 							<th>경력</th>
-							<td>내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 :
+							<td style = "padding-bottom: 16px;">내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 :
 								${car.career_end_dt } 소속 기관 : ${car.career_hos }</td>
 						</tr>
 					</c:forEach>
