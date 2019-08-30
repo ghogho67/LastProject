@@ -47,8 +47,6 @@
 								.click(
 										function() {
 
-											alert($("#mem_id").val());
-											alert($("#smarteditor").text());
 											if ($("#mem_id").val() === '<p>&nbsp;</p>'
 													|| $("#mem_id").val() === '') {
 												alert("제목을 입력해주세요")

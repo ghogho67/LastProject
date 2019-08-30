@@ -46,7 +46,6 @@
 						$("#savebutton")
 								.click(
 										function() {
-											alert($("#smarteditor").val());
 											if ($("#text").val() === '<p>&nbsp;</p>'
 													|| $("#text").val() === '') {
 												alert("제목을 입력해주세요")
