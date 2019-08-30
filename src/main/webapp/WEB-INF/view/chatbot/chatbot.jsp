@@ -5,30 +5,39 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>ThisCareChatBot</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type='text/javascript' src='${cp }/dist/annyang.min.js'></script>
+<%@include file="/WEB-INF/view/common/LibForMypage.jsp"%>
 <style>
 /* 메인 */
 #frm {
-/*   margin: auto; */
-/*   margin-top: 100px;  */
+margin: auto;
   border-radius: 10px;
-  background-color: #c8c8c8;
-/*   text-align: center; */
-  width: 440px;
+  background-color: #e5e5e5;
+ text-align: center;
   height: 420px;
 }
 
 /* 채팅 영역 */
 #result {
-  height: 100%;
+  height: 390px;
   width: 100%;
   overflow-y: auto;
   -ms-overflow-style: none; 
 }
 ::-webkit-scrollbar {
    display:none;
+}
+
+
+input {
+    font-size: 14px;
+    color: black;
+     font-weight: 600;
+     min-height: 20px;
+    border-radius: 6px;
+     padding: 1px 1px;
 }
 
 
@@ -52,11 +61,10 @@
   display: inline-block;  
   font-size: 13px;
   height: 30px;
-  line-height: 20px;
+  
   min-width: 110px;
   text-align: center;
 /*   margin-top: 5px; */
-  margin: 7px;
   
 }
 
@@ -69,26 +77,26 @@
 #chatBotSay{
 	text-align : left;
 	margin-left: 15px;
+
 }
 
 #chatBotSay1{
 	text-align : left;
 	margin-left: 15px;
+
 }
 
 #logo{
 	height: 70px;
 	width: 200px;
+/* 	margin-bottom: 10px; */
 }
 
 #chatONOff{
-	height: 50px;
-	width: 50px;
+	height: auto;
+	width: 40px;
 }
 
-#chatDiv{
-    padding-top: 20px;
-}
 
 </style>
 
@@ -430,27 +438,28 @@
 	
 	
 </head>
-<body class = "" id = "grid">
+<body>
+<div style="margin: 0 auto;">
 
 <img id="logo" alt="" src="/image/logosam2.png">
 
  <form id=frm action="${cp}/chatbot">
+ <p style="font-size: 14px; margin: 5px;">이동하고 싶은 메뉴를 입력하세요</p>
  <div id = 'result'>
 	<!-- 음성영역 -->
  </div>
  
- <div id="chatDiv">
- <div id="comment" class="comment">
-<a><span>이동하고 싶은 메뉴를 입력하세요</span></a>
+ <div id="chatDiv" style=" margin-top: 10px;">
+ <div id="comment" class="comment" style="text-align: center;">
+
 </div>
- <input type="text" id="user" name="user">
- <button type="button" class="btn" id="sendBtn" name="sendBtn">텍스트전송</button>
- &nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="text" id="user" name="user" style="font-size: 15px;">
+ <button type="button" class="btn" id="sendBtn" name="sendBtn">전송</button>
  <img id="chatONOff" src="/image/chatOff.png" onclick="start();">
 <!-- <input type = "button" class="btn" value = "음성인식" id = "start" onclick="start();"/> -->
 <!--  <input type = "submit" class="btn" value = "멈춤" id = "end"  onclick="end();"/><br/> -->
  </div>
  </form>
-
+</div>
 </body>
 </html>

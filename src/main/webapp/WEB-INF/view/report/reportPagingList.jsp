@@ -256,9 +256,8 @@ td {
 										<td class="CategoryId">
 											<%-- 														${matchingCnt } --%> <%-- 														${status.index } --%>
 											<%-- 
-											${current } --%>
-<%-- 											${(((matchingCnt-1)-status.index+1))-((current-1)*10)} --%>
-										${report.rn }
+											${current } --%> <%-- 											${(((matchingCnt-1)-status.index+1))-((current-1)*10)} --%>
+											${report.rn }
 										</td>
 										<%--${(postCnt - status.index)-((current-1)*10)} --%>
 										<td>${report.day }</td>
@@ -303,7 +302,7 @@ td {
 
 
 						<div class="demo" style="position: relative; left: 30%">
-							<ul class="pagination">
+							<ul class="pagination" style="margin-left: 180px;">
 								<c:choose>
 									<c:when test="${pageVo.page == 1 }">
 										<li class="page-item prev disabled"><a href="#"

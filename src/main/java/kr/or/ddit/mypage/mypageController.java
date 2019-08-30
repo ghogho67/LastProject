@@ -227,21 +227,20 @@ public class mypageController {
 			@RequestParam(name = "memid") String mem_id, @RequestParam(name = "grade") String grade,
 			@RequestParam(name = "pass") String mem_pass, @RequestParam(name = "email") String mem_mail,
 			@RequestParam(name = "phone") String mem_phone, @RequestParam(name = "zipcd") String mem_zipcd,
+			@RequestParam(name = "searchType")String searchType,
 			@RequestParam(name = "addr1") String mem_add1, @RequestParam(name = "addr2") String mem_add2)
 			throws IllegalStateException, IOException {
 
-		
-		
-		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
-		
-		String viewName;
+		logger.debug("@@@@ Search @@@@ select:{}",searchType);
+		String cw_driver = searchType;
 
+		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
+		String viewName;
 		String mem_nm = "";
 		String mem_birth = "";
 		String mem_gender = "";
 		String mem_del = "";
 		String mem_grade = "";
-		String cw_driver = "";
 		String cw_lic = "";
 		String mem_photo_path = "";
 		String mem_photo_nm = "";

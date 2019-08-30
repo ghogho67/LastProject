@@ -223,7 +223,8 @@
 		#{mem_add2},
 		mem_mail = #{mem_mail},
 		mem_photo_path = #{mem_photo_path},
-		mem_photo_nm = #{mem_photo_nm}
+		mem_photo_nm = #{mem_photo_nm},
+			cw_driver = #{cw_driver}
 		WHERE mem_id = #{mem_id}
 	</update>
 
@@ -251,21 +252,15 @@
 
 
 
-
-
-
-
-
-	<update id="updateMemNoPro" parameterType="memberVo">
+<update id="updateMemNoPro" parameterType="memberVo">
 		UPDATE member
 		SET
-		mem_pass =
-		#{mem_pass},
+		mem_pass =#{mem_pass},
 		mem_phone = #{mem_phone},
 		mem_add1 = #{mem_add1},
-		mem_add2 =
-		#{mem_add2},
+		mem_add2 = #{mem_add2},
 		mem_mail = #{mem_mail},
+		cw_driver = #{cw_driver}
 		WHERE mem_id = #{mem_id}
 	</update>
 

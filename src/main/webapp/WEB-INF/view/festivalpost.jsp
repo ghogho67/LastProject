@@ -154,7 +154,7 @@ td {
 												<label class="col-md-12">강좌 시작일</label>
 												<div class="col-md-12">
 													<fmt:parseDate value="${startDate}" var="startDate" pattern="yyyyMMdd"/>
-													<input type="text" style="" value="<fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/>"
+													<input type="text" style="" readonly="readonly" value="<fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/>"
 														class="form-control form-control-line" name="lec_cont"
 														id="lec_cont">
 			
@@ -168,7 +168,7 @@ td {
 												<label class="col-md-12">강좌 종료일</label>
 												<div class="col-md-12">
 														<fmt:parseDate value="${endDate}" var="endDate" pattern="yyyyMMdd"/>
-														<input type="text" style="" value="<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/>"
+														<input type="text" readonly="readonly" style="" value="<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/>"
 														class="form-control form-control-line" name="lec_cont"
 														id="lec_cont">
 												</div>
@@ -177,7 +177,7 @@ td {
 											<div class="form-group">
 												<label class="col-md-12">전화번호 </label>
 												<div class="col-md-12">
-													<input type="text" value="${vo.telname} ${vo.tel}"
+													<input type="text" readonly="readonly" value="${vo.telname} ${vo.tel}"
 														name="lec_tea" id="lec_tea"
 														class="form-control form-control-line">
 														
@@ -187,7 +187,7 @@ td {
 											<div class="form-group">
 												<label for="birth" class="col-md-12">주소</label>
 												<div class="col-md-12">
-													<input type="text" value="${vo.addr1}"
+													<input type="text" readonly="readonly" value="${vo.addr1}"
 														class="form-control form-control-line" name="lec_time"
 														id="lec_time">
 												</div>
