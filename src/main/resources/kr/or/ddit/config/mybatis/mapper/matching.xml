@@ -23,7 +23,7 @@
 
 	<select id="getMatchingVo" resultType="MatchingVo">
 		select * from matching
-		where mat_id = 1
+		where mat_id = #{mat_id}
 	</select>
 
 	<select id="getMatchingList" parameterType="string"

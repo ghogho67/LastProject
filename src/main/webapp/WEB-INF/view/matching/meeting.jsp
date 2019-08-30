@@ -420,7 +420,7 @@ table.cw td {
 								</label> <label> <input type="checkbox" name="timeInfo[]"
 									value="5">15:00~16:00
 								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="6">16:30~17:00
+									value="6">16:30~17:30
 								</label>
 
 							</div>
