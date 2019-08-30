@@ -14,7 +14,7 @@ var editEndTime = $('#edit-endTime');
 var dateDef = $('#edit-endDate')-$('#edit-startDate');
 var timeDef = $('#edit-endTime')-$('#edit-startTime');
 var pay = dateDef*timeDef;
-// var dayInfo = $('input:checkbox[name="dayInfo[]"]:checked');
+ var dayInfo = $('input:checkbox[name="dayInfo[]"]:checked');
 
 // var editStart = $('#edit-start');
 // var editEnd = $('#edit-end');
@@ -130,43 +130,40 @@ $('#cancel1').on('click', function(){
 $('#cancel2').on('click', function(){
 	count = 0;
 })
-
+//
+//
+// $("input[name=dayInfo[]]:checked").each(function() {
+// var test = $(this).val();
+// alert("벨류값확인 : " + test);
+// }
     
+
+ 
     $('#save-event2').off().on('click',function(){
+// $("#dayInfo").show();
+// alert($("input[name='dayInfo[]']:checked"));
+ var dayInfo = [];
+// $("input[name='dayInfo[]']:checked").each(function () {
+// dayInfo.push(parseInt($(this).val()));
+// });
+// alert("dayInfo:"+parseInt($(this).val()));
+    	  $("input[name='dayInfo[]']:checked").each(function() {
+    			 var test = $(this).val();
+    			 dayInfo.push(parseInt($(this).val()));
+    		 });
+    	  alert(dayInfo);
+    	  var timeInfo = [];
+    	  $("input[name='timeInfo[]']:checked").each(function() {
+    		  var test = $(this).val();
+    		  timeInfo.push(parseInt($(this).val()));
+    	  });
+    	  alert(timeInfo);
         
-        var dayInfo = [];
-        $('input:checkbox[name="dayInfo[]"]:checked').each(function () {
-        	dayInfo.push(parseInt($(this).val()));
-        	alert("dayInfo:"+parseInt($(this).val()));
-        });
-
-        var timeInfo = [];
-        $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
-        	timeInfo.push(parseInt($(this).val()));
-        	alert(parseInt($(this).val()));
-        });  
+//        $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
+//        	timeInfo.push(parseInt($(this).val()));
+//        });  
+//        alert("timeInfo:"+parseInt($(this).val()));
         
-        $('input:checkbox[name="dayInfo[]"]').on('click', function() {
-        	if ( $(this).prop('checked') ) { 
-        		dayInfo.push(parseInt($(this).val()));;
-    		} else { 
-    			dayInfo.splice(dayInfo.indexOf(parseInt($(this).val())),1);
-    		} 
-        	dayInfo.sort();
-        })
-
-        $('input:checkbox[name="timeInfo[]"]').on('click', function() {
-        	if ( $(this).prop('checked') ) { 
-        		timeInfo.push(parseInt($(this).val()));;
-        	} else { 
-        		timeInfo.splice(timeInfo.indexOf(parseInt($(this).val())),1);
-        	} 
-        	timeInfo.sort();
-        })
-
-
-        
-
         addBtnContainer.show();
         modifyBtnContainer.hide();
         eventModal.modal('show');
@@ -191,23 +188,29 @@ $('#cancel2').on('click', function(){
 		
 //    	 
 		  var eDate = new Date(editEndDate.val());
+		  console.log("eDate:"+eDate);
 	  	  var sDate = new Date(editStartDate.val());
+	  	  console.log("sDate:"+sDate);
 
 
 // var count=0;
     	  var tmp;
     	  for (var i=0; i<=(eDate-sDate)/1000/60/60/24; i++) {
     		  tmp=new Date(sDate);
-    		  
     		  tmp.setDate(tmp.getDate()+i);
+    		  console.log("sDate:"+sDate);
     		  for(j=0; j<dayInfo.length; j++){
     			  if(tmp.getDay() == dayInfo[j]){
+    				  console.log("tmp.getDay()"+tmp.getDay());
+    				  console.log("dayInfo[j]:"+dayInfo[j]);
     				  count++;
     			  }
     		  }
     		  
+    		  console.log("tmp.getDay()"+tmp.getDay());
+    		  console.log("dayInfo[j]:"+dayInfo[j]);
+    		  console.log("count : "+count);
     	  }
-    	  alert("count : "+count);
     	  alert("timeInfo : "+timeInfo.length);
     		if(count==0){
         		alert("지정된 기간의 요일 사이에 매칭이 없습니다 다시 선택해 주세요");
@@ -248,8 +251,8 @@ $('#cancel2').on('click', function(){
             		  
             		  for(j=0; j<diff; j++){
             			  
-            			  console.log("chooseStDate",chooseStDate);
-            			  console.log("listDateDate",listDateDate);
+// console.log("chooseStDate",chooseStDate);
+// console.log("listDateDate",listDateDate);
             			  if(chooseStDate.getTime() == listDateDate.getTime()){
             				  for(k=0; k<timeInfo.length; k++){
 // alert("timeInfo[k] : "+timeInfo[k]);

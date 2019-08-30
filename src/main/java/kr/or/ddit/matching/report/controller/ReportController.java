@@ -215,6 +215,9 @@ public class ReportController {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id = memberVo.getMem_id();
 		String mem_grade = memberVo.getMem_grade();
+		
+		logger.debug("☞mem_id:{}",mem_id);
+		logger.debug("☞mem_grade:{}",mem_grade);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
