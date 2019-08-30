@@ -433,19 +433,19 @@ table.cw td {
 					<div class="row" id="dayInfo">
 						<div class="col-xs-12">
 							<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label>
-								<input type="checkbox" name="dayInfo[]" value="1">일요일
+								<input type="checkbox" name="dayInfo[]" value="0">일요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="2">월요일
+								value="1">월요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="3">화요일
+								value="2">화요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="4">수요일
+								value="3">수요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="5">목요일
+								value="4">목요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="6">금요일
+								value="5">금요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="7">토요일
+								value="6">토요일
 							</label>
 						</div>
 					</div>

@@ -14,7 +14,7 @@ var editEndTime = $('#edit-endTime');
 var dateDef = $('#edit-endDate')-$('#edit-startDate');
 var timeDef = $('#edit-endTime')-$('#edit-startTime');
 var pay = dateDef*timeDef;
- var dayInfo = $('input:checkbox[name="dayInfo[]"]:checked');
+// var dayInfo = $('input:checkbox[name="dayInfo[]"]:checked');
 
 // var editStart = $('#edit-start');
 // var editEnd = $('#edit-end');
@@ -151,13 +151,13 @@ $('#cancel2').on('click', function(){
     			 var test = $(this).val();
     			 dayInfo.push(parseInt($(this).val()));
     		 });
-    	  alert(dayInfo);
+    	  alert("dayInfo:"+dayInfo);
     	  var timeInfo = [];
     	  $("input[name='timeInfo[]']:checked").each(function() {
     		  var test = $(this).val();
     		  timeInfo.push(parseInt($(this).val()));
     	  });
-    	  alert(timeInfo);
+    	  alert("timeInfo:"+timeInfo);
         
 //        $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
 //        	timeInfo.push(parseInt($(this).val()));
@@ -197,19 +197,23 @@ $('#cancel2').on('click', function(){
     	  var tmp;
     	  for (var i=0; i<=(eDate-sDate)/1000/60/60/24; i++) {
     		  tmp=new Date(sDate);
-    		  tmp.setDate(tmp.getDate()+i);
+    		  console.log("tmp:"+tmp);
     		  console.log("sDate:"+sDate);
+    		  console.log("dayInfo:"+dayInfo);
+    		  console.log("dayInfo.length:"+dayInfo.length);
+    		  
     		  for(j=0; j<dayInfo.length; j++){
+    			  console.log("j:"+j);
+    			  console.log("dayInfo:"+dayInfo);
     			  if(tmp.getDay() == dayInfo[j]){
     				  console.log("tmp.getDay()"+tmp.getDay());
     				  console.log("dayInfo[j]:"+dayInfo[j]);
     				  count++;
     			  }
     		  }
-    		  
     		  console.log("tmp.getDay()"+tmp.getDay());
-    		  console.log("dayInfo[j]:"+dayInfo[j]);
     		  console.log("count : "+count);
+    		  tmp.setDate(tmp.getDate()+i);
     	  }
     	  alert("timeInfo : "+timeInfo.length);
     		if(count==0){
