@@ -250,6 +250,46 @@
 
 
 
+
+
+
+
+
+
+	<update id="updateMemNoPro" parameterType="memberVo">
+		UPDATE member
+		SET
+		mem_pass =
+		#{mem_pass},
+		mem_phone = #{mem_phone},
+		mem_add1 = #{mem_add1},
+		mem_add2 =
+		#{mem_add2},
+		mem_mail = #{mem_mail},
+		WHERE mem_id = #{mem_id}
+	</update>
+
+
+
+   	<update id="updatePMemberNoPro" parameterType="memberVo">
+		UPDATE member
+		SET
+		mem_pass =
+		#{mem_pass},
+		mem_phone = #{mem_phone},
+		mem_add1 = #{mem_add1},
+		mem_add2 =
+		#{mem_add2},
+		mem_mail = #{mem_mail},
+		pro_relation = #{pro_relation},
+		pro_nm =
+		#{pro_nm},
+		pro_phone = #{pro_phone}
+		WHERE mem_id = #{mem_id}
+	</update>
+
+
+
    	<update id="withdrwalMember" parameterType="memberVo">
 		UPDATE member
 		SET

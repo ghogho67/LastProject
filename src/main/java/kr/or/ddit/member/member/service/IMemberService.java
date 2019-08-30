@@ -163,4 +163,11 @@ public interface IMemberService {
 	Map<String, Object> getAllMemberList(PageVo pageVo);
 
 
+
+
+	int updatePMemberNoPro(MemberVo memberVo);
+
+	int updateMemberNoPro(MemberVo updateMember);
+
+
 }

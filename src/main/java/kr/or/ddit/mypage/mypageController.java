@@ -151,18 +151,31 @@ public class mypageController {
 		}
 
 		if (grade.equals("3") == false) {
-
 			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
+		if(profile.getOriginalFilename().isEmpty()){
+			logger.debug("@@@@updatePMemberNoPro : {} ", mem_id);
+			
+				int updateCnt = memberService.updatePMemberNoPro(memberVo);
+				logger.debug("@@@@updateCnt : {} ", updateCnt);
+
+				if (updateCnt != 1) {
+					viewName = "redirect:/login";
+				}
+
+		}else {
+			logger.debug("@@@@updatePMember : {} ", mem_id);
 
 			int updateCnt = memberService.updatePMember(memberVo);
-
 			logger.debug("@@@@updateCnt : {} ", updateCnt);
 
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
+		}
+
+			
 			memberVo = memberService.getMemVo(mem_id);
 			session.setAttribute("MEM_INFO", memberVo);
 
@@ -262,16 +275,31 @@ public class mypageController {
 		}
 
 		if (grade.equals("3")) {
-
 			updateMember = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1, mem_add2,
 					mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation, pro_nm,
 					pro_phone, cw_driver, cw_lic);
+			
+			if(profile.getOriginalFilename().isEmpty()){
+				
+
+				int updateCnt = memberService.updateMemberNoPro(updateMember);
+
+				if (updateCnt != 1) {
+					viewName = "redirect:/login";
+				}
+
+		}else {
+			
 
 			int updateCnt = memberService.updateMember(updateMember);
 
 			if (updateCnt != 1) {
 				viewName = "redirect:/login";
 			}
+		}
+			
+			
+			
 			MemberVo memberVo = memberService.getMemVo(mem_id);
 
 			session.setAttribute("MEM_INFO", memberVo);
