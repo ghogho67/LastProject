@@ -19,6 +19,17 @@
 	
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+.rBtn{
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+ 	background-color: #aaaaaa; 
+ 	color: white; 
+	padding: 2px;
+}
+</style>
+
 <script>
 	$(document).ready(function() {
 
@@ -416,7 +427,7 @@
 												class="fa fa-check"></i></span>
 										</div>
 										<div>
-											<button id="addrSearchBtn" type="button">주소검색</button>
+											<button id="addrSearchBtn" type="button" class="rBtn">주소검색</button>
 										</div>
 
 									</div>
@@ -650,10 +661,10 @@
 
 					<div id="div01">
 					</div>
-					<button type="button" id="refresh">새로고침</button><br>
+					<button type="button" id="refresh" class="rBtn">새로고침</button><br>
 						<input type="hidden" id="key" name="key">
 						<input type="text" name="value" id="value">
-						<button type="button" id="btn01">전송</button>
+						<button type="button" id="btn01" class="rBtn">전송</button>
 
 
 
