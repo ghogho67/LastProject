@@ -201,6 +201,7 @@ table.cw td {
 						"/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅",
 						"thisTok!", "width=400, height=700, left=100, top=50");
 	}
+	
 </script>
 
 </head>
