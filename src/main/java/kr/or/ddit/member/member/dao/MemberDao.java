@@ -143,4 +143,14 @@ public class MemberDao implements IMemberDao {
 		return sqlSession.selectOne("member.memberGradeCnt",mem_grade);
 	}
 
+	@Override
+	public int updatePMemberNoPro(MemberVo memberVo) {
+		return sqlSession.update("member.updatePMemberNoPro", memberVo);
+	}
+
+	@Override
+	public int updateMemberNoPro(MemberVo updateMember) {
+		return sqlSession.update("member.updateMemNoPro", updateMember);
+	}
+
 }
