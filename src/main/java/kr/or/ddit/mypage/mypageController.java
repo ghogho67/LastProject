@@ -114,7 +114,6 @@ public class mypageController {
 		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
 		
 		String viewName;
-
 		String mem_nm = "";
 		String mem_birth = "";
 		String mem_gender = "";
@@ -135,17 +134,15 @@ public class mypageController {
 		logger.debug("@@@@pro_relation : {} ", pro_relation);
 		logger.debug("@@@@pro_nm : {} ", pro_nm);
 		logger.debug("@@@@pro_phone : {} ", pro_phone);
+		logger.debug("@@@@profile : {} ", profile);
 
 		MemberVo memberVo = null;
 
 		if (profile.getSize() > 0) {
 			String fileName = profile.getOriginalFilename();
 			String ext = PartUtil.getExt(fileName);
-
 			String uploadPath = PartUtil.getUploadPath();
-
 			String filePath = uploadPath + File.separator + UUID.randomUUID().toString() + ext;
-
 			mem_photo_path = filePath;
 			mem_photo_nm = fileName;
 
