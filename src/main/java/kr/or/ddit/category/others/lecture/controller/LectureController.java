@@ -168,10 +168,6 @@ public class LectureController {
 	
 	
 	
-	
-	
-	
-	
 	//강의 상세보기 페이지 
 	@RequestMapping(path = "/lecture", method = RequestMethod.GET)
 	public String lecture(Model model,
@@ -289,18 +285,6 @@ public class LectureController {
 	
 	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//강의 사용
 	
