@@ -322,7 +322,19 @@ td {
 												</c:when>
 
 											</c:choose></td>
-										<td>${vo.app_pay}</td>
+											<td><c:choose>
+												<c:when test="${vo.app_type eq 1}">
+													${vo.app_pay *10}
+												</c:when>
+												<c:when test="${vo.app_type eq 2}">
+												 	${vo.app_pay}
+												</c:when>
+												<c:when test="${vo.app_type eq 3}">
+												 	${vo.app_pay}
+												</c:when>
+
+											</c:choose></td>
+										
 										<td><fmt:formatDate value="${vo.app_time }"
 												pattern="yyyy.MM.dd HH:mm:ss" /></td>
 										<td>${vo.mem_id }</td>
@@ -391,7 +403,7 @@ td {
 						<c:when test="${pageVo.page == lastpaginationSize || lastpaginationSize==0}">
 							<li class="page-item next disabled"><a href="#"
 								class="page-link" aria-label="Next"> <span
-									aria-hidden="true">›  !!!!!!!!!${lastpaginationSize}</span>
+									aria-hidden="true">›</span>
 							</a></li>
 						</c:when>
 						<c:otherwise>
