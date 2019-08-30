@@ -58,7 +58,7 @@ $(document).ready(function() {
 					<div class="card-body">
 					<div id="titlee">
 							<h2>
-								<span>내 정보</span> 조회<span class="inin">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 평가점수(${grades})</span>
+								<span>내 정보</span> 조회<span class="inin">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							</h2>
 						</div>
 					

@@ -80,7 +80,7 @@
 
 function chatbotPopup() {
       window.open("/chatbot", "chatbot",
-            "width=410, height=560, left=100, top=50");
+            "width=456, height=620, left=100, top=50");
    }
 	
 	
