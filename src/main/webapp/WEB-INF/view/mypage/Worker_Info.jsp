@@ -197,7 +197,7 @@ $(document).ready(function() {
 												<label class="col-md-12">운전면허</label>
 												<div class="col-md-12">
 													<input type="text"
-														placeholder="<c:choose><c:when test="${MEM_INFO.cw_driver==Y}">2종 보통 소지</c:when><c:otherwise>미자격</c:otherwise></c:choose>"
+														placeholder="<c:choose><c:when test="${MEM_INFO.cw_driver=='Y'}">운전가능</c:when><c:otherwise>미자격</c:otherwise></c:choose>"
 														class="form-control form-control-line" readonly="readonly">
 												</div>
 											</div>

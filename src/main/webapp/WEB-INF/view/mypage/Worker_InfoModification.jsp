@@ -53,6 +53,9 @@ input[type="text"]::-webkit-input-value {
 			<h3>&nbsp;&nbsp;&nbsp;내 정보 조회</h3>
 			<div class="row mb-4">
 				<div class="col-lg-12">
+				
+				
+				
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
@@ -99,7 +102,7 @@ input[type="text"]::-webkit-input-value {
 												<div class="form-group">
 													<label class="col-md-12">비밀번호</label>
 													<div class="col-md-12">
-														<input type="password" value="${MEM_INFO.mem_pass}"
+														<input type="password" 
 															class="form-control form-control-line" id="pass" name="pass">
 													</div>
 												</div>
@@ -192,15 +195,20 @@ input[type="text"]::-webkit-input-value {
 												</div>
 
 
-<!-- 												<div class="form-group"> -->
-<!-- 													<label class="col-md-12">운전면허</label> -->
-<!-- 													<div class="col-md-12"> -->
-<!-- 														<input type="text" -->
-<%-- 															placeholder="<c:choose><c:when test="${MEM_INFO.cw_driver==Y}">2종 보통 소지</c:when><c:otherwise>미자격</c:otherwise></c:choose>" --%>
-<!-- 															class="form-control form-control-line" name="driver" -->
-<!-- 															name="driver"> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
+												<div class="form-group">
+													<label class="col-md-12">운전면허</label>
+													<div class="col-md-12">
+													
+							<select id="searchType" name="searchType">
+								<option value="Y"   <c:if test="${MEM_INFO.cw_driver=='Y'}">selected="selected"</c:if>>운전 가능</option>
+								<option value="N"   <c:if test="${MEM_INFO.cw_driver=='N'}">selected="selected"</c:if>>운전 불가</option>
+							</select>
+													
+													
+													
+														
+													</div>
+												</div>
 
 												<div class="form-group">
 
