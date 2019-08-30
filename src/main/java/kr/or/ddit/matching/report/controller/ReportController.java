@@ -358,7 +358,7 @@ public class ReportController {
 
 	@RequestMapping("detail")
 	public String postDetail(int mat_id, Model model, HttpSession session) {
-
+//
 		model.addAttribute("reportVo", reportService.getReportVo(mat_id));
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
 
