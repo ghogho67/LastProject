@@ -195,8 +195,8 @@ $('#cancel2').on('click', function(){
 
 // var count=0;
     	  var tmp;
+    	  tmp=new Date(sDate);
     	  for (var i=0; i<=(eDate-sDate)/1000/60/60/24; i++) {
-    		  tmp=new Date(sDate);
     		  console.log("tmp:"+tmp);
     		  console.log("sDate:"+sDate);
     		  console.log("dayInfo:"+dayInfo);
@@ -213,7 +213,7 @@ $('#cancel2').on('click', function(){
     		  }
     		  console.log("tmp.getDay()"+tmp.getDay());
     		  console.log("count : "+count);
-    		  tmp.setDate(tmp.getDate()+i);
+    		  tmp.setDate(tmp.getDate()+1);
     	  }
     	  alert("timeInfo : "+timeInfo.length);
     		if(count==0){
