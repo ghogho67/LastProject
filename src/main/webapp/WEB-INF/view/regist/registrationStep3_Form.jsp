@@ -203,8 +203,10 @@
 					console.log(data);
 					if(data.result==1){
 						alert("인증성공");
+						$('#capcha_check').val("1");
 					}else{
 						alert("실패");
+						$('#capcha_check').val("2");
 					}
 				}
 			});
@@ -653,6 +655,7 @@
 					<button type="button" id="refresh">새로고침</button><br>
 						<input type="hidden" id="key" name="key">
 						<input type="text" name="value" id="value">
+						<input type="hidden" id="capcha_check" name="capcha_check">
 						<button type="button" id="btn01">전송</button>
 
 
