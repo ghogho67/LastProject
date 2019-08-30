@@ -211,6 +211,7 @@ public class LoginController {
 			
 			int upgradeMemberStep3 = memberService.upgradeMemberStep3(mem_id);
 			logger.debug("@@@@upgradeMemberStep3{}",upgradeMemberStep3);
+			int insertApproval_memCnt = approvalService.insertApproval_memGOLD(mem_id);
 			
 		}
 		
