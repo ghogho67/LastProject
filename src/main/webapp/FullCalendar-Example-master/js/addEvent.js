@@ -102,9 +102,8 @@ var newEvent = function (startDate, endDate, eventType) {
 			return;
 		}
 		
-    	 
+//    	 
 		  var eDate = new Date(editEndDate.val());
-	 	  alert(editEndDate.val());
 	  	  var sDate = new Date(editStartDate.val());
 
 
@@ -241,7 +240,7 @@ var newEvent = function (startDate, endDate, eventType) {
     
     $('#save-event').unbind();
     
-    $('#save-event').on('click', function () {
+    $('#save-event').off().on('click', function () {
     	approvalModal.modal('hide');
     	
         eventData = [{

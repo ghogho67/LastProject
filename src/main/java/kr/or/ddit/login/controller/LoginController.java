@@ -67,8 +67,11 @@ public class LoginController {
 								,HttpServletResponse response, HttpSession session, Model model) {
 		String fail = "탈퇴회원이시거나 아이디,비밀번호가 틀렸습니다."; 
 		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
+
 		MemberVo memVo = memberService.getMemVo(mem_id);
 		
+		logger.debug("☞encyptPassword:{}",encyptPassword);
+		logger.debug("☞memVo.getMem_pass():{}",memVo.getMem_pass());
 		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
