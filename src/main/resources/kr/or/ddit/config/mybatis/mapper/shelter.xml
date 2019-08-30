@@ -33,7 +33,17 @@
 	
 	<!-- 특정 무더위 쉼터 조회 -->
 	<select id="getShelter" resultType="shelterVo" parameterType="int">
-		select * 
+	elect  sh_id
+	        ,sh_nm
+	        ,sh_add
+	        ,sh_st_dt
+	        ,sh_end_dt
+	        ,to_char(sh_day_st,'HH24:mi:ss')
+	        ,to_char(sh_day_end,'HH24:mi:ss')
+	        ,to_char(sh_we_st,'HH24:mi:ss')
+	        ,to_char(sh_we_end,'HH24:mi:ss')
+	        ,sw_nm
+	        ,sw_phone
 		from shelter
 		where sh_id = #{sh_id}
 	</select>
