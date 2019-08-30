@@ -299,7 +299,7 @@ p {
 
 				</div>
 
-				<div class="demo" style="position: absolute; right: 29%; top: 93%;">
+				<div class="demo" style="position: absolute; right: 7%; top: 93%;">
 					<nav class="pagination-outer" aria-label="Page navigation">
 						<ul class="pagination">
 							<c:choose>

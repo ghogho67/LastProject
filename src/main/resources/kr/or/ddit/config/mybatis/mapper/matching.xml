@@ -23,7 +23,7 @@
 
 	<select id="getMatchingVo" resultType="MatchingVo">
 		select * from matching
-		where mat_id = 1
+		where mat_id = #{mat_id}
 	</select>
 
 	<select id="getMatchingList" parameterType="string"
@@ -86,7 +86,7 @@
 		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
 		FROM MATCHING
 		WHERE CW_MEM_ID = #{cw_mem_id} 
-		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
+		and to_date(SUBSTR (REPLACE(MAT_ST,'T',' '),1),'YYYY-MM-dd HH24:mi') <= to_date(to_char(SYSDATE,'YYYY-MM-dd HH24:mi'),'YYYY-MM-dd HH24:mi')
 		ORDER BY MAT_ST DESC )A order by rn desc )B )c
 		WHERE   RN2 >= ( #{page} - 1) * #{pageSize} + 1 
 		AND 	RN2<= #{page} * #{pageSize}	
@@ -111,7 +111,7 @@
 		MAT_TYPE,MEM_ID,CW_MEM_ID,MAT_DEL
 		FROM MATCHING
 		WHERE mem_id = #{mem_id} 
-		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
+		and to_date(SUBSTR (REPLACE(MAT_ST,'T',' '),1),'YYYY-MM-dd HH24:mi') <= to_date(to_char(SYSDATE,'YYYY-MM-dd HH24:mi'),'YYYY-MM-dd HH24:mi')
 		ORDER BY MAT_ST DESC )A order by rn desc )B )c
 		WHERE   RN2 >= ( #{page} - 1) * #{pageSize} + 1 
 		AND 	RN2<= #{page} * #{pageSize}	
@@ -128,7 +128,7 @@
 		select
 		count(*) from matching where
 		cw_mem_id=#{cw_mem_id}
-		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
+		and to_date(SUBSTR (REPLACE(MAT_ST,'T',' '),1),'YYYY-MM-dd HH24:mi') <= to_date(to_char(SYSDATE,'YYYY-MM-dd HH24:mi'),'YYYY-MM-dd HH24:mi')
 		and mat_del='N'
 	]]>
 	</select>
@@ -139,7 +139,7 @@
 		select
 		count(*) from matching where
 		mem_id=#{mem_id}
-		and mat_st <= to_char(SYSDATE,'YYYY-mm-dd')
+		and to_date(SUBSTR (REPLACE(MAT_ST,'T',' '),1),'YYYY-MM-dd HH24:mi') <= to_date(to_char(SYSDATE,'YYYY-MM-dd HH24:mi'),'YYYY-MM-dd HH24:mi')
 		and mat_del='N'
 ]]>
 	</select>

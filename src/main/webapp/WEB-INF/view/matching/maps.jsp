@@ -9,7 +9,7 @@
 <style>
 .imgLOGO {
 	float: left;
-	width: 100px;
+	width: 80px;
 	height: 80px;
 	vertical-align: middle;
 }
