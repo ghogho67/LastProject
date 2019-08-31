@@ -24,7 +24,7 @@
 	
 	
 	<select id="oneDayBpm" parameterType="gpsVo" resultType="gpsVo">
-		SELECT * FROM GPS WHERE MEM_ID=#{mem_id} AND GPS_TIME= TO_DATE(#{gps_time},'yy/mm/dd') ORDER BY gps_id
+		SELECT * FROM GPS WHERE MEM_ID=#{mem_id} AND to_char(GPS_TIME,'YYYYMMdd')= #{gps_time} ORDER BY gps_id
 	</select>
 	
 
