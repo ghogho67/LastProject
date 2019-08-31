@@ -137,6 +137,8 @@ public class ChatController {
 		ChatMemVo chatMemVo2 = new ChatMemVo(chat_id, chatmem_id);
 		chatMemService.insertChatMem(chatMemVo2);
 		
+		logger.debug(chat_mem_id);
+		
 		
 		ra.addAttribute("mem_id",mem_id);
 		ra.addAttribute("chat_id",chat_id);

@@ -5,18 +5,23 @@
 <mapper namespace="reportAttach">
 
 	<insert id="reportAttachInsert" parameterType="ReportAttachVo">
-		insert into reportattach values (rep_att_id.nextval,#{rep_att_path},#{rep_att_nm},#{mat_id})
+		insert into
+		reportattach values
+		(rep_att_id.nextval,#{rep_att_path},#{rep_att_nm},#{mat_id})
 	</insert>
 
 	<update id="reportAttachDelete" parameterType="ReportAttachVo">
-		delete from reportattach where rep_att_id = #{rep_att_id}
+		delete from
+		reportattach where rep_att_id = #{rep_att_id}
 	</update>
 
-	<select id="getReportAttachList" parameterType="int" resultType="ReportAttachVo">
+	<select id="getReportAttachList" parameterType="int"
+		resultType="ReportAttachVo">
 		select*from reportattach where mat_id =#{mat_id}
 	</select>
 
-	<select id="getReportAttach" parameterType="int" resultType="ReportAttachVo">
+	<select id="getReportAttach" parameterType="int"
+		resultType="ReportAttachVo">
 		select*from reportattach where rep_att_id = #{rep_att_id}
 	</select>
 

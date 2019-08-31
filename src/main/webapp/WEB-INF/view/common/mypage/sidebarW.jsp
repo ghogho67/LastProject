@@ -39,17 +39,17 @@
 						<li><a href="${cp}/mypage/Worker_Info"><span>회원정보</span></a></li>
 						<li><a
 							href="${cp}/approval/approvalCheckW?page=1&pageSize=10&searchType=type&searchVal="><span>결산관리</span></a></li>
-						<li class='active has-sub'><a><span>나의 보고서<i
-									class="fa fa-sort-down"></i></span></a>
+						<li class='active has-sub'><a href="${cp}/report/pagingList"><span>보고서
+											작성 및 조회</span></a>
 							<ul>
 
-								<li><a
-									href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}"><span>보고서
-											조회</span></a></li>
-								<li><a href="${cp}/report/writeView"><span>급여명세서
-											작성</span></a></li>
-								<li class='last'><a href="${cp}/report/pagingList"><span>보고서
-											작성</span></a></li>
+<!-- 								<li><a -->
+<%-- 									href="${cp}/report/reportList?memid=${MEM_INFO.mem_id}&memgrade=${MEM_INFO.mem_grade}"><span>보고서 --%>
+<!-- 											조회</span></a></li> -->
+<%-- 								<li><a href="${cp}/report/writeView"><span>급여명세서 --%>
+<!-- 											작성</span></a></li> -->
+<%-- 								<li class='last'><a href="${cp}/report/pagingList"><span>보고서 --%>
+<!-- 											작성</span></a></li> -->
 
 							</ul></li>
 

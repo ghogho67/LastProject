@@ -151,13 +151,13 @@ $('#cancel2').on('click', function(){
     			 var test = $(this).val();
     			 dayInfo.push(parseInt($(this).val()));
     		 });
-    	  alert("dayInfo:"+dayInfo);
+//    	  alert("dayInfo:"+dayInfo);
     	  var timeInfo = [];
     	  $("input[name='timeInfo[]']:checked").each(function() {
     		  var test = $(this).val();
     		  timeInfo.push(parseInt($(this).val()));
     	  });
-    	  alert("timeInfo:"+timeInfo);
+//    	  alert("timeInfo:"+timeInfo);
         
 //        $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
 //        	timeInfo.push(parseInt($(this).val()));
@@ -215,7 +215,7 @@ $('#cancel2').on('click', function(){
     		  console.log("count : "+count);
     		  tmp.setDate(tmp.getDate()+1);
     	  }
-    	  alert("timeInfo : "+timeInfo.length);
+//    	  alert("timeInfo : "+timeInfo.length);
     		if(count==0){
         		alert("지정된 기간의 요일 사이에 매칭이 없습니다 다시 선택해 주세요");
         		count=0;

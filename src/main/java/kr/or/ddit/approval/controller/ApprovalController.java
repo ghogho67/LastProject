@@ -52,20 +52,20 @@ public class ApprovalController {
 		}
 
 		//
-		
+
 		ApprovalVo adminVo = avo;
 
 		int pay = avo.getApp_pay();
 		int cw_pay = pay * 9 / 10;
-		logger.debug("☞cw_pay:{}",cw_pay);
+		logger.debug("☞cw_pay:{}", cw_pay);
 		int admin_pay = pay * 1 / 10;
-		logger.debug("☞admin_pay:{}",admin_pay);
+		logger.debug("☞admin_pay:{}", admin_pay);
 		avo.setApp_pay(cw_pay);
-		logger.debug("☞avo:{}",avo);
+		logger.debug("☞avo:{}", avo);
 		int cwInsertCnt = approvalService.approvalInsert(avo);
 		adminVo.setApp_pay(admin_pay);
 		adminVo.setApp_obj("admin");
-		logger.debug("☞adminVo:{}",adminVo);
+		logger.debug("☞adminVo:{}", adminVo);
 		int adminInsertCnt = approvalService.approvalInsert(adminVo);
 		int insertCnt = 0;
 		if (cwInsertCnt == 1 && adminInsertCnt == 1) {
@@ -188,11 +188,9 @@ public class ApprovalController {
 
 	}
 
-	
-	
 	@RequestMapping(path = "/approvalCheckW")
-	public String approvalCheckW(HttpSession session, Model model,MemberApprovalVo memberapprovalVo, int page, int pageSize, String searchType,
-			@RequestParam(required = false) String searchVal) {
+	public String approvalCheckW(HttpSession session, Model model, MemberApprovalVo memberapprovalVo, int page,
+			int pageSize, String searchType, @RequestParam(required = false) String searchVal) {
 		PageVo pageVo = new PageVo();
 		pageVo.setPage(page);
 		pageVo.setPageSize(pageSize);
@@ -301,7 +299,6 @@ public class ApprovalController {
 
 	}
 
-	
 	/**
 	 * Method : approvalCheckA 작성자 : ADMIN 변경이력 :
 	 * 
@@ -359,12 +356,11 @@ public class ApprovalController {
 		logger.debug("☞goldMember:{}", approvalService.gradeApproval("2"));
 		logger.debug("☞careWorker:{}", approvalService.gradeApproval("3"));
 
-		
 		// 구글 pie chart API - (관리자) 회원등급별 매출비율
 		model.addAttribute("nomalmember", approvalService.totalApprovalType_admin("1"));
 		model.addAttribute("goldmember", approvalService.totalApprovalType_admin("2"));
 		model.addAttribute("careworker", approvalService.totalApprovalType_admin("3"));
-		
+
 		logger.debug("☞nomalmember:{}", approvalService.totalApprovalType_admin("1"));
 		logger.debug("☞goldmember:{}", approvalService.totalApprovalType_admin("2"));
 		logger.debug("☞careworker:{}", approvalService.totalApprovalType_admin("3"));

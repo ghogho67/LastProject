@@ -142,7 +142,7 @@ public interface IMemberService {
 	int upgradeMemberStep3(String mem_id);
 	
 	// <!-- 프리미엄혜택이 끝나는 회원을 조회한다 -->
-	List<String> downGradeMemberStep1();
+	GoldVo downGradeMemberStep1(String mem_id);
 
 	// <!-- 프리미엄혜택이 끝나는 회원의 등급을 조정한다 -->
 	int downGradeMemberStep2(String mem_id);
