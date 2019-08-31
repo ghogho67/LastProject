@@ -82,9 +82,18 @@ input[type="text"]::-webkit-input-value {
 			}).open();
 		});
 
-		$("#modificationComplete").on('click', function() {
+	
+	$("#modificationComplete").on('click', function() {
 
-			$("#frm").submit();
+			if ($('#pass').val().length > 10) {
+				alert("10자 까지만 입력가능합니다 ");
+				return false;
+			} else if ($('#pass').val().length == 0) {
+				alert("비밀번호를 입력해주세요");
+				return false;
+			} else if ($('#pass').val().length > 0) {
+				$("#frm").submit();
+			}
 
 		});
 
@@ -156,7 +165,7 @@ input[type="text"]::-webkit-input-value {
 												<div class="form-group">
 													<label class="col-md-12">비밀번호</label>
 													<div class="col-md-12">
-														<input type="password" value="${MEM_INFO.mem_pass}"
+														<input type="password"
 															class="form-control form-control-line" id="pass"
 															name="pass">
 													</div>

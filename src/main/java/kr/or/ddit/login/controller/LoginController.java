@@ -94,23 +94,15 @@ public class LoginController {
 			logger.debug("@@@@downGradeMemberStep1{}",downGradeMemberStep1);
 			
 			if(downGradeMemberStep1!=null) {
-				
-			
 				Calendar calendar1 = Calendar.getInstance();
-				
 				Calendar calendar2 = Calendar.getInstance();
 				calendar2.setTime(downGradeMemberStep1.getGold_end());
-				
-				
 				logger.debug("!!!!!calendar1 : {}", calendar1);
 				logger.debug("!!!!!calendar2 : {}", calendar2);
-	
-				
-				//로그인한 회원이 골드 회원 서비스까 끝난경우 
+				//로그인한 회원이 골드 회원 서비스가 끝난경우 
 				if(calendar1.compareTo(calendar2)>0){
 					logger.debug("@@@@ture{}","ture");
 					logger.debug("@@@@mem_id{}",mem_id);
-					
 					
 					//만약있다면  해당회원의 등급을 조정하고
 					int downGradeMemberStep2 =memberService.downGradeMemberStep2(mem_id);
@@ -123,24 +115,16 @@ public class LoginController {
 					}
 				}
 			}
-			
 				//해당회원의  골드테이블정보를 가져온다 
 			GoldVo goldvo = memberService.downGradeMember(mem_id);
 			model.addAttribute("goldvo",goldvo);
-			logger.debug("@@@@goldvo{}",goldvo);
-		
 			MemberVo memberVo = memberService.getMemVo(memVo.getMem_id());
-			logger.debug("@@@@memVo{}",memberVo);
 			session.setAttribute("MEM_INFO", memberVo);
 			session.setAttribute("mem_id", mem_id);
-			
 			List<CategoryVo> categoryList = categoryService.getCategoryList();
 			session.setAttribute("categoryList", categoryList);
-
 			return "redirect:/crawling";
-		}
-		else {
-		
+		}else {
 			model.addAttribute("fail",fail);
 			return "login";
 		}

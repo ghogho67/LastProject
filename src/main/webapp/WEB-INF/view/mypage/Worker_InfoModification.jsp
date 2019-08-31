@@ -32,10 +32,17 @@ input[type="text"]::-webkit-input-value {
 
 		$("#modificationComplete").on('click', function() {
 
-			$("#frm").submit();
+			if ($('#pass').val().length > 10) {
+				alert("10자 까지만 입력가능합니다 ");
+				return false;
+			} else if ($('#pass').val().length == 0) {
+				alert("비밀번호를 입력해주세요");
+				return false;
+			} else if ($('#pass').val().length > 0) {
+				$("#frm").submit();
+			}
 
 		});
-
 	});
 </script>
 </head>
