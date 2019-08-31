@@ -111,8 +111,8 @@ public class MemberService implements IMemberService {
 
 
 	@Override
-	public List<String> downGradeMemberStep1() {
-		return memberDao.downGradeMemberStep1();
+	public GoldVo downGradeMemberStep1(String mem_id) {
+		return memberDao.downGradeMemberStep1(mem_id);
 	}
 
 

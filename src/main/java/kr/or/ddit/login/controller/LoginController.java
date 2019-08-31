@@ -1,5 +1,6 @@
 package kr.or.ddit.login.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -42,7 +43,7 @@ public class LoginController {
 	public String loginView(HttpSession session){
 		
 		if(session.getAttribute("MEM_INFO") != null)
-			return "main"; // /WEB-INF/views/main.jsp
+			return "redirect:/crawling"; // /WEB-INF/views/main.jsp
 		else
 		return "login";// /WEB-INF/login/login.jsp
 		
@@ -89,12 +90,22 @@ public class LoginController {
 			
 			
 			//오늘날짜로 골드회원이용권이 종료되는  회원아이디목록을 가져온다
-			List<String> downGradeMemberStep1=memberService.downGradeMemberStep1();	
+			GoldVo downGradeMemberStep1=memberService.downGradeMemberStep1(mem_id);	
 			logger.debug("@@@@downGradeMemberStep1{}",downGradeMemberStep1);
 			
+
+			Calendar calendar1 = Calendar.getInstance();
+			
+			Calendar calendar2 = Calendar.getInstance();
+			calendar2.setTime(downGradeMemberStep1.getGold_end());
+			
+			
+			logger.debug("!!!!!calendar1 : {}", calendar1);
+			logger.debug("!!!!!calendar2 : {}", calendar2);
+
 			
 			//해당 아이디 리스트안에 로근인한 회원의 아이디가 있는지 조회한다
-			if(downGradeMemberStep1.contains(mem_id)==true){
+			if(calendar1.compareTo(calendar2)>0){
 				logger.debug("@@@@ture{}","ture");
 				logger.debug("@@@@mem_id{}",mem_id);
 				
@@ -132,7 +143,7 @@ public class LoginController {
 //			session.setAttribute("maxLevel", maxLevel);
 //			logger.debug("cate : {}",categoryList2);
 
-			return "redirect:crawling";
+			return "redirect:/crawling";
 		}
 		else {
 		
@@ -228,7 +239,7 @@ public class LoginController {
 	    //세션을 재설정
 		session.setAttribute("MEM_INFO", memVo);
 		logger.debug("@@@@MEM_INFO{}",memVo);
-		return "main";
+		return "redirect:/crawling";
 	}
 	
 	

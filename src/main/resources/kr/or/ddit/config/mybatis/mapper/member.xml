@@ -325,7 +325,7 @@
 <insert id="upgradeMemberStep2" parameterType="String">
 insert into gold
 (mem_id, gold_st, gold_end, gold_del) values 
-(#{mem_id},to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate+30, 'yyyy-mm-dd'), 'N')
+(#{mem_id},sysdate, sysdate+30, 'N')
 </insert>
 
 
@@ -334,21 +334,32 @@ insert into gold
 	<update id="upgradeMemberStep3" parameterType="String">
 		update gold
 		set
-		gold_st = to_date(sysdate, 'yyyy-mm-dd'),
-		gold_end = to_date(sysdate+30, 'yyyy-mm-dd'),
+		gold_st = sysdate,
+		gold_end = sysdate+30,
 		gold_del = 'N'
 		where mem_id = #{mem_id}
 	</update>
+	
+
+
 
 
 
 
 
 <!-- 프리미엄혜택이 끝나는 회원을 조회한다  -->
-<select id="downGradeMemberStep1" resultType="String">
-select mem_id    
+<!-- <select id="downGradeMemberStep1" resultType="String"> -->
+<!-- select mem_id     -->
+<!-- from gold  -->
+<!-- where  gold_end like sysdate and gold_del like 'N' -->
+<!-- </select> -->
+
+
+<!-- 프리미엄혜택이 끝나는 회원을 조회한다  -->
+<select id="downGradeMemberStep1" parameterType="String" resultType="goldVo">
+select *    
 from gold 
-where  gold_end like sysdate and gold_del like 'N'
+where  mem_id = #{mem_id}
 </select>
 
 
