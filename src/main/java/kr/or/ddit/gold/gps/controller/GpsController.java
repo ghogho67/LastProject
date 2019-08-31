@@ -61,10 +61,15 @@ public class GpsController {
       gpsVo.setMem_id(mem_id);
       gpsVo.setGold_st(getMemberVo.getGold_st());
       if(car_bpm == 0) {
-    	  i++;
+    	  if(i==0) {
+    		  i++;
+    	  }
     	  insertnum++;
+    	  logger.debug("!!!! i :{}",i);
+    	  logger.debug("!!!! insertnum :{}",insertnum);
       }
-      if(i==1||insertnum==(i*100)) {
+      if(i==1||insertnum==(i*10)) {
+    	  i++;
     	  
     	 
     	  logger.debug("!!!!!!!!!mem_id : {}", mem_id);
@@ -82,7 +87,7 @@ public class GpsController {
 			
     	  logger.debug("!!! msg : {}", msg);
 			
-    	  sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
+    	  sms.sendSms2(request, response, msg, "010-9771-5447", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
       }
       
       gpsService.insertGps(gpsVo);

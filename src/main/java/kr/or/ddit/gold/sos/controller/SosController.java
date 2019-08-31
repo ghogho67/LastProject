@@ -47,7 +47,7 @@ public class SosController {
 		
 		logger.debug("!!! msg : {}", msg);
 
-		sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
+		sms.sendSms2(request, response, msg, "010-9771-5447", "010", "2849", "0809", null, null,"응급발신", null, null, null, null, null, null, null, "S");
 		
 		
 
