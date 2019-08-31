@@ -199,7 +199,6 @@ public class LoginController {
 	@RequestMapping(path = "/gradeChangeToGold" )
 	public String goldmemberJoin(HttpSession session ,ApprovalVo approvalVo) {
 		
-		
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id=memberVo.getMem_id();
 		logger.debug("@@@@mem_id{}",mem_id);
