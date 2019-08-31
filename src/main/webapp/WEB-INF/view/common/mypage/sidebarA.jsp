@@ -8,6 +8,9 @@
    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
    <script src="script.js"></script>
    
+   
+   
+   
 </head>
 <body>
 
@@ -74,6 +77,7 @@
    </li>
    <li><a href="${cp}/donation/pagingList?page=1&pageSize=10"><span>기부관리</span></a></li>
 <!--    <li class='last'><a href='#'><span>회원탈퇴</span></a></li> -->
+	
 </ul>
 </div>
                
