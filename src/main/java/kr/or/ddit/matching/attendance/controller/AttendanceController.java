@@ -145,7 +145,7 @@ public class AttendanceController {
 			logger.debug("☞여기로 들어왔니");
 			
 			String msg = memberVo.getMem_nm()+"님이 출근하셨습니다";
-			sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"출근완료", null, null, null, null, null, null, null, "S");
+			sms.sendSms2(request, response, msg, "010-9771-5447", "010", "2849", "0809", null, null,"출근완료", null, null, null, null, null, null, null, "S");
 			
 			return "check/checkIn";
 		}else {
@@ -184,7 +184,7 @@ public class AttendanceController {
 		
 		MemberVo memberVo = attendanceService.getNames(mat_id);
 		String msg = memberVo.getMem_nm()+"님이 퇴근하셨습니다";
-		sms.sendSms2(request, response, msg, "010-2849-0809", "010", "2849", "0809", null, null,"퇴근완료", null, null, null, null, null, null, null, "S");
+		sms.sendSms2(request, response, msg, "010-9771-5447", "010", "2849", "0809", null, null,"퇴근완료", null, null, null, null, null, null, null, "S");
 		
 		
 		

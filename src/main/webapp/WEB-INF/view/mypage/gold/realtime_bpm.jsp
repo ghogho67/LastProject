@@ -64,10 +64,10 @@
 				borderColor : chartColors.red,
 				fill : false,
 // 				cubicInterpolationMode : 'monotone',
-lineTension: 0,
+				lineTension: 0,
 				data : [],
 				radius : 0,
-				borderWidth : 0.5
+				borderWidth : 2.0
 
 			} ]
 		},

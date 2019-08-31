@@ -215,9 +215,9 @@ public class ReportController {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id = memberVo.getMem_id();
 		String mem_grade = memberVo.getMem_grade();
-		
-		logger.debug("☞mem_id:{}",mem_id);
-		logger.debug("☞mem_grade:{}",mem_grade);
+
+		logger.debug("☞mem_id:{}", mem_id);
+		logger.debug("☞mem_grade:{}", mem_grade);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -341,7 +341,7 @@ public class ReportController {
 		mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
 
-		return "/report/reportDetail.mytiles";
+		return "redirect:/report/detail";
 
 	}
 
@@ -359,13 +359,14 @@ public class ReportController {
 	@RequestMapping("detail")
 	public String postDetail(int mat_id, Model model, HttpSession session) {
 //
-		logger.debug("☞mat_id:{}",mat_id);
+		logger.debug("☞detail");
+		logger.debug("☞mat_id:{}", mat_id);
 		model.addAttribute("reportVo", reportService.getReportVo(mat_id));
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
-		logger.debug("☞mvo:{}",mvo);
+		logger.debug("☞mvo:{}", mvo);
 		model.addAttribute("mat_id", mat_id);
 		model.addAttribute("cw_mem_id", mvo.getCw_mem_id());
-		model.addAttribute("reportAttachList", reportAttachService.getReportAttach(mat_id));
+		model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 		// 페이지 이동
@@ -384,7 +385,7 @@ public class ReportController {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 
-		return "/report/reportDetail.mytiles";
+		return "redirect:/report/detail";
 	}
 
 	@RequestMapping(path = "/modify", method = RequestMethod.POST)
@@ -438,7 +439,7 @@ public class ReportController {
 		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", memvo.getMem_id());
 
-		return "/report/reportDetail.mytiles";
+		return "redirect:/report/detail";
 
 	}
 
