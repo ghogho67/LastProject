@@ -41,7 +41,7 @@
                
 <div id='cssmenu'>
 <ul>
-   <li><a href='${cp}/mypage/Patient_Info'><span>회원정보</span></a></li>
+   <li><a href='${cp}/mypage/Admin_Info'><span>회원정보</span></a></li>
    <li><a href="${cp}/approval/approvalCheckA?page=1&pageSize=10"><span>결산관리</span></a></li>
    
    <li class='active has-sub'><a href="${cp }/mypage/pagingList?page=1&pageSize=10"><span>회원관리</span></a>

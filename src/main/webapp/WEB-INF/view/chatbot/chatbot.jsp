@@ -73,17 +73,19 @@ input {
 #userSay{
 	text-align : right;
 	margin-right: 15px;
+	font-size: 20px;
 }
 
 #chatBotSay{
 	text-align : left;
 	margin-left: 15px;
-
+font-size: 20px;
 }
 
 #chatBotSay1{
 	text-align : left;
 	margin-left: 15px;
+		font-size: 20px;
 
 }
 
@@ -445,7 +447,7 @@ input {
 <img id="logo" alt="" src="/image/logosam2.png">
 
  <form id=frm action="${cp}/chatbot">
- <p style="font-size: 14px; margin: 5px;">이동하고 싶은 메뉴를 입력하세요</p>
+ <p style="font-size: 20px; margin: 5px;">이동하고 싶은 메뉴를 입력하세요</p>
  <div id = 'result'>
 	<!-- 음성영역 -->
  </div>

@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<html lang="ko">
-<meta charset="utf-8" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<!-- <html lang="ko"> -->
+<meta charset="UTF-8" />
 <head>
 
 <style>
@@ -266,18 +270,29 @@ table.cw td {
 					</tr>
 					<tr>
 						<th>서비스 가능 지역</th>
-						<td><c:forEach items="${loList }" var="lo">
-							${lo.loc_dong },							
+						<td><c:forEach items="${loList }" var="lo" varStatus="status">
+								<c:choose>
+									<c:when test="${ status.last}">
+							${lo.loc_dong }
+								</c:when>
+									<c:otherwise>
+							${lo.loc_dong },
+								</c:otherwise>
+								</c:choose>
 							</c:forEach></td>
 					</tr>
-					<c:forEach items="${carList }" var="car">
+					<c:forEach items="${carList}" var="car">
 						<tr>
 							<th>경력</th>
-							<td style="padding-bottom: 16px;">내용 : ${car.career_cont}
-								시작일 : ${car.career_st_dt } 종료일 : <fmt:formatDate
-									value="${car.career_end_dt }" pattern="yyyy.MM.dd. hh:mm" />
-								소속 기관 : ${car.career_hos }
-							</td>
+							<td style="padding-bottom: 16px;"><fmt:parseDate
+									value="${car.career_st_dt }" pattern="yyyy-MM-dd HH:mm:ss"
+									var="st_dt" /> 시작일 : <fmt:formatDate pattern="yyyy-MM-dd"
+									type="both" value="${st_dt}" /> <br> ${car.career_end_dt}
+
+								<fmt:parseDate value="${car.career_end_dt}"
+									pattern="yyyy-MM-dd HH:mm:ss" var="end_dt" /> 종료일 : <fmt:formatDate
+									pattern="yyyy-MM-dd" type="both" value="${end_dt}" /> 내용 :
+								${car.career_cont} 소속 기관 : ${car.career_hos }</td>
 						</tr>
 					</c:forEach>
 

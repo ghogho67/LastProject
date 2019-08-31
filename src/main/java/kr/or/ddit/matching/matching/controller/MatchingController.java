@@ -277,6 +277,9 @@ public class MatchingController {
 		model.addAttribute("json", jsonText);
 
 		model.addAttribute("carList", carList);
+		
+		logger.debug("$carList : {}" ,carList);
+		
 		model.addAttribute("loList", loList);
 		model.addAttribute("list", list);
 		model.addAttribute("mem_id", mem_id);
