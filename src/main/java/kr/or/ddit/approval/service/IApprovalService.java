@@ -141,6 +141,9 @@ public interface IApprovalService {
 	* @return
 	* Method 설명 : 타입별로 검색하여 리스트 갖고오기
 	*/
-	public Map<String, Object> typeSaerchListW(Map<String, Object> resultMap); 
+	public Map<String, Object> typeSaerchListW(Map<String, Object> resultMap);
+
+
+	int insertApproval_memGOLD(String mem_id); 
 
 }

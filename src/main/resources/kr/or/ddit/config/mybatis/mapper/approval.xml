@@ -29,6 +29,27 @@
 		'N'
 	</select>
 	
+	
+	
+<!-- 	골드등록 -->
+		<insert id="insertApproval_memGOLD" parameterType="String">
+		insert into approval(app_id
+		                    ,app_pay
+		                    ,app_time
+		                    ,app_type
+		                    ,mem_id
+		                    ,app_del
+		                    ,app_obj)
+		             values(app_id.nextval
+		                   ,'100000'
+		                   ,sysdate
+		                   ,'2'
+		                   ,#{mem_id}
+		                   ,'N'
+		                   ,'admin')
+     </insert>
+	
+	
 	<!-- 기부등록 member - approval -->
 	<insert id="insertApproval_mem" parameterType="approvalVo">
 		insert into approval(app_id
@@ -86,6 +107,7 @@
 				
                 from approval
                 where mem_id =#{mem_id}
+                and app_obj = 'admin'
                 order by app_time desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
@@ -173,6 +195,7 @@
 				
                 from approval
                 where mem_id =#{mem_id}
+                and app_obj = 'admin'
                 and app_time like '%'||#{app_time}||'%' 
                 order by app_time desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
@@ -181,7 +204,8 @@
 	
 	<select id="dayCnt" parameterType="map" resultType="int">
 	 select count(*) from approval
-                where MEM_ID = #{mem_id}
+                where mem_id =#{mem_id}
+                and app_obj = 'admin'
                 and app_time like '%'||#{app_time}||'%'
 	</select>
 	
@@ -203,6 +227,7 @@
 				
                 from approval
                 where mem_id =#{mem_id}
+                and app_obj = 'admin'
 		 	    <if test="app_type!=0">
 		 	    <![CDATA[
 		    	and app_type =#{app_type} 
@@ -216,7 +241,8 @@
 	
 	<select id="typeCnt" parameterType="map" resultType="int">
 	 select count(*) from approval
-                where MEM_ID = #{mem_id}
+                where mem_id =#{mem_id}
+                and app_obj = 'admin'
                 <if test="app_type!=0">
 		    	and app_type =#{app_type} 
                 </if>

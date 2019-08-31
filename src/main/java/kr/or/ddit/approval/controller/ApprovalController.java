@@ -64,6 +64,7 @@ public class ApprovalController {
 		logger.debug("☞avo:{}",avo);
 		int cwInsertCnt = approvalService.approvalInsert(avo);
 		adminVo.setApp_pay(admin_pay);
+		adminVo.setApp_obj("admin");
 		logger.debug("☞adminVo:{}",adminVo);
 		int adminInsertCnt = approvalService.approvalInsert(adminVo);
 		int insertCnt = 0;
@@ -358,13 +359,15 @@ public class ApprovalController {
 		logger.debug("☞goldMember:{}", approvalService.gradeApproval("2"));
 		logger.debug("☞careWorker:{}", approvalService.gradeApproval("3"));
 
-		logger.debug("☞nomalmember:{}", approvalService.totalApprovalType_admin("1"));
-		logger.debug("☞goldmember:{}", approvalService.totalApprovalType_admin("2"));
-		logger.debug("☞careworker:{}", approvalService.totalApprovalType_admin("3"));
+		
 		// 구글 pie chart API - (관리자) 회원등급별 매출비율
 		model.addAttribute("nomalmember", approvalService.totalApprovalType_admin("1"));
 		model.addAttribute("goldmember", approvalService.totalApprovalType_admin("2"));
 		model.addAttribute("careworker", approvalService.totalApprovalType_admin("3"));
+		
+		logger.debug("☞nomalmember:{}", approvalService.totalApprovalType_admin("1"));
+		logger.debug("☞goldmember:{}", approvalService.totalApprovalType_admin("2"));
+		logger.debug("☞careworker:{}", approvalService.totalApprovalType_admin("3"));
 
 		return "/mypage/approval/approvalCheckA.mytiles";
 

@@ -199,7 +199,7 @@ table.cw td {
 		window
 				.open(
 						"/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅",
-						"thisTok!", "width=400, height=700, left=100, top=50");
+						"thisTok!", "width=550, height=700, left=100, top=50");
 	}
 </script>
 
@@ -215,7 +215,7 @@ table.cw td {
 			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
 			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
 			<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
-				style="width: 400px; height: auto; position: absolute; left: 26%; top: 83px;"
+				style="width: 300px; height: 350px; position: absolute; left: 25%; top: 100px;"
 				alt="${cp}/image/logosam.png" />
 		</div>
 		<input type="hidden" class="btn"><br> <br> <input
@@ -268,14 +268,12 @@ table.cw td {
 						<th>서비스 가능 지역</th>
 						<td><c:forEach items="${loList }" var="lo">
 							${lo.loc_dong },							
-							</c:forEach>${carList }</td>
+							</c:forEach></td>
 					</tr>
-
-										
-					<c:forEach items="${carList }" var="car" begin="1">
+					<c:forEach items="${carList }" var="car">
 						<tr>
 							<th>경력</th>
-							<td>내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 :
+							<td style = "padding-bottom: 16px;">내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 :
 								${car.career_end_dt } 소속 기관 : ${car.career_hos }</td>
 						</tr>
 					</c:forEach>
@@ -422,7 +420,7 @@ table.cw td {
 								</label> <label> <input type="checkbox" name="timeInfo[]"
 									value="5">15:00~16:00
 								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="6">16:30~17:00
+									value="6">16:30~17:30
 								</label>
 
 							</div>
@@ -433,19 +431,19 @@ table.cw td {
 					<div class="row" id="dayInfo">
 						<div class="col-xs-12">
 							<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label>
-								<input type="checkbox" name="dayInfo[]" value="1">일요일
+								<input type="checkbox" name="dayInfo[]" value="0">일요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="2">월요일
+								value="1">월요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="3">화요일
+								value="2">화요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="4">수요일
+								value="3">수요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="5">목요일
+								value="4">목요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="6">금요일
+								value="5">금요일
 							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="7">토요일
+								value="6">토요일
 							</label>
 						</div>
 					</div>

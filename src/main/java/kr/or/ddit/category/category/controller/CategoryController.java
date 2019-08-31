@@ -244,35 +244,6 @@ public class CategoryController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	
-//	@RequestMapping(path = "/categoryInsert", method = RequestMethod.GET)
-//	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes,
-//			@RequestParam(name = "cate_id")int cate_paerent_id) {
-//	
-//		model.addAttribute("cate_paerent_id", cate_paerent_id);
-//		
-//		
-//		return "category/categoryInsert";
-//	}
-//	
-	
-	
-	
-	
-	
-	
 
 	@RequestMapping(path = "/InsertCategory", method = RequestMethod.POST)
 	public String categoryInsert(Model model, HttpSession session,RedirectAttributes redirectAttributes,

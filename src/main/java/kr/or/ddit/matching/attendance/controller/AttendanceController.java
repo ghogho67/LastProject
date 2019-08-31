@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.SMS.SMS;
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.joinVo.AttendanceMatchingVo;
 import kr.or.ddit.matching.attendance.service.IAttendanceService;
 import kr.or.ddit.matching.matching.model.MatchingVo;
@@ -104,7 +104,7 @@ public class AttendanceController {
 	@RequestMapping(value = "cwlogin", produces = "application/json; charset = utf-8")
 	public JSONObject cwLogin(String mem_id, String mem_pass) {
 		logger.debug("☞로그인 ");
-		String encyptPassword = mem_pass;/*KISA_SHA256.encrypt(mem_pass);*/
+		String encyptPassword = KISA_SHA256.encrypt(mem_pass);
 		MemberVo memVo = memberService.getMemVo(mem_id);
 
 		JSONObject obj = new JSONObject();
@@ -117,7 +117,6 @@ public class AttendanceController {
 		else {
 			obj.put("message", "아이디와 비밀번호가 틀렸습니다.");
 			obj.put("mem_grade", "4");
-			
 		}
 		return obj;
 	}

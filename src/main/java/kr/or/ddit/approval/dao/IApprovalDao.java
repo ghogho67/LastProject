@@ -162,4 +162,6 @@ public interface IApprovalDao {
 	*/
 	int totalApprovalType_admin(String app_type);
 
+	int insertApproval_memGOLD(String mem_id);
+
 }

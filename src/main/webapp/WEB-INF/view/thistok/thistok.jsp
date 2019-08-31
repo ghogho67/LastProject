@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Exo', "Open Sans";
+font-family: 'Noto Sans KR', sans-serif;
   background: #e5e5e5;
 }
 
@@ -94,7 +94,7 @@ display:none;
 $(document).ready(function(){
 	$(".detailTr").on("click",function(){
 		console.log("detailTr");
-		window.open("", "thisTok!", "width=400, height=700, left=100, top=50"); 
+		window.open("", "thisTok!", "width=550, height=700,, left=100, top=50"); 
 		
 		var chat_id = $(this).find(".hidden").text();
 		

@@ -235,7 +235,6 @@ public class MatchingController {
 			list.add(vo);
 		}
 
-//		ObjectMapper mapper = new ObjectMapper();
 //		String jsonText = mapper.writeValueAsString(list);
 //		model.addAttribute("json", jsonText);
 		logger.debug("☞list:{}", list);
@@ -289,7 +288,7 @@ public class MatchingController {
 			mvo.setMem_gender("여자");
 		}
 
-		if (mvo.getMem_gender().equals("Y")) {
+		if (mvo.getCw_driver().equals("Y")) {
 			mvo.setCw_driver("운전 가능");
 		} else {
 			mvo.setCw_driver("운전 불가능");
@@ -365,7 +364,6 @@ public class MatchingController {
 
 		logger.debug("☞insertCalendar");
 
-		logger.debug("☞insertCalendar");
 		logger.debug("☞list:{}", list);
 
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -395,6 +393,7 @@ public class MatchingController {
 			}
 			;
 		}
+		logger.debug("☞time:{}", time);
 		for (int timeI : time) {
 			if (timeI == 1) {
 				startTime = "09:00";
@@ -548,9 +547,11 @@ public class MatchingController {
 		int compare = cal.compareTo(cal2);
 
 		int k = 0;
+		logger.debug("☞cal2.DAY_OF_WEEK:{}", cal2.DAY_OF_WEEK);
+		logger.debug("☞dow:{}", dow);
 		while (true) {
 			for (int i = 0; i < dow.length; i++) {
-				if (cal2.get(cal2.DAY_OF_WEEK) == dow[i]) {
+				if (cal2.get(cal2.DAY_OF_WEEK) == (dow[i]+1)) {
 					startDate2 = startDate2.substring(0, 10) + "T" + startDate2.substring(11, startDate2.length());
 					endDate2 = startDate2.substring(0, 10) + "T" + endDate2.substring(11, endDate2.length());
 //

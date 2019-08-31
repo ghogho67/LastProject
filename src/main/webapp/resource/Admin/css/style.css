@@ -7491,7 +7491,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+font-family: 'Noto Sans KR', sans-serif;
   font-size: 1em; }
 
 pre {
@@ -7547,7 +7547,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+font-family: 'Noto Sans KR', sans-serif;
   font-size: inherit;
   line-height: inherit; }
 
@@ -7748,7 +7748,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+ font-family: 'Noto Sans KR', sans-serif; }
 
 code {
   padding: 0.2rem 0.4rem;
@@ -13893,7 +13893,7 @@ font-family: 'Noto Sans KR', sans-serif;
   border: none; }
 
 .auth-pages .forgot-pass {
-  font-family: "Gudea", sans-serif;
+font-family: 'Noto Sans KR', sans-serif;
   font-size: 13px;
   line-height: 2.31;
   text-align: right;
@@ -13911,7 +13911,7 @@ font-family: 'Noto Sans KR', sans-serif;
     background-image: linear-gradient(to right, #318be3, #04befe); }
 
 .auth-pages .Or-login-with {
-  font-family: Gudea;
+font-family: 'Noto Sans KR', sans-serif;
   font-size: 15px;
   line-height: 2;
   text-align: center;
@@ -13919,7 +13919,8 @@ font-family: 'Noto Sans KR', sans-serif;
 
 .auth-pages a.btn {
   height: 39px;
-  font-family: Gudea; }
+font-family: 'Noto Sans KR', sans-serif;
+   }
 
 .auth-pages a.btn-facebook {
   background-color: #3f51b5;

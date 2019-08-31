@@ -21,7 +21,8 @@
 		      ,a.app_del
 		      ,a.app_obj
 		from  approval a,  member m 
-		order by a.app_time desc) a)
+        where a.mem_id=m.mem_id(+)
+		order by a.app_time desc)a)
 		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
 	</select>
@@ -29,13 +30,15 @@
 	<!-- 결제자 전체 수 조회- MemberApprovalVo 조인Vo사용 -->
 	<select id="memberApprovalAllCnt" resultType="int">
 		select count(*) 
-		from member, approval	
+		from approval a, member m
+		where a.mem_id=m.mem_id(+)
 	</select>
 	
 	<!-- 결제 전체 리스트 - MemberApprovalVo 조인Vo사용 -->
 	<select id="memberApprovalAllList" resultType="memberApprovalVo">
 		select * 
-		from member, approval
+		from approval a, member m
+		where a.mem_id=m.mem_id(+)
 	</select>
 	
 	<!-- 결산관리 - 등급별 결제액 -->

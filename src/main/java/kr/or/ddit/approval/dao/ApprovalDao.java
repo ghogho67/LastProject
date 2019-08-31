@@ -207,6 +207,11 @@ public class ApprovalDao implements IApprovalDao {
 			return sqlSession.selectOne("approval.typeCntW", type);
 		}
 	//==========================================================================================================
+
+		@Override
+		public int insertApproval_memGOLD(String mem_id) {
+			return sqlSession.insert("approval.insertApproval_memGOLD",mem_id);
+		}
 		
 		
 		

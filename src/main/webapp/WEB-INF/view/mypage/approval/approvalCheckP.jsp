@@ -322,7 +322,19 @@ td {
 												</c:when>
 
 											</c:choose></td>
-										<td>${vo.app_pay}</td>
+											<td><c:choose>
+												<c:when test="${vo.app_type eq 1}">
+													${vo.app_pay *10}
+												</c:when>
+												<c:when test="${vo.app_type eq 2}">
+												 	${vo.app_pay}
+												</c:when>
+												<c:when test="${vo.app_type eq 3}">
+												 	${vo.app_pay}
+												</c:when>
+
+											</c:choose></td>
+										
 										<td><fmt:formatDate value="${vo.app_time }"
 												pattern="yyyy.MM.dd HH:mm:ss" /></td>
 										<td>${vo.mem_id }</td>
@@ -344,7 +356,7 @@ td {
 			<nav class="pagination-outer" aria-label="Page navigation">
 				<ul class="pagination">
 					<c:choose>
-						<c:when test="${pageVo.page==1}">
+						<c:when test="${pageVo.page==1 || pageVo.page==0}">
 							<li class="page-item prev disabled"><a href="#"
 								class="page-link" aria-label="Previous"> <span
 									aria-hidden="true">«</span>
@@ -388,7 +400,7 @@ td {
 					</c:forEach>
 
 					<c:choose>
-						<c:when test="${pageVo.page == lastpaginationSize}">
+						<c:when test="${pageVo.page == lastpaginationSize || lastpaginationSize==0}">
 							<li class="page-item next disabled"><a href="#"
 								class="page-link" aria-label="Next"> <span
 									aria-hidden="true">›</span>
@@ -397,13 +409,13 @@ td {
 						<c:otherwise>
 							<li class="page-item"><a class="page-link" aria-label="Next"
 								href="javascript:boardPagingListAjaxHtml(${pageVo.page+1}, ${pageVo.pageSize});"><span
-									aria-hidden="true">›</span></a></li>
+									aria-hidden="true">› </span></a></li>
 						</c:otherwise>
 					</c:choose>
 
 
 					<c:choose>
-						<c:when test="${pageVo.page == lastpaginationSize}">
+						<c:when test="${pageVo.page == lastpaginationSize || lastpaginationSize==0}">
 							<li class="page-item next disabled"><a href="#"
 								class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</c:when>

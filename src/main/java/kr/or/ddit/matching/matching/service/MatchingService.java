@@ -91,9 +91,9 @@ public class MatchingService implements IMatchingService {
 	@Override
 	public Map<String, Object> matchingPagingList(Map<String, Object> map) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-			
+
 		logger.debug("☞matchingService/matchingPagingList");
-		
+
 		if (map.get("mem_id") != null) {
 			String mem_id = (String) map.get("mem_id");
 			List<MatchingVo> matchingList = matchingDao.memMatchingPagingList(map);
@@ -113,10 +113,11 @@ public class MatchingService implements IMatchingService {
 			String cw_mem_id = (String) map.get("cw_mem_id");
 			map.put("cw_mem_id", cw_mem_id);
 			List<MatchingVo> matchingList = matchingDao.cwMatchingPagingList(map);
+			logger.debug("☞matchingList:{}", matchingList);
 			resultMap.put("matchingList", matchingList);
 			logger.debug("☞cw_mem_id:{}", cw_mem_id);
 			int matchingCnt = matchingDao.cwMatchingCnt(cw_mem_id);
-			resultMap.put("matchingCnt", matchingCnt+1);
+			resultMap.put("matchingCnt", matchingCnt);
 			logger.debug("☞matchingCnt:{}", matchingCnt);
 			int pageSize = (int) map.get("pageSize");
 			logger.debug("☞pageSize:{}", pageSize);

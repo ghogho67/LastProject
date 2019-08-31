@@ -215,6 +215,9 @@ public class ReportController {
 		MemberVo memberVo = (MemberVo) session.getAttribute("MEM_INFO");
 		String mem_id = memberVo.getMem_id();
 		String mem_grade = memberVo.getMem_grade();
+		
+		logger.debug("☞mem_id:{}",mem_id);
+		logger.debug("☞mem_grade:{}",mem_grade);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -355,10 +358,11 @@ public class ReportController {
 
 	@RequestMapping("detail")
 	public String postDetail(int mat_id, Model model, HttpSession session) {
-
+//
+		logger.debug("☞mat_id:{}",mat_id);
 		model.addAttribute("reportVo", reportService.getReportVo(mat_id));
 		MatchingVo mvo = matchingService.getMatchingVo(mat_id);
-
+		logger.debug("☞mvo:{}",mvo);
 		model.addAttribute("mat_id", mat_id);
 		model.addAttribute("cw_mem_id", mvo.getCw_mem_id());
 		model.addAttribute("reportAttachList", reportAttachService.getReportAttach(mat_id));
