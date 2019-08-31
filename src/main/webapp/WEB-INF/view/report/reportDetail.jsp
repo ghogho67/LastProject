@@ -105,6 +105,32 @@ textarea {
 	});
 </script>
 
+<style>
+#reportModifyBtn {
+	height: 27.19px;
+	width: 60.55px;
+	background-color: #6772e5;
+	color: white;
+	border-radius: 5px;
+	font: sans-serif;
+	font-size: 12px;
+}
+
+#cont {
+	height: 27.19px;
+	background-color: #6772e5;
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+	color: white;
+	width: 60.55px;
+	margin-left: 2px;
+	border-radius: 3px;
+	font: sans-serif;
+	font-size: 12px;
+}
+</style>
+
 <script>
 	var count = 1;
 	var num = 1;
@@ -142,58 +168,61 @@ textarea {
 </head>
 <body>
 	<div class="content-wrapper"
-		style="width: 70%; margin-left: 350px; height: 683px; padding: 50px; min-height: 50vh; margin-top: 50px;">
-
+		style="width: 1140px; margin-left: 400px; height: 683px; padding: 50px; min-height: 50vh; margin-top: 50px;">
 		<!-- 		<div class="col-lg-12"> -->
-
-		<div class="card" style="width: 100%; height: 600px;">
-			<div class="card-body">
-				<h2 class="sub-header">보고서 조회</h2>
-<!-- 				<div> -->
-<!-- 					<hr> -->
-<!-- 					<div>asf</div> -->
-<!-- 					<div class="col-sm-10"> -->
-<%-- 						<h4>${reportVo.rep_title}</h4> --%>
-<!-- 					</div> -->
-
-<!-- 					<hr> -->
-<!-- 				</div> -->
-
-				<div class="form-group col-sm-8">
-					<div class="col-sm-10">
-						<label class="control-label">${reportVo.rep_cont}</label>
+		<div class="card"
+			style="width: 100%; height: 600px; overflow: auto; height: 600px;">
+			<div class="card-body"
+				style="height: 600px; overflow: auto; padding-top: 0px;">
+				<div>
+					<div style="width: 8%; float: left;">
+						<img id="img" src="${cp }/matching/photo?mem_id=${cw_mem_id} "
+							style="width: 100px; height: 100px;" alt="${cp}/image/tes.png" />
 					</div>
-					<br> <br> <br> <br> <br> <br> <br>
-					<br> <br> <br> <br> <br> <br>
+					<div class=" col-sm-12"
+						style="margin-left: 100px; margin-top: 40px;">
+						<h2>${reportVo.rep_title}</h2>
+						<span> <fmt:formatDate value="${reportVo.rep_time}"
+								pattern="yyyy.MM.dd. hh:mm" />
+						</span>
+						<%-- 						<span style="color: #c8967f"> ${reportVo.mem_id} </span> --%>
+						<br> <br>
+					</div>
+					<br>
 					<hr>
 				</div>
-				<div>
-					<label for="userNm" class="col-sm-2 control-label">첨부파일</label>
-					<div class="col-sm-10">
+
+				<div style="height: 500px;" style="overflow: scroll">
+					<div style="padding-left: 5px;">
+						<label class="control-label">${reportVo.rep_cont}</label> <br>
+						<br> <br> <br> <br> <br> <br> <br>
+						<br> <br> <br> <br> <br>
+						<!-- 					<label for="userNm" class="col-sm-2 control-label">첨부파일</label> -->
 						<c:forEach items="${reportAttachList}" var="reportAttachVo">
-							<br>
-							<div>
+							<hr>
+							<div style="height: 20px; padding-left: 2px;">
 								${reportAttachVo.rep_att_nm } <a
 									href="${cp}/reportAttach/download?mat_id=${mat_id }&rep_att_id=${reportAttachVo.rep_att_id }"
-									class="btn btn-primary btn-sm pull-right">다운로드</a>
+									style="height: 20px;"><img id="img"
+									src="${cp}/image/down.png" style="width: 20px; height: 20px;"
+									alt="${cp}/image/down.png" /></a>
 							</div>
-							<br>
 						</c:forEach>
 					</div>
+
 				</div>
 			</div>
-			<div class="form-group col-sm-8 text-left">
+			<div style="margin-left: 10px;">
 				<hr>
 				<c:if test="${cw_mem_id eq mem_id }">
 					<form style="float: left;" id="reportModifyfrm" method="post"
 						action="${cp}/report/modifyView">
-						<button id="reportModifyBtn" type="button"
-							class="btn btn-primary btn-sm" name="button">수정</button>
+						<button id="reportModifyBtn" type="button" name="button"
+							style="float: right;">수정</button>
 						<input type="hidden" value="${mat_id }" name="mat_id">
 					</form>
 				</c:if>
-				<a href="${cp}/report/pagingList"
-					class="btn btn-primary btn-sm pull-right">매칭목록</a>
+				<a href="${cp}/report/pagingList" id="cont">매칭목록</a>
 			</div>
 		</div>
 	</div>

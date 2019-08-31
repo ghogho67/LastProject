@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.category.post.attachment.model.AttachmentVo;
@@ -12,6 +14,8 @@ import kr.or.ddit.matching.reportAttach.model.ReportAttachVo;
 
 @Repository
 public class ReportAttachDao implements IReportAttachDao {
+
+	private static final Logger logger = LoggerFactory.getLogger(ReportAttachDao.class);
 
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
@@ -35,6 +39,8 @@ public class ReportAttachDao implements IReportAttachDao {
 
 	@Override
 	public List<ReportAttachVo> getReportAttachList(int mat_id) {
+		logger.debug("☞sqlSession.selectList(\"reportAttach.getReportAttachList\", mat_id):{}",
+				sqlSession.selectList("reportAttach.getReportAttachList", mat_id));
 		return sqlSession.selectList("reportAttach.getReportAttachList", mat_id);
 	}
 

@@ -55,7 +55,7 @@
 						$("#savebutton")
 								.click(
 										function() {
-											if ($("#rep_title").val() === '<p>&nbsp;</p>'
+											if ($("#rep_title").val() === '_$t&nbsp;_$ta'
 													|| $("#rep_title").val() === '') {
 												alert("제목을 입력해주세요")
 												return;
@@ -133,7 +133,7 @@
 	// 필수값 Check
 	function validation() {
 		var contents = $.trim(oEditors[0].getContents());
-		if (contents === '<p>&nbsp;</p>' || contents === '') { // 기본적으로 아무것도 입력하지 않아도 <p>&nbsp;</p> 값이 입력되어 있음. 
+		if (contents === '_$t&nbsp;_$ta' || contents === '') { // 기본적으로 아무것도 입력하지 않아도 _$t&nbsp;_$ta 값이 입력되어 있음. 
 			alert("내용을 입력하세요.");
 			oEditors.getById['smarteditor'].exec('FOCUS');
 			return false;
@@ -151,41 +151,69 @@
 
 	});
 </script>
+<style>
+#addFileBtn {
+	height: 27.19px;
+	width: 60.55px;
+	padding: 0px;
+	border: 0px;
+	min-height: 10px;
+	color: white;
+	font: sans-serif;
+	font-size: 12px;
+	background-color: #6772e5;
+	font-size: 12px;
+	font-weight: normal;
+	border-radius: 3px;
+}
+
+#savebutton {
+	height: 27.19px;
+	width: 60.55px;
+	padding: 0px;
+	border: 0px;
+	min-height: 10px;
+	color: white;
+	background-color: #6772e5;
+	font: sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	border-radius: 3px;
+}
+</style>
 
 </head>
 
 <body>
 
-	<div class="content-wrapper">
-
+	<div class="content-wrapper"
+		style="margin-top: 30px; width: 1140px; margin-left: 380px;">
 		<div class="col-lg-12">
-
 			<div class="card">
-				<div class="card-body">
+				<div class="card-body" style="padding: 30px;">
 					<div class="titlee">
-						<h2 class="sub-header">게시글 수정 reportModify.jsp</h2>
+						<h2 class="sub-header">보고서 수정</h2>
 						<form id="frm" class="form-horizontal" role="form"
 							action="${cp}/report/modify" method="post"
 							enctype="multipart/form-data">
 							<input type="hidden" name="mat_id" value="${mat_id }">
 							<div>
-								<label for="filename" class="col-sm-2 control-label">제목</label>
+								<!-- 								<label for="filename" class="col-sm-2 control-label">제목</label> -->
 								<input type="text" class="form-control" id="rep_title"
 									name="rep_title" value="${reportVo.rep_title}">
 							</div>
 							<div>
-								<label for="mem_id" class="col-sm-2 control-label">글내용</label>
+								<!-- 								<label for="mem_id" class="col-sm-2 control-label">글내용</label> -->
 								<div>
 									<div>
 										<br>
 										<textarea name="rep_cont" id="smarteditor" rows="10"
-											cols="100" style="width: 1110px; height: 412px;">
+											cols="100" style="width: 800px; height: 412px;">
 					${reportVo.rep_cont}
 					</textarea>
 									</div>
 									<input type="button" id="savebutton" value="수정완료"
-										class="btn btn-primary btn-sm" style="float: right;" /> <a
-										href="${cp}/report/pagingList"
+										style="float: right;" /> <a href="${cp}/report/pagingList"
 										class="btn btn-primary btn-sm pull-right">매칭목록</a>
 								</div>
 							</div>
@@ -193,13 +221,13 @@
 								<div>
 									<c:forEach items="${reportAttachList}" var="attach">
 										<label for="reportAttach" class="col-sm-5 control-label">${attach.rep_att_nm }</label>
-										<a id="a" href="${cp}/report/delete?mat_id=${reportVo.mat_id}"
+										<a id="a"
+											href="${cp}/reportAttach/delete?mat_id=${reportVo.mat_id}&rep_att_id=${attach.rep_att_id}"
 											class="btn btn-primary btn-sm">X</a>
 									</c:forEach>
 								</div>
 								<div id="fileArea">
-									<input type="button" value="파일추가"
-										class="btn btn-primary btn-sm" id="addFileBtn"> <br>
+									<input type="button" value="파일추가" id="addFileBtn"> <br>
 									<input type="file" name="file" multiple>
 								</div>
 							</div>

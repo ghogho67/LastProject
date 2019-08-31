@@ -273,8 +273,11 @@ table.cw td {
 					<c:forEach items="${carList }" var="car">
 						<tr>
 							<th>경력</th>
-							<td style = "padding-bottom: 16px;">내용 : ${car.career_cont} 시작일 : ${car.career_st_dt } 종료일 :
-								${car.career_end_dt } 소속 기관 : ${car.career_hos }</td>
+							<td style="padding-bottom: 16px;">내용 : ${car.career_cont}
+								시작일 : ${car.career_st_dt } 종료일 : <fmt:formatDate
+									value="${car.career_end_dt }" pattern="yyyy.MM.dd. hh:mm" />
+								소속 기관 : ${car.career_hos }
+							</td>
 						</tr>
 					</c:forEach>
 

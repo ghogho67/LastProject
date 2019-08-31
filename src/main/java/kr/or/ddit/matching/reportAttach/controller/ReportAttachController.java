@@ -44,7 +44,7 @@ public class ReportAttachController {
 		logger.debug("☞reportAttachVo:{}", reportAttachVo);
 
 		String fileName = reportAttachVo.getRep_att_nm();
-		String path = reportAttachVo.getRep_att_nm();
+		String path = reportAttachVo.getRep_att_path();
 
 		byte[] b = new byte[4096];
 		FileInputStream fis = new FileInputStream(path);
@@ -73,19 +73,18 @@ public class ReportAttachController {
 
 	// 0725
 	@RequestMapping(path = "/delete")
-	public String reportAttachDelete(int rep_att_id, int mat_id, Model model, ReportVo reportVo,
-			HttpSession session) {
+	public String reportAttachDelete(int rep_att_id, int mat_id, Model model, ReportVo reportVo, HttpSession session) {
 
+		logger.debug("☞rep_att_id:{}", rep_att_id);
 		logger.debug("☞post_id:{}", mat_id);
 		reportAttachService.reportAttachDelete(rep_att_id);
-
 		model.addAttribute("reportAttachList", reportAttachService.getReportAttachList(mat_id));
 		reportVo = reportService.getReportVo(mat_id);
 		model.addAttribute("reportVo", reportVo);
 		model.addAttribute("mat_id", mat_id);
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
-		return "/report/reportDetail.tiles";
+		return "redirect:/report/detail";
 
 	}
 }
