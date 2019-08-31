@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko">
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <head>
 
 <style>
@@ -196,8 +196,7 @@ table.cw td {
 	// import결제 함수
 
 	function popup3() {
-		window
-				.open(
+		window.open(
 						"/chat/createChat2?chatmem_id=${memVo.mem_id}&mem_id=${MEM_INFO.mem_id}&chat_nm=${memVo.mem_id }님과 채팅",
 						"thisTok!", "width=550, height=700, left=100, top=50");
 	}
