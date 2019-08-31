@@ -70,19 +70,20 @@ public class LoginController {
 	public String loginProcess(String mem_id, String mem_pass, String remember
 								,HttpServletResponse response, HttpSession session, Model model) {
 		String fail = "탈퇴회원이시거나 아이디,비밀번호가 틀렸습니다."; 
-		String encyptPassword =KISA_SHA256.encrypt(mem_pass);
+		
 
 		MemberVo memVo = memberService.getMemVo(mem_id);
 		
-		logger.debug("☞encyptPassword:{}",encyptPassword);
-		logger.debug("☞memVo.getMem_pass():{}",memVo.getMem_pass());
+		if(!mem_id.equals(null)||!mem_id.equals("")||!mem_pass.equals(null)||!mem_pass.equals("")) {
+			
+			String encyptPassword =KISA_SHA256.encrypt(mem_pass);
 		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
 			model.addAttribute("mem_id",mem_id);
 		
 		
-			// 
+			
 			/**
 			 * Method : 
 			 * 작성자 : 오도아
@@ -122,9 +123,13 @@ public class LoginController {
 			session.setAttribute("categoryList", categoryList);
 
 			return "redirect:crawling";
-		}
-		else {
-		
+			}
+			else {
+			
+				model.addAttribute("fail",fail);
+				return "login";
+			}
+		}else {
 			model.addAttribute("fail",fail);
 			return "login";
 		}
