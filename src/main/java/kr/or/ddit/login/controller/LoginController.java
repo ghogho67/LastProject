@@ -75,8 +75,8 @@ public class LoginController {
 
 		MemberVo memVo = memberService.getMemVo(mem_id);
 		
-		logger.debug("☞encyptPassword:{}",encyptPassword);
-		logger.debug("☞memVo.getMem_pass():{}",memVo.getMem_pass());
+//		logger.debug("☞encyptPassword:{}",encyptPassword);
+//		logger.debug("☞memVo.getMem_pass():{}",memVo.getMem_pass());
 		if (memVo != null && !memVo.getMem_del().equals("Y") && encyptPassword.equals(memVo.getMem_pass()) ){
 			rememberMeCookie(mem_id, remember, response);
 			session.setAttribute("MEM_INFO", memVo);
