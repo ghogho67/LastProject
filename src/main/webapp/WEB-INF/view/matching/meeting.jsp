@@ -163,6 +163,14 @@ table.cw td {
 }
 </style>
 
+<style>
+#emh4 {
+	font-size: 30px;
+	font-weight: 500;
+	margin-right: 400px;
+}
+</style>
+
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
 	type="text/javascript"></script>
 <script
@@ -317,6 +325,7 @@ table.cw td {
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
+
 					<!-- 					<button type="button" class="close" data-dismiss="modal" -->
 					<!-- 						aria-label="Close"> -->
 					<!-- 						<span aria-hidden="true">&times;</span> -->
@@ -367,143 +376,149 @@ table.cw td {
 	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal"
 		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" role="document">
-			<div class="modal-content">
+			<div class="modal-content" style="width: 1000px; height: 700px;">
 				<div class="modal-header">
-					<!-- 					<button type="button" class="close" data-dismiss="modal" -->
-					<!-- 						aria-label="Close"> -->
-					<!-- 						<span aria-hidden="true">&times;</span> -->
-					<!-- 					</button> -->
-					<h4 class="modal-title"></h4>
+					<span class="modal-title" id="emh4"
+						style="color: #828c8f; font-size: 30px; margin-right: 600px; margin-top: 10px;">Matching
+						Contact</span>
 				</div>
-				<div class="modal-body">
-
-					<!-- 						<div class="row"> -->
-					<!-- 							<div class="col-xs-12"> -->
-					<!-- 								<label hidden="true" class="col-xs-4" for="edit-allDay">하루종일</label> -->
-					<!-- 								<input class='allDayNewEvent' id="edit-allDay" type="checkbox" /> -->
-					<!-- 							</div> -->
-					<!-- 						</div> -->
-
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-title">일정명</label> <input
-								class="inputModal" type="text" name="edit-title" id="edit-title"
-								required="required" />
-						</div>
+				<div class="modal-body" style="width: 1200px; line-height: 3.5;">
+					<div style="display: inline-block; height: 400px;">
+						<label
+							style="position: absolute; bottom: 510px; margin-left: 10px; margin-bottom: 30px; color: #05aff0; height: 50px; left: 70px; border: 1px solid #dedee5; border-top: 3px solid #05aff0; padding-bottom: 3px; padding-left: 60px; padding-right: 60px">PROFILE</label>
+						<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id }"
+							style="width: 200px; height: 200px; border-radius: 100%; margin-bottom: 500px; margin-left: 70px;"
+							alt="${cp}/image/logosam.png" /> <label
+							style="position: absolute; bottom: 238px; border-radius: 10px; color: #05aff0; height: 50px; left: 70px; border: 1px solid #dedee5; padding-bottom: 3px; padding-left: 90px; padding-right: 90px">${memVo.mem_nm }</label>
 					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-startDate">시작날짜</label> <input
-								class="inputModal" type="text" name="edit-startDate"
-								id="edit-startDate" />
+					<div style="display: inline-block; margin-left: 50px">
+						<div class="row">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-title"
+									style="color: #adb7c1; width: 170px; font-weight: 500">일정명</label> <input
+									class="inputModal" type="text" name="edit-title"
+									id="edit-title" required="required"
+									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;" />
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-endDate">종료날짜</label> <input
-								class="inputModal" type="text" name="edit-endDate"
-								id="edit-endDate" />
+						<div class="row">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-startDate"
+									style="color: #adb7c1; width: 170px; font-weight: 500">시작날짜</label> <input
+									class="inputModal" type="text" name="edit-startDate"
+									id="edit-startDate"
+									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;" />
+							</div>
 						</div>
-					</div>
-					<!-- 						<div class="row"> -->
-					<!-- 							<div class="col-xs-12"> -->
-					<!-- 								<label class="col-xs-4" for="edit-StartTime">시작시간</label> <input -->
-					<!-- 									class="inputModal" type="text" name="edit-startTime" -->
-					<!-- 									id="edit-startTime" /> -->
-					<!-- 							</div> -->
-					<!-- 						</div> -->
-					<!-- 						<div class="row"> -->
-					<!-- 							<div class="col-xs-12"> -->
-					<!-- 								<label class="col-xs-4" for="edit-endTime">종료시간</label> <input -->
-					<!-- 									class="inputModal" type="text" name="edit-endTime" -->
-					<!-- 									id="edit-endTime" /> -->
-					<!-- 							</div> -->
-					<!-- 						</div> -->
+						<div class="row">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-endDate"
+									style="color: #adb7c1; width: 170px; font-weight: 500">종료날짜</label> <input
+									class="inputModal" type="text" name="edit-endDate"
+									id="edit-endDate"
+									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;" />
+							</div>
+						</div>
 
-					<div class="row" id="timeInfo">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="timeInfo">시간 선택</label>
+						<div class="row" id="timeInfo">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="timeInfo"
+									style="color: #adb7c1; width: 170px; font-weight: 500">시간 선택</label>
 
 
 
-							<div class="col-xs-7">
-								<label> <input type="checkbox" name="timeInfo[]"
-									value="1">09:00~10:00
-								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="2">10:30~11:30
-								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="3">12:00~13:00
-								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="4">13:30~14:30
-								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="5">15:00~16:00
-								</label> <label> <input type="checkbox" name="timeInfo[]"
-									value="6">16:30~17:30
-								</label>
+								<div class="col-xs-7" style="padding-left: 0px;">
+									<label style="font-weight: 300;"> <input
+										type="checkbox" name="timeInfo[]" value="1">09:00~10:00
+									</label> <label style="font-weight: 300;"> <input
+										type="checkbox" name="timeInfo[]" value="2">10:30~11:30
+									</label> <label style="font-weight: 300;"> <input
+										type="checkbox" name="timeInfo[]" value="3">12:00~13:00
+									</label> <label style="font-weight: 300;"> <input
+										type="checkbox" name="timeInfo[]" value="4">13:30~14:30
+									</label> <label style="font-weight: 300;"> <input
+										type="checkbox" name="timeInfo[]" value="5">15:00~16:00
+									</label> <label style="font-weight: 300;"> <input
+										type="checkbox" name="timeInfo[]" value="6">16:30~17:30
+									</label>
+
+								</div>
 
 							</div>
+						</div>
 
+						<div class="row" id="dayInfo">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="dayInfo[]"
+									style="color: #adb7c1; width: 170px; font-weight: 500">요일 선택</label> <label
+									style="font-weight: 300;"> <input type="checkbox"
+									name="dayInfo[]" value="0">일요일
+								</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="1">월요일
+								</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="2">화요일
+								</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="3">수요일
+								</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="4">목요일
+								</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="5">금요일
+								</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="6">토요일
+								</label>
+							</div>
 						</div>
-					</div>
 
-					<div class="row" id="dayInfo">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="dayInfo[]">요일 선택</label> <label>
-								<input type="checkbox" name="dayInfo[]" value="0">일요일
-							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="1">월요일
-							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="2">화요일
-							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="3">수요일
-							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="4">목요일
-							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="5">금요일
-							</label> <label> <input type="checkbox" name="dayInfo[]"
-								value="6">토요일
-							</label>
+						<div class="row">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-type"
+									style="color: #adb7c1; width: 170px; font-weight: 500">구분</label> <select
+									class="inputModal" type="text" name="edit-type" id="edit-type"
+									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;">
+									<option value="방문간병">방문간병</option>
+									<option value="병원간병">병원간병</option>
+									<option value="운동도움">운동도움</option>
+								</select>
+							</div>
 						</div>
-					</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-color"
+									style="color: #adb7c1; width: 170px; font-weight: 500">색상</label> <select
+									class="inputModal" name="color" id="edit-color"
+									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;">
+									<option value="#D25565" style="color: #D25565;">빨간색</option>
+									<option value="#9775fa" style="color: #9775fa;">보라색</option>
+									<option value="#ffa94d" style="color: #ffa94d;">주황색</option>
+									<option value="#74c0fc" style="color: #74c0fc;">파란색</option>
+									<option value="#f06595" style="color: #f06595;">핑크색</option>
+									<option value="#63e6be" style="color: #63e6be;">연두색</option>
+									<option value="#a9e34b" style="color: #a9e34b;">초록색</option>
+									<option value="#4d638c" style="color: #4d638c;">남색</option>
+									<option value="#495057" style="color: #495057;">검정색</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-desc"
+									style="color: #adb7c1; width: 170px; font-weight: 500">설명</label>
+								<textarea rows="4" cols="50" class="inputModal" name="edit-desc"
+									id="edit-desc"
+									style="height: 39px; BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;"></textarea>
 
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-type">구분</label> <select
-								class="inputModal" type="text" name="edit-type" id="edit-type">
-								<option value="방문간병">방문간병</option>
-								<option value="병원간병">병원간병</option>
-								<option value="운동도움">운동도움</option>
-							</select>
+
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-color">색상</label> <select
-								class="inputModal" name="color" id="edit-color">
-								<option value="#D25565" style="color: #D25565;">빨간색</option>
-								<option value="#9775fa" style="color: #9775fa;">보라색</option>
-								<option value="#ffa94d" style="color: #ffa94d;">주황색</option>
-								<option value="#74c0fc" style="color: #74c0fc;">파란색</option>
-								<option value="#f06595" style="color: #f06595;">핑크색</option>
-								<option value="#63e6be" style="color: #63e6be;">연두색</option>
-								<option value="#a9e34b" style="color: #a9e34b;">초록색</option>
-								<option value="#4d638c" style="color: #4d638c;">남색</option>
-								<option value="#495057" style="color: #495057;">검정색</option>
-							</select>
-						</div>
+					<div class="modal-footer modalBtnContainer-addEvent"
+						style="width: 980px;">
+						<button type="button" class="btn btn-default" id="cancel1"
+							data-dismiss="modal"
+							style="width: 300px; height: 50px; margin-right: 10px; margin-left: 480px;">취소</button>
+						<button type="button" class="btn btn-primary" id="save-event2"
+							style="background: #05aff0; width: 300px; height: 50px; margin-right: 70px;">저장</button>
 					</div>
-					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-desc">설명</label>
-							<textarea rows="4" cols="50" class="inputModal" name="edit-desc"
-								id="edit-desc"></textarea>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer modalBtnContainer-addEvent">
-					<button type="button" class="btn btn-default" id="cancel1"
-						data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary" id="save-event2">저장</button>
 				</div>
 				<!-- 					<div class="modal-footer modalBtnContainer-modifyEvent"> -->
 				<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> -->
