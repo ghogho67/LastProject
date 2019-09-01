@@ -25,7 +25,7 @@ img {
 .M_btn {
 	min-width: 150px;
 	padding: 0 25px;
-	width: 250px;
+	width: 150px;
 	height: 44px;
 	text-align: center;
 	background: #78d3f5;
@@ -222,20 +222,78 @@ table.cw td {
 
 	<div class="container" style="width: 1000px;">
 		<div style="width: 50%; float: left; height: 350px;">
-
+			<div
+				style="height: 700px; width: 600px; display: inline-block; position: absolute; left: 400px; top: 180px;"></div>
 			<label for="userNm" class="col-sm-2 control-label">${path }</label>
-			<%-- 			 <img id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
-			<!-- 				style="float: right; width: 400px; height: 400px;" /> -->
-			<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id } "
-				style="width: 300px; height: 350px; position: absolute; left: 25%; top: 100px;"
+			<!-- 			<img -->
+			<%-- 				id="img" src="${cp }/matching/photo?mem_id=ahri" --%>
+			<!-- 				style="float: right; width: 400px; height: 400px;" />  -->
+			<img id="img" src="${cp }/matching/photo?mem_id=${memVo.mem_id }"
+				style="width: 130px; height: 130px; position: absolute; left: 20%; top: 200px; border-radius: 100px;"
 				alt="${cp}/image/logosam.png" />
+			<p
+				style="position: absolute; top: 260px; left: 540px; font-size: 30px; font-weight: 500; color: #4f91d4;">${mem_id},
+				${memVo.mem_nm }</p>
+			<div
+				style="position: absolute; top: 320px; left: 550px; overflow: scroll">
+				<p >성별 : ${memVo.mem_gender }</p>
+				<p>전화번호 : ${memVo.mem_phone }</p>
+				<p>운전여부 : ${memVo.cw_driver }</p>
+				<p>
+					서비스 가능 지역 :
+					<c:forEach items="${loList }" var="lo" varStatus="status">
+						<c:choose>
+							<c:when test="${ status.last}">
+											${lo.loc_dong }
+												</c:when>
+							<c:otherwise>
+											${lo.loc_dong },
+												</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</p>
+				<c:forEach items="${carList}" var="car">
+					<p>경력</p>
+					<fmt:parseDate value="${car.career_st_dt }"
+						pattern="yyyy-MM-dd HH:mm:ss" var="st_dt" />
+					<p>
+						시작일 :
+						<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${st_dt}" />
+						<br>
+					</p>
+					<p>
+						종료일 :
+						<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${end_dt}" />
+					</p>
+					<p>내용 : ${car.career_cont}</p>
+					<p>소속 기관 : ${car.career_hos }</p>
+				</c:forEach>
+				<p>요양보호사 아이디 ${memVo.mem_id }</p>
+			</div>
+			<div style="margin-left: 500px;">
+				<img id="img" src="${cp}/image/video chat.png"
+					style="top: 600px; position: absolute; left: 500px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
+					alt="${cp}/image/videochat.png" /> <input type="hidden"
+					class="btn"><br> <br> <input type="button"
+					id="app" class="M_btn" value="매칭신청"
+					style="position: absolute; left: 400px; top: 830px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;"><br>
+				<br> <img id="img" src="${cp}/image/chat.png"
+					style="top: 500px; position: absolute; left: 670px; top: 600px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
+					alt="${cp}/image/chat.png" /> <br> <input type="button"
+					class="M_btn" value="화상채팅" id="videochat"
+					style="position: absolute; left: 570px; top: 830px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;"><br>
+				<br> <img id="img" src="${cp}/image/mat.png"
+					style="position: absolute; top: 600px; left: 330px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
+					alt="${cp}/image/mat.png" /><br> <input type="button"
+					class="M_btn" value="메신저" onclick="popup3()"
+					style="position: absolute; left: 740px; top: 830px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;">
+				<input type="hidden" name="mem_id" value="${mem_id}">
+			</div>
+			<div id="calendar"
+				style="height: 700px; width: 700px; position: absolute; left: 1000px; top: 180px;"></div>
+			<div style="height: 700px; width: 300px; display: inline-block;"></div>
 		</div>
-		<input type="hidden" class="btn"><br> <br> <input
-			type="button" id="app" class="M_btn" value="매칭신청"><br> <br>
-		<input type="button" class="M_btn" value="화상채팅" id="videochat"><br>
-		<br> <input type="button" class="M_btn" value="채팅"
-			onclick="popup3()"> <input type="hidden" name="mem_id"
-			value="${mem_id}">
+
 	</div>
 	<!-- 일자 클릭시 메뉴오픈 -->
 	<div id="contextMenu" class="dropdown clearfix">
@@ -250,8 +308,9 @@ table.cw td {
 		</ul>
 	</div>
 
+
 	<div id="wrapper">
-		<div>
+		<div style="display: none;">
 			<table class="cw" border="1">
 				<thead>
 					<tr>
@@ -281,11 +340,11 @@ table.cw td {
 						<td><c:forEach items="${loList }" var="lo" varStatus="status">
 								<c:choose>
 									<c:when test="${ status.last}">
-							${lo.loc_dong }
-								</c:when>
+											${lo.loc_dong }
+												</c:when>
 									<c:otherwise>
-							${lo.loc_dong },
-								</c:otherwise>
+											${lo.loc_dong },
+												</c:otherwise>
 								</c:choose>
 							</c:forEach></td>
 					</tr>
@@ -307,16 +366,13 @@ table.cw td {
 					<tr>
 						<th>요양보호사 아이디</th>
 						<td>${memVo.mem_id }</td>
-						<%-- 						<td id="cw_mem_id">${memVo.mem_id }</td> --%>
+						<td id="cw_mem_id">${memVo.mem_id }</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div id="loading"></div>
-		<div
-			style="float: center; padding: 10px; width: 1000px; height: 820px; background-color: #f8f6ff; margin-top: 50px; margin-left: 430px; border-radius: 10px;">
-			<div id="calendar" style="width: 900px; background-color: #f8f6ff"></div>
-		</div>
+		<div id="calendar" style="height: 300px; width: 1000px;"></div>
 	</div>
 
 	<!-- 일정 추가 MODAL -->
@@ -395,8 +451,8 @@ table.cw td {
 						<div class="row">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-title"
-									style="color: #adb7c1; width: 170px; font-weight: 500">일정명</label> <input
-									class="inputModal" type="text" name="edit-title"
+									style="color: #adb7c1; width: 170px; font-weight: 500">일정명</label>
+								<input class="inputModal" type="text" name="edit-title"
 									id="edit-title" required="required"
 									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;" />
 							</div>
@@ -404,8 +460,8 @@ table.cw td {
 						<div class="row">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-startDate"
-									style="color: #adb7c1; width: 170px; font-weight: 500">시작날짜</label> <input
-									class="inputModal" type="text" name="edit-startDate"
+									style="color: #adb7c1; width: 170px; font-weight: 500">시작날짜</label>
+								<input class="inputModal" type="text" name="edit-startDate"
 									id="edit-startDate"
 									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;" />
 							</div>
@@ -413,8 +469,8 @@ table.cw td {
 						<div class="row">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-endDate"
-									style="color: #adb7c1; width: 170px; font-weight: 500">종료날짜</label> <input
-									class="inputModal" type="text" name="edit-endDate"
+									style="color: #adb7c1; width: 170px; font-weight: 500">종료날짜</label>
+								<input class="inputModal" type="text" name="edit-endDate"
 									id="edit-endDate"
 									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;" />
 							</div>
@@ -423,7 +479,8 @@ table.cw td {
 						<div class="row" id="timeInfo">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="timeInfo"
-									style="color: #adb7c1; width: 170px; font-weight: 500">시간 선택</label>
+									style="color: #adb7c1; width: 170px; font-weight: 500">시간
+									선택</label>
 
 
 
@@ -450,9 +507,9 @@ table.cw td {
 						<div class="row" id="dayInfo">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="dayInfo[]"
-									style="color: #adb7c1; width: 170px; font-weight: 500">요일 선택</label> <label
-									style="font-weight: 300;"> <input type="checkbox"
-									name="dayInfo[]" value="0">일요일
+									style="color: #adb7c1; width: 170px; font-weight: 500">요일
+									선택</label> <label style="font-weight: 300;"> <input
+									type="checkbox" name="dayInfo[]" value="0">일요일
 								</label> <label style="font-weight: 300;"> <input
 									type="checkbox" name="dayInfo[]" value="1">월요일
 								</label> <label style="font-weight: 300;"> <input
@@ -472,8 +529,9 @@ table.cw td {
 						<div class="row">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-type"
-									style="color: #adb7c1; width: 170px; font-weight: 500">구분</label> <select
-									class="inputModal" type="text" name="edit-type" id="edit-type"
+									style="color: #adb7c1; width: 170px; font-weight: 500">구분</label>
+								<select class="inputModal" type="text" name="edit-type"
+									id="edit-type"
 									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;">
 									<option value="방문간병">방문간병</option>
 									<option value="병원간병">병원간병</option>
@@ -484,8 +542,8 @@ table.cw td {
 						<div class="row">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-color"
-									style="color: #adb7c1; width: 170px; font-weight: 500">색상</label> <select
-									class="inputModal" name="color" id="edit-color"
+									style="color: #adb7c1; width: 170px; font-weight: 500">색상</label>
+								<select class="inputModal" name="color" id="edit-color"
 									style="BORDER-BOTTOM: #dedee5 1px solid; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 9pt; width: 400px;">
 									<option value="#D25565" style="color: #D25565;">빨간색</option>
 									<option value="#9775fa" style="color: #9775fa;">보라색</option>
