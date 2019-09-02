@@ -21,6 +21,7 @@ var pay = dateDef*timeDef;
 var editType = $('#edit-type');
 var editColor = $('#edit-color');
 var editDesc = $('#edit-desc');
+var cw_mem_id = $('#cw_mem_id');
 
 var count=0;
 var eventData;
@@ -151,18 +152,18 @@ $('#cancel2').on('click', function(){
     			 var test = $(this).val();
     			 dayInfo.push(parseInt($(this).val()));
     		 });
-//    	  alert("dayInfo:"+dayInfo);
+// alert("dayInfo:"+dayInfo);
     	  var timeInfo = [];
     	  $("input[name='timeInfo[]']:checked").each(function() {
     		  var test = $(this).val();
     		  timeInfo.push(parseInt($(this).val()));
     	  });
-//    	  alert("timeInfo:"+timeInfo);
+// alert("timeInfo:"+timeInfo);
         
-//        $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
-//        	timeInfo.push(parseInt($(this).val()));
-//        });  
-//        alert("timeInfo:"+parseInt($(this).val()));
+// $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
+// timeInfo.push(parseInt($(this).val()));
+// });
+// alert("timeInfo:"+parseInt($(this).val()));
         
         addBtnContainer.show();
         modifyBtnContainer.hide();
@@ -215,7 +216,7 @@ $('#cancel2').on('click', function(){
     		  console.log("count : "+count);
     		  tmp.setDate(tmp.getDate()+1);
     	  }
-//    	  alert("timeInfo : "+timeInfo.length);
+// alert("timeInfo : "+timeInfo.length);
     		if(count==0){
         		alert("지정된 기간의 요일 사이에 매칭이 없습니다 다시 선택해 주세요");
         		count=0;
@@ -232,8 +233,6 @@ $('#cancel2').on('click', function(){
     	 
     	  var diff = Math.abs(chooseEndCal.getTime() - chooseStCal.getTime());
     	  diff = Math.ceil(diff / (1000 * 3600 * 24));
-    	  
-    	  console.log("diff"+diff);
     	  var ajaxlist;
     	  $.ajax({
     		  type : "post",
@@ -349,14 +348,16 @@ $('#cancel2').on('click', function(){
         var dayInfo = [];
         $('input:checkbox[name="dayInfo[]"]:checked').each(function () {
         	dayInfo.push(parseInt($(this).val()));
-        	alert("dayInfo:"+parseInt($(this).val()));
+//        	alert("dayInfo:"+parseInt($(this).val()));
         });
 
         var timeInfo = [];
         $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
         	timeInfo.push(parseInt($(this).val()));
-        	alert(parseInt($(this).val()));
+//        	alert(parseInt($(this).val()));
         });  
+//    	alert("cw_mem_id"+cw_mem_id.val());
+    	console.log("cw_mem_id"+cw_mem_id.val());
     	
         eventData = [{
         	title: editTitle.val(),

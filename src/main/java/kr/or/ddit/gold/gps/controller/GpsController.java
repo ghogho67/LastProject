@@ -68,7 +68,7 @@ public class GpsController {
     	  logger.debug("!!!! i :{}",i);
     	  logger.debug("!!!! insertnum :{}",insertnum);
       }
-      if(i==1||insertnum==(i*10)) {
+      if(insertnum==(i*10)) {
     	  i++;
     	  
     	 

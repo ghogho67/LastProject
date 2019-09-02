@@ -2,53 +2,8 @@
 <gpx xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" creator="bikeroute.xyz">
 	<metadata>
 		<desc>bikeroute.xyz</desc>
-		<bounds maxlat="36.35346139432439" maxlon="127.41616967493498" minlat="36.32457252852229" minlon="127.3806222219879"/>
 	</metadata>
 
-
-	<wpt lat="36.32565020199898" lon="127.41135171826689">
-		<name>START</name>
-		<sym>Flag, Green</sym>
-		<extensions>
-			<gpxx:WaypointExtension xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
-			<gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
-			</gpxx:WaypointExtension>
-		</extensions>
-		<ele>0</ele>
-	</wpt>
-
-	<wpt lat="36.337023483995324" lon="127.38189463203">
-		<name>Waypoint 1</name>
-		<sym>Flag, Green</sym>
-		<extensions>
-			<gpxx:WaypointExtension xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
-			<gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
-			</gpxx:WaypointExtension>
-		</extensions>
-		<ele>0</ele>
-	</wpt>
-
-	<wpt lat="36.34660372221507" lon="127.4156994853029">
-		<name>Waypoint 2</name>
-		<sym>Flag, Green</sym>
-		<extensions>
-			<gpxx:WaypointExtension xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
-			<gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
-			</gpxx:WaypointExtension>
-		</extensions>
-		<ele>0</ele>
-	</wpt>
-
-	<wpt lat="36.33610417953348" lon="127.41020819527124">
-		<name>END</name>
-		<sym>Flag, Green</sym>
-		<extensions>
-			<gpxx:WaypointExtension xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
-			<gpxx:DisplayMode>SymbolAndName</gpxx:DisplayMode>
-			</gpxx:WaypointExtension>
-		</extensions>
-		<ele>0</ele>
-	</wpt>
 
 
 
