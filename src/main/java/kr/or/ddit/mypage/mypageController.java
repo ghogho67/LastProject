@@ -109,9 +109,16 @@ public class mypageController {
 			@RequestParam(name = "pro_phone") String pro_phone) throws IllegalStateException, IOException {
 
 		String encyptPassword = KISA_SHA256.encrypt(mem_pass);
-		String viewName; String mem_nm = ""; 	String mem_birth = ""; String mem_gender = "";
-		String mem_del = ""; String mem_grade = ""; String cw_driver = "";
-		String cw_lic = ""; String mem_photo_path = ""; String mem_photo_nm = "";
+		String viewName;
+		String mem_nm = "";
+		String mem_birth = "";
+		String mem_gender = "";
+		String mem_del = "";
+		String mem_grade = "";
+		String cw_driver = "";
+		String cw_lic = "";
+		String mem_photo_path = "";
+		String mem_photo_nm = "";
 		MemberVo memberVo = null;
 		if (profile.getSize() > 0) {
 			String fileName = profile.getOriginalFilename();
@@ -123,9 +130,8 @@ public class mypageController {
 			profile.transferTo(new File(filePath));
 		}
 		if (grade.equals("3") == false) {
-			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, 
-					mem_phone, mem_add1,mem_add2, mem_zipcd, mem_mail, mem_grade, 
-					mem_del, mem_photo_path, mem_photo_nm, pro_relation,
+			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1,
+					mem_add2, mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation,
 					pro_nm, pro_phone, cw_driver, cw_lic);
 			if (profile.getOriginalFilename().isEmpty()) {
 				int updateCnt = memberService.updatePMemberNoPro(memberVo);
@@ -134,12 +140,16 @@ public class mypageController {
 				}
 			} else {
 				int updateCnt = memberService.updatePMember(memberVo);
-				if (updateCnt != 1) {viewName = "redirect:/login";}
+				if (updateCnt != 1) {
+					viewName = "redirect:/login";
+				}
 			}
 			memberVo = memberService.getMemVo(mem_id);
 			session.setAttribute("MEM_INFO", memberVo);
 			viewName = "/mypage/Patient_Info.mytiles";
-		} else {viewName = "redirect:/main";}
+		} else {
+			viewName = "redirect:/main";
+		}
 		return viewName;
 	}
 
@@ -251,7 +261,16 @@ public class mypageController {
 		String mem_id = memvo.getMem_id();
 		model.addAttribute("mem_id", mem_id);
 
-		return "/mypage/schedule.mytiles";
+		if (memvo.getMem_grade().equals("1")) {
+			return "/mypage/schedule.mytiles";
+
+		} else if (memvo.getMem_grade().equals("2")) {
+			return "/mypage/schedule.mytiles";
+
+		} else {
+			return "/mypage/scheduleCW.mytiles";
+		}
+
 	}
 
 	@RequestMapping("/schedule")
