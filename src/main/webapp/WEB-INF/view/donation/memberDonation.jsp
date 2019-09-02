@@ -121,9 +121,10 @@ $(document).ready(function(){
 </head>
 <body>
 
-	<section class="memberjoin">
-
-
+<section class="memberjoin">
+      <div class="memberjoin-in">
+        <h4 class="memberjoin-title ng-binding">기부하기</h4>
+      </div>
 		<div class="wrap-offset">
 			<div class="container-fluid">
 				<form id="frm" method="get" action="${cp}/donation/memberDonation" class="modern-p-form modern-ao-form-rtl p-form-modern-cadetBlue">
