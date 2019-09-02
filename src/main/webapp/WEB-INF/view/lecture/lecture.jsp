@@ -289,7 +289,6 @@ line-height:1.6em
 								<div class="single-post row">
 
 									<div class="col-lg-12 blog_details">
-										<h3>센터위치</h3>
 										<div id="map" style="width: 100%; height: 500px;"></div>
 										<div style=" position: absolute;">
 								${culture.culture_type}: &nbsp;${culture.culture_add}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${culture.culture_phone}

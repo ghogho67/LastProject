@@ -233,8 +233,6 @@ $('#cancel2').on('click', function(){
     	 
     	  var diff = Math.abs(chooseEndCal.getTime() - chooseStCal.getTime());
     	  diff = Math.ceil(diff / (1000 * 3600 * 24));
-    	  alert("cw_mem_id : "+$("#cw_mem_id").val());
-    	  console.log("diff"+diff);
     	  var ajaxlist;
     	  $.ajax({
     		  type : "post",
@@ -350,15 +348,15 @@ $('#cancel2').on('click', function(){
         var dayInfo = [];
         $('input:checkbox[name="dayInfo[]"]:checked').each(function () {
         	dayInfo.push(parseInt($(this).val()));
-        	alert("dayInfo:"+parseInt($(this).val()));
+//        	alert("dayInfo:"+parseInt($(this).val()));
         });
 
         var timeInfo = [];
         $('input:checkbox[name="timeInfo[]"]:checked').each(function () {
         	timeInfo.push(parseInt($(this).val()));
-        	alert(parseInt($(this).val()));
+//        	alert(parseInt($(this).val()));
         });  
-    	alert("cw_mem_id"+cw_mem_id.val());
+//    	alert("cw_mem_id"+cw_mem_id.val());
     	console.log("cw_mem_id"+cw_mem_id.val());
     	
         eventData = [{

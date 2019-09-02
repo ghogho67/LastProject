@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.category.post.post.dao.IPostDao;
@@ -13,6 +15,7 @@ import kr.or.ddit.category.post.post.model.PostVo;
 
 @Service
 public class PostService implements IPostService {
+	private static final Logger logger = LoggerFactory.getLogger(PostService.class);
 	@Resource(name = "postDao")
 	private IPostDao postDao;
 
@@ -44,6 +47,7 @@ public class PostService implements IPostService {
 
 	@Override
 	public Map<String, Object> postPagingList(Map<String, Object> map) {
+		logger.debug("☞map:{}", map);
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<PostVo> postList = postDao.postPagingList(map);
 		resultMap.put("postList", postList);
@@ -53,7 +57,6 @@ public class PostService implements IPostService {
 		int pageSize = (int) map.get("pageSize");
 		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
 		resultMap.put("paginationSize", paginationSize);
-
 		return resultMap;
 	}
 
@@ -79,7 +82,7 @@ public class PostService implements IPostService {
 
 	@Override
 	public Map<String, Object> titlePagingList(Map<String, Object> map) {
-		
+
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<PostVo> postList = postDao.titlePagingList(map);
 		resultMap.put("postList", postList);
@@ -95,7 +98,7 @@ public class PostService implements IPostService {
 
 	@Override
 	public Map<String, Object> idPagingList(Map<String, Object> map) {
-		
+
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<PostVo> postList = postDao.idPagingList(map);
 		resultMap.put("postList", postList);
@@ -121,7 +124,7 @@ public class PostService implements IPostService {
 		int pageSize = (int) map.get("pageSize");
 		int paginationSize = (int) Math.ceil((double) postCnt / pageSize);
 		resultMap.put("paginationSize", paginationSize);
-		
+
 		return resultMap;
 	}
 }
