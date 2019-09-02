@@ -8,6 +8,8 @@
 <script src="https://code.jquery.com/jquery-latest.min.js"
    type="text/javascript"></script>
 <script src="script.js"></script>
+
+
 </head>
 <body>
 
@@ -63,8 +65,8 @@
 											관리 <span></a></li>
 							</ul></li>
 
-
-
+						
+						<li class='last'><a href="${cp}/matching/webRtc" target="_blank"><span>화상채팅</span></a></li>
 
 						<li class='last'><a href="${cp}/mypage/Worker_Wd"><span>회원탈퇴</span></a></li>
 					</ul>
