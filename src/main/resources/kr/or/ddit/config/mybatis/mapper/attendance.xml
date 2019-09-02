@@ -23,7 +23,8 @@
 				
                 from MATCHING m, ATTENDANCE att
                 where m.MAT_ID = att.MAT_ID 
-                and m.CW_MEM_ID= #{cw_mem_id})a )b
+                and m.CW_MEM_ID= #{cw_mem_id}
+                 order by ad_st desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 		]]>
 	</select>
@@ -99,7 +100,8 @@
                 from MATCHING m, ATTENDANCE att
                 where m.MAT_ID = att.MAT_ID 
                 and m.CW_MEM_ID= #{cw_mem_id}
-                and att.ad_st like '%'||#{day}||'%')a )b
+                and att.ad_st like '%'||#{day}||'%'
+                 order by ad_st desc)a )b
 				 where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 				]]>
 	</select>
@@ -122,7 +124,8 @@
                 from MATCHING m, ATTENDANCE att
                 where m.MAT_ID = att.MAT_ID 
                 and m.CW_MEM_ID= #{cw_mem_id}
-                and m.mem_id = #{mem_id})a )b
+                and m.mem_id = #{mem_id}
+                 order by ad_st desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 			]]>
 	</select>
@@ -143,7 +146,8 @@
 			(select att.mat_id, to_char(att.ad_st,'YYYY-MM-DD HH24:MI:SS')ad_st, to_char(att.ad_end,'YYYY-MM-DD HH24:MI:SS')ad_end, 
                     m.mem_id,m.mat_del,M.Mat_Type, m.cw_mem_id
                 from MATCHING m, ATTENDANCE att
-                where m.MAT_ID = att.MAT_ID )a )b
+                where m.MAT_ID = att.MAT_ID 
+                 order by ad_st desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 			]]>
 	</select>
@@ -166,7 +170,8 @@
                 from MATCHING m, ATTENDANCE att
                 where m.MAT_ID = att.MAT_ID 
                 
-                and m.mem_id = #{mem_id})a )b
+                and m.mem_id = #{mem_id}
+                 order by ad_st desc)a )b
 			where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize}
 			]]>
     
