@@ -132,7 +132,7 @@
 						<canvas id="myChart"></canvas>
 						<div style="position: absolute; right: 80px; top: 110px;">
 							<img alt="" src="${cp}/image/bpm.gif">
-							<p id="bpm" style="font-weight: 500;font-size: 20px;"></p>
+							<p id="bpm" style="font-weight: 500;font-size: 20px;  margin-left: 95px;"></p>
 						</div>
 					</div>
 					
