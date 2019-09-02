@@ -182,8 +182,7 @@
                 and m.mem_id = #{mem_id}
     </select>
     
-    
-    
+        
     <select id="adminDaySearch" parameterType="map" resultType="attendanceMatchingVo" > 
     	<![CDATA[
          select * 

@@ -316,13 +316,13 @@ td {
 										<td>${vo.rn}</td>
 										<td><c:choose>
 												<c:when test="${vo.app_type eq 1}">
-													매칭
+													방문간병
 												</c:when>
 												<c:when test="${vo.app_type eq 2}">
-												 	골드가입
+												 	병원간병
 												</c:when>
 												<c:when test="${vo.app_type eq 3}">
-												 	기부
+												 	운동도움
 												</c:when>
 
 											</c:choose></td>
