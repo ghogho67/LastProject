@@ -296,7 +296,7 @@ table.cw td {
 					class="M_btn" value="메신저" onclick="popup3()"
 					style="position: absolute; left: 740px; top: 730px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;">
 				<input type="hidden" name="mem_id" value="${mem_id}"> <input
-					id="cw_mem_id" type="hidden" value="${memVo.mem_id }">${memVo.mem_id }
+					id="cw_mem_id" type="hidden" value="${memVo.mem_id }">
 			</div>
 			<div id="calendar"
 				style="height: 700px; width: 700px; position: absolute; left: 1000px; top: 180px;"></div>

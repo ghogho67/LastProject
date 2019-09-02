@@ -96,7 +96,6 @@ public class PostController {
 		if (cate_id != 0)
 			map.put("cate_id", cate_id);
 		if (searchType != null) {
-
 			if (searchType.equals("title")) {
 				String post_nm = search;
 				map.put("post_nm", post_nm);
@@ -466,10 +465,9 @@ public class PostController {
 				.get("totalCount").getAsDouble();
 		int boardCnt2 = (int) boardCnt;
 
-		
-		if(list!=null) {
+		if (list != null) {
 			Collections.sort(list, new Comparator<ImageBoardVo>() {
-				
+
 				@Override
 				public int compare(ImageBoardVo o1, ImageBoardVo o2) {
 					return o1.getEventstartdate().compareTo(o2.getEventstartdate());
@@ -496,7 +494,7 @@ public class PostController {
 		if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
 			paginationSize = lastpaginationSize;
 		}
-		
+
 		model.addAttribute("list", list);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("paginationSize", paginationSize);

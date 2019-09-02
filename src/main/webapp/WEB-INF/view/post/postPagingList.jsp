@@ -230,10 +230,9 @@ th {
 	border-radius: 6px;
 }
 
-#write{
-	    margin-top: -18px;
-	    margin-right: 5px;
-	
+#write {
+	margin-top: -18px;
+	margin-right: 5px;
 }
 </style>
 
@@ -421,7 +420,6 @@ th {
 						aria-hidden="true">«</span></a></li>
 			</c:otherwise>
 		</c:choose>
-
 		<c:forEach begin="1" end="${paginationSize}" var="i">
 			<c:choose>
 				<c:when test="${pageVo.page == i}">
