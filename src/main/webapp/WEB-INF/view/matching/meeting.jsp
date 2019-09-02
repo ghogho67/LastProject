@@ -388,7 +388,7 @@ table.cw td {
 	<div class="modal fade" tabindex="-1" role="dialog" id="approvalModal"
 		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" role="document">
-			<div class="modal-content">
+			<div class="modal-content" style="height: 500px; width: 400px;">
 				<div class="modal-header">
 
 					<!-- 					<button type="button" class="close" data-dismiss="modal" -->
@@ -397,31 +397,38 @@ table.cw td {
 					<!-- 					</button> -->
 					<!-- 					<h4 class="modal-title">결제하기</h4> -->
 				</div>
-				<div class="modal-body">
+				<div class="modal-body" style="line-height: 3; width: 400px;">
 					<div class="row">
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-title"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-title"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-cont"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-cont"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-startDate"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-startDate"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-endDate"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-endDate"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-startTime"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-startTime"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
 						<!-- 							<div class="col-xs-12"> -->
 						<!-- 								<label class="col-xs-4" id="Ledit-endTime"></label><br> -->
 						<!-- 							</div> -->
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-type"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-type"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
-						<div class="col-xs-12">
-							<label class="col-xs-4" id="Ledit-cost"></label><br>
+						<div class="col-xs-12" style="width: 400px;">
+							<label class="col-xs-4" id="Ledit-cost"
+								style="color: #adb7c1; width: 400px;"></label><br>
 						</div>
 					</div>
 				</div>
