@@ -319,7 +319,7 @@ td {
       </div>
 
 
- 	<div class="demo" style="position:absolute; right: 38%;">
+ 	<div class="demo" style="position:absolute; right: 45%;">
                 <nav class="pagination-outer" aria-label="Page navigation">
                     <ul class="pagination">
                        <c:choose>
