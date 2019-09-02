@@ -189,50 +189,45 @@ public class recognitionController {
 	
 	
 	
-	
-	
 	@RequestMapping("/semiTestResult")
-	public String TestFosdfrm(Model model,HttpSession session,@RequestParam(name = "sur_ans_cont")String sur_ans_cont,
-		    @RequestParam(name = "sur_part_id")int sur_part_id,
-			@RequestParam(name = "ques_id")int ques_id) {
-			
-		
-	 	logger.debug("@@@@sur_part_id {}",sur_part_id);
-	   	logger.debug("@@@@ques_id {}",ques_id);
-	   	logger.debug("@@@@sur_ans_cont {}",sur_ans_cont);
-		
-			// 5번 문제에 대한 답변내역과 참여아이디 문제아이디를 받아서 데이터에 추가해준다 
-			SurveyAnswerVo SurveyAnswerVo= new SurveyAnswerVo(sur_part_id,ques_id,sur_ans_cont);
-			int insertQuestionAns = surveyAnswerService.insertQuestionAns(SurveyAnswerVo);
-	
-			//지금까지입력한 답변값을 비교하여  정답갯수를 산출한다 
-			
-			int sur_id=901 ;
-		
-			MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
-			String mem_id = memvo.getMem_id();
-	       	logger.debug("@@@@mem_id {}",mem_id);
-	       	logger.debug("@@@@sur_id {}",sur_id);
-	       	
-	       	SurveyPartVo surveypartVo= new SurveyPartVo(sur_part_id,sur_id,mem_id);
-			
-			int checkScore =surveyPartService.checkScore(surveypartVo);
-			
-			//결과를 저장한다
-			String surresult_id ="";
-			String sur_result = String.valueOf(checkScore);
-			
-			SurveyResultVo SurveyResultVo = new kr.or.ddit.survey.model.SurveyResultVo(surresult_id, sur_part_id, sur_result);
-			int insertTestResult=surveyResultService.InsertTestResult(SurveyResultVo);
-			logger.debug("@@@@checkScore {}",checkScore);
-			model.addAttribute("checkScore", checkScore);
-			String viewName;
-	if(insertTestResult==0){
-		viewName="main";
-			}else {
-				
-				viewName="recognitionActivites/semiTestResult";
-			}
+	public String TestFosdfrm(Model model, HttpSession session,
+			@RequestParam(name = "sur_ans_cont") String sur_ans_cont,
+			@RequestParam(name = "sur_part_id") int sur_part_id, @RequestParam(name = "ques_id") int ques_id) {
+
+		logger.debug("@@@@sur_part_id {}", sur_part_id);
+		logger.debug("@@@@ques_id {}", ques_id);
+		logger.debug("@@@@sur_ans_cont {}", sur_ans_cont);
+
+		// 5번 문제에 대한 답변내역과 참여아이디 문제아이디를 받아서 데이터에 추가해준다
+		SurveyAnswerVo SurveyAnswerVo = new SurveyAnswerVo(sur_part_id, ques_id, sur_ans_cont);
+		int insertQuestionAns = surveyAnswerService.insertQuestionAns(SurveyAnswerVo);
+
+		// 지금까지입력한 답변값을 비교하여 정답갯수를 산출한다
+		int sur_id = 901;
+		MemberVo memvo = (MemberVo) session.getAttribute("MEM_INFO");
+		String mem_id = memvo.getMem_id();
+		logger.debug("@@@@mem_id {}", mem_id);
+		logger.debug("@@@@sur_id {}", sur_id);
+
+		SurveyPartVo surveypartVo = new SurveyPartVo(sur_part_id, sur_id, mem_id);
+		int checkScore = surveyPartService.checkScore(surveypartVo);
+
+		// 결과를 저장한다
+		String surresult_id = "";
+		String sur_result = String.valueOf(checkScore);
+
+		SurveyResultVo SurveyResultVo = new kr.or.ddit.survey.model.SurveyResultVo(surresult_id, sur_part_id,
+				sur_result);
+		int insertTestResult = surveyResultService.InsertTestResult(SurveyResultVo);
+		logger.debug("@@@@checkScore {}", checkScore);
+		model.addAttribute("checkScore", checkScore);
+		String viewName;
+		if (insertTestResult == 0) {
+			viewName = "main";
+		} else {
+
+			viewName = "recognitionActivites/semiTestResult";
+		}
 		return viewName;
 	}
 

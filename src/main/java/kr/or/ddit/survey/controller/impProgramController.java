@@ -342,31 +342,26 @@ public class impProgramController {
 	
 	
 	
-	
-
 	@RequestMapping("/impTestResult")
 	public String impTestResult(Model model, HttpSession session,
 			@RequestParam(name = "sur_ans_cont") String sur_ans_cont,
-			@RequestParam(name = "sur_part_id") int sur_part_id, @RequestParam(name = "ques_id") int ques_id,
+			@RequestParam(name = "sur_part_id") int sur_part_id, 
+			@RequestParam(name = "ques_id") int ques_id,
 			@RequestParam(name = "sur_id") int sur_id) {
 
 		logger.debug("@@@@sur_part_id {}", sur_part_id);
 		logger.debug("@@@@ques_id {}", ques_id);
 		logger.debug("@@@@sur_ans_cont {}", sur_ans_cont);
 
-		
-		
 		// 가장 최근에 생성된 참여 아이디를 model에 넣어준다
-				SurveyPartVo getlatestSurveyPartInfo = surveyPartService.getlatestSurveyPartInfo();
-				logger.debug("@@@@생성된 참여 아이디{}", getlatestSurveyPartInfo.getSur_part_id());
-				model.addAttribute("sur_part_id", getlatestSurveyPartInfo.getSur_part_id());
-				model.addAttribute("sur_id", getlatestSurveyPartInfo.getSur_id());
-				
-		
+		SurveyPartVo getlatestSurveyPartInfo = surveyPartService.getlatestSurveyPartInfo();
+		logger.debug("@@@@생성된 참여 아이디{}", getlatestSurveyPartInfo.getSur_part_id());
+		model.addAttribute("sur_part_id", getlatestSurveyPartInfo.getSur_part_id());
+		model.addAttribute("sur_id", getlatestSurveyPartInfo.getSur_id());
+
 		// 7번문제에 대한 답변내역과 참여아이디 문제아이디를 받아서 데이터에 추가해준다
 		SurveyAnswerVo SurveyAnswerVo = new SurveyAnswerVo(sur_part_id, ques_id, sur_ans_cont);
 		int insertQuestionAns = surveyAnswerService.insertQuestionAns(SurveyAnswerVo);
-
 		model.addAttribute("sur_part_id", sur_part_id);
 
 		// 지금까지입력한 답변값을 비교하여 틀린문제갯수를 산출한다
@@ -380,25 +375,12 @@ public class impProgramController {
 
 		int checkScore = surveyPartService.checkScore(surveypartVo);
 
-		
-		
-		
-		
-		
-		
-		
-		String surresult_id ="";
+		String surresult_id = "";
 		String sur_result = String.valueOf(checkScore);
-		
-		SurveyResultVo SurveyResultVo = new kr.or.ddit.survey.model.SurveyResultVo(surresult_id, sur_part_id, sur_result);
-		int insertTestResult=surveyResultService.InsertTestResult(SurveyResultVo);
-		
-		if(insertTestResult==0){
-			
-		}
-		
-		
-		
+
+		SurveyResultVo score = new SurveyResultVo(surresult_id, sur_part_id,sur_result);
+		int insertTestResult = surveyResultService.InsertTestResult(score);
+
 		
 		logger.debug("@@@@checkScore {}", checkScore);
 		model.addAttribute("checkScore", checkScore);
