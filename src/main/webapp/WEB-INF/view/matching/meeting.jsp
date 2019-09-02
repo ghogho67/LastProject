@@ -295,7 +295,8 @@ table.cw td {
 					alt="${cp}/image/mat.png" /><br> <input type="button"
 					class="M_btn" value="메신저" onclick="popup3()"
 					style="position: absolute; left: 740px; top: 730px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;">
-				<input type="hidden" name="mem_id" value="${mem_id}">
+				<input type="hidden" name="mem_id" value="${mem_id}"> <input
+					id="cw_mem_id" type="hidden" value="${memVo.mem_id }">${memVo.mem_id }
 			</div>
 			<div id="calendar"
 				style="height: 700px; width: 700px; position: absolute; left: 1000px; top: 180px;"></div>
@@ -374,7 +375,7 @@ table.cw td {
 					<tr>
 						<th>요양보호사 아이디</th>
 						<td>${memVo.mem_id }</td>
-						<td id="cw_mem_id">${memVo.mem_id }</td>
+						<td>${memVo.mem_id }</td>
 					</tr>
 				</tbody>
 			</table>
@@ -600,7 +601,7 @@ table.cw td {
 
 	<!-- /.container -->
 	<input id="mem_id" type="hidden" value="${mem_id }">
-	<input id="cw_mem_id" type="hidden" value="${memVo.mem_id }">
+
 
 	<script src="/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
