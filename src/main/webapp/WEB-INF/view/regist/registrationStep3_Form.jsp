@@ -115,6 +115,7 @@
 				return
 			}else if($('#capcha_check').val()=='N'){
 				alert("캡차 인증을 완료해주세요");
+				return;
 			}
 			
 			
