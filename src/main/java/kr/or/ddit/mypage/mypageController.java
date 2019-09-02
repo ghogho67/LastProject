@@ -109,7 +109,6 @@ public class mypageController {
 			@RequestParam(name = "pro_phone") String pro_phone) throws IllegalStateException, IOException {
 
 		String encyptPassword = KISA_SHA256.encrypt(mem_pass);
-
 		String viewName;
 		String mem_nm = "";
 		String mem_birth = "";
@@ -120,21 +119,7 @@ public class mypageController {
 		String cw_lic = "";
 		String mem_photo_path = "";
 		String mem_photo_nm = "";
-
-		logger.debug("@@@@grade : {} ", grade);
-		logger.debug("@@@@mem_pass : {} ", mem_pass);
-		logger.debug("@@@@mem_mail : {} ", mem_mail);
-		logger.debug("@@@@mem_phone : {} ", mem_phone);
-		logger.debug("mem_zipcd : {} ", mem_zipcd);
-		logger.debug("mem_add1 : {} ", mem_add1);
-		logger.debug("mem_add2 : {} ", mem_add2);
-		logger.debug("@@@@pro_relation : {} ", pro_relation);
-		logger.debug("@@@@pro_nm : {} ", pro_nm);
-		logger.debug("@@@@pro_phone : {} ", pro_phone);
-		logger.debug("@@@@profile : {} ", profile);
-
 		MemberVo memberVo = null;
-
 		if (profile.getSize() > 0) {
 			String fileName = profile.getOriginalFilename();
 			String ext = PartUtil.getExt(fileName);
@@ -142,46 +127,29 @@ public class mypageController {
 			String filePath = uploadPath + File.separator + UUID.randomUUID().toString() + ext;
 			mem_photo_path = filePath;
 			mem_photo_nm = fileName;
-
 			profile.transferTo(new File(filePath));
-
 		}
-
 		if (grade.equals("3") == false) {
 			memberVo = new MemberVo(mem_id, mem_nm, mem_birth, mem_gender, encyptPassword, mem_phone, mem_add1,
 					mem_add2, mem_zipcd, mem_mail, mem_grade, mem_del, mem_photo_path, mem_photo_nm, pro_relation,
 					pro_nm, pro_phone, cw_driver, cw_lic);
 			if (profile.getOriginalFilename().isEmpty()) {
-				logger.debug("@@@@updatePMemberNoPro : {} ", mem_id);
-
 				int updateCnt = memberService.updatePMemberNoPro(memberVo);
-				logger.debug("@@@@updateCnt : {} ", updateCnt);
-
 				if (updateCnt != 1) {
 					viewName = "redirect:/login";
 				}
-
 			} else {
-				logger.debug("@@@@updatePMember : {} ", mem_id);
-
 				int updateCnt = memberService.updatePMember(memberVo);
-				logger.debug("@@@@updateCnt : {} ", updateCnt);
-
 				if (updateCnt != 1) {
 					viewName = "redirect:/login";
 				}
 			}
-
 			memberVo = memberService.getMemVo(mem_id);
 			session.setAttribute("MEM_INFO", memberVo);
-
 			viewName = "/mypage/Patient_Info.mytiles";
-
 		} else {
 			viewName = "redirect:/main";
 		}
-
-		logger.debug("@@@@viewName : {} ", viewName);
 		return viewName;
 	}
 
@@ -219,9 +187,12 @@ public class mypageController {
 
 	@RequestMapping(path = "/Worker_InfoModification", method = RequestMethod.POST)
 	public String Worker_InfoModification(Model model, MultipartFile profile, HttpSession session,
-			RedirectAttributes redirectAttributes, HttpServletRequest request,@RequestParam(name = "memid") String mem_id, @RequestParam(name = "grade") String grade,
-			@RequestParam(name = "pass") String mem_pass, @RequestParam(name = "email") String mem_mail,@RequestParam(name = "phone") String mem_phone, @RequestParam(name = "zipcd") String mem_zipcd,
-			@RequestParam(name = "searchType") String searchType, @RequestParam(name = "addr1") String mem_add1,@RequestParam(name = "addr2") String mem_add2) throws IllegalStateException, IOException {
+			RedirectAttributes redirectAttributes, HttpServletRequest request,
+			@RequestParam(name = "memid") String mem_id, @RequestParam(name = "grade") String grade,
+			@RequestParam(name = "pass") String mem_pass, @RequestParam(name = "email") String mem_mail,
+			@RequestParam(name = "phone") String mem_phone, @RequestParam(name = "zipcd") String mem_zipcd,
+			@RequestParam(name = "searchType") String searchType, @RequestParam(name = "addr1") String mem_add1,
+			@RequestParam(name = "addr2") String mem_add2) throws IllegalStateException, IOException {
 
 		String cw_driver = searchType;
 		String encyptPassword = KISA_SHA256.encrypt(mem_pass);
@@ -272,7 +243,8 @@ public class mypageController {
 			viewName = "/mypage/Worker_Info.mytiles";
 		} else {
 			viewName = "redirect:/login";
-		}		logger.debug("☞viewName:{}", viewName);
+		}
+		logger.debug("☞viewName:{}", viewName);
 
 		return viewName;
 	}
@@ -289,7 +261,16 @@ public class mypageController {
 		String mem_id = memvo.getMem_id();
 		model.addAttribute("mem_id", mem_id);
 
-		return "/mypage/schedule.mytiles";
+		if (memvo.getMem_grade().equals("1")) {
+			return "/mypage/schedule.mytiles";
+
+		} else if (memvo.getMem_grade().equals("2")) {
+			return "/mypage/schedule.mytiles";
+
+		} else {
+			return "/mypage/scheduleCW.mytiles";
+		}
+
 	}
 
 	@RequestMapping("/schedule")
@@ -330,7 +311,7 @@ public class mypageController {
 			HttpServletRequest request, @RequestParam(name = "memid") String mem_id,
 			@RequestParam(name = "mempass") String mem_pass, @RequestParam(name = "id") String input_id,
 			@RequestParam(name = "pass") String input_pass) {
-	String viewName;
+		String viewName;
 		String mem_nm = "";
 		String mem_birth = "";
 		String mem_gender = "";

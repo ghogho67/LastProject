@@ -219,7 +219,6 @@ table.cw td {
 
 <body>
 
-
 	<div class="container" style="width: 1000px;">
 		<div style="width: 50%; float: left; height: 350px;">
 			<div
@@ -232,62 +231,72 @@ table.cw td {
 				style="width: 130px; height: 130px; position: absolute; left: 20%; top: 200px; border-radius: 100px;"
 				alt="${cp}/image/logosam.png" />
 			<p
-				style="position: absolute; top: 260px; left: 540px; font-size: 30px; font-weight: 500; color: #4f91d4;">${mem_id},
+				style="position: absolute; top: 260px; left: 540px; font-size: 30px; font-weight: 500; color: #4f91d4;">${memVo.mem_id},
 				${memVo.mem_nm }</p>
 			<div
-				style="position: absolute; top: 320px; left: 550px; overflow: scroll">
-				<p >성별 : ${memVo.mem_gender }</p>
-				<p>전화번호 : ${memVo.mem_phone }</p>
-				<p>운전여부 : ${memVo.cw_driver }</p>
-				<p>
-					서비스 가능 지역 :
+				style="position: absolute; top: 320px; left: 550px; overflow: scroll; line-height: 2;">
+				<p style="color: #bbbdca;">
+					성별&nbsp; :&nbsp;&nbsp;<strong>${memVo.mem_gender }</strong>
+				</p>
+				<p style="color: #bbbdca;">
+					전화번호&nbsp; :&nbsp;&nbsp; <strong>${memVo.mem_phone }</strong>
+				</p>
+				<p style="color: #bbbdca;">
+					운전여부&nbsp; :&nbsp;&nbsp; <strong>${memVo.cw_driver }</strong>
+				</p>
+				<p style="color: #bbbdca;">
+					서비스 가능 지역&nbsp; :&nbsp;&nbsp;
 					<c:forEach items="${loList }" var="lo" varStatus="status">
 						<c:choose>
 							<c:when test="${ status.last}">
-											${lo.loc_dong }
-												</c:when>
+								<strong>${lo.loc_dong }</strong>
+							</c:when>
 							<c:otherwise>
-											${lo.loc_dong },
-												</c:otherwise>
+								<strong>${lo.loc_dong },</strong>
+							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 				</p>
 				<c:forEach items="${carList}" var="car">
-					<p>경력</p>
+					<!-- 					<p style="color: #bbbdca;">경력</p> -->
 					<fmt:parseDate value="${car.career_st_dt }"
 						pattern="yyyy-MM-dd HH:mm:ss" var="st_dt" />
-					<p>
-						시작일 :
-						<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${st_dt}" />
+					<fmt:parseDate value="${car.career_end_dt }"
+						pattern="yyyy-MM-dd HH:mm:ss" var="end_dt" />
+					<p style="color: #bbbdca;">
+						경력 시작일&nbsp; :&nbsp;&nbsp; <strong><fmt:formatDate
+								pattern="yyyy-MM-dd" type="both" value="${st_dt}" /></strong> 종료일&nbsp;
+						:&nbsp;&nbsp; <strong><fmt:formatDate
+								pattern="yyyy-MM-dd" type="both" value="${end_dt}" /></strong>&nbsp;&nbsp;
 						<br>
 					</p>
-					<p>
-						종료일 :
-						<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${end_dt}" />
+					<p style="color: #bbbdca;">
+						내용&nbsp; :&nbsp;&nbsp; <strong>${car.career_cont}</strong>
 					</p>
-					<p>내용 : ${car.career_cont}</p>
-					<p>소속 기관 : ${car.career_hos }</p>
+					<p style="color: #bbbdca;">
+						소속 기관&nbsp; :&nbsp;&nbsp; <strong>${car.career_hos }</strong>
+					</p>
 				</c:forEach>
-				<p>요양보호사 아이디 ${memVo.mem_id }</p>
 			</div>
 			<div style="margin-left: 500px;">
 				<img id="img" src="${cp}/image/video chat.png"
-					style="top: 600px; position: absolute; left: 500px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
+					style="top: 500px; position: absolute; left: 500px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
 					alt="${cp}/image/videochat.png" /> <input type="hidden"
 					class="btn"><br> <br> <input type="button"
 					id="app" class="M_btn" value="매칭신청"
-					style="position: absolute; left: 400px; top: 830px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;"><br>
+					style="position: absolute; left: 400px; top: 730px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;"><br>
 				<br> <img id="img" src="${cp}/image/chat.png"
-					style="top: 500px; position: absolute; left: 670px; top: 600px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
+					style="top: 500px; position: absolute; left: 670px; top: 500px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
 					alt="${cp}/image/chat.png" /> <br> <input type="button"
 					class="M_btn" value="화상채팅" id="videochat"
-					style="position: absolute; left: 570px; top: 830px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;"><br>
+					style="position: absolute; left: 570px; top: 730px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;"><br>
 				<br> <img id="img" src="${cp}/image/mat.png"
-					style="position: absolute; top: 600px; left: 330px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
+					style="position: absolute; top: 500px; left: 330px; width: 100px; height: 100px; margin-left: 100px; margin-top: 100px;"
 					alt="${cp}/image/mat.png" /><br> <input type="button"
 					class="M_btn" value="메신저" onclick="popup3()"
-					style="position: absolute; left: 740px; top: 830px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;">
-				<input type="hidden" name="mem_id" value="${mem_id}">
+					style="position: absolute; left: 740px; top: 730px; background: white; color: #c8acd7; BORDER-BOTTOM: 3px solid #c8acd7; BORDER-LEFT: medium none; BORDER-RIGHT: medium none; BORDER-TOP: medium none;">
+				<input type="hidden" name="mem_id" value="${mem_id}"> <input
+					id="cw_mem_id" type="hidden" value="${memVo.mem_id }">${memVo.mem_id }
 			</div>
 			<div id="calendar"
 				style="height: 700px; width: 700px; position: absolute; left: 1000px; top: 180px;"></div>
@@ -366,7 +375,7 @@ table.cw td {
 					<tr>
 						<th>요양보호사 아이디</th>
 						<td>${memVo.mem_id }</td>
-						<td id="cw_mem_id">${memVo.mem_id }</td>
+						<td>${memVo.mem_id }</td>
 					</tr>
 				</tbody>
 			</table>
@@ -592,7 +601,7 @@ table.cw td {
 
 	<!-- /.container -->
 	<input id="mem_id" type="hidden" value="${mem_id }">
-	<input id="cw_mem_id" type="hidden" value="${memVo.mem_id }">
+
 
 	<script src="/FullCalendar-Example-master/vendor/js/jquery.min.js"></script>
 	<script src="/FullCalendar-Example-master/vendor/js/bootstrap.min.js"></script>
