@@ -152,7 +152,7 @@ ul, li, dl, dd {
 
 		<div id="program">
 			<h2>
-				<span>인지력</span> 간이 측정 프로그램
+					<span>인지 능력</span> 향상 프로그램
 			</h2>
 
 			<hr>

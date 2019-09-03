@@ -64,7 +64,7 @@
 
 		<div id="program">
 			<h2>
-				<span>인지 능력</span> 향상  프로그램
+					<span>인지 능력</span> 향상 프로그램
 			</h2>
 
 <hr>

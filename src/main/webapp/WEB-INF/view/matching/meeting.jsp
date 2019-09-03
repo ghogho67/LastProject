@@ -309,7 +309,7 @@ table.cw td {
 		<ul class="dropdown-menu dropNewEvent" role="menu"
 			aria-labelledby="dropdownMenu"
 			style="display: block; position: static; margin-bottom: 5px;">
-			<li><a tabindex="-1" href="#">방문간병</a></li>
+			<li><a tabindex="-1" href="#">방문요양</a></li>
 			<li><a tabindex="-1" href="#">병원간병</a></li>
 			<li><a tabindex="-1" href="#">운동도움</a></li>
 			<li class="divider"></li>

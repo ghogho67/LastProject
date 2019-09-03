@@ -59,7 +59,7 @@
 						</div>
 						<div>
 							<img alt="" src="${cp}/image/state.PNG">
-							<img alt="" src="${cp}/image/state2.png">
+<%-- 							<img alt="" src="${cp}/image/state2.png"> --%>
 							
 						</div>
 					</div>
