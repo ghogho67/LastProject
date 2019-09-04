@@ -32,6 +32,18 @@ public class ReplyController {
 	@Resource(name = "replyService")
 	private IReplyService replyService;
 
+	/**
+	* Method : replyDelete
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param reply_id
+	* @param cate_id
+	* @param post_id
+	* @param model
+	* @param session
+	* @return
+	* Method 설명 : 댓글 삭제
+	*/
 	@RequestMapping(path = "/delete")
 	public String replyDelete(int reply_id, int cate_id, int post_id, Model model, HttpSession session) {
 
@@ -49,11 +61,22 @@ public class ReplyController {
 
 	}
 
+	/**
+	* Method : replyRegister
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param reply_cont
+	* @param post_id
+	* @param replyVo
+	* @param model
+	* @param cate_id
+	* @param session
+	* @return
+	* Method 설명 : 댓글 등록
+	*/
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String replyRegister(String reply_cont, int post_id, ReplyVo replyVo, Model model, int cate_id,
 			HttpSession session) {
-		logger.debug("☞cate_id:{}", cate_id);
-		logger.debug("☞replyVo:{}", replyVo);
 		replyVo.setPost_id(post_id);
 		replyVo.setReply_cont(reply_cont);
 		MemberVo mvo = (MemberVo) session.getAttribute("MEM_INFO");
@@ -72,6 +95,17 @@ public class ReplyController {
 		return "redirect:/post/detail";
 	}
 
+	/**
+	* Method : replyModify
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param reply_id
+	* @param session
+	* @param model
+	* @param cate_id
+	* @return
+	* Method 설명 : 댓글 수정
+	*/
 	@RequestMapping(path = "/modify", method = RequestMethod.GET)
 	public String replyModify(int reply_id, HttpSession session, Model model, int cate_id) {
 

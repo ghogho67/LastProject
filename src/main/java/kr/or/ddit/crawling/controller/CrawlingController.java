@@ -46,17 +46,13 @@ public class CrawlingController {
 		String mem_id = memVo.getMem_id();
 		int num = 0;
 		List<MemberDiseaseVo> mdList = memberDiseaseService.getMemDisList(mem_id);
-		logger.debug("☞mdList:{}", mdList.size());
 		if (mdList.size() > 0) {
 			if (mdList.size() == 1) {
-				logger.debug("☞mdList.size():{}", mdList.size());
 				num = 0;
 			} else {
 				num = (int) ((Math.random() * (mdList.size() - 1)));
-				logger.debug("☞num:{}", num);
 				num = mdList.get(num).getDis_id();
 				keyWord = diseaseNameService.getDisName(num);
-				logger.debug("☞keyWord:{}", keyWord);
 			}
 		} else {
 			keyWord = "치매";
@@ -71,12 +67,7 @@ public class CrawlingController {
 			src = imgs.outerHtml();
 		}
 		
-		logger.debug("☞src:{}",src);
-		
-		
-		//해당회원의  골드테이블정보를 가져온다 
 		GoldVo goldvo = memberService.downGradeMember(mem_id);
-		logger.debug("@@@@goldvo{}",goldvo);
 			model.addAttribute("goldvo",goldvo);
 		session.setAttribute("MEM_INFO", memVo);
 		

@@ -66,6 +66,17 @@ public class PostController {
 	@Resource(name = "categoryService")
 	ICategoryService categoryService;
 
+	/**
+	* Method : postModifyView
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param cate_id
+	* @param post_id
+	* @param postVo
+	* @param model
+	* @return
+	* Method 설명 : 게시판 수정화면 요청
+	*/
 	@RequestMapping(path = "modifyView")
 	public String postModifyView(int cate_id, int post_id, PostVo postVo, Model model) {
 
@@ -78,13 +89,25 @@ public class PostController {
 		return "/post/postModify.tiles";
 	}
 
+	/**
+	* Method : postPagingList
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param pageVo
+	* @param cate_id
+	* @param model
+	* @param session
+	* @param current
+	* @param searchType
+	* @param search
+	* @return
+	* Method 설명 : 게시판 페이징 리스트
+	*/
 	@RequestMapping("/pagingList")
 	public String postPagingList(PageVo pageVo, @RequestParam(required = false) int cate_id, Model model,
 			HttpSession session, @RequestParam(required = false) String current,
 			@RequestParam(required = false) String searchType, @RequestParam(required = false) String search) {
 
-		logger.debug("☞pagingList");
-		logger.debug("☞searchType:{}", searchType);
 		pageVo.setPage(pageVo.getPage());
 		pageVo.setPageSize(pageVo.getPageSize());
 
@@ -123,9 +146,7 @@ public class PostController {
 		model.addAttribute("search", search);
 		model.addAttribute("searchType", searchType);
 		model.addAttribute("cate_id", cate_id);
-		logger.debug("current:{}", current);
 		model.addAttribute("current", current);
-		logger.debug("☞postList:{}", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("postList", (List<PostVo>) resultMap.get("postList"));
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("postCnt", (Integer) resultMap.get("postCnt"));
@@ -136,6 +157,16 @@ public class PostController {
 		return "/post/postPagingList.tiles";
 	}
 
+	/**
+	* Method : postReply
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param cate_id
+	* @param post_id
+	* @param model
+	* @return
+	* Method 설명 : 답글 등록 화면 요청
+	*/
 	@RequestMapping(path = "/reply", method = RequestMethod.GET)
 	public String postReply(int cate_id, int post_id, Model model) {
 		model.addAttribute("cate_id", cate_id);
@@ -144,6 +175,17 @@ public class PostController {
 
 	}
 
+	/**
+	* Method : postDelete
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param model
+	* @param cate_id
+	* @param post_id
+	* @param pageVo
+	* @return
+	* Method 설명 : 게시글 삭제
+	*/
 	@RequestMapping("delete")
 	public String postDelete(Model model, int cate_id, int post_id, PageVo pageVo) {
 
@@ -169,15 +211,22 @@ public class PostController {
 
 	}
 
+	/**
+	* Method : postDetail
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param cate_id
+	* @param post_id
+	* @param model
+	* @param session
+	* @return
+	* Method 설명 : 게시판 
+	*/
 	@RequestMapping("detail")
 	public String postDetail(int cate_id, int post_id, Model model, HttpSession session) {
 
-		logger.debug("☞post_id:{}", post_id);
-		// cate_id
 		model.addAttribute("cate_id", cate_id);
-		// replyList
 		model.addAttribute("replyList", replyService.replyList(post_id));
-		// postVo
 		model.addAttribute("postVo", postService.getPost(post_id));
 
 		// post_id
@@ -194,9 +243,6 @@ public class PostController {
 	public String postModify(Model model, int post_id, @RequestParam("file") MultipartFile[] files, PostVo postVo,
 			String post_nm, String post_cont, int cate_id, String mem_id, AttachmentVo attachmentVo,
 			HttpSession session) {
-		logger.debug("☞post_id:{}", post_id);
-		logger.debug("☞cate_id:{}", cate_id);
-		logger.debug("☞postVo:{}", postVo);
 
 		postVo.setPost_nm(post_nm);
 		postVo.setPost_cont(post_cont);
@@ -206,20 +252,16 @@ public class PostController {
 		postService.postModify(postVo);
 		postVo = postService.getPost(post_id);
 
-		// 댓글과 첨부파일 가져오기
-		// file data 받기=======================================================
-		// DB에 저장할 파일명
 		String savePath = PartUtil.getUploadPath();
 
 		for (MultipartFile file : files) {
-			logger.debug("☞file:{}", file);
 
 			if (!file.getOriginalFilename().isEmpty()) {
 				String a = file.getOriginalFilename();
 				String ext = PartUtil.getExt(file.getOriginalFilename());
 				String fileName = UUID.randomUUID().toString();
 				File uploadfile = new File(savePath + File.separator + fileName + ext);
-				logger.debug("savePath +File.separator+ fileName + ext:{}", savePath + File.separator + fileName + ext);
+
 				try {
 					file.transferTo(uploadfile);
 				} catch (IllegalStateException | IOException e) {
@@ -316,18 +358,10 @@ public class PostController {
 		postVo.setMem_id(mvo.getMem_id());
 		postVo.setPost_par(post_id);
 
-		// 답글 쓰기
 		postService.postReply(postVo);
 		PostVo postVoTime = postService.getLatestPost();
 		post_id = postVoTime.getPost_id();
 
-		// reply 답글 등록 파라미터 설정==============================================
-		// ================================================
-
-		// 댓글과 첨부파일 가져오기
-
-		// file data 받기=======================================================
-		// DB에 저장할 파일명
 		String savePath = PartUtil.getUploadPath();
 		for (MultipartFile file : files) {
 			if (!file.getOriginalFilename().isEmpty()) {
@@ -348,22 +382,14 @@ public class PostController {
 			}
 		}
 
-		// 객체 넘기기=============================================================
-		// cate_id,post_id,replyList,attachmentList,postVo
-		// cate_id
 		model.addAttribute("cate_id", cate_id);
-		// post_id
 		model.addAttribute("post_id", post_id);
-		// replyList
 		model.addAttribute("replyList", replyService.replyList(post_id));
-		// attachmentList
 		model.addAttribute("attachmentList", attachmentService.getAttachmentList(post_id));
-		// postVo
 		model.addAttribute("postVo", postVo);
 		mvo = (MemberVo) session.getAttribute("MEM_INFO");
 		model.addAttribute("mem_id", mvo.getMem_id());
-		// 페이지
-		// 이동====================================================================
+
 		return "/post/postDetail.tiles";
 
 	}
@@ -394,10 +420,6 @@ public class PostController {
 
 	}
 
-//	@RequestMapping(path = "ImageBoard1", method = RequestMethod.GET)
-//	public String ImageBoard1() {
-//		return "festival.tiles";
-//	}
 	@RequestMapping(path = "ImageBoard2")
 	public String ImageBoard2() {
 		return "festival2";
@@ -476,7 +498,7 @@ public class PostController {
 		}
 
 		model.addAttribute("boardCnt", boardCnt2);
-//        logger.debug("!!!!! list:{}",list);
+
 		int startPage = ((int) Math.floor((pageVo.getPage() - 1) / 10)) + 1;
 		if (pageVo.getPage() == 1) {
 			startPage = 1;
@@ -486,11 +508,8 @@ public class PostController {
 		}
 		int paginationSize = ((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10;
 
-		logger.debug("!!!!! paginationSize:{}", paginationSize);
-
 		int lastpaginationSize = (int) Math.ceil((double) boardCnt / pageVo.getPageSize());
 
-		logger.debug("!!!!! lastpaginationSize:{}", lastpaginationSize);
 		if (((int) Math.floor((pageVo.getPage() - 1) / 10 + 1)) * 10 > lastpaginationSize) {
 			paginationSize = lastpaginationSize;
 		}
@@ -500,9 +519,6 @@ public class PostController {
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("lastpaginationSize", lastpaginationSize);
 		model.addAttribute("pageVo", pageVo);
-
-		logger.debug("!!!!! startPage:{}", startPage);
-		logger.debug("!!!!! paginationSize:{}", paginationSize);
 
 		return "festivalAjaxHtml";
 
@@ -553,10 +569,7 @@ public class PostController {
 		String abc = gson.toJson(jsonObj.getAsJsonObject().get("response").getAsJsonObject().get("body")
 				.getAsJsonObject().get("items").getAsJsonObject().get("item"));
 		vo = gson.fromJson(abc, DetailCommonVo.class);
-		logger.debug("!!! vo : {}", vo);
-		logger.debug("!!! startDate : {}", startDate);
-		logger.debug("!!! endDate : {}", endDate);
-		//
+
 		model.addAttribute("vo", vo);
 		model.addAttribute("startDate", startDate);
 		model.addAttribute("endDate", endDate);

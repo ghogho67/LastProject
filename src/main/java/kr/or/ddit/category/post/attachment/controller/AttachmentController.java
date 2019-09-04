@@ -39,7 +39,19 @@ public class AttachmentController {
 	@Resource(name = "replyService")
 	private IReplyService replyService;
 
-	// 0725
+	/**
+	* Method : attachmentDownload
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param cate_id
+	* @param post_id
+	* @param att_id
+	* @param attachmentVo
+	* @param request
+	* @param response
+	* @throws IOException
+	* Method 설명 : 파일 다운로드
+	*/
 	@RequestMapping(path = "/download")
 	public void attachmentDownload(int cate_id, int post_id, int att_id, AttachmentVo attachmentVo,
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -80,7 +92,19 @@ public class AttachmentController {
 		fis.close();
 	}
 
-	// 0725
+	/**
+	* Method : attachmentDelete
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param att_id
+	* @param post_id
+	* @param cate_id
+	* @param model
+	* @param postVo
+	* @param session
+	* @return
+	* Method 설명 : 파일 삭제
+	*/
 	@RequestMapping(path = "/delete")
 	public String attachmentDelete(int att_id, int post_id, int cate_id, Model model, PostVo postVo,
 			HttpSession session) {

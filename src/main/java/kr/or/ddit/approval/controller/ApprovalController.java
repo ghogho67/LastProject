@@ -34,6 +34,17 @@ public class ApprovalController {
 		return "/approval/post.tiles";
 	}
 
+	/**
+	* Method : approval
+	* 작성자 : 정요한
+	* 변경이력 :
+	* @param imp_uid
+	* @param avo
+	* @param session
+	* @param model
+	* @return
+	* Method 설명 : 매칭 결제 
+	*/
 	@RequestMapping(path = "/matching")
 	public String approval(String imp_uid, ApprovalVo avo, HttpSession session, Model model) {
 
